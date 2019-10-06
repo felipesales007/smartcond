@@ -215,5 +215,23 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
         Route::post('usuario/atualizar/{id?}', ['as' => 'permission.user.update',   'uses' => 'User\PermissionController@update']);
     });
 
+    // grupo inventário
+    Route::group(['prefix' => 'inventario'], function () {
+        Route::get ('data',             ['as' => 'inventory.data',         'uses' => 'Inventory\DashboardController@data']);
+        Route::get ('dashboard',        ['as' => 'inventory.dashboard',    'uses' => 'Inventory\DashboardController@dashboard']);
+        Route::get ('lista',            ['as' => 'inventory.list',         'uses' => 'Inventory\InventoryController@list']);
+        Route::get ('lista/deletados',  ['as' => 'inventory.list.deleted', 'uses' => 'Inventory\InventoryController@listDeleted']);
+        Route::get ('visualizar/{id?}', ['as' => 'inventory.view',         'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-view-inventory
+        Route::get ('editar/{id?}',     ['as' => 'inventory.edit',         'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-edit-inventory
+        Route::get ('banir/{id?}',      ['as' => 'inventory.ban',          'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-block-inventory
+        Route::get ('deletar/{id?}',    ['as' => 'inventory.delete',       'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-delete-inventory
+        Route::get ('recuperar/{id?}',  ['as' => 'inventory.recover',      'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-recover-inventory
+        Route::post('novo',             ['as' => 'inventory.store',        'uses' => 'Inventory\InventoryController@store']); // btn-modal-new-inventory
+        Route::post('atualizar/{id?}',  ['as' => 'inventory.update',       'uses' => 'Inventory\InventoryController@update']);
+        Route::post('bloquear/{id?}',   ['as' => 'inventory.block',        'uses' => 'Inventory\InventoryController@block']);
+        Route::post('remover/{id?}',    ['as' => 'inventory.destroy',      'uses' => 'Inventory\InventoryController@destroy']);
+        Route::post('restaurar/{id?}',  ['as' => 'inventory.restore',      'uses' => 'Inventory\InventoryController@restore']);
+    });
+
     */
 });

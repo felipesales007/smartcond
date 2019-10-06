@@ -359,8 +359,6 @@
 .fe-loader:after {
     width: 12px;
     height: 35px;
-    background: #5e72e4;
-    border-radius: 10px;
     -webkit-animation: fe-loader 1.5s ease-in-out infinite;
     animation: fe-loader 1.5s ease-in-out infinite;
 }
@@ -368,6 +366,8 @@
 .fe-loader {
     top: 50%;
     left: 50%;
+    background: #30abe3;
+    border-radius: 10px;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
@@ -376,19 +376,19 @@
 .fe-loader:after {
     display: block;
     content: "";
-    /* none */
-    /* none */
-    /* none */
+    background: #1d4e6c;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .fe-loader:before {
     right: 20px;
-    /* none */
+    border-top-left-radius: 10px;
 }
 
 .fe-loader:after {
     left: 20px;
-    /* none */
+    border-top-right-radius: 10px;
 }
 
 @-webkit-keyframes fe-loader {
