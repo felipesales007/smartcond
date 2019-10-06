@@ -1,0 +1,28 @@
+<!-- ajax -->
+@include('profile.includes.ajax')
+@include('users.includes.ajax')
+@include('companies.includes.ajax')
+@include('routes.groups.includes.ajax')
+@include('routes.routes.includes.ajax')
+@include('menu.menu.includes.ajax')
+@include('menu.menu-item.includes.ajax')
+@include('permissions.includes.ajax')
+
+<!-- modals -->
+@include('profile.includes.modals')
+@include('users.includes.modals')
+@include('companies.includes.modals')
+@include('routes.groups.includes.modals')
+@include('routes.routes.includes.modals')
+@include('menu.menu.includes.modals')
+@include('menu.menu-item.includes.modals')
+
+<!-- validate -->
+@include('profile.includes.validate')
+@include('users.includes.validate')
+@include('companies.includes.validate')
+@include('routes.groups.includes.validate')
+@include('routes.routes.includes.validate')
+@include('menu.menu.includes.validate')
+@include('menu.menu-item.includes.validate')
+@include('permissions.includes.validate')
