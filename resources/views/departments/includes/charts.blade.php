@@ -13,7 +13,7 @@
             charts: function () {
                 let request = $.ajax({
                     method: 'get',
-                    url: '{{ app('router')->has('company.data') ? route('company.data') : url('/') }}'
+                    url: '{{ app('router')->has('department.data') ? route('department.data') : url('/') }}'
                 });
                 request.done(function (data) {
                     // se houver erro
@@ -32,10 +32,8 @@
                                 verify = response;
 
                                 // cards
-                                $('#getCountCompanies').html(data.counts.getCount);
-                                $('#getCountEmailCompanies').html(data.counts.getCountEmail);
-                                $('#getCountContactCompanies').html(data.counts.getCountContact);
-                                $('#getCountBlockedCompanies').html(data.counts.getCountBlocked);
+                                $('#getCountDepartments').html(data.counts.getCount);
+                                $('#getCountBlockedDepartments').html(data.counts.getCountBlocked);
                             }
 
                             return true;

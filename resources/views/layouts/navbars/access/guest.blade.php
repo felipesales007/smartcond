@@ -34,7 +34,7 @@
                     </a>
                 @else
                     <!-- registrar-me -->
-                    <a href="{{ route('register') }}" class="btn btn-icon btn-outline-primary ml-2">
+                    <a href="{{ route('register') }}" class="btn btn-icon btn-outline-primary ml-2 fe-hidden">
                         <span class="btn-inner--icon">
                             <i class="fas fa-user mr-2"></i>
                         </span>

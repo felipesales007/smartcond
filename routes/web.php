@@ -30,8 +30,8 @@ Route::post('login', ['as' => 'login',  'uses' => 'Auth\LoginController@login'])
 Route::post('sair',  ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 // grupo registro
-Route::get ('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-Route::post('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
+//Route::get ('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+//Route::post('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
 
 // grupo resetar senha
 Route::get ('resetar/senha',          ['as' => 'password.request', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
@@ -215,8 +215,28 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
         Route::post('usuario/atualizar/{id?}', ['as' => 'permission.user.update',   'uses' => 'User\PermissionController@update']);
     });
 
-    // grupo inventário
-    Route::group(['prefix' => 'inventario'], function () {
+    // grupo departamentos
+    Route::group(['prefix' => 'departamentos'], function () {
+        Route::get ('data',                     ['as' => 'department.data',                 'uses' => 'Department\DashboardController@data']);
+        Route::get ('dashboard',                ['as' => 'department.dashboard',            'uses' => 'Department\DashboardController@dashboard']);
+        Route::get ('lista',                    ['as' => 'department.list',                 'uses' => 'Department\DepartmentController@list']);
+        Route::get ('lista/deletados',          ['as' => 'department.list.deleted',         'uses' => 'Department\DepartmentController@listDeleted']);
+        Route::get ('visualizar/{id?}',         ['as' => 'department.view',                 'uses' => 'Department\DepartmentController@edit']); // * btn-modal-view-department
+        Route::get ('editar/{id?}',             ['as' => 'department.edit',                 'uses' => 'Department\DepartmentController@edit']); // * btn-modal-edit-department
+        Route::get ('banir/{id?}',              ['as' => 'department.ban',                  'uses' => 'Department\DepartmentController@edit']); // * btn-modal-block-department
+        Route::get ('deletar/{id?}',            ['as' => 'department.delete',               'uses' => 'Department\DepartmentController@edit']); // * btn-modal-delete-department
+        Route::get ('recuperar/{id?}',          ['as' => 'department.recover',              'uses' => 'Department\DepartmentController@edit']); // * btn-modal-recover-department
+        Route::post('novo',                     ['as' => 'department.store',                'uses' => 'Department\DepartmentController@store']); // btn-modal-new-department
+        Route::post('atualizar/{id?}',          ['as' => 'department.update',               'uses' => 'Department\DepartmentController@update']);
+        Route::post('bloquear/{id?}',           ['as' => 'department.block',                'uses' => 'Department\DepartmentController@block']);
+        Route::post('remover/{id?}',            ['as' => 'department.destroy',              'uses' => 'Department\DepartmentController@destroy']);
+        Route::post('restaurar/{id?}',          ['as' => 'department.restore',              'uses' => 'Department\DepartmentController@restore']);
+        Route::post('verificar/nome',           ['as' => 'department.check.name',           'uses' => 'Department\CheckController@checkName']);
+        Route::post('verificar/nome/diferente', ['as' => 'department.check.name.different', 'uses' => 'Department\CheckController@checkNameDifferent']);
+    });
+
+    // grupo inventários
+    Route::group(['prefix' => 'inventarios'], function () {
         Route::get ('data',             ['as' => 'inventory.data',         'uses' => 'Inventory\DashboardController@data']);
         Route::get ('dashboard',        ['as' => 'inventory.dashboard',    'uses' => 'Inventory\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'inventory.list',         'uses' => 'Inventory\InventoryController@list']);

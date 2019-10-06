@@ -60,5 +60,19 @@ class GroupsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        Group::create([
+            'name'        => 'departamentos',
+            'description' => 'Grupo das configurações dos departamentos da empresa',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        Group::create([
+            'name'        => 'inventario',
+            'description' => 'Grupo das configurações dos itens do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('Lista de inventário deletado'))
+@section('title', __('Lista de departamentos deletados'))
 
 @section('content')
 
@@ -17,16 +17,16 @@
                         <div class="row align-items-center">
                             <!-- título -->
                             <div class="col-5 col-sm-6">
-                                <h3 class="text-uppercase text-monospace mb--1">{{ __('Lista de inventário deletado') }}</h3>
+                                <h3 class="text-uppercase text-monospace mb--1">{{ __('Lista de departamentos deletado') }}</h3>
                             </div>
                             <!-- botão -->
-                            @if (app('router')->has('company.store') && \App\Models\Permission::buttonPermission('btn-modal-new-company') && \App\Models\Menu\MenuItem::getMenuItemDeleted('company.store'))
+                            @if (app('router')->has('department.store') && \App\Models\Permission::buttonPermission('btn-modal-new-department') && \App\Models\Menu\MenuItem::getMenuItemDeleted('department.store'))
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('company.store') ? 'notify-block-route' : 'btn-modal-new-company' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('company.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('department.store') ? 'notify-block-route' : 'btn-modal-new-department' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('department.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>
-                                        <span class="nav-link-inner--text">{{ __('Adicionar empresa') }}</span>
+                                        <span class="nav-link-inner--text">{{ __('Adicionar departamento') }}</span>
                                     </a>
                                 </div>
                             @endif
@@ -34,15 +34,12 @@
                     </div>
                     <!-- corpo -->
                     <div class="table-responsive mb-2">
-                        <table id="datatable-companies-deleted" class="table table-flush">
+                        <table id="datatable-departments-deleted" class="table table-flush">
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="text-center"><i class="ni ni-image"></i></th>
                                     <th data-base="name">{{ __('Nome') }}</th>
-                                    <th data-base="email">{{ __('E-mail') }}</th>
-                                    <th data-base="contact">{{ __('Contato') }}</th>
-                                    <th data-base="cnpj">{{ __('CNPJ') }}</th>
+                                    <th>{{ __('Descrição') }}</th>
                                     <th class="text-center"><i class="fas fa-cog"></i></th>
                                 </tr>
                             </thead>

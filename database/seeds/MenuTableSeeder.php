@@ -98,7 +98,7 @@ class MenuTableSeeder extends Seeder
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '6',
-            'order'          => '5',
+            'order'          => '6',
             'name'           => 'Grupos e Rotas',
             'icon'           => 'fas fa-book',
             'description'    => 'Menu em collapse da página de configurações de rotas',
@@ -110,7 +110,7 @@ class MenuTableSeeder extends Seeder
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '6',
-            'order'          => '6',
+            'order'          => '7',
             'name'           => 'Menu e Itens',
             'icon'           => 'fas fa-list-ul',
             'description'    => 'Menu em collapse da página de configurações de menu',
@@ -126,6 +126,18 @@ class MenuTableSeeder extends Seeder
             'name'           => 'Permissões',
             'icon'           => 'fas fa-unlock',
             'description'    => 'Menu em collapse da página de permissões do usuário',
+            'created_at'     => now(),
+            'updated_at'     => now()
+        ]);
+
+        // grupo departamentos
+        Menu::create([
+            'menu_option_id' => '1',
+            'color_id'       => '6',
+            'order'          => '5',
+            'name'           => 'Departamentos',
+            'icon'           => 'far fa-building',
+            'description'    => 'Menu em collapse da página de departametos da empresa',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);

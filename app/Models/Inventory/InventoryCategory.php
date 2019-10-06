@@ -43,18 +43,18 @@ class InventoryCategory extends Model
      */
     static function getInventoyCategories()
     {
-        return InventoyCategory::get();
+        return InventoryCategory::get();
     }
 
     /**
      * Retornar o dado especificado no armazenamento.
      *
      * @param $id
-     * @return InventoyCategory
+     * @return InventoryCategory
      */
     static function getInventoyCategory($id)
     {
-        return InventoyCategory::find($id);
+        return InventoryCategory::find($id);
     }
 
     /**
@@ -64,7 +64,7 @@ class InventoryCategory extends Model
      */
     static function getInventoyCategoriesOptions()
     {
-        $options = InventoyCategory::get();
+        $options = InventoryCategory::get();
         $array   = [];
 
         foreach ($options as $option) {

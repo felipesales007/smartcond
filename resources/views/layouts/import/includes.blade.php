@@ -7,6 +7,7 @@
 @include('menu.menu.includes.ajax')
 @include('menu.menu-item.includes.ajax')
 @include('permissions.includes.ajax')
+@include('departments.includes.ajax')
 
 <!-- modals -->
 @include('profile.includes.modals')
@@ -16,6 +17,7 @@
 @include('routes.routes.includes.modals')
 @include('menu.menu.includes.modals')
 @include('menu.menu-item.includes.modals')
+@include('departments.includes.modals')
 
 <!-- validate -->
 @include('profile.includes.validate')
@@ -26,3 +28,4 @@
 @include('menu.menu.includes.validate')
 @include('menu.menu-item.includes.validate')
 @include('permissions.includes.validate')
+@include('departments.includes.validate')

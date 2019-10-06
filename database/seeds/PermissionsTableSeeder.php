@@ -13,7 +13,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         // rotas no sistema
-        $routes = 110;
+        $routes = 140;
 
         /*
          * Permissões de

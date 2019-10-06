@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Models\Company;
+namespace App\Models;
 
+use App\Models\Company\Company;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Departament extends Model
+class Department extends Model
 {
     use SoftDeletes;
 
@@ -40,20 +41,40 @@ class Departament extends Model
      *
      * @return array
      */
-    static function getDepartaments()
+    static function getDepartments()
     {
-        return Departament::get();
+        return Department::get();
     }
 
     /**
      * Retornar o dado especificado no armazenamento.
      *
      * @param $id
-     * @return Departament
+     * @return Department
      */
-    static function getDepartament($id)
+    static function getDepartment($id)
     {
-        return Departament::find($id);
+        return Department::find($id);
+    }
+
+    /**
+     * Retornar a contagem de todos os dados no armazenamento.
+     *
+     * @return mixed
+     */
+    static function getCount()
+    {
+        return Department::count();
+    }
+
+    /**
+     * Retornar a contagem de todos os dados bloqueados no armazenamento.
+     *
+     * @return mixed
+     */
+    static function getCountBlocked()
+    {
+        return Department::where('blocked', '!=', null)->count();
     }
 
     /**
@@ -61,9 +82,9 @@ class Departament extends Model
      *
      * @return array
      */
-    static function getDepartamentsOptions()
+    static function getDepartmentsOptions()
     {
-        $options = Departament::get();
+        $options = Department::get();
         $array   = [];
 
         foreach ($options as $option) {

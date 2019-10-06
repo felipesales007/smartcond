@@ -735,5 +735,107 @@ class MenuItemsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        // grupo departamentos
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '112',
+            'order'       => '1',
+            'name'        => 'Dashboard',
+            'description' => 'Item do menu collapse de acesso a página de dashboard de departamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '120',
+            'order'       => '2',
+            'name'        => 'Novo departamento',
+            'button'      => 'btn-modal-new-department',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de departamento',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '113',
+            'order'       => '3',
+            'name'        => 'Lista de departamentos',
+            'description' => 'Item do menu collapse de acesso a página de listagem de departamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '114',
+            'order'       => '4',
+            'name'        => 'Lista de departamentos deletados',
+            'description' => 'Item do menu collapse de acesso a página de listagem de departamnentos deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '115',
+            'order'       => '1',
+            'name'        => 'Visualizar departamento',
+            'button'      => 'btn-modal-view-department',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de visualização de departamento',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '116',
+            'order'       => '2',
+            'name'        => 'Editar departamento',
+            'button'      => 'btn-modal-edit-department',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de edição de departamento',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '117',
+            'order'       => '3',
+            'name'        => 'Bloquear departamento',
+            'button'      => 'btn-modal-block-department',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de bloqueio de departamento',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '118',
+            'order'       => '4',
+            'name'        => 'Deletar departamento',
+            'button'      => 'btn-modal-delete-department',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de exclusão de departamento',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '11',
+            'route_id'    => '119',
+            'order'       => '1',
+            'name'        => 'Recuperar departamento',
+            'button'      => 'btn-modal-recover-department',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de departamentos deletados de acesso ao modal de recuperação de departamento',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }

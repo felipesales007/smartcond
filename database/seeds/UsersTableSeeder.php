@@ -41,20 +41,20 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name'              => 'Usuário Master One',
-            'email'             => 'masterone@hotmail.com',
+            'name'              => 'Marco Ribeiro',
+            'email'             => 'marco.ribeiro@outlook.com',
             'email_verified_at' => now(),
-            'password'          => Hash::make('masterone12061991'),
+            'password'          => Hash::make('12345678'),
             'last_update_at'    => now(),
             'created_at'        => now(),
             'updated_at'        => now()
         ]);
 
         User::create([
-            'name'              => 'Usuário Master Two',
+            'name'              => 'Sergio',
             'email'             => 'mastertwo@hotmail.com',
             'email_verified_at' => now(),
-            'password'          => Hash::make('mastertwo12061991'),
+            'password'          => Hash::make('12345678'),
             'last_update_at'    => now(),
             'created_at'        => now(),
             'updated_at'        => now()

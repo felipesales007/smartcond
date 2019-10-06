@@ -29,18 +29,18 @@ class InventoryState extends Model
      */
     static function getInventoyStates()
     {
-        return InventoyState::get();
+        return InventoryState::get();
     }
 
     /**
      * Retornar o dado especificado no armazenamento.
      *
      * @param $id
-     * @return InventoyState
+     * @return InventoryState
      */
     static function getInventoyState($id)
     {
-        return InventoyState::find($id);
+        return InventoryState::find($id);
     }
 
     /**
@@ -50,7 +50,7 @@ class InventoryState extends Model
      */
     static function getInventoyStatesOptions()
     {
-        $options = InventoyState::get();
+        $options = InventoryState::get();
         $array   = [];
 
         foreach ($options as $option) {

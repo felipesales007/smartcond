@@ -19,7 +19,7 @@ class Inventory extends Model
      *
      * @var string
      */
-    protected $table = 'inventory';
+    protected $table = 'inventories';
 
     /**
      * Os atributos que são atribuíveis em massa.
@@ -84,7 +84,7 @@ class Inventory extends Model
      *
      * @return BelongsTo
      */
-    public function getCompanies()
+    public function getCompany()
     {
         return $this->belongsTo(Company::class, 'company_id');
     }

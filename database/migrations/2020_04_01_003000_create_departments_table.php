@@ -19,6 +19,7 @@ class CreateDepartmentsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->string('name');
             $table->longText('description')->nullable();
+            $table->datetime('blocked')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
