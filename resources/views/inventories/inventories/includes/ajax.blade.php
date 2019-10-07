@@ -1,13 +1,13 @@
 <script>
     $(function () {
         // tabela
-        let databaseDepartment = '#datatable-departments';
-        let tableDepartments   = $(databaseDepartment).DataTable({
+        let databaseInventory = '#datatable-inventories';
+        let tableInventories   = $(databaseInventory).DataTable({
             language:    dataTables_pt_br,
             dom:         dataTables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
-                { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableDepartments.draw(); animateItem(e.target, 'fa-pulse'); }}
+                { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableInventories.draw(); animateItem(e.target, 'fa-pulse'); }}
             ],
             lengthMenu:  [[5, 10, 15, 20, 25, 30, 40, 50, 100, -1], ['5', '10', '15', '20', '25', '30', '40', '50', '100', 'todos']],
             pageLength:  10,
@@ -17,40 +17,40 @@
             serverSide:  true,
             deferRender: true,
             ajax: {
-                url: '{{ app('router')->has('department.list') ? route('department.list') : url('/') }}',
+                url: '{{ app('router')->has('inventory.list') ? route('inventory.list') : url('/') }}',
                 data: {
                     search: function () {
-                        return $(databaseDepartment + '_filter input').val();
+                        return $(databaseInventory + '_filter input').val();
                     },
                     orderBy: function () {
-                        $(document).off('click', databaseDepartment + ' th').on('click', databaseDepartment + ' th', function () {
+                        $(document).off('click', databaseInventory + ' th').on('click', databaseInventory + ' th', function () {
                             if ($(this).hasClass('sorting') || $(this).hasClass('sorting_desc')) {
-                                sessionStorage.setItem('table.order.' + databaseDepartment, $(this).data('base') + ' asc');
+                                sessionStorage.setItem('table.order.' + databaseInventory, $(this).data('base') + ' asc');
                             } else if ($(this).hasClass('sorting_asc')) {
-                                sessionStorage.setItem('table.order.' + databaseDepartment, $(this).data('base') + ' desc');
+                                sessionStorage.setItem('table.order.' + databaseInventory, $(this).data('base') + ' desc');
                             }
                         });
 
-                        return sessionStorage.getItem('table.order.' + databaseDepartment);
+                        return sessionStorage.getItem('table.order.' + databaseInventory);
                     }
                 }
             },
             columns: [
-                { data: 'name',        name: 'name' },
-                { data: 'description', name: 'description', orderable: false, searchable: false },
-                { data: 'action',      name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
+                { data: 'patrimonial_number', name: 'patrimonial_number' },
+                { data: 'name',               name: 'name' },
+                { data: 'action',             name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
             ]
         }).on('error.dt', function() {
-            tableDepartments.draw();
+            tableInventories.draw();
         });
 
         // tabela
-        let tableDepartmentsDeleted = $(databaseDepartment + '-deleted').DataTable({
+        let tableInventoriesDeleted = $(databaseInventory + '-deleted').DataTable({
             language:    dataTables_pt_br,
             dom:         dataTables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
-                { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableDepartmentsDeleted.draw(); animateItem(e.target, 'fa-pulse'); }}
+                { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableInventoriesDeleted.draw(); animateItem(e.target, 'fa-pulse'); }}
             ],
             lengthMenu:  [[5, 10, 15, 20, 25, 30, 40, 50, 100, -1], ['5', '10', '15', '20', '25', '30', '40', '50', '100', 'todos']],
             pageLength:  10,
@@ -60,21 +60,21 @@
             serverSide:  true,
             deferRender: true,
             ajax: {
-                url: '{{ app('router')->has('department.list.deleted') ? route('department.list.deleted') : url('/') }}',
+                url: '{{ app('router')->has('inventory.list.deleted') ? route('inventory.list.deleted') : url('/') }}',
                 data: {
                     search: function () {
-                        return $(databaseDepartment + '-deleted_filter input').val();
+                        return $(databaseInventory + '-deleted_filter input').val();
                     },
                     orderBy: function () {
-                        $(document).off('click', databaseDepartment + '-deleted th').on('click', databaseDepartment + '-deleted th', function () {
+                        $(document).off('click', databaseInventory + '-deleted th').on('click', databaseInventory + '-deleted th', function () {
                             if ($(this).hasClass('sorting') || $(this).hasClass('sorting_desc')) {
-                                sessionStorage.setItem('table.order.' + databaseDepartment, $(this).data('base') + ' asc');
+                                sessionStorage.setItem('table.order.' + databaseInventory, $(this).data('base') + ' asc');
                             } else if ($(this).hasClass('sorting_asc')) {
-                                sessionStorage.setItem('table.order.' + databaseDepartment, $(this).data('base') + ' desc');
+                                sessionStorage.setItem('table.order.' + databaseInventory, $(this).data('base') + ' desc');
                             }
                         });
 
-                        return sessionStorage.getItem('table.order.' + databaseDepartment);
+                        return sessionStorage.getItem('table.order.' + databaseInventory);
                     }
                 }
             },
@@ -84,125 +84,135 @@
                 { data: 'action',      name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
             ]
         }).on('error.dt', function() {
-            tableDepartmentsDeleted.draw();
+            tableInventoriesDeleted.draw();
         });
 
-        // modal de novo departamento disponível
-        let newDepartmentAvailable = function () {
+        // modal de novo inventário disponível
+        let newInventoryAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-new-department').removeAttr('disabled', 'disabled').html('Criar departamento');
-            $('#form-new-department').trigger('reset');
+            $('#btn-new-inventory').removeAttr('disabled', 'disabled').html('Criar item');
+            $('#department-id-new-inventory').val('').trigger('change');
+            $('#inventory-category-id-new-inventory').val('').trigger('change');
+            $('#inventory-state-id-new-inventory').val('1').trigger('change');
+            $('#voltage-id-new-inventory').val('1').trigger('change');
+            $('#form-new-inventory').trigger('reset');
         };
 
-        // modal de editar departamento disponível
-        let editDepartmentAvailable = function () {
+        // modal de editar inventário disponível
+        let editInventoryAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-edit-department').removeAttr('disabled', 'disabled').html('Editar departamento');
-            $('#form-edit-department').trigger('reset');
+            $('#btn-edit-inventory').removeAttr('disabled', 'disabled').html('Editar inventário');
+            $('#form-edit-inventory').trigger('reset');
         };
 
-        // modal de bloquear empresa disponível
-        let blockDepartmentAvailable = function () {
+        // modal de bloquear inventário disponível
+        let blockInventoryAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-block-department').removeAttr('disabled', 'disabled').html('Bloquear empresa');
-            $('#form-block-department').trigger('reset');
+            $('#btn-block-inventory').removeAttr('disabled', 'disabled').html('Bloquear inventário');
+            $('#form-block-inventory').trigger('reset');
         };
 
-        // modal de deletar empresa disponível
-        let deleteDepartmentAvailable = function () {
+        // modal de deletar inventário disponível
+        let deleteInventoryAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-delete-department').removeAttr('disabled', 'disabled').html('Excluir empresa');
-            $('#form-delete-department').trigger('reset');
+            $('#btn-delete-inventory').removeAttr('disabled', 'disabled').html('Excluir inventário');
+            $('#form-delete-inventory').trigger('reset');
         };
 
-        // modal de recuperar empresa disponível
-        let recoverDepartmentAvailable = function () {
+        // modal de recuperar inventário disponível
+        let recoverInventoryAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-recover-department').removeAttr('disabled', 'disabled').html('Recuperar empresa');
-            $('#form-recover-department').trigger('reset');
+            $('#btn-recover-inventory').removeAttr('disabled', 'disabled').html('Recuperar inventário');
+            $('#form-recover-inventory').trigger('reset');
         };
 
-        // visualizar empresa
-        $(document).on('click', '.btn-modal-view-department', function () {
+        // visualizar inventário
+        $(document).on('click', '.btn-modal-view-inventory', function () {
             let id = $(this).data('id');
 
-            $.get('{{ app('router')->has('department.view') ? route('department.view') : url('/') }}' + '/' + id, function (data) {
+            $.get('{{ app('router')->has('inventory.view') ? route('inventory.view') : url('/') }}' + '/' + id, function (data) {
                 // se houver erro
                 if (data.align && data.from) {
                     notify(data);
                 } else {
                     // status
                     if (data.blocked || data.deleted_at) {
-                        $('#status-view-department').removeClass('d-none');
-                        $('#name-view-department').removeClass('mt--3').addClass('mt-3');
+                        $('#status-view-inventory').removeClass('d-none');
+                        $('#name-view-inventory').removeClass('mt--3').addClass('mt-3');
 
                         if (data.blocked) {
-                            $('#status-view-department').addClass('text-warning').html('<i class="fas fa-ban"></i> bloqueado');
+                            $('#status-view-inventory').addClass('text-warning').html('<i class="fas fa-ban"></i> bloqueado');
                         } else {
-                            $('#status-view-department').addClass('text-danger').html('<i class="fas fa-ban"></i> deletado');
+                            $('#status-view-inventory').addClass('text-danger').html('<i class="fas fa-ban"></i> deletado');
                         }
                     } else {
-                        $('#status-view-department').addClass('d-none').html('');
-                        $('#name-view-department').addClass('mt--3').removeClass('mt-3');
+                        $('#status-view-inventory').addClass('d-none').html('');
+                        $('#name-view-inventory').addClass('mt--3').removeClass('mt-3');
                     }
                     // nome
-                    $('#name-view-department').html(data.name);
+                    $('#name-view-inventory').html(data.name);
                     // descrição
                     if (data.description) {
-                        $('#description-view-department').html('<div class="small mt-4">' + data.description + '</div>');
+                        $('#description-view-inventory').html('<div class="small mt-4">' + data.description + '</div>');
                     } else {
-                        $('#description-view-department').html('');
+                        $('#description-view-inventory').html('');
                     }
                     // criado
-                    $('#created-at-view-department').html('criado em ' + timestamp_to_date_br(data.created_at) + ' - ' + moment(data.created_at, 'YYYY-MM-DD hh:mm').locale('pt-br').fromNow());
+                    $('#created-at-view-inventory').html('criado em ' + timestamp_to_date_br(data.created_at) + ' - ' + moment(data.created_at, 'YYYY-MM-DD hh:mm').locale('pt-br').fromNow());
                     // atualizado
-                    $('#updated-at-view-department').html('atualizado em ' + timestamp_to_date_br(data.updated_at));
+                    $('#updated-at-view-inventory').html('atualizado em ' + timestamp_to_date_br(data.updated_at));
 
-                    $('#modal-view-department').modal('show');
+                    $('#modal-view-inventory').modal('show');
                 }
             });
         });
 
-        // novo departamento
-        $(document).on('click', '.btn-modal-new-department', function (e) {
+        // novo inventário
+        $(document).on('click', '.btn-modal-new-inventory', function (e) {
             e.preventDefault();
-            newDepartmentAvailable();
-            $('#modal-new-department').modal('show');
+            newInventoryAvailable();
+            $('#modal-new-inventory').modal('show');
         });
 
-        // salvando departamento
-        $(document).on('click', '#btn-new-department', function (e) {
+        // salvando inventário
+        $(document).on('click', '#btn-new-inventory', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
             $(this).attr('disabled', 'disabled').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Aguarde');
 
-            if ($('#form-new-department').valid()) {
+            if ($('#form-new-inventory').valid()) {
                 scrollTop();
                 loader(1);
+
+                // conversão de valores
+                let real = $('#value-new-inventory').val();
+                $('#value-new-inventory').val(to_usd(real));
+
                 $.ajax({
-                    data: $('#form-new-department').serialize(),
-                    url: '{{ app('router')->has('department.store') ? route('department.store') : url('/') }}',
+                    data: $('#form-new-inventory').serialize(),
+                    url: '{{ app('router')->has('inventory.store') ? route('inventory.store') : url('/') }}',
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-                        newDepartmentAvailable();
-                        $('#modal-new-department').modal('hide');
-                        tableDepartments.draw();
+                        newInventoryAvailable();
+                        $('#modal-new-inventory').modal('hide');
+                        tableInventories.draw();
                         loader(0);
                         notify(data);
                     },
                     error: function (data) {
+                        $('#value-new-inventory').val(real);
                         $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-                        $('#btn-new-department').removeAttr('disabled', 'disabled').html('Tentar novamente');
-                        $('#form-new-department').valid();
+                        $('#btn-new-inventory').removeAttr('disabled', 'disabled').html('Tentar novamente');
+                        $('#form-new-inventory').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao criar um novo departamento.');
+                        notifyError('Erro ao criar um novo item do inventário.');
                     }
                 });
             } else {
@@ -212,54 +222,65 @@
             }
         });
 
-        // editar departamento
-        $(document).on('click', '.btn-modal-edit-department', function () {
+
+
+
+
+
+
+
+
+
+
+
+        // editar inventário
+        $(document).on('click', '.btn-modal-edit-inventory', function () {
             let id = $(this).data('id');
 
-            $.get('{{ app('router')->has('department.edit') ? route('department.edit') : url('/') }}' + '/' + id, function (data) {
+            $.get('{{ app('router')->has('inventory.edit') ? route('inventory.edit') : url('/') }}' + '/' + id, function (data) {
                 // se houver erro
                 if (data.align && data.from) {
                     notify(data);
                 } else {
-                    editDepartmentAvailable();
+                    editInventoryAvailable();
                     // dados
-                    $('#id-edit-department').val(data.id);
-                    $('#name-edit-department').val(data.name);
-                    $('#description-edit-department').val(data.description);
+                    $('#id-edit-inventory').val(data.id);
+                    $('#name-edit-inventory').val(data.name);
+                    $('#description-edit-inventory').val(data.description);
                 }
 
-                $('#modal-edit-department').modal('show');
+                $('#modal-edit-inventory').modal('show');
             });
         });
 
-        // editando departamento
-        $(document).on('click', '#btn-edit-department', function (e) {
+        // editando inventário
+        $(document).on('click', '#btn-edit-inventory', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
             $(this).attr('disabled', 'disabled').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Aguarde');
 
-            if ($('#form-edit-department').valid()) {
+            if ($('#form-edit-inventory').valid()) {
                 scrollTop();
                 loader(1);
                 $.ajax({
-                    data: $('#form-edit-department').serialize(),
-                    url: '{{ app('router')->has('department.update') ? route('department.update') : url('/') }}',
+                    data: $('#form-edit-inventory').serialize(),
+                    url: '{{ app('router')->has('inventory.update') ? route('inventory.update') : url('/') }}',
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-                        editDepartmentAvailable();
-                        $('#modal-edit-department').modal('hide');
-                        tableDepartments.draw();
+                        editInventoryAvailable();
+                        $('#modal-edit-inventory').modal('hide');
+                        tableInventories.draw();
                         loader(0);
                         notify(data);
                     },
                     error: function (data) {
                         $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-                        $('#btn-edit-department').removeAttr('disabled', 'disabled').html('Tentar novamente');
-                        $('#form-edit-department').valid();
+                        $('#btn-edit-inventory').removeAttr('disabled', 'disabled').html('Tentar novamente');
+                        $('#form-edit-inventory').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao editar o departamento.');
+                        notifyError('Erro ao editar o inventário.');
                     }
                 });
             } else {
@@ -269,114 +290,58 @@
             }
         });
 
-        // bloquear departamento
-        $(document).on('click', '.btn-modal-block-department', function () {
+        // bloquear inventário
+        $(document).on('click', '.btn-modal-block-inventory', function () {
             let id = $(this).data('id');
 
-            $.get('{{ app('router')->has('department.ban') ? route('department.ban') : url('/') }}' + '/' + id, function (data) {
+            $.get('{{ app('router')->has('inventory.ban') ? route('inventory.ban') : url('/') }}' + '/' + id, function (data) {
                 // se houver erro
                 if (data.align && data.from) {
                     notify(data);
                 } else {
-                    blockDepartmentAvailable();
-                    $('#id-block-department').val(data.id);
+                    blockInventoryAvailable();
+                    $('#id-block-inventory').val(data.id);
                     if (data.blocked) {
-                        $('#blocked-block-department').prop('checked', true).attr('checked', 'checked');
-                        $('#btn-block-department').html('Bloquear departamento');
+                        $('#blocked-block-inventory').prop('checked', true).attr('checked', 'checked');
+                        $('#btn-block-inventory').html('Bloquear inventário');
                     } else {
-                        $('#blocked-block-department').prop('checked', false).removeAttr('checked', 'checked');
-                        $('#btn-block-department').html('Desbloquear departamento');
+                        $('#blocked-block-inventory').prop('checked', false).removeAttr('checked', 'checked');
+                        $('#btn-block-inventory').html('Desbloquear inventário');
                     }
 
-                    $('#modal-block-department').modal('show');
+                    $('#modal-block-inventory').modal('show');
                 }
             });
         });
 
-        // bloqueando departamento
-        $(document).on('click', '#btn-block-department', function (e) {
+        // bloqueando inventário
+        $(document).on('click', '#btn-block-inventory', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
             $(this).attr('disabled', 'disabled').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Aguarde');
 
-            if ($('#form-block-department').valid()) {
+            if ($('#form-block-inventory').valid()) {
                 scrollTop();
                 loader(1);
                 $.ajax({
-                    data: $('#form-block-department').serialize(),
-                    url: '{{ app('router')->has('department.block') ? route('department.block') : url('/') }}',
+                    data: $('#form-block-inventory').serialize(),
+                    url: '{{ app('router')->has('inventory.block') ? route('inventory.block') : url('/') }}',
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-                        blockDepartmentAvailable();
-                        $('#modal-block-department').modal('hide');
-                        tableDepartments.draw();
+                        blockInventoryAvailable();
+                        $('#modal-block-inventory').modal('hide');
+                        tableInventories.draw();
                         loader(0);
                         notify(data);
                     },
                     error: function (data) {
                         $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-                        $('#btn-block-department').removeAttr('disabled', 'disabled').html('Tentar novamente');
-                        $('#form-block-department').valid();
+                        $('#btn-block-inventory').removeAttr('disabled', 'disabled').html('Tentar novamente');
+                        $('#form-block-inventory').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao bloquear o departamento.');
-                    }
-                });
-            } else {
-                $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-                $(this).removeAttr('disabled', 'disabled').html('Tentar novamente');
-                return false;
-            }
-        });
-
-        // deletar departamento
-        $(document).on('click', '.btn-modal-delete-department', function () {
-            let id = $(this).data('id');
-
-            $.get('{{ app('router')->has('department.delete') ? route('department.delete') : url('/') }}' + '/' + id, function (data) {
-                // se houver erro
-                if (data.align && data.from) {
-                    notify(data);
-                } else {
-                    deleteDepartmentAvailable();
-                    $('#id-delete-department').val(data.id);
-                    $('#name-confirmation-delete-department-text').html(data.name);
-                    $('#name-delete-department').val(data.name);
-
-                    $('#modal-delete-department').modal('show');
-                }
-            });
-        });
-
-        // deletando departamento
-        $(document).on('click', '#btn-delete-department', function (e) {
-            e.preventDefault();
-            $('a[data-dismiss="modal"]').addClass('fe-hidden');
-            $(this).attr('disabled', 'disabled').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Aguarde');
-
-            if ($('#form-delete-department').valid()) {
-                scrollTop();
-                loader(1);
-                $.ajax({
-                    data: $('#form-delete-department').serialize(),
-                    url: '{{ app('router')->has('department.destroy') ? route('department.destroy') : url('/') }}',
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (data) {
-                        deleteDepartmentAvailable();
-                        $('#modal-delete-department').modal('hide');
-                        tableDepartments.draw();
-                        loader(0);
-                        notify(data);
-                    },
-                    error: function (data) {
-                        $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-                        $('#btn-delete-department').removeAttr('disabled', 'disabled').html('Tentar novamente');
-                        $('#form-delete-department').valid();
-                        loader(0);
-                        serverValidate(data);
-                        notifyError('Erro ao deletar o departamento.');
+                        notifyError('Erro ao bloquear o inventário.');
                     }
                 });
             } else {
@@ -386,53 +351,109 @@
             }
         });
 
-        // recuperar departamento
-        $(document).on('click', '.btn-modal-recover-department', function () {
+        // deletar inventário
+        $(document).on('click', '.btn-modal-delete-inventory', function () {
             let id = $(this).data('id');
 
-            $.get('{{ app('router')->has('department.recover') ? route('department.recover') : url('/') }}' + '/' + id, function (data) {
+            $.get('{{ app('router')->has('inventory.delete') ? route('inventory.delete') : url('/') }}' + '/' + id, function (data) {
                 // se houver erro
                 if (data.align && data.from) {
                     notify(data);
                 } else {
-                    recoverDepartmentAvailable();
-                    $('#id-recover-department').val(data.id);
-                    $('#name-confirmation-recover-department-text').html(data.name);
-                    $('#name-recover-department').val(data.name);
+                    deleteInventoryAvailable();
+                    $('#id-delete-inventory').val(data.id);
+                    $('#name-confirmation-delete-inventory-text').html(data.name);
+                    $('#name-delete-inventory').val(data.name);
 
-                    $('#modal-recover-department').modal('show');
+                    $('#modal-delete-inventory').modal('show');
                 }
             });
         });
 
-        // recuperando departamento
-        $(document).on('click', '#btn-recover-department', function (e) {
+        // deletando inventário
+        $(document).on('click', '#btn-delete-inventory', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
             $(this).attr('disabled', 'disabled').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Aguarde');
 
-            if ($('#form-recover-department').valid()) {
+            if ($('#form-delete-inventory').valid()) {
                 scrollTop();
                 loader(1);
                 $.ajax({
-                    data: $('#form-recover-department').serialize(),
-                    url: '{{ app('router')->has('department.restore') ? route('department.restore') : url('/') }}',
+                    data: $('#form-delete-inventory').serialize(),
+                    url: '{{ app('router')->has('inventory.destroy') ? route('inventory.destroy') : url('/') }}',
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-                        recoverDepartmentAvailable();
-                        $('#modal-recover-department').modal('hide');
-                        tableDepartmentsDeleted.draw();
+                        deleteInventoryAvailable();
+                        $('#modal-delete-inventory').modal('hide');
+                        tableInventories.draw();
                         loader(0);
                         notify(data);
                     },
                     error: function (data) {
                         $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-                        $('#btn-recover-department').removeAttr('disabled', 'disabled').html('Tentar novamente');
-                        $('#form-recover-department').valid();
+                        $('#btn-delete-inventory').removeAttr('disabled', 'disabled').html('Tentar novamente');
+                        $('#form-delete-inventory').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao recuperar o departamento.');
+                        notifyError('Erro ao deletar o inventário.');
+                    }
+                });
+            } else {
+                $('a[data-dismiss="modal"]').removeClass('fe-hidden');
+                $(this).removeAttr('disabled', 'disabled').html('Tentar novamente');
+                return false;
+            }
+        });
+
+        // recuperar inventário
+        $(document).on('click', '.btn-modal-recover-inventory', function () {
+            let id = $(this).data('id');
+
+            $.get('{{ app('router')->has('inventory.recover') ? route('inventory.recover') : url('/') }}' + '/' + id, function (data) {
+                // se houver erro
+                if (data.align && data.from) {
+                    notify(data);
+                } else {
+                    recoverInventoryAvailable();
+                    $('#id-recover-inventory').val(data.id);
+                    $('#name-confirmation-recover-inventory-text').html(data.name);
+                    $('#name-recover-inventory').val(data.name);
+
+                    $('#modal-recover-inventory').modal('show');
+                }
+            });
+        });
+
+        // recuperando inventário
+        $(document).on('click', '#btn-recover-inventory', function (e) {
+            e.preventDefault();
+            $('a[data-dismiss="modal"]').addClass('fe-hidden');
+            $(this).attr('disabled', 'disabled').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Aguarde');
+
+            if ($('#form-recover-inventory').valid()) {
+                scrollTop();
+                loader(1);
+                $.ajax({
+                    data: $('#form-recover-inventory').serialize(),
+                    url: '{{ app('router')->has('inventory.restore') ? route('inventory.restore') : url('/') }}',
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        recoverInventoryAvailable();
+                        $('#modal-recover-inventory').modal('hide');
+                        tableInventoriesDeleted.draw();
+                        loader(0);
+                        notify(data);
+                    },
+                    error: function (data) {
+                        $('a[data-dismiss="modal"]').removeClass('fe-hidden');
+                        $('#btn-recover-inventory').removeAttr('disabled', 'disabled').html('Tentar novamente');
+                        $('#form-recover-inventory').valid();
+                        loader(0);
+                        serverValidate(data);
+                        notifyError('Erro ao recuperar o inventário.');
                     }
                 });
             } else {

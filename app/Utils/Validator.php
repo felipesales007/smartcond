@@ -317,4 +317,14 @@ class Validator
 
         return ($nis[10] == (((10 * $d) % 11) % 10));
     }
+
+    /**
+     * @param $attribute
+     * @param $value
+     * @return false|int
+     */
+    public function decimal($attribute, $value)
+    {
+        return preg_match("/^-?[0-9]+(?:\.[0-9]{1,2})?$/", $value);
+    }
 }

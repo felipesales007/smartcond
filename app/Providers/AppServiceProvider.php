@@ -45,5 +45,6 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('cnh', '\App\Utils\Validator@cnh');
         Validator::extend('voter_title', '\App\Utils\Validator@voterTitle');
         Validator::extend('nis', '\App\Utils\Validator@nis');
+        Validator::extend('decimal', '\App\Utils\Validator@decimal');
     }
 }

@@ -4,7 +4,6 @@ namespace App\Models\Inventory;
 
 use App\Models\Company\Company;
 use App\Models\Department;
-use App\Models\State;
 use App\Models\Voltage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -124,9 +123,19 @@ class Inventory extends Model
      *
      * @return BelongsTo
      */
+    public function getCategory()
+    {
+        return $this->belongsTo(InventoryCategory::class, 'category_id');
+    }
+
+    /**
+     * Atributo de referência do join.
+     *
+     * @return BelongsTo
+     */
     public function getState()
     {
-        return $this->belongsTo(State::class, 'state_id');
+        return $this->belongsTo(InventoryState::class, 'inventory_state_id');
     }
 
     /**

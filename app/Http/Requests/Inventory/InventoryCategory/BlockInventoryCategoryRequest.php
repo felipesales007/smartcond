@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Inventory\InventoryCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NewCategoryRequest extends FormRequest
+class BlockInventoryCategoryRequest extends FormRequest
 {
     /**
      * Determine se o usuário está autorizado a fazer essa solicitação.
@@ -24,8 +24,8 @@ class NewCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_new_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', 'unique:inventory_categories,name'],
-            'description_new_category' => ['nullable', 'min:10', 'max:1500'],
+            'id_block_category'      => ['required', 'max:20', 'alpha_num'],
+            'blocked_block_category' => ['nullable'],
         ];
     }
 }

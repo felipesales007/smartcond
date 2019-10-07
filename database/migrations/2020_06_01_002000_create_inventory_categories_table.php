@@ -17,7 +17,7 @@ class CreateInventoryCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->longText('description')->nullable();
             $table->datetime('blocked')->nullable();
             $table->softDeletes();

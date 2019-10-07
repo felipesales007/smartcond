@@ -191,6 +191,17 @@ $(function () {
     });
 });
 
+// datepicker de hoje para frente
+$(function () {
+    $('.datepicker-onwards').datepicker({
+        language: 'pt-BR',
+        autoclose: true,
+        immediateUpdates: true,
+        enableOnReadonly: false,
+        startDate: '0d'
+    });
+});
+
 // datepicker com botão limpar de hoje para frente
 $(function () {
     $('.datepicker-clean-onwards').datepicker({
@@ -916,11 +927,31 @@ $(function () {
     $('.week-date-time-now').html(weeks[week] + ', ' + day + ' de ' + months[month] + ' de ' + year + ' - ' + hour + ':' + minute);
 });
 
+// verifica se é número
+function isNumber(e) {
+    return !isNaN(parseFloat(e)) && isFinite(e);
+}
+
 // retorna valor em pt-BR
 function to_real(value) {
-    let number   = parseFloat(value);
-    let standard = { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' };
-    return number.toLocaleString('pt-BR', standard);
+    if (value === '' || value === null || value === typeof 'undefined') {
+        return 0.00;
+    } else {
+        return value.toLocaleString('pt-br', { minimumFractionDigits: 2 });
+    }
+}
+
+// retorna valor em USD
+function to_usd(value) {
+    if (value === '' || value === null || value === typeof 'undefined') {
+        return 0.00;
+    } else {
+        let number = value.replace('R$ ', '');
+        number     = number.replace(".", '');
+        number     = number.replace(',', '.');
+
+        return parseFloat(number);
+    }
 }
 
 // retorna a url
@@ -1146,3 +1177,6 @@ function eventExpanded(e, first, second) {
         $(e).html(second);
     }
 }
+
+// máscara para valores em real
+$(".to-real").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});

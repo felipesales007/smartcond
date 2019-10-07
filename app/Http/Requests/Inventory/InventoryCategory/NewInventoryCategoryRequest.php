@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Inventory\InventoryCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RecoverCategoryRequest extends FormRequest
+class NewInventoryCategoryRequest extends FormRequest
 {
     /**
      * Determine se o usuário está autorizado a fazer essa solicitação.
@@ -24,9 +24,8 @@ class RecoverCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_recover_category'                => ['required', 'max:20', 'alpha_num'],
-            'name_recover_category'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
-            'name_confirmation_recover_category' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_recover_category'],
+            'name_new_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', 'unique:inventory_categories,name'],
+            'description_new_category' => ['nullable', 'min:10', 'max:1500'],
         ];
     }
 }

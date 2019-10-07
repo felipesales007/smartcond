@@ -1,6 +1,6 @@
 @include('departments.modals.view')
 
-@include('departments.modals.new')
+@include('inventories.inventories.modals.new')
 
 @include('departments.modals.edit')
 

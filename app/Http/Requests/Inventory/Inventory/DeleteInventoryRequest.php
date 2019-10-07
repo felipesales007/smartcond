@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Inventory\Inventory;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BlockCategoryRequest extends FormRequest
+class DeleteInventoryRequest extends FormRequest
 {
     /**
      * Determine se o usuário está autorizado a fazer essa solicitação.
@@ -24,8 +24,9 @@ class BlockCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_block_category'      => ['required', 'max:20', 'alpha_num'],
-            'blocked_block_category' => ['nullable'],
+            'id_delete_department'                => ['required', 'max:20', 'alpha_num'],
+            'name_delete_department'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
+            'name_confirmation_delete_department' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_delete_department'],
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Inventory\InventoryCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteCategoryRequest extends FormRequest
+class DeleteInventoryCategoryRequest extends FormRequest
 {
     /**
      * Determine se o usuário está autorizado a fazer essa solicitação.

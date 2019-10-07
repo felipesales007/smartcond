@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Inventory;
 
 use App\Helpers\NotifyHelpers;
-use App\Http\Requests\Category\BlockCategoryRequest;
-use App\Http\Requests\Category\DeleteCategoryRequest;
-use App\Http\Requests\Category\EditCategoryRequest;
-use App\Http\Requests\Category\NewCategoryRequest;
-use App\Http\Requests\Category\RecoverCategoryRequest;
+use App\Http\Requests\Inventory\InventoryCategory\BlockInventoryCategoryRequest;
+use App\Http\Requests\Inventory\InventoryCategory\DeleteInventoryCategoryRequest;
+use App\Http\Requests\Inventory\InventoryCategory\EditInventoryCategoryRequest;
+use App\Http\Requests\Inventory\InventoryCategory\NewInventoryCategoryRequest;
+use App\Http\Requests\Inventory\InventoryCategory\RecoverInventoryCategoryRequest;
 use App\Models\Company\Company;
 use App\Models\Inventory\InventoryCategory;
 use App\Models\Menu\MenuItem;
@@ -111,10 +111,10 @@ class InventoryCategoryController extends Controller
     /**
      * Armazenar dados recém-criado no armazenamento.
      *
-     * @param NewCategoryRequest $request
+     * @param NewInventoryCategoryRequest $request
      * @return JsonResponse
      */
-    public function store(NewCategoryRequest $request)
+    public function store(NewInventoryCategoryRequest $request)
     {
         // dados
         InventoryCategory::create([
@@ -144,10 +144,10 @@ class InventoryCategoryController extends Controller
     /**
      * Atualizar dados especificado no armazenamento.
      *
-     * @param EditCategoryRequest $request
+     * @param EditInventoryCategoryRequest $request
      * @return JsonResponse
      */
-    public function update(EditCategoryRequest $request)
+    public function update(EditInventoryCategoryRequest $request)
     {
         $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_edit_category);
 
@@ -165,10 +165,10 @@ class InventoryCategoryController extends Controller
     /**
      * Bloquear o recurso especificado no armazenamento.
      *
-     * @param BlockCategoryRequest $request
+     * @param BlockInventoryCategoryRequest $request
      * @return JsonResponse
      */
-    public function block(BlockCategoryRequest $request)
+    public function block(BlockInventoryCategoryRequest $request)
     {
         $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_block_category);
 
@@ -194,10 +194,10 @@ class InventoryCategoryController extends Controller
     /**
      * Remover o recurso especificado do armazenamento.
      *
-     * @param DeleteCategoryRequest $request
+     * @param DeleteInventoryCategoryRequest $request
      * @return bool|JsonResponse
      */
-    public function destroy(DeleteCategoryRequest $request)
+    public function destroy(DeleteInventoryCategoryRequest $request)
     {
         $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_delete_category);
         $collection->delete();
@@ -276,10 +276,10 @@ class InventoryCategoryController extends Controller
     /**
      * Restaurar o recurso especificado no armazenamento.
      *
-     * @param RecoverCategoryRequest $request
+     * @param RecoverInventoryCategoryRequest $request
      * @return JsonResponse
      */
-    public function restore(RecoverCategoryRequest $request)
+    public function restore(RecoverInventoryCategoryRequest $request)
     {
         InventoryCategory::onlyTrashed()->where('company_id', '=', Company::id())->find($request->id_recover_category)->restore();
 

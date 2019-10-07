@@ -40,6 +40,7 @@
 <!-- plugins -->
 <script src="{{ asset('js/plugins/jquery.md5.js') }}"></script>
 <script src="{{ asset('js/plugins/jquery.mask.min.js') }}"></script>
+<script src="{{ asset('js/plugins/jquery.maskMoney.min.js') }}"></script>
 <script src="{{ asset('js/plugins/validate/jquery.validate.js') }}"></script>
 <script src="{{ asset('js/plugins/validate/additional-methods.js') }}"></script>
 <script src="{{ asset('js/plugins/datatables-config.js') }}"></script>

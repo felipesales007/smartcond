@@ -138,6 +138,7 @@ return [
     'cnh'                 => 'O campo :attribute deve ter um número de cnh válido.',
     'voter_title'         => 'O campo :attribute deve ter um número de título de eleitor válido.',
     'nis'                 => 'O campo :attribute deve ter um número de nis válido.',
+    'decimal'             => 'O campo :attribute deve ter um número decimal.',
 
     /*
     |--------------------------------------------------------------------------
