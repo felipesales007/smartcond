@@ -1422,24 +1422,161 @@ class RoutesTableSeeder extends Seeder
             'updated_at'      => now()
         ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/categorias',
+            'route'           => 'category.list',
+            'controller'      => 'Category\CategoryController@list',
+            'description'     => 'Página de listagem das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/categorias/deletadas',
+            'route'           => 'category.list.deleted',
+            'controller'      => 'Category\CategoryController@listDeleted',
+            'description'     => 'Página de listagem das categorias deletadas',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/categoria/{id?}',
+            'route'           => 'category.view',
+            'controller'      => 'Category\CategoryController@edit',
+            'description'     => 'Modal de visualizar os dados das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'url'             => 'editar/categoria/{id?}',
+            'route'           => 'category.edit',
+            'controller'      => 'Category\CategoryController@edit',
+            'description'     => 'Modal de editar os dados das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'url'             => 'banir/categoria/{id?}',
+            'route'           => 'category.ban',
+            'controller'      => 'Category\CategoryController@edit',
+            'description'     => 'Modal de bloquear e desbloquear as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'url'             => 'deletar/categoria/{id?}',
+            'route'           => 'category.delete',
+            'controller'      => 'Category\CategoryController@edit',
+            'description'     => 'Modal de deletar as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/categoria/{id?}',
+            'route'           => 'category.recover',
+            'controller'      => 'Category\CategoryController@edit',
+            'description'     => 'Modal de recuperar as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'nova/categoria',
+            'route'           => 'category.store',
+            'controller'      => 'Category\CategoryController@store',
+            'description'     => 'Modal de criar nova categoria',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'atualizar/categoria/{id?}',
+            'route'           => 'category.update',
+            'controller'      => 'Category\CategoryController@update',
+            'description'     => 'Atualizar os dados das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'bloquear/categoria/{id?}',
+            'route'           => 'category.block',
+            'controller'      => 'Category\CategoryController@block',
+            'description'     => 'Bloquear as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'remover/categoria/{id?}',
+            'route'           => 'category.destroy',
+            'controller'      => 'Category\CategoryController@destroy',
+            'description'     => 'Deletar as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'restaurar/categoria/{id?}',
+            'route'           => 'category.restore',
+            'controller'      => 'Category\CategoryController@restore',
+            'description'     => 'Recuperar as categorias deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'verificar/categoria/nome',
+            'route'           => 'category.check.name',
+            'controller'      => 'Category\CheckController@checkName',
+            'description'     => 'Verificar o nome das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
-
-
-
-
-
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'verificar/categoria/nome/diferente',
+            'route'           => 'category.check.name.different',
+            'controller'      => 'Category\CheckController@checkNameDifferent',
+            'description'     => 'Verificar o nome das categorias que seja diferente da categoria em edição',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
 
         Route::create([
             'group_id'        => '9',
@@ -1468,7 +1605,7 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '9',
             'route_option_id' => '1',
             'view'            => '1',
-            'url'             => 'lista',
+            'url'             => 'lista/inventarios',
             'route'           => 'inventory.list',
             'controller'      => 'Inventory\InventoryController@list',
             'description'     => 'Página de listagem dos itens do inventário',
@@ -1480,7 +1617,7 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '9',
             'route_option_id' => '1',
             'view'            => '1',
-            'url'             => 'lista/deletados',
+            'url'             => 'lista/inventarios/deletados',
             'route'           => 'inventory.list.deleted',
             'controller'      => 'Inventory\InventoryController@listDeleted',
             'description'     => 'Página de listagem dos itens do inventário deletados',
@@ -1491,7 +1628,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
-            'url'             => 'visualizar/{id?}',
+            'url'             => 'visualizar/inventario/{id?}',
             'route'           => 'inventory.view',
             'controller'      => 'Inventory\InventoryController@edit',
             'description'     => 'Modal de visualizar os dados dos itens do inventário',
@@ -1502,7 +1639,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
-            'url'             => 'editar/{id?}',
+            'url'             => 'editar/inventario/{id?}',
             'route'           => 'inventory.edit',
             'controller'      => 'Inventory\InventoryController@edit',
             'description'     => 'Modal de editar os dados dos itens do inventário',
@@ -1513,7 +1650,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
-            'url'             => 'banir/{id?}',
+            'url'             => 'banir/inventario/{id?}',
             'route'           => 'inventory.ban',
             'controller'      => 'Inventory\InventoryController@edit',
             'description'     => 'Modal de bloquear e desbloquear os itens do inventário',
@@ -1524,7 +1661,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
-            'url'             => 'deletar/{id?}',
+            'url'             => 'deletar/inventario/{id?}',
             'route'           => 'inventory.delete',
             'controller'      => 'Inventory\InventoryController@edit',
             'description'     => 'Modal de deletar os itens do inventário',
@@ -1535,7 +1672,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
-            'url'             => 'recuperar/{id?}',
+            'url'             => 'recuperar/inventario/{id?}',
             'route'           => 'inventory.recover',
             'controller'      => 'Inventory\InventoryController@edit',
             'description'     => 'Modal de recuperar os itens do inventário',
@@ -1546,7 +1683,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '2',
-            'url'             => 'novo',
+            'url'             => 'novo/inventario',
             'route'           => 'inventory.store',
             'controller'      => 'Inventory\InventoryController@store',
             'description'     => 'Modal de criar novo item do inventário',
@@ -1557,7 +1694,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '2',
-            'url'             => 'atualizar/{id?}',
+            'url'             => 'atualizar/inventario/{id?}',
             'route'           => 'inventory.update',
             'controller'      => 'Inventory\InventoryController@update',
             'description'     => 'Atualizar os dados dos itens do inventários',
@@ -1568,7 +1705,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '2',
-            'url'             => 'bloquear/{id?}',
+            'url'             => 'bloquear/inventario/{id?}',
             'route'           => 'inventory.block',
             'controller'      => 'Inventory\InventoryController@block',
             'description'     => 'Bloquear os itens do inventário',
@@ -1579,7 +1716,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '2',
-            'url'             => 'remover/{id?}',
+            'url'             => 'remover/inventario/{id?}',
             'route'           => 'inventory.destroy',
             'controller'      => 'Inventory\InventoryController@destroy',
             'description'     => 'Deletar os itens do inventário',
@@ -1590,7 +1727,7 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '2',
-            'url'             => 'restaurar/{id?}',
+            'url'             => 'restaurar/inventario/{id?}',
             'route'           => 'inventory.restore',
             'controller'      => 'Inventory\InventoryController@restore',
             'description'     => 'Recuperar os itens do inventário deletados',

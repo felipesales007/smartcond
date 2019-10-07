@@ -237,20 +237,34 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
 
     // grupo inventários
     Route::group(['prefix' => 'inventarios'], function () {
-        Route::get ('data',             ['as' => 'inventory.data',         'uses' => 'Inventory\DashboardController@data']);
-        Route::get ('dashboard',        ['as' => 'inventory.dashboard',    'uses' => 'Inventory\DashboardController@dashboard']);
-        Route::get ('lista',            ['as' => 'inventory.list',         'uses' => 'Inventory\InventoryController@list']);
-        Route::get ('lista/deletados',  ['as' => 'inventory.list.deleted', 'uses' => 'Inventory\InventoryController@listDeleted']);
-        Route::get ('visualizar/{id?}', ['as' => 'inventory.view',         'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-view-inventory
-        Route::get ('editar/{id?}',     ['as' => 'inventory.edit',         'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-edit-inventory
-        Route::get ('banir/{id?}',      ['as' => 'inventory.ban',          'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-block-inventory
-        Route::get ('deletar/{id?}',    ['as' => 'inventory.delete',       'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-delete-inventory
-        Route::get ('recuperar/{id?}',  ['as' => 'inventory.recover',      'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-recover-inventory
-        Route::post('novo',             ['as' => 'inventory.store',        'uses' => 'Inventory\InventoryController@store']); // btn-modal-new-inventory
-        Route::post('atualizar/{id?}',  ['as' => 'inventory.update',       'uses' => 'Inventory\InventoryController@update']);
-        Route::post('bloquear/{id?}',   ['as' => 'inventory.block',        'uses' => 'Inventory\InventoryController@block']);
-        Route::post('remover/{id?}',    ['as' => 'inventory.destroy',      'uses' => 'Inventory\InventoryController@destroy']);
-        Route::post('restaurar/{id?}',  ['as' => 'inventory.restore',      'uses' => 'Inventory\InventoryController@restore']);
+        Route::get ('data',                               ['as' => 'inventory.data',                'uses' => 'Inventory\DashboardController@data']);
+        Route::get ('dashboard',                          ['as' => 'inventory.dashboard',           'uses' => 'Inventory\DashboardController@dashboard']);
+        Route::get ('lista/categorias',                   ['as' => 'category.list',                 'uses' => 'Category\CategoryController@list']);
+        Route::get ('lista/categorias/deletadas',         ['as' => 'category.list.deleted',         'uses' => 'Category\CategoryController@listDeleted']);
+        Route::get ('visualizar/categoria/{id?}',         ['as' => 'category.view',                 'uses' => 'Category\CategoryController@edit']); // * btn-modal-view-category
+        Route::get ('editar/categoria/{id?}',             ['as' => 'category.edit',                 'uses' => 'Category\CategoryController@edit']); // * btn-modal-edit-category
+        Route::get ('banir/categoria/{id?}',              ['as' => 'category.ban',                  'uses' => 'Category\CategoryController@edit']); // * btn-modal-block-category
+        Route::get ('deletar/categoria/{id?}',            ['as' => 'category.delete',               'uses' => 'Category\CategoryController@edit']); // * btn-modal-delete-category
+        Route::get ('recuperar/categoria/{id?}',          ['as' => 'category.recover',              'uses' => 'Category\CategoryController@edit']); // * btn-modal-recover-category
+        Route::post('nova/categoria',                     ['as' => 'category.store',                'uses' => 'Category\CategoryController@store']); // btn-modal-new-category
+        Route::post('atualizar/categoria/{id?}',          ['as' => 'category.update',               'uses' => 'Category\CategoryController@update']);
+        Route::post('bloquear/categoria/{id?}',           ['as' => 'category.block',                'uses' => 'Category\CategoryController@block']);
+        Route::post('remover/categoria/{id?}',            ['as' => 'category.destroy',              'uses' => 'Category\CategoryController@destroy']);
+        Route::post('restaurar/categoria/{id?}',          ['as' => 'category.restore',              'uses' => 'Category\CategoryController@restore']);
+        Route::post('verificar/categoria/nome',           ['as' => 'category.check.name',           'uses' => 'Category\CheckController@checkName']);
+        Route::post('verificar/categoria/nome/diferente', ['as' => 'category.check.name.different', 'uses' => 'Category\CheckController@checkNameDifferent']);
+        Route::get ('lista/inventarios',                  ['as' => 'inventory.list',                'uses' => 'Inventory\InventoryController@list']);
+        Route::get ('lista/inventarios/deletados',        ['as' => 'inventory.list.deleted',        'uses' => 'Inventory\InventoryController@listDeleted']);
+        Route::get ('visualizar/inventario/{id?}',        ['as' => 'inventory.view',                'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-view-inventory
+        Route::get ('editar/inventario/{id?}',            ['as' => 'inventory.edit',                'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-edit-inventory
+        Route::get ('banir/inventario/{id?}',             ['as' => 'inventory.ban',                 'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-block-inventory
+        Route::get ('deletar/inventario/{id?}',           ['as' => 'inventory.delete',              'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-delete-inventory
+        Route::get ('recuperar/inventario/{id?}',         ['as' => 'inventory.recover',             'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-recover-inventory
+        Route::post('novo/inventario',                    ['as' => 'inventory.store',               'uses' => 'Inventory\InventoryController@store']); // btn-modal-new-inventory
+        Route::post('atualizar/inventario/{id?}',         ['as' => 'inventory.update',              'uses' => 'Inventory\InventoryController@update']);
+        Route::post('bloquear/inventario/{id?}',          ['as' => 'inventory.block',               'uses' => 'Inventory\InventoryController@block']);
+        Route::post('remover/inventario/{id?}',           ['as' => 'inventory.destroy',             'uses' => 'Inventory\InventoryController@destroy']);
+        Route::post('restaurar/inventario/{id?}',         ['as' => 'inventory.restore',             'uses' => 'Inventory\InventoryController@restore']);
     });
 
     */

@@ -65,33 +65,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name'           => $data['name'],
-            'email'          => $data['email'],
-            'password'       => Hash::make($data['password']),
-            'last_update_at' => now()
-        ]);
-
-        Permission::create([
-            'user_id'  => $user->id,
-            'route_id' => '1'
-        ]);
-
-        CompanyAccesses::create([
-            'company_id' => '1',
-            'user_id'    => $user->id,
-            'preferred'  => '1'
-        ]);
-
-        for ($i = 2; $i <= 110; $i++) {
-            Permission::create([
-                'user_id'    => $user->id,
-                'route_id'   => $i,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-        }
-
-        return $user;
+//        $user = User::create([
+//            'name'           => $data['name'],
+//            'email'          => $data['email'],
+//            'password'       => Hash::make($data['password']),
+//            'last_update_at' => now()
+//        ]);
+//
+//        Permission::create([
+//            'user_id'  => $user->id,
+//            'route_id' => '1'
+//        ]);
+//
+//        CompanyAccesses::create([
+//            'company_id' => '1',
+//            'user_id'    => $user->id,
+//            'preferred'  => '1'
+//        ]);
+//
+//        for ($i = 2; $i <= 110; $i++) {
+//            Permission::create([
+//                'user_id'    => $user->id,
+//                'route_id'   => $i,
+//                'created_at' => now(),
+//                'updated_at' => now()
+//            ]);
+//        }
+//
+//        return $user;
     }
 }

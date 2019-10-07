@@ -837,5 +837,198 @@ class MenuItemsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        // grupo inventário
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '142',
+            'order'       => '1',
+            'name'        => 'Dashboard',
+            'description' => 'Item do menu collapse de acesso a página de dashboard dos intens do invnetário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '134',
+            'order'       => '2',
+            'name'        => 'Nova categoria',
+            'button'      => 'btn-modal-new-category',
+            'description' => 'Item do menu collapse de acesso ao modal de criação da categoria',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '127',
+            'order'       => '3',
+            'name'        => 'Lista de categorias',
+            'description' => 'Item do menu collapse de acesso a página de listagem de categorias',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '128',
+            'order'       => '4',
+            'name'        => 'Lista de categorias deletados',
+            'description' => 'Item do menu collapse de acesso a página de listagem de categorias deletadas',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '129',
+            'order'       => '1',
+            'name'        => 'Visualizar categoria',
+            'button'      => 'btn-modal-view-category',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de categorias de acesso ao modal de visualização de categoria',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '130',
+            'order'       => '2',
+            'name'        => 'Editar categoria',
+            'button'      => 'btn-modal-edit-category',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de categorias de acesso ao modal de edição de categoria',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '131',
+            'order'       => '3',
+            'name'        => 'Bloquear departamento',
+            'button'      => 'btn-modal-block-category',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de categorias de acesso ao modal de bloqueio de categoria',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '132',
+            'order'       => '4',
+            'name'        => 'Deletar categoria',
+            'button'      => 'btn-modal-delete-category',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de categorias de acesso ao modal de exclusão de categoria',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '133',
+            'order'       => '1',
+            'name'        => 'Recuperar categoria',
+            'button'      => 'btn-modal-recover-category',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de categorias deletados de acesso ao modal de recuperação de categoria',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '150',
+            'order'       => '2',
+            'name'        => 'Novo item do inventário',
+            'button'      => 'btn-modal-new-inventory',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de item do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '143',
+            'order'       => '3',
+            'name'        => 'Lista de inventário',
+            'description' => 'Item do menu collapse de acesso a página de listagem de itens do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '144',
+            'order'       => '4',
+            'name'        => 'Lista de inventário deletados',
+            'description' => 'Item do menu collapse de acesso a página de listagem de itens do inventário deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '145',
+            'order'       => '1',
+            'name'        => 'Visualizar item do inventário',
+            'button'      => 'btn-modal-view-inventory',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de inventário de acesso ao modal de visualização de itens do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '146',
+            'order'       => '2',
+            'name'        => 'Editar item do inventário',
+            'button'      => 'btn-modal-edit-inventory',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de inventário de acesso ao modal de edição de itens do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '147',
+            'order'       => '3',
+            'name'        => 'Bloquear item do inventário',
+            'button'      => 'btn-modal-block-inventory',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de inventário de acesso ao modal de bloqueio de itens do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '148',
+            'order'       => '4',
+            'name'        => 'Deletar item do inventário',
+            'button'      => 'btn-modal-delete-inventory',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de inventário de acesso ao modal de exclusão de itens do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '149',
+            'order'       => '1',
+            'name'        => 'Recuperar item do inventário',
+            'button'      => 'btn-modal-recover-inventory',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de inventário deletados de acesso ao modal de recuperação de itens do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }

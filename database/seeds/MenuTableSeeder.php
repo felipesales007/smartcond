@@ -98,7 +98,7 @@ class MenuTableSeeder extends Seeder
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '6',
-            'order'          => '6',
+            'order'          => '7',
             'name'           => 'Grupos e Rotas',
             'icon'           => 'fas fa-book',
             'description'    => 'Menu em collapse da página de configurações de rotas',
@@ -110,7 +110,7 @@ class MenuTableSeeder extends Seeder
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '6',
-            'order'          => '7',
+            'order'          => '8',
             'name'           => 'Menu e Itens',
             'icon'           => 'fas fa-list-ul',
             'description'    => 'Menu em collapse da página de configurações de menu',
@@ -138,6 +138,18 @@ class MenuTableSeeder extends Seeder
             'name'           => 'Departamentos',
             'icon'           => 'far fa-building',
             'description'    => 'Menu em collapse da página de departametos da empresa',
+            'created_at'     => now(),
+            'updated_at'     => now()
+        ]);
+
+        // grupo inventário
+        Menu::create([
+            'menu_option_id' => '1',
+            'color_id'       => '6',
+            'order'          => '6',
+            'name'           => 'Inventário',
+            'icon'           => 'fas fa-dolly-flatbed',
+            'description'    => 'Menu em collapse da página de inventários da empresa',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
