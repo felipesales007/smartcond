@@ -14,7 +14,7 @@
                                 <!-- título -->
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Total de departamentos</h5>
-                                    <span id="getCountCompanies" class="h2 font-weight-bold mb-0">{{ \App\Models\Department::getCount() }}</span>
+                                    <span id="getCountDepartments" class="h2 font-weight-bold mb-0">{{ \App\Models\Department::getCount() }}</span>
                                 </div>
                                 <!-- icone -->
                                 <div class="col-auto">
@@ -41,7 +41,7 @@
                                 <!-- título -->
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Departamentos bloqueados</h5>
-                                    <span id="getCountBlockedCompanies" class="h2 font-weight-bold mb-0">{{ \App\Models\Department::getCountBlocked() }}</span>
+                                    <span id="getCountBlockedDepartments" class="h2 font-weight-bold mb-0">{{ \App\Models\Department::getCountBlocked() }}</span>
                                 </div>
                                 <!-- icone -->
                                 <div class="col-auto">

@@ -8,6 +8,7 @@ use App\Http\Requests\Department\DeleteDepartmentRequest;
 use App\Http\Requests\Department\EditDepartmentRequest;
 use App\Http\Requests\Department\NewDepartmentRequest;
 use App\Http\Requests\Department\RecoverDepartmentRequest;
+use App\Models\Company\Company;
 use App\Models\Department;
 use App\Models\Menu\MenuItem;
 use App\Models\Permission;
@@ -34,7 +35,8 @@ class DepartmentController extends Controller
         $order  = explode(' ', !empty($_GET['orderBy']) ? $_GET['orderBy'] : 'name asc');
 
         $collection = Department::query()
-            ->orWhere('name', 'like', '%' . $search . '%')
+            ->where('company_id', '=', Company::id())
+            ->where('name', 'like', '%' . $search . '%')
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -116,7 +118,7 @@ class DepartmentController extends Controller
     {
         // dados
         Department::create([
-            'company_id'  => 1,
+            'company_id'  => Company::id(),
             'name'        => $request->name_new_department,
             'description' => $request->description_new_department,
         ]);
@@ -134,7 +136,7 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        $collection = Department::withTrashed()->find($id);
+        $collection = Department::withTrashed()->where('company_id', '=', Company::id())->find($id);
 
         return response()->json($collection);
     }
@@ -147,7 +149,7 @@ class DepartmentController extends Controller
      */
     public function update(EditDepartmentRequest $request)
     {
-        $collection = Department::find($request->id_edit_department);
+        $collection = Department::where('company_id', '=', Company::id())->find($request->id_edit_department);
 
         // dados
         $collection->fill([
@@ -168,7 +170,7 @@ class DepartmentController extends Controller
      */
     public function block(BlockDepartmentRequest $request)
     {
-        $collection = Department::find($request->id_block_department);
+        $collection = Department::where('company_id', '=', Company::id())->find($request->id_block_department);
 
         if ($request->blocked_block_department) {
             if (!$collection->blocked) {
@@ -197,7 +199,7 @@ class DepartmentController extends Controller
      */
     public function destroy(DeleteDepartmentRequest $request)
     {
-        $collection = Department::find($request->id_delete_department);
+        $collection = Department::where('company_id', '=', Company::id())->find($request->id_delete_department);
         $collection->delete();
 
         // notificar
@@ -221,6 +223,7 @@ class DepartmentController extends Controller
 
         $collection = Department::query()
             ->onlyTrashed()
+            ->where('company_id', '=', Company::id())
             ->where(function ($query) use ($search) {
                 $query
                     ->orWhere('name', 'like', '%' . $search . '%');
@@ -278,7 +281,7 @@ class DepartmentController extends Controller
      */
     public function restore(RecoverDepartmentRequest $request)
     {
-        Department::onlyTrashed()->find($request->id_recover_department)->restore();
+        Department::onlyTrashed()->where('company_id', '=', Company::id())->find($request->id_recover_department)->restore();
 
         // notificar
         $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Departamento recuperado com sucesso.');

@@ -126,4 +126,24 @@ class Company extends Model
     {
         return $this->belongsTo(State::class, 'state_id');
     }
+
+    /**
+     * Retornar as empresa principal relacionada com o usuário no armazenamento.
+     *
+     * @return mixed
+     */
+    static function id()
+    {
+        return Company::join('company_accesses', 'company_accesses.company_id', 'companies.id')
+            ->where(function($query) {
+                $query->where('companies.blocked_at', '<', date('Y-m-d'))
+                    ->orWhere('companies.blocked_at', '=', null);
+            })
+            ->where('companies.blocked', '=', null)
+            ->where('companies.deleted_at', '=', null)
+            ->where('company_accesses.preferred', '=', '1')
+            ->where('company_accesses.user_id', '=', auth()->id())
+            ->pluck('company_id')
+            ->first();
+    }
 }

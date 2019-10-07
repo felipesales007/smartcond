@@ -43,7 +43,7 @@ class Department extends Model
      */
     static function getDepartments()
     {
-        return Department::get();
+        return Department::where('company_id', '=', Company::id())->get();
     }
 
     /**
@@ -54,7 +54,7 @@ class Department extends Model
      */
     static function getDepartment($id)
     {
-        return Department::find($id);
+        return Department::where('company_id', '=', Company::id())->find($id);
     }
 
     /**
@@ -64,7 +64,7 @@ class Department extends Model
      */
     static function getCount()
     {
-        return Department::count();
+        return Department::where('company_id', '=', Company::id())->count();
     }
 
     /**
@@ -74,7 +74,7 @@ class Department extends Model
      */
     static function getCountBlocked()
     {
-        return Department::where('blocked', '!=', null)->count();
+        return Department::where('company_id', '=', Company::id())->where('blocked', '!=', null)->count();
     }
 
     /**
@@ -84,7 +84,7 @@ class Department extends Model
      */
     static function getDepartmentsOptions()
     {
-        $options = Department::get();
+        $options = Department::where('company_id', '=', Company::id())->get();
         $array   = [];
 
         foreach ($options as $option) {

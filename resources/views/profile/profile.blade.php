@@ -67,7 +67,7 @@
                                                             <div class="col ml--2">
                                                                 <div class="d-flex justify-content-between align-items-center">
                                                                     <h4 class="mb-0 text-sm">{{ $company['company'] }}</h4>
-                                                                    <div class="custom-control custom-radio custom-checkbox-primary" hidden>{{-- @if (count($array) == 1) hidden @endif --}}
+                                                                    <div class="custom-control custom-radio custom-checkbox-primary" @if (count($array) == 1) hidden @endif>
                                                                         <small class="mr-5">{{ $company['preferred'] == 1 ? 'principal' : 'definir como principal' }}</small>
                                                                         <input type="radio" id="company-edit-profile-id-{{ $company['id'] }}" name="company_edit_profile_id" class="custom-control-input" value="{{ $company['id'] }}" @if ($company['preferred'] == 1) checked @endif>
                                                                         <label class="custom-control-label" for="company-edit-profile-id-{{ $company['id'] }}"></label>
