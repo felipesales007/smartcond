@@ -25,7 +25,7 @@
 <meta property="og:title" content="Smartcond">
 <meta property="og:site_name" content="Smartcond">
 <meta property="og:description" content="Seu condomínio inteligente!">
-<meta property="og:url" content="gruposmartcond.com.br">
+<meta property="og:url" content="gruposmartcond.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@felipesales007">
-<link href="https://www.gruposmartcond.com.br" rel="canonical">
+<link href="https://www.gruposmartcond.com" rel="canonical">

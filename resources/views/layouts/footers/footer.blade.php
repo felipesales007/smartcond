@@ -7,11 +7,11 @@
                 <!-- desenvolvido -->
                 <div class="copyright text-center text-primary fe-center-x">
                     <span class="fe-mouse-off">&copy; {{ now()->year }}, {{ __('Desenvolvido por') }}</span>
-                    <a href="https://www.felipesales.com.br" class="font-weight-bold" target="_blank">{{ __('Felipe Sales') }}</a>
+                    <a href="https://www.gruposmartcond.com" class="font-weight-bold" target="_blank">{{ __('Grupo Smartcond') }}</a>
                 </div>
 
                 <!-- navbar items -->
-                <ul class="navbar-nav align-items-lg-center ml-lg-auto mt-1">
+                <ul class="navbar-nav align-items-lg-center ml-lg-auto mt-1 fe-hidden">
                     <!-- linkedin -->
                     <li class="nav-item fe-mobile-none">
                         <a class="nav-link nav-link-icon text-light" href="https://www.linkedin.com/in/felipesales007" target="_blank">
