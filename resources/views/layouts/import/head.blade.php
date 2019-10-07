@@ -21,11 +21,11 @@
 <!-- compartilhamento -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:image" content="{{ asset('img/default/logos/sombra/azul/logomarca-branco.png') }}">
+<meta property="og:image" content="{{ asset('img/default/logos/card-azul.jpg') }}">
 <meta property="og:title" content="Smartcond">
 <meta property="og:site_name" content="Smartcond">
-<meta property="og:description" content="Gerenciamento de Condomínio Web">
-<meta property="og:url" content="felipesales.com.br">
+<meta property="og:description" content="Seu condomínio inteligente!">
+<meta property="og:url" content="gruposmartcond.com.br">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@felipesales007">
-<link href="https://www.felipesales.com.br" rel="canonical">
+<link href="https://www.gruposmartcond.com.br" rel="canonical">

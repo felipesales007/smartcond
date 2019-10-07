@@ -5,8 +5,7 @@
             <!-- logo -->
             <a class="ml--1 mr--3 navbar-brand fe-mouse-off">
                 <span class="h2 text-primary">
-                    <img src="{{ asset('img/default/logos/logo/azul/logo-transparente.png') }}" alt="" class="mt--1 mr-1" width="28px">
-                    {{ config('app.name', 'Smartcond') }}
+                    <img src="{{ asset('img/default/logos/azul-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
                 </span>
             </a>
             <!-- botão do menu -->

@@ -4,8 +4,7 @@
         <!-- nome do website -->
         <div class="mt-3 ml-md--3 ml-lg--3 ml-xl-5 fe-mouse-default fe-logo-navbar">
             <span class="h2 text-white">
-                <img src="{{ asset('img/default/logos/logo/branco/logo-transparente.png') }}" alt="" class="mt--1 mr-1" width="28px">
-                {{ config('app.name', 'Smartcond') }}
+                <img src="{{ asset('img/default/logos/branco-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
             </span>
         </div>
         <!-- botão do menu lateral -->

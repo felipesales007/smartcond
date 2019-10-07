@@ -8,8 +8,7 @@
         <!-- nome do website -->
         <div class="fe-mouse-off fe-block-copy">
             <span class="h2 text-primary">
-                <img src="{{ asset('img/default/logos/logo/azul/logo-transparente.png') }}" alt="" class="mt--1 mr-1" width="28px">
-                {{ config('app.name', 'Smartcond') }}
+                <img src="{{ asset('img/default/logos/azul-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
             </span>
         </div>
         <!-- navbar items -->
