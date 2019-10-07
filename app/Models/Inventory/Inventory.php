@@ -3,7 +3,7 @@
 namespace App\Models\Inventory;
 
 use App\Models\Company\Company;
-use App\Models\Company\Departament;
+use App\Models\Department;
 use App\Models\State;
 use App\Models\Voltage;
 use Illuminate\Database\Eloquent\Model;
@@ -63,6 +63,26 @@ class Inventory extends Model
     }
 
     /**
+     * Retornar a contagem de todos os dados no armazenamento.
+     *
+     * @return mixed
+     */
+    static function getCount()
+    {
+        return Inventory::where('company_id', '=', Company::id())->count();
+    }
+
+    /**
+     * Retornar a contagem de todos os dados bloqueados no armazenamento.
+     *
+     * @return mixed
+     */
+    static function getCountBlocked()
+    {
+        return Inventory::where('company_id', '=', Company::id())->where('blocked', '!=', null)->count();
+    }
+
+    /**
      * Retornar todas as opções dos dados do armazenamento.
      *
      * @return array
@@ -96,7 +116,7 @@ class Inventory extends Model
      */
     public function getDepartment()
     {
-        return $this->belongsTo(Departament::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
     /**

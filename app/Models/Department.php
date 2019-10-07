@@ -84,7 +84,7 @@ class Department extends Model
      */
     static function getDepartmentsOptions()
     {
-        $options = Department::where('company_id', '=', Company::id())->get();
+        $options = Department::where('company_id', '=', Company::id())->where('blocked', '=', null)->get();
         $array   = [];
 
         foreach ($options as $option) {

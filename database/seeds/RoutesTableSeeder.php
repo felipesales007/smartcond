@@ -1428,7 +1428,7 @@ class RoutesTableSeeder extends Seeder
             'view'            => '1',
             'url'             => 'lista/categorias',
             'route'           => 'category.list',
-            'controller'      => 'Category\CategoryController@list',
+            'controller'      => 'Inventory\InventoryCategoryController@list',
             'description'     => 'Página de listagem das categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1440,7 +1440,7 @@ class RoutesTableSeeder extends Seeder
             'view'            => '1',
             'url'             => 'lista/categorias/deletadas',
             'route'           => 'category.list.deleted',
-            'controller'      => 'Category\CategoryController@listDeleted',
+            'controller'      => 'Inventory\InventoryCategoryController@listDeleted',
             'description'     => 'Página de listagem das categorias deletadas',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1451,7 +1451,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'url'             => 'visualizar/categoria/{id?}',
             'route'           => 'category.view',
-            'controller'      => 'Category\CategoryController@edit',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
             'description'     => 'Modal de visualizar os dados das categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1462,7 +1462,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'url'             => 'editar/categoria/{id?}',
             'route'           => 'category.edit',
-            'controller'      => 'Category\CategoryController@edit',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
             'description'     => 'Modal de editar os dados das categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1473,7 +1473,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'url'             => 'banir/categoria/{id?}',
             'route'           => 'category.ban',
-            'controller'      => 'Category\CategoryController@edit',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
             'description'     => 'Modal de bloquear e desbloquear as categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1484,7 +1484,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'url'             => 'deletar/categoria/{id?}',
             'route'           => 'category.delete',
-            'controller'      => 'Category\CategoryController@edit',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
             'description'     => 'Modal de deletar as categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1495,7 +1495,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'url'             => 'recuperar/categoria/{id?}',
             'route'           => 'category.recover',
-            'controller'      => 'Category\CategoryController@edit',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
             'description'     => 'Modal de recuperar as categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1506,7 +1506,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '2',
             'url'             => 'nova/categoria',
             'route'           => 'category.store',
-            'controller'      => 'Category\CategoryController@store',
+            'controller'      => 'Inventory\InventoryCategoryController@store',
             'description'     => 'Modal de criar nova categoria',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1517,7 +1517,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '2',
             'url'             => 'atualizar/categoria/{id?}',
             'route'           => 'category.update',
-            'controller'      => 'Category\CategoryController@update',
+            'controller'      => 'Inventory\InventoryCategoryController@update',
             'description'     => 'Atualizar os dados das categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1528,7 +1528,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '2',
             'url'             => 'bloquear/categoria/{id?}',
             'route'           => 'category.block',
-            'controller'      => 'Category\CategoryController@block',
+            'controller'      => 'Inventory\InventoryCategoryController@block',
             'description'     => 'Bloquear as categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1539,7 +1539,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '2',
             'url'             => 'remover/categoria/{id?}',
             'route'           => 'category.destroy',
-            'controller'      => 'Category\CategoryController@destroy',
+            'controller'      => 'Inventory\InventoryCategoryController@destroy',
             'description'     => 'Deletar as categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1550,7 +1550,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '2',
             'url'             => 'restaurar/categoria/{id?}',
             'route'           => 'category.restore',
-            'controller'      => 'Category\CategoryController@restore',
+            'controller'      => 'Inventory\InventoryCategoryController@restore',
             'description'     => 'Recuperar as categorias deletados',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1561,7 +1561,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '2',
             'url'             => 'verificar/categoria/nome',
             'route'           => 'category.check.name',
-            'controller'      => 'Category\CheckController@checkName',
+            'controller'      => 'Inventory\CheckController@checkName',
             'description'     => 'Verificar o nome das categorias',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1572,7 +1572,7 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '2',
             'url'             => 'verificar/categoria/nome/diferente',
             'route'           => 'category.check.name.different',
-            'controller'      => 'Category\CheckController@checkNameDifferent',
+            'controller'      => 'Inventory\CheckController@checkNameDifferent',
             'description'     => 'Verificar o nome das categorias que seja diferente da categoria em edição',
             'created_at'      => now(),
             'updated_at'      => now()

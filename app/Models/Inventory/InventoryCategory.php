@@ -58,13 +58,33 @@ class InventoryCategory extends Model
     }
 
     /**
+     * Retornar a contagem de todos os dados no armazenamento.
+     *
+     * @return mixed
+     */
+    static function getCount()
+    {
+        return InventoryCategory::where('company_id', '=', Company::id())->count();
+    }
+
+    /**
+     * Retornar a contagem de todos os dados bloqueados no armazenamento.
+     *
+     * @return mixed
+     */
+    static function getCountBlocked()
+    {
+        return InventoryCategory::where('company_id', '=', Company::id())->where('blocked', '!=', null)->count();
+    }
+
+    /**
      * Retornar todas as opções dos dados do armazenamento.
      *
      * @return array
      */
     static function getInventoyCategoriesOptions()
     {
-        $options = InventoryCategory::get();
+        $options = InventoryCategory::where('company_id', '=', Company::id())->where('blocked', '=', null)->get();
         $array   = [];
 
         foreach ($options as $option) {

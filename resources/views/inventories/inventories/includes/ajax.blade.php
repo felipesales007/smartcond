@@ -103,31 +103,31 @@
             $('#form-edit-department').trigger('reset');
         };
 
-        // modal de bloquear departamento disponível
+        // modal de bloquear empresa disponível
         let blockDepartmentAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-block-department').removeAttr('disabled', 'disabled').html('Bloquear departamento');
+            $('#btn-block-department').removeAttr('disabled', 'disabled').html('Bloquear empresa');
             $('#form-block-department').trigger('reset');
         };
 
-        // modal de deletar departamento disponível
+        // modal de deletar empresa disponível
         let deleteDepartmentAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-delete-department').removeAttr('disabled', 'disabled').html('Excluir departamento');
+            $('#btn-delete-department').removeAttr('disabled', 'disabled').html('Excluir empresa');
             $('#form-delete-department').trigger('reset');
         };
 
-        // modal de recuperar departamento disponível
+        // modal de recuperar empresa disponível
         let recoverDepartmentAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-recover-department').removeAttr('disabled', 'disabled').html('Recuperar departamento');
+            $('#btn-recover-department').removeAttr('disabled', 'disabled').html('Recuperar empresa');
             $('#form-recover-department').trigger('reset');
         };
 
-        // visualizar departamento
+        // visualizar empresa
         $(document).on('click', '.btn-modal-view-department', function () {
             let id = $(this).data('id');
 

@@ -239,20 +239,20 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
     Route::group(['prefix' => 'inventarios'], function () {
         Route::get ('data',                               ['as' => 'inventory.data',                'uses' => 'Inventory\DashboardController@data']);
         Route::get ('dashboard',                          ['as' => 'inventory.dashboard',           'uses' => 'Inventory\DashboardController@dashboard']);
-        Route::get ('lista/categorias',                   ['as' => 'category.list',                 'uses' => 'Category\CategoryController@list']);
-        Route::get ('lista/categorias/deletadas',         ['as' => 'category.list.deleted',         'uses' => 'Category\CategoryController@listDeleted']);
-        Route::get ('visualizar/categoria/{id?}',         ['as' => 'category.view',                 'uses' => 'Category\CategoryController@edit']); // * btn-modal-view-category
-        Route::get ('editar/categoria/{id?}',             ['as' => 'category.edit',                 'uses' => 'Category\CategoryController@edit']); // * btn-modal-edit-category
-        Route::get ('banir/categoria/{id?}',              ['as' => 'category.ban',                  'uses' => 'Category\CategoryController@edit']); // * btn-modal-block-category
-        Route::get ('deletar/categoria/{id?}',            ['as' => 'category.delete',               'uses' => 'Category\CategoryController@edit']); // * btn-modal-delete-category
-        Route::get ('recuperar/categoria/{id?}',          ['as' => 'category.recover',              'uses' => 'Category\CategoryController@edit']); // * btn-modal-recover-category
-        Route::post('nova/categoria',                     ['as' => 'category.store',                'uses' => 'Category\CategoryController@store']); // btn-modal-new-category
-        Route::post('atualizar/categoria/{id?}',          ['as' => 'category.update',               'uses' => 'Category\CategoryController@update']);
-        Route::post('bloquear/categoria/{id?}',           ['as' => 'category.block',                'uses' => 'Category\CategoryController@block']);
-        Route::post('remover/categoria/{id?}',            ['as' => 'category.destroy',              'uses' => 'Category\CategoryController@destroy']);
-        Route::post('restaurar/categoria/{id?}',          ['as' => 'category.restore',              'uses' => 'Category\CategoryController@restore']);
-        Route::post('verificar/categoria/nome',           ['as' => 'category.check.name',           'uses' => 'Category\CheckController@checkName']);
-        Route::post('verificar/categoria/nome/diferente', ['as' => 'category.check.name.different', 'uses' => 'Category\CheckController@checkNameDifferent']);
+        Route::get ('lista/categorias',                   ['as' => 'category.list',                 'uses' => 'Inventory\InventoryCategoryController@list']);
+        Route::get ('lista/categorias/deletadas',         ['as' => 'category.list.deleted',         'uses' => 'Inventory\InventoryCategoryController@listDeleted']);
+        Route::get ('visualizar/categoria/{id?}',         ['as' => 'category.view',                 'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-view-category
+        Route::get ('editar/categoria/{id?}',             ['as' => 'category.edit',                 'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-edit-category
+        Route::get ('banir/categoria/{id?}',              ['as' => 'category.ban',                  'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-block-category
+        Route::get ('deletar/categoria/{id?}',            ['as' => 'category.delete',               'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-delete-category
+        Route::get ('recuperar/categoria/{id?}',          ['as' => 'category.recover',              'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-recover-category
+        Route::post('nova/categoria',                     ['as' => 'category.store',                'uses' => 'Inventory\InventoryCategoryController@store']); // btn-modal-new-category
+        Route::post('atualizar/categoria/{id?}',          ['as' => 'category.update',               'uses' => 'Inventory\InventoryCategoryController@update']);
+        Route::post('bloquear/categoria/{id?}',           ['as' => 'category.block',                'uses' => 'Inventory\InventoryCategoryController@block']);
+        Route::post('remover/categoria/{id?}',            ['as' => 'category.destroy',              'uses' => 'Inventory\InventoryCategoryController@destroy']);
+        Route::post('restaurar/categoria/{id?}',          ['as' => 'category.restore',              'uses' => 'Inventory\InventoryCategoryController@restore']);
+        Route::post('verificar/categoria/nome',           ['as' => 'category.check.name',           'uses' => 'Inventory\CheckController@checkName']);
+        Route::post('verificar/categoria/nome/diferente', ['as' => 'category.check.name.different', 'uses' => 'Inventory\CheckController@checkNameDifferent']);
         Route::get ('lista/inventarios',                  ['as' => 'inventory.list',                'uses' => 'Inventory\InventoryController@list']);
         Route::get ('lista/inventarios/deletados',        ['as' => 'inventory.list.deleted',        'uses' => 'Inventory\InventoryController@listDeleted']);
         Route::get ('visualizar/inventario/{id?}',        ['as' => 'inventory.view',                'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-view-inventory
