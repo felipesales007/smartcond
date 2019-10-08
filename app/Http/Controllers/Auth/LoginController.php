@@ -49,7 +49,7 @@ class LoginController extends Controller
         if (auth()->user()['email_verified_at'] && !auth()->user()['blocked'] && auth()->user()['blocked_at'] < date('Y-m-d')) {
             $user->update([
                 'last_login_at' => now()->toDateTimeString(),
-                'last_login_ip' => $request->getClientIp()
+                'last_login_ip' => request()->ip()
             ]);
         }
     }

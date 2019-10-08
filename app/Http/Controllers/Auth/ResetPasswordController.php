@@ -47,12 +47,16 @@ class ResetPasswordController extends Controller
             $user->forceFill([
                 'password'       => Hash::make($password),
                 'remember_token' => Str::random(60),
+                'last_login_at'  => now()->toDateTimeString(),
+                'last_login_ip'  => request()->ip()
             ])->save();
         } else {
             $user->forceFill([
                 'password'          => Hash::make($password),
                 'email_verified_at' => now()->toDateTimeString(),
                 'remember_token'    => Str::random(60),
+                'last_login_at'     => now()->toDateTimeString(),
+                'last_login_ip'     => request()->ip()
             ])->save();
         }
 
