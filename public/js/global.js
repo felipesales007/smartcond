@@ -934,23 +934,35 @@ function isNumber(e) {
 
 // retorna valor em pt-BR
 function to_real(value) {
-    if (value === '' || value === null || value === typeof 'undefined') {
-        return 0.00;
+    let number = value;
+
+    if (!isNumber(number.toString().replace('R$ ', '')) ||
+        !isNumber(number.toString().replace('R$', '')) ||
+        number === '' || number === null || number === typeof 'undefined') {
+        return '0,00'
     } else {
-        return value.toLocaleString('pt-br', { minimumFractionDigits: 2 });
+        number = number.toString().replace('R$', '');
+        number = number.toString().replace('R$ ', '');
+        number = parseFloat(number).toLocaleString('pt-br', { minimumFractionDigits: 2 });
+
+        return number;
     }
 }
 
 // retorna valor em USD
 function to_usd(value) {
-    if (value === '' || value === null || value === typeof 'undefined') {
-        return 0.00;
-    } else {
-        let number = value.replace('R$ ', '');
-        number     = number.replace(".", '');
-        number     = number.replace(',', '.');
+    let number = value;
 
-        return parseFloat(number);
+    if (!isNumber(number.toString().replace(".", '').replace(',', '.').replace('R$ ', '')) ||
+        !isNumber(number.toString().replace(".", '').replace(',', '.').replace('R$', '')) ||
+        number === '' || number === null || number === typeof 'undefined') {
+        return '0.00';
+    } else {
+        number = number.toString().replace('R$', '');
+        number = number.toString().replace('R$ ', '');
+        number = number.replace(".", '').replace(',', '.');
+
+        return number;
     }
 }
 

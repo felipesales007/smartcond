@@ -30,8 +30,9 @@ Route::post('login', ['as' => 'login',  'uses' => 'Auth\LoginController@login'])
 Route::post('sair',  ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 // grupo registro
-//Route::get ('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-//Route::post('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
+Route::get ('register',  ['as' => 'register', 'uses' => 'ErrorController@error404']);
+// Route::get ('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+// Route::post('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
 
 // grupo resetar senha
 Route::get ('resetar/senha',          ['as' => 'password.request', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);

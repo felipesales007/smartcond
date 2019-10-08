@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 
 class ErrorController extends Controller
 {
@@ -14,5 +16,15 @@ class ErrorController extends Controller
     public function remoteValidateDestroy()
     {
         return response()->json(['status' => 0]);
+    }
+
+    /**
+     * Retorna para página 404.
+     *
+     * @return Factory|View
+     */
+    public function error404()
+    {
+        return abort(404);
     }
 }

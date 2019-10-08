@@ -128,7 +128,7 @@ class Company extends Model
     }
 
     /**
-     * Retornar as empresa principal relacionada com o usuário no armazenamento.
+     * Retornar a empresa principal relacionada com o usuário no armazenamento.
      *
      * @return mixed
      */
