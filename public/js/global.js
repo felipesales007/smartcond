@@ -1191,4 +1191,4 @@ function eventExpanded(e, first, second) {
 }
 
 // máscara para valores em real
-$(".to-real").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+$(".to-real").maskMoney({prefix:'', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});

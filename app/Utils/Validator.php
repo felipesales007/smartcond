@@ -325,6 +325,6 @@ class Validator
      */
     public function decimal($attribute, $value)
     {
-        return preg_match("/^-?[0-9]+(?:\.[0-9]{1,2})?$/", $value);
+        return preg_match("/^((?:\d\.\d{3}\.|\d{1,3}\.)?\d{1,3},\d{2,2})$/", $value);
     }
 }

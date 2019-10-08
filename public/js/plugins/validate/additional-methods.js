@@ -934,6 +934,10 @@ $.validator.addMethod( "letterswithbasicpunc", function( value, element ) {
 	return this.optional( element ) || /^[a-z\-.,()'"\s]+$/i.test( value );
 }, "O campo deve ter letras ou pontuação apenas." );
 
+$.validator.addMethod( "decimal", function( value, element ) {
+	return this.optional( element ) || /^((?:\d\.\d{3}\.|\d{1,3}\.)?\d{1,3},\d{2,2})$/.test( value );
+}, "O campo deve ter um número decimal." );
+
 // Limit the number of files in a FileList.
 $.validator.addMethod( "maxfiles", function( value, element, param ) {
 	if ( this.optional( element ) ) {

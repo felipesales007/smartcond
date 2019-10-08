@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Inventory;
 
+use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Http\Requests\Inventory\Inventory\EditInventoryRequest;
 use App\Http\Requests\Inventory\Inventory\NewInventoryRequest;
 use App\Models\Company\Company;
 use App\Models\Inventory\Inventory;
@@ -133,7 +135,7 @@ class InventoryController extends Controller
             'model'                 => $request->model_new_inventory,
             'serial_number'         => $request->serial_number_new_inventory,
             'invoice'               => $request->invoice_new_inventory,
-            'value'                 => $request->value_new_inventory,
+            'value'                 => FormatHelpers::to_usd($request->value_new_inventory),
             'voltage_id'            => $request->voltage_id_new_inventory,
             'purchase_date'         => $request->purchase_date_new_inventory,
             'warranty_date'         => $request->warranty_date_new_inventory,
@@ -161,10 +163,10 @@ class InventoryController extends Controller
     /**
      * Atualizar dados especificado no armazenamento.
      *
-     * @param EditinventoryRequest $request
+     * @param EditInventoryRequest $request
      * @return JsonResponse
      */
-    public function update(EditinventoryRequest $request)
+    public function update(EditInventoryRequest $request)
     {
         $collection = inventory::where('company_id', '=', Company::id())->find($request->id_edit_inventory);
 

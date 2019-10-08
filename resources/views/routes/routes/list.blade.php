@@ -19,7 +19,9 @@
                         <div class="row align-items-center">
                             <!-- título -->
                             <div class="col-5 col-sm-6">
-                                <h3 class="text-uppercase text-monospace mb--1">{{ __('Lista de rotas') }}</h3>
+                                <h3 class="text-uppercase text-monospace mb--1">
+                                    <b>{{ __('Lista de rotas') }}</b>
+                                </h3>
                             </div>
                             <!-- botão -->
                             @if (app('router')->has('route.store') && \App\Models\Permission::buttonPermission('btn-modal-new-route') && \App\Models\Menu\MenuItem::getMenuItemDeleted('route.store'))

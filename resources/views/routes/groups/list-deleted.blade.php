@@ -17,7 +17,9 @@
                         <div class="row align-items-center">
                             <!-- título -->
                             <div class="col-5 col-sm-6">
-                                <h3 class="text-uppercase text-monospace mb--1">{{ __('Lista de grupos deletados') }}</h3>
+                                <h3 class="text-uppercase text-monospace mb--1">
+                                    <b>{{ __('Lista de grupos deletados') }}</b>
+                                </h3>
                             </div>
                             <!-- botão -->
                             @if (app('router')->has('group.store') && \App\Models\Permission::buttonPermission('btn-modal-new-group') && \App\Models\Menu\MenuItem::getMenuItemDeleted('group.store'))

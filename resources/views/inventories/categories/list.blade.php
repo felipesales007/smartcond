@@ -18,7 +18,9 @@
                         <div class="row align-items-center">
                             <!-- título -->
                             <div class="col-5 col-sm-6">
-                                <h3 class="text-uppercase text-monospace mb--1">{{ __('Lista de categorias') }}</h3>
+                                <h3 class="text-uppercase text-monospace mb--1">
+                                    <b>{{ __('Lista de categorias') }}</b>
+                                </h3>
                             </div>
                             <!-- botão -->
                             @if (app('router')->has('category.store') && \App\Models\Permission::buttonPermission('btn-modal-new-category') && \App\Models\Menu\MenuItem::getMenuItemDeleted('category.store'))

@@ -182,6 +182,7 @@ return [
         'id_edit_user_permission'              => 'id',
         'id_edit_department'                   => 'id',
         'id_edit_category'                     => 'id',
+        'id_edit_inventory'                    => 'id',
         'id_block_user'                        => 'id',
         'id_block_company'                     => 'id',
         'id_block_group'                       => 'id',
@@ -216,6 +217,7 @@ return [
         'name_new_menu_item'                   => 'nome',
         'name_new_department'                  => 'nome do departamento',
         'name_new_category'                    => 'nome da categoria',
+        'name_new_inventory'                   => 'nome do item',
         'name_edit_profile'                    => 'nome',
         'name_edit_user'                       => 'nome',
         'name_edit_company'                    => 'nome fantasia',
@@ -223,7 +225,8 @@ return [
         'name_edit_menu'                       => 'nome',
         'name_edit_menu_item'                  => 'nome',
         'name_edit_department'                 => 'nome do departamento',
-        'name_edit_category  '                 => 'nome da categoria',
+        'name_edit_category'                   => 'nome da categoria',
+        'name_edit_inventory'                  => 'nome da item',
         'name_delete_user'                     => 'nome',
         'name_delete_company'                  => 'nome',
         'name_delete_group'                    => 'nome',
@@ -307,6 +310,7 @@ return [
         'description_new_menu_item'            => 'descrição',
         'description_new_department'           => 'descrição',
         'description_new_category'             => 'descrição',
+        'description_new_inventory'            => 'descrição',
         'description_edit_profile'             => 'descrição',
         'description_edit_user'                => 'descrição',
         'description_edit_group'               => 'descrição',
@@ -315,12 +319,17 @@ return [
         'description_edit_menu_item'           => 'descrição',
         'description_edit_department'          => 'descrição',
         'description_edit_category'            => 'descrição',
+        'description_edit_inventory'           => 'descrição',
 
         'date'                                 => 'data',
 
         'birthday'                             => 'data de nascimento',
+        'purchase_date_new_inventory'          => 'data de compra',
+        'warranty_date_new_inventory'          => 'data da garantia',
         'birthday_edit_profile'                => 'data de nascimento',
         'birthday_edit_user'                   => 'data de nascimento',
+        'purchase_date_edit_inventory'         => 'data de compra',
+        'warranty_date_edit_inventory'         => 'data da garantia',
 
         'blocked_at'                           => 'data determinada',
         'blocked_at_block_user'                => 'data determinada',
@@ -492,6 +501,36 @@ return [
 
         'company_id_new_user'                  => 'empresa',
         'company_id_edit_user'                 => 'empresa',
+
+        'department_id_new_inventory'          => 'departamento',
+        'department_id_edit_inventory'         => 'departamento',
+
+        'inventory_category_id_new_inventory'  => 'categoria',
+        'inventory_category_id_efit_inventory' => 'categoria',
+
+        'inventory_state_id_new_inventory'     => 'estado do item',
+        'inventory_state_id_edit_inventory'    => 'estado do item',
+
+        'patrimonial_number_new_inventory'     => 'patrimônio',
+        'patrimonial_number_edit_inventory'    => 'patrimônio',
+
+        'brand_new_inventory'                  => 'marca',
+        'brand_edit_inventory'                 => 'marca',
+
+        'model_new_inventory'                  => 'modelo',
+        'model_edit_inventory'                 => 'modelo',
+
+        'serial_number_new_inventory'          => 'nº de série',
+        'serial_number_edit_inventory'         => 'nº de série',
+
+        'invoice_new_inventory'                => 'nº da nota fiscal',
+        'invoice_edit_inventory'               => 'nº da nota fiscal',
+
+        'value_new_inventory'                  => 'valor',
+        'value_edit_inventory'                 => 'valor',
+
+        'voltage_id_new_inventory'             => 'voltagem',
+        'voltage_id_edit_inventory'            => 'voltagem',
     ],
 
 ];

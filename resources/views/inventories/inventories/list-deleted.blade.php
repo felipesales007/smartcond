@@ -16,9 +16,9 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <!-- título -->
-                            <div class="col-5 col-sm-6">
-                                <h3 class="text-uppercase text-monospace mb--1">{{ __('Lista de departamentos deletado') }}</h3>
-                            </div>
+                            <h3 class="text-uppercase text-monospace mb--1">
+                                <b>{{ __('Lista de departamentos deletados') }}</b>
+                            </h3>
                             <!-- botão -->
                             @if (app('router')->has('department.store') && \App\Models\Permission::buttonPermission('btn-modal-new-department') && \App\Models\Menu\MenuItem::getMenuItemDeleted('department.store'))
                                 <div class="col-7 col-sm-6 text-right">

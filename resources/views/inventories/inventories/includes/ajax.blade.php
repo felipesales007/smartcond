@@ -188,11 +188,6 @@
             if ($('#form-new-inventory').valid()) {
                 scrollTop();
                 loader(1);
-
-                // conversão de valores
-                let real = $('#value-new-inventory').val();
-                $('#value-new-inventory').val(to_usd(real));
-
                 $.ajax({
                     data: $('#form-new-inventory').serialize(),
                     url: '{{ app('router')->has('inventory.store') ? route('inventory.store') : url('/') }}',
@@ -206,7 +201,6 @@
                         notify(data);
                     },
                     error: function (data) {
-                        $('#value-new-inventory').val(real);
                         $('a[data-dismiss="modal"]').removeClass('fe-hidden');
                         $('#btn-new-inventory').removeAttr('disabled', 'disabled').html('Tentar novamente');
                         $('#form-new-inventory').valid();

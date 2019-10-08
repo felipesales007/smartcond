@@ -171,4 +171,17 @@ class FormatHelpers
             return $route;
         }
     }
+
+    /**
+     * @param $value
+     * @return string
+     */
+    static function to_usd($value)
+    {
+        $formater = $value;
+        $formater = str_replace('.', '', $formater);
+        $formater = str_replace(',', '.', $formater);
+
+        return $formater;
+    }
 }

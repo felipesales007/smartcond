@@ -1,55 +1,113 @@
 <script>
     $(function () {
-        // novo departamento
-        $('#form-new-department').validate({
+        // novo inventário
+        $('#form-new-inventory').validate({
             rules: {
-                name_new_department: {
+                department_id_new_inventory: {
+                    required: true,
+                },
+                inventory_category_id_new_inventory: {
+                    required: true,
+                },
+                inventory_state_id_new_inventory: {
+                    required: true,
+                },
+                patrimonial_number_new_inventory: {
+                    maxlength: 191,
+                    number: true,
+                },
+                name_new_inventory: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
-                    remote: {
-                        url: '{{ app('router')->has('department.check.name') ? route('department.check.name') : route('remote.validate.destroy') }}',
-                        type: 'post',
-                        dataType: 'json',
-                        data: {
-                            name: function () {
-                                return $('#name-new-department').val();
-                            }
-                        },
-                        dataFilter: function (data) {
-                            let json = JSON.parse(data);
-
-                            if (!json) {
-                                return false;
-                            }
-
-                            if (json.align && json.from) {
-                                notifyValidate('Rota bloqueada para validação do nome do departamento.<br><small>Procure o Administrador para obter mais informações.</small>');
-                                return true;
-                            }
-
-                            if (json.status === 0) {
-                                notifyValidate('Rota excluída para validação do nome do departamento.<br><small>Procure o Administrador para obter mais informações.</small>');
-                                return true;
-                            }
-
-                            return true;
-                        },
-                    },
                 },
-                description_new_department: {
+                brand_new_inventory: {
+                    minlength: 3,
+                    maxlength: 191,
+                    lettersdigit: true,
+                },
+                model_new_inventory: {
+                    maxlength: 191,
+                },
+                serial_number_new_inventory: {
+                    maxlength: 191,
+                },
+                invoice_new_inventory: {
+                    maxlength: 191,
+                },
+                value_new_inventory: {
+                    maxlength: 191,
+                    decimal: true,
+                },
+                voltage_id_new_inventory: {
+                    required: true,
+                },
+                purchase_date_new_inventory: {
+                    minlength: 10,
+                    maxlength: 10,
+                    dateITA: true,
+                },
+                warranty_date_new_inventory: {
+                    minlength: 10,
+                    maxlength: 10,
+                    dateITA: true,
+                },
+                description_new_inventory: {
                     minlength: 10,
                     maxlength: 1500,
                 },
             },
             messages: {
-                name_new_department: {
-                    required:     'O campo nome do departamento é obrigatório.',
-                    minlength:    'O campo nome do departamento deve ter pelo menos {0} caracteres.',
-                    maxlength:    'O campo nome do departamento não pode ser superior a {0} caracteres.',
-                    lettersdigit: 'O campo nome do departamento deve ter somente letras, espaços e caracteres permitidos.',
-                    remote:       'O campo nome do departamento já está sendo utilizado.',
+                department_id_new_inventory: {
+                    required:     'O campo departamento é obrigatório.',
+                },
+                inventory_category_id_new_inventory: {
+                    required:     'O campo categoria é obrigatório.',
+                },
+                inventory_state_id_new_inventory: {
+                    required:     'O campo estado do item é obrigatório.',
+                },
+                patrimonial_number_new_inventory: {
+                    maxlength:    'O campo e-mail não pode ser superior a {0} caracteres.',
+                    number:       'O campo id deve ser um número.',
+                },
+                name_new_inventory: {
+                    required:     'O campo nome do item é obrigatório.',
+                    minlength:    'O campo nome do item deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo nome do item não pode ser superior a {0} caracteres.',
+                    lettersdigit: 'O campo nome do item deve ter somente letras, espaços e caracteres permitidos.',
+                },
+                brand_new_inventory: {
+                    minlength:    'O campo marca deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo marca não pode ser superior a {0} caracteres.',
+                    lettersdigit: 'O campo marca deve ter somente letras, espaços e caracteres permitidos.',
+                },
+                model_new_inventory: {
+                    maxlength:    'O campo modelo não pode ser superior a {0} caracteres.',
+                },
+                serial_number_new_inventory: {
+                    maxlength:    'O campo nº de série não pode ser superior a {0} caracteres.',
+                },
+                invoice_new_inventory: {
+                    maxlength:    'O campo nota fiscal não pode ser superior a {0} caracteres.',
+                },
+                value_new_inventory: {
+                    maxlength:    'O campo valor não pode ser superior a {0} caracteres.',
+                    decimal:      'O campo valor deve ter um número decimal.',
+                },
+                voltage_id_new_inventory: {
+                    required:     'O campo departamento é obrigatório.',
+                },
+                purchase_date_new_inventory: {
+                    minlength:    'O campo data de compra deve ter pelo menos 8 dígitos.',
+                    maxlength:    'O campo data de compra não pode ser superior a 8 dígitos.',
+                    dateITA:      'O campo data de compra não é uma data válida.',
+                },
+                warranty_date_new_inventory: {
+                    minlength:    'O campo data da garantia deve ter pelo menos 8 dígitos.',
+                    maxlength:    'O campo data da garantia não pode ser superior a 8 dígitos.',
+                    dateITA:      'O campo data da garantia não é uma data válida.',
                 },
                 description_new_department: {
                     minlength:    'O campo descrição deve ter pelo menos {0} caracteres.',
@@ -58,68 +116,124 @@
             }
         });
 
-        // editar departamento
-        $('#form-edit-department').validate({
+        // editar inventário
+        $('#form-edit-inventory').validate({
             rules: {
-                id_edit_department: {
+                id_edit_inventory: {
                     required: true,
                     maxlength: 20,
                     number: true,
                 },
-                name_edit_department: {
+                department_id_edit_inventory: {
+                    required: true,
+                },
+                inventory_category_id_edit_inventory: {
+                    required: true,
+                },
+                inventory_state_id_edit_inventory: {
+                    required: true,
+                },
+                patrimonial_number_edit_inventory: {
+                    maxlength: 191,
+                    number: true,
+                },
+                name_edit_inventory: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
-                    lettersdigit: true,remote: {
-                        url: '{{ app('router')->has('department.check.name.different') ? route('department.check.name.different') : route('remote.validate.destroy') }}',
-                        type: 'post',
-                        dataType: 'json',
-                        data: {
-                            id: function () {
-                                return $('#id-edit-department').val();
-                            },
-                            name: function () {
-                                return $('#name-edit-department').val();
-                            }
-                        },
-                        dataFilter: function (data) {
-                            let json = JSON.parse(data);
-
-                            if (!json) {
-                                return false;
-                            }
-
-                            if (json.align && json.from) {
-                                notifyValidate('Rota bloqueada para validação do nome do departamento.<br><small>Procure o Administrador para obter mais informações.</small>');
-                                return true;
-                            }
-
-                            if (json.status === 0) {
-                                notifyValidate('Rota excluída para validação do nome do departamento.<br><small>Procure o Administrador para obter mais informações.</small>');
-                                return true;
-                            }
-
-                            return true;
-                        },
-                    },
+                    lettersdigit: true,
                 },
-                description_edit_department: {
+                brand_edit_inventory: {
+                    minlength: 3,
+                    maxlength: 191,
+                    lettersdigit: true,
+                },
+                model_edit_inventory: {
+                    maxlength: 191,
+                },
+                serial_number_edit_inventory: {
+                    maxlength: 191,
+                },
+                invoice_edit_inventory: {
+                    maxlength: 191,
+                },
+                value_edit_inventory: {
+                    maxlength: 191,
+                    decimal: true,
+                },
+                voltage_id_edit_inventory: {
+                    required: true,
+                },
+                purchase_date_edit_inventory: {
+                    minlength: 10,
+                    maxlength: 10,
+                    dateITA: true,
+                },
+                warranty_date_edit_inventory: {
+                    minlength: 10,
+                    maxlength: 10,
+                    dateITA: true,
+                },
+                description_edit_inventory: {
                     minlength: 10,
                     maxlength: 1500,
                 },
             },
             messages: {
-                id_edit_department: {
+                id_edit_category: {
                     required:     'O campo id é obrigatório.',
                     maxlength:    'O campo id não pode ser superior a {0} dígitos.',
                     number:       'O campo id deve ser um número.',
                 },
-                name_edit_department: {
-                    required:     'O campo nome do departamento é obrigatório.',
-                    minlength:    'O campo nome do departamento deve ter pelo menos {0} caracteres.',
-                    maxlength:    'O campo nome do departamento não pode ser superior a {0} caracteres.',
-                    lettersdigit: 'O campo nome do departamento deve ter somente letras, espaços e caracteres permitidos.',
-                    remote:       'O campo nome do departamento já está sendo utilizado.',
+                department_id_edit_inventory: {
+                    required:     'O campo departamento é obrigatório.',
+                },
+                inventory_category_id_edit_inventory: {
+                    required:     'O campo categoria é obrigatório.',
+                },
+                inventory_state_id_edit_inventory: {
+                    required:     'O campo estado do item é obrigatório.',
+                },
+                patrimonial_number_edit_inventory: {
+                    maxlength:    'O campo e-mail não pode ser superior a {0} caracteres.',
+                    number:       'O campo id deve ser um número.',
+                },
+                name_edit_inventory: {
+                    required:     'O campo nome do item é obrigatório.',
+                    minlength:    'O campo nome do item deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo nome do item não pode ser superior a {0} caracteres.',
+                    lettersdigit: 'O campo nome do item deve ter somente letras, espaços e caracteres permitidos.',
+                },
+                brand_edit_inventory: {
+                    minlength:    'O campo marca deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo marca não pode ser superior a {0} caracteres.',
+                    lettersdigit: 'O campo marca deve ter somente letras, espaços e caracteres permitidos.',
+                },
+                model_edit_inventory: {
+                    maxlength:    'O campo modelo não pode ser superior a {0} caracteres.',
+                },
+                serial_number_edit_inventory: {
+                    maxlength:    'O campo nº de série não pode ser superior a {0} caracteres.',
+                },
+                invoice_edit_inventory: {
+                    maxlength:    'O campo nota fiscal não pode ser superior a {0} caracteres.',
+                },
+                value_edit_inventory: {
+                    maxlength:    'O campo valor não pode ser superior a {0} caracteres.',
+                    decimal:      'O campo valor deve ter um número decimal.',
+                },
+                voltage_id_edit_inventory: {
+                    required:     'O campo departamento é obrigatório.',
+                },
+                purchase_date_edit_inventory: {
+                    minlength:    'O campo data de compra deve ter pelo menos 8 dígitos.',
+                    maxlength:    'O campo data de compra não pode ser superior a 8 dígitos.',
+                    dateITA:      'O campo data de compra não é uma data válida.',
+                },
+                warranty_date_edit_inventory: {
+                    minlength:    'O campo data da garantia deve ter pelo menos 8 dígitos.',
+                    maxlength:    'O campo data da garantia não pode ser superior a 8 dígitos.',
+                    dateITA:      'O campo data da garantia não é uma data válida.',
                 },
                 description_edit_department: {
                     minlength:    'O campo descrição deve ter pelo menos {0} caracteres.',

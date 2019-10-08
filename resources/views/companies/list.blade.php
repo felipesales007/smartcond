@@ -16,7 +16,9 @@
                         <div class="row align-items-center">
                             <!-- título -->
                             <div class="col-5 col-sm-6">
-                                <h3 class="text-uppercase text-monospace mb--1">{{ __('Lista de empresas') }}</h3>
+                                <h3 class="text-uppercase text-monospace mb--1">
+                                    <b>{{ __('Lista de empresas') }}</b>
+                                </h3>
                             </div>
                             <!-- botão -->
                             @if (app('router')->has('company.store') && \App\Models\Permission::buttonPermission('btn-modal-new-company') && \App\Models\Menu\MenuItem::getMenuItemDeleted('company.store'))

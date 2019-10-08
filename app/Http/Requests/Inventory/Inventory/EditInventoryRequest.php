@@ -25,9 +25,20 @@ class EditInventoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_edit_department'          => ['required', 'max:20', 'alpha_num'],
-            'name_edit_department'        => ['required', 'min:3', 'max:191', 'alpha_digit', Rule::unique('departments', 'name')->ignore($this->id_edit_department)],
-            'description_edit_department' => ['nullable', 'min:10', 'max:1500'],
+            'department_id_edit_inventory'         => ['required'],
+            'inventory_category_id_edit_inventory' => ['required'],
+            'inventory_state_id_edit_inventory'    => ['required'],
+            'patrimonial_number_edit_inventory'    => ['nullable', 'max:191', 'alpha_num'],
+            'name_edit_inventory'                  => ['required', 'min:3', 'max:191', 'alpha_digit'],
+            'brand_edit_inventory'                 => ['nullable', 'min:3', 'max:191', 'alpha_digit'],
+            'model_edit_inventory'                 => ['nullable', 'max:191'],
+            'serial_number_edit_inventory'         => ['nullable', 'max:191'],
+            'invoice_edit_inventory'               => ['nullable', 'max:191'],
+            'value_edit_inventory'                 => ['nullable', 'max:191', 'decimal'],
+            'voltage_id_edit_inventory'            => ['required'],
+            'purchase_date_edit_inventory'         => ['nullable', 'min:10', 'max:10', 'date_format:d/m/Y'],
+            'warranty_date_edit_inventory'         => ['nullable', 'min:10', 'max:10', 'date_format:d/m/Y'],
+            'description_edit_inventory'           => ['nullable', 'min:10', 'max:1500'],
         ];
     }
 }
