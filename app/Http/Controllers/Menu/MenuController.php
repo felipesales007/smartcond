@@ -162,7 +162,7 @@ class MenuController extends Controller
             ->leftJoin('menu_items', 'menu_items.menu_id', 'menu.id')
             ->leftJoin('routes', 'routes.id', 'menu_items.route_id')
             ->leftJoin('groups', 'groups.id', 'routes.group_id')
-            ->where('menu.id', '=', $id)->first();
+            ->find($id);
 
         return response()->json($collection);
     }

@@ -23,7 +23,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="department-id-new-inventory">{{ __('Departamento') }}</label>
                                 <div class="input-group-none validate-department-id-new-inventory">
-                                    <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o departamento') }}">*</span>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o departamento') }}">*</span>
                                     {{ Form::select(
                                         "name",
                                         \App\Models\Department::getDepartmentsOptions(),
@@ -42,7 +42,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="inventory-category-id-new-inventory">{{ __('Categoria') }}</label>
                                 <div class="input-group-none validate-inventory-category-id-new-inventory">
-                                    <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a categoria') }}">*</span>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a categoria') }}">*</span>
                                     {{ Form::select(
                                         "name",
                                         \App\Models\Inventory\InventoryCategory::getInventoyCategoriesOptions(),
@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="inventory-state-id-new-inventory">{{ __('Estado do item') }}</label>
                                 <div class="input-group-none validate-inventory-state-id-new-inventory">
-                                    <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o estado do item') }}">*</span>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o estado do item') }}">*</span>
                                     {{ Form::select(
                                         "name",
                                         \App\Models\Inventory\InventoryState::getInventoyStatesOptions(),
@@ -216,7 +216,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="voltage-id-new-inventory">{{ __('Voltagem') }}</label>
                                 <div class="input-group-none validate-voltage-id-new-inventory">
-                                    <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a voltagem') }}">*</span>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a voltagem') }}">*</span>
                                     {{ Form::select(
                                         "name",
                                         \App\Models\Voltage::getVoltagesOptions(),

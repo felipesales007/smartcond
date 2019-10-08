@@ -174,7 +174,7 @@ class RouteController extends Controller
             ->select('routes.*', 'groups.name as group', 'route_options.name as type')
             ->leftJoin('groups', 'groups.id', '=', 'routes.group_id')
             ->leftJoin('route_options', 'route_options.id', '=', 'routes.route_option_id')
-            ->where('routes.id', '=', $id)->first();
+            ->find($id);
 
         return response()->json($collection);
     }

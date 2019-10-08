@@ -133,7 +133,7 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        $collection = Group::withTrashed()->where('id', '=', $id)->first();
+        $collection = Group::withTrashed()->find($id);
         return response()->json($collection);
     }
 

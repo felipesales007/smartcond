@@ -208,10 +208,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $collection = Company::withTrashed()
-            ->select('companies.*')
-            ->where('companies.id', '=', $id)
-            ->first();
+        $collection = Company::withTrashed()->find($id);
 
         return response()->json($collection);
     }
