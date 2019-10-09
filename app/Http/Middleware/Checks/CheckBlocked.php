@@ -27,23 +27,23 @@ class CheckBlocked
 
         // se logado verifica
         if (auth()->check()) {
-            // se a empresa deletada
+            // se o condomínio deletado
             if ($company->where('deleted_at', '=', null)->count() == 0) {
                 auth()->logout();
-                $message = 'A empresa relacionada com o seu usuário não existe mais no sistema.';
+                $message = 'O condomínio relacionado com o seu usuário não existe mais no sistema.';
 
                 return redirect()->route('login')->with('status', __($message));
             }
 
-            // se a empresa bloqueada
+            // se o condomínio bloqueado
             if ($company->where('blocked', '=', null)->count() == 0) {
                 auth()->logout();
-                $message = 'A empresa relacionada com o seu usuário está desativada.';
+                $message = 'O condomínio relacionado com o seu usuário está desativado.';
 
                 return redirect()->route('login')->with('status', __($message));
             }
 
-            // se a empresa bloqueada por tempo determinado
+            // se o condomínio bloqueado por tempo determinado
             if ($company->where('blocked_at', '=', null)->count() == 0) {
                 $days = array_values($company->where('blocked_at', '!=', null)->toArray());
                 $date = null;
@@ -60,7 +60,7 @@ class CheckBlocked
                     $time = now()->diffForHumans($date->addDays(1)->toDateString());
                     auth()->logout();
 
-                    $message = 'A empresa relacionada com o seu usuário foi bloqueada.<br>Será desbloqueada depois de ' . FormatHelpers::remove_last_word(' antes', $time) . '.';
+                    $message = 'O condomínio relacionado com o seu usuário foi bloqueado.<br>Será desbloqueado depois de ' . FormatHelpers::remove_last_word(' antes', $time) . '.';
 
                     return redirect()->route('login')->with('status', __($message));
                 }

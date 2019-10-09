@@ -72,7 +72,7 @@
                     remote:               'O campo e-mail já está sendo utilizado.',
                 },
                 company_id_new_user: {
-                    required:             'O campo empresa é obrigatório.',
+                    required:             'O campo condomínio é obrigatório.',
                 },/*
                 password_new_user: {
                     required:             'O campo senha é obrigatório.',
@@ -323,7 +323,7 @@
                     remote:               'O campo e-mail já está sendo utilizado.',
                 },
                 company_id_edit_user: {
-                    required:             'O campo empresa é obrigatório.',
+                    required:             'O campo condomínio é obrigatório.',
                 },
                 password_edit_user: {
                     minlength:            'O campo senha deve ter pelo menos {0} caracteres.',
@@ -369,8 +369,8 @@
                     maxlength:            'O campo profissão não pode ser superior a {0} caracteres.',
                 },
                 company_edit_user: {
-                    minlength:            'O campo empresa deve ter pelo menos {0} caracteres.',
-                    maxlength:            'O campo empresa não pode ser superior a {0} caracteres.',
+                    minlength:            'O campo condomínio deve ter pelo menos {0} caracteres.',
+                    maxlength:            'O campo condomínio não pode ser superior a {0} caracteres.',
                 },
                 postal_code_edit_user: {
                     minlength:            'O campo cep deve ter pelo menos 8 dígitos.',

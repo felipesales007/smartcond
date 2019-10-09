@@ -45,15 +45,15 @@
                         <form id="form-edit-profile" method="post" action="{{ app('router')->has('profile.update') ? route('profile.update') : url('/') }}" role="form" autocomplete="off" novalidate enctype="multipart/form-data">
                             @csrf
                             @if (isset($array[0]))
-                                <!-- empresa -->
-                                <a href="javascript:void(0)" id="event-edit-profile-company" class="h5 badge badge-primary mb-4 pl-2" data-toggle="collapse" data-target="#collapse-edit-profile-company" aria-expanded="false" aria-controls="collapse-edit-profile-company" onclick="eventExpanded(this, `ocultar empresa <i class='fas fa-chevron-up ml-1'></i>`, `visualizar empresa <i class='fas fa-chevron-down ml-1'></i>`);">
-                                    {{ __('visualizar empresa') }}
+                                <!-- condomínio -->
+                                <a href="javascript:void(0)" id="event-edit-profile-company" class="h5 badge badge-primary mb-4 pl-2" data-toggle="collapse" data-target="#collapse-edit-profile-company" aria-expanded="false" aria-controls="collapse-edit-profile-company" onclick="eventExpanded(this, `ocultar condomínio <i class='fas fa-chevron-up ml-1'></i>`, `visualizar condomínio <i class='fas fa-chevron-down ml-1'></i>`);">
+                                    {{ __('visualizar condomínio') }}
                                     <i class="fas fa-chevron-down ml-1"></i>
                                 </a>
-                                <!-- itens da empresa -->
+                                <!-- itens do condomínio -->
                                 <div class="accordion">
                                     <div id="collapse-edit-profile-company" class="collapse" aria-labelledby="heading-edit-profile-company" data-parent="#event-edit-profile-company">
-                                        <!-- accordion para visualização da empresa -->
+                                        <!-- accordion para visualização do condomínio -->
                                         <div id="accordion-edit-profile-company" class="accordion mb-3">
                                             <div class="scroll-user-view-company">
                                                 @foreach($array as $company)

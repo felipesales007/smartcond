@@ -93,51 +93,51 @@
             tableCompaniesDeleted.draw();
         });
 
-        // modal de nova empresa disponível
+        // modal de novo condomínio disponível
         let newCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-new-company').removeAttr('disabled', 'disabled').html('Criar empresa');
+            $('#btn-new-company').removeAttr('disabled', 'disabled').html('Criar condomínio');
             $('.fe-remove-preview-4').addClass('fe-hidden');
             $('.fe-img-preview-4').attr('src', '');
             $('#state-id-new-company').val('').trigger('change');
             $('#form-new-company').trigger('reset');
         };
 
-        // modal de editar empresa disponível
+        // modal de editar condomínio disponível
         let editCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-edit-company').removeAttr('disabled', 'disabled').html('Editar empresa');
+            $('#btn-edit-company').removeAttr('disabled', 'disabled').html('Editar condomínio');
             $('#state-id-edit-company').val('').trigger('change');
             $('#form-edit-company').trigger('reset');
         };
 
-        // modal de bloquear empresa disponível
+        // modal de bloquear condomínio disponível
         let blockCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-block-company').removeAttr('disabled', 'disabled').html('Bloquear empresa');
+            $('#btn-block-company').removeAttr('disabled', 'disabled').html('Bloquear condomínio');
             $('#form-block-company').trigger('reset');
         };
 
-        // modal de deletar empresa disponível
+        // modal de deletar condomínio disponível
         let deleteCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-delete-company').removeAttr('disabled', 'disabled').html('Excluir empresa');
+            $('#btn-delete-company').removeAttr('disabled', 'disabled').html('Excluir condomínio');
             $('#form-delete-company').trigger('reset');
         };
 
-        // modal de recuperar empresa disponível
+        // modal de recuperar condomínio disponível
         let recoverCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-recover-company').removeAttr('disabled', 'disabled').html('Recuperar empresa');
+            $('#btn-recover-company').removeAttr('disabled', 'disabled').html('Recuperar condomínio');
             $('#form-recover-company').trigger('reset');
         };
 
-        // modal de enviar e-mail para a empresa disponível
+        // modal de enviar e-mail para o condomínio disponível
         let sendEmailCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
@@ -145,7 +145,7 @@
             $('#form-send-email-company').trigger('reset');
         };
 
-        // visualizar empresa
+        // visualizar condomínio
         $(document).on('click', '.btn-modal-view-company', function () {
             let id = $(this).data('id');
 
@@ -293,14 +293,14 @@
             });
         });
 
-        // nova empresa
+        // novo condomínio
         $(document).on('click', '.btn-modal-new-company', function (e) {
             e.preventDefault();
             newCompanyAvailable();
             $('#modal-new-company').modal('show');
         });
 
-        // salvando empresa
+        // salvando condomínio
         $(document).on('click', '#btn-new-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -329,7 +329,7 @@
                         $('#form-new-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao criar uma nova empresa.');
+                        notifyError('Erro ao criar uma novo condomínio.');
                     }
                 });
             } else {
@@ -339,7 +339,7 @@
             }
         });
 
-        // editar empresa
+        // editar condomínio
         $(document).on('click', '.btn-modal-edit-company', function () {
             let id = $(this).data('id');
 
@@ -381,7 +381,7 @@
             });
         });
 
-        // editando empresa
+        // editando condomínio
         $(document).on('click', '#btn-edit-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -410,7 +410,7 @@
                         $('#form-edit-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao editar a empresa.');
+                        notifyError('Erro ao editar o condomínio.');
                     }
                 });
             } else {
@@ -420,7 +420,7 @@
             }
         });
 
-        // bloquear empresa
+        // bloquear condomínio
         $(document).on('click', '.btn-modal-block-company', function () {
             let id = $(this).data('id');
 
@@ -440,7 +440,7 @@
                     // input
                     $('#blocked-at-block-company').datepicker('setDate', timestamp_to_date_br(data.blocked_at));
                     if (data.blocked_at >= moment().format('YYYY-MM-DD')) {
-                        $('#blocked-at-block-company-text').html('Empresa <b class="text-warning">' + data.name + '</b> bloqueada até ' + timestamp_to_date_br(data.blocked_at));
+                        $('#blocked-at-block-company-text').html('Condomínio <b class="text-warning">' + data.name + '</b> bloqueado até ' + timestamp_to_date_br(data.blocked_at));
                     } else {
                         $('#blocked-at-block-company-text').html('Bloquear <b class="text-warning">' + data.name + '</b> até uma data determinada');
                     }
@@ -450,7 +450,7 @@
             });
         });
 
-        // bloqueando empresa
+        // bloqueando condomínio
         $(document).on('click', '#btn-block-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -477,7 +477,7 @@
                         $('#form-block-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao bloquear a empresa.');
+                        notifyError('Erro ao bloquear o condomínio.');
                     }
                 });
             } else {
@@ -487,7 +487,7 @@
             }
         });
 
-        // deletar empresa
+        // deletar condomínio
         $(document).on('click', '.btn-modal-delete-company', function () {
             let id = $(this).data('id');
 
@@ -506,7 +506,7 @@
             });
         });
 
-        // deletando empresa
+        // deletando condomínio
         $(document).on('click', '#btn-delete-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -533,7 +533,7 @@
                         $('#form-delete-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao deletar a empresa.');
+                        notifyError('Erro ao deletar o condomínio.');
                     }
                 });
             } else {
@@ -543,7 +543,7 @@
             }
         });
 
-        // recuperar empresa
+        // recuperar condomínio
         $(document).on('click', '.btn-modal-recover-company', function () {
             let id = $(this).data('id');
 
@@ -562,7 +562,7 @@
             });
         });
 
-        // recuperando empresa
+        // recuperando condomínio
         $(document).on('click', '#btn-recover-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -589,7 +589,7 @@
                         $('#form-recover-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao recuperar a empresa.');
+                        notifyError('Erro ao recuperar o condomínio.');
                     }
                 });
             } else {
@@ -599,7 +599,7 @@
             }
         });
 
-        // enviar e-mail para a empresa
+        // enviar e-mail para o condomínio
         $(document).on('click', '.btn-modal-send-email-company', function (e) {
             e.preventDefault();
             sendEmailCompanyAvailable();
@@ -615,7 +615,7 @@
             $('#modal-send-email-company').modal('show');
         });
 
-        // enviando e-mail para a empresa
+        // enviando e-mail para o condomínio
         $(document).on('click', '#btn-send-email-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -641,7 +641,7 @@
                         $('#form-send-email-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao enviar o e-mail para a empresa.');
+                        notifyError('Erro ao enviar o e-mail para o condomínio.');
                     }
                 });
             } else {

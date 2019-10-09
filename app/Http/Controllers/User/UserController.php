@@ -216,14 +216,14 @@ class UserController extends Controller
 
         $array = $request->all();
 
-        // verifica se há o array de empresa
+        // verifica se há o array de condomínio
         if (!in_array('company_id_new_user', $array)) {
             $array = Arr::add($array, 'company_id_new_user', []);
         }
 
         $array = Arr::sortRecursive($array['company_id_new_user']);
 
-        // adicona a empresa relacionada com o usuário
+        // adicona o condomínio relacionada com o usuário
         for ($i = 0; $i < count($array); $i++) {
             CompanyAccesses::create([
                 'company_id' => $array[$i],
@@ -302,7 +302,7 @@ class UserController extends Controller
             return response()->json($data);
         }
 
-        // atualização de acesso a empresa
+        // atualização de acesso ao condomínio
         $array = array_map('intval', $request->all()['company_id_edit_user']);
         $array = Arr::sortRecursive($array);
 
@@ -312,7 +312,7 @@ class UserController extends Controller
             ->pluck('company_id')
             ->toArray();
 
-        // se houver alteração no acesso de empresa
+        // se houver alteração no acesso do condomínio
         if ($array != $accesses) {
             // remove as permissões antigas
             CompanyAccesses::where('user_id', $request->id_edit_user)

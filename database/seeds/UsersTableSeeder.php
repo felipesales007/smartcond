@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'course'            => 'Sistemas de Informação',
             'college'           => 'Unifacs',
             'profession'        => 'Desenvolvedor Pleno',
-            'company'           => 'Minha Empresa',
+            'company'           => 'Meu Condomínio',
             'postal_code'       => '40010-000',
             'address'           => 'Avenida da França',
             'neighborhood'      => 'Comércio',

@@ -41,9 +41,9 @@ class DeleteCompany extends Notification
     {
         $mailMessage = new MailMessage();
 
-        $mailMessage->subject('Notificação de exclusão de empresa');
+        $mailMessage->subject('Notificação de exclusão do condomínio');
         $mailMessage->greeting('Olá,');
-        $mailMessage->line('Você está recebendo este e-mail porque foi realizado a <span class="text-warning">exclusão da empresa <b>' . $this->name . '</b></span> no sistema ' . config('app.name'));
+        $mailMessage->line('Você está recebendo este e-mail porque foi realizado a <span class="text-warning">exclusão do condomínio <b>' . $this->name . '</b></span> no sistema ' . config('app.name'));
         $mailMessage->action('Visualizar sistema', route('login'));
         $mailMessage->line('<span class="notice">Se você desconhece está ação, procure o administrador do sistema.</span>');
 

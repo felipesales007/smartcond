@@ -121,8 +121,8 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
         Route::post('verificar/rg/diferente',    ['as' => 'user.check.rg.different',    'uses' => 'User\CheckController@checkRgDifferent']);
     });
 
-    // grupo empresas
-    Route::group(['prefix' => 'empresas'], function () {
+    // grupo condomínios
+    Route::group(['prefix' => 'condominios'], function () {
         Route::get ('data',                      ['as' => 'company.data',                  'uses' => 'Company\DashboardController@data']);
         Route::get ('dashboard',                 ['as' => 'company.dashboard',             'uses' => 'Company\DashboardController@dashboard']);
         Route::get ('lista',                     ['as' => 'company.list',                  'uses' => 'Company\CompanyController@list']);

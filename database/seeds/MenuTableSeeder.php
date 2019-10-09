@@ -82,14 +82,14 @@ class MenuTableSeeder extends Seeder
             'updated_at'     => now()
         ]);
 
-        // grupo empresas
+        // grupo condomínios
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '6',
             'order'          => '4',
-            'name'           => 'Empresas',
+            'name'           => 'Condomínios',
             'icon'           => 'fas fa-hotel',
-            'description'    => 'Menu em collapse da página de configurações de empresas',
+            'description'    => 'Menu em collapse da página de configurações de condomínios',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
@@ -137,7 +137,7 @@ class MenuTableSeeder extends Seeder
             'order'          => '5',
             'name'           => 'Departamentos',
             'icon'           => 'far fa-building',
-            'description'    => 'Menu em collapse da página de departametos da empresa',
+            'description'    => 'Menu em collapse da página de departametos do condomínio',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
@@ -149,7 +149,7 @@ class MenuTableSeeder extends Seeder
             'order'          => '6',
             'name'           => 'Inventário',
             'icon'           => 'fas fa-dolly-flatbed',
-            'description'    => 'Menu em collapse da página de inventários da empresa',
+            'description'    => 'Menu em collapse da página de inventários do condomínio',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);

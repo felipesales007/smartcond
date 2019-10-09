@@ -4,7 +4,7 @@
             <!-- título -->
             <div class="modal-header">
                 <h5 id="modal-edit-company-label" class="modal-title text-uppercase text-monospace ml-1">
-                    <b>{{ __('Editar empresa') }}</b>
+                    <b>{{ __('Editar condomínio') }}</b>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -80,7 +80,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="name-edit-company" name="name_edit_company" class="form-control {{ $errors->has('name_edit_company') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome fantasia da empresa') }}" value="{{ old('name_edit_company') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-edit-company');" @if ($errors->has('name_edit_company')) autofocus @endif>
+                                    <input type="text" id="name-edit-company" name="name_edit_company" class="form-control {{ $errors->has('name_edit_company') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome fantasia do condomínio') }}" value="{{ old('name_edit_company') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-edit-company');" @if ($errors->has('name_edit_company')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_edit_company'))
@@ -99,7 +99,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="corporate-name-edit-company" name="corporate_name_edit_company" class="form-control {{ $errors->has('corporate_name_edit_company') ? 'is-invalid' : '' }}" placeholder="{{ __('Razão social da empresa') }}" value="{{ old('corporate_name_edit_company') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('corporate-name-edit-company');" @if ($errors->has('corporate_name_edit_company')) autofocus @endif>
+                                    <input type="text" id="corporate-name-edit-company" name="corporate_name_edit_company" class="form-control {{ $errors->has('corporate_name_edit_company') ? 'is-invalid' : '' }}" placeholder="{{ __('Razão social do condomínio') }}" value="{{ old('corporate_name_edit_company') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('corporate-name-edit-company');" @if ($errors->has('corporate_name_edit_company')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('corporate_name_edit_company'))
@@ -118,7 +118,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('cnpj válido de 14 dígitos') }}">*</span>
-                                    <input type="tel" id="cnpj-edit-company" name="cnpj_edit_company" class="form-control mask-cnpj {{ $errors->has('cnpj_edit_company') ? 'is-invalid' : '' }}" placeholder="{{ __('CNPJ da empresa') }}" value="{{ old('cnpj_edit_company') }}" minlength="18" maxlength="18" required @if ($errors->has('cnpj_edit_company')) autofocus @endif>
+                                    <input type="tel" id="cnpj-edit-company" name="cnpj_edit_company" class="form-control mask-cnpj {{ $errors->has('cnpj_edit_company') ? 'is-invalid' : '' }}" placeholder="{{ __('CNPJ do condomínio') }}" value="{{ old('cnpj_edit_company') }}" minlength="18" maxlength="18" required @if ($errors->has('cnpj_edit_company')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('cnpj_edit_company'))
@@ -329,14 +329,14 @@
                         </div>
                         <br>
                         <div class="mt--1">
-                            <small class="text-light">{{ __('ao realizar uma edição de empresa, se houver um endereço de e-mail cadastrado na empresa o e-mail irá receber uma notificação de e-mail com os dados alterados') }}</small>
+                            <small class="text-light">{{ __('ao realizar uma edição de condomínio, se houver um endereço de e-mail cadastrado no condomínio o e-mail irá receber uma notificação de e-mail com os dados alterados') }}</small>
                         </div>
                     </div>
                     <!-- botões -->
                     <div class="text-right float-right fe-form-footer">
                         <a href="javascript:void(0)" class="mr-4" data-dismiss="modal">{{ __('Cancelar') }}</a>
                         @if (app('router')->has('company.update') && \App\Models\Permission::routePermission('company.update'))
-                            <button type="submit" id="btn-edit-company" class="btn btn-outline-success mr-4">{{ __('Editar empresa') }}</button>
+                            <button type="submit" id="btn-edit-company" class="btn btn-outline-success mr-4">{{ __('Editar condomínio') }}</button>
                         @endif
                     </div>
                 </form>

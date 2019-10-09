@@ -34,8 +34,8 @@ class GroupsTableSeeder extends Seeder
         ]);
 
         Group::create([
-            'name'        => 'empresas',
-            'description' => 'Grupo das configurações de empresas',
+            'name'        => 'condominios',
+            'description' => 'Grupo das configurações de condomínios',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -63,7 +63,7 @@ class GroupsTableSeeder extends Seeder
 
         Group::create([
             'name'        => 'departamentos',
-            'description' => 'Grupo das configurações dos departamentos da empresa',
+            'description' => 'Grupo das configurações dos departamentos do condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

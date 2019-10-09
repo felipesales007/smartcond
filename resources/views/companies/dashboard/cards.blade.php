@@ -13,7 +13,7 @@
                             <div class="row">
                                 <!-- título -->
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Total de empresas</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Total de condomínios</h5>
                                     <span id="getCountCompanies" class="h2 font-weight-bold mb-0">{{ \App\Models\Company\Company::getCount() }}</span>
                                 </div>
                                 <!-- icone -->
@@ -40,7 +40,7 @@
                             <div class="row">
                                 <!-- título -->
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Empresas com e-mail</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Condomínio com e-mail</h5>
                                     <span id="getCountEmailCompanies" class="h2 font-weight-bold mb-0">{{ \App\Models\Company\Company::getCountEmail() }}</span>
                                 </div>
                                 <!-- icone -->
@@ -67,7 +67,7 @@
                             <div class="row">
                                 <!-- título -->
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Empresas com contato</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Condomínios com contato</h5>
                                     <span id="getCountContactCompanies" class="h2 font-weight-bold mb-0">{{ \App\Models\Company\Company::getCountContact() }}</span>
                                 </div>
                                 <!-- icone -->
@@ -94,7 +94,7 @@
                             <div class="row">
                                 <!-- título -->
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Empresas bloqueadas</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Condomínio bloqueadas</h5>
                                     <span id="getCountBlockedCompanies" class="h2 font-weight-bold mb-0">{{ \App\Models\Company\Company::getCountBlocked() }}</span>
                                 </div>
                                 <!-- icone -->

@@ -381,7 +381,7 @@
                     $('#created-at-view-user').html('criado em ' + timestamp_to_date_br(data.created_at) + ' - ' + moment(data.created_at, 'YYYY-MM-DD hh:mm').locale('pt-br').fromNow());
                     // atualizado
                     $('#last-update-at-view-user').html('atualizado em ' + timestamp_to_date_br(data.last_update_at));
-                    // empresa do usuário
+                    // condomínio do usuário
                     $('#scroll-user-view-company').html('');
                     $.each(data.companies, function(index, value){
                         let html = '';
@@ -400,7 +400,7 @@
                         html += '<div class="d-flex justify-content-between align-items-center">';
                         html += '<h4 class="mb-0 text-sm">' + value.company + '</h4>';
                         if (value.preferred) {
-                            html += '<i hidden class="fas fa-star text-yellow opacity-8" data-toggle="tooltip" data-placement="left" title="Empresa principal"></i>';
+                            html += '<i hidden class="fas fa-star text-yellow opacity-8" data-toggle="tooltip" data-placement="left" title="Condomínio principal"></i>';
                         }
                         html += '</div>';
                         html += '<p class="text-sm mb-0">' + value.cnpj + '</p>';

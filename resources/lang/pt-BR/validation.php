@@ -391,9 +391,9 @@ return [
         'college_edit_profile'                          => 'faculdade',
         'college_edit_user'                             => 'faculdade',
 
-        'company'                                       => 'empresa',
-        'company_edit_profile'                          => 'empresa',
-        'company_edit_user'                             => 'empresa',
+        'company'                                       => 'condomínio',
+        'company_edit_profile'                          => 'condomínio',
+        'company_edit_user'                             => 'condomínio',
 
         'profession'                                    => 'profissão',
         'profession_edit_profile'                       => 'profissão',
@@ -499,8 +499,8 @@ return [
 
         'permission_edit_user'                          => 'permissão',
 
-        'company_id_new_user'                           => 'empresa',
-        'company_id_edit_user'                          => 'empresa',
+        'company_id_new_user'                           => 'condomínio',
+        'company_id_edit_user'                          => 'condomínio',
 
         'department_id_new_inventory'                   => 'departamento',
         'department_id_edit_inventory'                  => 'departamento',

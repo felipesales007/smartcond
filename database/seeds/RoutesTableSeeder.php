@@ -353,7 +353,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'data',
             'route'           => 'company.data',
             'controller'      => 'Company\DashboardController@data',
-            'description'     => 'Dados do dashboard de empresas',
+            'description'     => 'Dados do dashboard de condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -365,7 +365,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'dashboard',
             'route'           => 'company.dashboard',
             'controller'      => 'Company\DashboardController@dashboard',
-            'description'     => 'Página do dashboard de empresas',
+            'description'     => 'Página do dashboard de condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -377,7 +377,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'lista',
             'route'           => 'company.list',
             'controller'      => 'Company\CompanyController@list',
-            'description'     => 'Página de listagem de empresas',
+            'description'     => 'Página de listagem de condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -389,7 +389,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'lista/deletados',
             'route'           => 'company.list.deleted',
             'controller'      => 'Company\CompanyController@listDeleted',
-            'description'     => 'Página de listagem de empresas deletadas',
+            'description'     => 'Página de listagem de condomínios deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -400,7 +400,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'visualizar/{id?}',
             'route'           => 'company.view',
             'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de visualizar os dados das empresas',
+            'description'     => 'Modal de visualizar os dados dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -411,7 +411,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'editar/{id?}',
             'route'           => 'company.edit',
             'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de editar os dados das empresas',
+            'description'     => 'Modal de editar os dados dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -422,7 +422,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'banir/{id?}',
             'route'           => 'company.ban',
             'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de bloquear e desbloquear as empresas',
+            'description'     => 'Modal de bloquear e desbloquear os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -433,7 +433,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'deletar/{id?}',
             'route'           => 'company.delete',
             'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de deletar as empresas',
+            'description'     => 'Modal de deletar os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -444,7 +444,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'recuperar/{id?}',
             'route'           => 'company.recover',
             'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de recuperar as empresas',
+            'description'     => 'Modal de recuperar os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -455,7 +455,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'novo',
             'route'           => 'company.store',
             'controller'      => 'Company\CompanyController@store',
-            'description'     => 'Modal de criar nova empresa',
+            'description'     => 'Modal de criar novo condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -466,7 +466,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'atualizar/{id?}',
             'route'           => 'company.update',
             'controller'      => 'Company\CompanyController@update',
-            'description'     => 'Atualizar os dados das empresas',
+            'description'     => 'Atualizar os dados dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -477,7 +477,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'bloquear/{id?}',
             'route'           => 'company.block',
             'controller'      => 'Company\CompanyController@block',
-            'description'     => 'Bloquear as empresas',
+            'description'     => 'Bloquear os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -488,7 +488,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'remover/{id?}',
             'route'           => 'company.destroy',
             'controller'      => 'Company\CompanyController@destroy',
-            'description'     => 'Deletar as empresas',
+            'description'     => 'Deletar os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -499,7 +499,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'restaurar/{id?}',
             'route'           => 'company.restore',
             'controller'      => 'Company\CompanyController@restore',
-            'description'     => 'Recuperar as empresas deletados',
+            'description'     => 'Recuperar os condomínios deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -510,7 +510,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'verificar/email',
             'route'           => 'company.check.email',
             'controller'      => 'Company\CheckController@checkEmail',
-            'description'     => 'Verificar o e-mail das empresas',
+            'description'     => 'Verificar o e-mail dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -521,7 +521,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'verificar/email/diferente',
             'route'           => 'company.check.email.different',
             'controller'      => 'Company\CheckController@checkEmailDifferent',
-            'description'     => 'Verificar o e-mail das empresas que seja diferente do e-mail da empresa em edição',
+            'description'     => 'Verificar o e-mail dos condomínios que seja diferente do e-mail do condomínio em edição',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -532,7 +532,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'verificar/cnpj',
             'route'           => 'company.check.cnpj',
             'controller'      => 'Company\CheckController@checkCnpj',
-            'description'     => 'Verificar o cnpj das empresas',
+            'description'     => 'Verificar o cnpj dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -543,7 +543,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'verificar/cnpj/diferente',
             'route'           => 'company.check.cnpj.different',
             'controller'      => 'Company\CheckController@checkCnpjDifferent',
-            'description'     => 'Verificar o cnpj das empresas que seja diferente do cnpj da empresa em edição',
+            'description'     => 'Verificar o cnpj dos condomínios que seja diferente do cnpj do condomínio em edição',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -565,7 +565,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'enviar/email',
             'route'           => 'company.send.email',
             'controller'      => 'Company\CompanyController@sendEmail',
-            'description'     => 'Enviar e-mail para a empresa',
+            'description'     => 'Enviar e-mail para o condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);

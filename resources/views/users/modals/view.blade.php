@@ -17,10 +17,10 @@
                         <i class="fas fa-chevron-down ml-1"></i>
                     </a>
                 </div>
-                <!-- visualizar empresa -->
+                <!-- visualizar condomínio -->
                 <div class="col-6 mb-4" onclick="collapseView(this);">
                     <a href="javascript:void(0)" id="event-view-user-company" class="h5 badge badge-primary pl-2" data-toggle="collapse" data-target="#collapse-view-user-company" aria-expanded="false" aria-controls="collapse-view-user-company">
-                        {{ __('visualizar empresa') }}
+                        {{ __('visualizar condomínio') }}
                         <i class="fas fa-chevron-down ml-1"></i>
                     </a>
                 </div>
@@ -40,12 +40,12 @@
                         <div id="photo-view-user" class="fe-img-center avatar-xl fe-avatar-border rounded-circle mt--5-9"></div>
                         <!-- nome e sobrenome -->
                         <div id="name-view-user" class="font-weight-bold fe-view-fix-name"></div>
-                        <!-- itens da empresa -->
+                        <!-- itens do condomínio -->
                         <div class="accordion">
                             <div id="collapse-view-user-company" class="collapse" aria-labelledby="heading-view-user-company" data-parent="#event-view-user-company">
                                 <!-- accordion para edições especiais -->
                                 <div id="accordion-view-user-company" class="accordion mt-3">
-                                    <!-- empresa do usuário via ajax -->
+                                    <!-- condomínio do usuário via ajax -->
                                     <div id="scroll-user-view-company" class="scroll-user-view-company"></div>
                                 </div>
                             </div>

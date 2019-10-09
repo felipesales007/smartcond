@@ -75,12 +75,12 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- empresa -->
+                        <!-- condomínio -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="company-id-edit-user">{{ __('Empresa') }}</label>
+                                <label class="form-control-label" for="company-id-edit-user">{{ __('Condomínio') }}</label>
                                 <div class="input-group-none validate-company-id-edit-user">
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a empresa') }}">*</span>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
                                     {{ Form::select(
                                         "name",
                                         \App\Models\Company\Company::getCompaniesOptions(),
@@ -456,10 +456,10 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <!-- empresa -->
+                                                        <!-- condomínio -->
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
-                                                                <label class="form-control-label" for="company-edit-user">{{ __('Empresa') }}</label>
+                                                                <label class="form-control-label" for="company-edit-user">{{ __('Condomínio') }}</label>
                                                                 <div class="input-group input-group-merge validate-company-edit-user">
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text {{ $errors->has('company_edit_user') ? 'is-invalid' : '' }}">
@@ -467,7 +467,7 @@
                                                                         </span>
                                                                     </div>
                                                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                                                    <input type="text" id="company-edit-user" name="company_edit_user" class="form-control {{ $errors->has('company_edit_user') ? 'is-invalid' : '' }}" placeholder="{{ __('Empresa') }}" value="{{ old('company_edit_user') }}" minlength="3" maxlength="191" onkeyup="letraMaiuscula('company-edit-user');" @if ($errors->has('company_edit_user')) autofocus @endif>
+                                                                    <input type="text" id="company-edit-user" name="company_edit_user" class="form-control {{ $errors->has('company_edit_user') ? 'is-invalid' : '' }}" placeholder="{{ __('Condomínio') }}" value="{{ old('company_edit_user') }}" minlength="3" maxlength="191" onkeyup="letraMaiuscula('company-edit-user');" @if ($errors->has('company_edit_user')) autofocus @endif>
                                                                 </div>
                                                                 <!-- alerta de erro -->
                                                                 @if ($errors->has('company_edit_user'))

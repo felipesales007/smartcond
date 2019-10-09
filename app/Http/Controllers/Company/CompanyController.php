@@ -192,9 +192,9 @@ class CompanyController extends Controller
                 $this->notify(new NewCompany($collection));
             }
 
-            $data = NotifyHelpers::success_top_center('fas fa-hotel', 'Empresa criada com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-hotel', 'Condomínio criado com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa criada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio criado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -269,9 +269,9 @@ class CompanyController extends Controller
                 }
             }
 
-            $data = NotifyHelpers::success_top_center('fas fa-check', 'Empresa alterada com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-check', 'Condomínio alterado com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa alterada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio alterado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -303,9 +303,9 @@ class CompanyController extends Controller
                     $this->notify(new BlockCompany($collection->name, $blocked));
                 }
 
-                $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Empresa bloqueada com sucesso.');
+                $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio bloqueado com sucesso.');
             } catch (Exception $e) {
-                $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa bloqueada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio bloqueado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
             }
         } else {
             if ($request->blocked_at_block_company) {
@@ -323,9 +323,9 @@ class CompanyController extends Controller
                         $this->notify(new BlockCompany($collection->name, $blocked));
                     }
 
-                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Empresa bloqueada até <b>' . $date . '</b>.');
+                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio bloqueado até <b>' . $date . '</b>.');
                 } catch (Exception $e) {
-                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa bloqueada até <b>' . $date . '</b>, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio bloqueado até <b>' . $date . '</b>, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
                 }
             } else {
                 // notificar
@@ -343,9 +343,9 @@ class CompanyController extends Controller
                         }
                     }
 
-                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Empresa desbloqueada com sucesso.');
+                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio desbloqueado com sucesso.');
                 } catch (Exception $e) {
-                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa desbloqueada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio desbloqueado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
                 }
             }
         }
@@ -371,9 +371,9 @@ class CompanyController extends Controller
             // enviar notificação por e-mail
             $this->notify(new DeleteCompany($request->name_delete_company));
 
-            $data = NotifyHelpers::danger_top_center('fas fa-trash-alt', 'Empresa deletada com sucesso.');
+            $data = NotifyHelpers::danger_top_center('fas fa-trash-alt', 'Condomínio deletado com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa deletada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio deletado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -482,9 +482,9 @@ class CompanyController extends Controller
             // enviar notificação por email
             $this->notify(new RecoverCompany($collection->name));
 
-            $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Empresa recuperada com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Condomínio recuperado com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa recuperada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio recuperado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);

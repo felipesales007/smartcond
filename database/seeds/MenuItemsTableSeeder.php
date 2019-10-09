@@ -180,13 +180,13 @@ class MenuItemsTableSeeder extends Seeder
             'updated_at'  => now()
         ]);
 
-        // grupo empresas
+        // grupo condomínios
         MenuItem::create([
             'menu_id'     => '7',
             'route_id'    => '32',
             'order'       => '1',
             'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de empresas',
+            'description' => 'Item do menu collapse de acesso a página de dashboard de condomínios',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -195,9 +195,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '40',
             'order'       => '2',
-            'name'        => 'Nova empresa',
+            'name'        => 'Novo condomínio',
             'button'      => 'btn-modal-new-company',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de empresa',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -206,8 +206,8 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '33',
             'order'       => '3',
-            'name'        => 'Lista de empresas',
-            'description' => 'Item do menu collapse de acesso a página de listagem de empresas',
+            'name'        => 'Lista de condomínios',
+            'description' => 'Item do menu collapse de acesso a página de listagem de condomínios',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -216,8 +216,8 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '34',
             'order'       => '4',
-            'name'        => 'Lista de empresas deletadas',
-            'description' => 'Item do menu collapse de acesso a página de listagem de empresas deletadas',
+            'name'        => 'Lista de condomínios deletados',
+            'description' => 'Item do menu collapse de acesso a página de listagem de condomínios deletados',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -226,10 +226,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '35',
             'order'       => '1',
-            'name'        => 'Visualizar empresa',
+            'name'        => 'Visualizar condomínio',
             'button'      => 'btn-modal-view-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas de acesso ao modal de visualização de empresa',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de visualização de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -238,10 +238,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '36',
             'order'       => '2',
-            'name'        => 'Editar empresa',
+            'name'        => 'Editar condomínio',
             'button'      => 'btn-modal-edit-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas de acesso ao modal de edição de empresa',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de edição de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -250,10 +250,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '37',
             'order'       => '3',
-            'name'        => 'Bloquear empresa',
+            'name'        => 'Bloquear condomínio',
             'button'      => 'btn-modal-block-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas de acesso ao modal de bloqueio de empresa',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de bloqueio de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -262,10 +262,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '38',
             'order'       => '4',
-            'name'        => 'Deletar empresa',
+            'name'        => 'Deletar condomínio',
             'button'      => 'btn-modal-delete-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas de acesso ao modal de exclusão de empresa',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de exclusão de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -274,10 +274,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '39',
             'order'       => '1',
-            'name'        => 'Recuperar empresa',
+            'name'        => 'Recuperar condomínio',
             'button'      => 'btn-modal-recover-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas deletadas de acesso ao modal de recuperação de empresa',
+            'description' => 'Item do menu da listagem de condomínios deletadas de acesso ao modal de recuperação de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -298,10 +298,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '7',
             'route_id'    => '50',
             'order'       => '1',
-            'name'        => 'Enviar e-mail para a empresa',
+            'name'        => 'Enviar e-mail para o condomínio',
             'button'      => 'btn-send-email-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem da empresa de acesso ao botão de envio de e-mail para a empresa',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao botão de envio de e-mail para o condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

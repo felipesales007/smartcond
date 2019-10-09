@@ -63,7 +63,7 @@ class ProfileController extends Controller
             ->where('company_id', '=', $request->company_edit_profile_id)
             ->first();
 
-        // se houver mudança na empresa principal atualiza a empresa princiapl
+        // se houver mudança no condomínio principal atualiza o condomínio princiapl
         if ($preferred['preferred'] == 0) {
             $accesses = CompanyAccesses::where('user_id', '=', $request->id_edit_profile)
                 ->orderBy('company_id', 'asc')

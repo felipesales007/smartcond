@@ -257,8 +257,8 @@
                     maxlength:            'O campo profissão não pode ser superior a {0} caracteres.',
                 },
                 company_edit_profile: {
-                    minlength:            'O campo empresa deve ter pelo menos {0} caracteres.',
-                    maxlength:            'O campo empresa não pode ser superior a {0} caracteres.',
+                    minlength:            'O campo condomínio deve ter pelo menos {0} caracteres.',
+                    maxlength:            'O campo condomínio não pode ser superior a {0} caracteres.',
                 },
                 postal_code_edit_profile: {
                     minlength:            'O campo cep deve ter pelo menos 8 dígitos.',

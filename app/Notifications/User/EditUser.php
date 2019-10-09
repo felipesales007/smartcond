@@ -200,17 +200,17 @@ class EditUser extends Notification
             $mailMessage->line('<span class="text-warning"><b>Profissão: </b>' . $this->original['profession'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
-        // empresa
+        // condomínio
         if (isset($this->collection->getChanges()['company']) && !$this->original['company']) {
-            $mailMessage->line('<b>Empresa: </b>' . $this->collection->company);
+            $mailMessage->line('<b>Condomínio: </b>' . $this->collection->company);
         }
 
         if (isset($this->collection->getChanges()['company']) && $this->original['company']) {
-            $mailMessage->line('<b>Empresa: </b>' . $this->collection->company . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['company'] . '</small>');
+            $mailMessage->line('<b>Condomínio: </b>' . $this->collection->company . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['company'] . '</small>');
         }
 
         if (!$this->collection->company && $this->original['company']) {
-            $mailMessage->line('<span class="text-warning"><b>Empresa: </b>' . $this->original['company'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
+            $mailMessage->line('<span class="text-warning"><b>Condomínio: </b>' . $this->original['company'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
         // cep

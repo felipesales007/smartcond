@@ -56,12 +56,12 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- empresa -->
+                        <!-- condomínio -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="company-id-new-user">{{ __('Empresa') }}</label>
+                                <label class="form-control-label" for="company-id-new-user">{{ __('Condomínio') }}</label>
                                 <div class="input-group-none validate-company-id-new-user">
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a empresa') }}">*</span>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
                                     {{ Form::select(
                                         "name",
                                         \App\Models\Company\Company::getCompaniesOptions(),

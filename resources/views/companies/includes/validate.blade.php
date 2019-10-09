@@ -1,6 +1,6 @@
 <script>
     $(function () {
-        // nova empresa
+        // novo condomínio
         $('#form-new-company').validate({
             rules: {
                 image_4: {
@@ -202,7 +202,7 @@
             }
         });
 
-        // editar empresa
+        // editar condomínio
         $('#form-edit-company').validate({
             rules: {
                 id_edit_company: {
@@ -420,7 +420,7 @@
             }
         });
 
-        // bloquear empresa
+        // bloquear condomínio
         $('#form-block-company').validate({
             rules: {
                 id_block_company: {
@@ -448,7 +448,7 @@
             }
         });
 
-        // deletar empresa
+        // deletar condomínio
         $('#form-delete-company').validate({
             rules: {
                 id_delete_company: {
@@ -492,7 +492,7 @@
             }
         });
 
-        // recuperar empresa
+        // recuperar condomínio
         $('#form-recover-company').validate({
             rules: {
                 id_recover_company: {
@@ -536,7 +536,7 @@
             }
         });
 
-        // enviar e-mail para a empresa
+        // enviar e-mail para o condomínio
         $('#form-send-email-company').validate({
             rules: {
                 name_send_email_company: {

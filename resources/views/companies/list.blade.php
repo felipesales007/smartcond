@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('Lista de empresas'))
+@section('title', __('Lista de condomínios'))
 
 @section('content')
 
@@ -17,7 +17,7 @@
                             <!-- título -->
                             <div class="col-5 col-sm-6">
                                 <h3 class="text-uppercase text-monospace mb--1">
-                                    <b>{{ __('Lista de empresas') }}</b>
+                                    <b>{{ __('Lista de condomínios') }}</b>
                                 </h3>
                             </div>
                             <!-- botão -->
@@ -27,7 +27,7 @@
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>
-                                        <span class="nav-link-inner--text">{{ __('Adicionar empresa') }}</span>
+                                        <span class="nav-link-inner--text">{{ __('Adicionar condomínio') }}</span>
                                     </a>
                                 </div>
                             @endif

@@ -17,10 +17,10 @@
         @endif
     </div>
 </div>
-<!-- empresa -->
+<!-- condomínio -->
 <div class="col-lg-6">
     <div class="form-group">
-        <label class="form-control-label" for="company-edit-profile">{{ __('Empresa') }}</label>
+        <label class="form-control-label" for="company-edit-profile">{{ __('Condomínio') }}</label>
         <div class="input-group input-group-merge validate-company-edit-profile">
             <div class="input-group-prepend">
                 <span class="input-group-text {{ $errors->has('company_edit_profile') ? 'is-invalid' : '' }}">
@@ -28,7 +28,7 @@
                 </span>
             </div>
             <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-            <input type="text" id="company-edit-profile" name="company_edit_profile" class="form-control {{ $errors->has('company_edit_profile') ? 'is-invalid' : '' }}" placeholder="{{ __('Empresa') }}" value="{{ old('company_edit_profile', auth()->user()['company']) }}" minlength="3" maxlength="191" onkeyup="letraMaiuscula('company-edit-profile');" @if ($errors->has('company_edit_profile')) autofocus @endif>
+            <input type="text" id="company-edit-profile" name="company_edit_profile" class="form-control {{ $errors->has('company_edit_profile') ? 'is-invalid' : '' }}" placeholder="{{ __('Condomínio') }}" value="{{ old('company_edit_profile', auth()->user()['company']) }}" minlength="3" maxlength="191" onkeyup="letraMaiuscula('company-edit-profile');" @if ($errors->has('company_edit_profile')) autofocus @endif>
         </div>
         <!-- alerta de erro -->
         @if ($errors->has('company_edit_profile'))
