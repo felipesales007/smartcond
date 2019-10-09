@@ -25,9 +25,9 @@ class EditInventoryCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_edit_category'          => ['required', 'max:20', 'alpha_num'],
-            'name_edit_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', Rule::unique('inventory_categories', 'name')->ignore($this->id_edit_category)],
-            'description_edit_category' => ['nullable', 'min:10', 'max:1500'],
+            'id_edit_inventory_category'          => ['required', 'max:20', 'alpha_num'],
+            'name_edit_inventory_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', Rule::unique('inventory_categories', 'name')->ignore($this->id_edit_inventory_category)],
+            'description_edit_inventory_category' => ['nullable', 'min:10', 'max:1500'],
         ];
     }
 }

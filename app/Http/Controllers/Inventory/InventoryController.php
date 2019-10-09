@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Inventory;
 
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Http\Requests\Inventory\Inventory\BlockInventoryRequest;
+use App\Http\Requests\Inventory\Inventory\DeleteInventoryRequest;
 use App\Http\Requests\Inventory\Inventory\EditInventoryRequest;
 use App\Http\Requests\Inventory\Inventory\NewInventoryRequest;
+use App\Http\Requests\Inventory\Inventory\RecoverInventoryRequest;
 use App\Models\Company\Company;
 use App\Models\Inventory\Inventory;
 use App\Models\Menu\MenuItem;
@@ -184,10 +187,10 @@ class InventoryController extends Controller
     /**
      * Bloquear o recurso especificado no armazenamento.
      *
-     * @param BlockinventoryRequest $request
+     * @param BlockInventoryRequest $request
      * @return JsonResponse
      */
-    public function block(BlockinventoryRequest $request)
+    public function block(BlockInventoryRequest $request)
     {
         $collection = inventory::where('company_id', '=', Company::id())->find($request->id_block_inventory);
 
@@ -213,10 +216,10 @@ class InventoryController extends Controller
     /**
      * Remover o recurso especificado do armazenamento.
      *
-     * @param DeleteinventoryRequest $request
+     * @param DeleteInventoryRequest $request
      * @return bool|JsonResponse
      */
-    public function destroy(DeleteinventoryRequest $request)
+    public function destroy(DeleteInventoryRequest $request)
     {
         $collection = inventory::where('company_id', '=', Company::id())->find($request->id_delete_inventory);
         $collection->delete();
@@ -289,16 +292,16 @@ class InventoryController extends Controller
                 ->toJson();
         }
 
-        return view('inventorys.list-deleted');
+        return view('inventories.inventories.list-deleted');
     }
 
     /**
      * Restaurar o recurso especificado no armazenamento.
      *
-     * @param RecoverinventoryRequest $request
+     * @param RecoverInventoryRequest $request
      * @return JsonResponse
      */
-    public function restore(RecoverinventoryRequest $request)
+    public function restore(RecoverInventoryRequest $request)
     {
         inventory::onlyTrashed()->where('company_id', '=', Company::id())->find($request->id_recover_inventory)->restore();
 

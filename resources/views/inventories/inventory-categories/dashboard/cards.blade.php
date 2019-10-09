@@ -62,4 +62,4 @@
     </div>
 </div>
 
-@include('inventories.categories.includes.charts')
+@include('inventories.inventory-categories.includes.charts')

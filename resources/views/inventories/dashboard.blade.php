@@ -8,7 +8,7 @@
             @include('inventories.inventories.dashboard.cards')
         </div>
         <div class="mt-xl--3">
-            @include('inventories.categories.dashboard.cards')
+            @include('inventories.inventory-categories.dashboard.cards')
         </div>
     </div>
 

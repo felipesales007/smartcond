@@ -24,9 +24,9 @@ class RecoverInventoryCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_recover_category'                => ['required', 'max:20', 'alpha_num'],
-            'name_recover_category'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
-            'name_confirmation_recover_category' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_recover_category'],
+            'id_recover_inventory_category'                => ['required', 'max:20', 'alpha_num'],
+            'name_recover_inventory_category'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
+            'name_confirmation_recover_inventory_category' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_recover_inventory_category'],
         ];
     }
 }

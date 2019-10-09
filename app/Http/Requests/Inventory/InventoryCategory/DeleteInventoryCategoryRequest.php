@@ -24,9 +24,9 @@ class DeleteInventoryCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_delete_category'                => ['required', 'max:20', 'alpha_num'],
-            'name_delete_category'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
-            'name_confirmation_delete_category' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_delete_category'],
+            'id_delete_inventory_category'                => ['required', 'max:20', 'alpha_num'],
+            'name_delete_inventory_category'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
+            'name_confirmation_delete_inventory_category' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_delete_inventory_category'],
         ];
     }
 }

@@ -54,9 +54,9 @@ class InventoryCategoryController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // visualizar
-                    if (app('router')->has('category.view') && MenuItem::getMenuItemDeleted('category.view')['list']) {
-                        if (Permission::buttonPermission('btn-modal-view-category') && !MenuItem::getMenuItemBlocked('category.view')['list']) {
-                            $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-category" title="Visualizar"><i class="far fa-eye"></i></a>';
+                    if (app('router')->has('inventory.category.view') && MenuItem::getMenuItemDeleted('inventory.category.view')['list']) {
+                        if (Permission::buttonPermission('btn-modal-view-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.view')['list']) {
+                            $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-inventory-category" title="Visualizar"><i class="far fa-eye"></i></a>';
                         } else {
                             $btn = '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-primary opacity-2 disabled"><i class="far fa-eye" title="Visualizar"></i></a>';
                         }
@@ -65,21 +65,21 @@ class InventoryCategoryController extends Controller
                     }
 
                     // editar
-                    if (app('router')->has('category.edit') && MenuItem::getMenuItemDeleted('category.edit')['list']) {
-                        if (Permission::buttonPermission('btn-modal-edit-category') && !MenuItem::getMenuItemBlocked('category.edit')['list']) {
-                            $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-category" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
+                    if (app('router')->has('inventory.category.edit') && MenuItem::getMenuItemDeleted('inventory.category.edit')['list']) {
+                        if (Permission::buttonPermission('btn-modal-edit-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.edit')['list']) {
+                            $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-inventory-category" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
                         }
                     }
 
                     // bloquear
-                    if (app('router')->has('category.ban') && MenuItem::getMenuItemDeleted('category.ban')['list']) {
-                        if (Permission::buttonPermission('btn-modal-block-category') && !MenuItem::getMenuItemBlocked('category.ban')['list']) {
+                    if (app('router')->has('inventory.category.ban') && MenuItem::getMenuItemDeleted('inventory.category.ban')['list']) {
+                        if (Permission::buttonPermission('btn-modal-block-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.ban')['list']) {
                             if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-category" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-inventory-category" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             } else {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-category" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-inventory-category" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
                         } else {
                             if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
@@ -91,9 +91,9 @@ class InventoryCategoryController extends Controller
                     }
 
                     // excluir
-                    if (app('router')->has('category.delete') && MenuItem::getMenuItemDeleted('category.delete')['list']) {
-                        if (Permission::buttonPermission('btn-modal-delete-category') && !MenuItem::getMenuItemBlocked('category.delete')['list']) {
-                            $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-danger btn-modal-delete-category" title="Excluir"><i class="far fa-trash-alt"></i></a>';
+                    if (app('router')->has('inventory.category.delete') && MenuItem::getMenuItemDeleted('inventory.category.delete')['list']) {
+                        if (Permission::buttonPermission('btn-modal-delete-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.delete')['list']) {
+                            $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-danger btn-modal-delete-inventory-category" title="Excluir"><i class="far fa-trash-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-danger opacity-2 disabled" title="Excluir"><i class="far fa-trash-alt"></i></a>';
                         }
@@ -105,7 +105,7 @@ class InventoryCategoryController extends Controller
                 ->toJson();
         }
 
-        return view('inventories.categories.list');
+        return view('inventories.inventory-categories.list');
     }
 
     /**
@@ -119,8 +119,8 @@ class InventoryCategoryController extends Controller
         // dados
         InventoryCategory::create([
             'company_id'  => Company::id(),
-            'name'        => $request->name_new_category,
-            'description' => $request->description_new_category,
+            'name'        => $request->name_new_inventory_category,
+            'description' => $request->description_new_inventory_category,
         ]);
 
         $data = NotifyHelpers::success_top_center('fas fa-boxes', 'Categoria criada com sucesso.');
@@ -149,12 +149,12 @@ class InventoryCategoryController extends Controller
      */
     public function update(EditInventoryCategoryRequest $request)
     {
-        $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_edit_category);
+        $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_edit_inventory_category);
 
         // dados
         $collection->fill([
-            'name'        => $request->name_edit_category,
-            'description' => $request->description_edit_category,
+            'name'        => $request->name_edit_inventory_category,
+            'description' => $request->description_edit_inventory_category,
         ])->save();
 
         $data = NotifyHelpers::success_top_center('fas fa-check', 'Categoria alterada com sucesso.');
@@ -170,9 +170,9 @@ class InventoryCategoryController extends Controller
      */
     public function block(BlockInventoryCategoryRequest $request)
     {
-        $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_block_category);
+        $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_block_inventory_category);
 
-        if ($request->blocked_block_category) {
+        if ($request->blocked_block_inventory_category) {
             if (!$collection->blocked) {
                 $collection->blocked = now()->toDateTimeString();
                 $collection->save();
@@ -199,7 +199,7 @@ class InventoryCategoryController extends Controller
      */
     public function destroy(DeleteInventoryCategoryRequest $request)
     {
-        $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_delete_category);
+        $collection = InventoryCategory::where('company_id', '=', Company::id())->find($request->id_delete_inventory_category);
         $collection->delete();
 
         // notificar
@@ -245,9 +245,9 @@ class InventoryCategoryController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // visualizar
-                    if (app('router')->has('category.view') && MenuItem::getMenuItemDeleted('category.view')['list']) {
-                        if (Permission::buttonPermission('btn-modal-view-category') && !MenuItem::getMenuItemBlocked('category.view')['list']) {
-                            $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-category" title="Visualizar"><i class="far fa-eye"></i></a>';
+                    if (app('router')->has('inventory.category.view') && MenuItem::getMenuItemDeleted('inventory.category.view')['list']) {
+                        if (Permission::buttonPermission('btn-modal-view-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.view')['list']) {
+                            $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-inventory-category" title="Visualizar"><i class="far fa-eye"></i></a>';
                         } else {
                             $btn = '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-primary opacity-2 disabled" title="Visualizar"><i class="far fa-eye"></i></a>';
                         }
@@ -256,9 +256,9 @@ class InventoryCategoryController extends Controller
                     }
 
                     // recuperar
-                    if (app('router')->has('category.recover') && MenuItem::getMenuItemDeleted('category.recover')['list']) {
-                        if (Permission::buttonPermission('btn-modal-recover-category') && !MenuItem::getMenuItemBlocked('category.recover')['list']) {
-                            $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-recover-category" title="Recuperar"><i class="fas fa-recycle"></i></a>';
+                    if (app('router')->has('inventory.category.recover') && MenuItem::getMenuItemDeleted('inventory.category.recover')['list']) {
+                        if (Permission::buttonPermission('btn-modal-recover-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.recover')['list']) {
+                            $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-recover-inventory-category" title="Recuperar"><i class="fas fa-recycle"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Recuperar"><i class="fas fa-recycle"></i></a>';
                         }
@@ -270,7 +270,7 @@ class InventoryCategoryController extends Controller
                 ->toJson();
         }
 
-        return view('inventories.categories.list-deleted');
+        return view('inventories.inventory-categories.list-deleted');
     }
 
     /**
@@ -281,7 +281,7 @@ class InventoryCategoryController extends Controller
      */
     public function restore(RecoverInventoryCategoryRequest $request)
     {
-        InventoryCategory::onlyTrashed()->where('company_id', '=', Company::id())->find($request->id_recover_category)->restore();
+        InventoryCategory::onlyTrashed()->where('company_id', '=', Company::id())->find($request->id_recover_inventory_category)->restore();
 
         // notificar
         $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Categoria recuperada com sucesso.');

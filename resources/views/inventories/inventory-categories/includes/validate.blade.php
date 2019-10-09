@@ -1,20 +1,20 @@
 <script>
     $(function () {
         // novo departamento
-        $('#form-new-category').validate({
+        $('#form-new-inventory-category').validate({
             rules: {
-                name_new_category: {
+                name_new_inventory_category: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
                     remote: {
-                        url: '{{ app('router')->has('category.check.name') ? route('category.check.name') : route('remote.validate.destroy') }}',
+                        url: '{{ app('router')->has('inventory.category.check.name') ? route('inventory.category.check.name') : route('remote.validate.destroy') }}',
                         type: 'post',
                         dataType: 'json',
                         data: {
                             name: function () {
-                                return $('#name-new-category').val();
+                                return $('#name-new-inventory-category').val();
                             }
                         },
                         dataFilter: function (data) {
@@ -38,20 +38,20 @@
                         },
                     },
                 },
-                description_new_category: {
+                description_new_inventory_category: {
                     minlength: 10,
                     maxlength: 1500,
                 },
             },
             messages: {
-                name_new_category: {
+                name_new_inventory_category: {
                     required:     'O campo nome da categoria é obrigatório.',
                     minlength:    'O campo nome da categoria deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo nome da categoria não pode ser superior a {0} caracteres.',
                     lettersdigit: 'O campo nome da categoria deve ter somente letras, espaços e caracteres permitidos.',
                     remote:       'O campo nome da categoria já está sendo utilizado.',
                 },
-                description_new_category: {
+                description_new_inventory_category: {
                     minlength:    'O campo descrição deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo descrição não pode ser superior a {0} caracteres.',
                 },
@@ -59,27 +59,28 @@
         });
 
         // editar departamento
-        $('#form-edit-category').validate({
+        $('#form-edit-inventory-category').validate({
             rules: {
-                id_edit_category: {
+                id_edit_inventory_category: {
                     required: true,
                     maxlength: 20,
                     number: true,
                 },
-                name_edit_category: {
+                name_edit_inventory_category: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
-                    lettersdigit: true,remote: {
-                        url: '{{ app('router')->has('category.check.name.different') ? route('category.check.name.different') : route('remote.validate.destroy') }}',
+                    lettersdigit: true,
+                    remote: {
+                        url: '{{ app('router')->has('inventory.category.check.name.different') ? route('inventory.category.check.name.different') : route('remote.validate.destroy') }}',
                         type: 'post',
                         dataType: 'json',
                         data: {
                             id: function () {
-                                return $('#id-edit-category').val();
+                                return $('#id-edit-inventory-category').val();
                             },
                             name: function () {
-                                return $('#name-edit-category').val();
+                                return $('#name-edit-inventory-category').val();
                             }
                         },
                         dataFilter: function (data) {
@@ -103,25 +104,25 @@
                         },
                     },
                 },
-                description_edit_category: {
+                description_edit_inventory_category: {
                     minlength: 10,
                     maxlength: 1500,
                 },
             },
             messages: {
-                id_edit_category: {
+                id_edit_inventory_category: {
                     required:     'O campo id é obrigatório.',
                     maxlength:    'O campo id não pode ser superior a {0} dígitos.',
                     number:       'O campo id deve ser um número.',
                 },
-                name_edit_category: {
+                name_edit_inventory_category: {
                     required:     'O campo nome da categoria é obrigatório.',
                     minlength:    'O campo nome da categoria deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo nome da categoria não pode ser superior a {0} caracteres.',
                     lettersdigit: 'O campo nome da categoria deve ter somente letras, espaços e caracteres permitidos.',
                     remote:       'O campo nome da categoria já está sendo utilizado.',
                 },
-                description_edit_category: {
+                description_edit_inventory_category: {
                     minlength:    'O campo descrição deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo descrição não pode ser superior a {0} caracteres.',
                 },
@@ -129,16 +130,16 @@
         });
 
         // bloquear departamento
-        $('#form-block-category').validate({
+        $('#form-block-inventory-category').validate({
             rules: {
-                id_block_category: {
+                id_block_inventory_category: {
                     required: true,
                     maxlength: 20,
                     number: true,
                 },
             },
             messages: {
-                id_block_category: {
+                id_block_inventory_category: {
                     required:  'O campo id é obrigatório.',
                     maxlength: 'O campo id não pode ser superior a {0} dígitos.',
                     number:    'O campo id deve ser um número.',
@@ -147,40 +148,40 @@
         });
 
         // deletar departamento
-        $('#form-delete-category').validate({
+        $('#form-delete-inventory-category').validate({
             rules: {
-                id_delete_category: {
+                id_delete_inventory_category: {
                     required: true,
                     maxlength: 20,
                     number: true,
                 },
-                name_delete_category: {
+                name_delete_inventory_category: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
                 },
-                name_confirmation_delete_category: {
+                name_confirmation_delete_inventory_category: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
-                    equalTo: '#name-delete-category',
+                    equalTo: '#name-delete-inventory-category',
                 },
             },
             messages: {
-                id_delete_category: {
+                id_delete_inventory_category: {
                     required:     'O campo id é obrigatório.',
                     maxlength:    'O campo id não pode ser superior a {0} dígitos.',
                     number:       'O campo id deve ser um número.',
                 },
-                name_delete_category: {
+                name_delete_inventory_category: {
                     required:     'O campo nome da categoria é obrigatório.',
                     minlength:    'O campo nome da categoria deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo nome da categoria não pode ser superior a {0} caracteres.',
                     lettersdigit: 'O campo nome da categoria deve ter somente letras, espaços e caracteres permitidos.',
                 },
-                name_confirmation_delete_category: {
+                name_confirmation_delete_inventory_category: {
                     required:     'O campo nome da categoria para exclusão é obrigatório.',
                     minlength:    'O campo nome da categoria para exclusão deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo nome da categoria para exclusão não pode ser superior a {0} caracteres.',
@@ -191,40 +192,40 @@
         });
 
         // recuperar departamento
-        $('#form-recover-category').validate({
+        $('#form-recover-inventory-category').validate({
             rules: {
-                id_recover_category: {
+                id_recover_inventory_category: {
                     required: true,
                     maxlength: 20,
                     number: true,
                 },
-                name_recover_category: {
+                name_recover_inventory_category: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
                 },
-                name_confirmation_recover_category: {
+                name_confirmation_recover_inventory_category: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
-                    equalTo: '#name-recover-category',
+                    equalTo: '#name-recover-inventory-category',
                 },
             },
             messages: {
-                id_recover_category: {
+                id_recover_inventory_category: {
                     required:     'O campo id é obrigatório.',
                     maxlength:    'O campo id não pode ser superior a {0} dígitos.',
                     number:       'O campo id deve ser um número.',
                 },
-                name_recover_category: {
+                name_recover_inventory_category: {
                     required:     'O campo nome da categoria é obrigatório.',
                     minlength:    'O campo nome da categoria deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo nome da categoria não pode ser superior a {0} caracteres.',
                     lettersdigit: 'O campo nome da categoria deve ter somente letras, espaços e caracteres permitidos.',
                 },
-                name_confirmation_recover_category: {
+                name_confirmation_recover_inventory_category: {
                     required:     'O campo nome da categoria para recuperação é obrigatório.',
                     minlength:    'O campo nome da categoria para recuperação deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo nome da categoria para recuperação não pode ser superior a {0} caracteres.',

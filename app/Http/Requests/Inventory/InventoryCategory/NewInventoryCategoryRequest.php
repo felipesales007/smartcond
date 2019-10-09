@@ -24,8 +24,8 @@ class NewInventoryCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_new_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', 'unique:inventory_categories,name'],
-            'description_new_category' => ['nullable', 'min:10', 'max:1500'],
+            'name_new_inventory_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', 'unique:inventory_categories,name'],
+            'description_new_inventory_category' => ['nullable', 'min:10', 'max:1500'],
         ];
     }
 }

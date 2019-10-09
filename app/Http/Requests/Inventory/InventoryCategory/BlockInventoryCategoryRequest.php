@@ -24,8 +24,8 @@ class BlockInventoryCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_block_category'      => ['required', 'max:20', 'alpha_num'],
-            'blocked_block_category' => ['nullable'],
+            'id_block_inventory_category'      => ['required', 'max:20', 'alpha_num'],
+            'blocked_block_inventory_category' => ['nullable'],
         ];
     }
 }

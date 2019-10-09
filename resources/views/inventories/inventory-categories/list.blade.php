@@ -1,10 +1,11 @@
 @extends('layouts.app')
-@section('title', __('Lista de categorias deletadas'))
+@section('title', __('Lista de categorias'))
 
 @section('content')
 
-    <!-- fundo -->
-    <div class="bg-gradient-primary pb-7 pb-xl-7 pt-7 pt-md-7 pt-xl-7"></div>
+    <div class="bg-gradient-primary pb-7 pb-xl-8 pt-6 pt-md-7 pt-xl-8">
+        @include('inventories.inventory-categories.dashboard.cards')
+    </div>
 
     <!-- tabela ajax -->
     <div class="container-fluid mt--7">
@@ -18,13 +19,13 @@
                             <!-- título -->
                             <div class="col-5 col-sm-6">
                                 <h3 class="text-uppercase text-monospace mb--1">
-                                    <b>{{ __('Lista de categorias deletadas') }}</b>
+                                    <b>{{ __('Lista de categorias') }}</b>
                                 </h3>
                             </div>
                             <!-- botão -->
-                            @if (app('router')->has('category.store') && \App\Models\Permission::buttonPermission('btn-modal-new-category') && \App\Models\Menu\MenuItem::getMenuItemDeleted('category.store'))
+                            @if (app('router')->has('inventory.category.store') && \App\Models\Permission::buttonPermission('btn-modal-new-inventory-category') && \App\Models\Menu\MenuItem::getMenuItemDeleted('inventory.category.store'))
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('category.store') ? 'notify-block-route' : 'btn-modal-new-category' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('category.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('inventory.category.store') ? 'notify-block-route' : 'btn-modal-new-inventory-category' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('inventory.category.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>
@@ -36,7 +37,7 @@
                     </div>
                     <!-- corpo -->
                     <div class="table-responsive mb-2">
-                        <table id="datatable-categories-deleted" class="table table-flush">
+                        <table id="datatable-inventory-categories" class="table table-flush">
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>
