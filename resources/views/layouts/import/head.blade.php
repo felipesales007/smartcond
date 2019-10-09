@@ -21,7 +21,7 @@
 <!-- compartilhamento -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:image" content="{{ asset('img/default/logos/card-azul.jpg') }}">
+<meta property="og:image" content="{{ asset('img/default/logos/card-azul-min.png') }}">
 <meta property="og:title" content="Smartcond">
 <meta property="og:site_name" content="Smartcond">
 <meta property="og:description" content="Seu condomínio inteligente!">
