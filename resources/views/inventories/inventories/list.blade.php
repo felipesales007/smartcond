@@ -43,6 +43,8 @@
                                 <tr>
                                     <th data-base="patrimonial_number">{{ __('Patrimônio') }}</th>
                                     <th data-base="name">{{ __('Nome') }}</th>
+                                    <th data-base="inventory_category_id">{{ __('Categoria') }}</th>
+                                    <th data-base="department_id">{{ __('Departamento') }}</th>
                                     <th class="text-center"><i class="fas fa-cog"></i></th>
                                 </tr>
                             </thead>

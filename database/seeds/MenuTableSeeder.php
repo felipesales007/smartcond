@@ -136,7 +136,7 @@ class MenuTableSeeder extends Seeder
             'color_id'       => '6',
             'order'          => '5',
             'name'           => 'Departamentos',
-            'icon'           => 'far fa-building',
+            'icon'           => 'fas fa-building',
             'description'    => 'Menu em collapse da página de departametos do condomínio',
             'created_at'     => now(),
             'updated_at'     => now()

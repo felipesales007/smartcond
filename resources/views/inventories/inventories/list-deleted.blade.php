@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('Lista de departamentos deletados'))
+@section('title', __('Lista de itens do inventário deletados'))
 
 @section('content')
 
@@ -17,7 +17,7 @@
                         <div class="row align-items-center">
                             <!-- título -->
                             <h3 class="text-uppercase text-monospace mb--1">
-                                <b>{{ __('Lista de departamentos deletados') }}</b>
+                                <b>{{ __('Lista de itens do inventário deletados') }}</b>
                             </h3>
                             <!-- botão -->
                             @if (app('router')->has('department.store') && \App\Models\Permission::buttonPermission('btn-modal-new-department') && \App\Models\Menu\MenuItem::getMenuItemDeleted('department.store'))
@@ -34,12 +34,14 @@
                     </div>
                     <!-- corpo -->
                     <div class="table-responsive mb-2">
-                        <table id="datatable-departments-deleted" class="table table-flush">
+                        <table id="datatable-inventories-deleted" class="table table-flush">
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>
+                                    <th data-base="patrimonial_number">{{ __('Patrimônio') }}</th>
                                     <th data-base="name">{{ __('Nome') }}</th>
-                                    <th>{{ __('Descrição') }}</th>
+                                    <th data-base="inventory_category_id">{{ __('Categoria') }}</th>
+                                    <th data-base="department_id">{{ __('Departamento') }}</th>
                                     <th class="text-center"><i class="fas fa-cog"></i></th>
                                 </tr>
                             </thead>

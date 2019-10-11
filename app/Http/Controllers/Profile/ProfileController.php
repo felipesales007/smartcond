@@ -81,18 +81,13 @@ class ProfileController extends Controller
         FileHelpers::destination_file($request, $original['photo'], 'image_0', 'photo_edit_profile', 'img/users/photo/');
         FileHelpers::destination_file($request, $original['background'], 'image_1', 'background_edit_profile', 'img/users/background/');
 
-        // tratamento de data
-        if ($request->birthday_edit_profile) {
-            $request->birthday_edit_profile = FormatHelpers::date_br_to_date($request->birthday_edit_profile);
-        }
-
         // dados
         $collection->fill([
             'name'         => $request->name_edit_profile,
             'cpf'          => $request->cpf_edit_profile,
             'rg'           => $request->rg_edit_profile,
             'email'        => $request->email_edit_profile,
-            'birthday'     => $request->birthday_edit_profile,
+            'birthday'     => FormatHelpers::date_br_to_date($request->birthday_edit_profile),
             'contact'      => $request->contact_edit_profile,
             'gender_id'    => $request->gender_id_edit_profile,
             'description'  => $request->description_edit_profile,

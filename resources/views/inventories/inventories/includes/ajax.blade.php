@@ -11,7 +11,7 @@
             ],
             lengthMenu:  [[5, 10, 15, 20, 25, 30, 40, 50, 100, -1], ['5', '10', '15', '20', '25', '30', '40', '50', '100', 'todos']],
             pageLength:  10,
-            order:       [0, 'asc'],
+            order:       [1, 'asc'],
             stateSave:   true,
             processing:  true,
             serverSide:  true,
@@ -38,6 +38,8 @@
             columns: [
                 { data: 'patrimonial_number', name: 'patrimonial_number' },
                 { data: 'name',               name: 'name' },
+                { data: 'category',           name: 'category' },
+                { data: 'department',         name: 'department' },
                 { data: 'action',             name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
             ]
         }).on('error.dt', function() {
@@ -54,7 +56,7 @@
             ],
             lengthMenu:  [[5, 10, 15, 20, 25, 30, 40, 50, 100, -1], ['5', '10', '15', '20', '25', '30', '40', '50', '100', 'todos']],
             pageLength:  10,
-            order:       [0, 'asc'],
+            order:       [1, 'asc'],
             stateSave:   true,
             processing:  true,
             serverSide:  true,
@@ -79,9 +81,11 @@
                 }
             },
             columns: [
-                { data: 'name',        name: 'name' },
-                { data: 'description', name: 'description', orderable: false, searchable: false },
-                { data: 'action',      name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
+                { data: 'patrimonial_number', name: 'patrimonial_number' },
+                { data: 'name',               name: 'name' },
+                { data: 'category',           name: 'category' },
+                { data: 'department',         name: 'department' },
+                { data: 'action',             name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
             ]
         }).on('error.dt', function() {
             tableInventoriesDeleted.draw();

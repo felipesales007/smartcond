@@ -36,8 +36,8 @@ class InventoryController extends Controller
         $order  = explode(' ', !empty($_GET['orderBy']) ? $_GET['orderBy'] : 'name asc');
 
         $collection = Inventory::query()
-            ->select('departments.name as department', 'inventory_categories.name as category',
-                'inventory_states.name as state', 'voltages.name as voltage', 'inventories.name as name')
+            ->select('inventories.patrimonial_number as patrimonial_number', 'inventories.name as name',
+                'inventory_categories.name as category', 'departments.name as department')
             ->join('companies', 'companies.id', '=', 'inventories.company_id')
             ->join('departments', 'departments.id', '=', 'inventories.department_id')
             ->join('inventory_categories', 'inventory_categories.id', '=', 'inventories.inventory_category_id')
@@ -46,7 +46,13 @@ class InventoryController extends Controller
             ->where('departments.company_id', '=', Company::id())
             ->where('inventory_categories.company_id', '=', Company::id())
             ->where('inventories.company_id', '=', Company::id())
-            ->where('inventories.name', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query
+                    ->orWhere('inventories.patrimonial_number', 'like', '%' . $search . '%')
+                    ->orWhere('inventories.name', 'like', '%' . $search . '%')
+                    ->orWhere('inventory_categories.name', 'like', '%' . $search . '%')
+                    ->orWhere('departments.name', 'like', '%' . $search . '%');
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -55,11 +61,19 @@ class InventoryController extends Controller
             return datatables($collection)
                 // coluna patrimônio
                 ->addColumn('patrimonial_number', function ($row) {
-                    return $row->name;
+                    return $row->patrimonial_number;
                 })
                 // coluna nome
                 ->addColumn('name', function ($row) {
                     return $row->name;
+                })
+                // coluna categoria
+                ->addColumn('category', function ($row) {
+                    return $row->category;
+                })
+                // coluna departamento
+                ->addColumn('department', function ($row) {
+                    return $row->department;
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
@@ -111,7 +125,7 @@ class InventoryController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['patrimonial_number', 'name', 'action'])
+                ->rawColumns(['patrimonial_number', 'name', 'category', 'department', 'action'])
                 ->toJson();
         }
 
@@ -245,10 +259,22 @@ class InventoryController extends Controller
 
         $collection = inventory::query()
             ->onlyTrashed()
-            ->where('company_id', '=', Company::id())
+            ->select('inventories.patrimonial_number as patrimonial_number', 'inventories.name as name',
+                'inventory_categories.name as category', 'departments.name as department')
+            ->join('companies', 'companies.id', '=', 'inventories.company_id')
+            ->join('departments', 'departments.id', '=', 'inventories.department_id')
+            ->join('inventory_categories', 'inventory_categories.id', '=', 'inventories.inventory_category_id')
+            ->join('inventory_states', 'inventory_states.id', '=', 'inventories.inventory_state_id')
+            ->join('voltages', 'voltages.id', '=', 'inventories.voltage_id')
+            ->where('departments.company_id', '=', Company::id())
+            ->where('inventory_categories.company_id', '=', Company::id())
+            ->where('inventories.company_id', '=', Company::id())
             ->where(function ($query) use ($search) {
                 $query
-                    ->orWhere('name', 'like', '%' . $search . '%');
+                    ->orWhere('inventories.patrimonial_number', 'like', '%' . $search . '%')
+                    ->orWhere('inventories.name', 'like', '%' . $search . '%')
+                    ->orWhere('inventory_categories.name', 'like', '%' . $search . '%')
+                    ->orWhere('departments.name', 'like', '%' . $search . '%');
             })
             ->orderBy($order[0], $order[1]);
 
@@ -256,13 +282,21 @@ class InventoryController extends Controller
         if ($request->ajax()) {
             // preenchimento das colunas do datatable
             return datatables($collection)
+                // coluna patrimônio
+                ->addColumn('patrimonial_number', function ($row) {
+                    return $row->patrimonial_number;
+                })
                 // coluna nome
                 ->addColumn('name', function ($row) {
                     return $row->name;
                 })
-                // coluna descrição
-                ->addColumn('description', function ($row) {
-                    return $row->description;
+                // coluna categoria
+                ->addColumn('category', function ($row) {
+                    return $row->category;
+                })
+                // coluna departamento
+                ->addColumn('department', function ($row) {
+                    return $row->department;
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
@@ -288,7 +322,7 @@ class InventoryController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['name', 'description', 'action'])
+                ->rawColumns(['patrimonial_number', 'name', 'category', 'department', 'action'])
                 ->toJson();
         }
 

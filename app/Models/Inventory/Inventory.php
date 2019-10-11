@@ -26,9 +26,9 @@ class Inventory extends Model
      * @var array
      */
     protected $fillable = [
-        'company_id', 'department_id', 'state_id', 'voltage_id', 'patrimonial_number',
-        'item', 'brand', 'model', 'serial_number', 'invoice', 'value', 'description',
-        'purchase_date', 'warranty_date', 'blocked', 'deleted_at'
+        'company_id', 'department_id', 'inventory_category_id', 'inventory_state_id', 'voltage_id',
+        'patrimonial_number', 'name', 'brand', 'model', 'serial_number', 'invoice', 'value',
+        'description', 'purchase_date', 'warranty_date', 'blocked', 'deleted_at'
     ];
 
     /**
@@ -125,7 +125,7 @@ class Inventory extends Model
      */
     public function getCategory()
     {
-        return $this->belongsTo(InventoryCategory::class, 'category_id');
+        return $this->belongsTo(InventoryCategory::class, 'inventory_category_id');
     }
 
     /**
