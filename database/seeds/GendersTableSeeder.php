@@ -25,7 +25,7 @@ class GendersTableSeeder extends Seeder
         ]);
 
         Gender::insert([
-            'name'       => 'Não binário',
+            'name'       => 'Outro',
             'created_at' => now(),
             'updated_at' => now()
         ]);
