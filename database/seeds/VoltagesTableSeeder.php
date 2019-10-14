@@ -13,7 +13,7 @@ class VoltagesTableSeeder extends Seeder
     public function run()
     {
         Voltage::insert([
-            'name'       => 'n/s',
+            'name'       => 'N/S',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -26,6 +26,12 @@ class VoltagesTableSeeder extends Seeder
 
         Voltage::insert([
             'name'       => '220v',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        Voltage::insert([
+            'name'       => 'Bivolt',
             'created_at' => now(),
             'updated_at' => now()
         ]);

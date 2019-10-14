@@ -146,28 +146,98 @@
                 if (data.align && data.from) {
                     notify(data);
                 } else {
+                    // capa
+                    $('#background-view-inventory').css('background-image', 'url({{ url('img/default/default-background.png') }})');
                     // status
-                    if (data.blocked || data.deleted_at) {
+                    if (data.deleted_at) {
                         $('#status-view-inventory').removeClass('d-none');
-                        $('#name-view-inventory').removeClass('mt--3').addClass('mt-3');
-
-                        if (data.blocked) {
-                            $('#status-view-inventory').addClass('text-warning').html('<i class="fas fa-ban"></i> bloqueado');
-                        } else {
-                            $('#status-view-inventory').addClass('text-danger').html('<i class="fas fa-ban"></i> deletado');
-                        }
+                        $('#status-view-inventory i').addClass('bg-danger').attr('data-original-title', 'deletado');
                     } else {
-                        $('#status-view-inventory').addClass('d-none').html('');
-                        $('#name-view-inventory').addClass('mt--3').removeClass('mt-3');
+                        $('#status-view-inventory').addClass('d-none');
+                        $('#status-view-inventory i').removeAttr('data-original-title');
+                    }
+                    // imagem
+                    if (data.image) {
+                        $('#image-view-inventory').css('background-image', 'url({{ url('storage/img/inventories/items') }}/' + data.image + ')');
+                    } else {
+                        $('#image-view-inventory').css('background-image', 'url({{ url('img/default/default-image.png') }})');
                     }
                     // nome
                     $('#name-view-inventory').html(data.name);
+                    // patrimônio
+                    if (data.patrimonial_number) {
+                        $('#icon-patrimonial-number-view-inventory').removeClass('d-none');
+                        $('#patrimonial-number-view-inventory').html(data.patrimonial_number);
+                    } else {
+                        $('#icon-patrimonial-number-view-inventory').addClass('d-none');
+                        $('#patrimonial-number-view-inventory').html('');
+                    }
+                    // marca
+                    if (data.brand) {
+                        $('#brand-view-inventory').html('<b>marca: </b>' + data.brand);
+                    } else {
+                        $('#brand-view-inventory').html('');
+                    }
+                    // modelo
+                    if (data.model) {
+                        $('#model-view-inventory').html('<b>modelo: </b>' + data.model);
+                    } else {
+                        $('#model-view-inventory').html('');
+                    }
+                    // nº de série
+                    if (data.serial_number) {
+                        $('#serial-number-view-inventory').html('<b>nº de série: </b>' + data.serial_number);
+                    } else {
+                        $('#serial-number-view-inventory').html('');
+                    }
+                    // nº da nota fiscal
+                    if (data.invoice) {
+                        $('#invoice-view-inventory').html('<b>nota fiscal: </b>' + data.invoice);
+                    } else {
+                        $('#invoice-view-inventory').html('');
+                    }
+                    // valor
+                    if (data.value > 0) {
+                        $('#value-view-inventory').html('<b>valor: </b>R$ ' + to_real(data.value));
+                    } else {
+                        $('#value-view-inventory').html('');
+                    }
+                    // estado de conservação
+                    if (data.state) {
+                        $('#state-view-inventory').html('<b>estado: </b>' + data.state);
+                    } else {
+                        $('#state-view-inventory').html('');
+                    }
+                    // voltagem
+                    if (data.voltage) {
+                        $('#voltage-view-inventory').html('<b>voltagem: </b>' + data.voltage);
+                    } else {
+                        $('#voltage-view-inventory').html('');
+                    }
+                    // data de comprado
+                    if (data.purchase_date) {
+                        $('#purchase-date-view-inventory').html('<b>comprado em: </b>' + date_to_date_br(data.purchase_date));
+                    } else {
+                        $('#purchase-date-view-inventory').html('');
+                    }
+                    // data da garantia
+                    if (data.warranty_date) {
+                        $('#warranty-date-view-inventory').html('<b>garantia até: </b>' + date_to_date_br(data.warranty_date));
+                    } else {
+                        $('#warranty-date-view-inventory').html('');
+                    }
                     // descrição
                     if (data.description) {
-                        $('#description-view-inventory').html('<div class="small mt-4">' + data.description + '</div>');
+                        $('#text-description-view-inventory').removeClass('d-none');
+                        $('#description-view-inventory').html(data.description);
                     } else {
+                        $('#text-description-view-inventory').addClass('d-none');
                         $('#description-view-inventory').html('');
                     }
+                    // departamento
+                    $('#department-view-inventory').html('<b>' + data.department + '</b>');
+                    // categoria
+                    $('#category-view-inventory').html('<b>' + data.category + '</b>');
                     // criado
                     $('#created-at-view-inventory').html('criado em ' + timestamp_to_date_br(data.created_at) + ' - ' + moment(data.created_at, 'YYYY-MM-DD hh:mm').locale('pt-br').fromNow());
                     // atualizado
@@ -176,6 +246,7 @@
                     $('#modal-view-inventory').modal('show');
                 }
             });
+
         });
 
         // novo inventário

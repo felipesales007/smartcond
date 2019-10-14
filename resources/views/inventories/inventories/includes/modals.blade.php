@@ -1,4 +1,4 @@
-{{--@include('departments.modals.view')--}}
+@include('inventories.inventories.modals.view')
 
 @include('inventories.inventories.modals.new')
 

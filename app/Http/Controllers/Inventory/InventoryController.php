@@ -171,7 +171,18 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-        $collection = Inventory::withTrashed()->where('company_id', '=', Company::id())->find($id);
+        $collection = Inventory::withTrashed()
+            ->select('inventories.*', 'inventory_categories.name as category', 'departments.name as department',
+                'inventory_states.name as state', 'voltages.name as voltage')
+            ->join('companies', 'companies.id', '=', 'inventories.company_id')
+            ->join('departments', 'departments.id', '=', 'inventories.department_id')
+            ->join('inventory_categories', 'inventory_categories.id', '=', 'inventories.inventory_category_id')
+            ->join('inventory_states', 'inventory_states.id', '=', 'inventories.inventory_state_id')
+            ->join('voltages', 'voltages.id', '=', 'inventories.voltage_id')
+            ->where('departments.company_id', '=', Company::id())
+            ->where('inventory_categories.company_id', '=', Company::id())
+            ->where('inventories.company_id', '=', Company::id())
+            ->find($id);
 
         return response()->json($collection);
     }
