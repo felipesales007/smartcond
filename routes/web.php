@@ -258,12 +258,10 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
         Route::get ('lista/inventarios/deletados',        ['as' => 'inventory.list.deleted',                  'uses' => 'Inventory\InventoryController@listDeleted']);
         Route::get ('visualizar/inventario/{id?}',        ['as' => 'inventory.view',                          'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-view-inventory
         Route::get ('editar/inventario/{id?}',            ['as' => 'inventory.edit',                          'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-edit-inventory
-        Route::get ('banir/inventario/{id?}',             ['as' => 'inventory.ban',                           'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-block-inventory
         Route::get ('deletar/inventario/{id?}',           ['as' => 'inventory.delete',                        'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-delete-inventory
         Route::get ('recuperar/inventario/{id?}',         ['as' => 'inventory.recover',                       'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-recover-inventory
         Route::post('novo/inventario',                    ['as' => 'inventory.store',                         'uses' => 'Inventory\InventoryController@store']); // btn-modal-new-inventory
         Route::post('atualizar/inventario/{id?}',         ['as' => 'inventory.update',                        'uses' => 'Inventory\InventoryController@update']);
-        Route::post('bloquear/inventario/{id?}',          ['as' => 'inventory.block',                         'uses' => 'Inventory\InventoryController@block']);
         Route::post('remover/inventario/{id?}',           ['as' => 'inventory.destroy',                       'uses' => 'Inventory\InventoryController@destroy']);
         Route::post('restaurar/inventario/{id?}',         ['as' => 'inventory.restore',                       'uses' => 'Inventory\InventoryController@restore']);
     });

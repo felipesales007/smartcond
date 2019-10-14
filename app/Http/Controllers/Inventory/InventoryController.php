@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Inventory;
 
+use App\Helpers\FileHelpers;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
-use App\Http\Requests\Inventory\Inventory\BlockInventoryRequest;
 use App\Http\Requests\Inventory\Inventory\DeleteInventoryRequest;
 use App\Http\Requests\Inventory\Inventory\EditInventoryRequest;
 use App\Http\Requests\Inventory\Inventory\NewInventoryRequest;
@@ -36,8 +36,8 @@ class InventoryController extends Controller
         $order  = explode(' ', !empty($_GET['orderBy']) ? $_GET['orderBy'] : 'name asc');
 
         $collection = Inventory::query()
-            ->select('inventories.patrimonial_number as patrimonial_number', 'inventories.name as name',
-                'inventory_categories.name as category', 'departments.name as department')
+            ->select('inventories.id as id', 'inventories.image as image', 'inventories.patrimonial_number as patrimonial_number',
+                'inventories.name as name', 'inventory_categories.name as category', 'departments.name as department')
             ->join('companies', 'companies.id', '=', 'inventories.company_id')
             ->join('departments', 'departments.id', '=', 'inventories.department_id')
             ->join('inventory_categories', 'inventory_categories.id', '=', 'inventories.inventory_category_id')
@@ -59,6 +59,15 @@ class InventoryController extends Controller
         if ($request->ajax()) {
             // preenchimento das colunas do datatable
             return datatables($collection)
+                // coluna image
+                ->addColumn('image', function ($row) {
+                    if ($row->image) {
+                        $image = '<div class="avatar avatar-sm"><img src="' . url('storage/img/inventories/items/' . $row->image) . '" alt=""></div>';
+                    } else {
+                        $image = '<div class="avatar avatar-sm"><img src="' . url('img/default/default-image.png') . '" alt=""></div>';
+                    }
+                    return $image;
+                })
                 // coluna patrimônio
                 ->addColumn('patrimonial_number', function ($row) {
                     return $row->patrimonial_number;
@@ -97,23 +106,6 @@ class InventoryController extends Controller
                         }
                     }
 
-                    // bloquear
-                    if (app('router')->has('inventory.ban') && MenuItem::getMenuItemDeleted('inventory.ban')['list']) {
-                        if (Permission::buttonPermission('btn-modal-block-inventory') && !MenuItem::getMenuItemBlocked('inventory.ban')['list']) {
-                            if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-inventory" title="Bloquear"><i class="fas fa-ban"></i></a>';
-                            } else {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-inventory" title="Bloquear"><i class="fas fa-ban"></i></a>';
-                            }
-                        } else {
-                            if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
-                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
-                            } else {
-                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
-                            }
-                        }
-                    }
-
                     // excluir
                     if (app('router')->has('inventory.delete') && MenuItem::getMenuItemDeleted('inventory.delete')['list']) {
                         if (Permission::buttonPermission('btn-modal-delete-inventory') && !MenuItem::getMenuItemBlocked('inventory.delete')['list']) {
@@ -125,7 +117,7 @@ class InventoryController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['patrimonial_number', 'name', 'category', 'department', 'action'])
+                ->rawColumns(['image', 'patrimonial_number', 'name', 'category', 'department', 'action'])
                 ->toJson();
         }
 
@@ -141,7 +133,7 @@ class InventoryController extends Controller
     public function store(NewInventoryRequest $request)
     {
         // dados
-        Inventory::create([
+        $collection = Inventory::create([
             'company_id'            => Company::id(),
             'department_id'         => $request->department_id_new_inventory,
             'inventory_category_id' => $request->inventory_category_id_new_inventory,
@@ -154,10 +146,17 @@ class InventoryController extends Controller
             'invoice'               => $request->invoice_new_inventory,
             'value'                 => FormatHelpers::to_usd($request->value_new_inventory),
             'voltage_id'            => $request->voltage_id_new_inventory,
-            'purchase_date'         => $request->purchase_date_new_inventory,
-            'warranty_date'         => $request->warranty_date_new_inventory,
+            'purchase_date'         => FormatHelpers::date_br_to_date($request->purchase_date_new_inventory),
+            'warranty_date'         => FormatHelpers::date_br_to_date($request->warranty_date_new_inventory),
             'description'           => $request->description_new_inventory
         ]);
+
+        // upload da iamgem
+        if ($request->hasFile('image_image_new_inventory') && $request->file('image_image_new_inventory')->isValid()) {
+            $file_name = FormatHelpers::image_name($collection->id);
+            FileHelpers::destination_file($request, null, 'image_image_new_inventory', $file_name, 'img/inventories/items/');
+            $collection->update(['image' => $file_name]);
+        }
 
         $data = NotifyHelpers::success_top_center('fas fa-dolly-flatbed', 'Item do inventário criado com sucesso.');
 
@@ -172,7 +171,7 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-        $collection = inventory::withTrashed()->where('company_id', '=', Company::id())->find($id);
+        $collection = Inventory::withTrashed()->where('company_id', '=', Company::id())->find($id);
 
         return response()->json($collection);
     }
@@ -185,44 +184,32 @@ class InventoryController extends Controller
      */
     public function update(EditInventoryRequest $request)
     {
-        $collection = inventory::where('company_id', '=', Company::id())->find($request->id_edit_inventory);
+        $collection = Inventory::where('company_id', '=', Company::id())->find($request->id_edit_inventory);
+        $original   = $collection->getOriginal();
+
+        // armazena a imagem
+        FileHelpers::destination_file($request, $original['image'], 'image_image_edit_inventory', 'image_edit_inventory', 'img/inventories/items/');
 
         // dados
         $collection->fill([
-            'name'        => $request->name_edit_inventory,
-            'description' => $request->description_edit_inventory,
+            'department_id'         => $request->department_id_edit_inventory,
+            'inventory_category_id' => $request->inventory_category_id_edit_inventory,
+            'inventory_state_id'    => $request->inventory_state_id_edit_inventory,
+            'patrimonial_number'    => $request->patrimonial_number_edit_inventory,
+            'name'                  => $request->name_edit_inventory,
+            'brand'                 => $request->brand_edit_inventory,
+            'model'                 => $request->model_edit_inventory,
+            'serial_number'         => $request->serial_number_edit_inventory,
+            'invoice'               => $request->invoice_edit_inventory,
+            'value'                 => FormatHelpers::to_usd($request->value_edit_inventory),
+            'voltage_id'            => $request->voltage_id_edit_inventory,
+            'purchase_date'         => FormatHelpers::date_br_to_date($request->purchase_date_edit_inventory),
+            'warranty_date'         => FormatHelpers::date_br_to_date($request->warranty_date_edit_inventory),
+            'description'           => $request->description_edit_inventory,
+            'image'                 => $request->image_edit_inventory
         ])->save();
 
-        $data = NotifyHelpers::success_top_center('fas fa-check', 'Departamento alterado com sucesso.');
-
-        return response()->json($data);
-    }
-
-    /**
-     * Bloquear o recurso especificado no armazenamento.
-     *
-     * @param BlockInventoryRequest $request
-     * @return JsonResponse
-     */
-    public function block(BlockInventoryRequest $request)
-    {
-        $collection = inventory::where('company_id', '=', Company::id())->find($request->id_block_inventory);
-
-        if ($request->blocked_block_inventory) {
-            if (!$collection->blocked) {
-                $collection->blocked = now()->toDateTimeString();
-                $collection->save();
-            }
-
-            // notificar
-            $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Departamento bloqueado com sucesso.');
-        } else {
-            $collection->blocked = null;
-            $collection->save();
-
-            // notificar
-            $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Departamento desbloqueado com sucesso.');
-        }
+        $data = NotifyHelpers::success_top_center('fas fa-check', 'Item do inventário alterado com sucesso.');
 
         return response()->json($data);
     }
@@ -235,11 +222,11 @@ class InventoryController extends Controller
      */
     public function destroy(DeleteInventoryRequest $request)
     {
-        $collection = inventory::where('company_id', '=', Company::id())->find($request->id_delete_inventory);
+        $collection = Inventory::where('company_id', '=', Company::id())->find($request->id_delete_inventory);
         $collection->delete();
 
         // notificar
-        $data = NotifyHelpers::danger_top_center('far fa-trash-alt', 'Departamento deletado com sucesso.');
+        $data = NotifyHelpers::danger_top_center('far fa-trash-alt', 'Item do inventário deletado com sucesso.');
 
         return response()->json($data);
     }
@@ -259,8 +246,8 @@ class InventoryController extends Controller
 
         $collection = inventory::query()
             ->onlyTrashed()
-            ->select('inventories.patrimonial_number as patrimonial_number', 'inventories.name as name',
-                'inventory_categories.name as category', 'departments.name as department')
+            ->select('inventories.id as id', 'inventories.image as image', 'inventories.patrimonial_number as patrimonial_number',
+                'inventories.name as name', 'inventory_categories.name as category', 'departments.name as department')
             ->join('companies', 'companies.id', '=', 'inventories.company_id')
             ->join('departments', 'departments.id', '=', 'inventories.department_id')
             ->join('inventory_categories', 'inventory_categories.id', '=', 'inventories.inventory_category_id')
@@ -282,6 +269,15 @@ class InventoryController extends Controller
         if ($request->ajax()) {
             // preenchimento das colunas do datatable
             return datatables($collection)
+                // coluna image
+                ->addColumn('image', function ($row) {
+                    if ($row->image) {
+                        $image = '<div class="avatar avatar-sm"><img src="' . url('storage/img/inventories/items/' . $row->image) . '" alt=""></div>';
+                    } else {
+                        $image = '<div class="avatar avatar-sm"><img src="' . url('img/default/default-image.png') . '" alt=""></div>';
+                    }
+                    return $image;
+                })
                 // coluna patrimônio
                 ->addColumn('patrimonial_number', function ($row) {
                     return $row->patrimonial_number;
@@ -322,7 +318,7 @@ class InventoryController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['patrimonial_number', 'name', 'category', 'department', 'action'])
+                ->rawColumns(['image', 'patrimonial_number', 'name', 'category', 'department', 'action'])
                 ->toJson();
         }
 
@@ -337,10 +333,10 @@ class InventoryController extends Controller
      */
     public function restore(RecoverInventoryRequest $request)
     {
-        inventory::onlyTrashed()->where('company_id', '=', Company::id())->find($request->id_recover_inventory)->restore();
+        Inventory::onlyTrashed()->where('company_id', '=', Company::id())->find($request->id_recover_inventory)->restore();
 
         // notificar
-        $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Departamento recuperado com sucesso.');
+        $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Item do inventário recuperado com sucesso.');
 
         return response()->json($data);
     }

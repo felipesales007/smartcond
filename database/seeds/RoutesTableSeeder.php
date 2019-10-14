@@ -1650,17 +1650,6 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
-            'url'             => 'banir/inventario/{id?}',
-            'route'           => 'inventory.ban',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
             'url'             => 'deletar/inventario/{id?}',
             'route'           => 'inventory.delete',
             'controller'      => 'Inventory\InventoryController@edit',
@@ -1698,17 +1687,6 @@ class RoutesTableSeeder extends Seeder
             'route'           => 'inventory.update',
             'controller'      => 'Inventory\InventoryController@update',
             'description'     => 'Atualizar os dados dos itens do inventários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/inventario/{id?}',
-            'route'           => 'inventory.block',
-            'controller'      => 'Inventory\InventoryController@block',
-            'description'     => 'Bloquear os itens do inventário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);

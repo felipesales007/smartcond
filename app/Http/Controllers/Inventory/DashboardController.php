@@ -40,7 +40,7 @@ class DashboardController extends Controller
     {
         $cards = [
             'getCountInventories'                => Inventory::where('company_id', '=', Company::id())->count(),
-            'getCountBlockedInventories'         => Inventory::where('company_id', '=', Company::id())->where('blocked', '!=', null)->count(),
+            'getCountDeletedInventories'         => Inventory::where('company_id', '=', Company::id())->where('deleted_at', '!=', null)->count(),
             'getCountInventoryCategories'        => InventoryCategory::where('company_id', '=', Company::id())->count(),
             'getCountBlockedInventoryCategories' => InventoryCategory::where('company_id', '=', Company::id())->where('blocked', '!=', null)->count(),
         ];

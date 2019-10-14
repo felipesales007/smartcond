@@ -11,7 +11,7 @@
             ],
             lengthMenu:  [[5, 10, 15, 20, 25, 30, 40, 50, 100, -1], ['5', '10', '15', '20', '25', '30', '40', '50', '100', 'todos']],
             pageLength:  10,
-            order:       [1, 'asc'],
+            order:       [2, 'asc'],
             stateSave:   true,
             processing:  true,
             serverSide:  true,
@@ -36,6 +36,7 @@
                 }
             },
             columns: [
+                { data: 'image',              name: 'image', className: 'text-center fe-td-img d-print-none', orderable: false, searchable: false },
                 { data: 'patrimonial_number', name: 'patrimonial_number' },
                 { data: 'name',               name: 'name' },
                 { data: 'category',           name: 'category' },
@@ -56,7 +57,7 @@
             ],
             lengthMenu:  [[5, 10, 15, 20, 25, 30, 40, 50, 100, -1], ['5', '10', '15', '20', '25', '30', '40', '50', '100', 'todos']],
             pageLength:  10,
-            order:       [1, 'asc'],
+            order:       [2, 'asc'],
             stateSave:   true,
             processing:  true,
             serverSide:  true,
@@ -81,6 +82,7 @@
                 }
             },
             columns: [
+                { data: 'image',              name: 'image', className: 'text-center fe-td-img d-print-none', orderable: false, searchable: false },
                 { data: 'patrimonial_number', name: 'patrimonial_number' },
                 { data: 'name',               name: 'name' },
                 { data: 'category',           name: 'category' },
@@ -96,6 +98,8 @@
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
             $('#btn-new-inventory').removeAttr('disabled', 'disabled').html('Criar item');
+            $('.fe-remove-preview-10').addClass('fe-hidden');
+            $('.fe-img-preview-10').attr('src', '');
             $('#department-id-new-inventory').val('').trigger('change');
             $('#inventory-category-id-new-inventory').val('').trigger('change');
             $('#inventory-state-id-new-inventory').val('1').trigger('change');
@@ -107,16 +111,14 @@
         let editInventoryAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-edit-inventory').removeAttr('disabled', 'disabled').html('Editar inventário');
+            $('#btn-edit-inventory').removeAttr('disabled', 'disabled').html('Editar item');
+            $('.fe-remove-preview-11').addClass('fe-hidden');
+            $('.fe-img-preview-11').attr('src', '');
+            $('#department-id-edit-inventory').val('').trigger('change');
+            $('#inventory-category-id-edit-inventory').val('').trigger('change');
+            $('#inventory-state-id-edit-inventory').val('1').trigger('change');
+            $('#voltage-id-edit-inventory').val('1').trigger('change');
             $('#form-edit-inventory').trigger('reset');
-        };
-
-        // modal de bloquear inventário disponível
-        let blockInventoryAvailable = function () {
-            removeValidate();
-            $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-block-inventory').removeAttr('disabled', 'disabled').html('Bloquear inventário');
-            $('#form-block-inventory').trigger('reset');
         };
 
         // modal de deletar inventário disponível
@@ -193,7 +195,9 @@
                 scrollTop();
                 loader(1);
                 $.ajax({
-                    data: $('#form-new-inventory').serialize(),
+                    data: new FormData($('#form-new-inventory')[0]),
+                    contentType: false,
+                    processData: false,
                     url: '{{ app('router')->has('inventory.store') ? route('inventory.store') : url('/') }}',
                     type: 'post',
                     dataType: 'json',
@@ -220,17 +224,6 @@
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
         // editar inventário
         $(document).on('click', '.btn-modal-edit-inventory', function () {
             let id = $(this).data('id');
@@ -241,9 +234,30 @@
                     notify(data);
                 } else {
                     editInventoryAvailable();
+                    // imagem
+                    $('.fe-image-url-11').val(destination_url(data.id, 'png'));
+                    if (data.image) {
+                        $('.fe-remove-preview-11').removeClass('fe-hidden');
+                        $('.fe-img-preview-11').attr('src', '{{ url('storage/img/inventories/items') }}/' + data.image);
+                    } else {
+                        $('.fe-remove-preview-11').addClass('fe-hidden');
+                        $('.fe-img-preview-11').attr('src', '');
+                    }
                     // dados
                     $('#id-edit-inventory').val(data.id);
+                    $('#department-id-edit-inventory').val(data.department_id).trigger('change');
+                    $('#inventory-category-id-edit-inventory').val(data.inventory_category_id).trigger('change');
+                    $('#inventory-state-id-edit-inventory').val(data.inventory_state_id).trigger('change');
+                    $('#patrimonial-number-edit-inventory').val(data.patrimonial_number);
                     $('#name-edit-inventory').val(data.name);
+                    $('#brand-edit-inventory').val(data.brand);
+                    $('#model-edit-inventory').val(data.model);
+                    $('#serial-number-edit-inventory').val(data.serial_number);
+                    $('#invoice-edit-inventory').val(data.invoice);
+                    $('#value-edit-inventory').val(to_real(data.value));
+                    $('#voltage-id-edit-inventory').val(data.voltage_id).trigger('change');
+                    $('#purchase-date-edit-inventory').datepicker('setDate', date_to_date_br(data.purchase_date));
+                    $('#warranty-date-edit-inventory').datepicker('setDate', date_to_date_br(data.warranty_date));
                     $('#description-edit-inventory').val(data.description);
                 }
 
@@ -261,7 +275,9 @@
                 scrollTop();
                 loader(1);
                 $.ajax({
-                    data: $('#form-edit-inventory').serialize(),
+                    data: new FormData($('#form-edit-inventory')[0]),
+                    contentType: false,
+                    processData: false,
                     url: '{{ app('router')->has('inventory.update') ? route('inventory.update') : url('/') }}',
                     type: 'post',
                     dataType: 'json',
@@ -278,68 +294,7 @@
                         $('#form-edit-inventory').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao editar o inventário.');
-                    }
-                });
-            } else {
-                $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-                $(this).removeAttr('disabled', 'disabled').html('Tentar novamente');
-                return false;
-            }
-        });
-
-        // bloquear inventário
-        $(document).on('click', '.btn-modal-block-inventory', function () {
-            let id = $(this).data('id');
-
-            $.get('{{ app('router')->has('inventory.ban') ? route('inventory.ban') : url('/') }}' + '/' + id, function (data) {
-                // se houver erro
-                if (data.align && data.from) {
-                    notify(data);
-                } else {
-                    blockInventoryAvailable();
-                    $('#id-block-inventory').val(data.id);
-                    if (data.blocked) {
-                        $('#blocked-block-inventory').prop('checked', true).attr('checked', 'checked');
-                        $('#btn-block-inventory').html('Bloquear inventário');
-                    } else {
-                        $('#blocked-block-inventory').prop('checked', false).removeAttr('checked', 'checked');
-                        $('#btn-block-inventory').html('Desbloquear inventário');
-                    }
-
-                    $('#modal-block-inventory').modal('show');
-                }
-            });
-        });
-
-        // bloqueando inventário
-        $(document).on('click', '#btn-block-inventory', function (e) {
-            e.preventDefault();
-            $('a[data-dismiss="modal"]').addClass('fe-hidden');
-            $(this).attr('disabled', 'disabled').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Aguarde');
-
-            if ($('#form-block-inventory').valid()) {
-                scrollTop();
-                loader(1);
-                $.ajax({
-                    data: $('#form-block-inventory').serialize(),
-                    url: '{{ app('router')->has('inventory.block') ? route('inventory.block') : url('/') }}',
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (data) {
-                        blockInventoryAvailable();
-                        $('#modal-block-inventory').modal('hide');
-                        tableInventories.draw();
-                        loader(0);
-                        notify(data);
-                    },
-                    error: function (data) {
-                        $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-                        $('#btn-block-inventory').removeAttr('disabled', 'disabled').html('Tentar novamente');
-                        $('#form-block-inventory').valid();
-                        loader(0);
-                        serverValidate(data);
-                        notifyError('Erro ao bloquear o inventário.');
+                        notifyError('Erro ao editar o item do inventário.');
                     }
                 });
             } else {
@@ -395,7 +350,7 @@
                         $('#form-delete-inventory').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao deletar o inventário.');
+                        notifyError('Erro ao deletar o item do inventário.');
                     }
                 });
             } else {
@@ -451,7 +406,7 @@
                         $('#form-recover-inventory').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao recuperar o inventário.');
+                        notifyError('Erro ao recuperar o item do inventário.');
                     }
                 });
             } else {

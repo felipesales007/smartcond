@@ -19,7 +19,7 @@
                             <!-- título -->
                             <div class="col-5 col-sm-6">
                                 <h3 class="text-uppercase text-monospace mb--1">
-                                    <b>{{ __('Lista de departamentos') }}</b>
+                                    <b>{{ __('Lista de itens do inventário') }}</b>
                                 </h3>
                             </div>
                             <!-- botão -->
@@ -41,6 +41,7 @@
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>
+                                    <th class="text-center"><i class="ni ni-image"></i></th>
                                     <th data-base="patrimonial_number">{{ __('Patrimônio') }}</th>
                                     <th data-base="name">{{ __('Nome') }}</th>
                                     <th data-base="inventory_category_id">{{ __('Categoria') }}</th>

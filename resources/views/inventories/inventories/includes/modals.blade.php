@@ -2,10 +2,8 @@
 
 @include('inventories.inventories.modals.new')
 
-{{--@include('departments.modals.edit')--}}
+@include('inventories.inventories.modals.edit')
 
-{{--@include('departments.modals.block')--}}
+@include('inventories.inventories.modals.delete')
 
-{{--@include('departments.modals.delete')--}}
-
-{{--@include('departments.modals.recover')--}}
+@include('inventories.inventories.modals.recover')

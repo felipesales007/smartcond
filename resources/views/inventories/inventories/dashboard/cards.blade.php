@@ -40,19 +40,19 @@
                             <div class="row">
                                 <!-- título -->
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Itens bloqueados</h5>
-                                    <span id="getCountBlockedInventories" class="h2 font-weight-bold mb-0">{{ \App\Models\Inventory\Inventory::getCountBlocked() }}</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Itens deletados</h5>
+                                    <span id="getCountDeletedInventories" class="h2 font-weight-bold mb-0">{{ \App\Models\Inventory\Inventory::getCountDeleted() }}</span>
                                 </div>
                                 <!-- icone -->
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-danger text-white rounded-circle shadow">
-                                        <i class="fas fa-ban"></i>
+                                        <i class="fas fa-trash"></i>
                                     </div>
                                 </div>
                             </div>
                             <!-- informação -->
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-danger mr-2">Bloqueadas e suspensas</span>
+                                <span class="text-danger mr-2">Deletados</span>
                             </p>
                         </div>
                     </div>

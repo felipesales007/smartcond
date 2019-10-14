@@ -35,7 +35,7 @@ class CreateInventoriesTable extends Migration
             $table->longText('description')->nullable();
             $table->date('purchase_date')->nullable();
             $table->date('warranty_date')->nullable();
-            $table->datetime('blocked')->nullable();
+            $table->string('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

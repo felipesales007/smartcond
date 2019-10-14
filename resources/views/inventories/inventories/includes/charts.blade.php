@@ -33,7 +33,7 @@
 
                                 // cards
                                 $('#getCountInventories').html(data.counts.getCountInventories);
-                                $('#getCountBlockedInventories').html(data.counts.getCountBlockedInventories);
+                                $('#getCountDeletedInventories').html(data.counts.getCountDeletedInventories);
                             }
 
                             return true;

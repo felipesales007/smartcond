@@ -20,13 +20,13 @@
                                 <b>{{ __('Lista de itens do inventário deletados') }}</b>
                             </h3>
                             <!-- botão -->
-                            @if (app('router')->has('department.store') && \App\Models\Permission::buttonPermission('btn-modal-new-department') && \App\Models\Menu\MenuItem::getMenuItemDeleted('department.store'))
+                            @if (app('router')->has('inventory.store') && \App\Models\Permission::buttonPermission('btn-modal-new-inventory') && \App\Models\Menu\MenuItem::getMenuItemDeleted('inventory.store'))
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('department.store') ? 'notify-block-route' : 'btn-modal-new-department' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('department.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('inventory.store') ? 'notify-block-route' : 'btn-modal-new-inventory' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('inventory.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>
-                                        <span class="nav-link-inner--text">{{ __('Adicionar departamento') }}</span>
+                                        <span class="nav-link-inner--text">{{ __('Adicionar item') }}</span>
                                     </a>
                                 </div>
                             @endif
@@ -38,6 +38,7 @@
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>
+                                    <th class="text-center"><i class="ni ni-image"></i></th>
                                     <th data-base="patrimonial_number">{{ __('Patrimônio') }}</th>
                                     <th data-base="name">{{ __('Nome') }}</th>
                                     <th data-base="inventory_category_id">{{ __('Categoria') }}</th>

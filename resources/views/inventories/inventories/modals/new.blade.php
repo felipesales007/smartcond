@@ -18,6 +18,37 @@
                     @csrf
                     <!-- inputs -->
                     <div class="row">
+                        <!-- imagem -->
+                        <div class="col-lg-2 mt-1">
+                            <div class="form-group">
+                                <div class="input-group-none validate-image-image-new-inventory">
+                                    <!-- botão de remover foto -->
+                                    <div class="fe-remove-preview-10 fe-remove-preview-small">
+                                        <i class="far fa-times-circle"></i>
+                                    </div>
+                                    <!-- imagem do perfil estilizada -->
+                                    <div class="fe-grid-preview-10">
+                                        <div class="fe-grid-preview-item-10 fe-preview-small">
+                                            <div class="fe-preview-10 fe-preview-small fe-default-image fe-img-center">
+                                                <img class="fe-img-preview-10 fe-img-preview-cover" src="" alt="">
+                                            </div>
+                                            <div class="fe-grid-preview-text-10 text-monospace small">
+                                                <span>Selecionar</span>
+                                                <p>Imagem</p>
+                                            </div>
+                                            <!-- arquivo do perfil oculto -->
+                                            <input type="file" id="image-image-new-inventory" name="image_image_new_inventory" class="fe-image-10" accept="image/jpg, image/jpeg, image/png, image/gif">
+                                            <label for="image-new-inventory"></label>
+                                            <input type="text" id="image-new-inventory" name="image_new_inventory" class="fe-image-url-10" value="">
+                                        </div>
+                                    </div>
+                                    <!-- alerta de erro -->
+                                    @if ($errors->has('image_image_new_inventory'))
+                                        <div class="invalid-feedback" role="alert">{{ $errors->first('image_image_new_inventory') }}</div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                         <!-- departamento -->
                         <div class="col-lg-4">
                             <div class="form-group">
@@ -38,7 +69,7 @@
                             </div>
                         </div>
                         <!-- categoria -->
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label class="form-control-label" for="inventory-category-id-new-inventory">{{ __('Categoria') }}</label>
                                 <div class="input-group-none validate-inventory-category-id-new-inventory">
@@ -57,7 +88,7 @@
                             </div>
                         </div>
                         <!-- estado do item -->
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label class="form-control-label" for="inventory-state-id-new-inventory">{{ __('Estado do item') }}</label>
                                 <div class="input-group-none validate-inventory-state-id-new-inventory">

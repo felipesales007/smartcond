@@ -3,6 +3,10 @@
         // novo inventário
         $('#form-new-inventory').validate({
             rules: {
+                image_image_new_inventory: {
+                    extension: 'jpeg|png|jpg|gif',
+                    maxsize: 1000000,
+                },
                 department_id_new_inventory: {
                     required: true,
                 },
@@ -59,6 +63,10 @@
                 },
             },
             messages: {
+                image_image_new_inventory: {
+                    extension:    'O campo imagem deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
+                    maxsize:      'O campo imagem não pode ser superior a 1 mb.',
+                },
                 department_id_new_inventory: {
                     required:     'O campo departamento é obrigatório.',
                 },
@@ -124,6 +132,10 @@
                     maxlength: 20,
                     number: true,
                 },
+                image_image_edit_inventory: {
+                    extension: 'jpeg|png|jpg|gif',
+                    maxsize: 1000000,
+                },
                 department_id_edit_inventory: {
                     required: true,
                 },
@@ -180,10 +192,14 @@
                 },
             },
             messages: {
-                id_edit_category: {
+                id_edit_inventory: {
                     required:     'O campo id é obrigatório.',
                     maxlength:    'O campo id não pode ser superior a {0} dígitos.',
                     number:       'O campo id deve ser um número.',
+                },
+                image_image_edit_inventory: {
+                    extension:    'O campo imagem deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
+                    maxsize:      'O campo imagem não pode ser superior a 1 mb.',
                 },
                 department_id_edit_inventory: {
                     required:     'O campo departamento é obrigatório.',
@@ -242,108 +258,90 @@
             }
         });
 
-        // bloquear departamento
-        $('#form-block-department').validate({
+        // deletar inventário
+        $('#form-delete-inventory').validate({
             rules: {
-                id_block_department: {
+                id_delete_inventory: {
                     required: true,
                     maxlength: 20,
                     number: true,
                 },
-            },
-            messages: {
-                id_block_department: {
-                    required:  'O campo id é obrigatório.',
-                    maxlength: 'O campo id não pode ser superior a {0} dígitos.',
-                    number:    'O campo id deve ser um número.',
-                },
-            }
-        });
-
-        // deletar departamento
-        $('#form-delete-department').validate({
-            rules: {
-                id_delete_department: {
-                    required: true,
-                    maxlength: 20,
-                    number: true,
-                },
-                name_delete_department: {
+                name_delete_inventory: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
                 },
-                name_confirmation_delete_department: {
+                name_confirmation_delete_inventory: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
-                    equalTo: '#name-delete-department',
+                    equalTo: '#name-delete-inventory',
                 },
             },
             messages: {
-                id_delete_department: {
+                id_delete_inventory: {
                     required:     'O campo id é obrigatório.',
                     maxlength:    'O campo id não pode ser superior a {0} dígitos.',
                     number:       'O campo id deve ser um número.',
                 },
-                name_delete_department: {
-                    required:     'O campo nome do departamento é obrigatório.',
-                    minlength:    'O campo nome do departamento deve ter pelo menos {0} caracteres.',
-                    maxlength:    'O campo nome do departamento não pode ser superior a {0} caracteres.',
-                    lettersdigit: 'O campo nome do departamento deve ter somente letras, espaços e caracteres permitidos.',
+                name_delete_inventory: {
+                    required:     'O campo nome do item é obrigatório.',
+                    minlength:    'O campo nome do item deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo nome do item não pode ser superior a {0} caracteres.',
+                    lettersdigit: 'O campo nome do item deve ter somente letras, espaços e caracteres permitidos.',
                 },
-                name_confirmation_delete_department: {
-                    required:     'O campo nome do departamento para exclusão é obrigatório.',
-                    minlength:    'O campo nome do departamento para exclusão deve ter pelo menos {0} caracteres.',
-                    maxlength:    'O campo nome do departamento para exclusão não pode ser superior a {0} caracteres.',
-                    lettersdigit: 'O campo nome do departamento para exclusão deve ter somente letras, espaços e caracteres permitidos.',
-                    equalTo:      'O campo nome do departamento para exclusão de confirmação não confere.',
+                name_confirmation_delete_inventory: {
+                    required:     'O campo nome do item para exclusão é obrigatório.',
+                    minlength:    'O campo nome do item para exclusão deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo nome do item para exclusão não pode ser superior a {0} caracteres.',
+                    lettersdigit: 'O campo nome do item para exclusão deve ter somente letras, espaços e caracteres permitidos.',
+                    equalTo:      'O campo nome do item para exclusão de confirmação não confere.',
                 },
             }
         });
 
-        // recuperar departamento
-        $('#form-recover-department').validate({
+        // recuperar inventário
+        $('#form-recover-inventory').validate({
             rules: {
-                id_recover_department: {
+                id_recover_inventory: {
                     required: true,
                     maxlength: 20,
                     number: true,
                 },
-                name_recover_department: {
+                name_recover_inventory: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
                 },
-                name_confirmation_recover_department: {
+                name_confirmation_recover_inventory: {
                     required: true,
                     minlength: 3,
                     maxlength: 191,
                     lettersdigit: true,
-                    equalTo: '#name-recover-department',
+                    equalTo: '#name-recover-inventory',
                 },
             },
             messages: {
-                id_recover_department: {
+                id_recover_inventory: {
                     required:     'O campo id é obrigatório.',
                     maxlength:    'O campo id não pode ser superior a {0} dígitos.',
                     number:       'O campo id deve ser um número.',
                 },
-                name_recover_department: {
-                    required:     'O campo nome do departamento é obrigatório.',
-                    minlength:    'O campo nome do departamento deve ter pelo menos {0} caracteres.',
-                    maxlength:    'O campo nome do departamento não pode ser superior a {0} caracteres.',
-                    lettersdigit: 'O campo nome do departamento deve ter somente letras, espaços e caracteres permitidos.',
+                name_recover_inventory: {
+                    required:     'O campo nome do item é obrigatório.',
+                    minlength:    'O campo nome do item deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo nome do item não pode ser superior a {0} caracteres.',
+                    lettersdigit: 'O campo nome do item deve ter somente letras, espaços e caracteres permitidos.',
                 },
-                name_confirmation_recover_department: {
-                    required:     'O campo nome do departamento para recuperação é obrigatório.',
-                    minlength:    'O campo nome do departamento para recuperação deve ter pelo menos {0} caracteres.',
-                    maxlength:    'O campo nome do departamento para recuperação não pode ser superior a {0} caracteres.',
-                    lettersdigit: 'O campo nome do departamento para recuperação deve ter somente letras, espaços e caracteres permitidos.',
-                    equalTo:      'O campo nome do departamento para recuperação de confirmação não confere.',
+                name_confirmation_recover_inventory: {
+                    required:     'O campo nome do item para recuperação é obrigatório.',
+                    minlength:    'O campo nome do item para recuperação deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo nome do item para recuperação não pode ser superior a {0} caracteres.',
+                    lettersdigit: 'O campo nome do item para recuperação deve ter somente letras, espaços e caracteres permitidos.',
+                    equalTo:      'O campo nome do item para recuperação de confirmação não confere.',
                 },
             }
         });
