@@ -1712,5 +1712,194 @@ class RoutesTableSeeder extends Seeder
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'resident.list',
+            'controller'      => 'Resident\ResidentController@list',
+            'description'     => 'Página de listagem de moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletados',
+            'route'           => 'resident.list.deleted',
+            'controller'      => 'Resident\ResidentController@listDeleted',
+            'description'     => 'Página de listagem de moradores deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'resident.view',
+            'controller'      => 'Resident\ResidentController@edit',
+            'description'     => 'Modal de visualizar os dados dos moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'resident.edit',
+            'controller'      => 'Resident\ResidentController@edit',
+            'description'     => 'Modal de editar os dados dos moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'resident.delete',
+            'controller'      => 'Resident\ResidentController@edit',
+            'description'     => 'Modal de deletar os moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'resident.recover',
+            'controller'      => 'Resident\ResidentController@edit',
+            'description'     => 'Modal de recuperar os moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'novo',
+            'route'           => 'resident.store',
+            'controller'      => 'Resident\ResidentController@store',
+            'description'     => 'Modal de criar novo morador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'atualizar/{id?}',
+            'route'           => 'resident.update',
+            'controller'      => 'Resident\ResidentController@update',
+            'description'     => 'Atualizar os dados dos moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'remover/{id?}',
+            'route'           => 'resident.destroy',
+            'controller'      => 'Resident\ResidentController@destroy',
+            'description'     => 'Deletar os moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'restaurar/{id?}',
+            'route'           => 'resident.restore',
+            'controller'      => 'Resident\ResidentController@restore',
+            'description'     => 'Recuperar os moradores deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'verificar/email',
+            'route'           => 'resident.check.email',
+            'controller'      => 'User\CheckController@checkEmail',
+            'description'     => 'Verificar o e-mail dos moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'verificar/email/diferente',
+            'route'           => 'resident.check.email.different',
+            'controller'      => 'User\CheckController@checkEmailDifferent',
+            'description'     => 'Verificar o e-mail dos moradores que seja diferente do e-mail do morador em edição',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'verificar/cpf',
+            'route'           => 'resident.check.cpf',
+            'controller'      => 'User\CheckController@checkCpf',
+            'description'     => 'Verificar o cpf dos moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'verificar/cpf/diferente',
+            'route'           => 'resident.check.cpf.different',
+            'controller'      => 'User\CheckController@checkCpfDifferent',
+            'description'     => 'Verificar o cpf dos moradores que seja diferente do cpf do morador em edição',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'verificar/rg',
+            'route'           => 'resident.check.rg',
+            'controller'      => 'User\CheckController@checkRg',
+            'description'     => 'Verificar o rg dos moradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'verificar/rg/diferente',
+            'route'           => 'resident.check.rg.different',
+            'controller'      => 'User\CheckController@checkRgDifferent',
+            'description'     => 'Verificar o rg dos moradores que seja diferente do rg do morador em edição',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'enviar/email',
+            'route'           => 'resident.send.email',
+            'controller'      => 'Resident\ResidentController@sendEmail',
+            'description'     => 'Enviar e-mail para o morador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
     }
 }

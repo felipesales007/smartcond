@@ -10,6 +10,7 @@
 @include('departments.includes.ajax')
 @include('inventories.inventory-categories.includes.ajax')
 @include('inventories.inventories.includes.ajax')
+@include('residents.includes.ajax')
 
 <!-- modals -->
 @include('profile.includes.modals')
@@ -22,6 +23,7 @@
 @include('departments.includes.modals')
 @include('inventories.inventory-categories.includes.modals')
 @include('inventories.inventories.includes.modals')
+@include('residents.includes.modals')
 
 <!-- validate -->
 @include('profile.includes.validate')
@@ -35,3 +37,4 @@
 @include('departments.includes.validate')
 @include('inventories.inventory-categories.includes.validate')
 @include('inventories.inventories.includes.validate')
+@include('residents.includes.validate')

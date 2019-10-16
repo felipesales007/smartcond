@@ -1030,5 +1030,97 @@ class MenuItemsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        // grupo moradores
+        MenuItem::create([
+            'menu_id'     => '13',
+            'route_id'    => '159',
+            'order'       => '1',
+            'name'        => 'Novo morador',
+            'button'      => 'btn-modal-new-resident',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de morador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '13',
+            'route_id'    => '153',
+            'order'       => '2',
+            'name'        => 'Lista de moradores',
+            'description' => 'Item do menu collapse de acesso a página de listagem de moradores',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '13',
+            'route_id'    => '154',
+            'order'       => '3',
+            'name'        => 'Lista de moradores deletados',
+            'description' => 'Item do menu collapse de acesso a página de listagem de moradores deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '13',
+            'route_id'    => '155',
+            'order'       => '1',
+            'name'        => 'Visualizar morador',
+            'button'      => 'btn-modal-view-resident',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de moradores de acesso ao modal de visualização de morador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '13',
+            'route_id'    => '156',
+            'order'       => '2',
+            'name'        => 'Editar morador',
+            'button'      => 'btn-modal-edit-resident',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de moradores de acesso ao modal de edição de morador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '13',
+            'route_id'    => '157',
+            'order'       => '3',
+            'name'        => 'Deletar morador',
+            'button'      => 'btn-modal-delete-resident',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de moradores de acesso ao modal de exclusão de morador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '13',
+            'route_id'    => '158',
+            'order'       => '1',
+            'name'        => 'Recuperar morador',
+            'button'      => 'btn-modal-recover-resident',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de moradores deletados de acesso ao modal de recuperação de morador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '13',
+            'route_id'    => '169',
+            'order'       => '1',
+            'name'        => 'Enviar e-mail para o morador',
+            'button'      => 'btn-send-email-resident',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de moradores de acesso ao botão de envio de e-mail para o morador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }

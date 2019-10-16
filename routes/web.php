@@ -266,5 +266,26 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
         Route::post('restaurar/inventario/{id?}',         ['as' => 'inventory.restore',                       'uses' => 'Inventory\InventoryController@restore']);
     });
 
+    // grupo moradores
+    Route::group(['prefix' => 'moradores'], function () {
+        Route::get ('lista',                     ['as' => 'resident.list',                  'uses' => 'Resident\ResidentController@list']);
+        Route::get ('lista/deletados',           ['as' => 'resident.list.deleted',          'uses' => 'Resident\ResidentController@listDeleted']);
+        Route::get ('visualizar/{id?}',          ['as' => 'resident.view',                  'uses' => 'Resident\ResidentController@edit']); // * btn-modal-view-resident
+        Route::get ('editar/{id?}',              ['as' => 'resident.edit',                  'uses' => 'Resident\ResidentController@edit']); // * btn-modal-edit-resident
+        Route::get ('deletar/{id?}',             ['as' => 'resident.delete',                'uses' => 'Resident\ResidentController@edit']); // * btn-modal-delete-resident
+        Route::get ('recuperar/{id?}',           ['as' => 'resident.recover',               'uses' => 'Resident\ResidentController@edit']); // * btn-modal-recover-resident
+        Route::post('novo',                      ['as' => 'resident.store',                 'uses' => 'Resident\ResidentController@store']); // btn-modal-new-resident
+        Route::post('atualizar/{id?}',           ['as' => 'resident.update',                'uses' => 'Resident\ResidentController@update']);
+        Route::post('remover/{id?}',             ['as' => 'resident.destroy',               'uses' => 'Resident\ResidentController@destroy']);
+        Route::post('restaurar/{id?}',           ['as' => 'resident.restore',               'uses' => 'Resident\ResidentController@restore']);
+        Route::post('enviar/email',              ['as' => 'resident.send.email',            'uses' => 'Resident\ResidentController@sendEmail']); // * btn-send-email-resident
+        Route::post('verificar/email',           ['as' => 'resident.check.email',           'uses' => 'Resident\CheckController@checkEmail']);
+        Route::post('verificar/email/diferente', ['as' => 'resident.check.email.different', 'uses' => 'Resident\CheckController@checkEmailDifferent']);
+        Route::post('verificar/cpf',             ['as' => 'resident.check.cpf',             'uses' => 'Resident\CheckController@checkCpf']);
+        Route::post('verificar/cpf/diferente',   ['as' => 'resident.check.cpf.different',   'uses' => 'Resident\CheckController@checkCpfDifferent']);
+        Route::post('verificar/rg',              ['as' => 'resident.check.rg',              'uses' => 'Resident\CheckController@checkRg']);
+        Route::post('verificar/rg/diferente',    ['as' => 'resident.check.rg.different',    'uses' => 'Resident\CheckController@checkRgDifferent']);
+    });
+
     */
 });

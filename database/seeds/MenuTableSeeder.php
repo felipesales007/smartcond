@@ -153,5 +153,17 @@ class MenuTableSeeder extends Seeder
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
+
+        // grupo moradores
+        Menu::create([
+            'menu_option_id' => '1',
+            'color_id'       => '6',
+            'order'          => '9',
+            'name'           => 'Moradores',
+            'icon'           => 'fas fa-users',
+            'description'    => 'Menu em collapse da página de moradores do condomínio',
+            'created_at'     => now(),
+            'updated_at'     => now()
+        ]);
     }
 }

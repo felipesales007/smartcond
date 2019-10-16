@@ -74,5 +74,12 @@ class GroupsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        Group::create([
+            'name'        => 'moradores',
+            'description' => 'Grupo das configurações dos moradores',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }
