@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
 use App\Http\Requests\Permission\EditPermissionRequest;
+use App\Models\Company\CompanyAccesses;
+use App\Models\Entity\Entity;
+use App\Models\Entity\EntityAccesses;
 use App\Models\Menu\MenuItem;
 use App\Models\Permission;
 use App\Models\Route\Group;
@@ -34,11 +37,18 @@ class PermissionController extends Controller
 
         $collection = User::query()
             ->select('users.id', 'photo', 'name', 'users.created_at')
-            ->selectRaw('count(user_id) as permission')
+            ->selectRaw('count(permissions.user_id) as permission')
             ->leftJoin('permissions', 'permissions.user_id', '=', 'users.id')
             ->groupBy('users.id')
             ->having('permission', '<=', '1')
-            ->orWhere('name', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query->orWhere('name', 'like', '%' . $search . '%');
+            })
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query
+                    ->leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+                    ->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -48,9 +58,9 @@ class PermissionController extends Controller
                 // coluna imagem
                 ->addColumn('photo', function ($row) {
                     if ($row->photo) {
-                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/img/users/photo/' . $row->photo) . '" alt=""></div>';
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/images/users/photo/' . $row->photo) . '" alt=""></div>';
                     } else {
-                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('img/default/default-user.png') . '" alt=""></div>';
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('images/default/default-user.png') . '" alt=""></div>';
                     }
                     return $photo;
                 })
@@ -65,7 +75,7 @@ class PermissionController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // editar
-                    if ($row->id != auth()->id()) {
+                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || EntityAccesses::getEntityAccessesUser($row->id)['entity_id'] || CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                         if (app('router')->has('permission.user.edit') && MenuItem::getMenuItemDeleted('permission.user.edit')['list']) {
                             if (Permission::buttonPermission('btn-edit-permission-user') && !MenuItem::getMenuItemBlocked('permission.user.edit')['list']) {
                                 $btn = '<a href="' . route('permission.user.edit', ['id' => $row->id]) . '" class="btn btn-sm btn-icon btn-outline-success"><i class="fas fa-lock-open mr-2"></i>liberar acesso</a>';
@@ -103,11 +113,18 @@ class PermissionController extends Controller
 
         $collection = User::query()
             ->select('users.id', 'photo', 'name', 'users.created_at')
-            ->selectRaw('count(user_id) as permission')
+            ->selectRaw('count(permissions.user_id) as permission')
             ->leftJoin('permissions', 'permissions.user_id', '=', 'users.id')
             ->groupBy('users.id')
             ->having('permission', '>', '1')
-            ->orWhere('name', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query->orWhere('name', 'like', '%' . $search . '%');
+            })
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query
+                    ->leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+                    ->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -117,9 +134,9 @@ class PermissionController extends Controller
                 // coluna imagem
                 ->addColumn('photo', function ($row) {
                     if ($row->photo) {
-                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/img/users/photo/' . $row->photo) . '" alt=""></div>';
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/images/users/photo/' . $row->photo) . '" alt=""></div>';
                     } else {
-                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('img/default/default-user.png') . '" alt=""></div>';
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('images/default/default-user.png') . '" alt=""></div>';
                     }
                     return $photo;
                 })
@@ -134,7 +151,7 @@ class PermissionController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // editar
-                    if ($row->id != auth()->id() && $row->id > 3 || $row->id != auth()->id() && auth()->id() < 3) {
+                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || EntityAccesses::getEntityAccessesUser($row->id)['entity_id'] || CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                         if (app('router')->has('permission.user.edit') && MenuItem::getMenuItemDeleted('permission.user.edit')['list']) {
                             if (Permission::buttonPermission('btn-edit-permission-user') && !MenuItem::getMenuItemBlocked('permission.user.edit')['list']) {
                                 $btn = '<a href="' . route('permission.user.edit', ['id' => $row->id]) . '" class="btn btn-sm btn-icon btn-outline-success"><i class="fas fa-lock-open mr-2"></i>liberar acesso</a>';
@@ -168,10 +185,9 @@ class PermissionController extends Controller
         $user = User::where('users.id', '=', $id->get('id'))->first();
 
         // impede a alteração de usuários pré-definidos
-        if ($user->id == auth()->id() || $user->id < 4 && auth()->id() > 3) {
+        if ($user->id == auth()->id() || CompanyAccesses::getCompanyAccessUser($user->id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && !EntityAccesses::getEntityAccessesUser($user->id)['entity_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para editar as permissões desse usuário.');
-
             return back()->with('notify', json_encode($data));
         }
 
@@ -215,10 +231,9 @@ class PermissionController extends Controller
         $id = $request->id_edit_user_permission;
 
         // impede a alteração de usuários pré-definidos
-        if ($id == auth()->id() || $id < 4 && auth()->id() > 3) {
+        if ($id == auth()->id() || CompanyAccesses::getCompanyAccessUser($id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && !EntityAccesses::getEntityAccessesUser($id)['entity_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para alterar as permissões desse usuário.');
-
             return back()->with('notify', json_encode($data));
         }
 

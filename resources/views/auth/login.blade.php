@@ -14,7 +14,7 @@
                             <div class="h2 font-weight-900">{{ $info['title'] }}</div>
                             <div class="h3 font-weight-900 text-muted">{{ $info['description'] }}</div>
                         </div>
-                        <img src="{{ url('img/auth/' . $info['image']) }}" class="fe-auth-info-imagem" alt="">
+                        <img src="{{ url('images/auth/' . $info['image']) }}" class="fe-auth-info-imagem" alt="">
                     @endforeach
                 </div>
                 <!-- login -->
@@ -37,7 +37,7 @@
                                 </div>
                             @endif
                             <!-- form -->
-                            <form id="form-login" method="post" action="{{ route('login') }}" role="form" autocomplete="off" novalidate>
+                            <form id="form-login" method="post" action="{{ app('router')->has('login') ? route('login') : url('/') }}" role="form" autocomplete="off" novalidate>
                                 @csrf
                                 <!-- inputs -->
                                 <div class="row">
@@ -89,7 +89,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <div class="input-group input-group-merge validate-remember">
-                                                <div class="custom-control custom-checkbox custom-checkbox-primary">
+                                                <div class="custom-control custom-checkbox custom-checkbox-dark">
                                                     <input type="checkbox" id="remember" name="remember" class="custom-control-input" {{ old('remember') ? 'checked' : '' }}>
                                                     <label class="custom-control-label text-muted fe-checkbox-center" for="remember">{{ __('Lembrar-me') }}</label>
                                                 </div>
@@ -98,12 +98,12 @@
                                     </div>
                                     <!-- recuperar senha -->
                                     <div class="col-lg-6 text-right">
-                                        <a href="{{ route('password.request') }}" class="text-link fe-login-texto-senha">{{ __('Esqueci minha senha') }}</a>
+                                        <a href="{{ app('router')->has('password.request') ? route('password.request') : url('/') }}" class="text-link fe-loading fe-login-texto-senha">{{ __('Esqueci minha senha') }}</a>
                                     </div>
                                 </div>
                                 <!-- botão -->
                                 <div class="text-center mb-4">
-                                    <button type="submit" class="btn btn-primary btn-block fe-carregando fe-scroll-top">{{ __('Entrar') }}</button>
+                                    <button type="submit" class="btn btn-dark btn-block fe-carregando fe-scroll-top">{{ __('Entrar') }}</button>
                                 </div>
                             </form>
                         </div>

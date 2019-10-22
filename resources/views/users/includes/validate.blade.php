@@ -43,20 +43,9 @@
                         },
                     },
                 },
-                company_id_new_user: {
+                'entity_id_new_user[]': {
                     required: true,
-                },/*
-                password_new_user: {
-                    required: true,
-                    minlength: 8,
-                    maxlength: 191,
                 },
-                password_confirmation_new_user: {
-                    required: true,
-                    minlength: 8,
-                    maxlength: 191,
-                    equalTo: '#password-new-user',
-                },*/
             },
             messages: {
                 name_new_user: {
@@ -71,20 +60,9 @@
                     email:                'O campo e-mail deve ser um endereço de e-mail válido.',
                     remote:               'O campo e-mail já está sendo utilizado.',
                 },
-                company_id_new_user: {
+                'entity_id_new_user[]': {
                     required:             'O campo condomínio é obrigatório.',
-                },/*
-                password_new_user: {
-                    required:             'O campo senha é obrigatório.',
-                    minlength:            'O campo senha deve ter pelo menos {0} caracteres.',
-                    maxlength:            'O campo senha não pode ser superior a {0} caracteres.',
                 },
-                password_confirmation_new_user: {
-                    required:             'O campo confirme a senha é obrigatório.',
-                    minlength:            'O campo confirme a senha deve ter pelo menos {0} caracteres.',
-                    maxlength:            'O campo confirme a senha não pode ser superior a {0} caracteres.',
-                    equalTo:              'O campo confirme a senha de confirmação não confere.',
-                },*/
             }
         });
 
@@ -213,7 +191,7 @@
                         },
                     },
                 },
-                company_id_edit_user: {
+                'entity_id_edit_user[]': {
                     required: true,
                 },
                 password_edit_user: {
@@ -225,13 +203,13 @@
                     maxlength: 191,
                     equalTo: '#password-edit-user',
                 },
-                image_2: {
+                image_photo_edit_user: {
                     extension: 'jpeg|png|jpg|gif',
-                    maxsize: 6000000,
+                    maxsize: 1000000,
                 },
-                image_3: {
+                image_background_edit_user: {
                     extension: 'jpeg|png|jpg|gif',
-                    maxsize: 6000000,
+                    maxsize: 1000000,
                 },
                 birthday_edit_user: {
                     minlength: 10,
@@ -322,7 +300,7 @@
                     email:                'O campo e-mail deve ser um endereço de e-mail válido.',
                     remote:               'O campo e-mail já está sendo utilizado.',
                 },
-                company_id_edit_user: {
+                'entity_id_edit_user[]': {
                     required:             'O campo condomínio é obrigatório.',
                 },
                 password_edit_user: {
@@ -334,13 +312,13 @@
                     maxlength:            'O campo confirme a senha não pode ser superior a {0} caracteres.',
                     equalTo:              'O campo confirme a senha de confirmação não confere.',
                 },
-                image_2: {
-                    extension:            'O campo imagem deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
-                    maxsize:              'O campo imagem não pode ser superior a 6 mb.',
+                image_photo_edit_user: {
+                    extension:            'O campo foto deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
+                    maxsize:              'O campo foto não pode ser superior a 1 mb.',
                 },
-                image_3: {
+                image_background_edit_user: {
                     extension:            'O campo capa deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
-                    maxsize:              'O campo capa não pode ser superior a 6 mb.',
+                    maxsize:              'O campo capa não pode ser superior a 1 mb.',
                 },
                 birthday_edit_user: {
                     minlength:            'O campo data de nascimento deve ter pelo menos 8 dígitos.',
@@ -369,8 +347,8 @@
                     maxlength:            'O campo profissão não pode ser superior a {0} caracteres.',
                 },
                 company_edit_user: {
-                    minlength:            'O campo condomínio deve ter pelo menos {0} caracteres.',
-                    maxlength:            'O campo condomínio não pode ser superior a {0} caracteres.',
+                    minlength:            'O campo empresa deve ter pelo menos {0} caracteres.',
+                    maxlength:            'O campo empresa não pode ser superior a {0} caracteres.',
                 },
                 postal_code_edit_user: {
                     minlength:            'O campo cep deve ter pelo menos 8 dígitos.',
@@ -385,8 +363,8 @@
                     maxlength:            'O campo nº não pode ser superior a {0} caracteres.',
                 },
                 complement_edit_user: {
-                    minlength:            'O campo complemnto deve ter pelo menos {0} caracteres.',
-                    maxlength:            'O campo complemnto não pode ser superior a {0} caracteres.',
+                    minlength:            'O campo complemento deve ter pelo menos {0} caracteres.',
+                    maxlength:            'O campo complemento não pode ser superior a {0} caracteres.',
                 },
                 neighborhood_edit_user: {
                     minlength:            'O campo bairro deve ter pelo menos {0} caracteres.',
@@ -520,7 +498,7 @@
         });
 
         // reenviar e-mail de confirmação do usuário
-        $('#form-resend-email-user').validate({
+        $('.form-resend-email-user').validate({
             rules: {
                 id_resend_email_user: {
                     required: true,

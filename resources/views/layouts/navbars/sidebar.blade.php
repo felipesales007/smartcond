@@ -4,8 +4,8 @@
         <div class="sidenav-header d-flex align-items-center">
             <!-- logo -->
             <a class="ml--1 mr--3 navbar-brand fe-mouse-off">
-                <span class="h2 text-primary">
-                    <img src="{{ asset('img/default/logos/azul-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
+                <span class="h2 text-dark">
+                    <img src="{{ asset('images/default/logos/azul-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
                 </span>
             </a>
             <!-- botão do menu -->
@@ -35,7 +35,7 @@
                             <!-- grupo em collapse -->
                             <li class="nav-item">
                                 <!-- collapse titulo -->
-                                <a class="nav-link {{ $request ? 'active text-primary' : '' }} {{ $menu['blocked'] ? 'fe-menu-block' : '' }}" href="#navbar-{{ $menu['blocked'] ? '' : $group_name }}" data-toggle="collapse" role="button" aria-expanded="{{ $request ? 'true' : 'false' }}" aria-controls="navbar-{{ $group_name }}">
+                                <a class="nav-link {{ $request ? 'active text-dark' : '' }} {{ $menu['blocked'] ? 'fe-menu-block' : '' }}" href="#navbar-{{ $menu['blocked'] ? '' : $group_name }}" data-toggle="collapse" role="button" aria-expanded="{{ $request ? 'true' : 'false' }}" aria-controls="navbar-{{ $group_name }}">
                                     <i class="{{ $menu->icon }} {{ \App\Models\Color::getColor($menu->color_id)['color'] }}"></i>
                                     <span class="nav-link-text">{{ __(substr_replace($menu->name, (strlen($menu->name) > $str_limit ? '...' : ''), $str_limit)) }}</span>
                                 </a>
@@ -55,7 +55,7 @@
                                                     <li class="nav-item">
                                                         @if (!$item->button && $item->hidden == 0)
                                                             <!-- collapse item link -->
-                                                            <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $item['blocked'] ? 'javascript:void(0)' : route(\App\Models\Route\Route::getRoute($item->route_id)['route']) }}" class="nav-link {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $item['blocked'] ? 'fe-menu-block' : '' }} {{ Illuminate\Support\Facades\Request::is(\App\Models\Route\Group::getGroup($group_id)['name'] . '/' . $url) ? 'text-primary' : '' }}">
+                                                            <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $item['blocked'] ? 'javascript:void(0)' : route(\App\Models\Route\Route::getRoute($item->route_id)['route']) }}" class="nav-link fe-loading {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $item['blocked'] ? 'fe-menu-block' : '' }} {{ Illuminate\Support\Facades\Request::is(\App\Models\Route\Group::getGroup($group_id)['name'] . '/' . $url) ? 'text-dark' : '' }}">
                                                                 @if (Illuminate\Support\Facades\Request::is($group_name . '/' . $url))
                                                                     <i class="fas fa-circle fe-fs-6 ml--3 mr--3"></i>
                                                                 @endif
@@ -63,7 +63,7 @@
                                                             </a>
                                                         @elseif (!$item->button && $item->hidden == 1)
                                                             <!-- collapse item link oculto -->
-                                                            <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $item['blocked'] ? 'javascript:void(0)' : $_SERVER['REQUEST_URI'] }}" class="nav-link {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $item['blocked'] ? 'fe-menu-block' : '' }} {{ Illuminate\Support\Facades\Request::is(\App\Models\Route\Group::getGroup($group_id)['name'] . '/' . $url) ? 'text-primary' : 'd-none' }}">
+                                                            <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $item['blocked'] ? 'javascript:void(0)' : $_SERVER['REQUEST_URI'] }}" class="nav-link fe-loading {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $item['blocked'] ? 'fe-menu-block' : '' }} {{ Illuminate\Support\Facades\Request::is(\App\Models\Route\Group::getGroup($group_id)['name'] . '/' . $url) ? 'text-dark' : 'd-none' }}">
                                                                 @if (Illuminate\Support\Facades\Request::is($group_name . '/' . $url))
                                                                     <i class="fas fa-circle fe-fs-6 ml--3 mr--3"></i>
                                                                 @endif
@@ -95,7 +95,7 @@
                                 @if ($menu->hidden == 0)
                                     @if (!$button['button'])
                                         <!-- titulo link -->
-                                        <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $menu_item['blocked'] ? 'javascript:void(0)' : route(\App\Models\Route\Route::getRoute($route_id)['route']) }}" class="nav-link {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $menu_item['blocked'] ? 'fe-menu-block' : '' }} {{ $url ? 'active text-primary' : '' }}">
+                                        <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $menu_item['blocked'] ? 'javascript:void(0)' : route(\App\Models\Route\Route::getRoute($route_id)['route']) }}" class="nav-link fe-loading {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $menu_item['blocked'] ? 'fe-menu-block' : '' }} {{ $url ? 'active text-dark' : '' }}">
                                             <i class="{{ $menu->icon }} {{ \App\Models\Color::getColor($menu->color_id)['color'] }}"></i>
                                             <span class="nav-link-text">{{ __(substr_replace($menu->name, (strlen($menu->name) > $str_limit ? '...' : ''), $str_limit)) }}</span>
                                         </a>
@@ -108,7 +108,7 @@
                                     @endif
                                 @else
                                     <!-- titulo link oculto -->
-                                    <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $menu_item['blocked'] ? 'javascript:void(0)' : url()->current() }}" class="nav-link {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $menu_item['blocked'] ? 'fe-menu-block' : '' }} {{ $url ? 'active text-primary' : 'd-none' }}">
+                                    <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $menu_item['blocked'] ? 'javascript:void(0)' : url()->current() }}" class="nav-link fe-loading {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $menu_item['blocked'] ? 'fe-menu-block' : '' }} {{ $url ? 'active text-dark' : 'd-none' }}">
                                         <i class="{{ $menu->icon }} {{ \App\Models\Color::getColor($menu->color_id)['color'] }}"></i>
                                         <span class="nav-link-text">{{ __(substr_replace($menu->name, (strlen($menu->name) > $str_limit ? '...' : ''), $str_limit)) }}</span>
                                     </a>

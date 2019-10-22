@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Entity\Entity;
 use App\Models\User;
 use DateTime;
 use Exception;
@@ -41,10 +42,44 @@ class DashboardController extends Controller
     public function getCounts()
     {
         $cards = [
-            'getCount'                => User::all()->count(),
-            'getCountConfirmation'    => User::where('email_verified_at', '!=', null)->count(),
-            'getCountNotConfirmation' => User::where('email_verified_at', '=', null)->count(),
-            'getCountBlocked'         => User::where('blocked', '!=', null)->orWhere('blocked_at', '>=', date('Y-m-d'))->count()
+            'getCount' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+                ->where('admin', '=', '0')
+                ->when(auth()->user()['admin'] == '0', function ($query) {
+                    $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+                })
+                ->groupBy('entity_accesses.user_id')
+                ->get()
+                ->count(),
+            'getCountConfirmation' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+                ->where('admin', '=', '0')
+                ->where('email_verified_at', '!=', null)
+                ->when(auth()->user()['admin'] == '0', function ($query) {
+                    $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+                })
+                ->groupBy('entity_accesses.user_id')
+                ->get()
+                ->count(),
+            'getCountNotConfirmation' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+                ->where('admin', '=', '0')
+                ->where('email_verified_at', '=', null)
+                ->when(auth()->user()['admin'] == '0', function ($query) {
+                    $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+                })
+                ->groupBy('entity_accesses.user_id')
+                ->get()
+                ->count(),
+            'getCountBlocked' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+                ->where('admin', '=', '0')
+                ->where('blocked', '!=', null)
+                ->where(function ($query) {
+                    $query->orWhere('blocked_at', '>=', date('Y-m-d'));
+                })
+                ->when(auth()->user()['admin'] == '0', function ($query) {
+                    $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+                })
+                ->groupBy('entity_accesses.user_id')
+                ->get()
+                ->count(),
         ];
 
         return $cards;
@@ -56,6 +91,7 @@ class DashboardController extends Controller
     public function getGendersCount()
     {
         $names = User::leftJoin('genders', 'genders.id', '=', 'gender_id')
+            ->where('admin', '=', '0')
             ->orderBy('genders.id', 'asc')
             ->groupBy('genders.name')
             ->pluck('genders.name');
@@ -65,6 +101,7 @@ class DashboardController extends Controller
         }
 
         $count = User::leftJoin('genders', 'genders.id', '=', 'gender_id')
+            ->where('admin', '=', '0')
             ->orderBy('genders.id', 'asc')
             ->get()
             ->groupBy('gender_id')
@@ -87,7 +124,7 @@ class DashboardController extends Controller
     public function getAllMonths()
     {
         $month_array = array();
-        $dates       = User::orderBy('created_at', 'asc')->pluck('created_at');
+        $dates       = User::where('admin', '=', '0')->orderBy('created_at', 'asc')->pluck('created_at');
         $dates       = json_decode($dates);
 
         if (!empty($dates)) {
@@ -113,7 +150,7 @@ class DashboardController extends Controller
      */
     public function getMonthsCount($month)
     {
-        $months_count = User::whereMonth('created_at', $month)->get()->count();
+        $months_count = User::where('admin', '=', '0')->whereMonth('created_at', $month)->get()->count();
 
         return $months_count;
     }

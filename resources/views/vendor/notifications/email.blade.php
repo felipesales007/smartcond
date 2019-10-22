@@ -26,7 +26,7 @@
             $color = $level;
             break;
         default:
-            $color = 'primary';
+            $color = 'dark';
     }
 ?>
 @component('mail::button', ['url' => $actionUrl, 'color' => $color])
@@ -44,7 +44,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('Atenciosamente'),{{-- <br>{{ config('app.name') }}--}}
+@lang('Atenciosamente'),
 @endif
 
 {{-- Subcopy --}}

@@ -144,8 +144,7 @@
             padding: 0;
         }
         button:focus {
-            outline: 1px dotted;
-            outline: 5px auto -webkit-focus-ring-color;
+            outline: dotted 5px;
         }
         *,
         *::before,

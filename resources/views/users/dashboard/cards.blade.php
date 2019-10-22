@@ -1,5 +1,5 @@
 <!-- cards do dashboard -->
-<div class="header bg-gradient-primary pb-7 pb-xl-8 pt-6 pt-md-7 pt-xl-8">
+<div class="header bg-dark pb-7 pb-xl-8 pt-6 pt-md-7 pt-xl-8">
     <div class="container-fluid">
         <div class="header-body">
             <!-- cards -->

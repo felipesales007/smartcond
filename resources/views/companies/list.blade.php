@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('Lista de condomínios'))
+@section('title', __('Lista de empresas'))
 
 @section('content')
 
@@ -17,17 +17,17 @@
                             <!-- título -->
                             <div class="col-5 col-sm-6">
                                 <h3 class="text-uppercase text-monospace mb--1">
-                                    <b>{{ __('Lista de condomínios') }}</b>
+                                    <b>{{ __('Lista de empresas') }}</b>
                                 </h3>
                             </div>
                             <!-- botão -->
                             @if (app('router')->has('company.store') && \App\Models\Permission::buttonPermission('btn-modal-new-company') && \App\Models\Menu\MenuItem::getMenuItemDeleted('company.store'))
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('company.store') ? 'notify-block-route' : 'btn-modal-new-company' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('company.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-dark {{ \App\Models\Route\Route::getRouteBlocked('company.store') ? 'notify-block-route' : 'btn-modal-new-company' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('company.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>
-                                        <span class="nav-link-inner--text">{{ __('Adicionar condomínio') }}</span>
+                                        <span class="nav-link-inner--text">{{ __('Adicionar empresa') }}</span>
                                     </a>
                                 </div>
                             @endif

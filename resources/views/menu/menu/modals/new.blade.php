@@ -15,8 +15,8 @@
             <div class="modal-body">
                 <!-- form -->
                 <form id="form-new-menu" role="form" autocomplete="off" novalidate>
-                @csrf
-                <!-- inputs -->
+                    @csrf
+                    <!-- inputs -->
                     <div class="row">
                         <!-- nome -->
                         <div class="col-lg-12">
@@ -122,7 +122,7 @@
                                 <label class="form-control-label" for="hidden-new-menu">{{ __('Oculto') }}</label>
                                 <div class="input-group input-group-merge validate-hidden-new-menu">
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione se o menu for oculto') }}">*</span>
-                                    <div class="custom-control custom-checkbox custom-checkbox-primary mt-2">
+                                    <div class="custom-control custom-checkbox custom-checkbox-dark mt-2">
                                         <input type="checkbox" id="hidden-new-menu" name="hidden_new_menu" class="custom-control-input" {{ old('hidden_new_menu') ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="hidden-new-menu"></label>
                                     </div>

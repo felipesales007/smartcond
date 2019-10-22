@@ -38,10 +38,13 @@ class MenuItemController extends Controller
             ->join('menu', 'menu.id', 'menu_items.menu_id')
             ->join('routes', 'routes.id', 'menu_items.route_id')
             ->join('groups', 'groups.id', 'routes.group_id')
-            ->orWhere('menu_items.name', 'like', '%' . $search . '%')
-            ->orWhere('menu.name', 'like', '%' . $search . '%')
-            ->orWhere('groups.name', 'like', '%' . $search . '%')
-            ->orWhere('routes.route', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query
+                    ->orWhere('menu_items.name', 'like', '%' . $search . '%')
+                    ->orWhere('menu.name', 'like', '%' . $search . '%')
+                    ->orWhere('groups.name', 'like', '%' . $search . '%')
+                    ->orWhere('routes.route', 'like', '%' . $search . '%');
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -114,13 +117,13 @@ class MenuItemController extends Controller
                     if (app('router')->has('menu.item.ban') && MenuItem::getMenuItemDeleted('menu.item.ban')['list']) {
                         if (Permission::buttonPermission('btn-modal-block-menu-item') && !MenuItem::getMenuItemBlocked('menu.item.ban')['list'] && $row->id != 48 && $row->id != 56) {
                             if ($row->blocked) {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-menu-item" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-menu-item" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-menu-item" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
                         } else {
                             if ($row->blocked) {
-                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
@@ -233,7 +236,6 @@ class MenuItemController extends Controller
         if ($collection->id == 48 || $collection->id == 56) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não pode bloquer a lista de itens do menu.<br><small><b>motivo: </b>ao bloquear este item do menu não será mais possível o controle sobre os itens do menu no sistema.</small>');
-
             return response()->json($data);
         }
 
@@ -270,7 +272,6 @@ class MenuItemController extends Controller
         if ($collection->id == 48 || $collection->id == 50 || $collection->id == 60) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não pode excluir a lista de itens do menu.<br><small><b>motivo: </b>ao excluir este item do menu não será mais possível o controle sobre os itens do menu no sistema.</small>');
-
             return response()->json($data);
         }
 

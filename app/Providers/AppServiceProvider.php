@@ -10,6 +10,8 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Registre todos os serviços de aplicativos.
+     *
+     * @return void
      */
     public function register()
     {
@@ -18,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Inicialize todos os serviços de aplicativos.
+     *
+     * @return void
      */
     public function boot()
     {

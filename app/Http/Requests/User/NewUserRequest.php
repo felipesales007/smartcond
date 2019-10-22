@@ -26,9 +26,7 @@ class NewUserRequest extends FormRequest
         return [
             'name_new_user'                     => ['required', 'min:3', 'max:191', 'alpha_space'],
             'email_new_user'                    => ['required', 'max:191', 'email', 'unique:users,email'],
-            'company_id_new_user'               => ['required'],
-            // 'password_new_user'              => ['required', 'min:8', 'max:191', 'same:password_confirmation_new_user'],
-            // 'password_confirmation_new_user' => ['required', 'min:8', 'max:191'],
+            'entity_id_new_user'                => ['required'],
         ];
     }
 }

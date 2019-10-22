@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Entity\Entity;
 use App\Notifications\Auth\PasswordReset;
 use App\Notifications\Auth\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -25,8 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'birthday', 'contact', 'gender_id', 'course', 'college',
         'profession', 'company', 'postal_code', 'address', 'house_number',
         'complement', 'neighborhood', 'city', 'state_id', 'country',
-        'description', 'photo', 'background', 'last_login_ip', 'last_login_at',
-        'last_update_at', 'blocked_at', 'blocked', 'deleted_at'
+        'description', 'photo', 'background', 'admin', 'last_login_ip',
+        'last_login_at', 'last_update_at', 'blocked_at', 'blocked', 'deleted_at'
     ];
 
     /**
@@ -63,7 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getUsers()
     {
-        return User::get();
+        return User::where('admin', '=', '0')->get();
     }
 
     /**
@@ -74,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getUser($id)
     {
-        return User::find($id);
+        return User::where('admin', '=', '0')->find($id);
     }
 
     /**
@@ -84,7 +85,14 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getCount()
     {
-        return User::count();
+        return User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            ->where('admin', '=', '0')
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->groupBy('entity_accesses.user_id')
+            ->get()
+            ->count();
     }
 
     /**
@@ -94,7 +102,15 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getCountConfirmation()
     {
-        return User::where('email_verified_at', '!=', null)->count();
+        return User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            ->where('admin', '=', '0')
+            ->where('email_verified_at', '!=', null)
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->groupBy('entity_accesses.user_id')
+            ->get()
+            ->count();
     }
 
     /**
@@ -104,7 +120,15 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getCountNotConfirmation()
     {
-        return User::where('email_verified_at', '=', null)->count();
+        return User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            ->where('admin', '=', '0')
+            ->where('email_verified_at', '=', null)
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->groupBy('entity_accesses.user_id')
+            ->get()
+            ->count();
     }
 
     /**
@@ -114,7 +138,18 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getCountBlocked()
     {
-        return User::where('blocked', '!=', null)->orWhere('blocked_at', '>=', date('Y-m-d'))->count();
+        return User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            ->where('admin', '=', '0')
+            ->where('blocked', '!=', null)
+            ->where(function ($query) {
+                $query->orWhere('blocked_at', '>=', date('Y-m-d'));
+            })
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->groupBy('entity_accesses.user_id')
+            ->get()
+            ->count();
     }
 
     /**
@@ -142,7 +177,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getUsersOptions()
     {
-        $options = User::get();
+        $options = User::where('admin', '=', '0')->get();
         $array   = [];
 
         foreach ($options as $option) {
@@ -170,5 +205,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getState()
     {
         return $this->belongsTo(State::class, 'state_id');
+    }
+
+    /**
+     * Atributo de referência do join.
+     *
+     * @return BelongsTo
+     */
+    public function getAdmin()
+    {
+        return $this->belongsTo(Boolean::class, 'admin');
     }
 }

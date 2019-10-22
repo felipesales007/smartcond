@@ -7,10 +7,10 @@
 <script src="{{ asset('js/core/ajax.jquery.min.js') }}"></script>
 
 <!-- gráficos -->
-<script src="{{ asset('template/vendor/moment/min/moment.min.js') }}"></script>
-<script src="{{ asset('template/vendor/moment/min/moment-with-locales.js') }}"></script>
-<script src="{{ asset('template/vendor/chart.js/dist/Chart.min.js') }}"></script>
-<script src="{{ asset('template/vendor/chart.js/dist/Chart.extension.js') }}"></script>
+<script src="{{ asset('argon/vendor/moment/min/moment.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/moment/min/moment-with-locales.js') }}"></script>
+<script src="{{ asset('argon/vendor/chart.js/dist/Chart.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/chart.js/dist/Chart.extension.js') }}"></script>
 
 <!-- corrige erros de navegador -->
 <script>

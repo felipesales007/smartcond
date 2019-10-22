@@ -69,9 +69,20 @@
                         <small id="last-update-at-view-company" class="text-light float-right fe-font-size-11 fe-view-fix-last-update-at"></small>
                     </div>
                 </div>
-                <!-- fechar -->
+                <!-- variáveis -->
+                <span hidden>
+                    {{ $route = \App\Models\Route\Route::getRouteRoute('company.list.admins') }}
+                    {{ $group = \App\Models\Route\Group::getGroup($route['group_id'])['blocked'] }}
+                </span>
+                <!-- botões -->
                 <div class="text-right float-right fe-form-footer">
                     <a href="javascript:void(0)" class="mr-4" data-dismiss="modal">{{ __('Fechar') }}</a>
+                    @if (app('router')->has('company.list.admins') && \App\Models\Permission::routePermission('company.list.admins'))
+                        <a href="javascript:void(0)" {{ $group || $route['blocked'] ? '' : 'id=link-company-list-admins target=_blank' }} class="btn btn-outline-primary mr-4 px-3 {{ $group ? 'notify-block-group' : '' }} {{ $route['blocked'] ? 'notify-block-route' : '' }} {{ \App\Models\Menu\Menu::getMenuBlocked('company.list.admins') || \App\Models\Menu\MenuItem::getMenuItemBlocked('company.list.admins') ? 'fe-menu-block' : '' }}">
+                            <i class="fas fa-share mr-2"></i>
+                            {{ __('Lista de administradores') }}
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>

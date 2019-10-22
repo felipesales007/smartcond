@@ -26,7 +26,7 @@
                                 </div>
                             @endif
                             <!-- form -->
-                            <form id="form-password-reset" method="post" action="{{ route('password.email') }}" role="form" autocomplete="off" novalidate>
+                            <form id="form-password-reset" method="post" action="{{ app('router')->has('password.email') ? route('password.email') : url('/') }}" role="form" autocomplete="off" novalidate>
                                 @csrf
                                 <!-- inputs -->
                                 <div class="row">
@@ -61,7 +61,7 @@
                                 </div>
                                 <!-- botão -->
                                 <div class="text-center mb-4 mt-2">
-                                    <button type="submit" class="btn btn-primary btn-block fe-carregando fe-scroll-top">{{ __('Recuperar') }}</button>
+                                    <button type="submit" class="btn btn-dark btn-block fe-carregando fe-scroll-top">{{ __('Recuperar') }}</button>
                                 </div>
                             </form>
                         </div>

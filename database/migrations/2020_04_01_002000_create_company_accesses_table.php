@@ -17,10 +17,8 @@ class CreateCompanyAccessesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unique()->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('preferred')->unsigned()->default(0);
-            $table->foreign('preferred')->references('id')->on('boolean');
             $table->timestamps();
         });
     }

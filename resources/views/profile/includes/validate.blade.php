@@ -3,13 +3,13 @@
         // editar perfil do usuário logado
         $('#form-edit-profile').validate({
             rules: {
-                image_0: {
+                image_photo_edit_profile: {
                     extension: 'jpeg|png|jpg|gif',
-                    maxsize: 6000000,
+                    maxsize: 1000000,
                 },
-                image_1: {
+                image_background_edit_profile: {
                     extension: 'jpeg|png|jpg|gif',
-                    maxsize: 6000000,
+                    maxsize: 1000000,
                 },
                 id_edit_profile: {
                     required: true,
@@ -193,13 +193,13 @@
                 },
             },
             messages: {
-                image_0: {
+                image_photo_edit_profile: {
                     extension:            'O campo foto deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
-                    maxsize:              'O campo foto não pode ser superior a 6 mb.',
+                    maxsize:              'O campo foto não pode ser superior a 1 mb.',
                 },
-                image_1: {
+                image_background_edit_profile: {
                     extension:            'O campo capa deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
-                    maxsize:              'O campo capa não pode ser superior a 6 mb.',
+                    maxsize:              'O campo capa não pode ser superior a 1 mb.',
                 },
                 id_edit_profile: {
                     required:             'O campo id é obrigatório.',
@@ -257,8 +257,8 @@
                     maxlength:            'O campo profissão não pode ser superior a {0} caracteres.',
                 },
                 company_edit_profile: {
-                    minlength:            'O campo condomínio deve ter pelo menos {0} caracteres.',
-                    maxlength:            'O campo condomínio não pode ser superior a {0} caracteres.',
+                    minlength:            'O campo empresa deve ter pelo menos {0} caracteres.',
+                    maxlength:            'O campo empresa não pode ser superior a {0} caracteres.',
                 },
                 postal_code_edit_profile: {
                     minlength:            'O campo cep deve ter pelo menos 8 dígitos.',
@@ -273,8 +273,8 @@
                     maxlength:            'O campo nº não pode ser superior a {0} caracteres.',
                 },
                 complement_edit_profile: {
-                    minlength:            'O campo complemnto deve ter pelo menos {0} caracteres.',
-                    maxlength:            'O campo complemnto não pode ser superior a {0} caracteres.',
+                    minlength:            'O campo complemento deve ter pelo menos {0} caracteres.',
+                    maxlength:            'O campo complemento não pode ser superior a {0} caracteres.',
                 },
                 neighborhood_edit_profile: {
                     minlength:            'O campo bairro deve ter pelo menos {0} caracteres.',

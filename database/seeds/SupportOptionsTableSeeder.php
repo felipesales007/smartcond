@@ -43,12 +43,6 @@ class SupportOptionsTableSeeder extends Seeder
         ]);
 
         SupportOption::insert([
-            'name'       => 'Oportunidade de trabalho',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        SupportOption::insert([
             'name'       => 'Outro motivo',
             'created_at' => now(),
             'updated_at' => now()

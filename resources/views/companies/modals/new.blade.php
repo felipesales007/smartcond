@@ -4,7 +4,7 @@
             <!-- título -->
             <div class="modal-header">
                 <h5 id="modal-new-company-label" class="modal-title text-uppercase text-monospace ml-1">
-                    <b>{{ __('Novo condomínio') }}</b>
+                    <b>{{ __('Nova empresa') }}</b>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -20,33 +20,33 @@
                     <h6 class="heading-small text-muted mb-3">{{ __('Informações cadastrais') }}</h6>
                     <div class="row">
                         <!-- logo -->
-                        <div class="col-lg-2 mt-1 mb--4 mb-lg--5">
+                        <div class="col-lg-2 mt-1">
                             <div class="form-group">
-                                <div class="input-group-none validate-fe-image-4-company">
+                                <div class="input-group-none validate-image-logo-new-company">
                                     <!-- botão de remover foto -->
-                                    <div class="fe-remove-preview-4 fe-remove-preview-small">
+                                    <div class="fe-remove-preview-6 fe-remove-preview-small">
                                         <i class="far fa-times-circle"></i>
                                     </div>
                                     <!-- imagem do perfil estilizada -->
-                                    <div class="fe-grid-preview-4">
-                                        <div class="fe-grid-preview-item-4 fe-preview-small">
-                                            <div class="fe-preview-4 fe-preview-small fe-default-logo">
-                                                <img class="fe-img-preview-4 fe-img-preview-cover" src="" alt="">
+                                    <div class="fe-grid-preview-6">
+                                        <div class="fe-grid-preview-item-6 fe-preview-small">
+                                            <div class="fe-img-center fe-preview-6 fe-preview-small fe-default-logo">
+                                                <img class="fe-img-preview-6 fe-img-preview-cover" src="" alt="">
                                             </div>
-                                            <div class="fe-grid-preview-text-4 text-monospace small">
+                                            <div class="fe-grid-preview-text-6 text-monospace small">
                                                 <span>Selecionar</span>
                                                 <p>Logo</p>
                                             </div>
+                                            <!-- arquivo do perfil oculto -->
+                                            <input type="file" id="image-logo-new-company" name="image_logo_new_company" class="fe-image-6" accept="image/jpg, image/jpeg, image/png, image/gif">
+                                            <label for="logo-new-company"></label>
+                                            <input type="text" id="logo-new-company" name="logo_new_company" class="fe-image-url-6" value="">
                                         </div>
                                     </div>
                                     <!-- alerta de erro -->
-                                    @if ($errors->has('image_4'))
-                                        <div class="invalid-feedback" role="alert">{{ $errors->first('image_4') }}</div>
+                                    @if ($errors->has('image_logo_new_company'))
+                                        <div class="invalid-feedback" role="alert">{{ $errors->first('image_logo_new_company') }}</div>
                                     @endif
-                                    <!-- arquivo do perfil oculto -->
-                                    <input type="file" id="fe-image-4-company" name="image_4" class="fe-image-4" accept="image/jpg, image/jpeg, image/png, image/gif">
-                                    <label for="fe-image-url-4-company"></label>
-                                    <input type="text" id="fe-image-url-4-company" name="logo_new_company" class="fe-image-url-4" value="">
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="name-new-company" name="name_new_company" class="form-control {{ $errors->has('name_new_company') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome fantasia do condomínio') }}" value="{{ old('name_new_company') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-new-company');" @if ($errors->has('name_new_company')) autofocus @endif>
+                                    <input type="text" id="name-new-company" name="name_new_company" class="form-control {{ $errors->has('name_new_company') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome fantasia da empresa') }}" value="{{ old('name_new_company') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-new-company');" @if ($errors->has('name_new_company')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_new_company'))
@@ -80,7 +80,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="corporate-name-new-company" name="corporate_name_new_company" class="form-control {{ $errors->has('corporate_name_new_company') ? 'is-invalid' : '' }}" placeholder="{{ __('Razão social do condomínio') }}" value="{{ old('corporate_name_new_company') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('corporate-name-new-company');" @if ($errors->has('corporate_name_new_company')) autofocus @endif>
+                                    <input type="text" id="corporate-name-new-company" name="corporate_name_new_company" class="form-control {{ $errors->has('corporate_name_new_company') ? 'is-invalid' : '' }}" placeholder="{{ __('Razão social da empresa') }}" value="{{ old('corporate_name_new_company') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('corporate-name-new-company');" @if ($errors->has('corporate_name_new_company')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('corporate_name_new_company'))
@@ -99,7 +99,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('cnpj válido de 14 dígitos') }}">*</span>
-                                    <input type="tel" id="cnpj-new-company" name="cnpj_new_company" class="form-control mask-cnpj {{ $errors->has('cnpj_new_company') ? 'is-invalid' : '' }}" placeholder="{{ __('CNPJ do condomínio') }}" value="{{ old('cnpj_new_company') }}" minlength="18" maxlength="18" required @if ($errors->has('cnpj_new_company')) autofocus @endif>
+                                    <input type="tel" id="cnpj-new-company" name="cnpj_new_company" class="form-control mask-cnpj {{ $errors->has('cnpj_new_company') ? 'is-invalid' : '' }}" placeholder="{{ __('CNPJ da empresa') }}" value="{{ old('cnpj_new_company') }}" minlength="18" maxlength="18" required @if ($errors->has('cnpj_new_company')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('cnpj_new_company'))
@@ -160,7 +160,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('cep válido') }}">*</span>
-                                    <input type="tel" id="postal-code-new-company" name="postal_code_new_company" class="form-control mask-cep {{ $errors->has('postal_code_new_company') ? 'is-invalid' : '' }}" placeholder="{{ __('CEP') }}" value="{{ old('postal_code_new_company') }}" minlength="9" maxlength="9" required onkeyup="viacepCompanyNew(this.value);" onclick="viacepCompanyNew(this.value);" @if ($errors->has('postal_code_new_company')) autofocus @endif>
+                                    <input type="tel" id="postal-code-new-company" name="postal_code_new_company" class="form-control mask-cep {{ $errors->has('postal_code_new_company') ? 'is-invalid' : '' }}" placeholder="{{ __('CEP') }}" value="{{ old('postal_code_new_company') }}" minlength="9" maxlength="9" required onkeyup="viacepRequired(this.value, '-new-company');" onclick="viacepRequired(this.value, '-new-company');" @if ($errors->has('postal_code_new_company')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('postal_code_new_company'))
@@ -310,14 +310,14 @@
                         </div>
                         <br>
                         <div class="mt--1">
-                            <small class="text-light">{{ __('ao adicionar um endereço de e-mail no condomínio o e-mail informado irá receber uma notificação de e-mail com os dados do condomínio criado') }}</small>
+                            <small class="text-light">{{ __('ao adicionar um endereço de e-mail na empresa o e-mail informado irá receber uma notificação de e-mail com os dados da empresa criada') }}</small>
                         </div>
                     </div>
                     <!-- botões -->
                     <div class="text-right float-right fe-form-footer">
                         <a href="javascript:void(0)" class="mr-4" data-dismiss="modal">{{ __('Cancelar') }}</a>
                         @if (app('router')->has('company.store') && \App\Models\Permission::routePermission('company.store'))
-                            <button type="submit" id="btn-new-company" class="btn btn-outline-success mr-4">{{ __('Criar condomínio') }}</button>
+                            <button type="submit" id="btn-new-company" class="btn btn-outline-success mr-4">{{ __('Criar empresa') }}</button>
                         @endif
                     </div>
                 </form>

@@ -13,7 +13,8 @@ use App\Http\Requests\User\NewUserRequest;
 use App\Http\Requests\User\RecoverUserRequest;
 use App\Http\Requests\User\ResendEmailUserRequest;
 use App\Http\Requests\User\SendEmailUserRequest;
-use App\Models\Company\CompanyAccesses;
+use App\Models\Entity\Entity;
+use App\Models\Entity\EntityAccesses;
 use App\Models\Menu\MenuItem;
 use App\Models\Permission;
 use App\Models\User;
@@ -59,8 +60,20 @@ class UserController extends Controller
         $order  = explode(' ', !empty($_GET['orderBy']) ? $_GET['orderBy'] : 'name asc');
 
         $collection = User::query()
-            ->orWhere('name', 'like', '%' . $search . '%')
-            ->orWhere('email', 'like', '%' . $search . '%')
+            ->select('users.*', 'entities.name as entity_name')
+            ->join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            ->join('entities', 'entities.id', '=', 'entity_accesses.entity_id')
+            ->where('admin', '=', '0')
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->where(function ($query) use ($search) {
+                $query
+                    ->orWhere('users.name', 'like', '%' . $search . '%')
+                    ->orWhere('entities.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.email', 'like', '%' . $search . '%');
+            })
+            ->groupBy('users.id')
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -70,9 +83,9 @@ class UserController extends Controller
                 // coluna imagem
                 ->addColumn('photo', function ($row) {
                     if ($row->photo) {
-                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/img/users/photo/' . $row->photo) . '" alt=""></div>';
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/images/users/photo/' . $row->photo) . '" alt=""></div>';
                     } else {
-                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('img/default/default-user.png') . '" alt=""></div>';
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('images/default/default-user.png') . '" alt=""></div>';
                     }
                     return $photo;
                 })
@@ -80,18 +93,22 @@ class UserController extends Controller
                 ->addColumn('name', function ($row) {
                     return $row->name;
                 })
+                // coluna condomínio
+                ->addColumn('entity_name', function ($row) {
+                    return $row->entity_name;
+                })
                 // coluna e-mail
                 ->addColumn('email', function ($row) {
                     if ($row->email_verified_at) {
                         if (app('router')->has('user.send.email') && Permission::buttonPermission('btn-send-email-user') && !MenuItem::getMenuItemBlocked('user.send.email')['list'] && MenuItem::getMenuItemDeleted('user.send.email')['list'] && $row->id != auth()->id()) {
-                            $email = '<span class="badge badge-dot mr-4"><i class="bg-success" data-toggle="tooltip" data-placement="top" title="e-mail confirmado"></i><span data-photo="' . $row->photo . '" data-name="' . $row->name . '" data-email="' . $row->email . '" class="status fe-pointer btn-modal-send-email-user" data-toggle="tooltip" data-placement="top" title="clique aqui para enviar um e-mail para o ' . FormatHelpers::two_word($row->name) . '">' . $row->email . '</span></span>';
+                            $email = '<span class="badge badge-dot mr-4"><i class="bg-success" data-toggle="tooltip" data-placement="top" title="e-mail confirmado"></i><span data-photo="' . $row->photo . '" data-name="' . $row->name . '" data-email="' . $row->email . '" class="status fe-pointer btn-modal-send-email-user" data-toggle="tooltip" data-placement="top" title="clique aqui para enviar um e-mail para ' . FormatHelpers::two_word($row->name) . '">' . $row->email . '</span></span>';
                         } else {
                             $email = '<span class="badge badge-dot mr-4"><i class="bg-success" data-toggle="tooltip" data-placement="top" title="e-mail confirmado"></i><span class="status">' . $row->email . '</span></span>';
                         }
                     } else {
                         if (app('router')->has('user.resend.email') && Permission::buttonPermission('btn-resend-email-user') && MenuItem::getMenuItemDeleted('user.resend.email')['list']) {
                             if (!MenuItem::getMenuItemBlocked('user.resend.email')['list']) {
-                                $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><form id="form-resend-email-user" class="d-inline" role="form" autocomplete="off" novalidate><input hidden readonly type="number" id="id-resend-email-user" name="id_resend_email_user" value="' . $row->id . '" minlength="1" maxlength="191" required><button id="btn-resend-email-user" class="btn btn-info btn-xs rounded-circle mt--1"><i class="fas fa-sync-alt" data-toggle="tooltip" data-placement="top" title="reenviar e-mail de confirmação para o usuário"></i></button></form>';
+                                $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><form class="form-resend-email-user d-inline" role="form" autocomplete="off" novalidate><input hidden readonly type="number" name="id_resend_email_user" value="' . $row->id . '" maxlength="191" required><button class="btn btn-info btn-xs btn-resend-email-user rounded-circle mt--1"><i class="fas fa-sync-alt" data-toggle="tooltip" data-placement="top" title="reenviar e-mail de confirmação para o usuário"></i></button></form>';
                             } else {
                                 $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><button class="btn btn-info btn-xs rounded-circle mt-0 opacity-2 disabled"><i class="fas fa-sync-alt"></i></button>';
                             }
@@ -126,7 +143,7 @@ class UserController extends Controller
                     // editar
                     if ($row->id != auth()->id()) {
                         if (app('router')->has('user.edit') && MenuItem::getMenuItemDeleted('user.edit')['list']) {
-                            if (Permission::buttonPermission('btn-modal-edit-user') && !MenuItem::getMenuItemBlocked('user.edit')['list'] && $row->id > 3 && auth()->id() > 3 || Permission::buttonPermission('btn-modal-edit-user') && !MenuItem::getMenuItemBlocked('user.edit')['list'] && auth()->id() < 4) {
+                            if (Permission::buttonPermission('btn-modal-edit-user') && !MenuItem::getMenuItemBlocked('user.edit')['list']) {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-user" title="Editar"><i class="fas fa-user-edit"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-user-edit"></i></a>';
@@ -143,18 +160,18 @@ class UserController extends Controller
                     }
 
                     // bloquear e excluir
-                    if ($row->id != auth()->id() && $row->id > 3 && auth()->id() > 3 || $row->id != auth()->id() && auth()->id() < 4) {
+                    if ($row->id != auth()->id()) {
                         // bloquear
                         if (app('router')->has('user.ban') && MenuItem::getMenuItemDeleted('user.ban')['list']) {
                             if (Permission::buttonPermission('btn-modal-block-user') && !MenuItem::getMenuItemBlocked('user.ban')['list']) {
                                 if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
-                                    $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-user" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                    $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-user" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                                 } else {
                                     $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-user" title="Bloquear"><i class="fas fa-ban"></i></a>';
                                 }
                             } else {
                                 if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
-                                    $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                    $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                                 } else {
                                     $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
                                 }
@@ -173,7 +190,7 @@ class UserController extends Controller
                         // bloquear
                         if (app('router')->has('user.ban') && MenuItem::getMenuItemDeleted('user.ban')['list']) {
                             if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
-                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
@@ -187,7 +204,7 @@ class UserController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['photo', 'name', 'email', 'date', 'action'])
+                ->rawColumns(['photo', 'name', 'entity_name', 'email', 'date', 'action'])
                 ->toJson();
         }
 
@@ -217,20 +234,28 @@ class UserController extends Controller
         $array = $request->all();
 
         // verifica se há o array de condomínio
-        if (!in_array('company_id_new_user', $array)) {
-            $array = Arr::add($array, 'company_id_new_user', []);
+        if (!in_array('entity_id_new_user', $array)) {
+            $array = Arr::add($array, 'entity_id_new_user', []);
         }
 
-        $array = Arr::sortRecursive($array['company_id_new_user']);
+        $array = Arr::sortRecursive($array['entity_id_new_user']);
 
-        // adicona o condomínio relacionada com o usuário
+        // adicona o condomínio relacionado com o usuário
         for ($i = 0; $i < count($array); $i++) {
-            CompanyAccesses::create([
-                'company_id' => $array[$i],
-                'user_id'    => $collection->id,
-                'preferred'  => $i == 0 ? 1 : 0,
+            EntityAccesses::create([
+                'entity_id' => $array[$i],
+                'user_id'   => $collection->id,
+                'preferred' => $i == 0 ? 1 : 0,
             ]);
         }
+
+        $entity = Entity::join('entity_accesses', 'entity_accesses.entity_id', '=', 'entities.id')
+            ->whereIn('entities.id', $array)
+            ->groupBy('entities.id')
+            ->pluck('entities.name')
+            ->toArray();
+
+        $entity = implode(', ', $entity);
 
         // enviar notificação por e-mail
         $token       = app('auth.password.broker')->createToken($collection);
@@ -239,7 +264,7 @@ class UserController extends Controller
         // notificar
         try {
             // enviar notificação por e-mail
-            $this->notify(new NewUser($token, $collection->name));
+            $this->notify(new NewUser($token, $collection->name, $entity));
 
             $data = NotifyHelpers::success_top_center('fas fa-user', 'Usuário criado com sucesso.');
         } catch (Exception $e) {
@@ -257,14 +282,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $select = CompanyAccesses::where('user_id', '=', $id)
+        $select = EntityAccesses::where('user_id', '=', $id)
             ->get()
-            ->pluck('company_id')
+            ->pluck('entity_id')
             ->toArray();
 
-        $array = CompanyAccesses::select('company_accesses.company_id as id','company_accesses.preferred as preferred',
-            'companies.name as company', 'companies.cnpj as cnpj', 'companies.logo as logo')
-            ->join('companies', 'companies.id', '=', 'company_accesses.company_id')
+        $array = EntityAccesses::select('entity_accesses.entity_id as id','entity_accesses.preferred as preferred',
+            'entities.name as entity', 'entities.logo as logo', 'entities.cnpj as cnpj')
+            ->join('entities', 'entities.id', '=', 'entity_accesses.entity_id')
             ->where('user_id', '=', $id)
             ->get()
             ->toArray();
@@ -277,8 +302,8 @@ class UserController extends Controller
             ->first()
             ->toArray();
 
-        $collection = Arr::add($collection, 'company_id', $select);
-        $collection = Arr::add($collection, 'companies', $array);
+        $collection = Arr::add($collection, 'entity_id', $select);
+        $collection = Arr::add($collection, 'entities', $array);
 
         return response()->json($collection);
     }
@@ -293,56 +318,59 @@ class UserController extends Controller
     {
         $collection = User::find($request->id_edit_user);
         $original   = $collection->getOriginal();
+        $entity     = null;
 
         // impede a alteração de usuários pré-definidos
-        if ($collection->id == auth()->id() || $collection->id < 4 && auth()->id() > 3) {
+        if ($collection->id == auth()->id() || auth()->user()['admin'] == 0 && !in_array(Entity::getEntitiesUserId($collection->id)->first(), Entity::getEntitiesUser()->toArray())) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para alterar esse usuário.');
-
             return response()->json($data);
         }
 
         // atualização de acesso ao condomínio
-        $array = array_map('intval', $request->all()['company_id_edit_user']);
+        $array = array_map('intval', $request->all()['entity_id_edit_user']);
         $array = Arr::sortRecursive($array);
 
-        $accesses = CompanyAccesses::where('user_id', '=', $request->id_edit_user)
-            ->orderBy('company_id', 'asc')
+        $accesses = EntityAccesses::where('user_id', '=', $request->id_edit_user)
+            ->orderBy('entity_id', 'asc')
             ->get()
-            ->pluck('company_id')
+            ->pluck('entity_id')
             ->toArray();
 
-        // se houver alteração no acesso do condomínio
+        // se houver alteração no acesso de condomínio
         if ($array != $accesses) {
             // remove as permissões antigas
-            CompanyAccesses::where('user_id', $request->id_edit_user)
-                ->whereIn('company_id', $accesses)
+            EntityAccesses::where('user_id', $request->id_edit_user)
+                ->whereIn('entity_id', $accesses)
                 ->delete();
 
             // adicona as novas permissões
             for ($i = 0; $i < count($array); $i++) {
-                CompanyAccesses::create([
-                    'company_id' => $array[$i],
-                    'user_id'    => $request->id_edit_user,
-                    'preferred'  => $i == 0 ? 1 : 0,
+                EntityAccesses::create([
+                    'entity_id' => $array[$i],
+                    'user_id'   => $request->id_edit_user,
+                    'preferred' => $i == 0 ? 1 : 0,
                 ]);
             }
+
+            $entity = Entity::join('entity_accesses', 'entity_accesses.entity_id', '=', 'entities.id')
+                ->whereIn('entities.id', $array)
+                ->groupBy('entities.id')
+                ->pluck('entities.name')
+                ->toArray();
+
+            $entity = implode(', ', $entity);
         }
 
         // armazena a foto e capa do perfil
-        FileHelpers::destination_file($request, $original['photo'], 'image_2', 'photo_edit_user', 'img/users/photo/');
-        FileHelpers::destination_file($request, $original['background'], 'image_3', 'background_edit_user', 'img/users/background/');
-
-        // tratamento de data
-        if ($request->birthday_edit_user) {
-            $request->birthday_edit_user = FormatHelpers::date_br_to_date($request->birthday_edit_user);
-        }
+        FileHelpers::destination_file($request, $original['photo'], 'image_photo_edit_user', 'photo_edit_user', 'images/users/photo/');
+        FileHelpers::destination_file($request, $original['background'], 'image_background_edit_user', 'background_edit_user', 'images/users/background/');
 
         // dados
         $especial = [
             'cpf'          => $request->cpf_edit_user,
             'rg'           => $request->rg_edit_user,
-            'birthday'     => $request->birthday_edit_user,
+            'birthday'     => FormatHelpers::date_br_to_date($request->birthday_edit_user),
             'contact'      => $request->contact_edit_user,
             'gender_id'    => $request->gender_id_edit_user,
             'description'  => $request->description_edit_user,
@@ -378,14 +406,14 @@ class UserController extends Controller
                     $collection->fill($especial);
 
                     // se alterado salve e envie notificação por e-mail
-                    if ($collection->getAttributes() != $original) {
+                    if ($collection->getAttributes() != $original || $entity) {
                         $collection->fill(['last_update_at' => now()])->save();
                         $this->email = $original['email'];
                         $token = app('auth.password.broker')->createToken($collection);
 
                         // enviar notificação por e-mail
-                        $this->notify(new EditUser(null, $collection, $original));
-                        $collection->notify(new EditUser($token, $collection, $original));
+                        $this->notify(new EditUser(null, $collection, $original, $entity));
+                        $collection->notify(new EditUser($token, $collection, $original, $entity));
                         $collection->notify(new VerifyEmail($collection->name));
                     }
                 } else {
@@ -398,13 +426,13 @@ class UserController extends Controller
                     $collection->fill($especial);
 
                     // se alterado salve e envie notificação por e-mail
-                    if ($collection->getAttributes() != $original) {
+                    if ($collection->getAttributes() != $original || $entity) {
                         $collection->fill(['last_update_at' => now()])->save();
                         $this->email = $original['email'];
                         $token = app('auth.password.broker')->createToken($collection);
 
                         // enviar notificação por e-mail
-                        $this->notify(new EditUser($token, $collection, $original));
+                        $this->notify(new EditUser($token, $collection, $original, $entity));
                     }
                 }
             } else {
@@ -419,13 +447,13 @@ class UserController extends Controller
                     $collection->fill($especial);
 
                     // se alterado salve e envie notificação por e-mail
-                    if ($collection->getAttributes() != $original) {
+                    if ($collection->getAttributes() != $original || $entity) {
                         $collection->fill(['last_update_at' => now()])->save();
                         $this->email = $original['email'];
 
                         // enviar notificação por e-mail
-                        $this->notify(new EditUser(null, $collection, $original));
-                        $collection->notify(new EditUser(null, $collection, $original));
+                        $this->notify(new EditUser(null, $collection, $original, $entity));
+                        $collection->notify(new EditUser(null, $collection, $original, $entity));
                         $collection->notify(new VerifyEmail($collection->name));
                     }
                 } else {
@@ -437,12 +465,12 @@ class UserController extends Controller
                     $collection->fill($especial);
 
                     // se alterado salve e envie notificação por e-mail
-                    if ($collection->getAttributes() != $original) {
+                    if ($collection->getAttributes() != $original || $entity) {
                         $collection->fill(['last_update_at' => now()])->save();
                         $this->email = $original['email'];
 
                         // enviar notificação por e-mail
-                        $this->notify(new EditUser(null, $collection, $original));
+                        $this->notify(new EditUser(null, $collection, $original, $entity));
                     }
                 }
             }
@@ -467,10 +495,9 @@ class UserController extends Controller
         $original   = $collection->getOriginal();
 
         // impede a alteração de usuários pré-definidos
-        if ($collection->id == auth()->id() || $collection->id < 4 && auth()->id() > 3) {
+        if ($collection->id == auth()->id() || auth()->user()['admin'] == 0 && !in_array(Entity::getEntitiesUserId($collection->id)->first(), Entity::getEntitiesUser()->toArray())) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para bloquear esse usuário.');
-
             return response()->json($data);
         }
 
@@ -551,10 +578,9 @@ class UserController extends Controller
         $this->email = $collection->getOriginal()['email'];
 
         // impede a alteração de usuários pré-definidos
-        if ($collection->id == auth()->id() || $collection->id < 4 && auth()->id() > 3) {
+        if ($collection->id == auth()->id() || auth()->user()['admin'] == 0 && !in_array(Entity::getEntitiesUserId($collection->id)->first(), Entity::getEntitiesUser()->toArray())) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para deletar esse usuário.');
-
             return response()->json($data);
         }
 
@@ -588,11 +614,20 @@ class UserController extends Controller
 
         $collection = User::query()
             ->onlyTrashed()
+            ->select('users.*', 'entities.name as entity_name')
+            ->join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            ->join('entities', 'entities.id', '=', 'entity_accesses.entity_id')
+            ->where('admin', '=', '0')
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
             ->where(function ($query) use ($search) {
                 $query
-                    ->orWhere('name', 'like', '%' . $search . '%')
-                    ->orWhere('email', 'like', '%' . $search . '%');
+                    ->orWhere('users.name', 'like', '%' . $search . '%')
+                    ->orWhere('entities.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.email', 'like', '%' . $search . '%');
             })
+            ->groupBy('users.id')
             ->orderBy($order[0], $order[1]);
 
         // listagem de deletados
@@ -602,15 +637,19 @@ class UserController extends Controller
                 // coluna imagem
                 ->addColumn('photo', function ($row) {
                     if ($row->photo) {
-                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/img/users/photo/' . $row->photo) . '" alt=""></div>';
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/images/users/photo/' . $row->photo) . '" alt=""></div>';
                     } else {
-                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('img/default/default-user.png') . '" alt=""></div>';
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('images/default/default-user.png') . '" alt=""></div>';
                     }
                     return $photo;
                 })
                 // coluna nome
                 ->addColumn('name', function ($row) {
                     return $row->name;
+                })
+                // coluna condomínio
+                ->addColumn('entity_name', function ($row) {
+                    return $row->entity_name;
                 })
                 // coluna e-mail
                 ->addColumn('email', function ($row) {
@@ -719,13 +758,22 @@ class UserController extends Controller
     public function resendEmail(ResendEmailUserRequest $id)
     {
         $collection  = User::withTrashed()->find($id->id_resend_email_user);
+
+        $entity = Entity::join('entity_accesses', 'entity_accesses.entity_id', '=', 'entities.id')
+            ->where('entity_accesses.user_id', $collection->id)
+            ->groupBy('entities.id')
+            ->pluck('entities.name')
+            ->toArray();
+
+        $entity = implode(', ', $entity);
+
         $token       = app('auth.password.broker')->createToken($collection);
         $this->email = $collection->email;
 
         // notificar
         try {
             // enviar notificação por email
-            $this->notify(new NewUser($token, $collection->name));
+            $this->notify(new NewUser($token, $collection->name, $entity));
 
             $data = NotifyHelpers::success_top_center('fas fa-envelope', 'E-mail de confirmação reenviado com sucesso.');
         } catch (Exception $e) {

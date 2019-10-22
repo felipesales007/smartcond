@@ -75,4 +75,15 @@ class CompanyAccesses extends Model
     {
         return $this->belongsTo(Boolean::class, 'preferred');
     }
+
+    /**
+     * Retornar o dado especificado no armazenamento.
+     *
+     * @param $id
+     * @return CompanyAccesses
+     */
+    static function getCompanyAccessUser($id)
+    {
+        return CompanyAccesses::where('user_id', '=', $id)->first();
+    }
 }

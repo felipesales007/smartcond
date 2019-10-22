@@ -36,8 +36,11 @@ class MenuController extends Controller
         $collection = Menu::query()
             ->select('menu.*', 'menu_options.name as type')
             ->join('menu_options', 'menu_options.id', 'menu.menu_option_id')
-            ->orWhere('menu.name', 'like', '%' . $search . '%')
-            ->orWhere('menu_options.name', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query
+                    ->orWhere('menu.name', 'like', '%' . $search . '%')
+                    ->orWhere('menu_options.name', 'like', '%' . $search . '%');
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -90,13 +93,13 @@ class MenuController extends Controller
                     if (app('router')->has('menu.ban') && MenuItem::getMenuItemDeleted('menu.ban')['list']) {
                         if (Permission::buttonPermission('btn-modal-block-menu') && !MenuItem::getMenuItemBlocked('menu.ban')['list'] && $row->id != 9) {
                             if ($row->blocked) {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-menu" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-menu" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-menu" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
                         } else {
                             if ($row->blocked) {
-                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
@@ -209,7 +212,6 @@ class MenuController extends Controller
         if ($collection->id == 9) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não pode bloquer este menu.<br><small><b>motivo: </b>ao bloquear este menu não será mais possível o controle sobre os menu do sistema.</small>');
-
             return response()->json($data);
         }
 
@@ -246,7 +248,6 @@ class MenuController extends Controller
         if ($collection->id == 9) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não pode excluir este menu.<br><small><b>motivo: </b>ao excluir este menu não será mais possível o controle sobre os menu do sistema.</small>');
-
             return response()->json($data);
         }
 

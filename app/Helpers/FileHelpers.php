@@ -35,12 +35,13 @@ class FileHelpers
             $url = $request->input($input);
         }
 
-        if (preg_match('/localhost/', url('/')) || preg_match('/127.0.0.1/', url('/')) || preg_match('/127.0.0.1:8000/', url('/'))) {
-            $path = storage_path('app/public/' . $destination);
-        } else {
-            $path = public_path('storage/' . $destination);
-        }
+//        if (preg_match('/localhost/', url('/')) || preg_match('/127.0.0.1/', url('/')) || preg_match('/127.0.0.1:8000/', url('/'))) {
+//            $path = storage_path('app/public/' . $destination);
+//        } else {
+//            $path = public_path('storage/' . $destination);
+//        }
 
+        $path = public_path('storage/' . $destination);
         $old  = basename($delete);
         $name = implode('-', explode(':', basename($url)));
 

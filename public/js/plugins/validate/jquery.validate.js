@@ -364,6 +364,7 @@ $.extend( $.validator, {
 				$( element ).addClass( "is-invalid" ).removeClass( validClass );
 				$( ".input-group-text", ".validate-" + element.id ).addClass( "is-invalid" ).removeClass( validClass );
 				$( "#" + element.id ).next().find( ".select2-selection--single" ).addClass( "is-invalid" ).removeClass( validClass );
+				$( "#" + element.id ).next().find( ".select2-selection--multiple" ).addClass( "is-invalid" ).removeClass( validClass );
 			}
 		},
 		unhighlight: function( element, errorClass, validClass ) {
@@ -374,7 +375,7 @@ $.extend( $.validator, {
             if (typeof(validServer) != "undefined" && validServer !== null) {
                 $( element ).parent().next( "div" ).find( 'div[role="alert"]' ).prevObject[0].innerHTML = '&nbsp;';
             }
-			
+
 			if ( element.type === "radio" ) {
 				this.findByName( element.name ).removeClass( "is-invalid" ).addClass( validClass );
 				$( ".input-group-text", ".validate-" + element.id ).removeClass( "is-invalid" ).addClass( validClass );
@@ -382,6 +383,7 @@ $.extend( $.validator, {
 				$( element ).removeClass( "is-invalid" ).addClass( validClass );
 				$( ".input-group-text", ".validate-" + element.id ).removeClass( "is-invalid" ).addClass( validClass );
 				$( "#" + element.id ).next().find( ".select2-selection--single" ).removeClass( "is-invalid" ).addClass( validClass );
+				$( "#" + element.id ).next().find( ".select2-selection--multiple" ).removeClass( "is-invalid" ).addClass( validClass );
 			}
 		}
 	},

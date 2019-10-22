@@ -17,7 +17,7 @@
                                 </h3>
                             </div>
                             <!-- form -->
-                            <form id="form-password-reset-update" method="post" action="{{ route('password.update') }}" role="form" autocomplete="off" novalidate>
+                            <form id="form-password-reset-update" method="post" action="{{ app('router')->has('password.update') ? route('password.update') : url('/') }}" role="form" autocomplete="off" novalidate>
                                 @csrf
                                 <!-- inputs -->
                                 <div class="row">

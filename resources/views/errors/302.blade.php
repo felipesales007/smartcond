@@ -4,7 +4,7 @@
 @section('title', __('Page Not Found'))
 
 @section('image')
-    <div style="background-image: url({{ asset('img/auth/info-1.png') }});" class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
+    <div style="background-image: url({{ asset('images/auth/info-1.png') }});" class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
     </div>
 @endsection
 

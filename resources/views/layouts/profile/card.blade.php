@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                    <img src="{{ auth()->user()['photo'] ? url('storage/img/users/photo/' . auth()->user()['photo']) : url('img/default/default-user.png') }}" class="rounded-circle shadow" alt="">
+                    <img src="{{ auth()->user()['photo'] ? url('storage/images/users/photo/' . auth()->user()['photo']) : url('images/default/default-user.png') }}" class="rounded-circle shadow" alt="">
                 </div>
             </div>
         </div>

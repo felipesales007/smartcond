@@ -3,12 +3,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="description" content="Sistema de gerenciamento de condomínio web.">
-<meta name="author" content="Felipe Sales">
+<meta name="author" content="Grupo Smartcond">
 
 <!-- cor da barra do navegador em mobile -->
-<meta name="theme-color" content="#5e72e4">
-<meta name="apple-mobile-web-app-status-bar-style" content="#5e72e4">
-<meta name="msapplication-navbutton-color" content="#5e72e4">
+<meta name="theme-color" content="#212529">
+<meta name="apple-mobile-web-app-status-bar-style" content="#212529">
+<meta name="msapplication-navbutton-color" content="#212529">
 
 <!-- CSRF token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -21,7 +21,7 @@
 <!-- compartilhamento -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:image" content="{{ asset('img/default/logos/card-azul-min.png') }}">
+<meta property="og:image" content="{{ asset('images/default/logos/card-azul-min.png') }}">
 <meta property="og:title" content="Smartcond">
 <meta property="og:site_name" content="Smartcond">
 <meta property="og:description" content="Seu condomínio inteligente!">

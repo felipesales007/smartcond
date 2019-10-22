@@ -62,22 +62,15 @@ class GroupsTableSeeder extends Seeder
         ]);
 
         Group::create([
-            'name'        => 'departamentos',
-            'description' => 'Grupo das configurações dos departamentos do condomínio',
+            'name'        => 'empresas',
+            'description' => 'Grupo das configurações de empresas',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
         Group::create([
-            'name'        => 'inventario',
-            'description' => 'Grupo das configurações dos itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        Group::create([
-            'name'        => 'moradores',
-            'description' => 'Grupo das configurações dos moradores',
+            'name'        => 'administradores',
+            'description' => 'Grupo das configurações de administradores',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

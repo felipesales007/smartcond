@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Schema;
 */
 
 // grupo default laravel
-Auth::routes(['verify' => true]);
+Auth::routes(['register' => false, 'verify' => true]);
 Route::get ('/',      function () { return redirect('login'); })->middleware('guest');
 Route::get ('logout', function () { Auth::logout(); return redirect('login'); })->name('logout');
 Route::get ('sair',   function () { Auth::logout(); return redirect('login'); })->name('sair');
@@ -28,11 +28,6 @@ Route::post('erro', ['as' => 'remote.validate.destroy', 'uses' => 'ErrorControll
 Route::get ('login', ['as' => 'login',  'uses' => 'Auth\LoginController@showLoginForm']);
 Route::post('login', ['as' => 'login',  'uses' => 'Auth\LoginController@login']);
 Route::post('sair',  ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
-
-// grupo registro
-Route::get ('register',  ['as' => 'register', 'uses' => 'ErrorController@error404']);
-// Route::get ('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-// Route::post('registrar', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
 
 // grupo resetar senha
 Route::get ('resetar/senha',          ['as' => 'password.request', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
@@ -123,25 +118,27 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
 
     // grupo condomínios
     Route::group(['prefix' => 'condominios'], function () {
-        Route::get ('data',                      ['as' => 'company.data',                  'uses' => 'Company\DashboardController@data']);
-        Route::get ('dashboard',                 ['as' => 'company.dashboard',             'uses' => 'Company\DashboardController@dashboard']);
-        Route::get ('lista',                     ['as' => 'company.list',                  'uses' => 'Company\CompanyController@list']);
-        Route::get ('lista/deletados',           ['as' => 'company.list.deleted',          'uses' => 'Company\CompanyController@listDeleted']);
-        Route::get ('visualizar/{id?}',          ['as' => 'company.view',                  'uses' => 'Company\CompanyController@edit']); // * btn-modal-view-company
-        Route::get ('editar/{id?}',              ['as' => 'company.edit',                  'uses' => 'Company\CompanyController@edit']); // * btn-modal-edit-company
-        Route::get ('banir/{id?}',               ['as' => 'company.ban',                   'uses' => 'Company\CompanyController@edit']); // * btn-modal-block-company
-        Route::get ('deletar/{id?}',             ['as' => 'company.delete',                'uses' => 'Company\CompanyController@edit']); // * btn-modal-delete-company
-        Route::get ('recuperar/{id?}',           ['as' => 'company.recover',               'uses' => 'Company\CompanyController@edit']); // * btn-modal-recover-company
-        Route::post('novo',                      ['as' => 'company.store',                 'uses' => 'Company\CompanyController@store']); // btn-modal-new-company
-        Route::post('atualizar/{id?}',           ['as' => 'company.update',                'uses' => 'Company\CompanyController@update']);
-        Route::post('bloquear/{id?}',            ['as' => 'company.block',                 'uses' => 'Company\CompanyController@block']);
-        Route::post('remover/{id?}',             ['as' => 'company.destroy',               'uses' => 'Company\CompanyController@destroy']);
-        Route::post('restaurar/{id?}',           ['as' => 'company.restore',               'uses' => 'Company\CompanyController@restore']);
-        Route::post('enviar/email',              ['as' => 'company.send.email',            'uses' => 'Company\CompanyController@sendEmail']); // * btn-send-email-company
-        Route::post('verificar/email',           ['as' => 'company.check.email',           'uses' => 'Company\CheckController@checkEmail']);
-        Route::post('verificar/email/diferente', ['as' => 'company.check.email.different', 'uses' => 'Company\CheckController@checkEmailDifferent']);
-        Route::post('verificar/cnpj',            ['as' => 'company.check.cnpj',            'uses' => 'Company\CheckController@checkCnpj']);
-        Route::post('verificar/cnpj/diferente',  ['as' => 'company.check.cnpj.different',  'uses' => 'Company\CheckController@checkCnpjDifferent']);
+        Route::get ('data',                      ['as' => 'entity.data',                  'uses' => 'Entity\DashboardController@data']);
+        Route::get ('dashboard',                 ['as' => 'entity.dashboard',             'uses' => 'Entity\DashboardController@dashboard']);
+        Route::get ('lista',                     ['as' => 'entity.list',                  'uses' => 'Entity\EntityController@list']);
+        Route::get ('lista/deletados',           ['as' => 'entity.list.deleted',          'uses' => 'Entity\EntityController@listDeleted']);
+        Route::get ('lista/usuarios',            ['as' => 'entity.list.users',            'uses' => 'Entity\EntityController@listUsers']);
+        Route::get ('visualizar/{id?}',          ['as' => 'entity.view',                  'uses' => 'Entity\EntityController@edit']); // * btn-modal-view-entity
+        Route::get ('editar/{id?}',              ['as' => 'entity.edit',                  'uses' => 'Entity\EntityController@edit']); // * btn-modal-edit-entity
+        Route::get ('banir/{id?}',               ['as' => 'entity.ban',                   'uses' => 'Entity\EntityController@edit']); // * btn-modal-block-entity
+        Route::get ('deletar/{id?}',             ['as' => 'entity.delete',                'uses' => 'Entity\EntityController@edit']); // * btn-modal-delete-entity
+        Route::get ('recuperar/{id?}',           ['as' => 'entity.recover',               'uses' => 'Entity\EntityController@edit']); // * btn-modal-recover-entity
+        Route::post('novo',                      ['as' => 'entity.store',                 'uses' => 'Entity\EntityController@store']); // btn-modal-new-entity
+        Route::post('novo/usuario',              ['as' => 'entity.user.store',            'uses' => 'Entity\EntityController@storeUser']); // * btn-modal-new-entity-user
+        Route::post('atualizar/{id?}',           ['as' => 'entity.update',                'uses' => 'Entity\EntityController@update']);
+        Route::post('bloquear/{id?}',            ['as' => 'entity.block',                 'uses' => 'Entity\EntityController@block']);
+        Route::post('remover/{id?}',             ['as' => 'entity.destroy',               'uses' => 'Entity\EntityController@destroy']);
+        Route::post('restaurar/{id?}',           ['as' => 'entity.restore',               'uses' => 'Entity\EntityController@restore']);
+        Route::post('enviar/email',              ['as' => 'entity.send.email',            'uses' => 'Entity\EntityController@sendEmail']); // * btn-send-email-entity
+        Route::post('verificar/email',           ['as' => 'entity.check.email',           'uses' => 'Entity\CheckController@checkEmail']);
+        Route::post('verificar/email/diferente', ['as' => 'entity.check.email.different', 'uses' => 'Entity\CheckController@checkEmailDifferent']);
+        Route::post('verificar/cnpj',            ['as' => 'entity.check.cnpj',            'uses' => 'Entity\CheckController@checkCnpj']);
+        Route::post('verificar/cnpj/diferente',  ['as' => 'entity.check.cnpj.different',  'uses' => 'Entity\CheckController@checkCnpjDifferent']);
     });
 
     // grupo rotas
@@ -210,81 +207,60 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
 
     // grupo permissões
     Route::group(['prefix' => 'permissoes'], function () {
-        Route::get ('lista/sem-permissoes',    ['as' => 'permission.user.list',     'uses' => 'User\PermissionController@list']);
-        Route::get ('lista/permissoes',        ['as' => 'permission.user.list.all', 'uses' => 'User\PermissionController@listAll']);
-        Route::get ('usuario/editar',          ['as' => 'permission.user.edit',     'uses' => 'User\PermissionController@edit']); // * btn-edit-permission-user
-        Route::post('usuario/atualizar/{id?}', ['as' => 'permission.user.update',   'uses' => 'User\PermissionController@update']);
+        Route::get ('lista/sem-permissoes',    ['as' => 'permission.user.list',     'uses' => 'PermissionController@list']);
+        Route::get ('lista/permissoes',        ['as' => 'permission.user.list.all', 'uses' => 'PermissionController@listAll']);
+        Route::get ('usuario/editar',          ['as' => 'permission.user.edit',     'uses' => 'PermissionController@edit']); // * btn-edit-permission-user
+        Route::post('usuario/atualizar/{id?}', ['as' => 'permission.user.update',   'uses' => 'PermissionController@update']);
     });
 
-    // grupo departamentos
-    Route::group(['prefix' => 'departamentos'], function () {
-        Route::get ('data',                     ['as' => 'department.data',                 'uses' => 'Department\DashboardController@data']);
-        Route::get ('dashboard',                ['as' => 'department.dashboard',            'uses' => 'Department\DashboardController@dashboard']);
-        Route::get ('lista',                    ['as' => 'department.list',                 'uses' => 'Department\DepartmentController@list']);
-        Route::get ('lista/deletados',          ['as' => 'department.list.deleted',         'uses' => 'Department\DepartmentController@listDeleted']);
-        Route::get ('visualizar/{id?}',         ['as' => 'department.view',                 'uses' => 'Department\DepartmentController@edit']); // * btn-modal-view-department
-        Route::get ('editar/{id?}',             ['as' => 'department.edit',                 'uses' => 'Department\DepartmentController@edit']); // * btn-modal-edit-department
-        Route::get ('banir/{id?}',              ['as' => 'department.ban',                  'uses' => 'Department\DepartmentController@edit']); // * btn-modal-block-department
-        Route::get ('deletar/{id?}',            ['as' => 'department.delete',               'uses' => 'Department\DepartmentController@edit']); // * btn-modal-delete-department
-        Route::get ('recuperar/{id?}',          ['as' => 'department.recover',              'uses' => 'Department\DepartmentController@edit']); // * btn-modal-recover-department
-        Route::post('novo',                     ['as' => 'department.store',                'uses' => 'Department\DepartmentController@store']); // btn-modal-new-department
-        Route::post('atualizar/{id?}',          ['as' => 'department.update',               'uses' => 'Department\DepartmentController@update']);
-        Route::post('bloquear/{id?}',           ['as' => 'department.block',                'uses' => 'Department\DepartmentController@block']);
-        Route::post('remover/{id?}',            ['as' => 'department.destroy',              'uses' => 'Department\DepartmentController@destroy']);
-        Route::post('restaurar/{id?}',          ['as' => 'department.restore',              'uses' => 'Department\DepartmentController@restore']);
-        Route::post('verificar/nome',           ['as' => 'department.check.name',           'uses' => 'Department\CheckController@checkName']);
-        Route::post('verificar/nome/diferente', ['as' => 'department.check.name.different', 'uses' => 'Department\CheckController@checkNameDifferent']);
+    // grupo empresas
+    Route::group(['prefix' => 'empresas'], function () {
+        Route::get ('data',                      ['as' => 'company.data',                  'uses' => 'Company\DashboardController@data']);
+        Route::get ('dashboard',                 ['as' => 'company.dashboard',             'uses' => 'Company\DashboardController@dashboard']);
+        Route::get ('lista',                     ['as' => 'company.list',                  'uses' => 'Company\CompanyController@list']);
+        Route::get ('lista/deletados',           ['as' => 'company.list.deleted',          'uses' => 'Company\CompanyController@listDeleted']);
+        Route::get ('visualizar/{id?}',          ['as' => 'company.view',                  'uses' => 'Company\CompanyController@edit']); // * btn-modal-view-company
+        Route::get ('editar/{id?}',              ['as' => 'company.edit',                  'uses' => 'Company\CompanyController@edit']); // * btn-modal-edit-company
+        Route::get ('banir/{id?}',               ['as' => 'company.ban',                   'uses' => 'Company\CompanyController@edit']); // * btn-modal-block-company
+        Route::get ('deletar/{id?}',             ['as' => 'company.delete',                'uses' => 'Company\CompanyController@edit']); // * btn-modal-delete-company
+        Route::get ('recuperar/{id?}',           ['as' => 'company.recover',               'uses' => 'Company\CompanyController@edit']); // * btn-modal-recover-company
+        Route::post('novo',                      ['as' => 'company.store',                 'uses' => 'Company\CompanyController@store']); // btn-modal-new-company
+        Route::post('novo/administrador',        ['as' => 'company.admin.store',           'uses' => 'Company\CompanyController@storeAdmin']); // * btn-modal-new-company-admin
+        Route::post('atualizar/{id?}',           ['as' => 'company.update',                'uses' => 'Company\CompanyController@update']);
+        Route::post('bloquear/{id?}',            ['as' => 'company.block',                 'uses' => 'Company\CompanyController@block']);
+        Route::post('remover/{id?}',             ['as' => 'company.destroy',               'uses' => 'Company\CompanyController@destroy']);
+        Route::post('restaurar/{id?}',           ['as' => 'company.restore',               'uses' => 'Company\CompanyController@restore']);
+        Route::post('enviar/email',              ['as' => 'company.send.email',            'uses' => 'Company\CompanyController@sendEmail']); // * btn-send-email-company
+        Route::post('verificar/email',           ['as' => 'company.check.email',           'uses' => 'Company\CheckController@checkEmail']);
+        Route::post('verificar/email/diferente', ['as' => 'company.check.email.different', 'uses' => 'Company\CheckController@checkEmailDifferent']);
+        Route::post('verificar/cnpj',            ['as' => 'company.check.cnpj',            'uses' => 'Company\CheckController@checkCnpj']);
+        Route::post('verificar/cnpj/diferente',  ['as' => 'company.check.cnpj.different',  'uses' => 'Company\CheckController@checkCnpjDifferent']);
     });
 
-    // grupo inventários
-    Route::group(['prefix' => 'inventarios'], function () {
-        Route::get ('data',                               ['as' => 'inventory.data',                          'uses' => 'Inventory\DashboardController@data']);
-        Route::get ('dashboard',                          ['as' => 'inventory.dashboard',                     'uses' => 'Inventory\DashboardController@dashboard']);
-        Route::get ('lista/categorias',                   ['as' => 'inventory.category.list',                 'uses' => 'Inventory\InventoryCategoryController@list']);
-        Route::get ('lista/categorias/deletadas',         ['as' => 'inventory.category.list.deleted',         'uses' => 'Inventory\InventoryCategoryController@listDeleted']);
-        Route::get ('visualizar/categoria/{id?}',         ['as' => 'inventory.category.view',                 'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-view-inventory-category
-        Route::get ('editar/categoria/{id?}',             ['as' => 'inventory.category.edit',                 'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-edit-inventory-category
-        Route::get ('banir/categoria/{id?}',              ['as' => 'inventory.category.ban',                  'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-block-inventory-category
-        Route::get ('deletar/categoria/{id?}',            ['as' => 'inventory.category.delete',               'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-delete-inventory-category
-        Route::get ('recuperar/categoria/{id?}',          ['as' => 'inventory.category.recover',              'uses' => 'Inventory\InventoryCategoryController@edit']); // * btn-modal-recover-inventory-category
-        Route::post('nova/categoria',                     ['as' => 'inventory.category.store',                'uses' => 'Inventory\InventoryCategoryController@store']); // btn-modal-new-inventory-category
-        Route::post('atualizar/categoria/{id?}',          ['as' => 'inventory.category.update',               'uses' => 'Inventory\InventoryCategoryController@update']);
-        Route::post('bloquear/categoria/{id?}',           ['as' => 'inventory.category.block',                'uses' => 'Inventory\InventoryCategoryController@block']);
-        Route::post('remover/categoria/{id?}',            ['as' => 'inventory.category.destroy',              'uses' => 'Inventory\InventoryCategoryController@destroy']);
-        Route::post('restaurar/categoria/{id?}',          ['as' => 'inventory.category.restore',              'uses' => 'Inventory\InventoryCategoryController@restore']);
-        Route::post('verificar/categoria/nome',           ['as' => 'inventory.category.check.name',           'uses' => 'Inventory\CheckController@checkName']);
-        Route::post('verificar/categoria/nome/diferente', ['as' => 'inventory.category.check.name.different', 'uses' => 'Inventory\CheckController@checkNameDifferent']);
-        Route::get ('lista/inventarios',                  ['as' => 'inventory.list',                          'uses' => 'Inventory\InventoryController@list']);
-        Route::get ('lista/inventarios/deletados',        ['as' => 'inventory.list.deleted',                  'uses' => 'Inventory\InventoryController@listDeleted']);
-        Route::get ('visualizar/inventario/{id?}',        ['as' => 'inventory.view',                          'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-view-inventory
-        Route::get ('editar/inventario/{id?}',            ['as' => 'inventory.edit',                          'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-edit-inventory
-        Route::get ('deletar/inventario/{id?}',           ['as' => 'inventory.delete',                        'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-delete-inventory
-        Route::get ('recuperar/inventario/{id?}',         ['as' => 'inventory.recover',                       'uses' => 'Inventory\InventoryController@edit']); // * btn-modal-recover-inventory
-        Route::post('novo/inventario',                    ['as' => 'inventory.store',                         'uses' => 'Inventory\InventoryController@store']); // btn-modal-new-inventory
-        Route::post('atualizar/inventario/{id?}',         ['as' => 'inventory.update',                        'uses' => 'Inventory\InventoryController@update']);
-        Route::post('remover/inventario/{id?}',           ['as' => 'inventory.destroy',                       'uses' => 'Inventory\InventoryController@destroy']);
-        Route::post('restaurar/inventario/{id?}',         ['as' => 'inventory.restore',                       'uses' => 'Inventory\InventoryController@restore']);
-    });
-
-    // grupo moradores
-    Route::group(['prefix' => 'moradores'], function () {
-        Route::get ('lista',                     ['as' => 'resident.list',                  'uses' => 'Resident\ResidentController@list']);
-        Route::get ('lista/deletados',           ['as' => 'resident.list.deleted',          'uses' => 'Resident\ResidentController@listDeleted']);
-        Route::get ('visualizar/{id?}',          ['as' => 'resident.view',                  'uses' => 'Resident\ResidentController@edit']); // * btn-modal-view-resident
-        Route::get ('editar/{id?}',              ['as' => 'resident.edit',                  'uses' => 'Resident\ResidentController@edit']); // * btn-modal-edit-resident
-        Route::get ('deletar/{id?}',             ['as' => 'resident.delete',                'uses' => 'Resident\ResidentController@edit']); // * btn-modal-delete-resident
-        Route::get ('recuperar/{id?}',           ['as' => 'resident.recover',               'uses' => 'Resident\ResidentController@edit']); // * btn-modal-recover-resident
-        Route::post('novo',                      ['as' => 'resident.store',                 'uses' => 'Resident\ResidentController@store']); // btn-modal-new-resident
-        Route::post('atualizar/{id?}',           ['as' => 'resident.update',                'uses' => 'Resident\ResidentController@update']);
-        Route::post('remover/{id?}',             ['as' => 'resident.destroy',               'uses' => 'Resident\ResidentController@destroy']);
-        Route::post('restaurar/{id?}',           ['as' => 'resident.restore',               'uses' => 'Resident\ResidentController@restore']);
-        Route::post('enviar/email',              ['as' => 'resident.send.email',            'uses' => 'Resident\ResidentController@sendEmail']); // * btn-send-email-resident
-        Route::post('verificar/email',           ['as' => 'resident.check.email',           'uses' => 'Resident\CheckController@checkEmail']);
-        Route::post('verificar/email/diferente', ['as' => 'resident.check.email.different', 'uses' => 'Resident\CheckController@checkEmailDifferent']);
-        Route::post('verificar/cpf',             ['as' => 'resident.check.cpf',             'uses' => 'Resident\CheckController@checkCpf']);
-        Route::post('verificar/cpf/diferente',   ['as' => 'resident.check.cpf.different',   'uses' => 'Resident\CheckController@checkCpfDifferent']);
-        Route::post('verificar/rg',              ['as' => 'resident.check.rg',              'uses' => 'Resident\CheckController@checkRg']);
-        Route::post('verificar/rg/diferente',    ['as' => 'resident.check.rg.different',    'uses' => 'Resident\CheckController@checkRgDifferent']);
+    // grupo administrador
+    Route::group(['prefix' => 'administradores'], function () {
+        Route::get ('data',                      ['as' => 'admin.data',                  'uses' => 'Admin\DashboardController@data']);
+        Route::get ('dashboard',                 ['as' => 'admin.dashboard',             'uses' => 'Admin\DashboardController@dashboard']);
+        Route::get ('lista',                     ['as' => 'admin.list',                  'uses' => 'Admin\AdminController@list']);
+        Route::get ('lista/deletados',           ['as' => 'admin.list.deleted',          'uses' => 'Admin\AdminController@listDeleted']);
+        Route::get ('visualizar/{id?}',          ['as' => 'admin.view',                  'uses' => 'Admin\AdminController@edit']); // * btn-modal-view-admin
+        Route::get ('editar/{id?}',              ['as' => 'admin.edit',                  'uses' => 'Admin\AdminController@edit']); // * btn-modal-edit-admin
+        Route::get ('banir/{id?}',               ['as' => 'admin.ban',                   'uses' => 'Admin\AdminController@edit']); // * btn-modal-block-admin
+        Route::get ('deletar/{id?}',             ['as' => 'admin.delete',                'uses' => 'Admin\AdminController@edit']); // * btn-modal-delete-admin
+        Route::get ('recuperar/{id?}',           ['as' => 'admin.recover',               'uses' => 'Admin\AdminController@edit']); // * btn-modal-recover-admin
+        Route::post('novo',                      ['as' => 'admin.store',                 'uses' => 'Admin\AdminController@store']); // btn-modal-new-admin
+        Route::post('atualizar/{id?}',           ['as' => 'admin.update',                'uses' => 'Admin\AdminController@update']);
+        Route::post('bloquear/{id?}',            ['as' => 'admin.block',                 'uses' => 'Admin\AdminController@block']);
+        Route::post('remover/{id?}',             ['as' => 'admin.destroy',               'uses' => 'Admin\AdminController@destroy']);
+        Route::post('restaurar/{id?}',           ['as' => 'admin.restore',               'uses' => 'Admin\AdminController@restore']);
+        Route::post('enviar/email',              ['as' => 'admin.send.email',            'uses' => 'Admin\AdminController@sendEmail']); // * btn-send-email-admin
+        Route::post('reenviar/email',            ['as' => 'admin.resend.email',          'uses' => 'Admin\AdminController@resendEmail']); // btn-resend-email-admin
+        Route::post('verificar/email',           ['as' => 'admin.check.email',           'uses' => 'User\CheckController@checkEmail']);
+        Route::post('verificar/email/diferente', ['as' => 'admin.check.email.different', 'uses' => 'User\CheckController@checkEmailDifferent']);
+        Route::post('verificar/cpf',             ['as' => 'admin.check.cpf',             'uses' => 'User\CheckController@checkCpf']);
+        Route::post('verificar/cpf/diferente',   ['as' => 'admin.check.cpf.different',   'uses' => 'User\CheckController@checkCpfDifferent']);
+        Route::post('verificar/rg',              ['as' => 'admin.check.rg',              'uses' => 'User\CheckController@checkRg']);
+        Route::post('verificar/rg/diferente',    ['as' => 'admin.check.rg.different',    'uses' => 'User\CheckController@checkRgDifferent']);
     });
 
     */

@@ -11,8 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-} catch (e) {
-}
+} catch (e) {}
 
 /**
  * Vamos carregar a biblioteca HTTP axios que nos permite emitir facilmente pedidos
@@ -25,26 +24,12 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
- * Em seguida, vamos registrar o Token CSRF como um cabeçalho comum com o Axios para que
- * todas as solicitações HTTP de saída são anexadas automaticamente. Isso é apenas
- * uma conveniência simples, portanto não precisamos anexar todos os token manualmente.
- */
-
-let token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
-
-/**
  * O eco expõe uma API expressiva para se inscrever em canais e ouvir
  * para eventos que são transmitidos pelo Laravel. Transmissão de eco e evento
  * permite que sua equipe crie facilmente aplicativos da Web em tempo real robustos.
  */
 
-// import Echo from 'laravel-echo'
+// import Echo from 'laravel-echo';
 
 // window.Pusher = require('pusher-js');
 

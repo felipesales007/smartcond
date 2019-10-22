@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'course'            => 'Sistemas de Informação',
             'college'           => 'Unifacs',
             'profession'        => 'Desenvolvedor Pleno',
-            'company'           => 'Meu Condomínio',
+            'company'           => 'Smartcond',
             'postal_code'       => '40010-000',
             'address'           => 'Avenida da França',
             'neighborhood'      => 'Comércio',
@@ -35,42 +35,32 @@ class UsersTableSeeder extends Seeder
             'state_id'          => '5',
             'country'           => 'Brasil',
             'description'       => 'Desenvolvedor de sistemas web',
+            'admin'             => '1',
             'last_update_at'    => now(),
             'created_at'        => now(),
             'updated_at'        => now()
         ]);
 
-        User::create([
+        User::create(array(
             'name'              => 'Marco Ribeiro',
             'email'             => 'marco.ribeiro@outlook.com',
             'email_verified_at' => now(),
             'password'          => Hash::make('12345678'),
+            'admin'             => '1',
             'last_update_at'    => now(),
             'created_at'        => now(),
             'updated_at'        => now()
-        ]);
+        ));
 
         User::create([
             'name'              => 'Sergio Pinto',
             'email'             => 'sergiopinto.adm@gmail.com',
             'email_verified_at' => now(),
             'password'          => Hash::make('12345678'),
+            'admin'             => '1',
             'last_update_at'    => now(),
             'created_at'        => now(),
             'updated_at'        => now()
         ]);
-
-        // usuários de teste
-//        for ($i = 4; $i <= 25; $i++) {
-//            User::create([
-//                'name'              => Str::random(6),
-//                'email'             => Str::random(10) . '@hotmail.com',
-//                'email_verified_at' => now(),
-//                'password'          => Hash::make('12345678'),
-//                'last_update_at'    => now(),
-//                'created_at'        => now(),
-//                'updated_at'        => now()
-//            ]);
-//        }
     }
 }

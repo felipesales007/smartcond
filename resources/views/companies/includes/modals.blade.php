@@ -11,3 +11,5 @@
 @include('companies.modals.recover')
 
 @include('companies.modals.send-email')
+
+@include('companies.modals.new-admin')

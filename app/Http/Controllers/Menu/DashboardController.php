@@ -38,8 +38,8 @@ class DashboardController extends Controller
     public function getCounts()
     {
         $cards = [
-            'getCountMenu'             => Menu::all()->count(),
-            'getCountMenuItems'        => MenuItem::all()->count(),
+            'getCountMenu'             => Menu::count(),
+            'getCountMenuItems'        => MenuItem::count(),
             'getCountCollapses'        => Menu::where('menu_option_id', '=', '1')->count(),
             'getCountDropdowns'        => Menu::where('menu_option_id', '=', '2')->count(),
             'getCountLinks'            => Menu::where('menu_option_id', '=', '3')->count(),

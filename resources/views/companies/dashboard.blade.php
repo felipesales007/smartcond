@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('Dashboard de condomínios'))
+@section('title', __('Dashboard de empresas'))
 
 @section('content')
 

@@ -8,12 +8,16 @@ use App\Helpers\NotifyHelpers;
 use App\Http\Requests\Company\BlockCompanyRequest;
 use App\Http\Requests\Company\DeleteCompanyRequest;
 use App\Http\Requests\Company\EditCompanyRequest;
+use App\Http\Requests\Company\NewCompanyAdminRequest;
 use App\Http\Requests\Company\NewCompanyRequest;
 use App\Http\Requests\Company\RecoverCompanyRequest;
 use App\Http\Requests\Company\SendEmailCompanyRequest;
 use App\Models\Company\Company;
+use App\Models\Company\CompanyAccesses;
 use App\Models\Menu\MenuItem;
 use App\Models\Permission;
+use App\Models\User;
+use App\Notifications\Admin\NewAdmin;
 use App\Notifications\Company\BlockCompany;
 use App\Notifications\Company\DeleteCompany;
 use App\Notifications\Company\NewCompany;
@@ -26,6 +30,8 @@ use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CompanyController extends Controller
@@ -54,10 +60,13 @@ class CompanyController extends Controller
 
         $collection = Company::query()
             ->select('companies.*')
-            ->orWhere('companies.name', 'like', '%' . $search . '%')
-            ->orWhere('email', 'like', '%' . $search . '%')
-            ->orWhere('contact', 'like', '%' . $search . '%')
-            ->orWhere('cnpj', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query
+                    ->orWhere('companies.name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%')
+                    ->orWhere('contact', 'like', '%' . $search . '%')
+                    ->orWhere('cnpj', 'like', '%' . $search . '%');
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -67,9 +76,9 @@ class CompanyController extends Controller
                 // coluna logo
                 ->addColumn('logo', function ($row) {
                     if ($row->logo) {
-                        $logo = '<div class="avatar avatar-sm"><img src="' . url('storage/img/companies/logo/' . $row->logo) . '" alt=""></div>';
+                        $logo = '<div class="avatar avatar-sm"><img src="' . url('storage/images/companies/logo/' . $row->logo) . '" alt=""></div>';
                     } else {
-                        $logo = '<div class="avatar avatar-sm"><img src="' . url('img/default/default-logo.png') . '" alt=""></div>';
+                        $logo = '<div class="avatar avatar-sm"><img src="' . url('images/default/default-logo.png') . '" alt=""></div>';
                     }
                     return $logo;
                 })
@@ -79,7 +88,12 @@ class CompanyController extends Controller
                 })
                 // coluna nome
                 ->addColumn('name', function ($row) {
-                    return $row->name;
+                    if (app('router')->has('company.admin.store') && Permission::buttonPermission('btn-modal-new-company-admin') && !MenuItem::getMenuItemBlocked('company.admin.store')['list'] && MenuItem::getMenuItemDeleted('company.admin.store')['list']) {
+                        $name = '<span data-id="' . $row->id . '" data-logo="' . $row->logo . '" data-name="' . $row->name . '" class="status fe-pointer btn-modal-new-company-admin" data-toggle="tooltip" data-placement="top" title="clique aqui para criar um novo administrador nesta empresa">' . $row->name . '</span>';
+                    } else {
+                        $name = $row->name;
+                    }
+                    return $name;
                 })
                 // coluna e-mail
                 ->addColumn('email', function ($row) {
@@ -109,7 +123,7 @@ class CompanyController extends Controller
 
                     // editar
                     if (app('router')->has('company.edit') && MenuItem::getMenuItemDeleted('company.edit')['list']) {
-                        if (Permission::buttonPermission('btn-modal-edit-company') && !MenuItem::getMenuItemBlocked('company.edit')['list']) {
+                        if (Permission::buttonPermission('btn-modal-edit-company') && !MenuItem::getMenuItemBlocked('company.edit')['list'] && $row->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::buttonPermission('btn-modal-edit-company') && !MenuItem::getMenuItemBlocked('company.edit')['list'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-company" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
@@ -118,15 +132,15 @@ class CompanyController extends Controller
 
                     // bloquear
                     if (app('router')->has('company.ban') && MenuItem::getMenuItemDeleted('company.ban')['list']) {
-                        if (Permission::buttonPermission('btn-modal-block-company') && !MenuItem::getMenuItemBlocked('company.ban')['list']) {
+                        if (Permission::buttonPermission('btn-modal-block-company') && !MenuItem::getMenuItemBlocked('company.ban')['list'] && $row->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::buttonPermission('btn-modal-block-company') && !MenuItem::getMenuItemBlocked('company.ban')['list'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
                             if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-company" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-company" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-company" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
                         } else {
                             if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
-                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
@@ -135,7 +149,7 @@ class CompanyController extends Controller
 
                     // excluir
                     if (app('router')->has('company.delete') && MenuItem::getMenuItemDeleted('company.delete')['list']) {
-                        if (Permission::buttonPermission('btn-modal-delete-company') && !MenuItem::getMenuItemBlocked('company.delete')['list']) {
+                        if (Permission::buttonPermission('btn-modal-delete-company') && !MenuItem::getMenuItemBlocked('company.delete')['list'] && $row->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::buttonPermission('btn-modal-delete-company') && !MenuItem::getMenuItemBlocked('company.delete')['list'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-danger btn-modal-delete-company" title="Excluir"><i class="far fa-trash-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-danger opacity-2 disabled" title="Excluir"><i class="far fa-trash-alt"></i></a>';
@@ -178,9 +192,9 @@ class CompanyController extends Controller
         ]);
 
         // upload da logo
-        if ($request->hasFile('image_4') && $request->file('image_4')->isValid()) {
+        if ($request->hasFile('image_logo_new_company') && $request->file('image_logo_new_company')->isValid()) {
             $file_name = FormatHelpers::image_name($collection->id);
-            FileHelpers::destination_file($request, null, 'image_4', $file_name, 'img/companies/logo/');
+            FileHelpers::destination_file($request, null, 'image_logo_new_company', $file_name, 'images/companies/logo/');
             $collection->update(['logo' => $file_name]);
         }
 
@@ -192,9 +206,9 @@ class CompanyController extends Controller
                 $this->notify(new NewCompany($collection));
             }
 
-            $data = NotifyHelpers::success_top_center('fas fa-hotel', 'Condomínio criado com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-hotel', 'Empresa criada com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio criado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa criada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -208,7 +222,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $collection = Company::withTrashed()->find($id);
+        $collection = Company::withTrashed()->find($id);;
 
         return response()->json($collection);
     }
@@ -224,8 +238,15 @@ class CompanyController extends Controller
         $collection = Company::find($request->id_edit_company);
         $original   = $collection->getOriginal();
 
+        // impede a alteração de empresa diferente
+        if ($collection->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+            // notificar
+            $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para alterar essa empresa.');
+            return response()->json($data);
+        }
+
         // armazena a logo
-        FileHelpers::destination_file($request, $original['logo'], 'image_5', 'logo_edit_company', 'img/companies/logo/');
+        FileHelpers::destination_file($request, $original['logo'], 'image_logo_edit_company', 'logo_edit_company', 'images/companies/logo/');
 
         // dados
         $collection->fill([
@@ -269,9 +290,9 @@ class CompanyController extends Controller
                 }
             }
 
-            $data = NotifyHelpers::success_top_center('fas fa-check', 'Condomínio alterado com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-check', 'Empresa alterada com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio alterado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa alterada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -288,6 +309,13 @@ class CompanyController extends Controller
         $collection = Company::find($request->id_block_company);
         $original   = $collection->getOriginal();
 
+        // impede o bloqueio de empresa diferente
+        if ($collection->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+            // notificar
+            $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para bloquear essa empresa.');
+            return response()->json($data);
+        }
+
         if ($request->blocked_block_company) {
             // notificar
             try {
@@ -303,9 +331,9 @@ class CompanyController extends Controller
                     $this->notify(new BlockCompany($collection->name, $blocked));
                 }
 
-                $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio bloqueado com sucesso.');
+                $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Empresa bloqueada com sucesso.');
             } catch (Exception $e) {
-                $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio bloqueado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa bloqueada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
             }
         } else {
             if ($request->blocked_at_block_company) {
@@ -323,9 +351,9 @@ class CompanyController extends Controller
                         $this->notify(new BlockCompany($collection->name, $blocked));
                     }
 
-                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio bloqueado até <b>' . $date . '</b>.');
+                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Empresa bloqueada até <b>' . $date . '</b>.');
                 } catch (Exception $e) {
-                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio bloqueado até <b>' . $date . '</b>, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa bloqueada até <b>' . $date . '</b>, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
                 }
             } else {
                 // notificar
@@ -343,9 +371,9 @@ class CompanyController extends Controller
                         }
                     }
 
-                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio desbloqueado com sucesso.');
+                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Empresa desbloqueada com sucesso.');
                 } catch (Exception $e) {
-                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio desbloqueado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa desbloqueada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
                 }
             }
         }
@@ -364,6 +392,13 @@ class CompanyController extends Controller
         $collection  = Company::find($request->id_delete_company);
         $this->email = $collection->getOriginal()['email'];
 
+        // impede a exclusão de empresa diferente
+        if ($collection->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+            // notificar
+            $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para excluir essa empresa.');
+            return response()->json($data);
+        }
+
         $collection->delete();
 
         // notificar
@@ -371,9 +406,9 @@ class CompanyController extends Controller
             // enviar notificação por e-mail
             $this->notify(new DeleteCompany($request->name_delete_company));
 
-            $data = NotifyHelpers::danger_top_center('fas fa-trash-alt', 'Condomínio deletado com sucesso.');
+            $data = NotifyHelpers::danger_top_center('fas fa-trash-alt', 'Empresa deletada com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio deletado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa deletada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -411,9 +446,9 @@ class CompanyController extends Controller
                 // coluna logo
                 ->addColumn('logo', function ($row) {
                     if ($row->logo) {
-                        $logo = '<div class="avatar avatar-sm"><img src="' . url('storage/img/companies/logo/' . $row->logo) . '" alt=""></div>';
+                        $logo = '<div class="avatar avatar-sm"><img src="' . url('storage/images/companies/logo/' . $row->logo) . '" alt=""></div>';
                     } else {
-                        $logo = '<div class="avatar avatar-sm"><img src="' . url('img/default/default-logo.png') . '" alt=""></div>';
+                        $logo = '<div class="avatar avatar-sm"><img src="' . url('images/default/default-logo.png') . '" alt=""></div>';
                     }
                     return $logo;
                 })
@@ -448,7 +483,7 @@ class CompanyController extends Controller
 
                     // recuperar
                     if (app('router')->has('company.recover') && MenuItem::getMenuItemDeleted('company.recover')['list']) {
-                        if (Permission::buttonPermission('btn-modal-recover-company') && !MenuItem::getMenuItemBlocked('company.recover')['list']) {
+                        if (Permission::buttonPermission('btn-modal-recover-company') && !MenuItem::getMenuItemBlocked('company.recover')['list'] && $row->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::buttonPermission('btn-modal-recover-company') && !MenuItem::getMenuItemBlocked('company.recover')['list'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-recover-company" title="Recuperar"><i class="fas fa-recycle"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Recuperar"><i class="fas fa-recycle"></i></a>';
@@ -475,6 +510,13 @@ class CompanyController extends Controller
         $collection  = Company::onlyTrashed()->find($request->id_recover_company);
         $this->email = $collection->email;
 
+        // impede a recuperação de empresa diferente
+        if ($collection->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+            // notificar
+            $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para restaurar essa empresa.');
+            return response()->json($data);
+        }
+
         $collection->restore();
 
         // notificar
@@ -482,9 +524,9 @@ class CompanyController extends Controller
             // enviar notificação por email
             $this->notify(new RecoverCompany($collection->name));
 
-            $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Condomínio recuperado com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Empresa recuperada com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio recuperado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Empresa recuperada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -512,5 +554,215 @@ class CompanyController extends Controller
         }
 
         return response()->json($data);
+    }
+
+    /**
+     * Armazenar dados recém-criado no armazenamento.
+     *
+     * @param NewCompanyAdminRequest $request
+     * @return JsonResponse
+     */
+    public function storeAdmin(NewCompanyAdminRequest $request)
+    {
+        $collection = User::create([
+            'name'           => $request->name_new_company_admin,
+            'email'          => $request->email_new_company_admin,
+            'password'       => Hash::make(Str::random(60)),
+            'admin'          => '1',
+            'last_update_at' => now()
+        ]);
+
+        Permission::create([
+            'user_id'  => $collection->id,
+            'route_id' => '1'
+        ]);
+
+        $accesses = CompanyAccesses::create([
+            'company_id' => $request->id_company_new_company_admin,
+            'user_id'    => $collection->id
+        ]);
+
+        $company = Company::join('company_accesses', 'company_accesses.company_id', '=', 'companies.id')
+            ->where('companies.id', '=', $accesses->company_id)
+            ->groupBy('companies.id')
+            ->pluck('companies.name')
+            ->first();
+
+        // enviar notificação por e-mail
+        $token       = app('auth.password.broker')->createToken($collection);
+        $this->email = $collection->email;
+
+        // notificar
+        try {
+            // enviar notificação por e-mail
+            $this->notify(new NewAdmin($token, $collection->name, $company));
+
+            $data = NotifyHelpers::success_top_center('fas fa-user-shield', 'Administrador criado com sucesso.');
+        } catch (Exception $e) {
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Administrador criado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+        }
+
+        return response()->json($data);
+    }
+
+    /**
+     * Exibir uma listagem do recurso.
+     *
+     * @param Request $request
+     * @return Factory|JsonResponse|View|mixed
+     * @throws Exception
+     */
+    public function listAdmins(Request $request)
+    {
+        // filtragem do datatable
+        $search = !empty($_GET['search']) ? $_GET['search'] : '';
+        $order  = explode(' ', !empty($_GET['orderBy']) ? $_GET['orderBy'] : 'name asc');
+        $id     = !empty($_GET['company']) ? $_GET['company'] : '';
+
+        $company = Company::find($request->get('id'));
+
+        $collection = User::query()
+            ->select('users.*', 'companies.name as company_name')
+            ->join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+            ->join('companies', 'companies.id', '=', 'company_accesses.company_id')
+            ->where('admin', '=', '1')
+            ->where('companies.id', '=', $id)
+            ->where(function ($query) use ($search) {
+                $query
+                    ->orWhere('users.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.email', 'like', '%' . $search . '%');
+            })
+            ->groupBy('users.id')
+            ->orderBy($order[0], $order[1]);
+
+        // listagem
+        if ($request->ajax()) {
+            // preenchimento das colunas do datatable
+            return datatables($collection)
+                // coluna imagem
+                ->addColumn('photo', function ($row) {
+                    if ($row->photo) {
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('storage/images/users/photo/' . $row->photo) . '" alt=""></div>';
+                    } else {
+                        $photo = '<div class="avatar avatar-sm rounded-circle"><img src="' . url('images/default/default-user.png') . '" alt=""></div>';
+                    }
+                    return $photo;
+                })
+                // coluna nome
+                ->addColumn('name', function ($row) {
+                    return $row->name;
+                })
+                // coluna e-mail
+                ->addColumn('email', function ($row) {
+                    if ($row->email_verified_at) {
+                        if (app('router')->has('admin.send.email') && Permission::buttonPermission('btn-send-email-admin') && !MenuItem::getMenuItemBlocked('admin.send.email')['list'] && MenuItem::getMenuItemDeleted('admin.send.email')['list'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != auth()->id()) {
+                            $email = '<span class="badge badge-dot mr-4"><i class="bg-success" data-toggle="tooltip" data-placement="top" title="e-mail confirmado"></i><span data-photo="' . $row->photo . '" data-name="' . $row->name . '" data-email="' . $row->email . '" class="status fe-pointer btn-modal-send-email-admin" data-toggle="tooltip" data-placement="top" title="clique aqui para enviar um e-mail para ' . FormatHelpers::two_word($row->name) . '">' . $row->email . '</span></span>';
+                        } else {
+                            $email = '<span class="badge badge-dot mr-4"><i class="bg-success" data-toggle="tooltip" data-placement="top" title="e-mail confirmado"></i><span class="status">' . $row->email . '</span></span>';
+                        }
+                    } else {
+                        if (app('router')->has('admin.resend.email') && Permission::buttonPermission('btn-resend-email-admin') && MenuItem::getMenuItemDeleted('admin.resend.email')['list']) {
+                            if (!MenuItem::getMenuItemBlocked('admin.resend.email')['list'] && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || !MenuItem::getMenuItemBlocked('admin.resend.email')['list'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                                $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><form class="form-resend-email-admin d-inline" role="form" autocomplete="off" novalidate><input hidden readonly type="number" name="id_resend_email_admin" value="' . $row->id . '" maxlength="191" required><button class="btn btn-info btn-xs btn-resend-email-admin rounded-circle mt--1"><i class="fas fa-sync-alt" data-toggle="tooltip" data-placement="top" title="reenviar e-mail de confirmação para o administrador"></i></button></form>';
+                            } else {
+                                $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><button class="btn btn-info btn-xs rounded-circle mt-0 opacity-2 disabled"><i class="fas fa-sync-alt"></i></button>';
+                            }
+                        } else {
+                            $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span>';
+                        }
+                    }
+                    return $email;
+                })
+                // coluna data de último login do administrador
+                ->addColumn('date', function ($row) {
+                    if ($row->last_login_at) {
+                        $date = 'há ' . FormatHelpers::remove_last_word(' depois', now()->diffForHumans($row->last_login_at));
+                    } else {
+                        $date = 'nunca logou';
+                    }
+                    return $date;
+                })
+                // coluna ações
+                ->addColumn('action', function ($row) {
+                    // visualizar
+                    if (app('router')->has('admin.view') && MenuItem::getMenuItemDeleted('admin.view')['list']) {
+                        if (Permission::buttonPermission('btn-modal-view-admin') && !MenuItem::getMenuItemBlocked('admin.view')['list']) {
+                            $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-admin" title="Visualizar"><i class="far fa-eye"></i></a>';
+                        } else {
+                            $btn = '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-primary opacity-2 disabled" title="Visualizar"><i class="far fa-eye"></i></a>';
+                        }
+                    } else {
+                        $btn = null;
+                    }
+
+                    // editar
+                    if ($row->id != auth()->id()) {
+                        if (app('router')->has('admin.edit') && MenuItem::getMenuItemDeleted('admin.edit')['list']) {
+                            if (Permission::buttonPermission('btn-modal-edit-admin') && !MenuItem::getMenuItemBlocked('admin.edit')['list'] && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::buttonPermission('btn-modal-edit-admin') && !MenuItem::getMenuItemBlocked('admin.edit')['list'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-admin" title="Editar"><i class="fas fa-user-edit"></i></a>';
+                            } else {
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-user-edit"></i></a>';
+                            }
+                        }
+                    } else {
+                        if (app('router')->has('profile.index') && MenuItem::getMenuItemDeleted('profile.index')) {
+                            if (Permission::routePermission('profile.index')) {
+                                $btn = $btn . '<a href="' . route('profile.index') . '" class="btn btn-sm btn-icon btn-outline-success" title="Editar"><i class="fas fa-user-edit"></i></a>';
+                            } else {
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-user-edit"></i></a>';
+                            }
+                        }
+                    }
+
+                    // bloquear e excluir
+                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                        // bloquear
+                        if (app('router')->has('admin.ban') && MenuItem::getMenuItemDeleted('admin.ban')['list']) {
+                            if (Permission::buttonPermission('btn-modal-block-admin') && !MenuItem::getMenuItemBlocked('admin.ban')['list']) {
+                                if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
+                                    $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-admin" title="Desbloquear"><i class="fas fa-ban"></i></a>';
+                                } else {
+                                    $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-admin" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                }
+                            } else {
+                                if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
+                                    $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
+                                } else {
+                                    $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                }
+                            }
+                        }
+
+                        // excluir
+                        if (app('router')->has('admin.delete') && MenuItem::getMenuItemDeleted('admin.delete')['list']) {
+                            if (Permission::buttonPermission('btn-modal-delete-admin') && !MenuItem::getMenuItemBlocked('admin.delete')['list']) {
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-danger btn-modal-delete-admin" title="Excluir"><i class="far fa-trash-alt"></i></a>';
+                            } else {
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-danger opacity-2 disabled" title="Excluir"><i class="far fa-trash-alt"></i></a>';
+                            }
+                        }
+                    } else {
+                        // bloquear
+                        if (app('router')->has('admin.ban') && MenuItem::getMenuItemDeleted('admin.ban')['list']) {
+                            if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
+                            } else {
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                            }
+                        }
+
+                        // excluir
+                        if (app('router')->has('admin.delete') && MenuItem::getMenuItemDeleted('admin.delete')['list']) {
+                            $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-danger opacity-2 disabled" title="Excluir"><i class="far fa-trash-alt"></i></a>';
+                        }
+                    }
+
+                    return $btn;
+                })
+                ->rawColumns(['photo', 'name', 'email', 'date', 'action'])
+                ->toJson();
+        }
+
+        return view('companies.list-admins', compact('company'));
     }
 }

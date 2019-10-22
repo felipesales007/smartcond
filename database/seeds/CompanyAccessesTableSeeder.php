@@ -15,7 +15,6 @@ class CompanyAccessesTableSeeder extends Seeder
         CompanyAccesses::insert([
             'company_id' => '1',
             'user_id'    => '1',
-            'preferred'  => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -23,7 +22,6 @@ class CompanyAccessesTableSeeder extends Seeder
         CompanyAccesses::insert([
             'company_id' => '1',
             'user_id'    => '2',
-            'preferred'  => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -31,7 +29,6 @@ class CompanyAccessesTableSeeder extends Seeder
         CompanyAccesses::insert([
             'company_id' => '1',
             'user_id'    => '3',
-            'preferred'  => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);

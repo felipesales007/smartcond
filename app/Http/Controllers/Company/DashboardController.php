@@ -37,7 +37,7 @@ class DashboardController extends Controller
     public function getCounts()
     {
         $cards = [
-            'getCount'        => Company::all()->count(),
+            'getCount'        => Company::count(),
             'getCountEmail'   => Company::where('email', '!=', null)->count(),
             'getCountContact' => Company::where('contact', '!=', null)->count(),
             'getCountBlocked' => Company::where('blocked', '!=', null)->orWhere('blocked_at', '>=', date('Y-m-d'))->count()

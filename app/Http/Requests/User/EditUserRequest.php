@@ -30,7 +30,7 @@ class EditUserRequest extends FormRequest
             'cpf_edit_user'                   => ['nullable', 'min:14', 'max:14', 'format_cpf', 'cpf', Rule::unique('users', 'cpf')->ignore($this->id_edit_user)],
             'rg_edit_user'                    => ['nullable', 'min:8', 'max:14', 'alpha_num', Rule::unique('users', 'rg')->ignore($this->id_edit_user)],
             'email_edit_user'                 => ['required', 'max:191', 'email', Rule::unique('users', 'email')->ignore($this->id_edit_user)],
-            'company_id_edit_user'            => ['required'],
+            'entity_id_edit_user'             => ['required'],
             'password_edit_user'              => ['nullable', 'min:8', 'max:191', 'same:password_confirmation_edit_user'],
             'password_confirmation_edit_user' => ['nullable', 'min:8', 'max:191'],
             'birthday_edit_user'              => ['nullable', 'min:10', 'max:10', 'date_format:d/m/Y'],
@@ -51,8 +51,8 @@ class EditUserRequest extends FormRequest
             'country_edit_user'               => ['nullable', 'min:3', 'max:191'],
             'photo_edit_user'                 => ['nullable'],
             'background_edit_user'            => ['nullable'],
-            'image_2'                         => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:6144'],
-            'image_3'                         => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:6144'],
+            'image_photo_edit_user'           => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024'],
+            'image_background_edit_user'      => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024'],
         ];
     }
 
@@ -65,7 +65,7 @@ class EditUserRequest extends FormRequest
     {
         return [
             'max' => [
-                'file' => 'O campo :attribute não pode ser superior a 6 mb.'
+                'file' => 'O campo :attribute não pode ser superior a 1 mb.'
             ],
         ];
     }

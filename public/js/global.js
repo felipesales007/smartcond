@@ -16,23 +16,18 @@ $(window).on('load', function () {
 
 // carregando em submit
 $('button[type="submit"]').on('click', function () {
-    if ($('.input-group').hasClass('fe-recaptcha')) {
-        if (grecaptcha.getResponse() !== '') {
-            $('form').submit(function () {
-                if ($(this).valid()) {
-                    $('.fe-bg-loader').css('display', '');
-                    $('.fe-loader').css('display', '');
-                }
-            });
+    $('form').submit(function () {
+        if ($(this).valid()) {
+            $('.fe-bg-loader').css('display', '');
+            $('.fe-loader').css('display', '');
         }
-    } else {
-        $('form').submit(function () {
-            if ($(this).valid()) {
-                $('.fe-bg-loader').css('display', '');
-                $('.fe-loader').css('display', '');
-            }
-        });
-    }
+    });
+});
+
+// carregando link
+$('.fe-loading').on('click', function () {
+    $('.fe-bg-loader').css('display', '');
+    $('.fe-loader').css('display', '');
 });
 
 // carregando em ajax
@@ -122,15 +117,6 @@ $('.fe-carregando').on('click', function () {
     });
 });
 
-// mostra icone de carregamento no botão em form com recaptcha
-$('.fe-recaptcha-carregando').on('click', function () {
-    $('form').submit(function () {
-        if ($(this).valid() && grecaptcha.getResponse() !== '') {
-            $('.fe-recaptcha-carregando').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Carregando');
-        }
-    });
-});
-
 // mostra icone de carregamento em lugar determinado
 function enviando() {
     $('.fe-carregando').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Enviando');
@@ -156,28 +142,6 @@ if ($('.navbar-dark').length > 0) {
             $('.navbar-dark').addClass('fe-transition');
         }
     });
-}
-
-// responsividade do reCAPTCHA
-if (window.location.href.indexOf('/registrar') >= 0) {
-    window.onload = function () {
-        function reCAPTCHA() {
-            let width = $('.fe-recaptcha').parent().width();
-            if (width < 302) {
-                let scale = width / 302;
-                $('.fe-recaptcha').css('transform', 'scale(' + scale + ')');
-                $('.fe-recaptcha').css('-webkit-transform', 'scale(' + scale + ')');
-                $('.fe-recaptcha').css('transform-origin', '0 0');
-                $('.fe-recaptcha').css('-webkit-transform-origin', '0 0');
-            }
-
-            if (grecaptcha.getResponse() !== '') {
-                $('#g-recaptcha-error').html('');
-            }
-        }
-
-        setInterval(reCAPTCHA, 250);
-    }
 }
 
 // datepicker de hoje para trás
@@ -542,12 +506,6 @@ $('form').submit(function () {
     if ($(this).html().indexOf('select') > 0) {
         $('select').valid();
     }
-
-    if ($('.input-group').hasClass('fe-recaptcha')) {
-        if (grecaptcha.getResponse() === '') {
-            $('#g-recaptcha-error').html('<span class="invalid-feedback" role="alert">O campo recaptcha é obrigatório.</span>');
-        }
-    }
 });
 
 // validação em select2 e checkbox no submit
@@ -586,8 +544,17 @@ $('select').select2({
         $(this).addClass('select2-selection--single-up');
     });
 
+    $('.select2-selection--multiple').addClass('select2-selection--multiple-up');
+
     if (!$('.select2-selection--single').hasClass('is-invalid') && !$('.select2-selection--single').hasClass('is-valid')) {
         $('.select2-selection--single').on(function () {
+            $(this).parent().addClass('fe-focus-select2');
+            $('#' + this.id).valid();
+        });
+    }
+
+    if (!$('.select2-selection--multiple').hasClass('is-invalid') && !$('.select2-selection--multiple').hasClass('is-valid')) {
+        $('.select2-selection--multiple').on(function () {
             $(this).parent().addClass('fe-focus-select2');
             $('#' + this.id).valid();
         });
@@ -597,14 +564,38 @@ $('select').select2({
 
     $('.select2-selection--single').removeClass('select2-selection--single-up');
     $('.select2-selection--single').removeClass('fe-focus-select2');
+
+    $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
+    $('.select2-selection--multiple').removeClass('fe-focus-select2');
+
     $('#' + this.id).valid();
 }).on('select2:select', function () {
     $('.select2-selection--single').removeClass('select2-selection--single-up');
     $('.select2-selection--single').removeClass('fe-focus-select2');
+
+    $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
+    $('.select2-selection--multiple').removeClass('fe-focus-select2');
+
     $('#' + this.id).valid();
-}).on('select2:unselect', function () {
+}).on('select2:unselect', function (e) {
     $('.select2-selection--single').removeClass('select2-selection--single-up');
     $('.select2-selection--single').removeClass('fe-focus-select2');
+
+    $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
+    $('.select2-selection--multiple').removeClass('fe-focus-select2');
+
+    let id = '#' + $('#' + e.currentTarget.id).next().prevObject[0].form.id;
+
+    if ($(id + ' .select2-selection--multiple').find('.select2-search.select2-search--inline') && $(id + ' .select2-selection--multiple').find('li.select2-selection__choice').length === 0) {
+        $(id + ' .select2-selection--multiple').html('<span class="select2-selection__rendered" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Selecione</span></span>');
+    }
+
+    let opts = $(this).data('select2').options;
+    opts.set('disabled', true);
+    setTimeout(function () {
+        opts.set('disabled', false);
+    }, 0);
+
     $('#' + this.id).valid();
 });
 
@@ -614,6 +605,15 @@ $('.select-nosearch').select2({
     language: 'pt-BR',
     sorter: data => data.sort((a, b) => a.text.localeCompare(b.text)),
     minimumResultsForSearch: -1
+});
+
+// placeholder em select2 multiple
+$('.modal').on('show.bs.modal hidden.bs.modal', function (e) {
+    let id  = '#' + e.currentTarget.id;
+
+    if ($(id + ' .select2-selection--multiple').find('.select2-search.select2-search--inline') && $(id + ' .select2-selection--multiple').find('li.select2-selection__choice').length === 0) {
+        $(id + ' .select2-selection--multiple').html('<span class="select2-selection__rendered" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Selecione</span></span>');
+    }
 });
 
 // bloqueia o input de copiar e colar
@@ -725,12 +725,6 @@ function limparInputDatepicker(event) {
 // submit bloquea button type submit, para evitar duplicidade
 $(document).on('submit', 'form', function () {
     $(this.querySelector('button[type="submit"]')).attr('disabled', 'disabled');
-
-    if ($(this.querySelector('.fe-recaptcha-carregando')).length) {
-        if (grecaptcha.getResponse() === '') {
-            $(this.querySelector('button[type="submit"]')).removeAttr('disabled', 'disabled');
-        }
-    }
 });
 
 // ajax token
@@ -971,12 +965,13 @@ function url_public($destination) {
     let protocol  = window.location.protocol + '//';
     let hostname  = window.location.hostname;
     let localhost = window.location.pathname.split('/', 2);
+    hostname += '/';
 
-    if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '127.0.0.1:8000') {
-        hostname += '/' + localhost[1] + '/public/';
-    } else {
-        hostname += '/';
-    }
+    // if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '127.0.0.1:8000') {
+    //     hostname += '/' + localhost[1] + '/public/';
+    // } else {
+    //     hostname += '/';
+    // }
 
     return protocol + hostname + $destination;
 }
@@ -1184,11 +1179,40 @@ function checkboxOne(checkbox) {
 // evento de item aberto ou fechado
 function eventExpanded(e, first, second) {
     if ($(e).attr('aria-expanded') === 'false') {
-        $(e).html(first);
+        $(e).html(first + ' ');
     } else {
-        $(e).html(second);
+        $(e).html(second + ' ');
     }
 }
 
 // máscara para valores em real
 $(".to-real").maskMoney({prefix:'', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+
+// animação quando formulário inválido
+$('button[type="submit"]').on('click', function () {
+    let form = $(this).parent().parent().parent().parent();
+
+    if (form.find('.invalid-feedback').length > 0) {
+        let interval = setInterval(function () {
+            form.removeClass('shake animated');
+            clearInterval(interval);
+        }, 1000);
+
+        form.find('.invalid-feedback').addClass('valid-feedback').removeClass('invalid-feedback');
+        form.addClass('shake animated');
+    }
+});
+
+// animação quando formulário inválido via post
+$(window).on('load', function () {
+    let form = $('button[type="submit"]').parent().parent().parent().parent();
+
+    if (form.find('.invalid-feedback').length > 0) {
+        let interval = setInterval(function () {
+            form.removeClass('shake animated');
+            clearInterval(interval);
+        }, 1000);
+
+        form.addClass('shake animated');
+    }
+});

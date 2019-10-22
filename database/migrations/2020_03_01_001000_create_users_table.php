@@ -41,6 +41,8 @@ class CreateUsersTable extends Migration
             $table->longText('description')->nullable();
             $table->string('photo')->nullable();
             $table->string('background')->nullable();
+            $table->integer('admin')->unsigned()->default(0);
+            $table->foreign('admin')->references('id')->on('boolean');
             $table->string('last_login_ip')->nullable();
             $table->datetime('last_login_at')->nullable();
             $table->datetime('last_update_at')->nullable();

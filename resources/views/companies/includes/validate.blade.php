@@ -1,11 +1,11 @@
 <script>
     $(function () {
-        // novo condomínio
+        // nova empresa
         $('#form-new-company').validate({
             rules: {
-                image_4: {
+                image_logo_new_company: {
                     extension: 'jpeg|png|jpg|gif',
-                    maxsize: 6000000,
+                    maxsize: 1000000,
                 },
                 cnpj_new_company: {
                     required: true,
@@ -130,9 +130,9 @@
                 },
             },
             messages: {
-                image_4: {
+                image_logo_new_company: {
                     extension:    'O campo logo deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
-                    maxsize:      'O campo logo não pode ser superior a 6 mb.',
+                    maxsize:      'O campo logo não pode ser superior a 1 mb.',
                 },
                 cnpj_new_company: {
                     required:     'O campo cnpj é obrigatório.',
@@ -178,8 +178,8 @@
                     maxlength:    'O campo nº não pode ser superior a {0} caracteres.',
                 },
                 complement_new_company: {
-                    minlength:    'O campo complemnto deve ter pelo menos {0} caracteres.',
-                    maxlength:    'O campo complemnto não pode ser superior a {0} caracteres.',
+                    minlength:    'O campo complemento deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo complemento não pode ser superior a {0} caracteres.',
                 },
                 neighborhood_new_company: {
                     required:     'O campo bairro é obrigatório.',
@@ -202,7 +202,7 @@
             }
         });
 
-        // editar condomínio
+        // editar empresa
         $('#form-edit-company').validate({
             rules: {
                 id_edit_company: {
@@ -210,9 +210,9 @@
                     maxlength: 20,
                     number: true,
                 },
-                image_5: {
+                image_logo_edit_company: {
                     extension: 'jpeg|png|jpg|gif',
-                    maxsize: 6000000,
+                    maxsize: 1000000,
                 },
                 cnpj_edit_company: {
                     required: true,
@@ -348,9 +348,9 @@
                     maxlength:    'O campo id não pode ser superior a {0} dígitos.',
                     number:       'O campo id deve ser um número.',
                 },
-                image_4: {
+                image_logo_edit_company: {
                     extension:    'O campo logo deve ser um arquivo do tipo: jpeg|png|jpg|gif.',
-                    maxsize:      'O campo logo não pode ser superior a 6 mb.',
+                    maxsize:      'O campo logo não pode ser superior a 1 mb.',
                 },
                 cnpj_edit_company: {
                     required:     'O campo cnpj é obrigatório.',
@@ -396,8 +396,8 @@
                     maxlength:    'O campo nº não pode ser superior a {0} caracteres.',
                 },
                 complement_edit_company: {
-                    minlength:    'O campo complemnto deve ter pelo menos {0} caracteres.',
-                    maxlength:    'O campo complemnto não pode ser superior a {0} caracteres.',
+                    minlength:    'O campo complemento deve ter pelo menos {0} caracteres.',
+                    maxlength:    'O campo complemento não pode ser superior a {0} caracteres.',
                 },
                 neighborhood_edit_company: {
                     required:     'O campo bairro é obrigatório.',
@@ -420,7 +420,7 @@
             }
         });
 
-        // bloquear condomínio
+        // bloquear empresa
         $('#form-block-company').validate({
             rules: {
                 id_block_company: {
@@ -448,7 +448,7 @@
             }
         });
 
-        // deletar condomínio
+        // deletar empresa
         $('#form-delete-company').validate({
             rules: {
                 id_delete_company: {
@@ -492,7 +492,7 @@
             }
         });
 
-        // recuperar condomínio
+        // recuperar empresa
         $('#form-recover-company').validate({
             rules: {
                 id_recover_company: {
@@ -536,7 +536,7 @@
             }
         });
 
-        // enviar e-mail para o condomínio
+        // enviar e-mail para a empresa
         $('#form-send-email-company').validate({
             rules: {
                 name_send_email_company: {
@@ -572,6 +572,76 @@
                     required:     'O campo mensagem é obrigatório.',
                     minlength:    'O campo mensagem deve ter pelo menos {0} caracteres.',
                     maxlength:    'O campo mensagem não pode ser superior a {0} caracteres.',
+                },
+            }
+        });
+
+        // novo administrador
+        $('#form-new-company-admin').validate({
+            rules: {
+                name_new_company_admin: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 191,
+                    lettersaccentedspace: true,
+                },
+                email_new_company_admin: {
+                    required: true,
+                    maxlength: 191,
+                    email: true,
+                    remote: {
+                        url: '{{ app('router')->has('admin.check.email') ? route('admin.check.email') : route('remote.validate.destroy') }}',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            email: function () {
+                                return $('#email-new-company-admin').val();
+                            }
+                        },
+                        dataFilter: function (data) {
+                            let json = JSON.parse(data);
+
+                            if (!json) {
+                                return false;
+                            }
+
+                            if (json.align && json.from) {
+                                notifyValidate('Rota bloqueada para validação do e-mail.<br><small>Procure o Administrador para obter mais informações.</small>');
+                                return true;
+                            }
+
+                            if (json.status === 0) {
+                                notifyValidate('Rota excluída para validação do e-mail.<br><small>Procure o Administrador para obter mais informações.</small>');
+                                return true;
+                            }
+
+                            return true;
+                        },
+                    },
+                },
+                id_company_new_company_admin: {
+                    required: true,
+                    maxlength: 20,
+                    number: true,
+                },
+            },
+            messages: {
+                name_new_company_admin: {
+                    required:             'O campo nome é obrigatório.',
+                    minlength:            'O campo nome deve ter pelo menos {0} caracteres.',
+                    maxlength:            'O campo nome não pode ser superior a {0} caracteres.',
+                    lettersaccentedspace: 'O campo nome deve ter somente letras e espaços.',
+                },
+                email_new_company_admin: {
+                    required:             'O campo e-mail é obrigatório.',
+                    maxlength:            'O campo e-mail não pode ser superior a {0} caracteres.',
+                    email:                'O campo e-mail deve ser um endereço de e-mail válido.',
+                    remote:               'O campo e-mail já está sendo utilizado.',
+                },
+                id_company_new_company_admin: {
+                    required:             'O campo id é obrigatório.',
+                    maxlength:            'O campo id não pode ser superior a {0} dígitos.',
+                    number:               'O campo id deve ser um número.',
                 },
             }
         });

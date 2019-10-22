@@ -1,10 +1,12 @@
 <script>
     $(function () {
-        // tabela
+        // variável
         let databaseMenu = '#datatable-menu';
-        let tableMenu    = $(databaseMenu).DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+
+        // tabela de menu
+        let tableMenu = $(databaseMenu).DataTable({
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableMenu.draw(); animateItem(e.target, 'fa-pulse'); }}
@@ -46,10 +48,10 @@
             tableMenu.draw();
         });
 
-        // tabela
+        // tabela de menu deletados
         let tableMenuDeleted = $(databaseMenu + '-deleted').DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableMenuDeleted.draw(); animateItem(e.target, 'fa-pulse'); }}

@@ -28,7 +28,7 @@
 
                             {{ __('Antes de prosseguir, verifique seu endereço de e-mail em busca de um link de verificação.') }}
 
-                            {{ __('Se você não recebeu o email') }}, <a href="{{ route('verification.resend') }}" onclick="enviando();">{{ __('clique aqui para solicitar outro') }}</a>.
+                            {{ __('Se você não recebeu o email') }}, <a href="{{ app('router')->has('verification.resend') ? route('verification.resend') : url('/') }}" class="text-success fe-loading" onclick="enviando();">{{ __('clique aqui para solicitar outro') }}</a>.
                         </div>
                     </div>
                 </div>

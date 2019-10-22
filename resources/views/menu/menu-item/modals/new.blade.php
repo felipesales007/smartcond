@@ -119,7 +119,7 @@
                                 <label class="form-control-label" for="list-new-menu-item">{{ __('Lista') }}</label>
                                 <div class="input-group input-group-merge validate-list-new-menu-item">
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione se o item do menu for de uma tabela de listagem') }}">*</span>
-                                    <div class="custom-control custom-checkbox custom-checkbox-primary mt-2">
+                                    <div class="custom-control custom-checkbox mt-2">
                                         <input type="checkbox" id="list-new-menu-item" name="list_new_menu_item" class="custom-control-input" {{ old('list_new_menu_item') ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="list-new-menu-item"></label>
                                     </div>
@@ -136,7 +136,7 @@
                                 <label class="form-control-label" for="hidden-new-menu-item">{{ __('Oculto') }}</label>
                                 <div class="input-group input-group-merge validate-hidden-new-menu-item">
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione se o item do menu for oculto') }}">*</span>
-                                    <div class="custom-control custom-checkbox custom-checkbox-primary mt-2">
+                                    <div class="custom-control custom-checkbox custom-checkbox-dark mt-2">
                                         <input type="checkbox" id="hidden-new-menu-item" name="hidden_new_menu_item" class="custom-control-input" {{ old('hidden_new_menu_item') ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="hidden-new-menu-item"></label>
                                     </div>

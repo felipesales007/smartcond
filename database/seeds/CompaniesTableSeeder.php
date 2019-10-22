@@ -13,11 +13,11 @@ class CompaniesTableSeeder extends Seeder
     public function run()
     {
         Company::insert([
-            'name'           => 'Condomínio de Teste',
-            'corporate_name' => 'Condomínio de Teste para o Desenvolvimento',
-            'cnpj'           => '11.228.078/0001-84',
-            'email'          => 'condomínioteste@hotmail.com',
-            'contact'        => '(71) 99999-9999',
+            'name'           => 'Grupo Smartcond',
+            'corporate_name' => 'Grupo Smartcond de Desenvolvimento Ltda',
+            'cnpj'           => '83.442.866/0001-80',
+            'email'          => 'contato@gruposmartcond.com',
+            'contact'        => '(71) 3333-3333',
             'postal_code'    => '40010-000',
             'address'        => 'Avenida da França',
             'neighborhood'   => 'Comércio',

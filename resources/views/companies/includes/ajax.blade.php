@@ -1,10 +1,12 @@
 <script>
     $(function () {
-        // tabela
+        // variável
         let databaseCompany = '#datatable-companies';
-        let tableCompanies  = $(databaseCompany).DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+
+        // tabela de empresas
+        let tableCompanies = $(databaseCompany).DataTable({
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableCompanies.draw(); animateItem(e.target, 'fa-pulse'); }}
@@ -47,10 +49,10 @@
             tableCompanies.draw();
         });
 
-        // tabela
+        // tabela de empresas deletadas
         let tableCompaniesDeleted = $(databaseCompany + '-deleted').DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableCompaniesDeleted.draw(); animateItem(e.target, 'fa-pulse'); }}
@@ -93,51 +95,99 @@
             tableCompaniesDeleted.draw();
         });
 
-        // modal de novo condomínio disponível
+        // tabela de administradores da empresa
+        let tableCompaniesAdmins = $(databaseCompany + '-admins').DataTable({
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
+            buttons: [
+                { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
+                { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableCompaniesAdmins.draw(); animateItem(e.target, 'fa-pulse'); }}
+            ],
+            lengthMenu:  [[5, 10, 15, 20, 25, 30, 40, 50, 100, -1], ['5', '10', '15', '20', '25', '30', '40', '50', '100', 'todos']],
+            pageLength:  10,
+            order:       [1, 'asc'],
+            stateSave:   true,
+            processing:  true,
+            serverSide:  true,
+            deferRender: true,
+            ajax: {
+                url: '{{ app('router')->has('company.list.admins') ? route('company.list.admins') : url('/') }}',
+                data: {
+                    company : function () {
+                        return window.location.search.split('?id=').pop();
+                    },
+                    search: function () {
+                        return $(databaseCompany + '-admins_filter input').val();
+                    },
+                    orderBy: function () {
+                        $(document).off('click', databaseCompany + '-admins th').on('click', databaseCompany + '-admins th', function () {
+                            if ($(this).hasClass('sorting') || $(this).hasClass('sorting_desc')) {
+                                sessionStorage.setItem('table.order.' + databaseCompany, $(this).data('base') + ' asc');
+                            } else if ($(this).hasClass('sorting_asc')) {
+                                sessionStorage.setItem('table.order.' + databaseCompany, $(this).data('base') + ' desc');
+                            }
+                        });
+
+                        return sessionStorage.getItem('table.order.' + databaseCompany);
+                    }
+                }
+            },
+            columns: [
+                { data: 'photo',     name: 'photo', className: 'text-center fe-td-img d-print-none', orderable: false, searchable: false },
+                { data: 'name',      name: 'name' },
+                { data: 'email',     name: 'email' },
+                { data: 'date',      name: 'date', searchable: false },
+                { data: 'action',    name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
+            ]
+        }).on('error.dt', function() {
+            tableCompaniesAdmins.draw();
+        });
+
+        // modal de nova empresa disponível
         let newCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-new-company').removeAttr('disabled', 'disabled').html('Criar condomínio');
-            $('.fe-remove-preview-4').addClass('fe-hidden');
-            $('.fe-img-preview-4').attr('src', '');
+            $('#btn-new-company').removeAttr('disabled', 'disabled').html('Criar empresa');
+            $('.fe-remove-preview-6').addClass('fe-hidden');
+            $('.fe-img-preview-6').attr('src', '');
             $('#state-id-new-company').val('').trigger('change');
             $('#form-new-company').trigger('reset');
         };
 
-        // modal de editar condomínio disponível
+        // modal de editar empresa disponível
         let editCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-edit-company').removeAttr('disabled', 'disabled').html('Editar condomínio');
+            $('#btn-edit-company').removeAttr('disabled', 'disabled').html('Editar empresa');
             $('#state-id-edit-company').val('').trigger('change');
             $('#form-edit-company').trigger('reset');
         };
 
-        // modal de bloquear condomínio disponível
+        // modal de bloquear empresa disponível
         let blockCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-block-company').removeAttr('disabled', 'disabled').html('Bloquear condomínio');
+            $('#btn-block-company').removeAttr('disabled', 'disabled').html('Bloquear empresa');
             $('#form-block-company').trigger('reset');
         };
 
-        // modal de deletar condomínio disponível
+        // modal de deletar empresa disponível
         let deleteCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-delete-company').removeAttr('disabled', 'disabled').html('Excluir condomínio');
+            $('#btn-delete-company').removeAttr('disabled', 'disabled').html('Excluir empresa');
             $('#form-delete-company').trigger('reset');
         };
 
-        // modal de recuperar condomínio disponível
+        // modal de recuperar empresa disponível
         let recoverCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-recover-company').removeAttr('disabled', 'disabled').html('Recuperar condomínio');
+            $('#btn-recover-company').removeAttr('disabled', 'disabled').html('Recuperar empresa');
             $('#form-recover-company').trigger('reset');
         };
 
-        // modal de enviar e-mail para o condomínio disponível
+        // modal de enviar e-mail para a empresa disponível
         let sendEmailCompanyAvailable = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
@@ -145,7 +195,15 @@
             $('#form-send-email-company').trigger('reset');
         };
 
-        // visualizar condomínio
+        // modal de novo administrador da empresa disponível
+        let newCompanyAdminAvailable = function () {
+            removeValidate();
+            $('a[data-dismiss="modal"]').removeClass('fe-hidden');
+            $('#btn-new-company-admin').removeAttr('disabled', 'disabled').html('Criar administrador');
+            $('#form-new-company-admin').trigger('reset');
+        };
+
+        // visualizar empresa
         $(document).on('click', '.btn-modal-view-company', function () {
             let id = $(this).data('id');
 
@@ -155,7 +213,7 @@
                     notify(data);
                 } else {
                     // capa
-                    $('#background-view-company').css('background-image', 'url({{ url('img/default/default-background.png') }})');
+                    $('#background-view-company').css('background-image', 'url({{ url('images/default/default-background.png') }})');
                     // status
                     if (data.blocked || data.blocked_at >= moment().format('YYYY-MM-DD') || data.deleted_at) {
                         $('#status-view-company').removeClass('d-none');
@@ -175,9 +233,9 @@
                     }
                     // foto
                     if (data.logo) {
-                        $('#logo-view-company').css('background-image', 'url({{ url('storage/img/companies/logo') }}/' + data.logo + ')');
+                        $('#logo-view-company').css('background-image', 'url({{ url('storage/images/companies/logo') }}/' + data.logo + ')');
                     } else {
-                        $('#logo-view-company').css('background-image', 'url({{ url('img/default/default-logo.png') }})');
+                        $('#logo-view-company').css('background-image', 'url({{ url('images/default/default-logo.png') }})');
                     }
                     // nome
                     $('#name-view-company').html(data.name);
@@ -287,20 +345,22 @@
                     $('#created-at-view-company').html('criado em ' + timestamp_to_date_br(data.created_at) + ' - ' + moment(data.created_at, 'YYYY-MM-DD hh:mm').locale('pt-br').fromNow());
                     // atualizado
                     $('#last-update-at-view-company').html('atualizado em ' + timestamp_to_date_br(data.last_update_at));
+                    // acessar lista de usuários
+                    $('#link-company-list-admins').attr('href', '{{ app('router')->has('company.list.admins') ? route('company.list.admins') : '' }}?id=' + data.id);
 
                     $('#modal-view-company').modal('show');
                 }
             });
         });
 
-        // novo condomínio
+        // nova empresa
         $(document).on('click', '.btn-modal-new-company', function (e) {
             e.preventDefault();
             newCompanyAvailable();
             $('#modal-new-company').modal('show');
         });
 
-        // salvando condomínio
+        // salvando empresa
         $(document).on('click', '#btn-new-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -329,7 +389,7 @@
                         $('#form-new-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao criar uma novo condomínio.');
+                        notifyError('Erro ao criar uma nova empresa.');
                     }
                 });
             } else {
@@ -339,7 +399,7 @@
             }
         });
 
-        // editar condomínio
+        // editar empresa
         $(document).on('click', '.btn-modal-edit-company', function () {
             let id = $(this).data('id');
 
@@ -350,13 +410,13 @@
                 } else {
                     editCompanyAvailable();
                     // logo
-                    $('.fe-image-url-5').val(destination_url(data.id, 'png'));
+                    $('.fe-image-url-7').val(destination_url(data.id, 'png'));
                     if (data.logo) {
-                        $('.fe-remove-preview-5').removeClass('fe-hidden');
-                        $('.fe-img-preview-5').attr('src', '{{ url('storage/img/companies/logo') }}/' + data.logo);
+                        $('.fe-remove-preview-7').removeClass('fe-hidden');
+                        $('.fe-img-preview-7').attr('src', '{{ url('storage/images/companies/logo') }}/' + data.logo);
                     } else {
-                        $('.fe-remove-preview-5').addClass('fe-hidden');
-                        $('.fe-img-preview-5').attr('src', '');
+                        $('.fe-remove-preview-7').addClass('fe-hidden');
+                        $('.fe-img-preview-7').attr('src', '');
                     }
                     // dados
                     $('#id-edit-company').val(data.id);
@@ -381,7 +441,7 @@
             });
         });
 
-        // editando condomínio
+        // editando empresa
         $(document).on('click', '#btn-edit-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -410,7 +470,7 @@
                         $('#form-edit-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao editar o condomínio.');
+                        notifyError('Erro ao editar a empresa.');
                     }
                 });
             } else {
@@ -420,7 +480,7 @@
             }
         });
 
-        // bloquear condomínio
+        // bloquear empresa
         $(document).on('click', '.btn-modal-block-company', function () {
             let id = $(this).data('id');
 
@@ -440,7 +500,7 @@
                     // input
                     $('#blocked-at-block-company').datepicker('setDate', timestamp_to_date_br(data.blocked_at));
                     if (data.blocked_at >= moment().format('YYYY-MM-DD')) {
-                        $('#blocked-at-block-company-text').html('Condomínio <b class="text-warning">' + data.name + '</b> bloqueado até ' + timestamp_to_date_br(data.blocked_at));
+                        $('#blocked-at-block-company-text').html('Empresa <b class="text-warning">' + data.name + '</b> bloqueada até ' + timestamp_to_date_br(data.blocked_at));
                     } else {
                         $('#blocked-at-block-company-text').html('Bloquear <b class="text-warning">' + data.name + '</b> até uma data determinada');
                     }
@@ -450,7 +510,7 @@
             });
         });
 
-        // bloqueando condomínio
+        // bloqueando empresa
         $(document).on('click', '#btn-block-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -477,7 +537,7 @@
                         $('#form-block-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao bloquear o condomínio.');
+                        notifyError('Erro ao bloquear a empresa.');
                     }
                 });
             } else {
@@ -487,7 +547,7 @@
             }
         });
 
-        // deletar condomínio
+        // deletar empresa
         $(document).on('click', '.btn-modal-delete-company', function () {
             let id = $(this).data('id');
 
@@ -506,7 +566,7 @@
             });
         });
 
-        // deletando condomínio
+        // deletando empresa
         $(document).on('click', '#btn-delete-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -533,7 +593,7 @@
                         $('#form-delete-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao deletar o condomínio.');
+                        notifyError('Erro ao deletar a empresa.');
                     }
                 });
             } else {
@@ -543,7 +603,7 @@
             }
         });
 
-        // recuperar condomínio
+        // recuperar empresa
         $(document).on('click', '.btn-modal-recover-company', function () {
             let id = $(this).data('id');
 
@@ -562,7 +622,7 @@
             });
         });
 
-        // recuperando condomínio
+        // recuperando empresa
         $(document).on('click', '#btn-recover-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -589,7 +649,7 @@
                         $('#form-recover-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao recuperar o condomínio.');
+                        notifyError('Erro ao recuperar a empresa.');
                     }
                 });
             } else {
@@ -599,14 +659,14 @@
             }
         });
 
-        // enviar e-mail para o condomínio
+        // enviar e-mail para a empresa
         $(document).on('click', '.btn-modal-send-email-company', function (e) {
             e.preventDefault();
             sendEmailCompanyAvailable();
             $('#name-send-email-company').val($(this).data('name'));
             $('#email-send-email-company').val($(this).data('email'));
             if ($(this).data('logo')) {
-                $('#logo-send-email-company').removeClass('d-none').css('background-image', 'url({{ url('storage/img/companies/logo') }}/' + $(this).data('logo') + ')');
+                $('#logo-send-email-company').removeClass('d-none').css('background-image', 'url({{ url('storage/images/companies/logo') }}/' + $(this).data('logo') + ')');
             } else {
                 $('#logo-send-email-company').addClass('d-none').css('background-image', '');
             }
@@ -615,7 +675,7 @@
             $('#modal-send-email-company').modal('show');
         });
 
-        // enviando e-mail para o condomínio
+        // enviando e-mail para a empresa
         $(document).on('click', '#btn-send-email-company', function (e) {
             e.preventDefault();
             $('a[data-dismiss="modal"]').addClass('fe-hidden');
@@ -641,7 +701,69 @@
                         $('#form-send-email-company').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao enviar o e-mail para o condomínio.');
+                        notifyError('Erro ao enviar o e-mail para a empresa.');
+                    }
+                });
+            } else {
+                $('a[data-dismiss="modal"]').removeClass('fe-hidden');
+                $(this).removeAttr('disabled', 'disabled').html('Tentar novamente');
+                return false;
+            }
+        });
+
+        // novo administrador para a empresa
+        $(document).on('click', '.btn-modal-new-company-admin', function (e) {
+            e.preventDefault();
+            newCompanyAdminAvailable();
+
+            if ($(this).data('logo')) {
+                $('#logo-new-company-admin').removeClass('d-none').css('background-image', 'url({{ url('storage/images/companies/logo') }}/' + $(this).data('logo') + ')');
+                $('#text-name-new-company-admin').addClass('ml-5');
+
+                if ($(this).data('name').length > 30) {
+                    $('#logo-new-company-admin').addClass('mt-3');
+                } else {
+                    $('#logo-new-company-admin').removeClass('mt-3');
+                }
+            } else {
+                $('#logo-new-company-admin').addClass('d-none').css('background-image', '');
+                $('#text-name-new-company-admin').removeClass('ml-5');
+            }
+
+            $('#text-name-new-company-admin').html($(this).data('name'));
+            $('#id-company-new-company-admin').val($(this).data('id'));
+
+            $('#modal-new-company-admin').modal('show');
+        });
+
+        // salvando novo administrador para a empresa
+        $(document).on('click', '#btn-new-company-admin', function (e) {
+            e.preventDefault();
+            $('a[data-dismiss="modal"]').addClass('fe-hidden');
+            $(this).attr('disabled', 'disabled').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Aguarde');
+
+            if ($('#form-new-company-admin').valid()) {
+                scrollTop();
+                loader(1);
+                $.ajax({
+                    data: $('#form-new-company-admin').serialize(),
+                    url: '{{ app('router')->has('company.admin.store') ? route('company.admin.store') : url('/') }}',
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        newCompanyAdminAvailable();
+                        $('#modal-new-company-admin').modal('hide');
+                        tableCompaniesAdmins.draw();
+                        loader(0);
+                        notify(data);
+                    },
+                    error: function (data) {
+                        $('a[data-dismiss="modal"]').removeClass('fe-hidden');
+                        $('#btn-new-company-admin').removeAttr('disabled', 'disabled').html('Tentar novamente');
+                        $('#form-new-company-admin').valid();
+                        loader(0);
+                        serverValidate(data);
+                        notifyError('Erro ao criar um novo administrador.');
                     }
                 });
             } else {

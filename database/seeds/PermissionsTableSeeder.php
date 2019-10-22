@@ -13,7 +13,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         // rotas no sistema
-        $routes = 169;
+        $routes = 155;
 
         /*
          * Permissões de
@@ -30,7 +30,7 @@ class PermissionsTableSeeder extends Seeder
 
         /*
          * Permissões de
-         * Usuário Master One
+         * Marco Ribeiro
          */
         for ($i = 1; $i <= $routes; $i++) {
             Permission::create([
@@ -43,7 +43,7 @@ class PermissionsTableSeeder extends Seeder
 
         /*
          * Permissões de
-         * Usuário Master Two
+         * Sergio Pinto
          */
         for ($i = 1; $i <= $routes; $i++) {
             Permission::create([

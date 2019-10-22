@@ -30,6 +30,8 @@ class EventServiceProvider extends ServiceProvider
 
     /**
      * Registre todos os eventos para o seu aplicativo.
+     *
+     * @return void
      */
     public function boot()
     {

@@ -37,11 +37,14 @@ class RouteController extends Controller
             ->select('routes.*', 'groups.name as group', 'route_options.name as type')
             ->join('groups', 'groups.id', 'routes.group_id')
             ->join('route_options', 'route_options.id', 'routes.route_option_id')
-            ->orWhere('groups.name', 'like', '%' . $search . '%')
-            ->orWhere('url', 'like', '%' . $search . '%')
-            ->orWhere('route', 'like', '%' . $search . '%')
-            ->orWhere('controller', 'like', '%' . $search . '%')
-            ->orWhere('route_options.name', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query
+                    ->orWhere('groups.name', 'like', '%' . $search . '%')
+                    ->orWhere('url', 'like', '%' . $search . '%')
+                    ->orWhere('route', 'like', '%' . $search . '%')
+                    ->orWhere('controller', 'like', '%' . $search . '%')
+                    ->orWhere('route_options.name', 'like', '%' . $search . '%');
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -102,13 +105,13 @@ class RouteController extends Controller
                     if (app('router')->has('route.ban') && MenuItem::getMenuItemDeleted('route.ban')['list']) {
                         if (Permission::buttonPermission('btn-modal-block-route') && !MenuItem::getMenuItemBlocked('route.ban')['list'] && $row->id != 65 && $row->id != 69) {
                             if ($row->blocked) {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-route" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-route" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-route" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
                         } else {
                             if ($row->blocked) {
-                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
@@ -220,7 +223,6 @@ class RouteController extends Controller
         if ($collection->id == 65 || $collection->id == 69) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não pode bloquer esta rota.<br><small><b>motivo: </b>ao bloquear esta rota não será mais possível o controle sobre as rotas do sistema.</small>');
-
             return response()->json($data);
         }
 
@@ -257,7 +259,6 @@ class RouteController extends Controller
         if ($collection->id == 65 || $collection->id == 66 || $collection->id == 71) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não pode excluir esta rota.<br><small><b>motivo: </b>ao excluir esta rota não será mais possível o controle sobre as rotas do sistema.</small>');
-
             return response()->json($data);
         }
 

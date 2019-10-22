@@ -1,10 +1,13 @@
 <script>
     $(function () {
-        // tabela
+        // variáveis
         let databaseUser = '#datatable-users';
-        let tableUsers   = $(databaseUser).DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+        let databaseEntity = '#datatable-entities';
+
+        // tabela de usuários
+        let tableUsers = $(databaseUser).DataTable({
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableUsers.draw(); animateItem(e.target, 'fa-pulse'); }}
@@ -36,20 +39,21 @@
                 }
             },
             columns: [
-                { data: 'photo',  name: 'photo', className: 'text-center fe-td-img d-print-none', orderable: false, searchable: false },
-                { data: 'name',   name: 'name' },
-                { data: 'email',  name: 'email' },
-                { data: 'date',   name: 'date', searchable: false },
-                { data: 'action', name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
+                { data: 'photo',       name: 'photo', className: 'text-center fe-td-img d-print-none', orderable: false, searchable: false },
+                { data: 'name',        name: 'name' },
+                { data: 'entity_name', name: 'entity_name', className: '{{ auth()->user()['admin'] == 0 && count(\App\Models\Entity\Entity::getEntitiesUser()) == 1 ? 'd-none' : '' }}' },
+                { data: 'email',       name: 'email' },
+                { data: 'date',        name: 'date', searchable: false },
+                { data: 'action',      name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
             ]
         }).on('error.dt', function() {
             tableUsers.draw();
         });
 
-        // tabela
+        // tabela de usuários deletados
         let tableUsersDeleted = $(databaseUser + '-deleted').DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableUsersDeleted.draw(); animateItem(e.target, 'fa-pulse'); }}
@@ -81,11 +85,12 @@
                 }
             },
             columns: [
-                { data: 'photo',  name: 'photo', className: 'text-center fe-td-img d-print-none', orderable: false, searchable: false },
-                { data: 'name',   name: 'name' },
-                { data: 'email',  name: 'email' },
-                { data: 'date',   name: 'date', searchable: false },
-                { data: 'action', name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
+                { data: 'photo',       name: 'photo', className: 'text-center fe-td-img d-print-none', orderable: false, searchable: false },
+                { data: 'name',        name: 'name' },
+                { data: 'entity_name', name: 'entity_name', className: '{{ auth()->user()['admin'] == 0 && count(\App\Models\Entity\Entity::getEntitiesUser()) == 1 ? 'd-none' : '' }}' },
+                { data: 'email',       name: 'email' },
+                { data: 'date',        name: 'date', searchable: false },
+                { data: 'action',      name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
             ]
         }).on('error.dt', function() {
             tableUsersDeleted.draw();
@@ -96,7 +101,7 @@
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
             $('#btn-new-user').removeAttr('disabled', 'disabled').html('Criar usuário');
-            $('#company-id-new-user').val('').trigger('change');
+            $('#entity-id-new-user').val('').trigger('change');
             $('#form-new-user').trigger('reset');
         };
 
@@ -105,7 +110,7 @@
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
             $('#btn-edit-user').removeAttr('disabled', 'disabled').html('Editar usuário');
-            $('#company-id-edit-user').val('').trigger('change');
+            $('#entity-id-edit-user').val('').trigger('change');
             $('#gender-id-edit-user').val('').trigger('change');
             $('#state-id-edit-user').val('').trigger('change');
             $('#birthday-edit-user').val('').datepicker('update');
@@ -158,9 +163,9 @@
                 } else {
                     // capa
                     if (data.background) {
-                        $('#background-view-user').css('background-image', 'url({{ url('storage/img/users/background') }}/' + data.background + ')');
+                        $('#background-view-user').css('background-image', 'url({{ url('storage/images/users/background') }}/' + data.background + ')');
                     } else {
-                        $('#background-view-user').css('background-image', 'url({{ url('img/default/default-background.png') }})');
+                        $('#background-view-user').css('background-image', 'url({{ url('images/default/default-background.png') }})');
                     }
                     // status
                     if (data.blocked || data.blocked_at >= moment().format('YYYY-MM-DD') || data.deleted_at) {
@@ -181,9 +186,9 @@
                     }
                     // foto
                     if (data.photo) {
-                        $('#photo-view-user').css('background-image', 'url({{ url('storage/img/users/photo') }}/' + data.photo + ')');
+                        $('#photo-view-user').css('background-image', 'url({{ url('storage/images/users/photo') }}/' + data.photo + ')');
                     } else {
-                        $('#photo-view-user').css('background-image', 'url({{ url('img/default/default-user.png') }})');
+                        $('#photo-view-user').css('background-image', 'url({{ url('images/default/default-user.png') }})');
                     }
                     // nome
                     $('#name-view-user').html(data.name);
@@ -382,23 +387,23 @@
                     // atualizado
                     $('#last-update-at-view-user').html('atualizado em ' + timestamp_to_date_br(data.last_update_at));
                     // condomínio do usuário
-                    $('#scroll-user-view-company').html('');
-                    $.each(data.companies, function(index, value){
+                    $('#scroll-user-view-entity').html('');
+                    $.each(data.entities, function(index, value) {
                         let html = '';
                         html += '<a href="javascript:void(0)" class="list-group-item list-group-item-action fe-mouse-default">';
                         html += '<div class="row align-items-center">';
                         html += '<div class="col-auto">';
                         html += '<div class="avatar avatar-sm">';
                         if (value.logo) {
-                            html += '<img src="' + url_public('storage/img/companies/logo/' + value.logo) + '" class="fe-img-list-view" alt="">';
+                            html += '<img src="' + url_public('storage/images/companies/logo/' + value.logo) + '" class="fe-img-list-view" alt="">';
                         } else {
-                            html += '<img src="' + url_public('img/default/default-logo.png') + '" class="fe-img-list-view" alt="">';
+                            html += '<img src="' + url_public('images/default/default-logo.png') + '" class="fe-img-list-view" alt="">';
                         }
                         html += '</div>';
                         html += '</div>';
                         html += '<div class="col ml--2">';
                         html += '<div class="d-flex justify-content-between align-items-center">';
-                        html += '<h4 class="mb-0 text-sm">' + value.company + '</h4>';
+                        html += '<h4 class="mb-0 text-sm">' + value.entity + '</h4>';
                         if (value.preferred) {
                             html += '<i hidden class="fas fa-star text-yellow opacity-8" data-toggle="tooltip" data-placement="left" title="Condomínio principal"></i>';
                         }
@@ -408,7 +413,7 @@
                         html += '</div>';
                         html += '</a>';
 
-                        $('#scroll-user-view-company').append(html);
+                        $('#scroll-user-view-entity').append(html);
                     });
 
                     $('#modal-view-user').modal('show');
@@ -474,14 +479,14 @@
                     $('#id-edit-user').val(data.id);
                     $('#name-edit-user').val(data.name);
                     $('#email-edit-user').val(data.email);
-                    $("#company-id-edit-user").select2().val(data.company_id).trigger('change');
+                    $("#entity-id-edit-user").select2().val(data.entity_id).trigger('change');
                     // acessar permissões
                     $('#link-permission-edit-user').attr('href', '{{ app('router')->has('permission.user.edit') ? route('permission.user.edit') : '' }}?id=' + data.id);
                     // imagens
                     $('.fe-image-url-2').val(destination_url(data.id, 'png'));
                     if (data.photo) {
                         $('.fe-remove-preview-2').removeClass('fe-hidden');
-                        $('.fe-img-preview-2').attr('src', '{{ url('storage/img/users/photo') }}/' + data.photo);
+                        $('.fe-img-preview-2').attr('src', '{{ url('storage/images/users/photo') }}/' + data.photo);
                     } else {
                         $('.fe-remove-preview-2').addClass('fe-hidden');
                         $('.fe-img-preview-2').attr('src', '');
@@ -489,7 +494,7 @@
                     $('.fe-image-url-3').val(destination_url(data.id, 'png'));
                     if (data.background) {
                         $('.fe-remove-preview-3').removeClass('fe-hidden');
-                        $('.fe-img-preview-3').attr('src', '{{ url('storage/img/users/background') }}/' + data.background);
+                        $('.fe-img-preview-3').attr('src', '{{ url('storage/images/users/background') }}/' + data.background);
                     } else {
                         $('.fe-remove-preview-3').addClass('fe-hidden');
                         $('.fe-img-preview-3').attr('src', '');
@@ -544,6 +549,7 @@
                         editUserAvailable();
                         $('#modal-edit-user').modal('hide');
                         tableUsers.draw();
+                        $(databaseEntity + '-users').DataTable().draw();
                         loader(0);
                         notify(data);
                     },
@@ -612,6 +618,7 @@
                         blockUserAvailable();
                         $('#modal-block-user').modal('hide');
                         tableUsers.draw();
+                        $(databaseEntity + '-users').DataTable().draw();
                         loader(0);
                         notify(data);
                     },
@@ -669,6 +676,7 @@
                         deleteUserAvailable();
                         $('#modal-delete-user').modal('hide');
                         tableUsers.draw();
+                        $(databaseEntity + '-users').DataTable().draw();
                         loader(0);
                         notify(data);
                     },
@@ -746,12 +754,12 @@
         });
 
         // reenviando e-mail de confirmação do usuário
-        $(document).on('click', '#btn-resend-email-user', function (e) {
+        $(document).on('click', '.btn-resend-email-user', function (e) {
             e.preventDefault();
             $('.tooltip').remove();
             let btn = $(this).attr('disabled', 'disabled').html('<i class="fas fa-sync-alt fa-pulse"></i>');
 
-            if ($('#form-resend-email-user').valid()) {
+            if ($('.form-resend-email-user').valid()) {
                 $.ajax({
                     data: $(this).parent().serialize(),
                     url: '{{ app('router')->has('user.resend.email') ? route('user.resend.email') : url('/') }}',
@@ -764,7 +772,7 @@
                     },
                     error: function (data) {
                         btn.removeAttr('disabled', 'disabled').html('<i class="fas fa-exclamation-circle" data-toggle="tooltip" data-placement="top" title="ops, ocorreu um erro ao tentar reenviar o e-mail, por favor tente novamente mais tarde"></i>');
-                        $('#form-resend-email-user').valid();
+                        $('.form-resend-email-user').valid();
                         serverValidate(data);
                         notifyError('Erro ao reenviar o e-mail de confirmação de e-mail.');
                     }
@@ -782,7 +790,7 @@
             $('#name-send-email-user').val($(this).data('name'));
             $('#email-send-email-user').val($(this).data('email'));
             if ($(this).data('photo')) {
-                $('#photo-send-email-user').removeClass('d-none').css('background-image', 'url({{ url('storage/img/users/photo') }}/' + $(this).data('photo') + ')');
+                $('#photo-send-email-user').removeClass('d-none').css('background-image', 'url({{ url('storage/images/users/photo') }}/' + $(this).data('photo') + ')');
             } else {
                 $('#photo-send-email-user').addClass('d-none').css('background-image', '');
             }

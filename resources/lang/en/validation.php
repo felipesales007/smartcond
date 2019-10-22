@@ -40,6 +40,7 @@ return [
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'The :attribute must be a valid email address.',
+    'ends_with'            => 'The :attribute must end with one of the following: :values',
     'exists'               => 'The selected :attribute is invalid.',
     'file'                 => 'The :attribute must be a file.',
     'filled'               => 'The :attribute field must have a value.',
@@ -92,6 +93,7 @@ return [
     'not_in'               => 'The selected :attribute is invalid.',
     'not_regex'            => 'The :attribute format is invalid.',
     'numeric'              => 'The :attribute must be a number.',
+    'password'             => 'The password is incorrect.',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'The :attribute format is invalid.',
     'required'             => 'The :attribute field is required.',
@@ -115,13 +117,6 @@ return [
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
     'uuid'                 => 'The :attribute must be a valid UUID.',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Mensagem de validação personalizada
-    |--------------------------------------------------------------------------
-    */
-    'alpha_space'         => 'The :attribute must have only letters and spaces.',
 
     /*
     |--------------------------------------------------------------------------

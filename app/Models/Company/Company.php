@@ -107,7 +107,12 @@ class Company extends Model
      */
     static function getCompaniesOptions()
     {
-        $options = Company::get();
+        if (Company::id() == 1) {
+            $options = Company::get();
+        } else {
+            $options = Company::where('id', '=', Company::id())->get();
+        }
+
         $array   = [];
 
         foreach ($options as $option) {
@@ -128,7 +133,7 @@ class Company extends Model
     }
 
     /**
-     * Retornar o condomínio principal relacionada com o usuário no armazenamento.
+     * Retornar a empresa principal relacionada com o usuário no armazenamento.
      *
      * @return mixed
      */
@@ -136,12 +141,12 @@ class Company extends Model
     {
         return Company::join('company_accesses', 'company_accesses.company_id', 'companies.id')
             ->where(function($query) {
-                $query->where('companies.blocked_at', '<', date('Y-m-d'))
+                $query
+                    ->where('companies.blocked_at', '<', date('Y-m-d'))
                     ->orWhere('companies.blocked_at', '=', null);
             })
             ->where('companies.blocked', '=', null)
             ->where('companies.deleted_at', '=', null)
-            ->where('company_accesses.preferred', '=', '1')
             ->where('company_accesses.user_id', '=', auth()->id())
             ->pluck('company_id')
             ->first();

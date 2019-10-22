@@ -4,7 +4,7 @@
         <!-- nome do website -->
         <div class="mt-3 ml-md--3 ml-lg--3 ml-xl-5 fe-mouse-default fe-logo-navbar">
             <span class="h2 text-white">
-                <img src="{{ asset('img/default/logos/branco-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
+                <img src="{{ asset('images/default/logos/branco-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
             </span>
         </div>
         <!-- botão do menu lateral -->
@@ -32,7 +32,7 @@
                         </div>
                         <!-- foto -->
                         <span class="avatar avatar-sm rounded-circle">
-                            <img src="{{ auth()->user()['photo'] ? url('storage/img/users/photo/' . auth()->user()['photo']) : url('img/default/default-user.png') }}" alt="">
+                            <img src="{{ auth()->user()['photo'] ? url('storage/images/users/photo/' . auth()->user()['photo']) : url('images/default/default-user.png') }}" alt="">
                         </span>
                     </div>
                 </a>
@@ -56,7 +56,7 @@
                         @if ($menu->menu_option_id == 2)
                             @if ($button == null)
                                 <!-- titulo link -->
-                                <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $menu_item['blocked'] ? 'javascript:void(0)' : route(\App\Models\Route\Route::getRoute($route_id)['route']) }}" class="dropdown-item {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $menu_item['blocked'] ? 'fe-menu-block' : '' }} {{ Illuminate\Support\Facades\Request::is(\App\Models\Route\Group::getGroup($group_id)['name'] . '/*') ? 'active' : '' }}">
+                                <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $menu_item['blocked'] ? 'javascript:void(0)' : route(\App\Models\Route\Route::getRoute($route_id)['route']) }}" class="dropdown-item fe-loading {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $menu_item['blocked'] ? 'fe-menu-block' : '' }} {{ Illuminate\Support\Facades\Request::is(\App\Models\Route\Group::getGroup($group_id)['name'] . '/*') ? 'active' : '' }}">
                                     <i class="{{ \App\Models\Color::getColor($menu->color_id)['color'] }} {{ $menu->icon }}"></i>
                                     <span class="{{ \App\Models\Color::getColor($menu->color_id)['color'] }}">{{ __(substr_replace($menu->name, (strlen($menu->name) > $str_limit ? '...' : ''), $str_limit)) }}</span>
                                 </a>
@@ -71,7 +71,7 @@
                     @endforeach
                     <!-- sair -->
                     <div class="dropdown-divider"></div>
-                    <a href="{{ route('logout') }}" class="dropdown-item text-warning" onclick="event.preventDefault(); $('#form-logout').submit();">
+                    <a href="{{ route('logout') }}" class="dropdown-item text-warning fe-loading" onclick="event.preventDefault(); $('#form-logout').submit();">
                         <i class="fas fa-power-off"></i>
                         <span>{{ __('Sair') }}</span>
                     </a>

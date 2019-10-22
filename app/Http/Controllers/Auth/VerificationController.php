@@ -9,12 +9,12 @@ class VerificationController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Controlador de verificação de e-mail
+    | Email Verification Controller
     |--------------------------------------------------------------------------
     |
-    | Este controlador é responsável por lidar com a verificação de e-mail para qualquer
-    | usuário que se registrou recentemente no aplicativo. E-mails também podem
-    | ser reenviado se o usuário não receber a mensagem de e-mail original.
+    | This controller is responsible for handling email verification for any
+    | user that recently registered with the application. Emails may also
+    | be re-sent if the user didn't receive the original email message.
     |
     */
 
@@ -29,6 +29,8 @@ class VerificationController extends Controller
 
     /**
      * Construtor VerificationController.
+     *
+     * @return void
      */
     public function __construct()
     {

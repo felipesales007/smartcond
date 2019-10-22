@@ -34,7 +34,9 @@ class GroupController extends Controller
         $order  = explode(' ', !empty($_GET['orderBy']) ? $_GET['orderBy'] : 'name asc');
 
         $collection = Group::query()
-            ->orWhere('name', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query->orWhere('name', 'like', '%' . $search . '%');
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -75,13 +77,13 @@ class GroupController extends Controller
                     if (app('router')->has('group.ban') && MenuItem::getMenuItemDeleted('group.ban')['list']) {
                         if (Permission::buttonPermission('btn-modal-block-group') && !MenuItem::getMenuItemBlocked('group.ban')['list'] && $row->id != 5) {
                             if ($row->blocked) {
-                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-group" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-group" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-group" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
                         } else {
                             if ($row->blocked) {
-                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
+                                $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
@@ -173,7 +175,6 @@ class GroupController extends Controller
         if ($collection->id == 5) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não pode bloquer este grupo.<br><small><b>motivo: </b>ao bloquear este grupo não será mais possível o controle sobre os grupos e as rotas do sistema.</small>');
-
             return response()->json($data);
         }
 
@@ -210,7 +211,6 @@ class GroupController extends Controller
         if ($collection->id == 5) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não pode excluir este grupo.<br><small><b>motivo: </b>ao excluir este grupo não será mais possível o controle sobre os grupos e as rotas do sistema.</small>');
-
             return response()->json($data);
         }
 
@@ -238,8 +238,7 @@ class GroupController extends Controller
         $collection = Group::query()
             ->onlyTrashed()
             ->where(function ($query) use ($search) {
-                $query
-                    ->orWhere('name', 'like', '%' . $search . '%');
+                $query->orWhere('name', 'like', '%' . $search . '%');
             })
             ->orderBy($order[0], $order[1]);
 

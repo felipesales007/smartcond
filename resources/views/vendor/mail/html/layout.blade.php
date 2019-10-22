@@ -26,16 +26,16 @@
                                 <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0">
                                     <!-- Body content -->
                                     <tr>
-                                        <td class="content-cell linha-blue">
+                                        <td class="content-cell linha-dark">
                                             @auth()
-                                                <img src="{{ url('img/default/logos/azul-transparente.png') }}" width="100px" alt="">
+                                                <img src="{{ url('images/default/mailto.png') }}" width="100px" alt="">
                                                 <span class="email-auto">
                                                     <b>e-mail automático, favor não responder</b>
                                                 </span>
                                             @endauth
 
                                             @guest()
-                                                <img src="{{ url('img/default/logos/azul-transparente.png') }}" width="100px" alt="">
+                                                <img src="{{ url('images/default/mailto.png') }}" width="100px" alt="">
                                                 <span class="email-auto">
                                                     <b>e-mail automático, favor não responder</b>
                                                 </span>

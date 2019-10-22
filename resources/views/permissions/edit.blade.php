@@ -3,7 +3,7 @@
 
 @section('content')
 
-    @include('layouts.user.background', [
+    @include('layouts.users.background', [
         'title' => __(\App\Helpers\FormatHelpers::first_word($user['name'])),
         'description' => __('Esta é a página do perfil de <b>' . $user['name'] . '</b>.<br> Você pode visualizar e editar as permisões de acesso do usuário no sistema conforme desejado.'),
         'class' => 'col-lg-7'
@@ -13,7 +13,7 @@
     <div class="container-fluid mt--7">
         <div class="row">
             <!-- preview do perfil -->
-            @include('layouts.user.card')
+            @include('layouts.users.card')
 
             <!-- edição -->
             <div class="col-xl-8 order-xl-1">
@@ -30,7 +30,7 @@
                             </div>
                             <!-- botão de voltar -->
                             <div class="col-5 col-sm-6 text-right">
-                                <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary" onclick="voltar();">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-dark" onclick="voltar();">
                                     <span class="btn-inner--icon">
                                         <i class="fas fa-reply mr-1"></i>
                                     </span>
@@ -75,7 +75,7 @@
                                             <div class="card-header fe-hr-card-header" id="heading-edit-user-permision-{{ $index }}" data-toggle="collapse" data-target="#collapse-edit-user-permision-{{ $index }}" aria-expanded="false" aria-controls="collapse-edit-user-permision-{{ $index }}">
                                                 <small class="d-block float-right mr-5 mt-1 font-weight-bold">{{ $user_permissions }}/{{ $profile_permissions }}</small>
                                                 <h5 class="d-flex mb-0">
-                                                    <span class="custom-control custom-checkbox custom-checkbox-primary no-event">
+                                                    <span class="custom-control custom-checkbox custom-checkbox-dark no-event">
                                                         <input type="checkbox" id="checkbox-all-{{ $index }}" class="custom-control-input" onclick="checkboxAll(this);" @if ($user_permissions > 0 && $user_permissions == $profile_permissions) value="true" checked="checked" @endif @if ($group['group'] == 1 && $user_permissions == 1) disabled @endif>
                                                         <label class="custom-control-label" for="checkbox-all-{{ $index }}">
                                                             <span class="mt-0">
@@ -93,12 +93,12 @@
                                                         <div class="card-body">
                                                             <ul class="list-group list-group-flush mx--4 my--4" data-toggle="checklist">
                                                                 <li class="checklist-entry list-group-item flex-column align-items-start py-1 px-1">
-                                                                    <div class="checklist-item custom-checkbox-primary">
+                                                                    <div class="checklist-item custom-checkbox-dark">
                                                                         <div class="checklist">
                                                                             <h5 class="checklist-title mb-0">{{ str_replace('/{id?}', '', $permission['url']) }}</h5>
                                                                             <small>{{ $permission['description'] }}</small>
                                                                         </div>
-                                                                        <div class="custom-control custom-checkbox custom-checkbox-primary">
+                                                                        <div class="custom-control custom-checkbox custom-checkbox-dark">
                                                                             <input type="checkbox" id="permission-edit-user-permision-{{ $item }}" name="permission_edit_user[]" class="custom-control-input" value="{{ $permission['id'] }}" data-check="checkbox-all-{{ $index }}" onclick="checkboxOne(this);" @if (in_array($permission['id'], $accesses)) checked="checked" @endif>
                                                                             <label class="custom-control-label fe-checkbox-center-list {{ $permission['id'] == 1 ? 'fe-hidden' : '' }}" for="permission-edit-user-permision-{{ $item }}"></label>
                                                                         </div>

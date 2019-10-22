@@ -16,6 +16,7 @@ class EditUser extends Notification
     private $token;
     private $collection;
     private $original;
+    private $entity;
 
     /**
      * Construtor EditUser.
@@ -23,8 +24,9 @@ class EditUser extends Notification
      * @param $token
      * @param $collection
      * @param $original
+     * @param $entity
      */
-    public function __construct($token, $collection, $original)
+    public function __construct($token, $collection, $original, $entity)
     {
         $collection->gender_id = $collection->gender_id ? $collection->getGender->name : null;
         $collection->state_id  = $collection->state_id ? $collection->getState->name : null;
@@ -32,6 +34,7 @@ class EditUser extends Notification
         $this->token      = $token;
         $this->collection = $collection;
         $this->original   = $original;
+        $this->entity     = $entity;
     }
 
     /**
@@ -200,17 +203,17 @@ class EditUser extends Notification
             $mailMessage->line('<span class="text-warning"><b>Profissão: </b>' . $this->original['profession'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
-        // condomínio
+        // empresa
         if (isset($this->collection->getChanges()['company']) && !$this->original['company']) {
-            $mailMessage->line('<b>Condomínio: </b>' . $this->collection->company);
+            $mailMessage->line('<b>Empresa: </b>' . $this->collection->company);
         }
 
         if (isset($this->collection->getChanges()['company']) && $this->original['company']) {
-            $mailMessage->line('<b>Condomínio: </b>' . $this->collection->company . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['company'] . '</small>');
+            $mailMessage->line('<b>Empresa: </b>' . $this->collection->company . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['company'] . '</small>');
         }
 
         if (!$this->collection->company && $this->original['company']) {
-            $mailMessage->line('<span class="text-warning"><b>Condomínio: </b>' . $this->original['company'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
+            $mailMessage->line('<span class="text-warning"><b>Empresa: </b>' . $this->original['company'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
         // cep
@@ -319,11 +322,11 @@ class EditUser extends Notification
 
         // foto
         if (isset($this->collection->getChanges()['photo']) && !$this->original['photo']) {
-            $mailMessage->line('<b>Foto: </b><a href="' . url('storage/img/users/photo/' . $this->collection->photo) . '" class="badge badge-pill badge-info">clique para visualizar</a>');
+            $mailMessage->line('<b>Foto: </b><a href="' . url('storage/images/users/photo/' . $this->collection->photo) . '" class="badge badge-pill badge-info">clique para visualizar</a>');
         }
 
         if (isset($this->collection->getChanges()['photo']) && $this->original['photo']) {
-            $mailMessage->line('<b>Foto: </b><a href="' . url('storage/img/users/photo/' . $this->collection->photo) . '" class="badge badge-pill badge-info">clique para visualizar</a><br><small class="text-warning notice"><b>removido: </b><span class="badge badge-pill badge-warning">foto anterior deletada</span></small>');
+            $mailMessage->line('<b>Foto: </b><a href="' . url('storage/images/users/photo/' . $this->collection->photo) . '" class="badge badge-pill badge-info">clique para visualizar</a><br><small class="text-warning notice"><b>removido: </b><span class="badge badge-pill badge-warning">foto anterior deletada</span></small>');
         }
 
         if (!$this->collection->photo && $this->original['photo']) {
@@ -332,11 +335,11 @@ class EditUser extends Notification
 
         // capa
         if (isset($this->collection->getChanges()['background']) && !$this->original['background']) {
-            $mailMessage->line('<b>Capa: </b><a href="' . url('storage/img/users/background/' . $this->collection->background) . '" class="badge badge-pill badge-info">clique para visualizar</a>');
+            $mailMessage->line('<b>Capa: </b><a href="' . url('storage/images/users/background/' . $this->collection->background) . '" class="badge badge-pill badge-info">clique para visualizar</a>');
         }
 
         if (isset($this->collection->getChanges()['background']) && $this->original['background']) {
-            $mailMessage->line('<b>Capa: </b><a href="' . url('storage/img/users/background/' . $this->collection->background) . '" class="badge badge-pill badge-info">clique para visualizar</a><br><small class="text-warning notice"><b>removido: </b><span class="badge badge-pill badge-warning">capa anterior deletada</span></small>');
+            $mailMessage->line('<b>Capa: </b><a href="' . url('storage/images/users/background/' . $this->collection->background) . '" class="badge badge-pill badge-info">clique para visualizar</a><br><small class="text-warning notice"><b>removido: </b><span class="badge badge-pill badge-warning">capa anterior deletada</span></small>');
         }
 
         if (!$this->collection->background && $this->original['background']) {
@@ -354,6 +357,11 @@ class EditUser extends Notification
 
         if (!$this->collection->description && $this->original['description']) {
             $mailMessage->line('<span class="text-warning"><b>Descrição: </b>' . $this->original['description'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
+        }
+
+        // condomínio
+        if ($this->entity) {
+            $mailMessage->line('<b>Acesso ao condomínio: </b>' . $this->entity);
         }
 
         if (isset($this->collection->getChanges()['password']) && $this->token) {

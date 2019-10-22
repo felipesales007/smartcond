@@ -9,7 +9,7 @@
                 </span>
             </div>
             <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('cep válido') }}">*</span>
-            <input type="tel" id="postal-code-edit-profile" name="postal_code_edit_profile" class="form-control mask-cep {{ $errors->has('postal_code_edit_profile') ? 'is-invalid' : '' }}" placeholder="{{ __('CEP') }}" value="{{ old('postal_code_edit_profile', auth()->user()['postal_code']) }}" minlength="9" maxlength="9" onkeyup="viacepProfileEdit(this.value);" onclick="viacepProfileEdit(this.value);" @if ($errors->has('postal_code_edit_profile')) autofocus @endif>
+            <input type="tel" id="postal-code-edit-profile" name="postal_code_edit_profile" class="form-control mask-cep {{ $errors->has('postal_code_edit_profile') ? 'is-invalid' : '' }}" placeholder="{{ __('CEP') }}" value="{{ old('postal_code_edit_profile', auth()->user()['postal_code']) }}" minlength="9" maxlength="9" onkeyup="viacep(this.value, '-edit-profile');" onclick="viacep(this.value, '-edit-profile');" @if ($errors->has('postal_code_edit_profile')) autofocus @endif>
         </div>
         <!-- alerta de erro -->
         @if ($errors->has('postal_code_edit_profile'))

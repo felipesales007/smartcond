@@ -8,12 +8,12 @@
                         <td align="center" valign="top">
                             @auth()
                                 <span class="avatar rounded-circle">
-                                    <img src="{{ auth()->user()['photo'] ? url('storage/img/users/photo/' . auth()->user()['photo']) : url('img/default/default-user.png') }}" alt="" width="50" border="0">
+                                    <img src="{{ auth()->user()['photo'] ? url('storage/images/users/photo/' . auth()->user()['photo']) : url('images/default/default-user.png') }}" alt="" width="50" border="0">
                                 </span>
                             @endauth
                             @guest()
                                 <span class="avatar rounded-circle">
-                                    <img src="{{ url('img/default/default-user.png') }}" alt="" width="50" border="0">
+                                    <img src="{{ url('images/default/default-user.png') }}" alt="" width="50" border="0">
                                 </span>
                             @endguest
                         </td>
@@ -50,7 +50,7 @@
                             @guest()
                                 <span class="footer-text-1">{{ config('app.name', 'Smartcond') }}</span>
                                 <div class="space">&nbsp;</div>
-                                <span class="footer-text-2">Desenvolvido por <a class="no-link" href="https://www.felipesales.com.br" target="_blank">Felipe Sales</a></span>
+                                <span class="footer-text-2">Desenvolvido pelo <a class="no-link" href="https://www.gruposmartcond.com" target="_blank">Grupo Smartcond</a></span>
                             @endguest
                         </td>
                     </tr>

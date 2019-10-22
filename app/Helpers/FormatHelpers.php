@@ -102,6 +102,8 @@ class FormatHelpers
             } else {
                 return $word;
             }
+        } else {
+            return null;
         }
     }
 
@@ -178,10 +180,10 @@ class FormatHelpers
      */
     static function to_usd($value)
     {
-        $formater = $value;
-        $formater = str_replace('.', '', $formater);
-        $formater = str_replace(',', '.', $formater);
+        $format = $value;
+        $format = str_replace('.', '', $format);
+        $format = str_replace(',', '.', $format);
 
-        return $formater;
+        return $format;
     }
 }

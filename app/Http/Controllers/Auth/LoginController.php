@@ -30,6 +30,8 @@ class LoginController extends Controller
 
     /**
      * Construtor LoginController.
+     *
+     * @return void
      */
     public function __construct()
     {

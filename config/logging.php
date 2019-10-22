@@ -1,5 +1,6 @@
 <?php
 
+use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 
@@ -28,8 +29,7 @@ return [
     | você uma variedade de manipuladores / formatadores de log poderosos para utilizar.
     |
     | Drivers disponíveis: "single", "daily", "slack", "syslog",
-    | "log de erros", "monolog",
-    | "custom", "stack"
+    | "log de erros", "monolog", "custom", "stack"
     |
     */
 
@@ -88,6 +88,11 @@ return [
         'errorlog' => [
             'driver' => 'errorlog',
             'level' => 'debug',
+        ],
+
+        'null' => [
+            'driver' => 'monolog',
+            'handler' => NullHandler::class,
         ],
     ],
 

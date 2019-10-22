@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Laravel - Um framework PHP para artesãos da Web
+ * Laravel - A PHP Framework For Web Artisans
  *
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
@@ -11,41 +11,41 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
-| Registre o Auto Loader
+| Register The Auto Loader
 |--------------------------------------------------------------------------
 |
-| O Composer fornece um carregador de classes conveniente e gerado automaticamente
-| nossa aplicação. Nós só precisamos usá-lo! Nós vamos simplesmente exigir
-| no roteiro aqui para que não tenhamos que nos preocupar com manual
-| carregando qualquer uma das nossas aulas mais tarde. É ótimo relaxar.
-|
-*/
-
-require __DIR__ . '/../vendor/autoload.php';
-
-/*
-|--------------------------------------------------------------------------
-| Ligue as luzes
-|--------------------------------------------------------------------------
-|
-| Precisamos iluminar o desenvolvimento do PHP, então vamos acender as luzes.
-| Isso inicializa o framework e o deixa pronto para uso, então ele
-| irá carregar este aplicativo para que possamos executá-lo e enviá-lo
-| as respostas de volta ao navegador e encantar nossos usuários.
+| Composer provides a convenient, automatically generated class loader for
+| our application. We just need to utilize it! We'll simply require it
+| into the script here so that we don't have to worry about manual
+| loading any of our classes later on. It feels great to relax.
 |
 */
 
-$app = require_once __DIR__ . '/../bootstrap/app.php';
+require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
-| Executar o aplicativo
+| Turn On The Lights
 |--------------------------------------------------------------------------
 |
-| Assim que tivermos o aplicativo, podemos lidar com o pedido recebido
-| através do kernel, e enviar a resposta associada de volta para
-| o navegador do cliente, permitindo-lhes desfrutar do criativo
-| e maravilhosa aplicação que preparamos para eles.
+| We need to illuminate PHP development, so let us turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight our users.
+|
+*/
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
 |
 */
 

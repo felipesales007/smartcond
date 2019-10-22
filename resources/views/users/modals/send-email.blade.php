@@ -13,7 +13,7 @@
 
             <!-- corpo -->
             <div class="modal-body">
-                <img src="{{ asset('img/default/email.png') }}" class="fe-img-email" onmousedown="return false;" alt="">
+                <img src="{{ asset('images/default/email.png') }}" class="fe-img-email" onmousedown="return false;" alt="">
                 <!-- form -->
                 <form id="form-send-email-user" role="form" autocomplete="off" novalidate>
                     @csrf

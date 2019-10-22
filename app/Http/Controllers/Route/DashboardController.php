@@ -38,8 +38,8 @@ class DashboardController extends Controller
     public function getCounts()
     {
         $cards = [
-            'getCountRoutes'        => Route::all()->count(),
-            'getCountGroups'        => Group::all()->count(),
+            'getCountRoutes'        => Route::count(),
+            'getCountGroups'        => Group::count(),
             'getCountGetRoutes'     => Route::where('route_option_id', '=', '1')->count(),
             'getCountPostRoutes'    => Route::where('route_option_id', '=', '2')->count(),
             'getCountBlockedRoutes' => Route::where('blocked', '!=', null)->count(),

@@ -25,7 +25,7 @@ class NewCompanyRequest extends FormRequest
     {
         return [
             'logo_new_company'           => ['nullable'],
-            'image_4'                   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:6144'],
+            'image_logo_new_company'     => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024'],
             'cnpj_new_company'           => ['required', 'min:18', 'max:18', 'format_cnpj', 'cnpj', 'unique:companies,cnpj'],
             'name_new_company'           => ['required', 'min:3', 'max:191', 'alpha_digit'],
             'corporate_name_new_company' => ['required', 'min:3', 'max:191', 'alpha_digit'],
@@ -51,7 +51,7 @@ class NewCompanyRequest extends FormRequest
     {
         return [
             'max' => [
-                'file' => 'O campo :attribute não pode ser superior a 6 mb.'
+                'file' => 'O campo :attribute não pode ser superior a 1 mb.'
             ],
         ];
     }

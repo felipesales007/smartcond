@@ -32,8 +32,8 @@ class Handler extends ExceptionHandler
      * Relate ou registre uma exceção.
      *
      * @param Exception $exception
-     * @return mixed|void
      * @throws Exception
+     * @return void
      */
     public function report(Exception $exception)
     {
@@ -45,7 +45,7 @@ class Handler extends ExceptionHandler
      *
      * @param Request $request
      * @param Exception $exception
-     * @return Response|\Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function render($request, Exception $exception)
     {

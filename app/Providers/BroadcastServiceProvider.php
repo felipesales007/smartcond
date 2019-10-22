@@ -9,6 +9,8 @@ class BroadcastServiceProvider extends ServiceProvider
 {
     /**
      * Inicialize todos os serviços de aplicativos.
+     *
+     * @return void
      */
     public function boot()
     {

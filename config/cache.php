@@ -13,8 +13,7 @@ return [
     | usando esta biblioteca de cache. Esta conexão é usada quando outra é
     | não explicitamente especificado ao executar uma determinada função de armazenamento em cache.
     |
-    | Suportado: "apc", "array", "database", "file",
-    | "memcached", "redis", "dynamodb"
+    | Suportado: "apc", "array", "database", "file", "memcached", "redis", "dynamodb"
     |
     */
 
@@ -82,6 +81,7 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
             'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
+            'endpoint' => env('DYNAMODB_ENDPOINT'),
         ],
 
     ],

@@ -13,8 +13,7 @@ return [
     | solicitações. Por padrão, usaremos o driver nativo leve, mas
     | Você pode especificar qualquer um dos outros drivers maravilhosos fornecidos aqui.
     |
-    | Suportado: "arquivo", "cookie", "banco de dados", "apc",
-    | "memcached", "redis", "dynamodb", "array"
+    | Suportado: "arquivo", "cookie", "banco de dados", "apc", "memcached", "redis", "dynamodb", "array"
     |
     */
 

@@ -3,8 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
@@ -12,10 +11,10 @@ class RedirectIfAuthenticated
     /**
      * Lidar com uma solicitação recebida.
      *
-     * @param $request
+     * @param Request $request
      * @param Closure $next
-     * @param null $guard
-     * @return RedirectResponse|Redirector|mixed
+     * @param string|null $guard
+     * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {

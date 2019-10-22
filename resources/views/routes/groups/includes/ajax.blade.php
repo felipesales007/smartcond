@@ -1,10 +1,12 @@
 <script>
     $(function () {
-        // tabela
+        // variável
         let databaseGroup = '#datatable-groups';
-        let tableGroups   = $(databaseGroup).DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+
+        // tabela de grupos
+        let tableGroups = $(databaseGroup).DataTable({
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableGroups.draw(); animateItem(e.target, 'fa-pulse'); }}
@@ -44,10 +46,10 @@
             tableGroups.draw();
         });
 
-        // tabela
+        // tabela de grupos deletados
         let tableGroupsDeleted = $(databaseGroup + '-deleted').DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableGroupsDeleted.draw(); animateItem(e.target, 'fa-pulse'); }}

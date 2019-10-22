@@ -27,7 +27,7 @@ class EditCompanyRequest extends FormRequest
         return [
             'id_edit_company'             => ['required', 'max:20', 'alpha_num'],
             'logo_edit_company'           => ['nullable'],
-            'image_5'                    => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:6144'],
+            'image_logo_edit_company'     => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024'],
             'cnpj_edit_company'           => ['required', 'min:18', 'max:18', 'format_cnpj', 'cnpj', Rule::unique('companies', 'cnpj')->ignore($this->id_edit_company)],
             'name_edit_company'           => ['required', 'min:3', 'max:191', 'alpha_digit'],
             'corporate_name_edit_company' => ['required', 'min:3', 'max:191', 'alpha_digit'],
@@ -53,7 +53,7 @@ class EditCompanyRequest extends FormRequest
     {
         return [
             'max' => [
-                'file' => 'O campo :attribute não pode ser superior a 6 mb.'
+                'file' => 'O campo :attribute não pode ser superior a 1 mb.'
             ],
         ];
     }

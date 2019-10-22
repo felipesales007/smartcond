@@ -16,7 +16,7 @@ class AuthPicturesTableSeeder extends Seeder
             'number'      => '1',
             'image'       => 'info-1.png',
             'title'       => 'Gerenciando seus dados de forma prática',
-            'description' => 'com acesso facilitado via web e mobile',
+            'description' => 'com acesso facilitado via web',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -24,8 +24,8 @@ class AuthPicturesTableSeeder extends Seeder
         AuthPicture::insert([
             'number'      => '2',
             'image'       => 'info-2.png',
-            'title'       => 'Controle de acesso de seus usuários',
-            'description' => 'controle de visualização, edição, e exclusão de forma simplificada',
+            'title'       => 'Controle de processos',
+            'description' => 'visualização e edição de forma simplificada',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

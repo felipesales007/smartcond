@@ -100,4 +100,17 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Tempo limite de confirmação de senha
+    |--------------------------------------------------------------------------
+    |
+    | Aqui você pode definir a quantidade de segundos antes da confirmação da senha
+    | expira e o usuário é solicitado a redigitar sua senha via
+    | tela de confirmação. Por padrão, o tempo limite dura três horas.
+    |
+    */
+
+    'password_timeout' => 10800,
+
 ];

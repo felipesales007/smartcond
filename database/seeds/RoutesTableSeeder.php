@@ -351,8 +351,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'data',
-            'route'           => 'company.data',
-            'controller'      => 'Company\DashboardController@data',
+            'route'           => 'entity.data',
+            'controller'      => 'Entity\DashboardController@data',
             'description'     => 'Dados do dashboard de condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -363,8 +363,8 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'dashboard',
-            'route'           => 'company.dashboard',
-            'controller'      => 'Company\DashboardController@dashboard',
+            'route'           => 'entity.dashboard',
+            'controller'      => 'Entity\DashboardController@dashboard',
             'description'     => 'Página do dashboard de condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -375,8 +375,8 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista',
-            'route'           => 'company.list',
-            'controller'      => 'Company\CompanyController@list',
+            'route'           => 'entity.list',
+            'controller'      => 'Entity\EntityController@list',
             'description'     => 'Página de listagem de condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -387,9 +387,9 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista/deletados',
-            'route'           => 'company.list.deleted',
-            'controller'      => 'Company\CompanyController@listDeleted',
-            'description'     => 'Página de listagem de condomínios deletados',
+            'route'           => 'entity.list.deleted',
+            'controller'      => 'Entity\EntityController@listDeleted',
+            'description'     => 'Página de listagem de condomínios deletadas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -398,8 +398,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'visualizar/{id?}',
-            'route'           => 'company.view',
-            'controller'      => 'Company\CompanyController@edit',
+            'route'           => 'entity.view',
+            'controller'      => 'Entity\EntityController@edit',
             'description'     => 'Modal de visualizar os dados dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -409,8 +409,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'editar/{id?}',
-            'route'           => 'company.edit',
-            'controller'      => 'Company\CompanyController@edit',
+            'route'           => 'entity.edit',
+            'controller'      => 'Entity\EntityController@edit',
             'description'     => 'Modal de editar os dados dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -420,8 +420,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'banir/{id?}',
-            'route'           => 'company.ban',
-            'controller'      => 'Company\CompanyController@edit',
+            'route'           => 'entity.ban',
+            'controller'      => 'Entity\EntityController@edit',
             'description'     => 'Modal de bloquear e desbloquear os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -431,8 +431,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'deletar/{id?}',
-            'route'           => 'company.delete',
-            'controller'      => 'Company\CompanyController@edit',
+            'route'           => 'entity.delete',
+            'controller'      => 'Entity\EntityController@edit',
             'description'     => 'Modal de deletar os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -442,8 +442,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'recuperar/{id?}',
-            'route'           => 'company.recover',
-            'controller'      => 'Company\CompanyController@edit',
+            'route'           => 'entity.recover',
+            'controller'      => 'Entity\EntityController@edit',
             'description'     => 'Modal de recuperar os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -453,8 +453,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'novo',
-            'route'           => 'company.store',
-            'controller'      => 'Company\CompanyController@store',
+            'route'           => 'entity.store',
+            'controller'      => 'Entity\EntityController@store',
             'description'     => 'Modal de criar novo condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -464,8 +464,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'atualizar/{id?}',
-            'route'           => 'company.update',
-            'controller'      => 'Company\CompanyController@update',
+            'route'           => 'entity.update',
+            'controller'      => 'Entity\EntityController@update',
             'description'     => 'Atualizar os dados dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -475,8 +475,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'bloquear/{id?}',
-            'route'           => 'company.block',
-            'controller'      => 'Company\CompanyController@block',
+            'route'           => 'entity.block',
+            'controller'      => 'Entity\EntityController@block',
             'description'     => 'Bloquear os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -486,8 +486,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'remover/{id?}',
-            'route'           => 'company.destroy',
-            'controller'      => 'Company\CompanyController@destroy',
+            'route'           => 'entity.destroy',
+            'controller'      => 'Entity\EntityController@destroy',
             'description'     => 'Deletar os condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -497,8 +497,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'restaurar/{id?}',
-            'route'           => 'company.restore',
-            'controller'      => 'Company\CompanyController@restore',
+            'route'           => 'entity.restore',
+            'controller'      => 'Entity\EntityController@restore',
             'description'     => 'Recuperar os condomínios deletados',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -508,8 +508,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'verificar/email',
-            'route'           => 'company.check.email',
-            'controller'      => 'Company\CheckController@checkEmail',
+            'route'           => 'entity.check.email',
+            'controller'      => 'Entity\CheckController@checkEmail',
             'description'     => 'Verificar o e-mail dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -519,8 +519,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'verificar/email/diferente',
-            'route'           => 'company.check.email.different',
-            'controller'      => 'Company\CheckController@checkEmailDifferent',
+            'route'           => 'entity.check.email.different',
+            'controller'      => 'Entity\CheckController@checkEmailDifferent',
             'description'     => 'Verificar o e-mail dos condomínios que seja diferente do e-mail do condomínio em edição',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -530,8 +530,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'verificar/cnpj',
-            'route'           => 'company.check.cnpj',
-            'controller'      => 'Company\CheckController@checkCnpj',
+            'route'           => 'entity.check.cnpj',
+            'controller'      => 'Entity\CheckController@checkCnpj',
             'description'     => 'Verificar o cnpj dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -541,8 +541,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'verificar/cnpj/diferente',
-            'route'           => 'company.check.cnpj.different',
-            'controller'      => 'Company\CheckController@checkCnpjDifferent',
+            'route'           => 'entity.check.cnpj.different',
+            'controller'      => 'Entity\CheckController@checkCnpjDifferent',
             'description'     => 'Verificar o cnpj dos condomínios que seja diferente do cnpj do condomínio em edição',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -563,8 +563,8 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '4',
             'route_option_id' => '2',
             'url'             => 'enviar/email',
-            'route'           => 'company.send.email',
-            'controller'      => 'Company\CompanyController@sendEmail',
+            'route'           => 'entity.send.email',
+            'controller'      => 'Entity\EntityController@sendEmail',
             'description'     => 'Enviar e-mail para o condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
@@ -1247,9 +1247,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '1',
             'url'             => 'data',
-            'route'           => 'department.data',
-            'controller'      => 'Department\DashboardController@data',
-            'description'     => 'Dados do dashboard dos departamentos',
+            'route'           => 'company.data',
+            'controller'      => 'Company\DashboardController@data',
+            'description'     => 'Dados do dashboard de empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1259,9 +1259,9 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'dashboard',
-            'route'           => 'department.dashboard',
-            'controller'      => 'Department\DashboardController@dashboard',
-            'description'     => 'Página do dashboard dos departamentos',
+            'route'           => 'company.dashboard',
+            'controller'      => 'Company\DashboardController@dashboard',
+            'description'     => 'Página do dashboard de empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1271,9 +1271,9 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista',
-            'route'           => 'department.list',
-            'controller'      => 'Department\DepartmentController@list',
-            'description'     => 'Página de listagem dos departamentos',
+            'route'           => 'company.list',
+            'controller'      => 'Company\CompanyController@list',
+            'description'     => 'Página de listagem de empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1283,9 +1283,9 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista/deletados',
-            'route'           => 'department.list.deleted',
-            'controller'      => 'Department\DepartmentController@listDeleted',
-            'description'     => 'Página de listagem dos departamentos deletados',
+            'route'           => 'company.list.deleted',
+            'controller'      => 'Company\CompanyController@listDeleted',
+            'description'     => 'Página de listagem de empresas deletadas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1294,9 +1294,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '1',
             'url'             => 'visualizar/{id?}',
-            'route'           => 'department.view',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de visualizar os dados dos departamentos',
+            'route'           => 'company.view',
+            'controller'      => 'Company\CompanyController@edit',
+            'description'     => 'Modal de visualizar os dados das empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1305,9 +1305,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '1',
             'url'             => 'editar/{id?}',
-            'route'           => 'department.edit',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de editar os dados dos departamentos',
+            'route'           => 'company.edit',
+            'controller'      => 'Company\CompanyController@edit',
+            'description'     => 'Modal de editar os dados das empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1316,9 +1316,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '1',
             'url'             => 'banir/{id?}',
-            'route'           => 'department.ban',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os departamentos',
+            'route'           => 'company.ban',
+            'controller'      => 'Company\CompanyController@edit',
+            'description'     => 'Modal de bloquear e desbloquear as empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1327,9 +1327,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '1',
             'url'             => 'deletar/{id?}',
-            'route'           => 'department.delete',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de deletar os departamentos',
+            'route'           => 'company.delete',
+            'controller'      => 'Company\CompanyController@edit',
+            'description'     => 'Modal de deletar as empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1338,9 +1338,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '1',
             'url'             => 'recuperar/{id?}',
-            'route'           => 'department.recover',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de recuperar os departamentos',
+            'route'           => 'company.recover',
+            'controller'      => 'Company\CompanyController@edit',
+            'description'     => 'Modal de recuperar as empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1349,9 +1349,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '2',
             'url'             => 'novo',
-            'route'           => 'department.store',
-            'controller'      => 'Department\DepartmentController@store',
-            'description'     => 'Modal de criar novo departamento',
+            'route'           => 'company.store',
+            'controller'      => 'Company\CompanyController@store',
+            'description'     => 'Modal de criar nova empresa',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1360,9 +1360,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '2',
             'url'             => 'atualizar/{id?}',
-            'route'           => 'department.update',
-            'controller'      => 'Department\DepartmentController@update',
-            'description'     => 'Atualizar os dados dos departamentos',
+            'route'           => 'company.update',
+            'controller'      => 'Company\CompanyController@update',
+            'description'     => 'Atualizar os dados das empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1371,9 +1371,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '2',
             'url'             => 'bloquear/{id?}',
-            'route'           => 'department.block',
-            'controller'      => 'Department\DepartmentController@block',
-            'description'     => 'Bloquear os departamentos',
+            'route'           => 'company.block',
+            'controller'      => 'Company\CompanyController@block',
+            'description'     => 'Bloquear as empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1382,9 +1382,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '2',
             'url'             => 'remover/{id?}',
-            'route'           => 'department.destroy',
-            'controller'      => 'Department\DepartmentController@destroy',
-            'description'     => 'Deletar os departamentos',
+            'route'           => 'company.destroy',
+            'controller'      => 'Company\CompanyController@destroy',
+            'description'     => 'Deletar as empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1393,9 +1393,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '8',
             'route_option_id' => '2',
             'url'             => 'restaurar/{id?}',
-            'route'           => 'department.restore',
-            'controller'      => 'Department\DepartmentController@restore',
-            'description'     => 'Recuperar os departamentos deletados',
+            'route'           => 'company.restore',
+            'controller'      => 'Company\CompanyController@restore',
+            'description'     => 'Recuperar as empresas deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1403,10 +1403,10 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '8',
             'route_option_id' => '2',
-            'url'             => 'verificar/nome',
-            'route'           => 'department.check.name',
-            'controller'      => 'Department\CheckController@checkName',
-            'description'     => 'Verificar o nome dos departamentos',
+            'url'             => 'verificar/email',
+            'route'           => 'company.check.email',
+            'controller'      => 'Company\CheckController@checkEmail',
+            'description'     => 'Verificar o e-mail das empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1414,166 +1414,43 @@ class RoutesTableSeeder extends Seeder
         Route::create([
             'group_id'        => '8',
             'route_option_id' => '2',
-            'url'             => 'verificar/nome/diferente',
-            'route'           => 'department.check.name.different',
-            'controller'      => 'Department\CheckController@checkNameDifferent',
-            'description'     => 'Verificar o nome dos departamentos que seja diferente do departamento em edição',
+            'url'             => 'verificar/email/diferente',
+            'route'           => 'company.check.email.different',
+            'controller'      => 'Company\CheckController@checkEmailDifferent',
+            'description'     => 'Verificar o e-mail das empresas que seja diferente do e-mail da empresa em edição',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/categorias',
-            'route'           => 'inventory.category.list',
-            'controller'      => 'Inventory\InventoryCategoryController@list',
-            'description'     => 'Página de listagem das categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/categorias/deletadas',
-            'route'           => 'inventory.category.list.deleted',
-            'controller'      => 'Inventory\InventoryCategoryController@listDeleted',
-            'description'     => 'Página de listagem das categorias deletadas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'visualizar/categoria/{id?}',
-            'route'           => 'inventory.category.view',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de visualizar os dados das categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'editar/categoria/{id?}',
-            'route'           => 'inventory.category.edit',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de editar os dados das categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'banir/categoria/{id?}',
-            'route'           => 'inventory.category.ban',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de bloquear e desbloquear as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'deletar/categoria/{id?}',
-            'route'           => 'inventory.category.delete',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de deletar as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/categoria/{id?}',
-            'route'           => 'inventory.category.recover',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de recuperar as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
+            'group_id'        => '8',
             'route_option_id' => '2',
-            'url'             => 'nova/categoria',
-            'route'           => 'inventory.category.store',
-            'controller'      => 'Inventory\InventoryCategoryController@store',
-            'description'     => 'Modal de criar nova categoria',
+            'url'             => 'verificar/cnpj',
+            'route'           => 'company.check.cnpj',
+            'controller'      => 'Company\CheckController@checkCnpj',
+            'description'     => 'Verificar o cnpj das empresas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '9',
+            'group_id'        => '8',
             'route_option_id' => '2',
-            'url'             => 'atualizar/categoria/{id?}',
-            'route'           => 'inventory.category.update',
-            'controller'      => 'Inventory\InventoryCategoryController@update',
-            'description'     => 'Atualizar os dados das categorias',
+            'url'             => 'verificar/cnpj/diferente',
+            'route'           => 'company.check.cnpj.different',
+            'controller'      => 'Company\CheckController@checkCnpjDifferent',
+            'description'     => 'Verificar o cnpj das empresas que seja diferente do cnpj da empresa em edição',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '9',
+            'group_id'        => '8',
             'route_option_id' => '2',
-            'url'             => 'bloquear/categoria/{id?}',
-            'route'           => 'inventory.category.block',
-            'controller'      => 'Inventory\InventoryCategoryController@block',
-            'description'     => 'Bloquear as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'remover/categoria/{id?}',
-            'route'           => 'inventory.category.destroy',
-            'controller'      => 'Inventory\InventoryCategoryController@destroy',
-            'description'     => 'Deletar as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/categoria/{id?}',
-            'route'           => 'inventory.category.restore',
-            'controller'      => 'Inventory\InventoryCategoryController@restore',
-            'description'     => 'Recuperar as categorias deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'verificar/categoria/nome',
-            'route'           => 'inventory.category.check.name',
-            'controller'      => 'Inventory\CheckController@checkName',
-            'description'     => 'Verificar o nome das categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'verificar/categoria/nome/diferente',
-            'route'           => 'inventory.category.check.name.different',
-            'controller'      => 'Inventory\CheckController@checkNameDifferent',
-            'description'     => 'Verificar o nome das categorias que seja diferente da categoria em edição',
+            'url'             => 'enviar/email',
+            'route'           => 'company.send.email',
+            'controller'      => 'Company\CompanyController@sendEmail',
+            'description'     => 'Enviar e-mail para a empresa',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1582,9 +1459,9 @@ class RoutesTableSeeder extends Seeder
             'group_id'        => '9',
             'route_option_id' => '1',
             'url'             => 'data',
-            'route'           => 'inventory.data',
-            'controller'      => 'Inventory\DashboardController@data',
-            'description'     => 'Dados do dashboard dos itens do inventário',
+            'route'           => 'admin.data',
+            'controller'      => 'Admin\DashboardController@data',
+            'description'     => 'Dados do dashboard de administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1594,310 +1471,277 @@ class RoutesTableSeeder extends Seeder
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'dashboard',
-            'route'           => 'inventory.dashboard',
-            'controller'      => 'Inventory\DashboardController@dashboard',
-            'description'     => 'Página do dashboard dos itens do inventário',
+            'route'           => 'admin.dashboard',
+            'controller'      => 'Admin\DashboardController@dashboard',
+            'description'     => 'Página do dashboard de administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
             'group_id'        => '9',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/inventarios',
-            'route'           => 'inventory.list',
-            'controller'      => 'Inventory\InventoryController@list',
-            'description'     => 'Página de listagem dos itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/inventarios/deletados',
-            'route'           => 'inventory.list.deleted',
-            'controller'      => 'Inventory\InventoryController@listDeleted',
-            'description'     => 'Página de listagem dos itens do inventário deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'visualizar/inventario/{id?}',
-            'route'           => 'inventory.view',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de visualizar os dados dos itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'editar/inventario/{id?}',
-            'route'           => 'inventory.edit',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de editar os dados dos itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'deletar/inventario/{id?}',
-            'route'           => 'inventory.delete',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de deletar os itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/inventario/{id?}',
-            'route'           => 'inventory.recover',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de recuperar os itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'novo/inventario',
-            'route'           => 'inventory.store',
-            'controller'      => 'Inventory\InventoryController@store',
-            'description'     => 'Modal de criar novo item do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/inventario/{id?}',
-            'route'           => 'inventory.update',
-            'controller'      => 'Inventory\InventoryController@update',
-            'description'     => 'Atualizar os dados dos itens do inventários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'remover/inventario/{id?}',
-            'route'           => 'inventory.destroy',
-            'controller'      => 'Inventory\InventoryController@destroy',
-            'description'     => 'Deletar os itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/inventario/{id?}',
-            'route'           => 'inventory.restore',
-            'controller'      => 'Inventory\InventoryController@restore',
-            'description'     => 'Recuperar os itens do inventário deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista',
-            'route'           => 'resident.list',
-            'controller'      => 'Resident\ResidentController@list',
-            'description'     => 'Página de listagem de moradores',
+            'route'           => 'admin.list',
+            'controller'      => 'Admin\AdminController@list',
+            'description'     => 'Página de listagem de administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista/deletados',
-            'route'           => 'resident.list.deleted',
-            'controller'      => 'Resident\ResidentController@listDeleted',
-            'description'     => 'Página de listagem de moradores deletados',
+            'route'           => 'admin.list.deleted',
+            'controller'      => 'Admin\AdminController@listDeleted',
+            'description'     => 'Página de listagem de administradores deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '1',
             'url'             => 'visualizar/{id?}',
-            'route'           => 'resident.view',
-            'controller'      => 'Resident\ResidentController@edit',
-            'description'     => 'Modal de visualizar os dados dos moradores',
+            'route'           => 'admin.view',
+            'controller'      => 'Admin\AdminController@edit',
+            'description'     => 'Modal de visualizar os dados dos administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '1',
             'url'             => 'editar/{id?}',
-            'route'           => 'resident.edit',
-            'controller'      => 'Resident\ResidentController@edit',
-            'description'     => 'Modal de editar os dados dos moradores',
+            'route'           => 'admin.edit',
+            'controller'      => 'Admin\AdminController@edit',
+            'description'     => 'Modal de editar os dados dos administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'admin.ban',
+            'controller'      => 'Admin\AdminController@edit',
+            'description'     => 'Modal de bloquear e desbloquear os administradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '9',
             'route_option_id' => '1',
             'url'             => 'deletar/{id?}',
-            'route'           => 'resident.delete',
-            'controller'      => 'Resident\ResidentController@edit',
-            'description'     => 'Modal de deletar os moradores',
+            'route'           => 'admin.delete',
+            'controller'      => 'Admin\AdminController@edit',
+            'description'     => 'Modal de deletar os administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '1',
             'url'             => 'recuperar/{id?}',
-            'route'           => 'resident.recover',
-            'controller'      => 'Resident\ResidentController@edit',
-            'description'     => 'Modal de recuperar os moradores',
+            'route'           => 'admin.recover',
+            'controller'      => 'Admin\AdminController@edit',
+            'description'     => 'Modal de recuperar os administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'novo',
-            'route'           => 'resident.store',
-            'controller'      => 'Resident\ResidentController@store',
-            'description'     => 'Modal de criar novo morador',
+            'route'           => 'admin.store',
+            'controller'      => 'Admin\AdminController@store',
+            'description'     => 'Modal de criar novo administrador',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'atualizar/{id?}',
-            'route'           => 'resident.update',
-            'controller'      => 'Resident\ResidentController@update',
-            'description'     => 'Atualizar os dados dos moradores',
+            'route'           => 'admin.update',
+            'controller'      => 'Admin\AdminController@update',
+            'description'     => 'Atualizar os dados dos administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'bloquear/{id?}',
+            'route'           => 'admin.block',
+            'controller'      => 'Admin\AdminController@block',
+            'description'     => 'Bloquear os administradores',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'remover/{id?}',
-            'route'           => 'resident.destroy',
-            'controller'      => 'Resident\ResidentController@destroy',
-            'description'     => 'Deletar os moradores',
+            'route'           => 'admin.destroy',
+            'controller'      => 'Admin\AdminController@destroy',
+            'description'     => 'Deletar os administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'restaurar/{id?}',
-            'route'           => 'resident.restore',
-            'controller'      => 'Resident\ResidentController@restore',
-            'description'     => 'Recuperar os moradores deletados',
+            'route'           => 'admin.restore',
+            'controller'      => 'Admin\AdminController@restore',
+            'description'     => 'Recuperar os administradores deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
+            'route_option_id' => '2',
+            'url'             => 'reenviar/email',
+            'route'           => 'admin.resend.email',
+            'controller'      => 'Admin\AdminController@resendEmail',
+            'description'     => 'Reenviar o e-mail de confirmação de e-mail do administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'verificar/email',
-            'route'           => 'resident.check.email',
+            'route'           => 'admin.check.email',
             'controller'      => 'User\CheckController@checkEmail',
-            'description'     => 'Verificar o e-mail dos moradores',
+            'description'     => 'Verificar o e-mail dos administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'verificar/email/diferente',
-            'route'           => 'resident.check.email.different',
+            'route'           => 'admin.check.email.different',
             'controller'      => 'User\CheckController@checkEmailDifferent',
-            'description'     => 'Verificar o e-mail dos moradores que seja diferente do e-mail do morador em edição',
+            'description'     => 'Verificar o e-mail dos administradores que seja diferente do e-mail do administrador em edição',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'verificar/cpf',
-            'route'           => 'resident.check.cpf',
+            'route'           => 'admin.check.cpf',
             'controller'      => 'User\CheckController@checkCpf',
-            'description'     => 'Verificar o cpf dos moradores',
+            'description'     => 'Verificar o cpf dos administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'verificar/cpf/diferente',
-            'route'           => 'resident.check.cpf.different',
+            'route'           => 'admin.check.cpf.different',
             'controller'      => 'User\CheckController@checkCpfDifferent',
-            'description'     => 'Verificar o cpf dos moradores que seja diferente do cpf do morador em edição',
+            'description'     => 'Verificar o cpf dos administradores que seja diferente do cpf do administrador em edição',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'verificar/rg',
-            'route'           => 'resident.check.rg',
+            'route'           => 'admin.check.rg',
             'controller'      => 'User\CheckController@checkRg',
-            'description'     => 'Verificar o rg dos moradores',
+            'description'     => 'Verificar o rg dos administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'verificar/rg/diferente',
-            'route'           => 'resident.check.rg.different',
+            'route'           => 'admin.check.rg.different',
             'controller'      => 'User\CheckController@checkRgDifferent',
-            'description'     => 'Verificar o rg dos moradores que seja diferente do rg do morador em edição',
+            'description'     => 'Verificar o rg dos administradores que seja diferente do rg do administrador em edição',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'enviar/email',
-            'route'           => 'resident.send.email',
-            'controller'      => 'Resident\ResidentController@sendEmail',
-            'description'     => 'Enviar e-mail para o morador',
+            'route'           => 'admin.send.email',
+            'controller'      => 'Admin\AdminController@sendEmail',
+            'description'     => 'Enviar e-mail para o administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '8',
+            'route_option_id' => '2',
+            'url'             => 'novo/administrador',
+            'route'           => 'company.admin.store',
+            'controller'      => 'Company\CompanyController@storeAdmin',
+            'description'     => 'Modal de criar novo administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '4',
+            'route_option_id' => '2',
+            'url'             => 'novo/usuario',
+            'route'           => 'entity.user.store',
+            'controller'      => 'Entity\EntityController@storeUser',
+            'description'     => 'Modal de criar novo usuário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '4',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/usuarios',
+            'route'           => 'entity.list.users',
+            'controller'      => 'Entity\EntityController@listUsers',
+            'description'     => 'Página de listagem de usuários do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '8',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/administradores',
+            'route'           => 'company.list.admins',
+            'controller'      => 'Company\CompanyController@listAdmins',
+            'description'     => 'Página de listagem de administradores da empresa',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);

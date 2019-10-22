@@ -1,10 +1,12 @@
 <script>
     $(function () {
-        // tabela
+        // variável
         let databasePermission = '#datatable-permissions-users';
-        let tablePermissions   = $(databasePermission).DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+
+        // tabela de usuários sem permissões
+        let tablePermissions = $(databasePermission).DataTable({
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tablePermissions.draw(); animateItem(e.target, 'fa-pulse'); }}
@@ -45,10 +47,10 @@
             tablePermissions.draw();
         });
 
-        // tabela
+        // tabela de usuários com permissões
         let databasePermissionAll = $(databasePermission + '-all').DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { databasePermissionAll.draw(); animateItem(e.target, 'fa-pulse'); }}

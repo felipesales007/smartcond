@@ -10,6 +10,7 @@ use App\Http\Requests\Profile\EditProfileRequest;
 use App\Http\Requests\Profile\PasswordResetRequest;
 use App\Http\Requests\Profile\SendSupportRequest;
 use App\Models\Company\CompanyAccesses;
+use App\Models\Entity\EntityAccesses;
 use App\Models\User;
 use App\Notifications\Auth\VerifyEmail;
 use App\Notifications\Profile\SendSupport;
@@ -40,13 +41,19 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $array = CompanyAccesses::select('company_accesses.company_id as id','company_accesses.preferred as preferred',
-            'companies.name as company', 'companies.cnpj as cnpj', 'companies.logo as logo')
-            ->join('companies', 'companies.id', '=', 'company_accesses.company_id')
+        $entities = EntityAccesses::select('entity_accesses.entity_id as id','entity_accesses.preferred as preferred',
+            'entities.name as entity', 'entities.logo as logo', 'entities.cnpj as cnpj')
+            ->join('entities', 'entities.id', '=', 'entity_accesses.entity_id')
             ->where('user_id', '=', auth()->id())
             ->get();
 
-        return view('profile.profile', compact('array'));
+        $company = CompanyAccesses::select('company_accesses.company_id as id',
+            'companies.name as company', 'companies.logo as logo', 'companies.cnpj as cnpj')
+            ->join('companies', 'companies.id', '=', 'company_accesses.company_id')
+            ->where('user_id', '=', auth()->id())
+            ->first();
+
+        return view('profile.profile', compact('entities', 'company'));
     }
 
     /**
@@ -59,27 +66,27 @@ class ProfileController extends Controller
     {
         $collection = User::find($request->id_edit_profile);
         $original   = $collection->getOriginal();
-        $preferred  = CompanyAccesses::where('user_id', '=', $request->id_edit_profile)
-            ->where('company_id', '=', $request->company_edit_profile_id)
+        $preferred  = EntityAccesses::where('user_id', '=', $request->id_edit_profile)
+            ->where('entity_id', '=', $request->entity_edit_profile_id)
             ->first();
 
         // se houver mudança no condomínio principal atualiza o condomínio princiapl
         if ($preferred['preferred'] == 0) {
-            $accesses = CompanyAccesses::where('user_id', '=', $request->id_edit_profile)
-                ->orderBy('company_id', 'asc')
+            $accesses = EntityAccesses::where('user_id', '=', $request->id_edit_profile)
+                ->orderBy('entity_id', 'asc')
                 ->get()
                 ->toArray();
 
             for ($i = 0; $i < count($accesses); $i++) {
-                CompanyAccesses::find($accesses[$i]['id'])->update([
-                    'preferred' => $accesses[$i]['company_id'] == $preferred['company_id'] ? 1 : 0
+                EntityAccesses::find($accesses[$i]['id'])->update([
+                    'preferred' => $accesses[$i]['entity_id'] == $preferred['entity_id'] ? 1 : 0
                 ]);
             }
         }
 
         // armazena a foto e capa do perfil
-        FileHelpers::destination_file($request, $original['photo'], 'image_0', 'photo_edit_profile', 'img/users/photo/');
-        FileHelpers::destination_file($request, $original['background'], 'image_1', 'background_edit_profile', 'img/users/background/');
+        FileHelpers::destination_file($request, $original['photo'], 'image_photo_edit_profile', 'photo_edit_profile', 'images/users/photo/');
+        FileHelpers::destination_file($request, $original['background'], 'image_background_edit_profile', 'background_edit_profile', 'images/users/background/');
 
         // dados
         $collection->fill([
@@ -116,11 +123,11 @@ class ProfileController extends Controller
 
                 // enviar notificação por e-mail
                 if ($request->email_edit_profile != $original['email']) {
-                    $this->notify(new EditUser(null, $collection, $original));
-                    $collection->notify(new EditUser(null, $collection, $original));
+                    $this->notify(new EditUser(null, $collection, $original, null));
+                    $collection->notify(new EditUser(null, $collection, $original, null));
                     $collection->notify(new VerifyEmail($collection->name));
                 } else {
-                    $this->notify(new EditUser(null, $collection, $original));
+                    $this->notify(new EditUser(null, $collection, $original, null));
                 }
             }
 
@@ -151,7 +158,7 @@ class ProfileController extends Controller
         // notificar
         try {
             // enviar notificação por e-mail
-            $this->notify(new EditUser($token, $collection, $original));
+            $this->notify(new EditUser($token, $collection, $original, null));
 
             $data = NotifyHelpers::success_top_center('fas fa-key', 'Senha alterada com sucesso.');
         } catch (Exception $e) {

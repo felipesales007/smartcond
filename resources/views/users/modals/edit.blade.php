@@ -78,19 +78,19 @@
                         <!-- condomínio -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="company-id-edit-user">{{ __('Condomínio') }}</label>
-                                <div class="input-group-none validate-company-id-edit-user">
+                                <label class="form-control-label" for="entity-id-edit-user">{{ __('Condomínio') }}</label>
+                                <div class="input-group-none validate-entity-id-edit-user">
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
                                     {{ Form::select(
                                         "name",
-                                        \App\Models\Company\Company::getCompaniesOptions(),
-                                        old("company_id_edit_user"),
-                                        ["id" => "company-id-edit-user", "name" => "company_id_edit_user[]", "class" => "form-control", "required", "multiple"]
+                                        \App\Models\Entity\Entity::getEntitiesOptions(),
+                                        old("entity_id_edit_user"),
+                                        ["id" => "entity-id-edit-user", "name" => "entity_id_edit_user[]", "class" => "form-control", "required", "multiple"]
                                     )}}
                                 </div>
                                 <!-- alerta de erro -->
-                                @if ($errors->has('company_id_edit_user'))
-                                    <div class="invalid-feedback" role="alert">{{ $errors->first('company_id_edit_user') }}</div>
+                                @if ($errors->has('entity_id_edit_user'))
+                                    <div class="invalid-feedback" role="alert">{{ $errors->first('entity_id_edit_user') }}</div>
                                 @endif
                             </div>
                         </div>
@@ -184,9 +184,9 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <!-- foto -->
-                                                        <div class="col-lg-6 mt-2 mb--4">
+                                                        <div class="col-lg-6 mt-2">
                                                             <div class="form-group">
-                                                                <div class="input-group-none validate-fe-image-2-user">
+                                                                <div class="input-group-none validate-image-photo-edit-user">
                                                                     <!-- botão de remover foto -->
                                                                     <div class="fe-remove-preview-2 fe-remove-preview-medium-round">
                                                                         <i class="far fa-times-circle"></i>
@@ -194,30 +194,30 @@
                                                                     <!-- imagem do perfil estilizada -->
                                                                     <div class="fe-grid-preview-2">
                                                                         <div class="fe-grid-preview-item-2 fe-preview-medium fe-preview-round">
-                                                                            <div class="fe-preview-2 fe-preview-medium fe-preview-round fe-default-user">
+                                                                            <div class="fe-img-center fe-preview-2 fe-preview-medium fe-preview-round fe-default-user">
                                                                                 <img class="fe-img-preview-2 fe-img-preview-cover" src="" alt="">
                                                                             </div>
                                                                             <div class="fe-grid-preview-text-2 text-monospace">
                                                                                 <span>Selecionar</span>
-                                                                                <p>Imagem</p>
+                                                                                <p>Foto</p>
                                                                             </div>
+                                                                            <!-- arquivo do perfil oculto -->
+                                                                            <input type="file" id="image-photo-edit-user" name="image_photo_edit_user" class="fe-image-2" accept="image/jpg, image/jpeg, image/png, image/gif">
+                                                                            <label for="photo-edit-user"></label>
+                                                                            <input type="text" id="photo-edit-user" name="photo_edit_user" class="fe-image-url-2" value="">
                                                                         </div>
                                                                     </div>
                                                                     <!-- alerta de erro -->
-                                                                    @if ($errors->has('image_2'))
-                                                                        <div class="invalid-feedback" role="alert">{{ $errors->first('image_2') }}</div>
-                                                                @endif
-                                                                <!-- arquivo do perfil oculto -->
-                                                                    <input type="file" id="fe-image-2-user" name="image_2" class="fe-image-2" accept="image/jpg, image/jpeg, image/png, image/gif">
-                                                                    <label for="fe-image-url-2-user"></label>
-                                                                    <input type="text" id="fe-image-url-2-user" name="photo_edit_user" class="fe-image-url-2" value="">
+                                                                    @if ($errors->has('image_photo_edit_user'))
+                                                                        <div class="invalid-feedback" role="alert">{{ $errors->first('image_photo_edit_user') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <!-- capa -->
-                                                        <div class="col-lg-6 mt-2 mb--4">
+                                                        <div class="col-lg-6 mt-2">
                                                             <div class="form-group">
-                                                                <div class="input-group-none validate-fe-image-3-user">
+                                                                <div class="input-group-none validate-image-background-edit-user">
                                                                     <!-- botão de remover capa -->
                                                                     <div class="fe-remove-preview-3 fe-remove-preview-rectangle">
                                                                         <i class="far fa-times-circle"></i>
@@ -225,23 +225,23 @@
                                                                     <!-- imagem do perfil estilizada -->
                                                                     <div class="fe-grid-preview-3">
                                                                         <div class="fe-grid-preview-item-3 fe-preview-rectangle">
-                                                                            <div class="fe-preview-3 fe-preview-rectangle fe-default-background">
+                                                                            <div class="fe-img-center fe-preview-3 fe-preview-rectangle fe-default-background">
                                                                                 <img class="fe-img-preview-3 fe-img-preview-cover" src="" alt="">
                                                                             </div>
                                                                             <div class="fe-grid-preview-text-3 text-monospace">
                                                                                 <span>Selecionar</span>
-                                                                                <p>Imagem</p>
+                                                                                <p>Capa</p>
                                                                             </div>
+                                                                            <!-- arquivo do perfil oculto -->
+                                                                            <input type="file" id="image-background-edit-user" name="image_background_edit_user" class="fe-image-3" accept="image/jpg, image/jpeg, image/png, image/gif">
+                                                                            <label for="background-edit-user"></label>
+                                                                            <input type="text" id="background-edit-user" name="background_edit_user" class="fe-image-url-3" value="">
                                                                         </div>
                                                                     </div>
                                                                     <!-- alerta de erro -->
-                                                                    @if ($errors->has('image_3'))
-                                                                        <div class="invalid-feedback" role="alert">{{ $errors->first('image_3') }}</div>
-                                                                @endif
-                                                                <!-- arquivo do perfil oculto -->
-                                                                    <input type="file" id="fe-image-3-user" name="image_3" class="fe-image-3" accept="image/jpg, image/jpeg, image/png, image/gif">
-                                                                    <label for="fe-image-url-3-user"></label>
-                                                                    <input type="text" id="fe-image-url-3-user" name="background_edit_user" class="fe-image-url-3" value="">
+                                                                    @if ($errors->has('image_background_edit_user'))
+                                                                        <div class="invalid-feedback" role="alert">{{ $errors->first('image_background_edit_user') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -456,10 +456,10 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <!-- condomínio -->
+                                                        <!-- empresa -->
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
-                                                                <label class="form-control-label" for="company-edit-user">{{ __('Condomínio') }}</label>
+                                                                <label class="form-control-label" for="company-edit-user">{{ __('Empresa') }}</label>
                                                                 <div class="input-group input-group-merge validate-company-edit-user">
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text {{ $errors->has('company_edit_user') ? 'is-invalid' : '' }}">
@@ -467,7 +467,7 @@
                                                                         </span>
                                                                     </div>
                                                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                                                    <input type="text" id="company-edit-user" name="company_edit_user" class="form-control {{ $errors->has('company_edit_user') ? 'is-invalid' : '' }}" placeholder="{{ __('Condomínio') }}" value="{{ old('company_edit_user') }}" minlength="3" maxlength="191" onkeyup="letraMaiuscula('company-edit-user');" @if ($errors->has('company_edit_user')) autofocus @endif>
+                                                                    <input type="text" id="company-edit-user" name="company_edit_user" class="form-control {{ $errors->has('company_edit_user') ? 'is-invalid' : '' }}" placeholder="{{ __('Empresa') }}" value="{{ old('company_edit_user') }}" minlength="3" maxlength="191" onkeyup="letraMaiuscula('company-edit-user');" @if ($errors->has('company_edit_user')) autofocus @endif>
                                                                 </div>
                                                                 <!-- alerta de erro -->
                                                                 @if ($errors->has('company_edit_user'))
@@ -501,7 +501,7 @@
                                                                         </span>
                                                                     </div>
                                                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('cep válido') }}">*</span>
-                                                                    <input type="tel" id="postal-code-edit-user" name="postal_code_edit_user" class="form-control mask-cep {{ $errors->has('postal_code_edit_user') ? 'is-invalid' : '' }}" placeholder="{{ __('CEP') }}" value="{{ old('postal_code_edit_user') }}" minlength="9" maxlength="9" onkeyup="viacepUserEdit(this.value);" onclick="viacepUserEdit(this.value);" @if ($errors->has('postal_code_edit_user')) autofocus @endif>
+                                                                    <input type="tel" id="postal-code-edit-user" name="postal_code_edit_user" class="form-control mask-cep {{ $errors->has('postal_code_edit_user') ? 'is-invalid' : '' }}" placeholder="{{ __('CEP') }}" value="{{ old('postal_code_edit_user') }}" minlength="9" maxlength="9" onkeyup="viacep(this.value, '-edit-user');" onclick="viacep(this.value, '-edit-user');" @if ($errors->has('postal_code_edit_user')) autofocus @endif>
                                                                 </div>
                                                                 <!-- alerta de erro -->
                                                                 @if ($errors->has('postal_code_edit_user'))

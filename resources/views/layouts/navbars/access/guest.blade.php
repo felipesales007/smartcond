@@ -7,8 +7,8 @@
     <div class="container">
         <!-- nome do website -->
         <div class="fe-mouse-off fe-block-copy">
-            <span class="h2 text-primary">
-                <img src="{{ asset('img/default/logos/azul-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
+            <span class="h2 text-dark">
+                <img src="{{ asset('images/default/logos/azul-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
             </span>
         </div>
         <!-- navbar items -->
@@ -17,7 +17,7 @@
             <li class="nav-item">
                 @if (Illuminate\Support\Facades\Request::is('registrar') || Illuminate\Support\Facades\Request::is('resetar/*'))
                     <!-- login -->
-                    <a href="{{ route('login') }}" class="btn btn-icon btn-outline-primary ml-2">
+                    <a href="{{ app('router')->has('login') ? route('login') : url('/') }}" class="btn btn-icon btn-outline-dark fe-loading ml-2">
                         <span class="btn-inner--icon">
                             <i class="fas fa-share mr-2"></i>
                         </span>
@@ -25,19 +25,11 @@
                     </a>
                 @elseif (Illuminate\Support\Facades\Request::is('verificar/email'))
                     <!-- login -->
-                    <a href="{{ route('logout') }}" class="btn btn-icon btn-outline-primary fe-carregando ml-2" onclick="event.preventDefault(); $('#form-logout').submit();">
+                    <a href="{{ app('router')->has('logout') ? route('logout') : url('/') }}" class="btn btn-icon btn-outline-dark fe-loading fe-carregando ml-2" onclick="event.preventDefault(); $('#form-logout').submit();">
                         <span class="btn-inner--icon">
                             <i class="fas fa-share mr-2"></i>
                         </span>
                         <span class="nav-link-inner--text">{{ __('Iniciar sessão') }}</span>
-                    </a>
-                @else
-                    <!-- registrar-me -->
-                    <a href="{{ route('register') }}" class="btn btn-icon btn-outline-primary ml-2 fe-hidden">
-                        <span class="btn-inner--icon">
-                            <i class="fas fa-user mr-2"></i>
-                        </span>
-                        <span class="nav-link-inner--text">{{ __('Registrar-me') }}</span>
                     </a>
                 @endif
             </li>

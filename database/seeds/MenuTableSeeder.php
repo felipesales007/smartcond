@@ -15,7 +15,7 @@ class MenuTableSeeder extends Seeder
         // grupo home
         Menu::create([
             'menu_option_id' => '3',
-            'color_id'       => '6',
+            'color_id'       => '17',
             'order'          => '1',
             'name'           => 'Home',
             'icon'           => 'fas fa-home',
@@ -27,7 +27,7 @@ class MenuTableSeeder extends Seeder
         // grupo perfil
         Menu::create([
             'menu_option_id' => '3',
-            'color_id'       => '6',
+            'color_id'       => '17',
             'order'          => '1',
             'hidden'         => '1',
             'name'           => 'Meu perfil',
@@ -73,7 +73,7 @@ class MenuTableSeeder extends Seeder
         // grupo usuários
         Menu::create([
             'menu_option_id' => '1',
-            'color_id'       => '6',
+            'color_id'       => '17',
             'order'          => '2',
             'name'           => 'Usuários',
             'icon'           => 'fas fa-user',
@@ -85,10 +85,10 @@ class MenuTableSeeder extends Seeder
         // grupo condomínios
         Menu::create([
             'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '4',
+            'color_id'       => '17',
+            'order'          => '5',
             'name'           => 'Condomínios',
-            'icon'           => 'fas fa-hotel',
+            'icon'           => 'fas fa-city',
             'description'    => 'Menu em collapse da página de configurações de condomínios',
             'created_at'     => now(),
             'updated_at'     => now()
@@ -97,7 +97,7 @@ class MenuTableSeeder extends Seeder
         // grupo rotas
         Menu::create([
             'menu_option_id' => '1',
-            'color_id'       => '6',
+            'color_id'       => '17',
             'order'          => '7',
             'name'           => 'Grupos e Rotas',
             'icon'           => 'fas fa-book',
@@ -109,7 +109,7 @@ class MenuTableSeeder extends Seeder
         // grupo menu
         Menu::create([
             'menu_option_id' => '1',
-            'color_id'       => '6',
+            'color_id'       => '17',
             'order'          => '8',
             'name'           => 'Menu e Itens',
             'icon'           => 'fas fa-list-ul',
@@ -121,8 +121,8 @@ class MenuTableSeeder extends Seeder
         // grupo permissões
         Menu::create([
             'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '3',
+            'color_id'       => '17',
+            'order'          => '4',
             'name'           => 'Permissões',
             'icon'           => 'fas fa-unlock',
             'description'    => 'Menu em collapse da página de permissões do usuário',
@@ -130,38 +130,26 @@ class MenuTableSeeder extends Seeder
             'updated_at'     => now()
         ]);
 
-        // grupo departamentos
+        // grupo empresas
         Menu::create([
             'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '5',
-            'name'           => 'Departamentos',
-            'icon'           => 'fas fa-building',
-            'description'    => 'Menu em collapse da página de departametos do condomínio',
-            'created_at'     => now(),
-            'updated_at'     => now()
-        ]);
-
-        // grupo inventário
-        Menu::create([
-            'menu_option_id' => '1',
-            'color_id'       => '6',
+            'color_id'       => '17',
             'order'          => '6',
-            'name'           => 'Inventário',
-            'icon'           => 'fas fa-dolly-flatbed',
-            'description'    => 'Menu em collapse da página de inventários do condomínio',
+            'name'           => 'Empresas',
+            'icon'           => 'fas fa-hotel',
+            'description'    => 'Menu em collapse da página de configurações de empresas',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
 
-        // grupo moradores
+        // grupo administradores
         Menu::create([
             'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '9',
-            'name'           => 'Moradores',
-            'icon'           => 'fas fa-users',
-            'description'    => 'Menu em collapse da página de moradores do condomínio',
+            'color_id'       => '17',
+            'order'          => '3',
+            'name'           => 'Administradores',
+            'icon'           => 'fas fa-user-shield',
+            'description'    => 'Menu em collapse da página de configurações de administradores',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);

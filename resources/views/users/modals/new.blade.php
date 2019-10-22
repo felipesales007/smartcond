@@ -1,4 +1,4 @@
-<div id="modal-new-user" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-new-user-label" aria-hidden="true">
+<div id="modal-new-user" class="modal fade"  role="dialog" aria-labelledby="modal-new-user-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <!-- título -->
@@ -57,76 +57,45 @@
                             </div>
                         </div>
                         <!-- condomínio -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label class="form-control-label" for="company-id-new-user">{{ __('Condomínio') }}</label>
-                                <div class="input-group-none validate-company-id-new-user">
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
-                                    {{ Form::select(
-                                        "name",
-                                        \App\Models\Company\Company::getCompaniesOptions(),
-                                        old("company_id_new_user"),
-                                        ["id" => "company-id-new-user", "name" => "company_id_new_user[]", "class" => "form-control", "required", "multiple"]
-                                    )}}
+                        @if (auth()->user()['admin'] == 1 || count(\App\Models\Entity\Entity::getEntitiesUser()) > 1)
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="entity-id-new-user">{{ __('Condomínio') }}</label>
+                                    <div class="input-group-none validate-entity-id-new-user">
+                                        <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
+                                        {{ Form::select(
+                                            "name",
+                                            \App\Models\Entity\Entity::getEntitiesOptions(),
+                                            old("entity_id_new_user"),
+                                            ["id" => "entity-id-new-user", "name" => "entity_id_new_user[]", "class" => "form-control", "required", "multiple"]
+                                        )}}
+                                    </div>
+                                    <!-- alerta de erro -->
+                                    @if ($errors->has('entity_id_new_user'))
+                                        <div class="invalid-feedback" role="alert">{{ $errors->first('entity_id_new_user') }}</div>
+                                    @endif
                                 </div>
-                                <!-- alerta de erro -->
-                                @if ($errors->has('company_id_new_user'))
-                                    <div class="invalid-feedback" role="alert">{{ $errors->first('company_id_new_user') }}</div>
-                                @endif
                             </div>
-                        </div>
-                        {{--
-                        <!-- senha -->
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="password-new-user">{{ __('Senha') }}</label>
-                                <div class="input-group input-group-merge validate-password-new-user">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text {{ $errors->has('password_new_user') ? 'is-invalid' : '' }}">
-                                            <i class="fas fa-key"></i>
-                                        </span>
+                        @else
+                            <div hidden class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="entity-id-new-user">{{ __('Condomínio') }}</label>
+                                    <div class="input-group-none validate-entity-id-new-user">
+                                        <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
+                                        {{ Form::select(
+                                            "name",
+                                            \App\Models\Entity\Entity::getEntitiesOptions(),
+                                            \App\Models\Entity\Entity::id(),
+                                            ["id" => "entity-id-new-user", "name" => "entity_id_new_user[]", "class" => "form-control select-nosearch", "placeholder" => "Selecione", "required"]
+                                        )}}
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 8 caracteres') }}">*</span>
-                                    <input type="password" id="password-new-user" name="password_new_user" class="form-control {{ $errors->has('password_new_user') ? 'is-invalid' : '' }}" placeholder="{{ __('Senha') }}" minlength="8" maxlength="191" required autocomplete="password-new-user" @if ($errors->has('password_new_user')) autofocus @endif>
-                                    <!-- visualizar ou ocultar senha -->
-                                    <div class="input-group-append" onclick="verSenha(this);">
-                                        <span class="input-group-text">
-                                            <i class="fe-input-icone far fa-eye"></i>
-                                        </span>
-                                    </div>
+                                    <!-- alerta de erro -->
+                                    @if ($errors->has('entity_id_new_user'))
+                                        <div class="invalid-feedback" role="alert">{{ $errors->first('entity_id_new_user') }}</div>
+                                    @endif
                                 </div>
-                                <!-- alerta de erro -->
-                                @if ($errors->has('password_new_user'))
-                                    <div class="invalid-feedback" role="alert">{{ $errors->first('password_new_user') }}</div>
-                                @endif
                             </div>
-                        </div>
-                        <!-- confirmação de senha -->
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="password-confirmation-new-user">{{ __('Confirme a senha') }}</label>
-                                <div class="input-group input-group-merge validate-password-confirmation-new-user">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text {{ $errors->has('password_confirmation_new_user') ? 'is-invalid' : '' }}">
-                                            <i class="fas fa-key"></i>
-                                        </span>
-                                    </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('repetir a senha') }}">*</span>
-                                    <input type="password" id="password-confirmation-new-user" name="password_confirmation_new_user" class="form-control {{ $errors->has('password_confirmation_new_user') ? 'is-invalid' : '' }}" placeholder="{{ __('Confirme a senha') }}" minlength="8" maxlength="191" required autocomplete="password-confirmation-new-user">
-                                    <!-- visualizar ou ocultar senha -->
-                                    <div class="input-group-append" onclick="verSenha(this);">
-                                        <span class="input-group-text">
-                                            <i class="fe-input-icone far fa-eye"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- alerta de erro -->
-                                @if ($errors->has('password_confirmation_new_user'))
-                                    <div class="invalid-feedback" role="alert">{{ $errors->first('password_confirmation_new_user') }}</div>
-                                @endif
-                            </div>
-                        </div>
-                        --}}
+                        @endif
                     </div>
                     <!-- informações -->
                     <div class="fe-mouse-off">

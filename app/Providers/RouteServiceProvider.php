@@ -18,6 +18,8 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Defina suas ligações de modelo de rota, filtros de padrão, etc.
+     *
+     * @return void
      */
     public function boot()
     {
@@ -28,6 +30,8 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Defina as rotas para o aplicativo.
+     *
+     * @return void
      */
     public function map()
     {
@@ -39,25 +43,29 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Defina as rotas "api" para o aplicativo.
-     * Estas rotas são tipicamente sem estado.
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
-    }
-
-    /**
      * Defina as rotas "web" para o aplicativo.
      * Todas estas rotas recebem estado de sessão, proteção CSRF, etc.
+     *
+     * @return void
      */
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
+             ->namespace($this->namespace)
+             ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Defina as rotas "api" para o aplicativo.
+     * Estas rotas são tipicamente sem estado.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+             ->middleware('api')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/api.php'));
     }
 }

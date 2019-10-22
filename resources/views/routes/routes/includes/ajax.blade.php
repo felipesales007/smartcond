@@ -1,10 +1,12 @@
 <script>
     $(function () {
-        // tabela
+        // variável
         let databaseRoute = '#datatable-routes';
-        let tableRoutes   = $(databaseRoute).DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+
+        // tabela de rotas
+        let tableRoutes = $(databaseRoute).DataTable({
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableRoutes.draw(); animateItem(e.target, 'fa-pulse'); }}
@@ -48,10 +50,10 @@
             tableRoutes.draw();
         });
 
-        // tabela
+        // tabela de rotas deletadas
         let tableRoutesDeleted = $(databaseRoute + '-deleted').DataTable({
-            language:    dataTables_pt_br,
-            dom:         dataTables_edited_button,
+            language:    datatables_pt_br,
+            dom:         datatables_edited_button,
             buttons: [
                 { extend: 'print', text: '<i class="fas fa-print"></i>', autoPrint: true },
                 { extend: 'print', text: '<i class="fas fa-sync"></i>', action: function (e) { tableRoutesDeleted.draw(); animateItem(e.target, 'fa-pulse'); }}

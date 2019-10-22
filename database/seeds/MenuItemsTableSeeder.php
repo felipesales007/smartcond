@@ -196,7 +196,7 @@ class MenuItemsTableSeeder extends Seeder
             'route_id'    => '40',
             'order'       => '2',
             'name'        => 'Novo condomínio',
-            'button'      => 'btn-modal-new-company',
+            'button'      => 'btn-modal-new-entity',
             'description' => 'Item do menu collapse de acesso ao modal de criação de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
@@ -227,7 +227,7 @@ class MenuItemsTableSeeder extends Seeder
             'route_id'    => '35',
             'order'       => '1',
             'name'        => 'Visualizar condomínio',
-            'button'      => 'btn-modal-view-company',
+            'button'      => 'btn-modal-view-entity',
             'list'        => '1',
             'description' => 'Item do menu da listagem de condomínios de acesso ao modal de visualização de condomínio',
             'created_at'  => now(),
@@ -239,7 +239,7 @@ class MenuItemsTableSeeder extends Seeder
             'route_id'    => '36',
             'order'       => '2',
             'name'        => 'Editar condomínio',
-            'button'      => 'btn-modal-edit-company',
+            'button'      => 'btn-modal-edit-entity',
             'list'        => '1',
             'description' => 'Item do menu da listagem de condomínios de acesso ao modal de edição de condomínio',
             'created_at'  => now(),
@@ -251,7 +251,7 @@ class MenuItemsTableSeeder extends Seeder
             'route_id'    => '37',
             'order'       => '3',
             'name'        => 'Bloquear condomínio',
-            'button'      => 'btn-modal-block-company',
+            'button'      => 'btn-modal-block-entity',
             'list'        => '1',
             'description' => 'Item do menu da listagem de condomínios de acesso ao modal de bloqueio de condomínio',
             'created_at'  => now(),
@@ -263,7 +263,7 @@ class MenuItemsTableSeeder extends Seeder
             'route_id'    => '38',
             'order'       => '4',
             'name'        => 'Deletar condomínio',
-            'button'      => 'btn-modal-delete-company',
+            'button'      => 'btn-modal-delete-entity',
             'list'        => '1',
             'description' => 'Item do menu da listagem de condomínios de acesso ao modal de exclusão de condomínio',
             'created_at'  => now(),
@@ -275,9 +275,9 @@ class MenuItemsTableSeeder extends Seeder
             'route_id'    => '39',
             'order'       => '1',
             'name'        => 'Recuperar condomínio',
-            'button'      => 'btn-modal-recover-company',
+            'button'      => 'btn-modal-recover-entity',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de condomínios deletadas de acesso ao modal de recuperação de condomínio',
+            'description' => 'Item do menu da listagem de condomínios deletados de acesso ao modal de recuperação de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -299,9 +299,9 @@ class MenuItemsTableSeeder extends Seeder
             'route_id'    => '50',
             'order'       => '1',
             'name'        => 'Enviar e-mail para o condomínio',
-            'button'      => 'btn-send-email-company',
+            'button'      => 'btn-send-email-entity',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de condomínios de acesso ao botão de envio de e-mail para o condomínio',
+            'description' => 'Item do menu da listagem do condomínio de acesso ao botão de envio de e-mail para o condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -736,13 +736,13 @@ class MenuItemsTableSeeder extends Seeder
             'updated_at'  => now()
         ]);
 
-        // grupo departamentos
+        // grupo empresas
         MenuItem::create([
             'menu_id'     => '11',
             'route_id'    => '112',
             'order'       => '1',
             'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de departamentos',
+            'description' => 'Item do menu collapse de acesso a página de dashboard de empresas',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -751,9 +751,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '11',
             'route_id'    => '120',
             'order'       => '2',
-            'name'        => 'Novo departamento',
-            'button'      => 'btn-modal-new-department',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de departamento',
+            'name'        => 'Nova empresa',
+            'button'      => 'btn-modal-new-company',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -762,8 +762,8 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '11',
             'route_id'    => '113',
             'order'       => '3',
-            'name'        => 'Lista de departamentos',
-            'description' => 'Item do menu collapse de acesso a página de listagem de departamentos',
+            'name'        => 'Lista de empresas',
+            'description' => 'Item do menu collapse de acesso a página de listagem de empresas',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -772,8 +772,8 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '11',
             'route_id'    => '114',
             'order'       => '4',
-            'name'        => 'Lista de departamentos deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de departamnentos deletados',
+            'name'        => 'Lista de empresas deletadas',
+            'description' => 'Item do menu collapse de acesso a página de listagem de empresas deletadas',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -782,10 +782,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '11',
             'route_id'    => '115',
             'order'       => '1',
-            'name'        => 'Visualizar departamento',
-            'button'      => 'btn-modal-view-department',
+            'name'        => 'Visualizar empresa',
+            'button'      => 'btn-modal-view-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de visualização de departamento',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de visualização de empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -794,10 +794,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '11',
             'route_id'    => '116',
             'order'       => '2',
-            'name'        => 'Editar departamento',
-            'button'      => 'btn-modal-edit-department',
+            'name'        => 'Editar empresa',
+            'button'      => 'btn-modal-edit-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de edição de departamento',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de edição de empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -806,10 +806,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '11',
             'route_id'    => '117',
             'order'       => '3',
-            'name'        => 'Bloquear departamento',
-            'button'      => 'btn-modal-block-department',
+            'name'        => 'Bloquear empresa',
+            'button'      => 'btn-modal-block-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de bloqueio de departamento',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de bloqueio de empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -818,10 +818,10 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '11',
             'route_id'    => '118',
             'order'       => '4',
-            'name'        => 'Deletar departamento',
-            'button'      => 'btn-modal-delete-department',
+            'name'        => 'Deletar empresa',
+            'button'      => 'btn-modal-delete-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de exclusão de departamento',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de exclusão de empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -830,88 +830,44 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '11',
             'route_id'    => '119',
             'order'       => '1',
-            'name'        => 'Recuperar departamento',
-            'button'      => 'btn-modal-recover-department',
+            'name'        => 'Recuperar empresa',
+            'button'      => 'btn-modal-recover-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de departamentos deletados de acesso ao modal de recuperação de departamento',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        // grupo inventário
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '142',
-            'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard dos intens do invnetário',
+            'description' => 'Item do menu da listagem de empresas deletadas de acesso ao modal de recuperação de empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
         MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '134',
-            'order'       => '2',
-            'name'        => 'Nova categoria',
-            'button'      => 'btn-modal-new-inventory-category',
-            'description' => 'Item do menu collapse de acesso ao modal de criação da categoria',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '127',
-            'order'       => '3',
-            'name'        => 'Lista de categorias',
-            'description' => 'Item do menu collapse de acesso a página de listagem de categorias',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '128',
-            'order'       => '4',
-            'name'        => 'Lista de categorias deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de categorias deletadas',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
+            'menu_id'     => '11',
             'route_id'    => '129',
             'order'       => '1',
-            'name'        => 'Visualizar categoria',
-            'button'      => 'btn-modal-view-inventory-category',
+            'name'        => 'Enviar e-mail para a empresa',
+            'button'      => 'btn-send-email-company',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias de acesso ao modal de visualização de categoria',
+            'description' => 'Item do menu da listagem da empresa de acesso ao botão de envio de e-mail para a empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '130',
-            'order'       => '2',
-            'name'        => 'Editar categoria',
-            'button'      => 'btn-modal-edit-inventory-category',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias de acesso ao modal de edição de categoria',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
+        // grupo administradores
         MenuItem::create([
             'menu_id'     => '12',
             'route_id'    => '131',
-            'order'       => '3',
-            'name'        => 'Bloquear departamento',
-            'button'      => 'btn-modal-block-inventory-category',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias de acesso ao modal de bloqueio de categoria',
+            'order'       => '1',
+            'name'        => 'Dashboard',
+            'description' => 'Item do menu collapse de acesso a página de dashboard de administradores',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '139',
+            'order'       => '2',
+            'name'        => 'Novo administrador',
+            'button'      => 'btn-modal-new-admin',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -919,11 +875,9 @@ class MenuItemsTableSeeder extends Seeder
         MenuItem::create([
             'menu_id'     => '12',
             'route_id'    => '132',
-            'order'       => '4',
-            'name'        => 'Deletar categoria',
-            'button'      => 'btn-modal-delete-inventory-category',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias de acesso ao modal de exclusão de categoria',
+            'order'       => '3',
+            'name'        => 'Lista de administradores',
+            'description' => 'Item do menu collapse de acesso a página de listagem de administradores',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -931,32 +885,69 @@ class MenuItemsTableSeeder extends Seeder
         MenuItem::create([
             'menu_id'     => '12',
             'route_id'    => '133',
+            'order'       => '4',
+            'name'        => 'Lista de administradores deletados',
+            'description' => 'Item do menu collapse de acesso a página de listagem de administradores deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '134',
             'order'       => '1',
-            'name'        => 'Recuperar categoria',
-            'button'      => 'btn-modal-recover-inventory-category',
+            'name'        => 'Visualizar administrador',
+            'button'      => 'btn-modal-view-admin',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias deletados de acesso ao modal de recuperação de categoria',
+            'description' => 'Item do menu da listagem de administradores de acesso ao modal de visualização de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
         MenuItem::create([
             'menu_id'     => '12',
-            'route_id'    => '150',
+            'route_id'    => '135',
             'order'       => '2',
-            'name'        => 'Novo item do inventário',
-            'button'      => 'btn-modal-new-inventory',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de item do inventário',
+            'name'        => 'Editar administrador',
+            'button'      => 'btn-modal-edit-admin',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de administradores de acesso ao modal de edição de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
         MenuItem::create([
             'menu_id'     => '12',
-            'route_id'    => '143',
+            'route_id'    => '136',
             'order'       => '3',
-            'name'        => 'Lista de inventário',
-            'description' => 'Item do menu collapse de acesso a página de listagem de itens do inventário',
+            'name'        => 'Bloquear administrador',
+            'button'      => 'btn-modal-block-admin',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de administradores de acesso ao modal de bloqueio de administrador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '137',
+            'order'       => '4',
+            'name'        => 'Deletar administrador',
+            'button'      => 'btn-modal-delete-admin',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de administradores de acesso ao modal de exclusão de administrador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        MenuItem::create([
+            'menu_id'     => '12',
+            'route_id'    => '138',
+            'order'       => '1',
+            'name'        => 'Recuperar administrador',
+            'button'      => 'btn-modal-recover-admin',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de administradores deletados de acesso ao modal de recuperação de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -964,161 +955,69 @@ class MenuItemsTableSeeder extends Seeder
         MenuItem::create([
             'menu_id'     => '12',
             'route_id'    => '144',
-            'order'       => '4',
-            'name'        => 'Lista de inventário deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de itens do inventário deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '145',
             'order'       => '1',
-            'name'        => 'Visualizar item do inventário',
-            'button'      => 'btn-modal-view-inventory',
+            'name'        => 'Reenviar e-mail do administrador',
+            'button'      => 'btn-resend-email-admin',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário de acesso ao modal de visualização de itens do inventário',
+            'description' => 'Item do menu da listagem de administradores de acesso ao botão de reenvio de e-mail de confirmação do administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
         MenuItem::create([
             'menu_id'     => '12',
-            'route_id'    => '146',
-            'order'       => '2',
-            'name'        => 'Editar item do inventário',
-            'button'      => 'btn-modal-edit-inventory',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário de acesso ao modal de edição de itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '147',
-            'order'       => '3',
-            'name'        => 'Bloquear item do inventário',
-            'button'      => 'btn-modal-block-inventory',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário de acesso ao modal de bloqueio de itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '148',
-            'order'       => '4',
-            'name'        => 'Deletar item do inventário',
-            'button'      => 'btn-modal-delete-inventory',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário de acesso ao modal de exclusão de itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '149',
+            'route_id'    => '151',
             'order'       => '1',
-            'name'        => 'Recuperar item do inventário',
-            'button'      => 'btn-modal-recover-inventory',
+            'name'        => 'Enviar e-mail para o administrador',
+            'button'      => 'btn-send-email-admin',
             'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário deletados de acesso ao modal de recuperação de itens do inventário',
+            'description' => 'Item do menu da listagem de administradores de acesso ao botão de envio de e-mail para o administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
-        // grupo moradores
         MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '159',
+            'menu_id'     => '11',
+            'route_id'    => '152',
             'order'       => '1',
-            'name'        => 'Novo morador',
-            'button'      => 'btn-modal-new-resident',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de morador',
+            'name'        => 'Novo administrador',
+            'button'      => 'btn-modal-new-company-admin',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de criação de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
         MenuItem::create([
-            'menu_id'     => '13',
+            'menu_id'     => '7',
             'route_id'    => '153',
-            'order'       => '2',
-            'name'        => 'Lista de moradores',
-            'description' => 'Item do menu collapse de acesso a página de listagem de moradores',
+            'order'       => '1',
+            'name'        => 'Novo usuário',
+            'button'      => 'btn-modal-new-entity-user',
+            'list'        => '1',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de criação de usuário',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
         MenuItem::create([
-            'menu_id'     => '13',
+            'menu_id'     => '7',
             'route_id'    => '154',
-            'order'       => '3',
-            'name'        => 'Lista de moradores deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de moradores deletados',
+            'order'       => '5',
+            'name'        => 'Lista de usuários',
+            'hidden'      => '1',
+            'description' => 'Item do modal de visualização de condomínio de acesso a página de listagem de usuários do condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
         MenuItem::create([
-            'menu_id'     => '13',
+            'menu_id'     => '11',
             'route_id'    => '155',
-            'order'       => '1',
-            'name'        => 'Visualizar morador',
-            'button'      => 'btn-modal-view-resident',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de moradores de acesso ao modal de visualização de morador',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '156',
-            'order'       => '2',
-            'name'        => 'Editar morador',
-            'button'      => 'btn-modal-edit-resident',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de moradores de acesso ao modal de edição de morador',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '157',
-            'order'       => '3',
-            'name'        => 'Deletar morador',
-            'button'      => 'btn-modal-delete-resident',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de moradores de acesso ao modal de exclusão de morador',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '158',
-            'order'       => '1',
-            'name'        => 'Recuperar morador',
-            'button'      => 'btn-modal-recover-resident',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de moradores deletados de acesso ao modal de recuperação de morador',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '169',
-            'order'       => '1',
-            'name'        => 'Enviar e-mail para o morador',
-            'button'      => 'btn-send-email-resident',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de moradores de acesso ao botão de envio de e-mail para o morador',
+            'order'       => '5',
+            'name'        => 'Lista de administradores',
+            'hidden'      => '1',
+            'description' => 'Item do modal de visualização de empresa de acesso a página de listagem de administradores da empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
      * Defina o agendamento de comandos do aplicativo.
      *
      * @param Schedule $schedule
+     * @return void
      */
     protected function schedule(Schedule $schedule)
     {
@@ -29,6 +30,8 @@ class Kernel extends ConsoleKernel
 
     /**
      * Registre os comandos para o aplicativo.
+     *
+     * @return void
      */
     protected function commands()
     {
