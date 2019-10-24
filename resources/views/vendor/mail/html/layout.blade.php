@@ -28,19 +28,25 @@
                                     <tr>
                                         <td class="content-cell linha-primary">
                                             @auth()
-                                                <img src="{{ public_path('images/default/mailto.png') }}" width="100px" alt="">
                                                 <span class="email-auto">
                                                     <b>e-mail automático, favor não responder</b>
                                                 </span>
+                                                @if (auth()->user()['admin'] == 0)
+                                                    <img src="{{ url(\App\Models\Entity\Entity::getEntity(\App\Models\Entity\Entity::id())['logo']) ? url('storage/images/companies/logo/' . \App\Models\Entity\Entity::getEntity(\App\Models\Entity\Entity::id())['logo']) : url('images/default/mailto.png') }}" width="80px" alt="">
+                                                    <div class="h2">{{ \App\Models\Entity\Entity::getEntity(\App\Models\Entity\Entity::id())['name'] }}</div>
+                                                @else
+                                                    <img src="{{ url(\App\Models\Company\Company::getCompany(\App\Models\Company\Company::id())['logo']) ? url('storage/images/companies/logo/' . \App\Models\Company\Company::getCompany(\App\Models\Company\Company::id())['logo']) : url('images/default/mailto.png') }}" width="80px" alt="">
+                                                    <div class="h2">{{ \App\Models\Company\Company::getCompany(\App\Models\Company\Company::id())['name'] }}</div>
+                                                @endif
                                             @endauth
 
                                             @guest()
-                                                <img src="{{ public_path('images/default/mailto.png') }}" width="100px" alt="">
                                                 <span class="email-auto">
                                                     <b>e-mail automático, favor não responder</b>
                                                 </span>
+                                                <img src="{{ url('images/default/mailto.png') }}" width="100px" alt="">
                                             @endguest
-                                            <br><br><br>
+                                            <br><br>
 
                                             {{ Illuminate\Mail\Markdown::parse($slot) }}
 

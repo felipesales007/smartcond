@@ -21,8 +21,8 @@ class SendEmailAdmin extends Notification
      */
     public function __construct($collection)
     {
-        $this->name    = $collection['name_send_email_user'];
-        $this->message = $collection['message_send_email_user'];
+        $this->name    = $collection['name_send_email_admin'];
+        $this->message = $collection['message_send_email_admin'];
     }
 
     /**

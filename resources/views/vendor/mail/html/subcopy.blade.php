@@ -8,12 +8,12 @@
                         <td align="center" valign="top">
                             @auth()
                                 <span class="avatar rounded-circle">
-                                    <img src="{{ auth()->user()['photo'] ? public_path('storage/images/users/photo/' . auth()->user()['photo']) : public_path('images/default/default-user.png') }}" alt="" width="50" border="0">
+                                    <img src="{{ auth()->user()['photo'] ? url('storage/images/users/photo/' . auth()->user()['photo']) : url('images/default/default-user.png') }}" alt="" width="50" border="0">
                                 </span>
                             @endauth
                             @guest()
                                 <span class="avatar rounded-circle">
-                                    <img src="{{ public_path('images/default/default-user.png') }}" alt="" width="50" border="0">
+                                    <img src="{{ url('images/default/default-user.png') }}" alt="" width="50" border="0">
                                 </span>
                             @endguest
                         </td>

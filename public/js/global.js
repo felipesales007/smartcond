@@ -972,12 +972,13 @@ function url_public($destination) {
     let protocol  = window.location.protocol + '//';
     let hostname  = window.location.hostname;
     let localhost = window.location.pathname.split('/', 2);
+    hostname += '/' + localhost[1] + '/public/';
 
-    if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '127.0.0.1:8000') {
-        hostname += '/' + localhost[1] + '/public/';
-    } else {
-        hostname += '/';
-    }
+    // if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '127.0.0.1:8000') {
+    //     hostname += '/' + localhost[1] + '/public/';
+    // } else {
+    //     hostname += '/';
+    // }
 
     return protocol + hostname + $destination;
 }
