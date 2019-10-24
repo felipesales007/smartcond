@@ -12,19 +12,19 @@
 */
 
 .fe-linha-theme {
-    border: 2px solid #212529;
+    border: 2px solid #5e72e4;
 }
 
 .fe-focus-select2 {
-    border-color: #212529;
+    border-color: #5e72e4;
 }
 
 .fe-bg-theme {
-    background-color: #212529 !important;
+    background-color: #5e72e4 !important;
 }
 
 .fe-hover-color-theme:hover {
-    color: #212529 !important;
+    color: #5e72e4 !important;
 }
 
 /*

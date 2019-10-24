@@ -4,7 +4,7 @@
 @section('content')
 
     <!-- fundo -->
-    <div class="bg-dark pb-7 pb-xl-7 pt-7 pt-md-7 pt-xl-7"></div>
+    <div class="bg-gradient-primary pb-7 pb-xl-7 pt-7 pt-md-7 pt-xl-7"></div>
 
     <!-- corpo -->
     <div class="container-fluid mt--7">
@@ -20,15 +20,15 @@
                         </div>
                         <!-- botões -->
                         <div class="float-right">
-                            <a href="javascript:void(0)" class="fullcalendar-btn-prev btn btn-sm btn-outline-dark">
+                            <a href="javascript:void(0)" class="fullcalendar-btn-prev btn btn-sm btn-outline-primary">
                                 <i class="fas fa-angle-left"></i>
                             </a>
-                            <a href="javascript:void(0)" class="fullcalendar-btn-next btn btn-sm btn-outline-dark">
+                            <a href="javascript:void(0)" class="fullcalendar-btn-next btn btn-sm btn-outline-primary">
                                 <i class="fas fa-angle-right"></i>
                             </a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-dark active" data-calendar-view="month">{{ __('Mês') }}</a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-dark" data-calendar-view="basicWeek">{{ __('Semana') }}</a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-dark" data-calendar-view="basicDay">{{ __('Dia') }}</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary active" data-calendar-view="month">{{ __('Mês') }}</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" data-calendar-view="basicWeek">{{ __('Semana') }}</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" data-calendar-view="basicDay">{{ __('Dia') }}</a>
                         </div>
                     </div>
                     <!-- datas -->

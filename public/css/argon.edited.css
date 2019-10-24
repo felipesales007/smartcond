@@ -12,22 +12,22 @@
 */
 
 a {
-    color: #212529;
+    color: #5e72e4;
 }
 
 a:hover,
 a:active {
-    color: #888888;
+    color: #324cdd;
 }
 
-/* none */
+.badge-primary,
 .navbar-vertical .navbar-nav .nav-link[data-toggle=collapse][aria-expanded=true]:after {
-    color: #888888;
+    color: #5e72e4;
 }
 
 .checklist-item:before,
 .custom-checkbox-dark .custom-control-input:active~.custom-control-label::before {
-    background-color: #212529;
+    background-color: #5e72e4;
 }
 
 .buttons-print,
@@ -41,7 +41,7 @@ a:active {
 .datepicker table tr td.active.highlighted,
 .datepicker table tr td.active.highlighted:hover,
 .datepicker table tr td.active:hover {
-    background-color: #212529 !important;
+    background-color: #5e72e4 !important;
 }
 
 .focused .input-group-text,
@@ -54,17 +54,26 @@ a:active {
 .select2-container--default .select2-search--dropdown .select2-search__field:focus,
 .select2-container--default .select2-selection--multiple:focus,
 .select2-container--default.select2-container--focus .select2-selection--multiple:focus {
-    border-color: #212529;
+    border-color: #5e72e4;
 }
 
 .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before,
 .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before,
 .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
-    background-color: rgba(33, 37, 41, .5);
+    background-color: rgba(94, 114, 228, .5);
 }
 
 .custom-checkbox-dark .custom-control-input:disabled:checked~.custom-control-label::before {
     border-color: transparent;
+}
+
+.custom-checkbox-primary .custom-control-input:checked~.custom-control-label::before {
+    border-color: rgba(94, 114, 228, .5);
+}
+
+.badge-primary[href]:hover,
+.badge-primary[href]:focus {
+    background-color: #324cdd;
 }
 
 /*

@@ -28,7 +28,7 @@
                             <!-- botão -->
                             @if (app('router')->has('company.admin.store') && \App\Models\Permission::buttonPermission('btn-modal-new-company-admin') && \App\Models\Menu\MenuItem::getMenuItemDeleted('company.admin.store') && auth()->user()['admin'] == 1)
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" data-id="{{ $company['id'] }}" data-logo="{{ $company['logo'] }}" data-name="{{ $company['name'] }}" class="btn btn-sm btn-icon btn-dark {{ \App\Models\Route\Route::getRouteBlocked('company.admin.store') ? 'notify-block-route' : 'btn-modal-new-company-admin' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('company.admin.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" data-id="{{ $company['id'] }}" data-logo="{{ $company['logo'] }}" data-name="{{ $company['name'] }}" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('company.admin.store') ? 'notify-block-route' : 'btn-modal-new-company-admin' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('company.admin.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>

@@ -4,7 +4,7 @@
 @section('content')
 
     <!-- fundo -->
-    <div class="bg-dark pb-7 pb-xl-7 pt-7 pt-md-7 pt-xl-7"></div>
+    <div class="bg-gradient-primary pb-7 pb-xl-7 pt-7 pt-md-7 pt-xl-7"></div>
 
     <!-- tabela ajax -->
     <div class="container-fluid mt--7">
@@ -24,7 +24,7 @@
                             <!-- botão -->
                             @if (app('router')->has('menu.item.store') && \App\Models\Permission::buttonPermission('btn-modal-new-menu-item') && \App\Models\Menu\MenuItem::getMenuItemDeleted('menu.item.store'))
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-dark {{ \App\Models\Route\Route::getRouteBlocked('menu.item.store') ? 'notify-block-route' : 'btn-modal-new-menu-item' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('menu.item.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('menu.item.store') ? 'notify-block-route' : 'btn-modal-new-menu-item' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('menu.item.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>

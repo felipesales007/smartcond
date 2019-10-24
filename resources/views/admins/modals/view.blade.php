@@ -12,13 +12,13 @@
             <div class="fe-collapse-view-link">
                 <!-- visualizar informações -->
                 <div class="col-6 mb-4 d-none" onclick="collapseView(this);">
-                    <a href="javascript:void(0)" id="event-view-admin-info" class="h5 badge badge-dark pl-3 fe-no-event-arrow" data-toggle="collapse" data-target="#collapse-view-admin-info" aria-expanded="false" aria-controls="collapse-view-admin-info">
+                    <a href="javascript:void(0)" id="event-view-admin-info" class="h5 badge badge-primary pl-3 fe-no-event-arrow" data-toggle="collapse" data-target="#collapse-view-admin-info" aria-expanded="false" aria-controls="collapse-view-admin-info">
                         {{ __('visualizar informações') }}
                     </a>
                 </div>
                 <!-- visualizar empresa -->
                 <div class="col-6 mb-4" onclick="collapseView(this);">
-                    <a href="javascript:void(0)" id="event-view-admin-company" class="h5 badge badge-dark pl-3 fe-no-event-arrow" data-toggle="collapse" data-target="#collapse-view-admin-company" aria-expanded="false" aria-controls="collapse-view-admin-company">
+                    <a href="javascript:void(0)" id="event-view-admin-company" class="h5 badge badge-primary pl-3 fe-no-event-arrow" data-toggle="collapse" data-target="#collapse-view-admin-company" aria-expanded="false" aria-controls="collapse-view-admin-company">
                         {{ __('visualizar empresa') }}
                     </a>
                 </div>

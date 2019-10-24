@@ -4,7 +4,7 @@
 @section('content')
 
     <!-- fundo -->
-    <div class="bg-dark pb-7 pb-xl-7 pt-4 pt-md-7 pt-xl-7"></div>
+    <div class="bg-gradient-primary pb-7 pb-xl-7 pt-4 pt-md-7 pt-xl-7"></div>
 
     <!-- recuperar senha -->
     <div class="container mt-md--8 mt-lg--9 mt--6">
@@ -62,7 +62,7 @@
                                 </div>
                                 <!-- botão -->
                                 <div class="text-center mb-4 mt-2">
-                                    <button type="submit" class="btn btn-dark btn-block fe-carregando fe-scroll-top">{{ __('Confirmar senha') }}</button>
+                                    <button type="submit" class="btn btn-primary btn-block fe-carregando fe-scroll-top">{{ __('Confirmar senha') }}</button>
                                 </div>
                             </form>
                         </div>

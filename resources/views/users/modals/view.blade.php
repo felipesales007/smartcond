@@ -12,13 +12,13 @@
             <div class="fe-collapse-view-link">
                 <!-- visualizar informações -->
                 <div class="col-6 mb-4 d-none" onclick="collapseView(this);">
-                    <a href="javascript:void(0)" id="event-view-user-info" class="h5 badge badge-dark pl-3 fe-no-event-arrow" data-toggle="collapse" data-target="#collapse-view-user-info" aria-expanded="false" aria-controls="collapse-view-user-info">
+                    <a href="javascript:void(0)" id="event-view-user-info" class="h5 badge badge-primary pl-3 fe-no-event-arrow" data-toggle="collapse" data-target="#collapse-view-user-info" aria-expanded="false" aria-controls="collapse-view-user-info">
                         {{ __('visualizar informações') }}
                     </a>
                 </div>
                 <!-- visualizar condomínio -->
                 <div class="col-6 mb-4" onclick="collapseView(this);">
-                    <a href="javascript:void(0)" id="event-view-user-entity" class="h5 badge badge-dark pl-3 fe-no-event-arrow" data-toggle="collapse" data-target="#collapse-view-user-entity" aria-expanded="false" aria-controls="collapse-view-user-entity">
+                    <a href="javascript:void(0)" id="event-view-user-entity" class="h5 badge badge-primary pl-3 fe-no-event-arrow" data-toggle="collapse" data-target="#collapse-view-user-entity" aria-expanded="false" aria-controls="collapse-view-user-entity">
                         {{ __('visualizar condomínio') }}
                     </a>
                 </div>

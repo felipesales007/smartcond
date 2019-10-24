@@ -5,7 +5,7 @@
         <nav class="navbar navbar-horizontal navbar-expand navbar-light mt-2">
             <div class="container">
                 <!-- desenvolvido -->
-                <div class="copyright text-center text-dark fe-center-x">
+                <div class="copyright text-center text-primary fe-center-x">
                     <span class="fe-mouse-off">&copy; {{ now()->year }}, {{ __('Desenvolvido pelo') }}</span>
                     <a href="https://www.gruposmartcond.com" class="font-weight-bold" target="_blank">{{ __('Grupo Smartcond') }}</a>
                 </div>

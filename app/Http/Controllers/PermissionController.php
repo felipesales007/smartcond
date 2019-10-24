@@ -75,7 +75,7 @@ class PermissionController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // editar
-                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || EntityAccesses::getEntityAccessesUser($row->id)['entity_id'] || CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && EntityAccesses::getEntityAccessesUser($row->id)['entity_id'] || $row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                         if (app('router')->has('permission.user.edit') && MenuItem::getMenuItemDeleted('permission.user.edit')['list']) {
                             if (Permission::buttonPermission('btn-edit-permission-user') && !MenuItem::getMenuItemBlocked('permission.user.edit')['list']) {
                                 $btn = '<a href="' . route('permission.user.edit', ['id' => $row->id]) . '" class="btn btn-sm btn-icon btn-outline-success"><i class="fas fa-lock-open mr-2"></i>liberar acesso</a>';
@@ -151,7 +151,7 @@ class PermissionController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // editar
-                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || EntityAccesses::getEntityAccessesUser($row->id)['entity_id'] || CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && EntityAccesses::getEntityAccessesUser($row->id)['entity_id'] || $row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                         if (app('router')->has('permission.user.edit') && MenuItem::getMenuItemDeleted('permission.user.edit')['list']) {
                             if (Permission::buttonPermission('btn-edit-permission-user') && !MenuItem::getMenuItemBlocked('permission.user.edit')['list']) {
                                 $btn = '<a href="' . route('permission.user.edit', ['id' => $row->id]) . '" class="btn btn-sm btn-icon btn-outline-success"><i class="fas fa-lock-open mr-2"></i>liberar acesso</a>';

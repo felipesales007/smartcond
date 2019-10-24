@@ -1,7 +1,7 @@
 <!-- capa -->
 <div class="header pb-8 pt-8 d-flex align-items-center fe-img-center" style="background-image: url({{ url('images/default/default-background.png') }});">
     <!-- máscara de gradiente -->
-    <span class="mask bg-dark opacity-5"></span>
+    <span class="mask bg-gradient-primary opacity-5"></span>
     <!-- título e descrição -->
     <div class="container-fluid d-flex align-items-center">
         <div class="row">

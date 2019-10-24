@@ -6,9 +6,9 @@
 <meta name="author" content="Grupo Smartcond">
 
 <!-- cor da barra do navegador em mobile -->
-<meta name="theme-color" content="#212529">
-<meta name="apple-mobile-web-app-status-bar-style" content="#212529">
-<meta name="msapplication-navbutton-color" content="#212529">
+<meta name="theme-color" content="#5e72e4">
+<meta name="apple-mobile-web-app-status-bar-style" content="#5e72e4">
+<meta name="msapplication-navbutton-color" content="#5e72e4">
 
 <!-- CSRF token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">

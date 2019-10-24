@@ -155,7 +155,7 @@
                                 <label class="form-control-label" for="hidden-edit-menu-item">{{ __('Oculto') }}</label>
                                 <div class="input-group input-group-merge validate-hidden-edit-menu-item">
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione se o item do menu for oculto') }}">*</span>
-                                    <div class="custom-control custom-checkbox custom-checkbox-dark mt-2">
+                                    <div class="custom-control custom-checkbox custom-checkbox-primary mt-2">
                                         <input type="checkbox" id="hidden-edit-menu-item" name="hidden_edit_menu_item" class="custom-control-input" {{ old('hidden_edit_menu_item') ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="hidden-edit-menu-item"></label>
                                     </div>

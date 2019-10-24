@@ -23,7 +23,7 @@
                             <!-- botão -->
                             @if (app('router')->has('admin.store') && \App\Models\Permission::buttonPermission('btn-modal-new-admin') && \App\Models\Menu\MenuItem::getMenuItemDeleted('admin.store'))
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-dark {{ \App\Models\Route\Route::getRouteBlocked('admin.store') ? 'notify-block-route' : 'btn-modal-new-admin' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('admin.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('admin.store') ? 'notify-block-route' : 'btn-modal-new-admin' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('admin.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>

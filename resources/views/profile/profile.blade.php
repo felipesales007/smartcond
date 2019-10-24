@@ -30,7 +30,7 @@
                             </div>
                             <!-- botão de voltar -->
                             <div class="col-5 col-sm-6 text-right">
-                                <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-dark" onclick="voltar();">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary" onclick="voltar();">
                                     <span class="btn-inner--icon">
                                         <i class="fas fa-reply mr-1"></i>
                                     </span>
@@ -59,7 +59,7 @@
                                     @endif
                                 </span>
                                 <!-- empresa ou condomínio -->
-                                <a href="javascript:void(0)" id="event-edit-profile-company" class="h5 badge badge-dark mb-4 pl-3 fe-event-arrow" data-toggle="collapse" data-target="#collapse-edit-profile-company" aria-expanded="false" aria-controls="collapse-edit-profile-company" onclick="eventExpanded(this, '{{ $hidden }}', '{{ $view }}');">
+                                <a href="javascript:void(0)" id="event-edit-profile-company" class="h5 badge badge-primary mb-4 pl-3 fe-event-arrow" data-toggle="collapse" data-target="#collapse-edit-profile-company" aria-expanded="false" aria-controls="collapse-edit-profile-company" onclick="eventExpanded(this, '{{ $hidden }}', '{{ $view }}');">
                                     @if (isset($entities[0]) && $company)
                                         {{ __('visualizar empresa e condomínio') }}
                                     @elseif (!isset($entities[0]) && $company)
@@ -100,7 +100,7 @@
                                                             <div class="col ml--2">
                                                                 <div class="d-flex justify-content-between align-items-center">
                                                                     <h4 class="mb-0 text-sm">{{ $entity['entity'] }}</h4>
-                                                                    <div class="custom-control custom-radio custom-checkbox-dark" @if (count($entities) == 1) hidden @endif>
+                                                                    <div class="custom-control custom-radio custom-checkbox-primary" @if (count($entities) == 1) hidden @endif>
                                                                         <small class="mr-5">{{ $entity['preferred'] == 1 ? 'principal' : 'definir como principal' }}</small>
                                                                         <input type="radio" id="entity-edit-profile-id-{{ $entity['id'] }}" name="entity_edit_profile_id" class="custom-control-input" value="{{ $entity['id'] }}" @if ($entity['preferred'] == 1) checked @endif>
                                                                         <label class="custom-control-label" for="entity-edit-profile-id-{{ $entity['id'] }}"></label>

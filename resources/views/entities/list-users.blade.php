@@ -28,7 +28,7 @@
                             <!-- botão -->
                             @if (app('router')->has('entity.user.store') && \App\Models\Permission::buttonPermission('btn-modal-new-entity-user') && \App\Models\Menu\MenuItem::getMenuItemDeleted('entity.user.store') && auth()->user()['admin'] == 1 || app('router')->has('entity.user.store') && \App\Models\Permission::buttonPermission('btn-modal-new-entity-user') && \App\Models\Menu\MenuItem::getMenuItemDeleted('entity.user.store') && in_array($entity['id'], \App\Models\Entity\Entity::getEntitiesUser()->toArray()))
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" data-id="{{ $entity['id'] }}" data-logo="{{ $entity['logo'] }}" data-name="{{ $entity['name'] }}" class="btn btn-sm btn-icon btn-dark {{ \App\Models\Route\Route::getRouteBlocked('entity.user.store') ? 'notify-block-route' : 'btn-modal-new-entity-user' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('entity.user.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" data-id="{{ $entity['id'] }}" data-logo="{{ $entity['logo'] }}" data-name="{{ $entity['name'] }}" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('entity.user.store') ? 'notify-block-route' : 'btn-modal-new-entity-user' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('entity.user.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>

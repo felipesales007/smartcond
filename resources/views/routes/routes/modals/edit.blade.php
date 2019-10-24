@@ -81,7 +81,7 @@
                                 <label class="form-control-label" for="view-edit-route">{{ __('Página') }}</label>
                                 <div class="input-group input-group-merge validate-view-edit-route">
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione se a rota for para uma nova página') }}">*</span>
-                                    <div class="custom-control custom-checkbox custom-checkbox-dark mt-2">
+                                    <div class="custom-control custom-checkbox custom-checkbox-primary mt-2">
                                         <input type="checkbox" id="view-edit-route" name="view_edit_route" class="custom-control-input" {{ old('view_edit_route') ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="view-edit-route"></label>
                                     </div>

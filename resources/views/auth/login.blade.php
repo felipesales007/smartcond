@@ -89,7 +89,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <div class="input-group input-group-merge validate-remember">
-                                                <div class="custom-control custom-checkbox custom-checkbox-dark">
+                                                <div class="custom-control custom-checkbox custom-checkbox-primary">
                                                     <input type="checkbox" id="remember" name="remember" class="custom-control-input" {{ old('remember') ? 'checked' : '' }}>
                                                     <label class="custom-control-label text-muted fe-checkbox-center" for="remember">{{ __('Lembrar-me') }}</label>
                                                 </div>
@@ -103,7 +103,7 @@
                                 </div>
                                 <!-- botão -->
                                 <div class="text-center mb-4">
-                                    <button type="submit" class="btn btn-dark btn-block fe-carregando fe-scroll-top">{{ __('Entrar') }}</button>
+                                    <button type="submit" class="btn btn-primary btn-block fe-carregando fe-scroll-top">{{ __('Entrar') }}</button>
                                 </div>
                             </form>
                         </div>

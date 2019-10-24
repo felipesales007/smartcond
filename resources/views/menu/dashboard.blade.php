@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="bg-dark pb-7 pb-xl-8 pt-6 pt-md-7 pt-xl-8">
+    <div class="bg-gradient-primary pb-7 pb-xl-8 pt-6 pt-md-7 pt-xl-8">
         <div class="mb-xl-5">
             @include('menu.menu.dashboard.cards')
         </div>

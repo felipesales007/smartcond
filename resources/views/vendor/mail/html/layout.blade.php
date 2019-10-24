@@ -26,7 +26,7 @@
                                 <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0">
                                     <!-- Body content -->
                                     <tr>
-                                        <td class="content-cell linha-dark">
+                                        <td class="content-cell linha-primary">
                                             @auth()
                                                 <img src="{{ public_path('images/default/mailto.png') }}" width="100px" alt="">
                                                 <span class="email-auto">

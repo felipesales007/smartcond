@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="bg-dark pb-7 pb-xl-8 pt-6 pt-md-7 pt-xl-8">
+    <div class="bg-gradient-primary pb-7 pb-xl-8 pt-6 pt-md-7 pt-xl-8">
         @include('inventories.inventory-categories.dashboard.cards')
     </div>
 
@@ -25,7 +25,7 @@
                             <!-- botão -->
                             @if (app('router')->has('inventory.category.store') && \App\Models\Permission::buttonPermission('btn-modal-new-inventory-category') && \App\Models\Menu\MenuItem::getMenuItemDeleted('inventory.category.store'))
                                 <div class="col-7 col-sm-6 text-right">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-dark {{ \App\Models\Route\Route::getRouteBlocked('inventory.category.store') ? 'notify-block-route' : 'btn-modal-new-inventory-category' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('inventory.category.store') ? 'opacity-2 disabled' : '' }}">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-primary {{ \App\Models\Route\Route::getRouteBlocked('inventory.category.store') ? 'notify-block-route' : 'btn-modal-new-inventory-category' }} {{ \App\Models\Menu\MenuItem::getMenuItemBlocked('inventory.category.store') ? 'opacity-2 disabled' : '' }}">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-plus mr-1"></i>
                                         </span>

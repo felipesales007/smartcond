@@ -61,7 +61,7 @@
                                 </div>
                                 <!-- botão -->
                                 <div class="text-center mb-4 mt-2">
-                                    <button type="submit" class="btn btn-dark btn-block fe-carregando fe-scroll-top">{{ __('Recuperar') }}</button>
+                                    <button type="submit" class="btn btn-primary btn-block fe-carregando fe-scroll-top">{{ __('Recuperar') }}</button>
                                 </div>
                             </form>
                         </div>
