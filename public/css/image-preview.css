@@ -617,6 +617,10 @@
     background-image: url("../images/default/default-logo.png");
 }
 
+.fe-default-image {
+    background-image: url("../images/default/default-image.png");
+}
+
 .fe-remove-preview-small {
     margin: 0 auto -18px auto;
     left: 37px;

@@ -548,7 +548,8 @@ class EntityController extends Controller
 
         $accesses = EntityAccesses::create([
             'entity_id' => $request->id_entity_new_entity_user,
-            'user_id'   => $collection->id
+            'user_id'   => $collection->id,
+            'preferred'  => '1'
         ]);
 
         $entity = Entity::join('entity_accesses', 'entity_accesses.entity_id', '=', 'entities.id')

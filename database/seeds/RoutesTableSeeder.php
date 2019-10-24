@@ -1745,5 +1745,475 @@ class RoutesTableSeeder extends Seeder
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'data',
+            'route'           => 'department.data',
+            'controller'      => 'Department\DashboardController@data',
+            'description'     => 'Dados do dashboard dos departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'department.dashboard',
+            'controller'      => 'Department\DashboardController@dashboard',
+            'description'     => 'Página do dashboard dos departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'department.list',
+            'controller'      => 'Department\DepartmentController@list',
+            'description'     => 'Página de listagem dos departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletados',
+            'route'           => 'department.list.deleted',
+            'controller'      => 'Department\DepartmentController@listDeleted',
+            'description'     => 'Página de listagem dos departamentos deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'department.view',
+            'controller'      => 'Department\DepartmentController@edit',
+            'description'     => 'Modal de visualizar os dados dos departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'department.edit',
+            'controller'      => 'Department\DepartmentController@edit',
+            'description'     => 'Modal de editar os dados dos departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'department.ban',
+            'controller'      => 'Department\DepartmentController@edit',
+            'description'     => 'Modal de bloquear e desbloquear os departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'department.delete',
+            'controller'      => 'Department\DepartmentController@edit',
+            'description'     => 'Modal de deletar os departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'department.recover',
+            'controller'      => 'Department\DepartmentController@edit',
+            'description'     => 'Modal de recuperar os departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'novo',
+            'route'           => 'department.store',
+            'controller'      => 'Department\DepartmentController@store',
+            'description'     => 'Modal de criar novo departamento',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'atualizar/{id?}',
+            'route'           => 'department.update',
+            'controller'      => 'Department\DepartmentController@update',
+            'description'     => 'Atualizar os dados dos departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'bloquear/{id?}',
+            'route'           => 'department.block',
+            'controller'      => 'Department\DepartmentController@block',
+            'description'     => 'Bloquear os departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'remover/{id?}',
+            'route'           => 'department.destroy',
+            'controller'      => 'Department\DepartmentController@destroy',
+            'description'     => 'Deletar os departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'restaurar/{id?}',
+            'route'           => 'department.restore',
+            'controller'      => 'Department\DepartmentController@restore',
+            'description'     => 'Recuperar os departamentos deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'verificar/nome',
+            'route'           => 'department.check.name',
+            'controller'      => 'Department\CheckController@checkName',
+            'description'     => 'Verificar o nome dos departamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'verificar/nome/diferente',
+            'route'           => 'department.check.name.different',
+            'controller'      => 'Department\CheckController@checkNameDifferent',
+            'description'     => 'Verificar o nome dos departamentos que seja diferente do departamento em edição',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/categorias',
+            'route'           => 'inventory.category.list',
+            'controller'      => 'Inventory\InventoryCategoryController@list',
+            'description'     => 'Página de listagem das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/categorias/deletadas',
+            'route'           => 'inventory.category.list.deleted',
+            'controller'      => 'Inventory\InventoryCategoryController@listDeleted',
+            'description'     => 'Página de listagem das categorias deletadas',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/categoria/{id?}',
+            'route'           => 'inventory.category.view',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
+            'description'     => 'Modal de visualizar os dados das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'editar/categoria/{id?}',
+            'route'           => 'inventory.category.edit',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
+            'description'     => 'Modal de editar os dados das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'banir/categoria/{id?}',
+            'route'           => 'inventory.category.ban',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
+            'description'     => 'Modal de bloquear e desbloquear as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'deletar/categoria/{id?}',
+            'route'           => 'inventory.category.delete',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
+            'description'     => 'Modal de deletar as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/categoria/{id?}',
+            'route'           => 'inventory.category.recover',
+            'controller'      => 'Inventory\InventoryCategoryController@edit',
+            'description'     => 'Modal de recuperar as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'nova/categoria',
+            'route'           => 'inventory.category.store',
+            'controller'      => 'Inventory\InventoryCategoryController@store',
+            'description'     => 'Modal de criar nova categoria',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'atualizar/categoria/{id?}',
+            'route'           => 'inventory.category.update',
+            'controller'      => 'Inventory\InventoryCategoryController@update',
+            'description'     => 'Atualizar os dados das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'bloquear/categoria/{id?}',
+            'route'           => 'inventory.category.block',
+            'controller'      => 'Inventory\InventoryCategoryController@block',
+            'description'     => 'Bloquear as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'remover/categoria/{id?}',
+            'route'           => 'inventory.category.destroy',
+            'controller'      => 'Inventory\InventoryCategoryController@destroy',
+            'description'     => 'Deletar as categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'restaurar/categoria/{id?}',
+            'route'           => 'inventory.category.restore',
+            'controller'      => 'Inventory\InventoryCategoryController@restore',
+            'description'     => 'Recuperar as categorias deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'verificar/categoria/nome',
+            'route'           => 'inventory.category.check.name',
+            'controller'      => 'Inventory\CheckController@checkName',
+            'description'     => 'Verificar o nome das categorias',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'verificar/categoria/nome/diferente',
+            'route'           => 'inventory.category.check.name.different',
+            'controller'      => 'Inventory\CheckController@checkNameDifferent',
+            'description'     => 'Verificar o nome das categorias que seja diferente da categoria em edição',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'data',
+            'route'           => 'inventory.data',
+            'controller'      => 'Inventory\DashboardController@data',
+            'description'     => 'Dados do dashboard dos itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'inventory.dashboard',
+            'controller'      => 'Inventory\DashboardController@dashboard',
+            'description'     => 'Página do dashboard dos itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/inventarios',
+            'route'           => 'inventory.list',
+            'controller'      => 'Inventory\InventoryController@list',
+            'description'     => 'Página de listagem dos itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/inventarios/deletados',
+            'route'           => 'inventory.list.deleted',
+            'controller'      => 'Inventory\InventoryController@listDeleted',
+            'description'     => 'Página de listagem dos itens do inventário deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/inventario/{id?}',
+            'route'           => 'inventory.view',
+            'controller'      => 'Inventory\InventoryController@edit',
+            'description'     => 'Modal de visualizar os dados dos itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'editar/inventario/{id?}',
+            'route'           => 'inventory.edit',
+            'controller'      => 'Inventory\InventoryController@edit',
+            'description'     => 'Modal de editar os dados dos itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'deletar/inventario/{id?}',
+            'route'           => 'inventory.delete',
+            'controller'      => 'Inventory\InventoryController@edit',
+            'description'     => 'Modal de deletar os itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/inventario/{id?}',
+            'route'           => 'inventory.recover',
+            'controller'      => 'Inventory\InventoryController@edit',
+            'description'     => 'Modal de recuperar os itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'novo/inventario',
+            'route'           => 'inventory.store',
+            'controller'      => 'Inventory\InventoryController@store',
+            'description'     => 'Modal de criar novo item do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'atualizar/inventario/{id?}',
+            'route'           => 'inventory.update',
+            'controller'      => 'Inventory\InventoryController@update',
+            'description'     => 'Atualizar os dados dos itens do inventários',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'remover/inventario/{id?}',
+            'route'           => 'inventory.destroy',
+            'controller'      => 'Inventory\InventoryController@destroy',
+            'description'     => 'Deletar os itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'restaurar/inventario/{id?}',
+            'route'           => 'inventory.restore',
+            'controller'      => 'Inventory\InventoryController@restore',
+            'description'     => 'Recuperar os itens do inventário deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
     }
 }

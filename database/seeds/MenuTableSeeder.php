@@ -98,7 +98,7 @@ class MenuTableSeeder extends Seeder
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '17',
-            'order'          => '7',
+            'order'          => '9',
             'name'           => 'Grupos e Rotas',
             'icon'           => 'fas fa-book',
             'description'    => 'Menu em collapse da página de configurações de rotas',
@@ -110,7 +110,7 @@ class MenuTableSeeder extends Seeder
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '17',
-            'order'          => '8',
+            'order'          => '10',
             'name'           => 'Menu e Itens',
             'icon'           => 'fas fa-list-ul',
             'description'    => 'Menu em collapse da página de configurações de menu',
@@ -150,6 +150,30 @@ class MenuTableSeeder extends Seeder
             'name'           => 'Administradores',
             'icon'           => 'fas fa-user-shield',
             'description'    => 'Menu em collapse da página de configurações de administradores',
+            'created_at'     => now(),
+            'updated_at'     => now()
+        ]);
+
+        // grupo departamentos
+        Menu::create([
+            'menu_option_id' => '1',
+            'color_id'       => '17',
+            'order'          => '7',
+            'name'           => 'Departamentos',
+            'icon'           => 'fas fa-building',
+            'description'    => 'Menu em collapse da página de departamentos do condomínio',
+            'created_at'     => now(),
+            'updated_at'     => now()
+        ]);
+
+        // grupo inventário
+        Menu::create([
+            'menu_option_id' => '1',
+            'color_id'       => '17',
+            'order'          => '8',
+            'name'           => 'Inventário',
+            'icon'           => 'fas fa-dolly-flatbed',
+            'description'    => 'Menu em collapse da página de inventários do condomínio',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);

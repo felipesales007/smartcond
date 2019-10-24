@@ -359,8 +359,6 @@
 .fe-loader:after {
     width: 12px;
     height: 35px;
-    background: #212529;
-    border-radius: 10px;
     -webkit-animation: fe-loader 1.5s ease-in-out infinite;
     animation: fe-loader 1.5s ease-in-out infinite;
 }
@@ -368,6 +366,8 @@
 .fe-loader {
     top: 50%;
     left: 50%;
+    background: #30abe3;
+    border-radius: 10px;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
@@ -376,19 +376,19 @@
 .fe-loader:after {
     display: block;
     content: "";
-    /* none */
-    /* none */
-    /* none */
+    background: #1d4e6c;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .fe-loader:before {
     right: 20px;
-    /* none */
+    border-top-left-radius: 10px;
 }
 
 .fe-loader:after {
     left: 20px;
-    /* none */
+    border-top-right-radius: 10px;
 }
 
 @-webkit-keyframes fe-loader {
@@ -557,6 +557,10 @@
 
 .fe-radius {
     border-radius: .25rem !important;
+}
+
+.fe-radius-max {
+    border-radius: .800rem !important;
 }
 
 .fe-table-master tr:hover {
@@ -818,7 +822,14 @@
     left: 72px;
 }
 
-.fe-view-fix-status i {
+.fe-view-fix-status-square {
+    position: absolute;
+    top: -70px;
+    left: 75px;
+}
+
+.fe-view-fix-status i,
+.fe-view-fix-status-square i {
     width: 16px;
     height: 16px;
     border: 4px solid white;
@@ -829,12 +840,14 @@
     margin-left: 5rem;
 }
 
-.fe-view-fix-email {
+.fe-view-fix-email,
+.fe-view-fix-department {
     position: relative;
     top: 0.6rem;
 }
 
-.fe-view-fix-contact {
+.fe-view-fix-contact,
+.fe-view-fix-category {
     position: absolute;
     right: 1rem;
     margin-top: 2.2rem;
