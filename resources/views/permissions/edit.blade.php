@@ -73,7 +73,7 @@
                                         </span>
                                         <div class="card mb-3">
                                             <div class="card-header fe-hr-card-header" id="heading-edit-user-permision-{{ $index }}" data-toggle="collapse" data-target="#collapse-edit-user-permision-{{ $index }}" aria-expanded="false" aria-controls="collapse-edit-user-permision-{{ $index }}">
-                                                <small class="d-block float-right mr-5 mt-1 font-weight-bold">{{ $user_permissions }}/{{ $profile_permissions }}</small>
+                                                <small class="d-block float-right mr-4 mt-1 font-weight-bold">{{ $user_permissions }}/{{ $profile_permissions }}</small>
                                                 <h5 class="d-flex mb-0">
                                                     <span class="custom-control custom-checkbox custom-checkbox-primary no-event">
                                                         <input type="checkbox" id="checkbox-all-{{ $index }}" class="custom-control-input" onclick="checkboxAll(this);" @if ($user_permissions > 0 && $user_permissions == $profile_permissions) value="true" checked="checked" @endif @if ($group['group'] == 1 && $user_permissions == 1) disabled @endif>
@@ -93,6 +93,7 @@
                                                         <div class="card-body">
                                                             <ul class="list-group list-group-flush mx--4 my--4" data-toggle="checklist">
                                                                 <li class="checklist-entry list-group-item flex-column align-items-start py-1 px-1">
+                                                                    <hr class="fe-hr-accordion">
                                                                     <div class="checklist-item custom-checkbox-primary">
                                                                         <div class="checklist">
                                                                             <h5 class="checklist-title mb-0">{{ str_replace('/{id?}', '', $permission['url']) }}</h5>
@@ -103,7 +104,6 @@
                                                                             <label class="custom-control-label fe-checkbox-center-list {{ $permission['id'] == 1 ? 'fe-hidden' : '' }}" for="permission-edit-user-permision-{{ $item }}"></label>
                                                                         </div>
                                                                     </div>
-                                                                    <hr class="fe-hr-accordion my--5 mx--1">
                                                                 </li>
                                                             </ul>
                                                         </div>
