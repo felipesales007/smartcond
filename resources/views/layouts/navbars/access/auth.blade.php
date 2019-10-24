@@ -71,7 +71,7 @@
                     @endforeach
                     <!-- sair -->
                     <div class="dropdown-divider"></div>
-                    <a href="{{ route('logout') }}" class="dropdown-item text-warning fe-loading" onclick="event.preventDefault(); $('#form-logout').submit();">
+                    <a href="{{ app('router')->has('logout') ? route('logout') : url('/') }}" class="dropdown-item text-warning fe-loading" onclick="event.preventDefault(); $('#form-logout').submit();">
                         <i class="fas fa-power-off"></i>
                         <span>{{ __('Sair') }}</span>
                     </a>

@@ -95,5 +95,53 @@
                 },
             }
         });
+
+        // confirmar senha
+        $('#form-password-confirm').validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 191,
+                    remote: {
+                        url: '{{ app('router')->has('profile.check.password') ? route('profile.check.password') : route('remote.validate.destroy') }}',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            password: function () {
+                                return $('#password').val();
+                            }
+                        },
+                        dataFilter: function (data) {
+                            let json = JSON.parse(data);
+
+                            if (!json) {
+                                return false;
+                            }
+
+                            if (json.align && json.from) {
+                                notifyValidate('Rota bloqueada para validação da senha.<br><small>Procure o Administrador para obter mais informações.</small>');
+                                return true;
+                            }
+
+                            if (json.status === 0) {
+                                notifyValidate('Rota excluída para validação da senha.<br><small>Procure o Administrador para obter mais informações.</small>');
+                                return true;
+                            }
+
+                            return true;
+                        },
+                    },
+                },
+            },
+            messages: {
+                password: {
+                    required:  'O campo senha é obrigatório.',
+                    minlength: 'O campo senha deve ter pelo menos {0} caracteres.',
+                    maxlength: 'O campo senha não pode ser superior a {0} caracteres.',
+                    remote:    'O campo senha de confirmação está incorreto.',
+                },
+            }
+        });
     });
 </script>

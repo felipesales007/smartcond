@@ -17,7 +17,9 @@ class ConfirmPasswordController extends Controller
     | essa característica e substitui quaisquer funções que exijam personalização.
     |
     */
+
     use ConfirmsPasswords;
+
     /**
      * Para onde redirecionar os usuários quando o URL pretendido falha.
      *

@@ -69,7 +69,7 @@
                                                 <input type="password" id="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" placeholder="{{ __('Senha') }}" minlength="8" maxlength="191" required autocomplete="password" @if ($errors->has('password')) autofocus @endif>
                                                 <!-- visualizar ou ocultar senha -->
                                                 <div class="input-group-append" onclick="verSenha(this);">
-                                                    <span class="input-group-text">
+                                                    <span class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
                                                         <i class="fe-input-icone far fa-eye"></i>
                                                     </span>
                                                 </div>
@@ -94,7 +94,7 @@
                                                 <input type="password" id="password-confirmation" name="password_confirmation" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" placeholder="{{ __('Confirme a senha') }}" minlength="8" maxlength="191" required autocomplete="password-confirmation">
                                                 <!-- visualizar ou ocultar senha -->
                                                 <div class="input-group-append" onclick="verSenha(this);">
-                                                    <span class="input-group-text">
+                                                    <span class="input-group-text {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
                                                         <i class="fe-input-icone far fa-eye"></i>
                                                     </span>
                                                 </div>

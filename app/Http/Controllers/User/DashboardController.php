@@ -96,8 +96,10 @@ class DashboardController extends Controller
             ->groupBy('genders.name')
             ->pluck('genders.name');
 
-        if ($names[0] == null) {
-            $names[0] = 'Não selecionado';
+        if (isset($names[0])) {
+            if ($names[0] == null) {
+                $names[0] = 'Não selecionado';
+            }
         }
 
         $count = User::leftJoin('genders', 'genders.id', '=', 'gender_id')

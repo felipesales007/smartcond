@@ -44,23 +44,21 @@
                                 <!-- accordion para edições especiais -->
                                 <div id="accordion-view-admin-company" class="accordion mt-3">
                                     <!-- empresa do administrador -->
-                                    <div class="scroll-admin-view-company">
-                                        <a href="javascript:void(0)" class="list-group-item list-group-item-action fe-mouse-default">
-                                            <div class="row align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="avatar avatar-sm">
-                                                        <img id="companies-logo-admin" src="" class="fe-img-list-view" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="col ml--2">
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <h4 id="companies-company-admin" class="mb-0 text-sm"></h4>
-                                                    </div>
-                                                    <p id="companies-cnpj-admin" class="text-sm mb-0"></p>
+                                    <a href="javascript:void(0)" class="list-group-item list-group-item-action fe-mouse-default">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <div class="avatar avatar-sm">
+                                                    <img id="companies-logo-admin" src="" class="fe-img-list-view" alt="">
                                                 </div>
                                             </div>
-                                        </a>
-                                    </div>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 id="companies-company-admin" class="mb-0 text-sm"></h4>
+                                                </div>
+                                                <p id="companies-cnpj-admin" class="text-sm mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>

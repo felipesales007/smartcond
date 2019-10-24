@@ -32,7 +32,7 @@
                                     <input type="password" id="old-password-reset-profile" name="old_password_reset_profile" class="form-control {{ $errors->has('old_password_reset_profile') ? 'is-invalid' : '' }}" placeholder="{{ __('Senha atual') }}" minlength="8" maxlength="191" required autocomplete="old-password-reset-profile" @if ($errors->has('old_password_reset_profile')) autofocus @endif>
                                     <!-- visualizar ou ocultar senha -->
                                     <div class="input-group-append" onclick="verSenha(this);">
-                                        <span class="input-group-text">
+                                        <span class="input-group-text {{ $errors->has('old_password_reset_profile') ? 'is-invalid' : '' }}">
                                             <i class="fe-input-icone far fa-eye"></i>
                                         </span>
                                     </div>
@@ -57,7 +57,7 @@
                                     <input type="password" id="password-reset-profile" name="password_reset_profile" class="form-control {{ $errors->has('password_reset_profile') ? 'is-invalid' : '' }}" placeholder="{{ __('Nova senha') }}" minlength="8" maxlength="191" required autocomplete="password-reset-profile" @if ($errors->has('password_reset_profile')) autofocus @endif>
                                     <!-- visualizar ou ocultar senha -->
                                     <div class="input-group-append" onclick="verSenha(this);">
-                                        <span class="input-group-text">
+                                        <span class="input-group-text {{ $errors->has('password_reset_profile') ? 'is-invalid' : '' }}">
                                             <i class="fe-input-icone far fa-eye"></i>
                                         </span>
                                     </div>
@@ -82,7 +82,7 @@
                                     <input type="password" id="password-confirmation-reset-profile" name="password_confirmation_reset_profile" class="form-control {{ $errors->has('password_confirmation_reset_profile') ? 'is-invalid' : '' }}" placeholder="{{ __('Confirme a senha') }}" minlength="8" maxlength="191" required autocomplete="password-confirmation-reset-profile">
                                     <!-- visualizar ou ocultar senha -->
                                     <div class="input-group-append" onclick="verSenha(this);">
-                                        <span class="input-group-text">
+                                        <span class="input-group-text {{ $errors->has('password_confirmation_reset_profile') ? 'is-invalid' : '' }}">
                                             <i class="fe-input-icone far fa-eye"></i>
                                         </span>
                                     </div>

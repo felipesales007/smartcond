@@ -19,7 +19,7 @@ class CheckController extends Controller
     {
         $collection = User::where('id', '=', auth()->user()['id'])->value('password');
 
-        if (Hash::check($request->old_password_reset_profile, $collection)) {
+        if (Hash::check($request->password, $collection)) {
             return json_encode(true);
         } else {
             return json_encode(false);

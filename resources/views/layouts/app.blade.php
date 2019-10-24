@@ -20,7 +20,7 @@
 
         <!-- barra e menu lateral -->
         @auth()
-            <form id="form-logout" method="post" action="{{ route('logout') }}" class="d-none">
+            <form id="form-logout" method="post" action="{{ app('router')->has('logout') ? route('logout') : url('/') }}" class="d-none">
                 @csrf
             </form>
             @if (!Illuminate\Support\Facades\Request::is('verificar/email'))

@@ -108,7 +108,7 @@
                                     <input type="password" id="password-edit-user" name="password_edit_user" class="form-control {{ $errors->has('password_edit_user') ? 'is-invalid' : '' }}" placeholder="{{ __('Senha') }}" minlength="8" maxlength="191" autocomplete="password-edit-user" @if ($errors->has('password_edit_user')) autofocus @endif>
                                     <!-- visualizar ou ocultar senha -->
                                     <div class="input-group-append" onclick="verSenha(this);">
-                                        <span class="input-group-text">
+                                        <span class="input-group-text {{ $errors->has('password_edit_user') ? 'is-invalid' : '' }}">
                                             <i class="fe-input-icone far fa-eye"></i>
                                         </span>
                                     </div>
@@ -133,7 +133,7 @@
                                     <input type="password" id="password-confirmation-edit-user" name="password_confirmation_edit_user" class="form-control {{ $errors->has('password_confirmation_edit_user') ? 'is-invalid' : '' }}" placeholder="{{ __('Confirme a senha') }}" minlength="8" maxlength="191" autocomplete="password-confirmation-edit-user">
                                     <!-- visualizar ou ocultar senha -->
                                     <div class="input-group-append" onclick="verSenha(this);">
-                                        <span class="input-group-text">
+                                        <span class="input-group-text {{ $errors->has('password_confirmation_edit_user') ? 'is-invalid' : '' }}">
                                             <i class="fe-input-icone far fa-eye"></i>
                                         </span>
                                     </div>

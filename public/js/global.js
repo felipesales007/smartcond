@@ -5,7 +5,7 @@
  * Licensed under MIT
  */
 
-// console.log() personalisado
+// console.log() personalizado
 const l = _ => console.log(_);
 
 // carregando
@@ -607,6 +607,13 @@ $('.select-nosearch').select2({
     minimumResultsForSearch: -1
 });
 
+// garante o tabindex em select2 multiple
+$(document).on('keyup', function (e) {
+    if (e.which === 9) {
+        $('.select2-selection--multiple').attr('tabindex', '0');
+    }
+});
+
 // placeholder em select2 multiple
 $('.modal').on('show.bs.modal hidden.bs.modal', function (e) {
     let id  = '#' + e.currentTarget.id;
@@ -965,13 +972,12 @@ function url_public($destination) {
     let protocol  = window.location.protocol + '//';
     let hostname  = window.location.hostname;
     let localhost = window.location.pathname.split('/', 2);
-    hostname += '/';
 
-    // if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '127.0.0.1:8000') {
-    //     hostname += '/' + localhost[1] + '/public/';
-    // } else {
-    //     hostname += '/';
-    // }
+    if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '127.0.0.1:8000') {
+        hostname += '/' + localhost[1] + '/public/';
+    } else {
+        hostname += '/';
+    }
 
     return protocol + hostname + $destination;
 }
@@ -1188,31 +1194,37 @@ function eventExpanded(e, first, second) {
 // máscara para valores em real
 $(".to-real").maskMoney({prefix:'', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 
-// animação quando formulário inválido
+// animação quando o formulário for inválido
+function formInvalidAnimate(form) {
+    let interval = setInterval(function () {
+        form.removeClass('shake animated');
+        clearInterval(interval);
+    }, 1000);
+
+    form.addClass('shake animated');
+}
+
+// evento para animação quando o formulário for inválido
 $('button[type="submit"]').on('click', function () {
     let form = $(this).parent().parent().parent().parent();
 
-    if (form.find('.invalid-feedback').length > 0) {
-        let interval = setInterval(function () {
-            form.removeClass('shake animated');
-            clearInterval(interval);
-        }, 1000);
+    form.find('input').filter('[required]:visible').each(function (index, e) {
+        if (e.value === null || e.value === '') {
+            formInvalidAnimate(form);
+        }
+    });
 
+    if (form.find('.invalid-feedback').length > 0) {
+        formInvalidAnimate(form);
         form.find('.invalid-feedback').addClass('valid-feedback').removeClass('invalid-feedback');
-        form.addClass('shake animated');
     }
 });
 
-// animação quando formulário inválido via post
+// evento para animação quando o formulário for inválido via post
 $(window).on('load', function () {
     let form = $('button[type="submit"]').parent().parent().parent().parent();
 
     if (form.find('.invalid-feedback').length > 0) {
-        let interval = setInterval(function () {
-            form.removeClass('shake animated');
-            clearInterval(interval);
-        }, 1000);
-
-        form.addClass('shake animated');
+        formInvalidAnimate(form);
     }
 });

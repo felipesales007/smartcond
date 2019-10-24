@@ -28,14 +28,14 @@
                                     <tr>
                                         <td class="content-cell linha-dark">
                                             @auth()
-                                                <img src="{{ url('images/default/mailto.png') }}" width="100px" alt="">
+                                                <img src="{{ public_path('images/default/mailto.png') }}" width="100px" alt="">
                                                 <span class="email-auto">
                                                     <b>e-mail automático, favor não responder</b>
                                                 </span>
                                             @endauth
 
                                             @guest()
-                                                <img src="{{ url('images/default/mailto.png') }}" width="100px" alt="">
+                                                <img src="{{ public_path('images/default/mailto.png') }}" width="100px" alt="">
                                                 <span class="email-auto">
                                                     <b>e-mail automático, favor não responder</b>
                                                 </span>

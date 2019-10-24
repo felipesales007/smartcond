@@ -244,6 +244,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique', 'permission']], fun
         Route::get ('dashboard',                 ['as' => 'admin.dashboard',             'uses' => 'Admin\DashboardController@dashboard']);
         Route::get ('lista',                     ['as' => 'admin.list',                  'uses' => 'Admin\AdminController@list']);
         Route::get ('lista/deletados',           ['as' => 'admin.list.deleted',          'uses' => 'Admin\AdminController@listDeleted']);
+        Route::get ('lista/administradores',     ['as' => 'company.list.admins',         'uses' => 'Company\CompanyController@listAdmins']);
         Route::get ('visualizar/{id?}',          ['as' => 'admin.view',                  'uses' => 'Admin\AdminController@edit']); // * btn-modal-view-admin
         Route::get ('editar/{id?}',              ['as' => 'admin.edit',                  'uses' => 'Admin\AdminController@edit']); // * btn-modal-edit-admin
         Route::get ('banir/{id?}',               ['as' => 'admin.ban',                   'uses' => 'Admin\AdminController@edit']); // * btn-modal-block-admin
