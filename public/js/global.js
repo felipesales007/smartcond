@@ -1164,8 +1164,10 @@ function checkboxAll(checkbox) {
     for (let i = 0; i < checkboxes.length; i++) {
         if (!$('#' + checkbox.id).attr('checked')) {
             $('#' + checkboxes[i].id).prop('checked', true).attr('checked', 'checked');
+            $(checkbox).closest('form').find('.' + checkbox.id).html(checkboxes.length + '/' + checkboxes.length);
         } else {
             $('#' + checkboxes[i].id).prop('checked', false).removeAttr('checked', 'checked');
+            $(checkbox).closest('form').find('.' + checkbox.id).html('0/' + checkboxes.length);
         }
     }
 }
@@ -1175,6 +1177,8 @@ function checkboxOne(checkbox) {
     let checkboxAll = $(checkbox).data('check');
     let checkboxes  = $(document).find('[data-check="' + checkboxAll + '"]').length;
     let checked     = $(document).find('[data-check="' + checkboxAll + '"]:checked').length;
+
+    $(checkbox).closest('form').find('.' + checkboxAll).html(checked + '/' + checkboxes);
 
     if (checkboxes === checked) {
         $('#' + checkboxAll).prop('checked', true).attr('checked', 'checked');

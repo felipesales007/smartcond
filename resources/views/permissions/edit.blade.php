@@ -73,7 +73,7 @@
                                         </span>
                                         <div class="card mb-3">
                                             <div class="card-header fe-hr-card-header" id="heading-edit-user-permision-{{ $index }}" data-toggle="collapse" data-target="#collapse-edit-user-permision-{{ $index }}" aria-expanded="false" aria-controls="collapse-edit-user-permision-{{ $index }}">
-                                                <small class="d-block float-right mr-4 mt-1 font-weight-bold">{{ $user_permissions }}/{{ $profile_permissions }}</small>
+                                                <small class="d-block float-right mr-4 mt-1 font-weight-bold checkbox-all-{{ $index }}">{{ $user_permissions }}/{{ $profile_permissions }}</small>
                                                 <h5 class="d-flex mb-0">
                                                     <span class="custom-control custom-checkbox custom-checkbox-primary no-event">
                                                         <input type="checkbox" id="checkbox-all-{{ $index }}" class="custom-control-input" onclick="checkboxAll(this);" @if ($user_permissions > 0 && $user_permissions == $profile_permissions) value="true" checked="checked" @endif @if ($group['group'] == 1 && $user_permissions == 1) disabled @endif>
@@ -96,11 +96,15 @@
                                                                     <hr class="fe-hr-accordion">
                                                                     <div class="checklist-item custom-checkbox-primary">
                                                                         <div class="checklist">
-                                                                            <h5 class="checklist-title mb-0">{{ str_replace('/{id?}', '', $permission['url']) }}</h5>
+                                                                            <h5 class="checklist-title mb-0">{{ $permission['name'] ? $permission['name'] : str_replace('/{id?}', '', $permission['url']) }}</h5>
+                                                                            @if ($permission['view'] == 1) <i class="fas fa-desktop mr-1" data-toggle="tooltip" data-placement="top" title="página web"></i> @endif
+                                                                            @if (!$permission['name']) <i class="far fa-eye-slash mr-1" data-toggle="tooltip" data-placement="top" title="ação ou evento"></i> @endif
+                                                                            @if ($permission['button']) <i class="far fa-hand-point-up mr-1" data-toggle="tooltip" data-placement="top" title="botão ou link de acesso a uma ação ou evento"></i> @endif
+                                                                            @if ($permission['list']) <i class="fas fa-list-alt fa-rotate-180 mr-1" data-toggle="tooltip" data-placement="top" title="botão ou link da listagem da tabela"></i> @endif
                                                                             <small>{{ $permission['description'] }}</small>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox custom-checkbox-primary">
-                                                                            <input type="checkbox" id="permission-edit-user-permision-{{ $item }}" name="permission_edit_user[]" class="custom-control-input" value="{{ $permission['id'] }}" data-check="checkbox-all-{{ $index }}" onclick="checkboxOne(this);" @if (in_array($permission['id'], $accesses)) checked="checked" @endif>
+                                                                            <input type="checkbox" id="permission-edit-user-permision-{{ $item }}" name="permission_edit_user[]" class="custom-control-input ignore" value="{{ $permission['id'] }}" data-check="checkbox-all-{{ $index }}" onclick="checkboxOne(this);" @if (in_array($permission['id'], $accesses)) checked="checked" @endif>
                                                                             <label class="custom-control-label fe-checkbox-center-list {{ $permission['id'] == 1 ? 'fe-hidden' : '' }}" for="permission-edit-user-permision-{{ $item }}"></label>
                                                                         </div>
                                                                     </div>

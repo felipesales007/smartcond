@@ -202,11 +202,18 @@ class PermissionController extends Controller
             ->get()
             ->toArray();
 
-        $permissions = Permission::select('groups.id as group', 'routes.id', 'routes.url', 'routes.description')
+        $permissions = Permission::select('groups.id as group', 'routes.id', 'routes.view', 'routes.url',
+            'menu_items.name as name', 'menu_items.button as button', 'menu_items.list as list', 'routes.description')
             ->join('routes', 'routes.id', '=', 'permissions.route_id')
             ->join('groups', 'groups.id', '=', 'routes.group_id')
+            ->leftJoin('menu_items', 'menu_items.route_id', 'routes.id')
             ->where('user_id', '=', auth()->id())
+            ->groupBy('routes.id')
+            ->orderBy('routes.view', 'desc')
+            ->orderBy('menu_items.list', 'asc')
+            ->orderBy('menu_items.button', 'asc')
             ->orderBy('routes.url', 'asc')
+            ->orderBy('menu_items.name', 'asc')
             ->get()
             ->toArray();
 

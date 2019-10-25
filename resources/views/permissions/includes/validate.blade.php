@@ -2,6 +2,7 @@
     $(function () {
         // editar permissão do usuário
         $('#form-edit-user-permisson').validate({
+            ignore: ".ignore",
             rules: {
                 id_edit_user_permission: {
                     required: true,
