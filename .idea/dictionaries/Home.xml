@@ -7,9 +7,11 @@
       <w>adicionar</w>
       <w>agora</w>
       <w>ajsutes</w>
+      <w>alguma</w>
       <w>andamento</w>
       <w>ativação</w>
       <w>atualizar</w>
+      <w>atualize</w>
       <w>ação</w>
       <w>banco</w>
       <w>biblioteca</w>
@@ -31,23 +33,31 @@
       <w>criar</w>
       <w>criação</w>
       <w>deletados</w>
+      <w>desculpe</w>
       <w>detalhes</w>
       <w>direto</w>
       <w>divisão</w>
       <w>duplicidade</w>
       <w>empresa</w>
       <w>empresas</w>
+      <w>encontrada</w>
       <w>entidade</w>
       <w>entidades</w>
       <w>enviar</w>
+      <w>errado</w>
       <w>espaço</w>
       <w>exclusão</w>
+      <w>expirou</w>
+      <w>fazendo</w>
       <w>finalização</w>
+      <w>fonte</w>
       <w>gerais</w>
       <w>grande</w>
       <w>grandes</w>
       <w>icones</w>
+      <w>imperium</w>
       <w>inclusão</w>
+      <w>indisponível</w>
       <w>informativo</w>
       <w>informação</w>
       <w>informações</w>
@@ -73,7 +83,10 @@
       <w>pequena</w>
       <w>pluraridade</w>
       <w>possibilidade</w>
+      <w>possível</w>
       <w>processamento</w>
+      <w>procurando</w>
+      <w>proibido</w>
       <w>projeto</w>
       <w>reenviar</w>
       <w>reenvio</w>
@@ -87,6 +100,7 @@
       <w>selecionar</w>
       <w>separar</w>
       <w>separação</w>
+      <w>servidores</w>
       <w>sobrenome</w>
       <w>startar</w>
       <w>suporte</w>
@@ -97,6 +111,7 @@
       <w>verificando</w>
       <w>viacep</w>
       <w>vinculado</w>
+      <w>volte</w>
     </words>
   </dictionary>
 </component>
