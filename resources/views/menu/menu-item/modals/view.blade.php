@@ -32,11 +32,11 @@
                         <!-- nome -->
                         <span id="name-view-menu-item"></span>
                         <!-- grupo -->
-                        <div id="group-view-menu-item" class="float-right mt-5"></div>
+                        <div id="group-view-menu-item" class="position-absolute right-0 mt-4 mr-3"></div>
                         <!-- menu -->
                         <div id="menu-view-menu-item" class="mt-4"></div>
                         <!-- oculto -->
-                        <div id="hidden-view-menu-item" class="float-right mt-1"></div>
+                        <div id="hidden-view-menu-item" class="position-absolute right-0 mt-1 mr-3"></div>
                         <!-- lista -->
                         <div id="list-view-menu-item" class="mt-1"></div>
                         <!-- ordem -->

@@ -12,7 +12,7 @@ class FormatHelpers
      */
     static function date_br_to_date($date)
     {
-        return implode('-', array_reverse(explode('/', $date)));
+        return $date ? implode('-', array_reverse(explode('/', $date))) : null;
     }
 
     /**
@@ -21,7 +21,7 @@ class FormatHelpers
      */
     static function date_to_date_br($date)
     {
-        return implode('/', array_reverse(explode('-', $date)));
+        return $date ? implode('/', array_reverse(explode('-', $date))) : null;
     }
 
     /**
@@ -30,7 +30,7 @@ class FormatHelpers
      */
     static function date_br_to_datetime_now($date)
     {
-        return implode('-', array_reverse(explode('/', $date))) . ' ' . now()->toTimeString();
+        return $date ? implode('-', array_reverse(explode('/', $date))) . ' ' . now()->toTimeString() : null;
     }
 
     /**
@@ -39,7 +39,7 @@ class FormatHelpers
      */
     static function date_br_to_datetime_zero($date)
     {
-        return implode('-', array_reverse(explode('/', $date))) . ' 00:00:00';
+        return $date ? implode('-', array_reverse(explode('/', $date))) . ' 00:00:00' : null;
     }
 
     /**
@@ -48,7 +48,7 @@ class FormatHelpers
      */
     static function date_br_to_datetime_day($date)
     {
-        return implode('-', array_reverse(explode('/', $date))) . ' 23:59:59';
+        return $date ? implode('-', array_reverse(explode('/', $date))) . ' 23:59:59' : null;
     }
 
     /**
@@ -57,7 +57,7 @@ class FormatHelpers
      */
     static function datetime_to_date($date)
     {
-        return Str::limit($date, 10, '');
+        return $date ? Str::limit($date, 10, '') : null;
     }
 
     /**
@@ -66,7 +66,7 @@ class FormatHelpers
      */
     static function datetime_to_date_br($date)
     {
-        return implode('/', array_reverse(explode('-', Str::limit($date, 10, ''))));
+        return $date ? implode('/', array_reverse(explode('-', Str::limit($date, 10, '')))) : null;
     }
 
     /**
@@ -86,7 +86,7 @@ class FormatHelpers
      */
     static function first_word($word)
     {
-        return strtok($word, ' ');
+        return $word ? strtok($word, ' ') : null;
     }
 
     /**
@@ -95,7 +95,7 @@ class FormatHelpers
      */
     static function two_word($word)
     {
-        if ($word != null) {
+        if ($word) {
             if (count(explode(' ', $word)) > 1) {
                 list($first, $second) = explode(' ', $word);
                 return $first . ' ' . $second;
@@ -113,7 +113,7 @@ class FormatHelpers
      */
     static function image_name($name)
     {
-        return md5($name) . '-' . implode('-', explode(':', basename(now()->toTimeString()))) . '.png';
+        return $name ? md5($name) . '-' . implode('-', explode(':', basename(now()->toTimeString()))) . '.png' : null;
     }
 
     /**
@@ -155,7 +155,7 @@ class FormatHelpers
      */
     static function remove_last_word($remove, $string)
     {
-        return Str::replaceLast($remove, '', $string);
+        return $string ? Str::replaceLast($remove, '', $string) : null;
     }
 
     /**
@@ -180,10 +180,14 @@ class FormatHelpers
      */
     static function to_usd($value)
     {
-        $format = $value;
-        $format = str_replace('.', '', $format);
-        $format = str_replace(',', '.', $format);
+        if ($value) {
+            $format = $value;
+            $format = str_replace('.', '', $format);
+            $format = str_replace(',', '.', $format);
 
-        return $format;
+            return $format;
+        } else {
+            return null;
+        }
     }
 }

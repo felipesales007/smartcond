@@ -780,44 +780,56 @@ function removeInfoRequired(form) {
 
 // formata date em data br
 function date_to_date_br(data) {
-    let date  = new Date(data);
-    let day   = '' + (date.getDate() + 1);
-    let month = '' + (date.getMonth() + 1);
-    let year  = date.getFullYear();
+    if (data) {
+        let date  = new Date(data);
+        let day   = '' + (date.getDate() + 1);
+        let month = '' + (date.getMonth() + 1);
+        let year  = date.getFullYear();
 
-    if (day.length < 2) {
-        day = '0' + day;
+        if (day.length < 2) {
+            day = '0' + day;
+        }
+
+        if (month.length < 2) {
+            month = '0' + month;
+        }
+
+        return [day, month, year].join('/');
+    } else {
+        return null;
     }
-
-    if (month.length < 2) {
-        month = '0' + month;
-    }
-
-    return [day, month, year].join('/');
 }
 
 // formata timestamp em data br em datepicker
 function timestamp_to_date_br(data) {
-    let date  = new Date(data);
-    let day   = '' + date.getDate();
-    let month = '' + (date.getMonth() + 1);
-    let year  = date.getFullYear();
+    if (data) {
+        let date  = new Date(data);
+        let day   = '' + date.getDate();
+        let month = '' + (date.getMonth() + 1);
+        let year  = date.getFullYear();
 
-    if (day.length < 2) {
-        day = '0' + day;
+        if (day.length < 2) {
+            day = '0' + day;
+        }
+
+        if (month.length < 2) {
+            month = '0' + month;
+        }
+
+        return [day, month, year].join('/');
+    } else {
+        return null;
     }
-
-    if (month.length < 2) {
-        month = '0' + month;
-    }
-
-    return [day, month, year].join('/');
 }
 
 // calcula a idade
 function calcularIdade(date) {
-    let birthday = +new Date(date);
-    return ~~((Date.now() - birthday) / (31557600000));
+    if (date) {
+        let birthday = +new Date(date);
+        return ~~((Date.now() - birthday) / (31557600000));
+    } else {
+        return null;
+    }
 }
 
 // verifica se o input de bloquear está ativo ou não - onkeyup="statusCheckbox(this);"
@@ -937,16 +949,20 @@ function isNumber(e) {
 function to_real(value) {
     let number = value;
 
-    if (!isNumber(number.toString().replace('R$ ', '')) ||
-        !isNumber(number.toString().replace('R$', '')) ||
-        number === '' || number === null || number === typeof 'undefined') {
-        return '0,00'
-    } else {
-        number = number.toString().replace('R$', '');
-        number = number.toString().replace('R$ ', '');
-        number = parseFloat(number).toLocaleString('pt-br', { minimumFractionDigits: 2 });
+    if (number) {
+        if (!isNumber(number.toString().replace('R$ ', '')) ||
+            !isNumber(number.toString().replace('R$', '')) ||
+            number === '' || number === null || number === typeof 'undefined') {
+            return '0,00'
+        } else {
+            number = number.toString().replace('R$', '');
+            number = number.toString().replace('R$ ', '');
+            number = parseFloat(number).toLocaleString('pt-br', { minimumFractionDigits: 2 });
 
-        return number;
+            return number;
+        }
+    } else {
+        return null;
     }
 }
 

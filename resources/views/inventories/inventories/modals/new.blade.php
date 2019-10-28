@@ -323,6 +323,11 @@
                     </div>
                     <!-- botões -->
                     <div class="text-right float-right fe-form-footer">
+                        @if (app('router')->has('inventory.store') && \App\Models\Permission::routePermission('inventory.store'))
+                            <button type="submit" id="btn-new-other-inventory" class="btn btn-icon-only btn-outline-success rounded-circle position-relative float-left ml-4" title="Clique para criar outro item igual">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        @endif
                         <a href="javascript:void(0)" class="mr-4" data-dismiss="modal">{{ __('Cancelar') }}</a>
                         @if (app('router')->has('inventory.store') && \App\Models\Permission::routePermission('inventory.store'))
                             <button type="submit" id="btn-new-inventory" class="btn btn-outline-success mr-4">{{ __('Criar item') }}</button>
