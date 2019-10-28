@@ -3,11 +3,17 @@
 
 @section('content')
 
-    <!-- fundo -->
-    <div class="bg-gradient-primary pb-7 pb-xl-7 pt-7 pt-md-7 pt-xl-7"></div>
+    <!-- breadcrumbs -->
+    @component('layouts.headers.background')
+        @component('layouts.headers.breadcrumbs')
+            @slot('title')
+                {{ __('Home') }}
+            @endslot
+        @endcomponent
+    @endcomponent
 
     <!-- corpo -->
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--8">
         <div class="row">
             <!-- calendário -->
             <div class="col-lg-6">

@@ -3,7 +3,18 @@
 
 @section('content')
 
-    @include('users.dashboard.cards')
+    <!-- breadcrumbs e cards -->
+    @component('layouts.headers.background')
+        @component('layouts.headers.breadcrumbs')
+            @slot('title')
+                {{ __('Usuários') }}
+            @endslot
+
+            <li class="breadcrumb-item fe-mouse-default active" aria-current="page">@yield('title')</li>
+        @endcomponent
+
+        @include('users.dashboard.cards')
+    @endcomponent
 
     <!-- tabela ajax -->
     <div class="container-fluid mt--7">
