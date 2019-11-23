@@ -5,7 +5,7 @@
         @include('layouts.import.head')
 
         <!-- título da aba -->
-        <title>{{ config('app.name', 'e-Imperium') }} - @yield('title')</title>
+        <title>{{ config('app.name', 'Smartcond') }} - @yield('title')</title>
 
         <!-- fonte -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">

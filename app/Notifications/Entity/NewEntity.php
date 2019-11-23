@@ -20,6 +20,7 @@ class NewEntity extends Notification
     public function __construct($collection)
     {
         $collection->state_id = $collection->state_id ? $collection->getState->name : null;
+
         $this->collection = $collection;
     }
 
@@ -42,9 +43,9 @@ class NewEntity extends Notification
     {
         $mailMessage = new MailMessage();
 
-        $mailMessage->subject('Notificação de criação de condomínio');
+        $mailMessage->subject('Notificação de criação de entidade');
         $mailMessage->greeting('Olá,');
-        $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma criação de condomínio no sistema ' . config('app.name') . ', e o seu endereço de e-mail foi definido como contato do condomínio criado, segue abaixo os dados do condomínio:');
+        $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma criação de entidade no sistema ' . config('app.name') . ', e o seu endereço de e-mail foi definido como contato da entidade criada, segue abaixo os dados da entidade:');
 
         if ($this->collection->cnpj) {
             $mailMessage->line('<b>CNPJ: </b>' . $this->collection->cnpj);
@@ -63,7 +64,7 @@ class NewEntity extends Notification
         }
 
         if ($this->collection->contact) {
-            $mailMessage->line('<b>Contato: </b>' . $this->collection->contact);
+            $mailMessage->line('<b>Telefone: </b>' . $this->collection->contact);
         }
 
         if ($this->collection->postal_code) {
@@ -103,7 +104,7 @@ class NewEntity extends Notification
         }
 
         $mailMessage->action('Acessar sistema', route('login'));
-        $mailMessage->line('<span class="notice">Se você desconhece está solicitação de criação de condomínio vinculada ao seu endereço de e-mail, procure o administrador do sistema.</span>');
+        $mailMessage->line('<span class="notice">Se você desconhece está solicitação de criação de entidade vinculada ao seu endereço de e-mail, procure o administrador do sistema.</span>');
 
         return $mailMessage;
     }

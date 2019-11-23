@@ -1,4 +1,4 @@
-// inicializa o datatables personalizado
+// initialize custom datatables
 $.fn.DataTable.ext.pager.numbers_length = 5;
 $.fn.dataTable.ext.errMode = 'none';
 
@@ -36,7 +36,3 @@ let datatables_edited_button =
     '<"row"<"col-md-6" <"float-left ml-3 mr--4" f><B>><"text-right col-md-6" l>>' +
     '<"row"<"col-md-12" tr>>' +
     '<"row"<"col-md-6" i><"col-md-6" p>>';
-
-$('body').tooltip({
-    selector: '[data-toggle="tooltip"]'
-});

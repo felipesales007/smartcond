@@ -23,6 +23,7 @@ class EditEntity extends Notification
     public function __construct($collection, $original)
     {
         $collection->state_id = $collection->state_id ? $collection->getState->name : null;
+
         $this->collection = $collection;
         $this->original   = $original;
     }
@@ -46,15 +47,15 @@ class EditEntity extends Notification
     {
         $mailMessage = new MailMessage();
 
-        $mailMessage->subject('Notificação de alteração de condomínio');
+        $mailMessage->subject('Notificação de alteração de entidade');
         $mailMessage->greeting('Olá,');
 
         if (!$this->original['email'] && $this->collection->email || $this->original['email'] == $this->collection->email) {
-            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados do condomínio no qual seu endereço de e-mail está relacionado no sistema ' . config('app.name') . ', e o seu endereço de e-mail está definido como contato do condomínio, segue abaixo os dados alterados do condomínio:');
+            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados da entidade no qual seu endereço de e-mail está relacionado no sistema ' . config('app.name') . ', e o seu endereço de e-mail está definido como contato da entidade, segue abaixo os dados alterados da entidade:');
         } elseif ($this->original['email'] && !$this->collection->email) {
-            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados do condomínio no qual seu endereço de e-mail estava relacionado no sistema ' . config('app.name') . ', e o seu endereço de e-mail foi <span class="text-warning">removido</span> como contato do condomínio, segue abaixo os dados alterados do condomínio:');
+            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados da entidade no qual seu endereço de e-mail estava relacionado no sistema ' . config('app.name') . ', e o seu endereço de e-mail foi <span class="text-warning">removido</span> como contato da entidade, segue abaixo os dados alterados da entidade:');
         } elseif ($this->original['email'] != $this->collection->email) {
-            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados do condomínio, no qual houve uma alteração de e-mail de <span class="text-warning">' . $this->original['email'] . '</span> para <span class="text-success">' . $this->collection->email . '</span> no sistema ' . config('app.name') . ', e o endereço de e-mail ' . $this->collection->email . ' foi definido como contato do condomínio, segue abaixo os dados alterados do condomínio:');
+            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados da entidade, no qual houve uma alteração de e-mail de <span class="text-warning">' . $this->original['email'] . '</span> para <span class="text-success">' . $this->collection->email . '</span> no sistema ' . config('app.name') . ', e o endereço de e-mail ' . $this->collection->email . ' foi definido como contato da entidade, segue abaixo os dados alterados da entidade:');
         }
 
         // cnpj
@@ -109,17 +110,17 @@ class EditEntity extends Notification
             $mailMessage->line('<span class="text-warning"><b>E-mail: </b>' . $this->original['email'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
-        // contato
+        // Telefone
         if (isset($this->collection->getChanges()['contact']) && !$this->original['contact']) {
-            $mailMessage->line('<b>Contato: </b>' . $this->collection->contact);
+            $mailMessage->line('<b>Telefone: </b>' . $this->collection->contact);
         }
 
         if (isset($this->collection->getChanges()['contact']) && $this->original['contact']) {
-            $mailMessage->line('<b>Contato: </b>' . $this->collection->contact . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['contact'] . '</small>');
+            $mailMessage->line('<b>Telefone: </b>' . $this->collection->contact . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['contact'] . '</small>');
         }
 
         if (!$this->collection->contact && $this->original['contact']) {
-            $mailMessage->line('<span class="text-warning"><b>Contato: </b>' . $this->original['contact'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
+            $mailMessage->line('<span class="text-warning"><b>Telefone: </b>' . $this->original['contact'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
         // cep
@@ -253,7 +254,7 @@ class EditEntity extends Notification
         }
 
         $mailMessage->action('Acessar sistema', route('login'));
-        $mailMessage->line('<span class="notice">Se você desconhece está solicitação de alteração de condomínio vinculada ao seu endereço de e-mail, procure o administrador do sistema.</span>');
+        $mailMessage->line('<span class="notice">Se você desconhece está solicitação de alteração de entidade vinculada ao seu endereço de e-mail, procure o administrador do sistema.</span>');
 
         return $mailMessage;
     }

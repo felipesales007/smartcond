@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\SupportOption;
+use App\Models\User\SupportOption;
 use Illuminate\Database\Seeder;
 
 class SupportOptionsTableSeeder extends Seeder

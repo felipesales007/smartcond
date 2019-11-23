@@ -12,81 +12,112 @@ class GroupsTableSeeder extends Seeder
      */
     public function run()
     {
+        // 1 - home
         Group::create([
-            'name'        => 'home',
-            'description' => 'Grupo da página inicial',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'home',
+            'user_level_id' => '3',
+            'description'   => 'Grupo da página inicial',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 2 - perfil
         Group::create([
-            'name'        => 'perfil',
-            'description' => 'Grupo do perfil do usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'perfil',
+            'user_level_id' => '3',
+            'description'   => 'Grupo do perfil do usuário logado',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 3 - gerenciamento
         Group::create([
-            'name'        => 'usuarios',
-            'description' => 'Grupo das configurações de usuários',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'administradores',
+            'user_level_id' => '2',
+            'description'   => 'Grupo das configurações dos administradores',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 4 - gerenciamento
         Group::create([
-            'name'        => 'condominios',
-            'description' => 'Grupo das configurações de condomínios',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'usuarios',
+            'user_level_id' => '3',
+            'description'   => 'Grupo das configurações dos usuários',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 5 - gerenciamento
         Group::create([
-            'name'        => 'rotas',
-            'description' => 'Grupo das configurações de rotas',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'empresas',
+            'user_level_id' => '1',
+            'description'   => 'Grupo das configurações das empresas',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 6 - gerenciamento
         Group::create([
-            'name'        => 'menu',
-            'description' => 'Grupo das configurações de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'entidades',
+            'user_level_id' => '2',
+            'description'   => 'Grupo das configurações das entidades',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 7 - gerenciamento
         Group::create([
-            'name'        => 'permissoes',
-            'description' => 'Grupo das configurações de permissões de usuários',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'permissoes',
+            'user_level_id' => '3',
+            'description'   => 'Grupo das configurações das permissões do usuário',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 8 - layout
         Group::create([
-            'name'        => 'empresas',
-            'description' => 'Grupo das configurações de empresas',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'grupos',
+            'user_level_id' => '1',
+            'description'   => 'Grupo das configurações dos grupos',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 9 - layout
         Group::create([
-            'name'        => 'administradores',
-            'description' => 'Grupo das configurações de administradores',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'rotas',
+            'user_level_id' => '1',
+            'description'   => 'Grupo das configurações das rotas',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 10 - layout
         Group::create([
-            'name'        => 'departamentos',
-            'description' => 'Grupo das configurações dos departamentos do condomínio',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'menu',
+            'user_level_id' => '1',
+            'description'   => 'Grupo das configurações dos menu',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
 
+        // 11 - layout
         Group::create([
-            'name'        => 'inventario',
-            'description' => 'Grupo das configurações dos itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
+            'name'          => 'menu-itens',
+            'user_level_id' => '1',
+            'description'   => 'Grupo das configurações dos itens do menu',
+            'created_at'    => now(),
+            'updated_at'    => now()
+        ]);
+
+        // 12 - administrativo
+        Group::create([
+            'name'          => 'departamentos',
+            'user_level_id' => '3',
+            'description'   => 'Grupo das configurações das departamentos',
+            'created_at'    => now(),
+            'updated_at'    => now()
         ]);
     }
 }

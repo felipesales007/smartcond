@@ -2,7 +2,10 @@
 
 namespace App\Models\Route;
 
+use App\Models\Company\Company;
+use App\Models\User\UserLevels;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Group extends Model
@@ -22,7 +25,7 @@ class Group extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'blocked', 'deleted_at'
+        'user_level_id', 'name', 'description', 'blocked', 'deleted_at'
     ];
 
     /**
@@ -62,7 +65,11 @@ class Group extends Model
      */
     static function getCount()
     {
-        return Group::count();
+        if (Company::id() == 1) {
+            return Group::count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -72,7 +79,11 @@ class Group extends Model
      */
     static function getCountBlocked()
     {
-        return Group::where('blocked', '!=', null)->count();
+        if (Company::id() == 1) {
+            return Group::where('blocked', '!=', null)->count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -90,5 +101,15 @@ class Group extends Model
         }
 
         return $array;
+    }
+
+    /**
+     * Atributo de referência do join.
+     *
+     * @return BelongsTo
+     */
+    public function getUserLevel()
+    {
+        return $this->belongsTo(UserLevels::class, 'user_level_id');
     }
 }

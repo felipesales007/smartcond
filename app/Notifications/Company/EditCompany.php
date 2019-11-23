@@ -109,17 +109,17 @@ class EditCompany extends Notification
             $mailMessage->line('<span class="text-warning"><b>E-mail: </b>' . $this->original['email'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
-        // contato
+        // telefone
         if (isset($this->collection->getChanges()['contact']) && !$this->original['contact']) {
-            $mailMessage->line('<b>Contato: </b>' . $this->collection->contact);
+            $mailMessage->line('<b>Telefone: </b>' . $this->collection->contact);
         }
 
         if (isset($this->collection->getChanges()['contact']) && $this->original['contact']) {
-            $mailMessage->line('<b>Contato: </b>' . $this->collection->contact . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['contact'] . '</small>');
+            $mailMessage->line('<b>Telefone: </b>' . $this->collection->contact . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['contact'] . '</small>');
         }
 
         if (!$this->collection->contact && $this->original['contact']) {
-            $mailMessage->line('<span class="text-warning"><b>Contato: </b>' . $this->original['contact'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
+            $mailMessage->line('<span class="text-warning"><b>Telefone: </b>' . $this->original['contact'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
         // cep

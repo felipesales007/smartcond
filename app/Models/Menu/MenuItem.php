@@ -3,7 +3,8 @@
 namespace App\Models\Menu;
 
 use App\Models\Boolean;
-use App\Models\Permission;
+use App\Models\Company\Company;
+use App\Models\User\Permission;
 use App\Models\Route\Route;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,7 +28,7 @@ class MenuItem extends Model
      */
     protected $fillable = [
         'menu_id', 'route_id', 'order', 'name', 'button',
-        'list', 'hidden', 'description','blocked', 'deleted_at'
+        'main', 'hidden', 'description','blocked', 'deleted_at'
     ];
 
     /**
@@ -67,7 +68,11 @@ class MenuItem extends Model
      */
     static function getCount()
     {
-        return MenuItem::count();
+        if (Company::id() == 1) {
+            return MenuItem::count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -77,7 +82,11 @@ class MenuItem extends Model
      */
     static function getCountBlocked()
     {
-        return MenuItem::where('blocked', '!=', null)->count();
+        if (Company::id() == 1) {
+            return MenuItem::where('blocked', '!=', null)->count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -122,9 +131,9 @@ class MenuItem extends Model
      *
      * @return BelongsTo
      */
-    public function getList()
+    public function getMain()
     {
-        return $this->belongsTo(Boolean::class, 'list');
+        return $this->belongsTo(Boolean::class, 'main');
     }
 
     /**
@@ -158,16 +167,23 @@ class MenuItem extends Model
      */
     static function getUserMenuItems()
     {
-        return MenuItem::select('menu_items.*')
+        return MenuItem::select('menu_items.id', 'menu_items.menu_id', 'menu_items.name', 'menu_items.button',
+            'menu_items.hidden', 'menu_items.blocked', 'menu.menu_option_id', 'groups.blocked as group_blocked',
+            'routes.route', 'routes.url', 'routes.blocked as route_blocked')
+            ->join('menu', 'menu.id', '=', 'menu_items.menu_id')
             ->join('routes', 'routes.id', '=', 'menu_items.route_id')
             ->join('permissions', 'permissions.route_id', '=', 'menu_items.route_id')
+            ->join('groups', 'groups.id', '=', 'routes.group_id')
+            ->where('permissions.user_id', '=', auth()->id())
             ->where('routes.deleted_at', '=', null)
-            ->where('permissions.user_id', '=', auth()->user()['id'])
-            ->where('menu_items.list', '=', '0')
-            ->whereIn('menu_items.route_id', Permission::select('route_id'))
+            ->where('menu_items.button', '=', null)
+            ->orWhere('menu_items.main', '=', '1')
+            ->whereIn('menu_items.route_id',
+                Permission::select('route_id')
+                    ->where('user_id', '=', auth()->id()))
             ->groupBy('id')
             ->orderBy('hidden', 'asc')
-            ->orderBy('order', 'asc')
+            ->orderBy('menu_items.order', 'asc')
             ->get();
     }
 

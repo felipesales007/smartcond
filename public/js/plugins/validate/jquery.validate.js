@@ -356,6 +356,8 @@ $.extend( $.validator, {
 
 			if (typeof(validServer) != "undefined" && validServer !== null) {
                 $( element ).parent().next( "div" ).find( 'div[role="alert"]' ).prevObject[0].innerHTML = '&nbsp;';
+                $( element ).parent().next( "div" ).find( 'div[role="alert"]' ).prevObject[0].classList.add('valid-feedback');
+                $( element ).parent().next( "div" ).find( 'div[role="alert"]' ).prevObject[0].classList.remove('invalid-feedback');
             }
 
 			if ( element.type === "radio" ) {
@@ -374,6 +376,8 @@ $.extend( $.validator, {
 
             if (typeof(validServer) != "undefined" && validServer !== null) {
                 $( element ).parent().next( "div" ).find( 'div[role="alert"]' ).prevObject[0].innerHTML = '&nbsp;';
+                $( element ).parent().next( "div" ).find( 'div[role="alert"]' ).prevObject[0].classList.add('valid-feedback');
+                $( element ).parent().next( "div" ).find( 'div[role="alert"]' ).prevObject[0].classList.remove('invalid-feedback');
             }
 
 			if ( element.type === "radio" ) {

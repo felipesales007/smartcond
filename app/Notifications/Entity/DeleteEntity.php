@@ -41,9 +41,9 @@ class DeleteEntity extends Notification
     {
         $mailMessage = new MailMessage();
 
-        $mailMessage->subject('Notificação de exclusão de condomínio');
+        $mailMessage->subject('Notificação de exclusão de entidade');
         $mailMessage->greeting('Olá,');
-        $mailMessage->line('Você está recebendo este e-mail porque foi realizado a <span class="text-warning">exclusão do condomínio ' . $this->name . '</span> no sistema ' . config('app.name'));
+        $mailMessage->line('Você está recebendo este e-mail porque foi realizado a <span class="text-warning">exclusão da entidade ' . $this->name . '</span> no sistema ' . config('app.name'));
         $mailMessage->action('Visualizar sistema', route('login'));
         $mailMessage->line('<span class="notice">Se você desconhece está ação, procure o administrador do sistema.</span>');
 

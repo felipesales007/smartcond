@@ -7,12 +7,12 @@
                     <tr>
                         <td align="center" valign="top">
                             @auth()
-                                <span class="avatar rounded-circle">
-                                    <img src="{{ auth()->user()['photo'] ? url('storage/images/users/photo/' . auth()->user()['photo']) : url('images/default/default-user.png') }}" alt="" width="50" border="0">
+                                <span class="avatar rounded-circle fe-img-center">
+                                    <img src="{{ auth()->user()->profilePicture() }}" alt="" width="50" border="0">
                                 </span>
                             @endauth
                             @guest()
-                                <span class="avatar rounded-circle">
+                                <span class="avatar rounded-circle fe-img-center">
                                     <img src="{{ url('images/default/default-user.png') }}" alt="" width="50" border="0">
                                 </span>
                             @endguest

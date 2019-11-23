@@ -16,10 +16,11 @@ class CreatePermissionsTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('route_id')->unsigned();
-            $table->foreign('route_id')->references('id')->on('routes');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('route_id')->references('id')->on('routes');
         });
     }
 

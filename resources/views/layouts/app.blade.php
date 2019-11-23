@@ -20,9 +20,7 @@
 
         <!-- barra e menu lateral -->
         @auth()
-            <form id="form-logout" method="post" action="{{ app('router')->has('logout') ? route('logout') : url('/') }}" class="d-none">
-                @csrf
-            </form>
+            <form id="form-logout" method="post" action="{{ app('router')->has('logout') ? route('logout') : url('/') }}" class="d-none">@csrf</form>
             @if (!Illuminate\Support\Facades\Request::is('verificar/email'))
                 @include('layouts.navbars.sidebar')
             @endif
@@ -33,21 +31,12 @@
             @include('layouts.navbars.navbar')
             @yield('content')
             @auth()
-                @include('layouts.import.includes')
+                @include('layouts.import.modals')
             @endif
         </div>
 
         <!-- rodapé -->
-        @auth()
-            @if (!Illuminate\Support\Facades\Request::is('verificar/email'))
-                @include('layouts.footers.access.auth')
-            @else
-                @include('layouts.footers.access.guest')
-            @endif
-        @endauth
-        @guest()
-            @include('layouts.footers.access.guest')
-        @endguest
+        @include('layouts.components.footer')
 
         <!-- javascript -->
         @include('layouts.import.js')

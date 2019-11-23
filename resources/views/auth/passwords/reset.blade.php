@@ -4,10 +4,10 @@
 @section('content')
 
     <!-- definição de senha -->
-    <div class="container mt-3 mt-lg--5">
+    <div class="container mb-1 mt--2">
         <div class="fe-center-auth">
             <div class="row justify-content-center">
-                <div class="col-lg-12 fe-auth-corpo-width fe-z-1">
+                <div class="col-lg-12 fe-auth-body-width fe-z-1">
                     <!-- card -->
                     <div class="card fe-card-sm-transparent bg-secondary border-0 mb-md-5">
                         <div class="card-body pt-5 px-1 px-sm-5 px-lg-5">
@@ -68,9 +68,9 @@
                                                 <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 8 caracteres') }}">*</span>
                                                 <input type="password" id="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" placeholder="{{ __('Senha') }}" minlength="8" maxlength="191" required autocomplete="password" @if ($errors->has('password')) autofocus @endif>
                                                 <!-- visualizar ou ocultar senha -->
-                                                <div class="input-group-append" onclick="verSenha(this);">
+                                                <div class="input-group-append" onclick="viewPassword(this);">
                                                     <span class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
-                                                        <i class="fe-input-icone far fa-eye"></i>
+                                                        <i class="fe-input-icon far fa-eye"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -93,9 +93,9 @@
                                                 <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('repetir a senha') }}">*</span>
                                                 <input type="password" id="password-confirmation" name="password_confirmation" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" placeholder="{{ __('Confirme a senha') }}" minlength="8" maxlength="191" required autocomplete="password-confirmation">
                                                 <!-- visualizar ou ocultar senha -->
-                                                <div class="input-group-append" onclick="verSenha(this);">
+                                                <div class="input-group-append" onclick="viewPassword(this);">
                                                     <span class="input-group-text {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
-                                                        <i class="fe-input-icone far fa-eye"></i>
+                                                        <i class="fe-input-icon far fa-eye"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -108,7 +108,7 @@
                                 </div>
                                 <!-- botão -->
                                 <div class="text-center mb-4 mt-2">
-                                    <button type="submit" class="btn btn-success btn-block fe-carregando fe-scroll-top">{{ __('Confirmar') }}</button>
+                                    <button type="submit" class="btn btn-success btn-block fe-spinner fe-scroll-top">{{ __('Confirmar') }}</button>
                                 </div>
                             </form>
                         </div>
@@ -119,6 +119,6 @@
     </div>
 
     <!-- validate -->
-    @include('auth.includes.validate')
+    @include('auth.validate.reset')
 
 @endsection

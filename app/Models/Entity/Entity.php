@@ -67,7 +67,11 @@ class Entity extends Model
      */
     static function getCount()
     {
-        return Entity::count();
+        return Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->count();
     }
 
     /**
@@ -77,17 +81,27 @@ class Entity extends Model
      */
     static function getCountEmail()
     {
-        return Entity::where('email', '!=', null)->count();
+        return Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->where('email', '!=', null)
+            ->count();
     }
 
     /**
-     * Retornar a contagem de todos os dados com contato cadastrado no armazenamento.
+     * Retornar a contagem de todos os dados com telefone cadastrado no armazenamento.
      *
      * @return mixed
      */
     static function getCountContact()
     {
-        return Entity::where('contact', '!=', null)->count();
+        return Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->where('contact', '!=', null)
+            ->count();
     }
 
     /**
@@ -97,7 +111,12 @@ class Entity extends Model
      */
     static function getCountBlocked()
     {
-        return Entity::where('blocked', '!=', null)->orWhere('blocked_at', '>=', date('Y-m-d'))->count();
+        return Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+            ->when(auth()->user()['admin'] == '0', function ($query) {
+                $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
+            })
+            ->where('blocked', '!=', null)->orWhere('blocked_at', '>=', date('Y-m-d'))
+            ->count();
     }
 
     /**
@@ -142,7 +161,7 @@ class Entity extends Model
     }
 
     /**
-     * Retornar o condomínio principal relacionada com o usuário no armazenamento.
+     * Retornar a entidade principal relacionada com o usuário no armazenamento.
      *
      * @return mixed
      */
@@ -163,7 +182,7 @@ class Entity extends Model
     }
 
     /**
-     * Retornar os condomínios relacionada com o usuário no armazenamento.
+     * Retornar as entidades relacionada com o usuário no armazenamento.
      *
      * @return mixed
      */
@@ -182,7 +201,7 @@ class Entity extends Model
     }
 
     /**
-     * Retornar os condomínios relacionada com o usuário no armazenamento.
+     * Retornar as entidades relacionada com o usuário no armazenamento.
      *
      * @param $id
      * @return mixed

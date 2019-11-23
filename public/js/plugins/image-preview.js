@@ -7,7 +7,7 @@
 
 /*!
 =========================================================
-* função para o gerenciamento de upload de imagens
+* image upload management function
 =========================================================
 */
 
@@ -18,25 +18,25 @@ function destination_url(name, type) {
 
 /*!
 =========================================================
-* imagens de pré-visualização JS
+* js preview images
 =========================================================
 */
 
 for (let i = 0; i < 20; i++) {
-    // salva a url temporariamente
+    // save url temporarily
     let temp;
 
-    // salva o caminho da url em modal
+    // save url path in modal
     $('.modal').on('shown.bs.modal', function () {
         temp = $('.fe-image-url-' + i).val();
     });
 
-    // salva o caminho da url em page
+    // save url path to page
     if ($('.fe-image-url-' + i) != null) {
         temp = $('.fe-image-url-' + i).val();
     }
 
-    // se remover a imagem
+    // if you remove the image
     if ($('.fe-remove-preview-' + i)) {
         $('.fe-remove-preview-' + i).on('click', function () {
             $(this).addClass('fe-hidden');
@@ -47,14 +47,14 @@ for (let i = 0; i < 20; i++) {
         });
     }
 
-    // se adicionar imagem
+    // if you add picture
     if ($('.fe-grid-preview-item-' + i)) {
         $('.fe-grid-preview-item-' + i).on('click', function () {
             document.querySelector('.fe-image-' + i).click();
         });
     }
 
-    // mostrando imagem adicionada
+    // showing added image
     if ($('.fe-image-' + i)) {
         $('.fe-image-' + i).change(function (e) {
             let extension = $(this).val().split('.').pop().toLowerCase();
@@ -70,7 +70,7 @@ for (let i = 0; i < 20; i++) {
                 reader.readAsDataURL(e.target.files[0]);
             }
 
-            // validação da imagem
+            // image validation
             if (new RegExp(accepted.join('|')).test(extension)) {
                 $('.fe-remove-preview-' + i).removeClass('fe-hidden');
                 $('.fe-image-url-' + i).val(temp);

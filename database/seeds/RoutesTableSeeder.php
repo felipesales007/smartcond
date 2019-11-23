@@ -12,6 +12,7 @@ class RoutesTableSeeder extends Seeder
      */
     public function run()
     {
+        // 1 - home
         Route::create([
             'group_id'        => '1',
             'route_option_id' => '1',
@@ -24,29 +25,20 @@ class RoutesTableSeeder extends Seeder
             'updated_at'      => now()
         ]);
 
+        // 2 - perfil
         Route::create([
             'group_id'        => '2',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'editar',
-            'route'           => 'profile.index',
-            'controller'      => 'Profile\ProfileController@index',
+            'route'           => 'profile.edit',
+            'controller'      => 'Profile\ProfileController@edit',
             'description'     => 'Página do perfil do usuário logado',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        Route::create([
-            'group_id'        => '2',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/{id?}',
-            'route'           => 'profile.update',
-            'controller'      => 'Profile\ProfileController@update',
-            'description'     => 'Atualizar o perfil do usuário logado',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
+        // 3 - perfil
         Route::create([
             'group_id'        => '2',
             'route_option_id' => '2',
@@ -58,6 +50,7 @@ class RoutesTableSeeder extends Seeder
             'updated_at'      => now()
         ]);
 
+        // 4 - perfil
         Route::create([
             'group_id'        => '2',
             'route_option_id' => '2',
@@ -69,2149 +62,1162 @@ class RoutesTableSeeder extends Seeder
             'updated_at'      => now()
         ]);
 
-        Route::create([
-            'group_id'        => '2',
-            'route_option_id' => '2',
-            'url'             => 'verificar/senha',
-            'route'           => 'profile.check.password',
-            'controller'      => 'Profile\CheckController@checkPassword',
-            'description'     => 'Verificar a senha do usuário logado',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '2',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email/diferente',
-            'route'           => 'profile.check.email.different',
-            'controller'      => 'User\CheckController@checkEmailDifferent',
-            'description'     => 'Verificar o e-mail dos usuários que seja diferente do e-mail do usuário logado',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '2',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cpf/diferente',
-            'route'           => 'profile.check.cpf.different',
-            'controller'      => 'User\CheckController@checkCpfDifferent',
-            'description'     => 'Verificar o cpf dos usuários que seja diferente do cpf do usuário logado',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '2',
-            'route_option_id' => '2',
-            'url'             => 'verificar/rg/diferente',
-            'route'           => 'profile.check.rg.different',
-            'controller'      => 'User\CheckController@checkRgDifferent',
-            'description'     => 'Verificar o rg dos usuários que seja diferente do rg do usuário logado',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '1',
-            'url'             => 'data',
-            'route'           => 'user.data',
-            'controller'      => 'User\DashboardController@data',
-            'description'     => 'Dados do dashboard de usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
+        // 5 - administradores
         Route::create([
             'group_id'        => '3',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'dashboard',
-            'route'           => 'user.dashboard',
-            'controller'      => 'User\DashboardController@dashboard',
-            'description'     => 'Página do dashboard de usuários',
+            'route'           => 'admin.dashboard',
+            'controller'      => 'Management\Admin\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 6 - administradores
         Route::create([
             'group_id'        => '3',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista',
-            'route'           => 'user.list',
-            'controller'      => 'User\UserController@list',
-            'description'     => 'Página de listagem de usuários',
+            'route'           => 'admin.list',
+            'controller'      => 'Management\Admin\AdminController@list',
+            'description'     => 'Página de listagem dos administradores',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 7 - administradores
         Route::create([
             'group_id'        => '3',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista/deletados',
-            'route'           => 'user.list.deleted',
-            'controller'      => 'User\UserController@listDeleted',
-            'description'     => 'Página de listagem de usuários deletados',
+            'route'           => 'admin.list.deleted',
+            'controller'      => 'Management\Admin\AdminController@listDeleted',
+            'description'     => 'Página de listagem dos administradores deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 8 - administradores
         Route::create([
             'group_id'        => '3',
             'route_option_id' => '1',
             'url'             => 'visualizar/{id?}',
-            'route'           => 'user.view',
-            'controller'      => 'User\UserController@edit',
-            'description'     => 'Modal de visualizar os dados dos usuários',
+            'route'           => 'admin.view',
+            'controller'      => 'Management\Admin\AdminController@edit',
+            'description'     => 'Modal de visualizar os dados do administrador',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '1',
-            'url'             => 'editar/{id?}',
-            'route'           => 'user.edit',
-            'controller'      => 'User\UserController@edit',
-            'description'     => 'Modal de editar os dados dos usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '1',
-            'url'             => 'banir/{id?}',
-            'route'           => 'user.ban',
-            'controller'      => 'User\UserController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '1',
-            'url'             => 'deletar/{id?}',
-            'route'           => 'user.delete',
-            'controller'      => 'User\UserController@edit',
-            'description'     => 'Modal de deletar os usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/{id?}',
-            'route'           => 'user.recover',
-            'controller'      => 'User\UserController@edit',
-            'description'     => 'Modal de recuperar os usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
+        // 9 - administradores
         Route::create([
             'group_id'        => '3',
             'route_option_id' => '2',
             'url'             => 'novo',
+            'route'           => 'admin.store',
+            'controller'      => 'Management\Admin\AdminController@store',
+            'description'     => 'Modal de criar novo administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 10 - administradores
+        Route::create([
+            'group_id'        => '3',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'admin.edit',
+            'controller'      => 'Management\Admin\AdminController@edit',
+            'description'     => 'Modal de editar os dados do administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 11 - administradores
+        Route::create([
+            'group_id'        => '3',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'admin.ban',
+            'controller'      => 'Management\Admin\AdminController@edit',
+            'description'     => 'Modal de bloquear e desbloquear o administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 12 - administradores
+        Route::create([
+            'group_id'        => '3',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'admin.delete',
+            'controller'      => 'Management\Admin\AdminController@edit',
+            'description'     => 'Modal de deletar o administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 13 - administradores
+        Route::create([
+            'group_id'        => '3',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'admin.recover',
+            'controller'      => 'Management\Admin\AdminController@edit',
+            'description'     => 'Modal de recuperar o administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 14 - administradores
+        Route::create([
+            'group_id'        => '3',
+            'route_option_id' => '2',
+            'url'             => 'enviar/email',
+            'route'           => 'admin.send.email',
+            'controller'      => 'Management\Admin\AdminController@sendEmail',
+            'description'     => 'Enviar e-mail para o administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 15 - administradores
+        Route::create([
+            'group_id'        => '3',
+            'route_option_id' => '2',
+            'url'             => 'reenviar/email',
+            'route'           => 'admin.resend.email',
+            'controller'      => 'Management\Admin\AdminController@resendEmail',
+            'description'     => 'Reenviar o e-mail de confirmação de e-mail do administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 16 - usuarios
+        Route::create([
+            'group_id'        => '4',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'user.dashboard',
+            'controller'      => 'Management\User\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos usuários',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 17 - usuarios
+        Route::create([
+            'group_id'        => '4',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'user.list',
+            'controller'      => 'Management\User\UserController@list',
+            'description'     => 'Página de listagem dos usuários',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 18 - usuarios
+        Route::create([
+            'group_id'        => '4',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletados',
+            'route'           => 'user.list.deleted',
+            'controller'      => 'Management\User\UserController@listDeleted',
+            'description'     => 'Página de listagem dos usuários deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 19 - usuarios
+        Route::create([
+            'group_id'        => '4',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'user.view',
+            'controller'      => 'Management\User\UserController@edit',
+            'description'     => 'Modal de visualizar os dados do usuário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 20 - usuarios
+        Route::create([
+            'group_id'        => '4',
+            'route_option_id' => '2',
+            'url'             => 'novo',
             'route'           => 'user.store',
-            'controller'      => 'User\UserController@store',
+            'controller'      => 'Management\User\UserController@store',
             'description'     => 'Modal de criar novo usuário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/{id?}',
-            'route'           => 'user.update',
-            'controller'      => 'User\UserController@update',
-            'description'     => 'Atualizar os dados dos usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/{id?}',
-            'route'           => 'user.block',
-            'controller'      => 'User\UserController@block',
-            'description'     => 'Bloquear os usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'remover/{id?}',
-            'route'           => 'user.destroy',
-            'controller'      => 'User\UserController@destroy',
-            'description'     => 'Deletar os usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/{id?}',
-            'route'           => 'user.restore',
-            'controller'      => 'User\UserController@restore',
-            'description'     => 'Recuperar os usuários deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'reenviar/email',
-            'route'           => 'user.resend.email',
-            'controller'      => 'User\UserController@resendEmail',
-            'description'     => 'Reenviar o e-mail de confirmação de e-mail do usuário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email',
-            'route'           => 'user.check.email',
-            'controller'      => 'User\CheckController@checkEmail',
-            'description'     => 'Verificar o e-mail dos usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email/diferente',
-            'route'           => 'user.check.email.different',
-            'controller'      => 'User\CheckController@checkEmailDifferent',
-            'description'     => 'Verificar o e-mail dos usuários que seja diferente do e-mail do usuário em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cpf',
-            'route'           => 'user.check.cpf',
-            'controller'      => 'User\CheckController@checkCpf',
-            'description'     => 'Verificar o cpf dos usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cpf/diferente',
-            'route'           => 'user.check.cpf.different',
-            'controller'      => 'User\CheckController@checkCpfDifferent',
-            'description'     => 'Verificar o cpf dos usuários que seja diferente do cpf do usuário em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'verificar/rg',
-            'route'           => 'user.check.rg',
-            'controller'      => 'User\CheckController@checkRg',
-            'description'     => 'Verificar o rg dos usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
-            'route_option_id' => '2',
-            'url'             => 'verificar/rg/diferente',
-            'route'           => 'user.check.rg.different',
-            'controller'      => 'User\CheckController@checkRgDifferent',
-            'description'     => 'Verificar o rg dos usuários que seja diferente do rg do usuário em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '1',
-            'url'             => 'data',
-            'route'           => 'entity.data',
-            'controller'      => 'Entity\DashboardController@data',
-            'description'     => 'Dados do dashboard de condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'dashboard',
-            'route'           => 'entity.dashboard',
-            'controller'      => 'Entity\DashboardController@dashboard',
-            'description'     => 'Página do dashboard de condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista',
-            'route'           => 'entity.list',
-            'controller'      => 'Entity\EntityController@list',
-            'description'     => 'Página de listagem de condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/deletados',
-            'route'           => 'entity.list.deleted',
-            'controller'      => 'Entity\EntityController@listDeleted',
-            'description'     => 'Página de listagem de condomínios deletadas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '1',
-            'url'             => 'visualizar/{id?}',
-            'route'           => 'entity.view',
-            'controller'      => 'Entity\EntityController@edit',
-            'description'     => 'Modal de visualizar os dados dos condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
+        // 21 - usuarios
         Route::create([
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'editar/{id?}',
-            'route'           => 'entity.edit',
-            'controller'      => 'Entity\EntityController@edit',
-            'description'     => 'Modal de editar os dados dos condomínios',
+            'route'           => 'user.edit',
+            'controller'      => 'Management\User\UserController@edit',
+            'description'     => 'Modal de editar os dados do usuário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 22 - usuarios
         Route::create([
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'banir/{id?}',
-            'route'           => 'entity.ban',
-            'controller'      => 'Entity\EntityController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os condomínios',
+            'route'           => 'user.ban',
+            'controller'      => 'Management\User\UserController@edit',
+            'description'     => 'Modal de bloquear e desbloquear o usuário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 23 - usuarios
         Route::create([
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'deletar/{id?}',
-            'route'           => 'entity.delete',
-            'controller'      => 'Entity\EntityController@edit',
-            'description'     => 'Modal de deletar os condomínios',
+            'route'           => 'user.delete',
+            'controller'      => 'Management\User\UserController@edit',
+            'description'     => 'Modal de deletar o usuário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 24 - usuarios
         Route::create([
             'group_id'        => '4',
             'route_option_id' => '1',
             'url'             => 'recuperar/{id?}',
-            'route'           => 'entity.recover',
-            'controller'      => 'Entity\EntityController@edit',
-            'description'     => 'Modal de recuperar os condomínios',
+            'route'           => 'user.recover',
+            'controller'      => 'Management\User\UserController@edit',
+            'description'     => 'Modal de recuperar o usuário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 25 - usuarios
         Route::create([
             'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'novo',
-            'route'           => 'entity.store',
-            'controller'      => 'Entity\EntityController@store',
-            'description'     => 'Modal de criar novo condomínio',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/{id?}',
-            'route'           => 'entity.update',
-            'controller'      => 'Entity\EntityController@update',
-            'description'     => 'Atualizar os dados dos condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/{id?}',
-            'route'           => 'entity.block',
-            'controller'      => 'Entity\EntityController@block',
-            'description'     => 'Bloquear os condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'remover/{id?}',
-            'route'           => 'entity.destroy',
-            'controller'      => 'Entity\EntityController@destroy',
-            'description'     => 'Deletar os condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/{id?}',
-            'route'           => 'entity.restore',
-            'controller'      => 'Entity\EntityController@restore',
-            'description'     => 'Recuperar os condomínios deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email',
-            'route'           => 'entity.check.email',
-            'controller'      => 'Entity\CheckController@checkEmail',
-            'description'     => 'Verificar o e-mail dos condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email/diferente',
-            'route'           => 'entity.check.email.different',
-            'controller'      => 'Entity\CheckController@checkEmailDifferent',
-            'description'     => 'Verificar o e-mail dos condomínios que seja diferente do e-mail do condomínio em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cnpj',
-            'route'           => 'entity.check.cnpj',
-            'controller'      => 'Entity\CheckController@checkCnpj',
-            'description'     => 'Verificar o cnpj dos condomínios',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cnpj/diferente',
-            'route'           => 'entity.check.cnpj.different',
-            'controller'      => 'Entity\CheckController@checkCnpjDifferent',
-            'description'     => 'Verificar o cnpj dos condomínios que seja diferente do cnpj do condomínio em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '3',
             'route_option_id' => '2',
             'url'             => 'enviar/email',
             'route'           => 'user.send.email',
-            'controller'      => 'User\UserController@sendEmail',
+            'controller'      => 'Management\User\UserController@sendEmail',
             'description'     => 'Enviar e-mail para o usuário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 26 - usuarios
         Route::create([
             'group_id'        => '4',
             'route_option_id' => '2',
+            'url'             => 'reenviar/email',
+            'route'           => 'user.resend.email',
+            'controller'      => 'Management\User\UserController@resendEmail',
+            'description'     => 'Reenviar o e-mail de confirmação de e-mail do usuário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 27 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'company.dashboard',
+            'controller'      => 'Management\Company\DashboardController@dashboard',
+            'description'     => 'Página de dashboard das empresas',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 28 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'company.list',
+            'controller'      => 'Management\Company\CompanyController@list',
+            'description'     => 'Página de listagem das empresas',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 29 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletados',
+            'route'           => 'company.list.deleted',
+            'controller'      => 'Management\Company\CompanyController@listDeleted',
+            'description'     => 'Página de listagem das empresas deletadas',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 30 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/administradores',
+            'route'           => 'company.list.admins',
+            'controller'      => 'Management\Company\CompanyController@listAdmins',
+            'description'     => 'Página de listagem dos administradores da empresa',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 31 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'company.view',
+            'controller'      => 'Management\Company\CompanyController@edit',
+            'description'     => 'Modal de visualizar os dados da empresa',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 32 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '2',
+            'url'             => 'novo',
+            'route'           => 'company.store',
+            'controller'      => 'Management\Company\CompanyController@store',
+            'description'     => 'Modal de criar nova empresa',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 33 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '2',
+            'url'             => 'novo/administrador',
+            'route'           => 'company.admin.store',
+            'controller'      => 'Management\Company\CompanyController@storeAdmin',
+            'description'     => 'Modal de criar novo administrador',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 34 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'company.edit',
+            'controller'      => 'Management\Company\CompanyController@edit',
+            'description'     => 'Modal de editar os dados da empresa',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 35 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'company.ban',
+            'controller'      => 'Management\Company\CompanyController@edit',
+            'description'     => 'Modal de bloquear e desbloquear a empresa',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 36 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'company.delete',
+            'controller'      => 'Management\Company\CompanyController@edit',
+            'description'     => 'Modal de deletar a empresa',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 37 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'company.recover',
+            'controller'      => 'Management\Company\CompanyController@edit',
+            'description'     => 'Modal de recuperar a empresa',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 38 - empresas
+        Route::create([
+            'group_id'        => '5',
+            'route_option_id' => '2',
+            'url'             => 'enviar/email',
+            'route'           => 'company.send.email',
+            'controller'      => 'Management\Company\CompanyController@sendEmail',
+            'description'     => 'Enviar e-mail para a empresa',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 39 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'entity.dashboard',
+            'controller'      => 'Management\Entity\DashboardController@dashboard',
+            'description'     => 'Página de dashboard das entidades',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 40 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'entity.list',
+            'controller'      => 'Management\Entity\EntityController@list',
+            'description'     => 'Página de listagem das entidades',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 41 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletados',
+            'route'           => 'entity.list.deleted',
+            'controller'      => 'Management\Entity\EntityController@listDeleted',
+            'description'     => 'Página de listagem das entidades deletadas',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 42 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/usuarios',
+            'route'           => 'entity.list.users',
+            'controller'      => 'Management\Entity\EntityController@listUsers',
+            'description'     => 'Página de listagem dos usuários da entidade',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 43 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'entity.view',
+            'controller'      => 'Management\Entity\EntityController@edit',
+            'description'     => 'Modal de visualizar os dados da entidade',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 44 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '2',
+            'url'             => 'nova',
+            'route'           => 'entity.store',
+            'controller'      => 'Management\Entity\EntityController@store',
+            'description'     => 'Modal de criar nova entidade',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 45 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '2',
+            'url'             => 'novo/usuario',
+            'route'           => 'entity.user.store',
+            'controller'      => 'Management\Entity\EntityController@storeUser',
+            'description'     => 'Modal de criar novo usuário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 46 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'entity.edit',
+            'controller'      => 'Management\Entity\EntityController@edit',
+            'description'     => 'Modal de editar os dados da entidade',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 47 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'entity.ban',
+            'controller'      => 'Management\Entity\EntityController@edit',
+            'description'     => 'Modal de bloquear e desbloquear a entidade',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 48 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'entity.delete',
+            'controller'      => 'Management\Entity\EntityController@edit',
+            'description'     => 'Modal de deletar a entidade',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 49 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'entity.recover',
+            'controller'      => 'Management\Entity\EntityController@edit',
+            'description'     => 'Modal de recuperar a entidade',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 50 - entidades
+        Route::create([
+            'group_id'        => '6',
+            'route_option_id' => '2',
             'url'             => 'enviar/email',
             'route'           => 'entity.send.email',
-            'controller'      => 'Entity\EntityController@sendEmail',
-            'description'     => 'Enviar e-mail para o condomínio',
+            'controller'      => 'Management\Entity\EntityController@sendEmail',
+            'description'     => 'Enviar e-mail para a entidade',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'data',
-            'route'           => 'route.data',
-            'controller'      => 'Route\DashboardController@data',
-            'description'     => 'Dados do dashboard de rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'dashboard',
-            'route'           => 'route.dashboard',
-            'controller'      => 'Route\DashboardController@dashboard',
-            'description'     => 'Página do dashboard de rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/grupos',
-            'route'           => 'group.list',
-            'controller'      => 'Route\GroupController@list',
-            'description'     => 'Página de listagem de grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/grupos/deletados',
-            'route'           => 'group.list.deleted',
-            'controller'      => 'Route\GroupController@listDeleted',
-            'description'     => 'Página de listagem de grupos deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'visualizar/grupo/{id?}',
-            'route'           => 'group.view',
-            'controller'      => 'Route\GroupController@edit',
-            'description'     => 'Modal de visualizar os dados dos grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'editar/grupo/{id?}',
-            'route'           => 'group.edit',
-            'controller'      => 'Route\GroupController@edit',
-            'description'     => 'Modal de editar os dados dos grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'banir/grupo/{id?}',
-            'route'           => 'group.ban',
-            'controller'      => 'Route\GroupController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'deletar/grupo/{id?}',
-            'route'           => 'group.delete',
-            'controller'      => 'Route\GroupController@edit',
-            'description'     => 'Modal de deletar os grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/grupo/{id?}',
-            'route'           => 'group.recover',
-            'controller'      => 'Route\GroupController@edit',
-            'description'     => 'Modal de recuperar os grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'novo/grupo',
-            'route'           => 'group.store',
-            'controller'      => 'Route\GroupController@store',
-            'description'     => 'Modal de criar novo grupo',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/grupo/{id?}',
-            'route'           => 'group.update',
-            'controller'      => 'Route\GroupController@update',
-            'description'     => 'Atualizar os dados dos grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/grupo/{id?}',
-            'route'           => 'group.block',
-            'controller'      => 'Route\GroupController@block',
-            'description'     => 'Bloquear os grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'remover/grupo/{id?}',
-            'route'           => 'group.destroy',
-            'controller'      => 'Route\GroupController@destroy',
-            'description'     => 'Deletar os grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/grupo/{id?}',
-            'route'           => 'group.restore',
-            'controller'      => 'Route\GroupController@restore',
-            'description'     => 'Recuperar os grupos deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/rotas',
-            'route'           => 'route.list',
-            'controller'      => 'Route\RouteController@list',
-            'description'     => 'Página de listagem de rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/rotas/deletados',
-            'route'           => 'route.list.deleted',
-            'controller'      => 'Route\RouteController@listDeleted',
-            'description'     => 'Página de listagem de rotas deletadas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'visualizar/rota/{id?}',
-            'route'           => 'route.view',
-            'controller'      => 'Route\RouteController@edit',
-            'description'     => 'Modal de visualizar os dados das rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'editar/rota/{id?}',
-            'route'           => 'route.edit',
-            'controller'      => 'Route\RouteController@edit',
-            'description'     => 'Modal de editar os dados das rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'banir/rota/{id?}',
-            'route'           => 'route.ban',
-            'controller'      => 'Route\RouteController@edit',
-            'description'     => 'Modal de bloquear e desbloquear as rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'deletar/rota/{id?}',
-            'route'           => 'route.delete',
-            'controller'      => 'Route\RouteController@edit',
-            'description'     => 'Modal de deletar as rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/rota/{id?}',
-            'route'           => 'route.recover',
-            'controller'      => 'Route\RouteController@edit',
-            'description'     => 'Modal de recuperar as rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'novo/rota',
-            'route'           => 'route.store',
-            'controller'      => 'Route\RouteController@store',
-            'description'     => 'Modal de criar nova rota',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/rota/{id?}',
-            'route'           => 'route.update',
-            'controller'      => 'Route\RouteController@update',
-            'description'     => 'Atualizar os dados das rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/rota/{id?}',
-            'route'           => 'route.block',
-            'controller'      => 'Route\RouteController@block',
-            'description'     => 'Bloquear as rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'remover/rota/{id?}',
-            'route'           => 'route.destroy',
-            'controller'      => 'Route\RouteController@destroy',
-            'description'     => 'Deletar as rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/rota/{id?}',
-            'route'           => 'route.restore',
-            'controller'      => 'Route\RouteController@restore',
-            'description'     => 'Recuperar as rotas deletadas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'data',
-            'route'           => 'menu.data',
-            'controller'      => 'Menu\DashboardController@data',
-            'description'     => 'Dados do dashboard de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'dashboard',
-            'route'           => 'menu.dashboard',
-            'controller'      => 'Menu\DashboardController@dashboard',
-            'description'     => 'Página do dashboard de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/menu',
-            'route'           => 'menu.list',
-            'controller'      => 'Menu\MenuController@list',
-            'description'     => 'Página de listagem de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/menu/deletados',
-            'route'           => 'menu.list.deleted',
-            'controller'      => 'Menu\MenuController@listDeleted',
-            'description'     => 'Página de listagem de menu deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'visualizar/menu/{id?}',
-            'route'           => 'menu.view',
-            'controller'      => 'Menu\MenuController@edit',
-            'description'     => 'Modal de visualizar os dados dos menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'editar/menu/{id?}',
-            'route'           => 'menu.edit',
-            'controller'      => 'Menu\MenuController@edit',
-            'description'     => 'Modal de editar os dados dos menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'banir/menu/{id?}',
-            'route'           => 'menu.ban',
-            'controller'      => 'Menu\MenuController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'deletar/menu/{id?}',
-            'route'           => 'menu.delete',
-            'controller'      => 'Menu\MenuController@edit',
-            'description'     => 'Modal de deletar os menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/menu/{id?}',
-            'route'           => 'menu.recover',
-            'controller'      => 'Menu\MenuController@edit',
-            'description'     => 'Modal de recuperar os menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'novo/menu',
-            'route'           => 'menu.store',
-            'controller'      => 'Menu\MenuController@store',
-            'description'     => 'Modal de criar novo menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/menu/{id?}',
-            'route'           => 'menu.update',
-            'controller'      => 'Menu\MenuController@update',
-            'description'     => 'Atualizar os dados dos menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/menu/{id?}',
-            'route'           => 'menu.block',
-            'controller'      => 'Menu\MenuController@block',
-            'description'     => 'Bloquear os menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'remover/menu/{id?}',
-            'route'           => 'menu.destroy',
-            'controller'      => 'Menu\MenuController@destroy',
-            'description'     => 'Deletar os menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/menu/{id?}',
-            'route'           => 'menu.restore',
-            'controller'      => 'Menu\MenuController@restore',
-            'description'     => 'Recuperar os menu deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/menu-itens',
-            'route'           => 'menu.item.list',
-            'controller'      => 'Menu\MenuItemController@list',
-            'description'     => 'Página de listagem de itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/menu-itens/deletados',
-            'route'           => 'menu.item.list.deleted',
-            'controller'      => 'Menu\MenuItemController@listDeleted',
-            'description'     => 'Página de listagem de itens de menu deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'visualizar/menu-item/{id?}',
-            'route'           => 'menu.item.view',
-            'controller'      => 'Menu\MenuItemController@edit',
-            'description'     => 'Modal de visualizar os dados dos itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'editar/menu-item/{id?}',
-            'route'           => 'menu.item.edit',
-            'controller'      => 'Menu\MenuItemController@edit',
-            'description'     => 'Modal de editar os dados dos itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'banir/menu-item/{id?}',
-            'route'           => 'menu.item.ban',
-            'controller'      => 'Menu\MenuItemController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'deletar/menu-item/{id?}',
-            'route'           => 'menu.item.delete',
-            'controller'      => 'Menu\MenuItemController@edit',
-            'description'     => 'Modal de deletar os itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/menu-item/{id?}',
-            'route'           => 'menu.item.recover',
-            'controller'      => 'Menu\MenuItemController@edit',
-            'description'     => 'Modal de recuperar os itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'novo/menu-item',
-            'route'           => 'menu.item.store',
-            'controller'      => 'Menu\MenuItemController@store',
-            'description'     => 'Modal de criar novo item de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/menu-item/{id?}',
-            'route'           => 'menu.item.update',
-            'controller'      => 'Menu\MenuItemController@update',
-            'description'     => 'Atualizar os dados dos itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/menu-item/{id?}',
-            'route'           => 'menu.item.block',
-            'controller'      => 'Menu\MenuItemController@block',
-            'description'     => 'Bloquear os itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'remover/menu-item/{id?}',
-            'route'           => 'menu.item.destroy',
-            'controller'      => 'Menu\MenuItemController@destroy',
-            'description'     => 'Deletar os itens de menu',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '6',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/menu-item/{id?}',
-            'route'           => 'menu.item.restore',
-            'controller'      => 'Menu\MenuItemController@restore',
-            'description'     => 'Recuperar os itens de menu deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'verificar/grupo/nome',
-            'route'           => 'group.check.name',
-            'controller'      => 'Route\CheckController@checkGroupName',
-            'description'     => 'Verificar o nome dos grupos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'verificar/grupo/nome/diferente',
-            'route'           => 'group.check.name.different',
-            'controller'      => 'Route\CheckController@checkGroupNameDifferent',
-            'description'     => 'Verificar o nome dos grupos que seja diferente do nome do grupo em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'verificar/route/route',
-            'route'           => 'route.check.route',
-            'controller'      => 'Route\CheckController@checkRouteRoute',
-            'description'     => 'Verificar o nome da rota em rotas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '5',
-            'route_option_id' => '2',
-            'url'             => 'verificar/route/route/diferente',
-            'route'           => 'route.check.route.different',
-            'controller'      => 'Route\CheckController@checkRouteRouteDifferent',
-            'description'     => 'Verificar o nome da rota em rotas que seja diferente do nome da rota em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
+        // 51 - permissoes
         Route::create([
             'group_id'        => '7',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista/sem-permissoes',
-            'route'           => 'permission.user.list',
-            'controller'      => 'PermissionController@list',
-            'description'     => 'Página de listagem de usuários sem permissões',
+            'route'           => 'permission.user.list.without',
+            'controller'      => 'Management\PermissionController@listWithout',
+            'description'     => 'Página de listagem dos usuários sem permissões',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 52 - permissoes
+        Route::create([
+            'group_id'        => '7',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/com-permissoes',
+            'route'           => 'permission.user.list.with',
+            'controller'      => 'Management\PermissionController@listWith',
+            'description'     => 'Página de listagem dos usuários com permissões',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 53 - permissoes
         Route::create([
             'group_id'        => '7',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'usuario/editar',
             'route'           => 'permission.user.edit',
-            'controller'      => 'PermissionController@edit',
-            'description'     => 'Página de alteração das permissões de usuários',
+            'controller'      => 'Management\PermissionController@edit',
+            'description'     => 'Página de edição das permissões do usuário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        Route::create([
-            'group_id'        => '7',
-            'route_option_id' => '2',
-            'url'             => 'usuario/atualizar/{id?}',
-            'route'           => 'permission.user.update',
-            'controller'      => 'PermissionController@update',
-            'description'     => 'Atualizar os dados das permissões de usuários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '7',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/permissoes',
-            'route'           => 'permission.user.list.all',
-            'controller'      => 'PermissionController@listAll',
-            'description'     => 'Página de listagem de usuários com permissões',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '1',
-            'url'             => 'data',
-            'route'           => 'company.data',
-            'controller'      => 'Company\DashboardController@data',
-            'description'     => 'Dados do dashboard de empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
+        // 54 - grupos
         Route::create([
             'group_id'        => '8',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'dashboard',
-            'route'           => 'company.dashboard',
-            'controller'      => 'Company\DashboardController@dashboard',
-            'description'     => 'Página do dashboard de empresas',
+            'route'           => 'group.dashboard',
+            'controller'      => 'Layout\Group\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos grupos',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 55 - grupos
         Route::create([
             'group_id'        => '8',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista',
-            'route'           => 'company.list',
-            'controller'      => 'Company\CompanyController@list',
-            'description'     => 'Página de listagem de empresas',
+            'route'           => 'group.list',
+            'controller'      => 'Layout\Group\GroupController@list',
+            'description'     => 'Página de listagem dos grupos',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 56 - grupos
         Route::create([
             'group_id'        => '8',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista/deletados',
-            'route'           => 'company.list.deleted',
-            'controller'      => 'Company\CompanyController@listDeleted',
-            'description'     => 'Página de listagem de empresas deletadas',
+            'route'           => 'group.list.deleted',
+            'controller'      => 'Layout\Group\GroupController@listDeleted',
+            'description'     => 'Página de listagem dos grupos deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 57 - grupos
         Route::create([
             'group_id'        => '8',
             'route_option_id' => '1',
             'url'             => 'visualizar/{id?}',
-            'route'           => 'company.view',
-            'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de visualizar os dados das empresas',
+            'route'           => 'group.view',
+            'controller'      => 'Layout\Group\GroupController@edit',
+            'description'     => 'Modal de visualizar os dados do grupo',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '1',
-            'url'             => 'editar/{id?}',
-            'route'           => 'company.edit',
-            'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de editar os dados das empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '1',
-            'url'             => 'banir/{id?}',
-            'route'           => 'company.ban',
-            'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de bloquear e desbloquear as empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '1',
-            'url'             => 'deletar/{id?}',
-            'route'           => 'company.delete',
-            'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de deletar as empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/{id?}',
-            'route'           => 'company.recover',
-            'controller'      => 'Company\CompanyController@edit',
-            'description'     => 'Modal de recuperar as empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
+        // 58 - grupos
         Route::create([
             'group_id'        => '8',
             'route_option_id' => '2',
             'url'             => 'novo',
-            'route'           => 'company.store',
-            'controller'      => 'Company\CompanyController@store',
-            'description'     => 'Modal de criar nova empresa',
+            'route'           => 'group.store',
+            'controller'      => 'Layout\Group\GroupController@store',
+            'description'     => 'Modal de criar novo grupo',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 59 - grupos
         Route::create([
             'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/{id?}',
-            'route'           => 'company.update',
-            'controller'      => 'Company\CompanyController@update',
-            'description'     => 'Atualizar os dados das empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/{id?}',
-            'route'           => 'company.block',
-            'controller'      => 'Company\CompanyController@block',
-            'description'     => 'Bloquear as empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'remover/{id?}',
-            'route'           => 'company.destroy',
-            'controller'      => 'Company\CompanyController@destroy',
-            'description'     => 'Deletar as empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/{id?}',
-            'route'           => 'company.restore',
-            'controller'      => 'Company\CompanyController@restore',
-            'description'     => 'Recuperar as empresas deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email',
-            'route'           => 'company.check.email',
-            'controller'      => 'Company\CheckController@checkEmail',
-            'description'     => 'Verificar o e-mail das empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email/diferente',
-            'route'           => 'company.check.email.different',
-            'controller'      => 'Company\CheckController@checkEmailDifferent',
-            'description'     => 'Verificar o e-mail das empresas que seja diferente do e-mail da empresa em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cnpj',
-            'route'           => 'company.check.cnpj',
-            'controller'      => 'Company\CheckController@checkCnpj',
-            'description'     => 'Verificar o cnpj das empresas',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cnpj/diferente',
-            'route'           => 'company.check.cnpj.different',
-            'controller'      => 'Company\CheckController@checkCnpjDifferent',
-            'description'     => 'Verificar o cnpj das empresas que seja diferente do cnpj da empresa em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'enviar/email',
-            'route'           => 'company.send.email',
-            'controller'      => 'Company\CompanyController@sendEmail',
-            'description'     => 'Enviar e-mail para a empresa',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
             'route_option_id' => '1',
-            'url'             => 'data',
-            'route'           => 'admin.data',
-            'controller'      => 'Admin\DashboardController@data',
-            'description'     => 'Dados do dashboard de administradores',
+            'url'             => 'editar/{id?}',
+            'route'           => 'group.edit',
+            'controller'      => 'Layout\Group\GroupController@edit',
+            'description'     => 'Modal de editar os dados do grupo',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 60 - grupos
+        Route::create([
+            'group_id'        => '8',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'group.ban',
+            'controller'      => 'Layout\Group\GroupController@edit',
+            'description'     => 'Modal de bloquear e desbloquear o grupo',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 61 - grupos
+        Route::create([
+            'group_id'        => '8',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'group.delete',
+            'controller'      => 'Layout\Group\GroupController@edit',
+            'description'     => 'Modal de deletar o grupo',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 62 - grupos
+        Route::create([
+            'group_id'        => '8',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'group.recover',
+            'controller'      => 'Layout\Group\GroupController@edit',
+            'description'     => 'Modal de recuperar o grupo',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 63 - rotas
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'dashboard',
-            'route'           => 'admin.dashboard',
-            'controller'      => 'Admin\DashboardController@dashboard',
-            'description'     => 'Página do dashboard de administradores',
+            'route'           => 'route.dashboard',
+            'controller'      => 'Layout\Route\DashboardController@dashboard',
+            'description'     => 'Página de dashboard das rotas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 64 - rotas
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista',
-            'route'           => 'admin.list',
-            'controller'      => 'Admin\AdminController@list',
-            'description'     => 'Página de listagem de administradores',
+            'route'           => 'route.list',
+            'controller'      => 'Layout\Route\RouteController@list',
+            'description'     => 'Página de listagem das rotas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 65 - rotas
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista/deletados',
-            'route'           => 'admin.list.deleted',
-            'controller'      => 'Admin\AdminController@listDeleted',
-            'description'     => 'Página de listagem de administradores deletados',
+            'route'           => 'route.list.deleted',
+            'controller'      => 'Layout\Route\RouteController@listDeleted',
+            'description'     => 'Página de listagem das rotas deletadas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 66 - rotas
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '1',
             'url'             => 'visualizar/{id?}',
-            'route'           => 'admin.view',
-            'controller'      => 'Admin\AdminController@edit',
-            'description'     => 'Modal de visualizar os dados dos administradores',
+            'route'           => 'route.view',
+            'controller'      => 'Layout\Route\RouteController@edit',
+            'description'     => 'Modal de visualizar os dados da rota',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'editar/{id?}',
-            'route'           => 'admin.edit',
-            'controller'      => 'Admin\AdminController@edit',
-            'description'     => 'Modal de editar os dados dos administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'banir/{id?}',
-            'route'           => 'admin.ban',
-            'controller'      => 'Admin\AdminController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'deletar/{id?}',
-            'route'           => 'admin.delete',
-            'controller'      => 'Admin\AdminController@edit',
-            'description'     => 'Modal de deletar os administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/{id?}',
-            'route'           => 'admin.recover',
-            'controller'      => 'Admin\AdminController@edit',
-            'description'     => 'Modal de recuperar os administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
+        // 67 - rotas
         Route::create([
             'group_id'        => '9',
             'route_option_id' => '2',
             'url'             => 'novo',
-            'route'           => 'admin.store',
-            'controller'      => 'Admin\AdminController@store',
-            'description'     => 'Modal de criar novo administrador',
+            'route'           => 'route.store',
+            'controller'      => 'Layout\Route\RouteController@store',
+            'description'     => 'Modal de criar nova rota',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 68 - rotas
         Route::create([
             'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/{id?}',
-            'route'           => 'admin.update',
-            'controller'      => 'Admin\AdminController@update',
-            'description'     => 'Atualizar os dados dos administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/{id?}',
-            'route'           => 'admin.block',
-            'controller'      => 'Admin\AdminController@block',
-            'description'     => 'Bloquear os administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'remover/{id?}',
-            'route'           => 'admin.destroy',
-            'controller'      => 'Admin\AdminController@destroy',
-            'description'     => 'Deletar os administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/{id?}',
-            'route'           => 'admin.restore',
-            'controller'      => 'Admin\AdminController@restore',
-            'description'     => 'Recuperar os administradores deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'reenviar/email',
-            'route'           => 'admin.resend.email',
-            'controller'      => 'Admin\AdminController@resendEmail',
-            'description'     => 'Reenviar o e-mail de confirmação de e-mail do administrador',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email',
-            'route'           => 'admin.check.email',
-            'controller'      => 'User\CheckController@checkEmail',
-            'description'     => 'Verificar o e-mail dos administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'verificar/email/diferente',
-            'route'           => 'admin.check.email.different',
-            'controller'      => 'User\CheckController@checkEmailDifferent',
-            'description'     => 'Verificar o e-mail dos administradores que seja diferente do e-mail do administrador em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cpf',
-            'route'           => 'admin.check.cpf',
-            'controller'      => 'User\CheckController@checkCpf',
-            'description'     => 'Verificar o cpf dos administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'verificar/cpf/diferente',
-            'route'           => 'admin.check.cpf.different',
-            'controller'      => 'User\CheckController@checkCpfDifferent',
-            'description'     => 'Verificar o cpf dos administradores que seja diferente do cpf do administrador em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'verificar/rg',
-            'route'           => 'admin.check.rg',
-            'controller'      => 'User\CheckController@checkRg',
-            'description'     => 'Verificar o rg dos administradores',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'verificar/rg/diferente',
-            'route'           => 'admin.check.rg.different',
-            'controller'      => 'User\CheckController@checkRgDifferent',
-            'description'     => 'Verificar o rg dos administradores que seja diferente do rg do administrador em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '9',
-            'route_option_id' => '2',
-            'url'             => 'enviar/email',
-            'route'           => 'admin.send.email',
-            'controller'      => 'Admin\AdminController@sendEmail',
-            'description'     => 'Enviar e-mail para o administrador',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '8',
-            'route_option_id' => '2',
-            'url'             => 'novo/administrador',
-            'route'           => 'company.admin.store',
-            'controller'      => 'Company\CompanyController@storeAdmin',
-            'description'     => 'Modal de criar novo administrador',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
-            'route_option_id' => '2',
-            'url'             => 'novo/usuario',
-            'route'           => 'entity.user.store',
-            'controller'      => 'Entity\EntityController@storeUser',
-            'description'     => 'Modal de criar novo usuário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '4',
             'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/usuarios',
-            'route'           => 'entity.list.users',
-            'controller'      => 'Entity\EntityController@listUsers',
-            'description'     => 'Página de listagem de usuários do condomínio',
+            'url'             => 'editar/{id?}',
+            'route'           => 'route.edit',
+            'controller'      => 'Layout\Route\RouteController@edit',
+            'description'     => 'Modal de editar os dados da rota',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 69 - rotas
         Route::create([
-            'group_id'        => '8',
+            'group_id'        => '9',
             'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/administradores',
-            'route'           => 'company.list.admins',
-            'controller'      => 'Company\CompanyController@listAdmins',
-            'description'     => 'Página de listagem de administradores da empresa',
+            'url'             => 'banir/{id?}',
+            'route'           => 'route.ban',
+            'controller'      => 'Layout\Route\RouteController@edit',
+            'description'     => 'Modal de bloquear e desbloquear a rota',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 70 - rotas
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'route.delete',
+            'controller'      => 'Layout\Route\RouteController@edit',
+            'description'     => 'Modal de deletar a rota',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 71 - rotas
+        Route::create([
+            'group_id'        => '9',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'route.recover',
+            'controller'      => 'Layout\Route\RouteController@edit',
+            'description'     => 'Modal de recuperar a rota',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 72 - menu
         Route::create([
             'group_id'        => '10',
             'route_option_id' => '1',
-            'url'             => 'data',
-            'route'           => 'department.data',
-            'controller'      => 'Department\DashboardController@data',
-            'description'     => 'Dados do dashboard dos departamentos',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'menu.dashboard',
+            'controller'      => 'Layout\Menu\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos menu',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 73 - menu
         Route::create([
             'group_id'        => '10',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'menu.list',
+            'controller'      => 'Layout\Menu\MenuController@list',
+            'description'     => 'Página de listagem dos menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 74 - menu
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletados',
+            'route'           => 'menu.list.deleted',
+            'controller'      => 'Layout\Menu\MenuController@listDeleted',
+            'description'     => 'Página de listagem dos menu deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 75 - menu
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'menu.view',
+            'controller'      => 'Layout\Menu\MenuController@edit',
+            'description'     => 'Modal de visualizar os dados do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 76 - menu
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '2',
+            'url'             => 'novo',
+            'route'           => 'menu.store',
+            'controller'      => 'Layout\Menu\MenuController@store',
+            'description'     => 'Modal de criar novo menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 77 - menu
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'menu.edit',
+            'controller'      => 'Layout\Menu\MenuController@edit',
+            'description'     => 'Modal de editar os dados do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 78 - menu
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'menu.ban',
+            'controller'      => 'Layout\Menu\MenuController@edit',
+            'description'     => 'Modal de bloquear e desbloquear o menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 79 - menu
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'menu.delete',
+            'controller'      => 'Layout\Menu\MenuController@edit',
+            'description'     => 'Modal de deletar o menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 80 - menu
+        Route::create([
+            'group_id'        => '10',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'menu.recover',
+            'controller'      => 'Layout\Menu\MenuController@edit',
+            'description'     => 'Modal de recuperar o menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 81 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'menu.item.dashboard',
+            'controller'      => 'Layout\MenuItem\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos itens do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 82 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'menu.item.list',
+            'controller'      => 'Layout\MenuItem\MenuItemController@list',
+            'description'     => 'Página de listagem dos itens do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 83 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletados',
+            'route'           => 'menu.item.list.deleted',
+            'controller'      => 'Layout\MenuItem\MenuItemController@listDeleted',
+            'description'     => 'Página de listagem dos itens do menu deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 84 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'menu.item.view',
+            'controller'      => 'Layout\MenuItem\MenuItemController@edit',
+            'description'     => 'Modal de visualizar os dados do item do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 85 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '2',
+            'url'             => 'novo',
+            'route'           => 'menu.item.store',
+            'controller'      => 'Layout\MenuItem\MenuItemController@store',
+            'description'     => 'Modal de criar novo item do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 86 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'menu.item.edit',
+            'controller'      => 'Layout\MenuItem\MenuItemController@edit',
+            'description'     => 'Modal de editar os dados do item do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 87 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'menu.item.ban',
+            'controller'      => 'Layout\MenuItem\MenuItemController@edit',
+            'description'     => 'Modal de bloquear e desbloquear o item do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 88 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'menu.item.delete',
+            'controller'      => 'Layout\MenuItem\MenuItemController@edit',
+            'description'     => 'Modal de deletar o item do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 89 - menu-itens
+        Route::create([
+            'group_id'        => '11',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'menu.item.recover',
+            'controller'      => 'Layout\MenuItem\MenuItemController@edit',
+            'description'     => 'Modal de recuperar o item do menu',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 90 - administrativo
+        Route::create([
+            'group_id'        => '12',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'dashboard',
             'route'           => 'department.dashboard',
-            'controller'      => 'Department\DashboardController@dashboard',
-            'description'     => 'Página do dashboard dos departamentos',
+            'controller'      => 'Administrative\Department\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos departamentos',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 91 - administrativo
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '12',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista',
             'route'           => 'department.list',
-            'controller'      => 'Department\DepartmentController@list',
+            'controller'      => 'Administrative\Department\DepartmentController@list',
             'description'     => 'Página de listagem dos departamentos',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 92 - administrativo
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '12',
             'route_option_id' => '1',
             'view'            => '1',
             'url'             => 'lista/deletados',
             'route'           => 'department.list.deleted',
-            'controller'      => 'Department\DepartmentController@listDeleted',
-            'description'     => 'Página de listagem dos departamentos deletados',
+            'controller'      => 'Administrative\Department\DepartmentController@listDeleted',
+            'description'     => 'Página de listagem dos departamentos deletadas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 93 - administrativo
         Route::create([
-            'group_id'        => '10',
+            'group_id'        => '12',
             'route_option_id' => '1',
             'url'             => 'visualizar/{id?}',
             'route'           => 'department.view',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de visualizar os dados dos departamentos',
+            'controller'      => 'Administrative\Department\DepartmentController@edit',
+            'description'     => 'Modal de visualizar os dados do departamento',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 94 - administrativo
         Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '1',
-            'url'             => 'editar/{id?}',
-            'route'           => 'department.edit',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de editar os dados dos departamentos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '1',
-            'url'             => 'banir/{id?}',
-            'route'           => 'department.ban',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de bloquear e desbloquear os departamentos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '1',
-            'url'             => 'deletar/{id?}',
-            'route'           => 'department.delete',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de deletar os departamentos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/{id?}',
-            'route'           => 'department.recover',
-            'controller'      => 'Department\DepartmentController@edit',
-            'description'     => 'Modal de recuperar os departamentos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
+            'group_id'        => '12',
             'route_option_id' => '2',
             'url'             => 'novo',
             'route'           => 'department.store',
-            'controller'      => 'Department\DepartmentController@store',
+            'controller'      => 'Administrative\Department\DepartmentController@store',
             'description'     => 'Modal de criar novo departamento',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 95 - administrativo
         Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/{id?}',
-            'route'           => 'department.update',
-            'controller'      => 'Department\DepartmentController@update',
-            'description'     => 'Atualizar os dados dos departamentos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/{id?}',
-            'route'           => 'department.block',
-            'controller'      => 'Department\DepartmentController@block',
-            'description'     => 'Bloquear os departamentos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '2',
-            'url'             => 'remover/{id?}',
-            'route'           => 'department.destroy',
-            'controller'      => 'Department\DepartmentController@destroy',
-            'description'     => 'Deletar os departamentos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/{id?}',
-            'route'           => 'department.restore',
-            'controller'      => 'Department\DepartmentController@restore',
-            'description'     => 'Recuperar os departamentos deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '2',
-            'url'             => 'verificar/nome',
-            'route'           => 'department.check.name',
-            'controller'      => 'Department\CheckController@checkName',
-            'description'     => 'Verificar o nome dos departamentos',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '10',
-            'route_option_id' => '2',
-            'url'             => 'verificar/nome/diferente',
-            'route'           => 'department.check.name.different',
-            'controller'      => 'Department\CheckController@checkNameDifferent',
-            'description'     => 'Verificar o nome dos departamentos que seja diferente do departamento em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
+            'group_id'        => '12',
             'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/categorias',
-            'route'           => 'inventory.category.list',
-            'controller'      => 'Inventory\InventoryCategoryController@list',
-            'description'     => 'Página de listagem das categorias',
+            'url'             => 'editar/{id?}',
+            'route'           => 'department.edit',
+            'controller'      => 'Administrative\Department\DepartmentController@edit',
+            'description'     => 'Modal de editar os dados do departamento',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 96 - administrativo
         Route::create([
-            'group_id'        => '11',
+            'group_id'        => '12',
             'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/categorias/deletadas',
-            'route'           => 'inventory.category.list.deleted',
-            'controller'      => 'Inventory\InventoryCategoryController@listDeleted',
-            'description'     => 'Página de listagem das categorias deletadas',
+            'url'             => 'banir/{id?}',
+            'route'           => 'department.ban',
+            'controller'      => 'Administrative\Department\DepartmentController@edit',
+            'description'     => 'Modal de bloquear e desbloquear o departamento',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 97 - administrativo
         Route::create([
-            'group_id'        => '11',
+            'group_id'        => '12',
             'route_option_id' => '1',
-            'url'             => 'visualizar/categoria/{id?}',
-            'route'           => 'inventory.category.view',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de visualizar os dados das categorias',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'department.delete',
+            'controller'      => 'Administrative\Department\DepartmentController@edit',
+            'description'     => 'Modal de deletar o departamento',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
+        // 98 - administrativo
         Route::create([
-            'group_id'        => '11',
+            'group_id'        => '12',
             'route_option_id' => '1',
-            'url'             => 'editar/categoria/{id?}',
-            'route'           => 'inventory.category.edit',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de editar os dados das categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'url'             => 'banir/categoria/{id?}',
-            'route'           => 'inventory.category.ban',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de bloquear e desbloquear as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'url'             => 'deletar/categoria/{id?}',
-            'route'           => 'inventory.category.delete',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de deletar as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/categoria/{id?}',
-            'route'           => 'inventory.category.recover',
-            'controller'      => 'Inventory\InventoryCategoryController@edit',
-            'description'     => 'Modal de recuperar as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'nova/categoria',
-            'route'           => 'inventory.category.store',
-            'controller'      => 'Inventory\InventoryCategoryController@store',
-            'description'     => 'Modal de criar nova categoria',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/categoria/{id?}',
-            'route'           => 'inventory.category.update',
-            'controller'      => 'Inventory\InventoryCategoryController@update',
-            'description'     => 'Atualizar os dados das categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'bloquear/categoria/{id?}',
-            'route'           => 'inventory.category.block',
-            'controller'      => 'Inventory\InventoryCategoryController@block',
-            'description'     => 'Bloquear as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'remover/categoria/{id?}',
-            'route'           => 'inventory.category.destroy',
-            'controller'      => 'Inventory\InventoryCategoryController@destroy',
-            'description'     => 'Deletar as categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/categoria/{id?}',
-            'route'           => 'inventory.category.restore',
-            'controller'      => 'Inventory\InventoryCategoryController@restore',
-            'description'     => 'Recuperar as categorias deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'verificar/categoria/nome',
-            'route'           => 'inventory.category.check.name',
-            'controller'      => 'Inventory\CheckController@checkName',
-            'description'     => 'Verificar o nome das categorias',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'verificar/categoria/nome/diferente',
-            'route'           => 'inventory.category.check.name.different',
-            'controller'      => 'Inventory\CheckController@checkNameDifferent',
-            'description'     => 'Verificar o nome das categorias que seja diferente da categoria em edição',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'url'             => 'data',
-            'route'           => 'inventory.data',
-            'controller'      => 'Inventory\DashboardController@data',
-            'description'     => 'Dados do dashboard dos itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'dashboard',
-            'route'           => 'inventory.dashboard',
-            'controller'      => 'Inventory\DashboardController@dashboard',
-            'description'     => 'Página do dashboard dos itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/inventarios',
-            'route'           => 'inventory.list',
-            'controller'      => 'Inventory\InventoryController@list',
-            'description'     => 'Página de listagem dos itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'view'            => '1',
-            'url'             => 'lista/inventarios/deletados',
-            'route'           => 'inventory.list.deleted',
-            'controller'      => 'Inventory\InventoryController@listDeleted',
-            'description'     => 'Página de listagem dos itens do inventário deletados',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'url'             => 'visualizar/inventario/{id?}',
-            'route'           => 'inventory.view',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de visualizar os dados dos itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'url'             => 'editar/inventario/{id?}',
-            'route'           => 'inventory.edit',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de editar os dados dos itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'url'             => 'deletar/inventario/{id?}',
-            'route'           => 'inventory.delete',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de deletar os itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '1',
-            'url'             => 'recuperar/inventario/{id?}',
-            'route'           => 'inventory.recover',
-            'controller'      => 'Inventory\InventoryController@edit',
-            'description'     => 'Modal de recuperar os itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'novo/inventario',
-            'route'           => 'inventory.store',
-            'controller'      => 'Inventory\InventoryController@store',
-            'description'     => 'Modal de criar novo item do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'atualizar/inventario/{id?}',
-            'route'           => 'inventory.update',
-            'controller'      => 'Inventory\InventoryController@update',
-            'description'     => 'Atualizar os dados dos itens do inventários',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'remover/inventario/{id?}',
-            'route'           => 'inventory.destroy',
-            'controller'      => 'Inventory\InventoryController@destroy',
-            'description'     => 'Deletar os itens do inventário',
-            'created_at'      => now(),
-            'updated_at'      => now()
-        ]);
-
-        Route::create([
-            'group_id'        => '11',
-            'route_option_id' => '2',
-            'url'             => 'restaurar/inventario/{id?}',
-            'route'           => 'inventory.restore',
-            'controller'      => 'Inventory\InventoryController@restore',
-            'description'     => 'Recuperar os itens do inventário deletados',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'department.recover',
+            'controller'      => 'Administrative\Department\DepartmentController@edit',
+            'description'     => 'Modal de recuperar o departamento',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);

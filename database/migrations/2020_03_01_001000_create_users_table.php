@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->date('birthday')->nullable();
             $table->string('contact')->nullable();
             $table->bigInteger('gender_id')->nullable()->unsigned();
-            $table->foreign('gender_id')->references('id')->on('genders');
             $table->string('course')->nullable();
             $table->string('college')->nullable();
             $table->string('profession')->nullable();
@@ -36,13 +35,11 @@ class CreateUsersTable extends Migration
             $table->string('neighborhood')->nullable();
             $table->string('city')->nullable();
             $table->bigInteger('state_id')->nullable()->unsigned();
-            $table->foreign('state_id')->references('id')->on('states');
             $table->string('country')->nullable();
             $table->longText('description')->nullable();
             $table->string('photo')->nullable();
             $table->string('background')->nullable();
             $table->integer('admin')->unsigned()->default(0);
-            $table->foreign('admin')->references('id')->on('boolean');
             $table->string('last_login_ip')->nullable();
             $table->datetime('last_login_at')->nullable();
             $table->datetime('last_update_at')->nullable();
@@ -52,6 +49,10 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('gender_id')->references('id')->on('genders');
+            $table->foreign('state_id')->references('id')->on('states');
+            $table->foreign('admin')->references('id')->on('boolean');
         });
     }
 

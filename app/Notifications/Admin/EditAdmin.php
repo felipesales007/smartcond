@@ -3,7 +3,7 @@
 namespace App\Notifications\Admin;
 
 use App\Helpers\FormatHelpers;
-use App\Models\Gender;
+use App\Models\User\Gender;
 use App\Models\State;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -138,17 +138,17 @@ class EditAdmin extends Notification
             $mailMessage->line('<span class="text-warning"><b>Aniversário: </b>' . FormatHelpers::date_to_date_br($this->original['birthday']) . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
-        // contato
+        // telefone
         if (isset($this->collection->getChanges()['contact']) && !$this->original['contact']) {
-            $mailMessage->line('<b>Contato: </b>' . $this->collection->contact);
+            $mailMessage->line('<b>Telefone: </b>' . $this->collection->contact);
         }
 
         if (isset($this->collection->getChanges()['contact']) && $this->original['contact']) {
-            $mailMessage->line('<b>Contato: </b>' . $this->collection->contact . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['contact'] . '</small>');
+            $mailMessage->line('<b>Telefone: </b>' . $this->collection->contact . '<br><small class="text-warning notice"><b>removido: </b>' . $this->original['contact'] . '</small>');
         }
 
         if (!$this->collection->contact && $this->original['contact']) {
-            $mailMessage->line('<span class="text-warning"><b>Contato: </b>' . $this->original['contact'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
+            $mailMessage->line('<span class="text-warning"><b>Telefone: </b>' . $this->original['contact'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
         // sexo

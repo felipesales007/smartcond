@@ -15,11 +15,14 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_level_id')->unsigned();
             $table->string('name')->unique();
             $table->longText('description')->nullable();
             $table->datetime('blocked')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('user_level_id')->references('id')->on('user_levels');
         });
     }
 

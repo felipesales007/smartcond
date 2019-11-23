@@ -16,12 +16,13 @@ class CreateDepartmentsTable extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('entity_id')->unsigned();
-            $table->foreign('entity_id')->references('id')->on('entities');
             $table->string('name');
             $table->longText('description')->nullable();
             $table->datetime('blocked')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('entity_id')->references('id')->on('entities');
         });
     }
 

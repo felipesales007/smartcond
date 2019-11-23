@@ -1,6 +1,6 @@
 # Smartcond
 
-![version](https://img.shields.io/badge/version-4.0.0-blue.svg)
+![version](https://img.shields.io/badge/version-5.0.0-blue.svg)
 
 Sistema de gerenciamento de condomínio web desenvolvido no **framework Laravel** por Felipe Sales.
 

@@ -5,7 +5,7 @@ namespace App\Http\Middleware\Checks;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
 use App\Models\Route\Route;
-use App\Models\Permission;
+use App\Models\User\Permission;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;

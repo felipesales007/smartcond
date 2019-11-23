@@ -4,17 +4,17 @@
 @section('content')
 
     <!-- informativo e login -->
-    <div class="container mt--3">
+    <div class="container mb-3-2 mt--4">
         <div class="fe-center-auth">
             <div class="row justify-content-center">
                 <!-- informativo -->
-                <div class="col-lg-6 mt-auto fe-z-1 fe-auth-info-corpo-login fe-mouse-default fe-mobile-none" onmousedown="return false;">
+                <div class="col-lg-6 mt-auto fe-z-1 fe-auth-info-body fe-mouse fe-mobile-none" onmousedown="return false;">
                     @foreach (\App\Models\AuthPicture::getRandAuthPicture() as $info)
-                        <div class="text-center fe-auth-info-texto fe-center-x mt--6">
+                        <div class="text-center fe-auth-info-text fe-center-x mt--6">
                             <div class="h2 font-weight-900">{{ $info['title'] }}</div>
                             <div class="h3 font-weight-900 text-muted">{{ $info['description'] }}</div>
                         </div>
-                        <img src="{{ url('images/auth/' . $info['image']) }}" class="fe-auth-info-imagem" alt="">
+                        <img src="{{ url('images/auth/' . $info['image']) }}" class="fe-auth-info-image" alt="">
                     @endforeach
                 </div>
                 <!-- login -->
@@ -73,9 +73,9 @@
                                                 <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 8 caracteres') }}">*</span>
                                                 <input type="password" id="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" placeholder="{{ __('Senha') }}" minlength="8" maxlength="191" required autocomplete="password" @if ($errors->has('password')) autofocus @endif>
                                                 <!-- visualizar ou ocultar senha -->
-                                                <div class="input-group-append" onclick="verSenha(this);">
+                                                <div class="input-group-append" onclick="viewPassword(this);">
                                                     <span class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
-                                                        <i class="fe-input-icone far fa-eye"></i>
+                                                        <i class="fe-input-icon far fa-eye"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -98,12 +98,12 @@
                                     </div>
                                     <!-- recuperar senha -->
                                     <div class="col-lg-6 text-right">
-                                        <a href="{{ app('router')->has('password.request') ? route('password.request') : url('/') }}" class="text-link fe-loading fe-login-texto-senha">{{ __('Esqueci minha senha') }}</a>
+                                        <a href="{{ app('router')->has('password.request') ? route('password.request') : url('/') }}" class="text-link fe-loading fe-auth-password-text">{{ __('Esqueci minha senha') }}</a>
                                     </div>
                                 </div>
                                 <!-- botão -->
                                 <div class="text-center mb-4">
-                                    <button type="submit" class="btn btn-primary btn-block fe-carregando fe-scroll-top">{{ __('Entrar') }}</button>
+                                    <button type="submit" class="btn btn-primary btn-block fe-spinner fe-scroll-top">{{ __('Entrar') }}</button>
                                 </div>
                             </form>
                         </div>
@@ -114,6 +114,6 @@
     </div>
 
     <!-- validate -->
-    @include('auth.includes.validate')
+    @include('auth.validate.login')
 
 @endsection

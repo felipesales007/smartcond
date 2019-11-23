@@ -1,14 +1,11 @@
-<!-- capa -->
-<div class="header pb-8 pt-8 d-flex align-items-center fe-img-center" style="background-image: url({{ auth()->user()['background'] ? url('storage/images/users/background/' . auth()->user()['background']) : url('images/default/default-background.png') }});">
+<div class="header pb-9 pt-8 mb--8 align-items-center fe-img-center" style="background-image: url({{ auth()->user()->profileBackground() }});">
     <!-- máscara de gradiente -->
-    <span class="mask bg-gradient-primary opacity-5"></span>
-    <!-- título e descrição -->
-    <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-            <div class="col-md-12">
-                @if (isset($title) && $title) <h1 class="text-white {{ strlen($title) > 17 ? 'display-3' : 'display-2' }}">{{ $title }}</h1> @endif
-                @if (isset($description) && $description) <p class="text-white mt-0 mb-5">{!! $description !!}</p> @endif
-            </div>
+    <span class="mask bg-primary opacity-5"></span>
+    <div class="align-items-center mt--5 ml-md-3 ml-sm-0">
+        <!-- título e descrição -->
+        <div class="col-12">
+            @if (isset($title) && $title) <h1 class="text-white {{ strlen($title) > 17 ? 'display-3' : 'display-2' }}">{{ $title }}</h1> @endif
+            @if (isset($description) && $description) <p class="text-white">{!! $description !!}</p> @endif
         </div>
     </div>
 </div>

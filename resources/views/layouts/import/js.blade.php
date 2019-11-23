@@ -17,8 +17,6 @@
     <script src="{{ asset('argon/vendor/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/select2/dist/js/i18n/pt-BR.js') }}"></script>
-    <script src="{{ asset('argon/vendor/fullcalendar/dist/fullcalendar.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/fullcalendar/dist/locale/pt-br.js') }}"></script>
     <script src="{{ asset('argon/vendor/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>

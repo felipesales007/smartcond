@@ -4,7 +4,7 @@
 @section('content')
 
     <!-- confirmação de e-mail -->
-    <div class="container mt--5">
+    <div class="container mb-4-5 mt--5">
         <div class="fe-center-auth">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-7 fe-z-1">
@@ -28,7 +28,7 @@
 
                             {{ __('Antes de prosseguir, verifique seu endereço de e-mail em busca de um link de verificação.') }}
 
-                            {{ __('Se você não recebeu o email') }}, <a href="{{ app('router')->has('verification.resend') ? route('verification.resend') : url('/') }}" class="text-success fe-loading" onclick="enviando();">{{ __('clique aqui para solicitar outro') }}</a>.
+                            {{ __('Se você não recebeu o email') }}, <a href="{{ app('router')->has('verification.resend') ? route('verification.resend') : url('/') }}" class="text-success fe-loading" onclick="sending();">{{ __('clique aqui para solicitar outro') }}</a>.
                         </div>
                     </div>
                 </div>

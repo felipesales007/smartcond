@@ -3,7 +3,7 @@
 namespace App\Models\Company;
 
 use App\Models\Boolean;
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

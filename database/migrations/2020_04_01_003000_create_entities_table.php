@@ -27,7 +27,6 @@ class CreateEntitiesTable extends Migration
             $table->string('neighborhood');
             $table->string('city');
             $table->bigInteger('state_id')->unsigned();
-            $table->foreign('state_id')->references('id')->on('states');
             $table->string('country');
             $table->string('logo')->nullable();
             $table->datetime('last_update_at')->nullable();
@@ -35,6 +34,8 @@ class CreateEntitiesTable extends Migration
             $table->datetime('blocked')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('state_id')->references('id')->on('states');
         });
     }
 

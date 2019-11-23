@@ -63,7 +63,7 @@ class NewCompany extends Notification
         }
 
         if ($this->collection->contact) {
-            $mailMessage->line('<b>Contato: </b>' . $this->collection->contact);
+            $mailMessage->line('<b>Telefone: </b>' . $this->collection->contact);
         }
 
         if ($this->collection->postal_code) {

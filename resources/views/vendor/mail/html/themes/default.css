@@ -440,3 +440,8 @@ img {
     color: #fb6340 !important;
     float: right !important;
 }
+
+.fe-img-center {
+    background-size: cover;
+    background-position: center;
+}

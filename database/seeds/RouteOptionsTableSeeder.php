@@ -25,47 +25,5 @@ class RouteOptionsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
-
-        RouteOption::create([
-            'name'        => 'put',
-            'description' => 'Atualização',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        RouteOption::create([
-            'name'        => 'delete',
-            'description' => 'Exclusão',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-//        RouteOption::create([
-//            'name'        => 'patch',
-//            'description' => 'Atualização',
-//            'created_at'  => now(),
-//            'updated_at'  => now()
-//        ]);
-//
-//        RouteOption::create([
-//            'name'        => 'any',
-//            'description' => 'Criação e atualização',
-//            'created_at'  => now(),
-//            'updated_at'  => now()
-//        ]);
-//
-//        RouteOption::create([
-//            'name'        => 'match',
-//            'description' => 'Criação e atualização',
-//            'created_at'  => now(),
-//            'updated_at'  => now()
-//        ]);
-//
-//        RouteOption::create([
-//            'name'        => 'options',
-//            'description' => 'Condição',
-//            'created_at'  => now(),
-//            'updated_at'  => now()
-//        ]);
     }
 }

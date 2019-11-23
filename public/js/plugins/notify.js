@@ -1,4 +1,4 @@
-// notificação
+// notification
 function notify(data) {
     let enter;
     let exit;
@@ -40,7 +40,7 @@ function notify(data) {
     });
 }
 
-// notificação de erro
+// error notification
 function notifyError(message) {
     $.notify({
         icon: 'alert-icon fas fa-exclamation-triangle',
@@ -67,7 +67,7 @@ function notifyError(message) {
     });
 }
 
-// notificação de erro na validação
+// validation error notification
 function notifyValidate(message) {
     $.notify({
         icon: 'alert-icon fas fa-ban',
@@ -98,7 +98,7 @@ function notifyValidate(message) {
     });
 }
 
-// notificação de bloqueio de grupo
+// group lock notification
 $('.notify-block-group').on('click', function () {
     $.notify({
         icon: 'alert-icon fas fa-ban',
@@ -125,7 +125,7 @@ $('.notify-block-group').on('click', function () {
     });
 });
 
-// notificação de bloqueio de rota
+// route lock notification
 $('.notify-block-route').on('click', function () {
     $.notify({
         icon: 'alert-icon fas fa-ban',

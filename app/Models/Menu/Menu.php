@@ -4,7 +4,8 @@ namespace App\Models\Menu;
 
 use App\Models\Boolean;
 use App\Models\Color;
-use App\Models\Permission;
+use App\Models\Company\Company;
+use App\Models\User\Permission;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -67,7 +68,11 @@ class Menu extends Model
      */
     static function getCount()
     {
-        return Menu::count();
+        if (Company::id() == 1) {
+            return Menu::count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -77,7 +82,11 @@ class Menu extends Model
      */
     static function getCountCollapses()
     {
-        return Menu::where('menu_option_id', '=', '1')->count();
+        if (Company::id() == 1) {
+            return Menu::where('menu_option_id', '=', '1')->count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -87,7 +96,11 @@ class Menu extends Model
      */
     static function getCountDropdowns()
     {
-        return Menu::where('menu_option_id', '=', '2')->count();
+        if (Company::id() == 1) {
+            return Menu::where('menu_option_id', '=', '2')->count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -97,7 +110,11 @@ class Menu extends Model
      */
     static function getCountLinks()
     {
-        return Menu::where('menu_option_id', '=', '3')->count();
+        if (Company::id() == 1) {
+            return Menu::where('menu_option_id', '=', '3')->count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -107,7 +124,11 @@ class Menu extends Model
      */
     static function getCountBlocked()
     {
-        return Menu::where('blocked', '!=', null)->count();
+        if (Company::id() == 1) {
+            return Menu::where('blocked', '!=', null)->count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -164,21 +185,26 @@ class Menu extends Model
      */
     static function getUserMenu()
     {
-        return Menu::select('menu.*')
+        return Menu::select('menu.id', 'menu.menu_option_id', 'menu.hidden', 'menu.name',
+            'menu.icon', 'menu.blocked', 'colors.color', 'groups.name as group')
+            ->join('colors', 'colors.id', '=', 'menu.color_id')
             ->join('menu_items', 'menu_items.menu_id', '=', 'menu.id')
             ->join('routes', 'routes.id', '=', 'menu_items.route_id')
             ->join('groups', 'groups.id', '=', 'routes.group_id')
             ->join('permissions', 'permissions.route_id', '=', 'routes.id')
-            ->where('groups.deleted_at', '=', null)
-            ->where('routes.deleted_at', '=', null)
             ->where('menu_items.deleted_at', '=', null)
-            ->where('menu_items.list', '=', '0')
+            ->where('routes.deleted_at', '=', null)
+            ->where('groups.deleted_at', '=', null)
             ->where('menu_items.hidden', '=', '0')
-            ->where('permissions.user_id', '=', auth()->user()['id'])
-            ->whereIn('menu_items.route_id', Permission::select('route_id'))
+            ->where('permissions.user_id', '=', auth()->id())
+            ->whereIn('menu_items.route_id',
+                Permission::select('permissions.route_id')
+                    ->join('menu_items', 'menu_items.route_id', '=', 'permissions.route_id')
+                    ->where('user_id', '=', auth()->id())
+                    ->where('main', '=', '1'))
             ->groupBy('id')
             ->orderBy('hidden', 'asc')
-            ->orderBy('order', 'asc')
+            ->orderBy('menu.order', 'asc')
             ->get();
     }
 

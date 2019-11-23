@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="{{ asset('argon/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('argon/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('argon/vendor/select2/dist/css/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('argon/vendor/fullcalendar/dist/fullcalendar.min.css') }}">
 <link rel="stylesheet" href="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('argon/vendor/animate.css/animate.min.css') }}">
 

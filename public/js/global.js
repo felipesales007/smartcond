@@ -5,16 +5,16 @@
  * Licensed under MIT
  */
 
-// console.log() personalizado
+// console.log() custom
 const l = _ => console.log(_);
 
-// carregando
+// loading
 $(window).on('load', function () {
     $('.fe-bg-loader').fadeOut('slow');
     $('.fe-loader').fadeOut('slow');
 });
 
-// carregando em submit
+// loading submit
 $('button[type="submit"]').on('click', function () {
     $('form').submit(function () {
         if ($(this).valid()) {
@@ -24,13 +24,13 @@ $('button[type="submit"]').on('click', function () {
     });
 });
 
-// carregando link
+// loading link
 $('.fe-loading').on('click', function () {
     $('.fe-bg-loader').css('display', '');
     $('.fe-loader').css('display', '');
 });
 
-// carregando em ajax
+// loading ajax
 function loader(status) {
     if (status === 1) {
         $('.fe-bg-loader').css('display', '');
@@ -41,88 +41,71 @@ function loader(status) {
     }
 }
 
-// identifica se o acesso vem de PC ou celular
+// identifies if access comes from PC or mobile
 if (navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad|android)/)) {
-    // celular
-    // ignora para não bugar o teclado mobile
-    function primeiraLetraMaiuscula() {}
+    // mobile
+    // ignore not to hit the mobile keyboard
+    function firstLetterUppercase() {}
 
-    // ignora para não bugar o teclado mobile
-    function letraMaiuscula() {}
+    // ignore not to hit the mobile keyboard
+    function letterUppercase() {}
 } else {
     // PC
-    // primeira letra maiúscula - onkeyup="primeiraLetraMaiuscula(this);"
-    function primeiraLetraMaiuscula(letra) {
-        let texto      = letra.value;
-        let quantidade = letra.value.length;
-        let primeira   = texto.substr(0, 1);
-        let resto      = texto.substr(1, quantidade);
+    // first letter uppercase - onkeyup="firstLetterUppercase(this);"
+    function firstLetterUppercase(letter) {
+        let text     = letter.value;
+        let quantity = letter.value.length;
+        let first    = text.substr(0, 1);
+        let rest     = text.substr(1, quantity);
 
-        texto       = primeira.toUpperCase() + resto;
-        letra.value = texto;
+        letter.value = first.toUpperCase() + rest;
     }
 
-    // todas as primeiras letras maiúscula - onkeyup="letraMaiuscula('id');"
-    function letraMaiuscula(letra) {
-        // lista de palavras a serem ignoradas
+    // all first letter uppercase - onkeyup="letterUppercase('id');"
+    function letterUppercase(letter) {
+        // list of words to ignore
         let ignore = [
             'de', 'do', 'dos', 'das', 'a', 'e', 'i',
             'o', 'u', 'é', 'ou', 'ao', 'em', 'da',
         ], minLength = 2;
 
-        let pegaPalavra = function (str) {
+        let catchWord = function (str) {
             return str.match(/\S+\s*/g);
         };
 
-        $('#' + letra).each(function () {
-            let palavra = pegaPalavra(this.value);
+        $('#' + letter).each(function () {
+            let words = catchWord(this.value);
 
             if (this.value.length > 0) {
-                $.each(palavra, function (i, word) {
-                    // só continua se a palavra não estiver na lista de ignoradas
+                $.each(words, function (i, word) {
+                    // only continues if words are not in the ignore list
                     if (ignore.indexOf($.trim(word)) === -1 && $.trim(word).length > minLength) {
-                        palavra[i] = palavra[i].charAt(0).toUpperCase() + palavra[i].slice(1).toLowerCase();
+                        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
                     } else {
-                        palavra[i] = palavra[i].toLowerCase();
+                        words[i] = words[i].toLowerCase();
                     }
                 });
-                this.value = palavra.join('');
+                this.value = words.join('');
             }
         });
     }
 }
 
-// valida e-mail
-function validaEmail(email) {
-    let usuario = email.substr(0, email.indexOf('@'));
-    let dominio = email.substr(email.indexOf('@') + 1, email.length);
-
-    return  (usuario.length >= 1) &&
-            (dominio.length >= 3) &&
-            (usuario.search('@') === -1) &&
-            (dominio.search('@') === -1) &&
-            (usuario.search(' ') === -1) &&
-            (dominio.search(' ') === -1) &&
-            (dominio.search('.') !== -1) &&
-            (dominio.indexOf('.') >= 1) &&
-            (dominio.lastIndexOf('.') < dominio.length - 1);
-}
-
-// mostra icone de carregamento no botão
-$('.fe-carregando').on('click', function () {
+// show button loading icon
+$('.fe-spinner').on('click', function () {
     $('form').submit(function () {
         if ($(this).valid()) {
-            $('.fe-carregando').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Carregando');
+            $('.fe-spinner').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Carregando');
         }
     });
 });
 
-// mostra icone de carregamento em lugar determinado
-function enviando() {
-    $('.fe-carregando').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Enviando');
+// show charging icon in specific place
+function sending() {
+    $('.fe-spinner').html('<i class="fas fa-spinner fa-pulse mr-2"></i>Enviando');
 }
 
-// transição do navbar
+// navbar transition
 if ($('.navbar-dark').length > 0) {
     $('.modal').on('show.bs.modal hidden.bs.modal', function () {
         $('.navbar-dark').removeClass('fe-transition');
@@ -136,15 +119,15 @@ if ($('.navbar-dark').length > 0) {
         };
 
         if ($(window).scrollTop() > startY) {
-            $('.navbar-dark').addClass('fe-bg-theme');
+            $('.navbar-dark').addClass('bg-primary');
         } else {
-            $('.navbar-dark').removeClass('fe-bg-theme');
+            $('.navbar-dark').removeClass('bg-primary');
             $('.navbar-dark').addClass('fe-transition');
         }
     });
 }
 
-// datepicker de hoje para trás
+// today's datepicker behind
 $(function () {
     $('.datepicker-back').datepicker({
         language: 'pt-BR',
@@ -155,7 +138,7 @@ $(function () {
     });
 });
 
-// datepicker de hoje para frente
+// today's datepicker forward
 $(function () {
     $('.datepicker-onwards').datepicker({
         language: 'pt-BR',
@@ -166,7 +149,7 @@ $(function () {
     });
 });
 
-// datepicker com botão limpar de hoje para frente
+// today's datepicker with clear forward button
 $(function () {
     $('.datepicker-clean-onwards').datepicker({
         language: 'pt-BR',
@@ -178,169 +161,189 @@ $(function () {
     });
 });
 
-// permite só letras e acentuações de A a Z + espaço - onkeypress="return soLetras(event);"
-function soLetras(event) {
-    let codigo;
+// only allow letters and accents from A to Z + space - onkeypress="return onlyLetters(event);"
+function onlyLetters(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ ';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ ';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// permite só letras e acentuações de A a Z + espaço e caracteres especiais - onkeypress="return soLetrasCaracteres(event);"
-function soLetrasCaracteres(event) {
-    let codigo;
+// allow only letters and accent from A to Z + space and special characters - onkeypress="return onlyLettersCharacters(event);"
+function onlyLettersCharacters(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ-. ';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ-. ';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// permite só letras sem acentuações de A a Z + espaço - onkeypress="return soLetrasSemAcento(event);"
-function soLetrasSemAcento(event) {
-    let codigo;
+// allow only letters without accent from A to Z + space - onkeypress="return lettersOnlyNoAccent(event);"
+function lettersOnlyNoAccent(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYK ';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYK ';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// permite só caracteres para um grupo - onkeypress="return caracteresGrupo(event);"
-function caracteresGrupo(event) {
-    let codigo;
+// only allow characters for one group - onkeypress="return groupCharacters(event);"
+function groupCharacters(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = 'abcdefghijlmnopqrstuvxzwyk_-';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = 'abcdefghijlmnopqrstuvxzwyk_-';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// permite só caracteres para uma url - onkeypress="return caracteresUrl(event);"
-function caracteresUrl(event) {
-    let codigo;
+// only allow characters for one url - onkeypress="return urlCharacters(event);"
+function urlCharacters(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = 'abcdefghijlmnopqrstuvxzwyk/{?}_-';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = 'abcdefghijlmnopqrstuvxzwyk/{?}_-';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// permite só caracteres para uma rota - onkeypress="return caracteresRota(event);"
-function caracteresRota(event) {
-    let codigo;
+// only allow characters for one route - onkeypress="return routeCharacters(event);"
+function routeCharacters(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = 'abcdefghijlmnopqrstuvxzwyk._-';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = 'abcdefghijlmnopqrstuvxzwyk._-';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// permite só caracteres para um controle - onkeypress="return caracteresControle(event);"
-function caracteresControle(event) {
-    let codigo;
+// allow only characters for a control - onkeypress="return controlCharacters(event);"
+function controlCharacters(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYK@_\\';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYK@_\\';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// permite só caracteres para um ícone - onkeypress="return caracteresIcone(event);"
-function caracteresIcone(event) {
-    let codigo;
+// only allow characters for one icon - onkeypress="return charactersIcon(event);"
+function charactersIcon(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = 'abcdefghijlmnopqrstuvxzwyk- ';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = 'abcdefghijlmnopqrstuvxzwyk- ';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// permite só números - onkeypress="return soNumeros(event);"
-function soNumeros(digito) {
-    let charCode = digito.charCode ? digito.charCode : digito.keyCode;
+// only allow characters for one unit - onkeypress="return unitNumber(event);"
+function unitNumber(event) {
+    let code;
+
+    if (event.keyCode) {
+        code = event.keyCode;
+    } else {
+        code = event.charCode;
+    }
+
+    let validate  = '1234567890.';
+    let character = String.fromCharCode(code);
+
+    if (validate.indexOf(character) > -1) {
+        return true;
+    }
+
+    return validate.indexOf(character) > -1 || code < 9;
+}
+
+// only allow numbers - onkeypress="return onlyNumbers(event);"
+function onlyNumbers(number) {
+    let charCode = number.charCode ? number.charCode : number.keyCode;
 
     if (charCode !== 8 && charCode !== 9) {
         if (charCode < 48 || charCode > 57) {
@@ -349,32 +352,32 @@ function soNumeros(digito) {
     }
 }
 
-// permite só de A a Z com acentuações e números + espaço - onkeypress="return soLetrasNumeros(event);"
-function soLetrasNumeros(event) {
-    let codigo;
+// only allow from A to Z with accents and numbers + space - onkeypress="return onlyLettersNumbers(event);"
+function onlyLettersNumbers(event) {
+    let code;
 
     if (event.keyCode) {
-        codigo = event.keyCode;
+        code = event.keyCode;
     } else {
-        codigo = event.charCode;
+        code = event.charCode;
     }
 
-    let valida    = '0123456789abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ ';
-    let caractere = String.fromCharCode(codigo);
+    let validate  = '0123456789abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ ';
+    let character = String.fromCharCode(code);
 
-    if (valida.indexOf(caractere) > -1) {
+    if (validate.indexOf(character) > -1) {
         return true;
     }
 
-    return valida.indexOf(caractere) > -1 || codigo < 9;
+    return validate.indexOf(character) > -1 || code < 9;
 }
 
-// bloqueia espaço - onkeyup="this.value = semEspaco(this.value);"
-function semEspaco(letra) {
-    return letra.replace(/ /g, '');
+// block space - onkeyup="this.value = noSpace(this.value);"
+function noSpace(letter) {
+    return letter.replace(/ /g, '');
 }
 
-// evita quebra de linha em textarea
+// prevents line break in textarea
 $('textarea').on('keypress', function (event) {
     let enter = 13;
     let char  = event.which || event.keyCode;
@@ -384,120 +387,80 @@ $('textarea').on('keypress', function (event) {
     }
 });
 
-// evita que seja digitado zero a esquerda
+// prevents zero left typing
 setInterval(function () {
-    let digito = $('.fe-zero-esquerda');
+    let digit = $('.fe-zero-left');
 
-    for (let i = 0; i < digito.length; i++) {
-        while (digito[i].value.length > 0 && digito[i].value.substr(0, 1) === '0') {
-            digito[i].value = digito[i].value.substr(1);
+    for (let i = 0; i < digit.length; i++) {
+        while (digit[i].value.length > 0 && digit[i].value.substr(0, 1) === '0') {
+            digit[i].value = digit[i].value.substr(1);
         }
     }
 }, 0);
 
-// evita que seja digitado um número primeiro
+// prevents you from entering a number first
 setInterval(function () {
-    let digito = $('.fe-letra-primeiro');
+    let digit = $('.fe-letter-first');
 
-    for (let i = 0; i < digito.length; i++) {
-        while (digito[i].value.length > 0 &&
-        digito[i].value.substr(0, 1) === '0' ||
-        digito[i].value.substr(0, 1) === '1' ||
-        digito[i].value.substr(0, 1) === '2' ||
-        digito[i].value.substr(0, 1) === '3' ||
-        digito[i].value.substr(0, 1) === '4' ||
-        digito[i].value.substr(0, 1) === '5' ||
-        digito[i].value.substr(0, 1) === '6' ||
-        digito[i].value.substr(0, 1) === '7' ||
-        digito[i].value.substr(0, 1) === '8' ||
-        digito[i].value.substr(0, 1) === '9') {
-            digito[i].value = digito[i].value.substr(1);
+    for (let i = 0; i < digit.length; i++) {
+        while (digit[i].value.length > 0 &&
+        digit[i].value.substr(0, 1) === '0' ||
+        digit[i].value.substr(0, 1) === '1' ||
+        digit[i].value.substr(0, 1) === '2' ||
+        digit[i].value.substr(0, 1) === '3' ||
+        digit[i].value.substr(0, 1) === '4' ||
+        digit[i].value.substr(0, 1) === '5' ||
+        digit[i].value.substr(0, 1) === '6' ||
+        digit[i].value.substr(0, 1) === '7' ||
+        digit[i].value.substr(0, 1) === '8' ||
+        digit[i].value.substr(0, 1) === '9') {
+            digit[i].value = digit[i].value.substr(1);
         }
     }
 }, 0);
 
-// formatação para telefone, data, RG, CPF e etc - maxlength="15" onkeypress="return formatar(event, this, '(##) ####-####');"
-function formatar(event, id, mask) {
-    let tecla = (event.code) ? event.keyCode : event.which;
-
-    if (tecla > 47 && tecla < 58) {
-        mascara(id, mask);
-        return true;
-    } else {
-        if (tecla === 8 || tecla === 0) {
-            mascara(id, mask);
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
-
-// auxiliar de formatação para telefone, data, RG, CPF e etc
-function mascara(id, mask) {
-    let i         = id.value.length;
-    let carac     = mask.substring(i, i + 1);
-    let prox_char = mask.substring(i + 1, i + 2);
-
-    if (i === 0 && carac !== '#') {
-        insereCaracter(id, carac);
-        if (prox_char !== '#') {
-            insereCaracter(id, prox_char);
-        }
-    } else if (carac !== '#') {
-        insereCaracter(id, carac);
-        if (prox_char !== '#') {
-            insereCaracter(id, prox_char);
-        }
-    }
-
-    function insereCaracter(id, char) {
-        id.value += char;
-    }
-}
-
-// controle para mudanças de páginas com window.history
+// control for page changes with window.history
 if (document.referrer.indexOf(window.location.href) >= 0) {
     sessionStorage.setItem('history.back', 1 + parseInt(sessionStorage.getItem('history.back')));
 } else {
     sessionStorage.setItem('history.back', '1');
 }
 
-// volta para a tela anterior - onclick="voltar();"
-function voltar() {
-    // ações em navegadores
-    if (!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
+// go back to previous screen - onclick="back();"
+function back() {
+    // browser actions
+    if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
         // chrome
         window.history.go(-sessionStorage.getItem('history.back'));
-    } else if (typeof InstallTrigger !== 'undefined') {
+    } else if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
         // firefox
-        window.history.go(-1);
+        window.history.back();
     } else if ((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
         // opera
-        window.history.go(-1);
+        window.history.back();
     } else if (/constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === '[object SafariRemoteNotification]'; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification))) {
         // safari
         window.history.go(-sessionStorage.getItem('history.back'));
-    } else if (/Edge/.test(navigator.userAgent)) {
+    } else if (navigator.userAgent.toLowerCase().indexOf('edge') > -1) {
         // edge
-        window.history.go(-1);
+        window.history.back();
     } else if (/*@cc_on!@*/!!document.documentMode) {
         // ie
-        window.history.go(-1);
+        window.history.back();
     } else {
         // outro
-        window.history.go(-1);
+        window.history.back();
     }
 }
 
-// transição do corpo ao clicar no menu lateral
+// body transition by clicking on the side menu
 $(function () {
     $(document).on('click', '.sidenav-toggler', function () {
         $('.main-content').addClass('fe-transition-default');
     });
 });
 
-// validações manuais
+// manual validations
 $('form').submit(function () {
     if ($(this).html().indexOf('form-control') > 0 || $(this).html().indexOf('custom-control-input') > 0) {
         $('input').valid();
@@ -508,7 +471,7 @@ $('form').submit(function () {
     }
 });
 
-// validação em select2 e checkbox no submit
+// select2 validation and checkbox in submit
 $('button[type="submit"]').on('click', function (e) {
     if (document.querySelector('select')) {
         let select = e.delegateTarget.form.querySelectorAll('select');
@@ -527,12 +490,12 @@ $('button[type="submit"]').on('click', function (e) {
     }
 });
 
-// validação em select2 no focus
+// select2 validation in focus
 $(document).on('focusout', '.select2', function () {
     $($(this).siblings('select')).valid();
 });
 
-// inicializa todos os select com select2 com input de busca, validação e com animação da seta personalizada
+// initialize all select with select2 with search input, validation and custom arrow animation
 $('select').select2({
     placeholder: 'Selecione',
     language: 'pt-BR',
@@ -548,14 +511,14 @@ $('select').select2({
 
     if (!$('.select2-selection--single').hasClass('is-invalid') && !$('.select2-selection--single').hasClass('is-valid')) {
         $('.select2-selection--single').on(function () {
-            $(this).parent().addClass('fe-focus-select2');
+            $(this).parent().addClass('border-primary');
             $('#' + this.id).valid();
         });
     }
 
     if (!$('.select2-selection--multiple').hasClass('is-invalid') && !$('.select2-selection--multiple').hasClass('is-valid')) {
         $('.select2-selection--multiple').on(function () {
-            $(this).parent().addClass('fe-focus-select2');
+            $(this).parent().addClass('border-primary');
             $('#' + this.id).valid();
         });
     }
@@ -563,26 +526,26 @@ $('select').select2({
     $('.modal').attr('tabindex', '-1');
 
     $('.select2-selection--single').removeClass('select2-selection--single-up');
-    $('.select2-selection--single').removeClass('fe-focus-select2');
+    $('.select2-selection--single').removeClass('border-primary');
 
     $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
-    $('.select2-selection--multiple').removeClass('fe-focus-select2');
+    $('.select2-selection--multiple').removeClass('border-primary');
 
     $('#' + this.id).valid();
 }).on('select2:select', function () {
     $('.select2-selection--single').removeClass('select2-selection--single-up');
-    $('.select2-selection--single').removeClass('fe-focus-select2');
+    $('.select2-selection--single').removeClass('border-primary');
 
     $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
-    $('.select2-selection--multiple').removeClass('fe-focus-select2');
+    $('.select2-selection--multiple').removeClass('border-primary');
 
     $('#' + this.id).valid();
 }).on('select2:unselect', function (e) {
     $('.select2-selection--single').removeClass('select2-selection--single-up');
-    $('.select2-selection--single').removeClass('fe-focus-select2');
+    $('.select2-selection--single').removeClass('border-primary');
 
     $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
-    $('.select2-selection--multiple').removeClass('fe-focus-select2');
+    $('.select2-selection--multiple').removeClass('border-primary');
 
     let id = '#' + $('#' + e.currentTarget.id).next().prevObject[0].form.id;
 
@@ -599,7 +562,7 @@ $('select').select2({
     $('#' + this.id).valid();
 });
 
-// inicializa o select2 sem input de busca
+// initialize select2 without search input
 $('.select-nosearch').select2({
     placeholder: 'Selecione',
     language: 'pt-BR',
@@ -607,14 +570,14 @@ $('.select-nosearch').select2({
     minimumResultsForSearch: -1
 });
 
-// garante o tabindex em select2 multiple
+// tabindex in select2 multiple
 $(document).on('keyup', function (e) {
     if (e.which === 9) {
         $('.select2-selection--multiple').attr('tabindex', '0');
     }
 });
 
-// placeholder em select2 multiple
+// placeholder in select2 multiple
 $('.modal').on('show.bs.modal hidden.bs.modal', function (e) {
     let id  = '#' + e.currentTarget.id;
 
@@ -623,16 +586,16 @@ $('.modal').on('show.bs.modal hidden.bs.modal', function (e) {
     }
 });
 
-// bloqueia o input de copiar e colar
+// block copy and paste input
 $(function () {
     $('.fe-block-paste').bind('cut copy paste', function (event) {
         event.preventDefault();
     });
 });
 
-// add * de campos required não obrigatório - onkeyup="isRequired(this);"
+// required fields add * not required - onkeyup="isRequired(this);"
 function isRequired(input) {
-    // campos definidos
+    // defined fields
     if (input.id === 'password-edit-user' || input.id === 'password-confirmation-edit-user') {
         if (input.value) {
             $('.fe-star-password-edit-user').removeClass('fe-hidden');
@@ -642,7 +605,7 @@ function isRequired(input) {
             $('.fe-star-password-confirmation-edit-user').addClass('fe-hidden');
         }
     } else {
-        // campos não definidos
+        // undefined fields
         if (input.value) {
             $('.fe-star-' + input.id).removeClass('fe-hidden');
         } else {
@@ -651,7 +614,7 @@ function isRequired(input) {
     }
 }
 
-// scroll top se form válido
+// scroll top if valid
 $('.fe-scroll-top').on('click', function () {
     $('form').submit(function () {
         if ($(this).valid()) {
@@ -670,7 +633,7 @@ $('.fe-scroll-top').on('click', function () {
     });
 });
 
-// scroll top se form válido em ajax
+// scroll top if valid in ajax
 function scrollTop() {
     $('html, body, .modal').animate({
         scrollTop: 0
@@ -681,9 +644,9 @@ function scrollTop() {
     }
 }
 
-// visualizar ou esconder password
-function verSenha(event) {
-    let icone = event.querySelector('i');
+// show or hide password
+function viewPassword(event) {
+    let icon  = event.querySelector('i');
     let input = event.parentNode.querySelector('input');
 
     if (input.type === 'password') {
@@ -692,21 +655,21 @@ function verSenha(event) {
         input.type = 'password';
     }
 
-    if ($(icone).hasClass('fa-eye')) {
-        $(icone).removeClass('fa-eye');
-        $(icone).addClass('fa-eye-slash');
+    if ($(icon).hasClass('fa-eye')) {
+        $(icon).removeClass('fa-eye');
+        $(icon).addClass('fa-eye-slash');
     } else {
-        $(icone).removeClass('fa-eye-slash');
-        $(icone).addClass('fa-eye');
+        $(icon).removeClass('fa-eye-slash');
+        $(icon).addClass('fa-eye');
     }
 }
 
-// auxiliar de visualizar ou esconder password
+// view and hide password assist
 $('.modal').on('hidden.bs.modal', function (e) {
     let form = e.target.id;
 
     if ($('#' + form).find('.fa-eye-slash').length > 0) {
-        let icon = $('#' + form).find('.fa-eye-slash');
+        let icon  = $('#' + form).find('.fa-eye-slash');
         let input = icon.parent().parent().parent().children('input');
 
         for (let i = 0; i < icon.length; i++) {
@@ -717,19 +680,18 @@ $('.modal').on('hidden.bs.modal', function (e) {
     }
 });
 
-// limpa o input
-function limparInput(event) {
-    let input   = event.parentNode.querySelector('input');
-    input.value = '';
+// clear input
+function clearInput(event) {
+    event.parentNode.querySelector('input').value = '';
 }
 
-// limpa o input datepicker
-function limparInputDatepicker(event) {
+// clear input datepicker
+function clearInputDatepicker(event) {
     let input = event.parentNode.querySelector('input').getAttribute('id');
     $('#' + input).datepicker('setDate', null);
 }
 
-// submit bloquea button type submit, para evitar duplicidade
+// submit blocks button type submit to avoid duplication
 $(document).on('submit', 'form', function () {
     $(this.querySelector('button[type="submit"]')).attr('disabled', 'disabled');
 });
@@ -741,7 +703,7 @@ $.ajaxSetup({
     }
 });
 
-// ajax remove validações
+// ajax remove validation
 function removeValidate() {
     $('span').removeClass('is-invalid').removeClass('is-valid');
     $('input').removeClass('is-invalid').removeClass('is-valid');
@@ -749,7 +711,7 @@ function removeValidate() {
     $('.invalid-feedback').remove();
 }
 
-// ajax validações do servidor
+// ajax server validation
 function serverValidate(data) {
     if (data.status === 422) {
         $.each(data.responseJSON.errors, function (i, error) {
@@ -764,7 +726,7 @@ function serverValidate(data) {
     }
 }
 
-// remove informações de validações no formulário
+// remove validation information on form
 function removeInfoRequired(form) {
     if (document.querySelector(form)) {
         let tags  = document.querySelector(form);
@@ -778,7 +740,7 @@ function removeInfoRequired(form) {
     }
 }
 
-// formata date em data br
+// format date on date br
 function date_to_date_br(data) {
     if (data) {
         let date  = new Date(data);
@@ -800,7 +762,7 @@ function date_to_date_br(data) {
     }
 }
 
-// formata timestamp em data br em datepicker
+// format timestamp on date br on datepicker
 function timestamp_to_date_br(data) {
     if (data) {
         let date  = new Date(data);
@@ -822,8 +784,8 @@ function timestamp_to_date_br(data) {
     }
 }
 
-// calcula a idade
-function calcularIdade(date) {
+// calculate age
+function calculateAge(date) {
     if (date) {
         let birthday = +new Date(date);
         return ~~((Date.now() - birthday) / (31557600000));
@@ -832,7 +794,7 @@ function calcularIdade(date) {
     }
 }
 
-// verifica se o input de bloquear está ativo ou não - onkeyup="statusCheckbox(this);"
+// check whether block input is active or not - onkeyup="statusCheckbox(this);"
 function statusCheckbox(input, string) {
     let icon = '#' + input.id;
     let checkbox;
@@ -859,7 +821,7 @@ function statusCheckbox(input, string) {
     }
 }
 
-// auxiliar de verifica se o input de bloquear está ativo ou não
+// helper checks whether the block input is active or not
 function changeCheckbox(checkbox, string) {
     let input;
     let button;
@@ -886,7 +848,7 @@ function changeCheckbox(checkbox, string) {
     }
 }
 
-// atribui valor true ou false em checkbox clicado
+// assign true or false value in clicked checkbox
 $('input[type="checkbox"]').change(function () {
     if ($(this).prop('checked')) {
         $(this).attr('checked', 'checked');
@@ -895,14 +857,14 @@ $('input[type="checkbox"]').change(function () {
     }
 });
 
-// retorna a primeira palavra de uma frase
+// returns the first word of a sentence
 function first_word(word) {
     if (word !== null && typeof word !== 'undefined') {
         return word.split(' ')[0];
     }
 }
 
-// retorna as duas primeiras palavras de uma frase
+// returns the first two words of a sentence
 function two_word(word) {
     if (word !== null && typeof word !== 'undefined') {
         if (word.indexOf(' ') > 1) {
@@ -913,7 +875,7 @@ function two_word(word) {
     }
 }
 
-// retorna data e hora atual
+// return current date and time
 $(function () {
     let date   = new Date();
     let day    = date.getDate();
@@ -940,12 +902,12 @@ $(function () {
     $('.week-date-time-now').html(weeks[week] + ', ' + day + ' de ' + months[month] + ' de ' + year + ' - ' + hour + ':' + minute);
 });
 
-// verifica se é número
+// check if it's number
 function isNumber(e) {
     return !isNaN(parseFloat(e)) && isFinite(e);
 }
 
-// retorna valor em pt-BR
+// returns value in pt-BR
 function to_real(value) {
     let number = value;
 
@@ -966,7 +928,7 @@ function to_real(value) {
     }
 }
 
-// retorna valor em USD
+// returns value in USD
 function to_usd(value) {
     let number = value;
 
@@ -983,25 +945,17 @@ function to_usd(value) {
     }
 }
 
-// retorna a url
+// return to url
 function url_public($destination) {
     let protocol  = window.location.protocol + '//';
-    let hostname  = window.location.hostname;
-    let localhost = window.location.pathname.split('/', 2);
-    hostname += '/' + localhost[1] + '/public/';
-
-    // if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '127.0.0.1:8000') {
-    //     hostname += '/' + localhost[1] + '/public/';
-    // } else {
-    //     hostname += '/';
-    // }
+    let hostname  = window.location.hostname + '/';
 
     return protocol + hostname + $destination;
 }
 
-// máscaras JQuery Mask para o sistema
+// JQuery Mask masks for the system
 $(function () {
-    // máscara para telefone e celular
+    // mask for phone and cellphone
     let maskPhones = function (val) {
         return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
     }, mask = {
@@ -1010,7 +964,7 @@ $(function () {
         }
     };
 
-    // máscaras
+    // mask
     $('.mask-date').mask('00/00/0000');
     $('.mask-time').mask('00:00:00');
     $('.mask-date-time').mask('00/00/0000 00:00:00');
@@ -1047,10 +1001,10 @@ $(function () {
     $('.mask-date-selectonfocus').mask('00/00/0000', {selectOnFocus: true});
 });
 
-// animar item - onclick="animateItem(this, 'fa-pulse');"
+// animate item - onclick="animateItem(this, 'fa-pulse');"
 function animateItem(item, animation) {
     /*
-     * tipos de animações:
+     * types of animations:
      * pulse, faa-wrench, faa-ring, faa-horizontal,
      * faa-pulse, faa-shake, faa-burst, faa-tada
      */
@@ -1063,7 +1017,7 @@ function animateItem(item, animation) {
     }, 1000);
 }
 
-// copia o texto
+// copy the text
 function copyToClipboard(string) {
     let textarea = document.createElement('textarea');
 
@@ -1094,12 +1048,12 @@ function copyToClipboard(string) {
     this.notify(data);
 }
 
-// desabilita o clique quando o menu está bloqueado
+// disable click when menu is locked
 $('.fe-menu-block').on('click', function () {
     return false;
 });
 
-// enter clica no botão submit automaticamente
+// enter click submit button automatically
 $(function () {
     $('.modal').on('shown.bs.modal', function () {
         $(this).on('keypress', function (e) {
@@ -1118,23 +1072,23 @@ $(function () {
     });
 });
 
-// evento para abertura e fechamento de collapses duplo
+// event for opening and closing double collapses
 $(function () {
-    let collapse_event;
+    let item;
 
     $('.collapse').on('show.bs.collapse', function (e) {
         let collapse = e.target.dataset.parent;
 
         if (collapse) {
             if (collapse.indexOf('event') !== -1) {
-                if (collapse_event === collapse) {
-                    collapse_event = collapse;
+                if (item === collapse) {
+                    item = collapse;
                 } else {
-                    if (collapse_event) {
-                        $(collapse_event).click();
-                        collapse_event = collapse;
+                    if (item) {
+                        $(item).click();
+                        item = collapse;
                     } else {
-                        collapse_event = collapse;
+                        item = collapse;
                     }
                 }
             }
@@ -1146,34 +1100,34 @@ $(function () {
 
         if (collapse) {
             if (collapse.indexOf('event') !== -1) {
-                if (collapse_event !== collapse) {
-                    $(collapse_event).click();
+                if (item !== collapse) {
+                    $(item).click();
                 } else {
-                    collapse_event = null;
+                    item = null;
                 }
             }
         }
     });
 
     $('.modal').on('hidden.bs.modal', function () {
-        if (collapse_event) {
-            $(collapse_event).click();
+        if (item) {
+            $(item).click();
         }
     });
 });
 
-// evento para visualização e ocultação de collapse - onclick="collapseView(this);"
+// collapse view and hide event - onclick="collapseView(this);"
 function collapseView(e) {
     $(e).parent().find('.d-none').removeClass('d-none');
     $(e).addClass('d-none');
 }
 
-// evita eventos
+// avoid events
 $('.no-event').click(function (e) {
     e.stopPropagation();
 });
 
-// marca e desmarca todos os checkboxes - onclick="checkboxAll(this);"
+// check and uncheck all checkboxes - onclick="checkboxAll(this);"
 function checkboxAll(checkbox) {
     let checkboxes = $(document).find('[data-check="' + checkbox.id + '"]');
 
@@ -1188,7 +1142,7 @@ function checkboxAll(checkbox) {
     }
 }
 
-// verifica se todos os checkboxes estão marcados - onclick="checkboxOne(this);"
+// check if all checkboxes are checked - onclick="checkboxOne(this);"
 function checkboxOne(checkbox) {
     let checkboxAll = $(checkbox).data('check');
     let checkboxes  = $(document).find('[data-check="' + checkboxAll + '"]').length;
@@ -1203,7 +1157,7 @@ function checkboxOne(checkbox) {
     }
 }
 
-// evento de item aberto ou fechado
+// open or closed item event
 function eventExpanded(e, first, second) {
     if ($(e).attr('aria-expanded') === 'false') {
         $(e).html(first + ' ');
@@ -1212,10 +1166,10 @@ function eventExpanded(e, first, second) {
     }
 }
 
-// máscara para valores em real
+// mask for values in real
 $(".to-real").maskMoney({prefix:'', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 
-// animação quando o formulário for inválido
+// animation when form is invalid
 function formInvalidAnimate(form) {
     let interval = setInterval(function () {
         form.removeClass('shake animated');
@@ -1225,11 +1179,11 @@ function formInvalidAnimate(form) {
     form.addClass('shake animated');
 }
 
-// evento para animação quando o formulário for inválido
+// event for animation when form is invalid
 $('button[type="submit"]').on('click', function () {
     let form = $(this).parent().parent().parent().parent();
 
-    form.find('input').filter('[required]:visible').each(function (index, e) {
+    form.find(':input').filter('[required]:visible').each(function (index, e) {
         if (e.value === null || e.value === '') {
             formInvalidAnimate(form);
         }
@@ -1241,11 +1195,16 @@ $('button[type="submit"]').on('click', function () {
     }
 });
 
-// evento para animação quando o formulário for inválido via post
+// event for animation when form is invalid via post
 $(window).on('load', function () {
     let form = $('button[type="submit"]').parent().parent().parent().parent();
 
     if (form.find('.invalid-feedback').length > 0) {
         formInvalidAnimate(form);
     }
+});
+
+// enable tooltip
+$('body').tooltip({
+    selector: '[data-toggle="tooltip"]'
 });

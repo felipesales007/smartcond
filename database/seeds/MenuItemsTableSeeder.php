@@ -12,859 +12,120 @@ class MenuItemsTableSeeder extends Seeder
      */
     public function run()
     {
-        // grupo home
+        // 1 -  Home
         MenuItem::create([
             'menu_id'     => '1',
             'route_id'    => '1',
             'order'       => '1',
             'name'        => 'Home',
+            'main'        => '1',
             'description' => 'Item do menu de acesso a página inicial',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
-        // grupo perfil
+        // 2 - Meu perfil
         MenuItem::create([
             'menu_id'     => '2',
             'route_id'    => '2',
-            'order'       => '1',
+            'order'       => '0',
             'name'        => 'Meu perfil',
             'description' => 'Item do menu oculto de acesso a página do perfil do usuário logado',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 3 - Meu perfil
         MenuItem::create([
             'menu_id'     => '3',
             'route_id'    => '2',
             'order'       => '1',
             'name'        => 'Meu perfil',
+            'main'        => '1',
             'description' => 'Item do menu dropdown de acesso a página do perfil do usuário logado',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 4 - Alterar senha
         MenuItem::create([
             'menu_id'     => '4',
-            'route_id'    => '4',
+            'route_id'    => '3',
             'order'       => '2',
             'name'        => 'Alterar senha',
             'button'      => 'btn-modal-password-reset-profile',
+            'main'        => '1',
             'description' => 'Item do menu dropdown de acesso ao modal de alteração de senha do usuário logado',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 5 - Suporte
         MenuItem::create([
             'menu_id'     => '5',
-            'route_id'    => '5',
+            'route_id'    => '4',
             'order'       => '3',
             'name'        => 'Suporte',
             'button'      => 'btn-modal-send-support-profile',
+            'main'        => '1',
             'description' => 'Item do menu dropdown de acesso ao modal de envio de e-mail para o suporte do sistema',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
-        // grupo usuários
+        // 6 - Gerenciamento
         MenuItem::create([
             'menu_id'     => '6',
-            'route_id'    => '11',
-            'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de usuários',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '19',
-            'order'       => '2',
-            'name'        => 'Novo usuário',
-            'button'      => 'btn-modal-new-user',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '12',
-            'order'       => '3',
-            'name'        => 'Lista de usuários',
-            'description' => 'Item do menu collapse de acesso a página de listagem de usuários',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '13',
-            'order'       => '4',
-            'name'        => 'Lista de usuários deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de usuários deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '14',
-            'order'       => '1',
-            'name'        => 'Visualizar usuário',
-            'button'      => 'btn-modal-view-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de usuários de acesso ao modal de visualização de usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '15',
-            'order'       => '2',
-            'name'        => 'Editar usuário',
-            'button'      => 'btn-modal-edit-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de usuários de acesso ao modal de edição de usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '16',
-            'order'       => '3',
-            'name'        => 'Bloquear usuário',
-            'button'      => 'btn-modal-block-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de usuários de acesso ao modal de bloqueio de usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '17',
-            'order'       => '4',
-            'name'        => 'Deletar usuário',
-            'button'      => 'btn-modal-delete-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de usuários de acesso ao modal de exclusão de usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '18',
-            'order'       => '1',
-            'name'        => 'Recuperar usuário',
-            'button'      => 'btn-modal-recover-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de usuários deletados de acesso ao modal de recuperação de usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '24',
-            'order'       => '1',
-            'name'        => 'Reenviar e-mail do usuário',
-            'button'      => 'btn-resend-email-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de usuários de acesso ao botão de reenvio de e-mail de confirmação do usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        // grupo condomínios
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '32',
-            'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de condomínios',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '40',
-            'order'       => '2',
-            'name'        => 'Novo condomínio',
-            'button'      => 'btn-modal-new-entity',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de condomínio',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '33',
-            'order'       => '3',
-            'name'        => 'Lista de condomínios',
-            'description' => 'Item do menu collapse de acesso a página de listagem de condomínios',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '34',
-            'order'       => '4',
-            'name'        => 'Lista de condomínios deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de condomínios deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '35',
-            'order'       => '1',
-            'name'        => 'Visualizar condomínio',
-            'button'      => 'btn-modal-view-entity',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de visualização de condomínio',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '36',
-            'order'       => '2',
-            'name'        => 'Editar condomínio',
-            'button'      => 'btn-modal-edit-entity',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de edição de condomínio',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '37',
-            'order'       => '3',
-            'name'        => 'Bloquear condomínio',
-            'button'      => 'btn-modal-block-entity',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de bloqueio de condomínio',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '38',
-            'order'       => '4',
-            'name'        => 'Deletar condomínio',
-            'button'      => 'btn-modal-delete-entity',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de exclusão de condomínio',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '39',
-            'order'       => '1',
-            'name'        => 'Recuperar condomínio',
-            'button'      => 'btn-modal-recover-entity',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de condomínios deletados de acesso ao modal de recuperação de condomínio',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '6',
-            'route_id'    => '49',
-            'order'       => '1',
-            'name'        => 'Enviar e-mail para o usuário',
-            'button'      => 'btn-send-email-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de usuários de acesso ao botão de envio de e-mail para o usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '50',
-            'order'       => '1',
-            'name'        => 'Enviar e-mail para o condomínio',
-            'button'      => 'btn-send-email-entity',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem do condomínio de acesso ao botão de envio de e-mail para o condomínio',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        // grupo rotas
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '52',
-            'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de rotas',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '60',
-            'order'       => '2',
-            'name'        => 'Novo grupo',
-            'button'      => 'btn-modal-new-group',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de grupos',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '72',
-            'order'       => '3',
-            'name'        => 'Nova rota',
-            'button'      => 'btn-modal-new-route',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de rotas',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '53',
-            'order'       => '4',
-            'name'        => 'Lista de grupos',
-            'description' => 'Item do menu collapse de acesso a página de listagem de grupos',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '65',
-            'order'       => '5',
-            'name'        => 'Lista de rotas',
-            'description' => 'Item do menu collapse de acesso a página de listagem de rotas',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '54',
-            'order'       => '6',
-            'name'        => 'Lista de grupos deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de grupos deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '66',
-            'order'       => '7',
-            'name'        => 'Lista de rotas deletadas',
-            'description' => 'Item do menu collapse de acesso a página de listagem de rotas deletadas',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '55',
-            'order'       => '1',
-            'name'        => 'Visualizar grupo',
-            'button'      => 'btn-modal-view-group',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de grupos de acesso ao modal de visualização de grupo',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '67',
-            'order'       => '1',
-            'name'        => 'Visualizar rota',
-            'button'      => 'btn-modal-view-route',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de rotas de acesso ao modal de visualização de rota',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '56',
-            'order'       => '2',
-            'name'        => 'Editar grupo',
-            'button'      => 'btn-modal-edit-group',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de grupos de acesso ao modal de edição de grupo',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '68',
-            'order'       => '2',
-            'name'        => 'Editar rota',
-            'button'      => 'btn-modal-edit-route',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de rotas de acesso ao modal de edição de rota',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '57',
-            'order'       => '3',
-            'name'        => 'Bloquear grupo',
-            'button'      => 'btn-modal-block-group',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de grupos de acesso ao modal de bloqueio de grupo',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '69',
-            'order'       => '3',
-            'name'        => 'Bloquear rota',
-            'button'      => 'btn-modal-block-route',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de rotas de acesso ao modal de bloqueio de rota',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '58',
-            'order'       => '4',
-            'name'        => 'Deletar grupo',
-            'button'      => 'btn-modal-delete-group',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de grupos de acesso ao modal de exclusão de grupo',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '70',
-            'order'       => '4',
-            'name'        => 'Deletar rota',
-            'button'      => 'btn-modal-delete-route',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de rotas de acesso ao modal de exclusão de rota',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '59',
-            'order'       => '1',
-            'name'        => 'Recuperar grupo',
-            'button'      => 'btn-modal-recover-group',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de grupos deletados de acesso ao modal de recuperação de grupo',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '8',
-            'route_id'    => '71',
-            'order'       => '1',
-            'name'        => 'Recuperar rota',
-            'button'      => 'btn-modal-recover-route',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de rotas deletadas de acesso ao modal de recuperação de rota',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        // grupo menu
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '78',
-            'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '86',
-            'order'       => '2',
-            'name'        => 'Novo menu',
-            'button'      => 'btn-modal-new-menu',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '98',
-            'order'       => '3',
-            'name'        => 'Novo item do menu',
-            'button'      => 'btn-modal-new-menu-item',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de item do menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '79',
-            'order'       => '4',
-            'name'        => 'Lista de menu',
-            'description' => 'Item do menu collapse de acesso a página de listagem de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '91',
-            'order'       => '5',
-            'name'        => 'Lista de itens do menu',
-            'description' => 'Item do menu collapse de acesso a página de listagem de itens do menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '80',
-            'order'       => '6',
-            'name'        => 'Lista de menu deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de menu deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '92',
-            'order'       => '7',
-            'name'        => 'Lista de itens do menu deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de itens do menu deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '81',
-            'order'       => '1',
-            'name'        => 'Visualizar menu',
-            'button'      => 'btn-modal-view-menu',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de menu de acesso ao modal de visualização de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '93',
-            'order'       => '1',
-            'name'        => 'Visualizar item do menu',
-            'button'      => 'btn-modal-view-menu-item',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de itens do menu de acesso ao modal de visualização de item do menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '82',
-            'order'       => '2',
-            'name'        => 'Editar menu',
-            'button'      => 'btn-modal-edit-menu',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de menu de acesso ao modal de edição de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '94',
-            'order'       => '2',
-            'name'        => 'Editar item do menu',
-            'button'      => 'btn-modal-edit-menu-item',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de itens do menu de acesso ao modal de edição de itens do menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '83',
-            'order'       => '3',
-            'name'        => 'Bloquear menu',
-            'button'      => 'btn-modal-block-menu',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de menu de acesso ao modal de bloqueio de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '95',
-            'order'       => '3',
-            'name'        => 'Bloquear item do menu',
-            'button'      => 'btn-modal-block-menu-item',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de itens do menu de acesso ao modal de bloqueio de item do menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '84',
-            'order'       => '4',
-            'name'        => 'Deletar menu',
-            'button'      => 'btn-modal-delete-menu',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de menu de acesso ao modal de exclusão de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '96',
-            'order'       => '4',
-            'name'        => 'Deletar item do menu',
-            'button'      => 'btn-modal-delete-menu-item',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de itens do menu de acesso ao modal de exclusão de item do menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '85',
-            'order'       => '1',
-            'name'        => 'Recuperar menu',
-            'button'      => 'btn-modal-recover-menu',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de menu deletados de acesso ao modal de recuperação de menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '9',
-            'route_id'    => '97',
-            'order'       => '1',
-            'name'        => 'Recuperar item do menu',
-            'button'      => 'btn-modal-recover-menu-item',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de itens do menu deletados de acesso ao modal de recuperação de item do menu',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        // grupo permissões
-        MenuItem::create([
-            'menu_id'     => '10',
-            'route_id'    => '107',
-            'order'       => '1',
-            'name'        => 'Usuários sem permissões',
-            'description' => 'Item do menu collapse de acesso a página de listagem de usuários sem permissões',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '10',
-            'route_id'    => '108',
-            'order'       => '1',
-            'name'        => 'Editar permissão',
-            'button'      => 'btn-edit-permission-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de usuários sem permissões de acesso a página de permissões do usuário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '10',
-            'route_id'    => '108',
-            'order'       => '1',
+            'route_id'    => '5',
+            'order'       => '0',
+            'name'        => 'Dashboard de administradores',
             'hidden'      => '1',
-            'name'        => 'Permissões do usuário',
-            'description' => 'Item do menu collapse oculto de acesso a página de permissões do usuário',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de administradores',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 7 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '10',
-            'route_id'    => '110',
-            'order'       => '2',
-            'name'        => 'Usuários com permissões',
-            'description' => 'Item do menu collapse de acesso a página de listagem de usuários com permissões',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        // grupo empresas
-        MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '112',
-            'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de empresas',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '120',
-            'order'       => '2',
-            'name'        => 'Nova empresa',
-            'button'      => 'btn-modal-new-company',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de empresa',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '113',
+            'menu_id'     => '6',
+            'route_id'    => '6',
             'order'       => '3',
-            'name'        => 'Lista de empresas',
-            'description' => 'Item do menu collapse de acesso a página de listagem de empresas',
+            'name'        => 'Administradores',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de administradores',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 8 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '114',
-            'order'       => '4',
-            'name'        => 'Lista de empresas deletadas',
-            'description' => 'Item do menu collapse de acesso a página de listagem de empresas deletadas',
+            'menu_id'     => '6',
+            'route_id'    => '7',
+            'order'       => '0',
+            'name'        => 'Lista de administradores deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de administradores deletados',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 9 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '115',
-            'order'       => '1',
-            'name'        => 'Visualizar empresa',
-            'button'      => 'btn-modal-view-company',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas de acesso ao modal de visualização de empresa',
+            'menu_id'     => '6',
+            'route_id'    => '8',
+            'order'       => '0',
+            'name'        => 'Visualizar administrador',
+            'button'      => 'btn-modal-view-admin',
+            'description' => 'Item do menu da listagem de administradores de acesso ao modal de visualização de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 10 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '116',
-            'order'       => '2',
-            'name'        => 'Editar empresa',
-            'button'      => 'btn-modal-edit-company',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas de acesso ao modal de edição de empresa',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '117',
-            'order'       => '3',
-            'name'        => 'Bloquear empresa',
-            'button'      => 'btn-modal-block-company',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas de acesso ao modal de bloqueio de empresa',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '118',
-            'order'       => '4',
-            'name'        => 'Deletar empresa',
-            'button'      => 'btn-modal-delete-company',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas de acesso ao modal de exclusão de empresa',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '119',
-            'order'       => '1',
-            'name'        => 'Recuperar empresa',
-            'button'      => 'btn-modal-recover-company',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de empresas deletadas de acesso ao modal de recuperação de empresa',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '129',
-            'order'       => '1',
-            'name'        => 'Enviar e-mail para a empresa',
-            'button'      => 'btn-send-email-company',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem da empresa de acesso ao botão de envio de e-mail para a empresa',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        // grupo administradores
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '131',
-            'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de administradores',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '139',
-            'order'       => '2',
+            'menu_id'     => '6',
+            'route_id'    => '9',
+            'order'       => '0',
             'name'        => 'Novo administrador',
             'button'      => 'btn-modal-new-admin',
             'description' => 'Item do menu collapse de acesso ao modal de criação de administrador',
@@ -872,171 +133,1031 @@ class MenuItemsTableSeeder extends Seeder
             'updated_at'  => now()
         ]);
 
+        // 11 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '132',
-            'order'       => '3',
-            'name'        => 'Lista de administradores',
-            'description' => 'Item do menu collapse de acesso a página de listagem de administradores',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '133',
-            'order'       => '4',
-            'name'        => 'Lista de administradores deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de administradores deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '134',
-            'order'       => '1',
-            'name'        => 'Visualizar administrador',
-            'button'      => 'btn-modal-view-admin',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de administradores de acesso ao modal de visualização de administrador',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '135',
-            'order'       => '2',
+            'menu_id'     => '6',
+            'route_id'    => '10',
+            'order'       => '0',
             'name'        => 'Editar administrador',
             'button'      => 'btn-modal-edit-admin',
-            'list'        => '1',
             'description' => 'Item do menu da listagem de administradores de acesso ao modal de edição de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 12 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '136',
-            'order'       => '3',
+            'menu_id'     => '6',
+            'route_id'    => '11',
+            'order'       => '0',
             'name'        => 'Bloquear administrador',
             'button'      => 'btn-modal-block-admin',
-            'list'        => '1',
             'description' => 'Item do menu da listagem de administradores de acesso ao modal de bloqueio de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 13 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '137',
-            'order'       => '4',
+            'menu_id'     => '6',
+            'route_id'    => '12',
+            'order'       => '0',
             'name'        => 'Deletar administrador',
             'button'      => 'btn-modal-delete-admin',
-            'list'        => '1',
             'description' => 'Item do menu da listagem de administradores de acesso ao modal de exclusão de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 14 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '138',
-            'order'       => '1',
+            'menu_id'     => '6',
+            'route_id'    => '13',
+            'order'       => '0',
             'name'        => 'Recuperar administrador',
             'button'      => 'btn-modal-recover-admin',
-            'list'        => '1',
             'description' => 'Item do menu da listagem de administradores deletados de acesso ao modal de recuperação de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 15 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '144',
-            'order'       => '1',
-            'name'        => 'Reenviar e-mail do administrador',
-            'button'      => 'btn-resend-email-admin',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de administradores de acesso ao botão de reenvio de e-mail de confirmação do administrador',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '12',
-            'route_id'    => '151',
-            'order'       => '1',
+            'menu_id'     => '6',
+            'route_id'    => '14',
+            'order'       => '0',
             'name'        => 'Enviar e-mail para o administrador',
-            'button'      => 'btn-send-email-admin',
-            'list'        => '1',
+            'button'      => 'btn-modal-send-email-admin',
             'description' => 'Item do menu da listagem de administradores de acesso ao botão de envio de e-mail para o administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 16 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '152',
+            'menu_id'     => '6',
+            'route_id'    => '15',
+            'order'       => '0',
+            'name'        => 'Reenviar e-mail do administrador',
+            'button'      => 'btn-resend-email-admin',
+            'description' => 'Item do menu da listagem de administradores de acesso ao botão de reenvio de e-mail de confirmação do administrador',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 17 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '16',
+            'order'       => '0',
+            'name'        => 'Dashboard de usuários',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de usuários',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 18 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '17',
             'order'       => '1',
+            'name'        => 'Usuários',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de usuários',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 19 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '18',
+            'order'       => '0',
+            'name'        => 'Lista de usuários deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de usuários deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 20 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '19',
+            'order'       => '0',
+            'name'        => 'Visualizar usuário',
+            'button'      => 'btn-modal-view-user',
+            'description' => 'Item do menu da listagem de usuários de acesso ao modal de visualização de usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 21 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '20',
+            'order'       => '0',
+            'name'        => 'Novo usuário',
+            'button'      => 'btn-modal-new-user',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 22 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '21',
+            'order'       => '0',
+            'name'        => 'Editar usuário',
+            'button'      => 'btn-modal-edit-user',
+            'description' => 'Item do menu da listagem de usuários de acesso ao modal de edição de usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 23 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '22',
+            'order'       => '0',
+            'name'        => 'Bloquear usuário',
+            'button'      => 'btn-modal-block-user',
+            'description' => 'Item do menu da listagem de usuários de acesso ao modal de bloqueio de usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 24 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '23',
+            'order'       => '0',
+            'name'        => 'Deletar usuário',
+            'button'      => 'btn-modal-delete-user',
+            'description' => 'Item do menu da listagem de usuários de acesso ao modal de exclusão de usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 25 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '24',
+            'order'       => '0',
+            'name'        => 'Recuperar usuário',
+            'button'      => 'btn-modal-recover-user',
+            'description' => 'Item do menu da listagem de usuários deletados de acesso ao modal de recuperação de usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 26 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '25',
+            'order'       => '0',
+            'name'        => 'Enviar e-mail para o usuário',
+            'button'      => 'btn-modal-send-email-user',
+            'description' => 'Item do menu da listagem de usuários de acesso ao botão de envio de e-mail para o usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 27 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '26',
+            'order'       => '0',
+            'name'        => 'Reenviar e-mail do usuário',
+            'button'      => 'btn-resend-email-user',
+            'description' => 'Item do menu da listagem de usuários de acesso ao botão de reenvio de e-mail de confirmação do usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 28 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '27',
+            'order'       => '0',
+            'name'        => 'Dashboard de empresas',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de empresas',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 29 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '28',
+            'order'       => '4',
+            'name'        => 'Empresas',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de empresas',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 30 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '29',
+            'order'       => '0',
+            'name'        => 'Lista de empresas deletadas',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de empresas deletadas',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 31 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '30',
+            'order'       => '0',
+            'name'        => 'Lista de administradores',
+            'hidden'      => '1',
+            'description' => 'Item do modal de visualização de empresa oculto de acesso a página de listagem de administradores da empresa',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 32 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '31',
+            'order'       => '0',
+            'name'        => 'Visualizar empresa',
+            'button'      => 'btn-modal-view-company',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de visualização de empresa',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 33 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '32',
+            'order'       => '0',
+            'name'        => 'Nova empresa',
+            'button'      => 'btn-modal-new-company',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de empresa',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 34 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '33',
+            'order'       => '0',
             'name'        => 'Novo administrador',
-            'button'      => 'btn-modal-new-company-admin',
-            'list'        => '1',
+            'button'      => 'btn-modal-new-admin-company',
             'description' => 'Item do menu da listagem de empresas de acesso ao modal de criação de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 35 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '153',
-            'order'       => '1',
-            'name'        => 'Novo usuário',
-            'button'      => 'btn-modal-new-entity-user',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de criação de usuário',
+            'menu_id'     => '6',
+            'route_id'    => '34',
+            'order'       => '0',
+            'name'        => 'Editar empresa',
+            'button'      => 'btn-modal-edit-company',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de edição de empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 36 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '7',
-            'route_id'    => '154',
-            'order'       => '5',
+            'menu_id'     => '6',
+            'route_id'    => '35',
+            'order'       => '0',
+            'name'        => 'Bloquear empresa',
+            'button'      => 'btn-modal-block-company',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de bloqueio de empresa',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 37 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '36',
+            'order'       => '0',
+            'name'        => 'Deletar empresa',
+            'button'      => 'btn-modal-delete-company',
+            'description' => 'Item do menu da listagem de empresas de acesso ao modal de exclusão de empresa',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 38 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '37',
+            'order'       => '0',
+            'name'        => 'Recuperar empresa',
+            'button'      => 'btn-modal-recover-company',
+            'description' => 'Item do menu da listagem de empresas deletadas de acesso ao modal de recuperação de empresa',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 39 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '38',
+            'order'       => '0',
+            'name'        => 'Enviar e-mail para a empresa',
+            'button'      => 'btn-modal-send-email-company',
+            'description' => 'Item do menu da listagem da empresa de acesso ao botão de envio de e-mail para a empresa',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 40 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '39',
+            'order'       => '0',
+            'name'        => 'Dashboard de entidades',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de entidades',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 41 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '40',
+            'order'       => '2',
+            'name'        => 'Entidades',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de entidades',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 42 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '41',
+            'order'       => '0',
+            'name'        => 'Lista de entidades deletadas',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de entidades deletadas',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 43 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '42',
+            'order'       => '0',
             'name'        => 'Lista de usuários',
             'hidden'      => '1',
-            'description' => 'Item do modal de visualização de condomínio de acesso a página de listagem de usuários do condomínio',
+            'description' => 'Item do modal de visualização de entidade oculto de acesso a página de listagem de usuários da entidade',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 44 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '11',
-            'route_id'    => '155',
+            'menu_id'     => '6',
+            'route_id'    => '43',
+            'order'       => '0',
+            'name'        => 'Visualizar entidade',
+            'button'      => 'btn-modal-view-entity',
+            'description' => 'Item do menu da listagem de entidades de acesso ao modal de visualização de entidade',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 45 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '44',
+            'order'       => '0',
+            'name'        => 'Nova entidade',
+            'button'      => 'btn-modal-new-entity',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de entidade',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 46 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '45',
+            'order'       => '0',
+            'name'        => 'Novo usuário',
+            'button'      => 'btn-modal-new-user-entity',
+            'description' => 'Item do menu da listagem de entidades de acesso ao modal de criação de usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 47 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '46',
+            'order'       => '0',
+            'name'        => 'Editar entidade',
+            'button'      => 'btn-modal-edit-entity',
+            'description' => 'Item do menu da listagem de entidades de acesso ao modal de edição de entidade',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 48 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '47',
+            'order'       => '0',
+            'name'        => 'Bloquear entidade',
+            'button'      => 'btn-modal-block-entity',
+            'description' => 'Item do menu da listagem de entidades de acesso ao modal de bloqueio de entidade',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 49 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '48',
+            'order'       => '0',
+            'name'        => 'Deletar entidade',
+            'button'      => 'btn-modal-delete-entity',
+            'description' => 'Item do menu da listagem de entidades de acesso ao modal de exclusão de entidade',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 50 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '49',
+            'order'       => '0',
+            'name'        => 'Recuperar entidade',
+            'button'      => 'btn-modal-recover-entity',
+            'description' => 'Item do menu da listagem de entidades deletadas de acesso ao modal de recuperação de entidade',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 51 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '50',
+            'order'       => '0',
+            'name'        => 'Enviar e-mail para a entidade',
+            'button'      => 'btn-modal-send-email-entity',
+            'description' => 'Item do menu da listagem da entidade de acesso ao botão de envio de e-mail para a entidade',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 52 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '51',
             'order'       => '5',
-            'name'        => 'Lista de administradores',
+            'name'        => 'Permissões',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de usuários sem permissões',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 53 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '52',
+            'order'       => '0',
+            'name'        => 'Editar permissões',
             'hidden'      => '1',
-            'description' => 'Item do modal de visualização de empresa de acesso a página de listagem de administradores da empresa',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de usuários com permissões',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
-        // grupo departamentos
+        // 54 - Gerenciamento
         MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '157',
+            'menu_id'     => '6',
+            'route_id'    => '53',
+            'order'       => '0',
+            'name'        => 'Alterar permissões',
+            'button'      => 'btn-edit-permission-user',
+            'description' => 'Item do menu da listagem de usuários sem permissões de acesso a página de permissões do usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 55 - Gerenciamento
+        MenuItem::create([
+            'menu_id'     => '6',
+            'route_id'    => '53',
+            'order'       => '0',
+            'name'        => 'Permissões do usuário',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de permissões do usuário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 56 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '54',
+            'order'       => '0',
+            'name'        => 'Dashboard de grupos',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de grupos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 57 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '55',
             'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard de departamentos',
+            'name'        => 'Grupos',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de grupos',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 58 - Layout
         MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '165',
+            'menu_id'     => '7',
+            'route_id'    => '56',
+            'order'       => '0',
+            'name'        => 'Lista de grupos deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de grupos deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 59 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '57',
+            'order'       => '0',
+            'name'        => 'Visualizar grupo',
+            'button'      => 'btn-modal-view-group',
+            'description' => 'Item do menu da listagem de grupos de acesso ao modal de visualização de grupo',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 60 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '58',
+            'order'       => '0',
+            'name'        => 'Novo grupo',
+            'button'      => 'btn-modal-new-group',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de grupo',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 61 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '59',
+            'order'       => '0',
+            'name'        => 'Editar grupo',
+            'button'      => 'btn-modal-edit-group',
+            'description' => 'Item do menu da listagem de grupos de acesso ao modal de edição de grupo',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 62 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '60',
+            'order'       => '0',
+            'name'        => 'Bloquear grupo',
+            'button'      => 'btn-modal-block-group',
+            'description' => 'Item do menu da listagem de grupos de acesso ao modal de bloqueio de grupo',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 63 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '61',
+            'order'       => '0',
+            'name'        => 'Deletar grupo',
+            'button'      => 'btn-modal-delete-group',
+            'description' => 'Item do menu da listagem de grupos de acesso ao modal de exclusão de grupo',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 64 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '62',
+            'order'       => '0',
+            'name'        => 'Recuperar grupo',
+            'button'      => 'btn-modal-recover-group',
+            'description' => 'Item do menu da listagem de grupos deletados de acesso ao modal de recuperação de grupo',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 65 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '63',
+            'order'       => '0',
+            'name'        => 'Dashboard de rotas',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de rotas',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 66 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '64',
             'order'       => '2',
+            'name'        => 'Rotas',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de rotas',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 67 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '65',
+            'order'       => '0',
+            'name'        => 'Lista de rotas deletadas',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de rotas deletadas',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 68 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '66',
+            'order'       => '0',
+            'name'        => 'Visualizar rota',
+            'button'      => 'btn-modal-view-route',
+            'description' => 'Item do menu da listagem de rotas de acesso ao modal de visualização de rota',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 69 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '67',
+            'order'       => '0',
+            'name'        => 'Nova rota',
+            'button'      => 'btn-modal-new-route',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de rota',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 70 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '68',
+            'order'       => '0',
+            'name'        => 'Editar rota',
+            'button'      => 'btn-modal-edit-route',
+            'description' => 'Item do menu da listagem de rotas de acesso ao modal de edição de rota',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 71 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '69',
+            'order'       => '0',
+            'name'        => 'Bloquear rota',
+            'button'      => 'btn-modal-block-route',
+            'description' => 'Item do menu da listagem de rotas de acesso ao modal de bloqueio de rota',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 72 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '70',
+            'order'       => '0',
+            'name'        => 'Deletar rota',
+            'button'      => 'btn-modal-delete-route',
+            'description' => 'Item do menu da listagem de rotas de acesso ao modal de exclusão de rota',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 73 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '71',
+            'order'       => '0',
+            'name'        => 'Recuperar rota',
+            'button'      => 'btn-modal-recover-route',
+            'description' => 'Item do menu da listagem de rotas deletadas de acesso ao modal de recuperação de rota',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 74 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '72',
+            'order'       => '0',
+            'name'        => 'Dashboard de menu',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 75 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '73',
+            'order'       => '3',
+            'name'        => 'Menu',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 76 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '74',
+            'order'       => '0',
+            'name'        => 'Lista de menu deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de menu deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 77 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '75',
+            'order'       => '0',
+            'name'        => 'Visualizar menu',
+            'button'      => 'btn-modal-view-menu',
+            'description' => 'Item do menu da listagem de menu de acesso ao modal de visualização de menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 78 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '76',
+            'order'       => '0',
+            'name'        => 'Novo menu',
+            'button'      => 'btn-modal-new-menu',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 79 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '77',
+            'order'       => '0',
+            'name'        => 'Editar menu',
+            'button'      => 'btn-modal-edit-menu',
+            'description' => 'Item do menu da listagem de menu de acesso ao modal de edição de menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 80 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '78',
+            'order'       => '0',
+            'name'        => 'Bloquear menu',
+            'button'      => 'btn-modal-block-menu',
+            'description' => 'Item do menu da listagem de menu de acesso ao modal de bloqueio de menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 81 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '79',
+            'order'       => '0',
+            'name'        => 'Deletar menu',
+            'button'      => 'btn-modal-delete-menu',
+            'description' => 'Item do menu da listagem de menu de acesso ao modal de exclusão de menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 82 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '80',
+            'order'       => '0',
+            'name'        => 'Recuperar menu',
+            'button'      => 'btn-modal-recover-menu',
+            'description' => 'Item do menu da listagem de menu deletados de acesso ao modal de recuperação de menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 83 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '81',
+            'order'       => '0',
+            'name'        => 'Dashboard de itens do menu',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de itens do menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 84 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '82',
+            'order'       => '4',
+            'name'        => 'Itens do menu',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de itens do menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 85 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '83',
+            'order'       => '0',
+            'name'        => 'Lista de itens do menu deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de itens do menu deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 86 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '84',
+            'order'       => '0',
+            'name'        => 'Visualizar item do menu',
+            'button'      => 'btn-modal-view-menu-item',
+            'description' => 'Item do menu da listagem de itens do menu de acesso ao modal de visualização de item do menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 87 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '85',
+            'order'       => '0',
+            'name'        => 'Novo item do menu',
+            'button'      => 'btn-modal-new-menu-item',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de item do menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 88 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '86',
+            'order'       => '0',
+            'name'        => 'Editar item do menu',
+            'button'      => 'btn-modal-edit-menu-item',
+            'description' => 'Item do menu da listagem de itens do menu de acesso ao modal de edição de item do menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 89 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '87',
+            'order'       => '0',
+            'name'        => 'Bloquear item do menu',
+            'button'      => 'btn-modal-block-menu-item',
+            'description' => 'Item do menu da listagem de itens do menu de acesso ao modal de bloqueio de item do menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 90 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '88',
+            'order'       => '0',
+            'name'        => 'Deletar item do menu',
+            'button'      => 'btn-modal-delete-menu-item',
+            'description' => 'Item do menu da listagem de itens do menu de acesso ao modal de exclusão de item do menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 91 - Layout
+        MenuItem::create([
+            'menu_id'     => '7',
+            'route_id'    => '89',
+            'order'       => '0',
+            'name'        => 'Recuperar item do menu',
+            'button'      => 'btn-modal-recover-menu-item',
+            'description' => 'Item do menu da listagem de itens do menu deletados de acesso ao modal de recuperação de item do menu',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 92 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '90',
+            'order'       => '0',
+            'name'        => 'Dashboard de departamentos',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de departamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 93 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '91',
+            'order'       => '1',
+            'name'        => 'Departamentos',
+            'main'        => '1',
+            'description' => 'Item do menu collapse de acesso a página de listagem de departamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 94 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '92',
+            'order'       => '0',
+            'name'        => 'Lista de departamentos deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de departamentos deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 95 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '93',
+            'order'       => '0',
+            'name'        => 'Visualizar departamento',
+            'button'      => 'btn-modal-view-department',
+            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de visualização de departamento',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 96 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '94',
+            'order'       => '0',
             'name'        => 'Novo departamento',
             'button'      => 'btn-modal-new-department',
             'description' => 'Item do menu collapse de acesso ao modal de criação de departamento',
@@ -1044,263 +1165,50 @@ class MenuItemsTableSeeder extends Seeder
             'updated_at'  => now()
         ]);
 
+        // 97 - Administrativo
         MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '158',
-            'order'       => '3',
-            'name'        => 'Lista de departamentos',
-            'description' => 'Item do menu collapse de acesso a página de listagem de departamentos',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '159',
-            'order'       => '4',
-            'name'        => 'Lista de departamentos deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de departamnentos deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '160',
-            'order'       => '1',
-            'name'        => 'Visualizar departamento',
-            'button'      => 'btn-modal-view-department',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de visualização de departamento',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '161',
-            'order'       => '2',
+            'menu_id'     => '8',
+            'route_id'    => '95',
+            'order'       => '0',
             'name'        => 'Editar departamento',
             'button'      => 'btn-modal-edit-department',
-            'list'        => '1',
             'description' => 'Item do menu da listagem de departamentos de acesso ao modal de edição de departamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 98 - Administrativo
         MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '162',
-            'order'       => '3',
+            'menu_id'     => '8',
+            'route_id'    => '96',
+            'order'       => '0',
             'name'        => 'Bloquear departamento',
             'button'      => 'btn-modal-block-department',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de bloqueio de departamento',
+            'description' => 'Item do menu da listagem de departamentos de acesso ao modal de bloqueio do departamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 99 - Administrativo
         MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '163',
-            'order'       => '4',
+            'menu_id'     => '8',
+            'route_id'    => '97',
+            'order'       => '0',
             'name'        => 'Deletar departamento',
             'button'      => 'btn-modal-delete-department',
-            'list'        => '1',
             'description' => 'Item do menu da listagem de departamentos de acesso ao modal de exclusão de departamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
 
+        // 100 - Administrativo
         MenuItem::create([
-            'menu_id'     => '13',
-            'route_id'    => '164',
-            'order'       => '1',
+            'menu_id'     => '8',
+            'route_id'    => '98',
+            'order'       => '0',
             'name'        => 'Recuperar departamento',
             'button'      => 'btn-modal-recover-department',
-            'list'        => '1',
             'description' => 'Item do menu da listagem de departamentos deletados de acesso ao modal de recuperação de departamento',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        // grupo inventário
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '187',
-            'order'       => '1',
-            'name'        => 'Dashboard',
-            'description' => 'Item do menu collapse de acesso a página de dashboard dos itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '179',
-            'order'       => '2',
-            'name'        => 'Nova categoria',
-            'button'      => 'btn-modal-new-inventory-category',
-            'description' => 'Item do menu collapse de acesso ao modal de criação da categoria',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '172',
-            'order'       => '3',
-            'name'        => 'Lista de categorias',
-            'description' => 'Item do menu collapse de acesso a página de listagem de categorias',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '173',
-            'order'       => '4',
-            'name'        => 'Lista de categorias deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de categorias deletadas',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '174',
-            'order'       => '1',
-            'name'        => 'Visualizar categoria',
-            'button'      => 'btn-modal-view-inventory-category',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias de acesso ao modal de visualização de categoria',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '175',
-            'order'       => '2',
-            'name'        => 'Editar categoria',
-            'button'      => 'btn-modal-edit-inventory-category',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias de acesso ao modal de edição de categoria',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '176',
-            'order'       => '3',
-            'name'        => 'Bloquear departamento',
-            'button'      => 'btn-modal-block-inventory-category',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias de acesso ao modal de bloqueio de categoria',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '177',
-            'order'       => '4',
-            'name'        => 'Deletar categoria',
-            'button'      => 'btn-modal-delete-inventory-category',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias de acesso ao modal de exclusão de categoria',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '178',
-            'order'       => '1',
-            'name'        => 'Recuperar categoria',
-            'button'      => 'btn-modal-recover-inventory-category',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de categorias deletados de acesso ao modal de recuperação de categoria',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '194',
-            'order'       => '2',
-            'name'        => 'Novo item do inventário',
-            'button'      => 'btn-modal-new-inventory',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de item do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '188',
-            'order'       => '3',
-            'name'        => 'Lista de inventário',
-            'description' => 'Item do menu collapse de acesso a página de listagem de itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '189',
-            'order'       => '4',
-            'name'        => 'Lista de inventário deletados',
-            'description' => 'Item do menu collapse de acesso a página de listagem de itens do inventário deletados',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '190',
-            'order'       => '1',
-            'name'        => 'Visualizar item do inventário',
-            'button'      => 'btn-modal-view-inventory',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário de acesso ao modal de visualização de itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '191',
-            'order'       => '2',
-            'name'        => 'Editar item do inventário',
-            'button'      => 'btn-modal-edit-inventory',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário de acesso ao modal de edição de itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '192',
-            'order'       => '4',
-            'name'        => 'Deletar item do inventário',
-            'button'      => 'btn-modal-delete-inventory',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário de acesso ao modal de exclusão de itens do inventário',
-            'created_at'  => now(),
-            'updated_at'  => now()
-        ]);
-
-        MenuItem::create([
-            'menu_id'     => '14',
-            'route_id'    => '193',
-            'order'       => '1',
-            'name'        => 'Recuperar item do inventário',
-            'button'      => 'btn-modal-recover-inventory',
-            'list'        => '1',
-            'description' => 'Item do menu da listagem de inventário deletados de acesso ao modal de recuperação de itens do inventário',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

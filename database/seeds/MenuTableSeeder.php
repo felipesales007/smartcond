@@ -12,7 +12,7 @@ class MenuTableSeeder extends Seeder
      */
     public function run()
     {
-        // grupo home
+        // 1 - home (link)
         Menu::create([
             'menu_option_id' => '3',
             'color_id'       => '6',
@@ -24,7 +24,7 @@ class MenuTableSeeder extends Seeder
             'updated_at'     => now()
         ]);
 
-        // grupo perfil
+        // 2 - perfil (link)
         Menu::create([
             'menu_option_id' => '3',
             'color_id'       => '6',
@@ -32,11 +32,12 @@ class MenuTableSeeder extends Seeder
             'hidden'         => '1',
             'name'           => 'Meu perfil',
             'icon'           => 'fas fa-star',
-            'description'    => 'Menu com link da página do perfil do usuário',
+            'description'    => 'Menu oculto com link da página do perfil do usuário',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
 
+        // 3 - perfil (dropdown)
         Menu::create([
             'menu_option_id' => '2',
             'color_id'       => '16',
@@ -48,6 +49,7 @@ class MenuTableSeeder extends Seeder
             'updated_at'     => now()
         ]);
 
+        // 4 - perfil (dropdown)
         Menu::create([
             'menu_option_id' => '2',
             'color_id'       => '16',
@@ -59,6 +61,7 @@ class MenuTableSeeder extends Seeder
             'updated_at'     => now()
         ]);
 
+        // 5 - perfil (dropdown)
         Menu::create([
             'menu_option_id' => '2',
             'color_id'       => '16',
@@ -70,110 +73,38 @@ class MenuTableSeeder extends Seeder
             'updated_at'     => now()
         ]);
 
-        // grupo usuários
-        Menu::create([
-            'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '2',
-            'name'           => 'Usuários',
-            'icon'           => 'fas fa-user',
-            'description'    => 'Menu em collapse da página de configurações de usuários',
-            'created_at'     => now(),
-            'updated_at'     => now()
-        ]);
-
-        // grupo condomínios
-        Menu::create([
-            'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '5',
-            'name'           => 'Condomínios',
-            'icon'           => 'fas fa-city',
-            'description'    => 'Menu em collapse da página de configurações de condomínios',
-            'created_at'     => now(),
-            'updated_at'     => now()
-        ]);
-
-        // grupo rotas
-        Menu::create([
-            'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '9',
-            'name'           => 'Grupos e Rotas',
-            'icon'           => 'fas fa-book',
-            'description'    => 'Menu em collapse da página de configurações de rotas',
-            'created_at'     => now(),
-            'updated_at'     => now()
-        ]);
-
-        // grupo menu
-        Menu::create([
-            'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '10',
-            'name'           => 'Menu e Itens',
-            'icon'           => 'fas fa-list-ul',
-            'description'    => 'Menu em collapse da página de configurações de menu',
-            'created_at'     => now(),
-            'updated_at'     => now()
-        ]);
-
-        // grupo permissões
-        Menu::create([
-            'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '4',
-            'name'           => 'Permissões',
-            'icon'           => 'fas fa-unlock',
-            'description'    => 'Menu em collapse da página de permissões do usuário',
-            'created_at'     => now(),
-            'updated_at'     => now()
-        ]);
-
-        // grupo empresas
-        Menu::create([
-            'menu_option_id' => '1',
-            'color_id'       => '6',
-            'order'          => '6',
-            'name'           => 'Empresas',
-            'icon'           => 'fas fa-hotel',
-            'description'    => 'Menu em collapse da página de configurações de empresas',
-            'created_at'     => now(),
-            'updated_at'     => now()
-        ]);
-
-        // grupo administradores
+        // 6 - gerenciamento (collapse)
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '6',
             'order'          => '3',
-            'name'           => 'Administradores',
-            'icon'           => 'fas fa-user-shield',
-            'description'    => 'Menu em collapse da página de configurações de administradores',
+            'name'           => 'Gerenciamento',
+            'icon'           => 'fas fa-user-cog',
+            'description'    => 'Menu em collapse da página de configurações de administradores, usuários, empresas e entidades',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
 
-        // grupo departamentos
+        // 7 - layout (collapse)
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '6',
-            'order'          => '7',
-            'name'           => 'Departamentos',
-            'icon'           => 'fas fa-building',
-            'description'    => 'Menu em collapse da página de departamentos do condomínio',
+            'order'          => '4',
+            'name'           => 'Layout',
+            'icon'           => 'fas fa-list-ul',
+            'description'    => 'Menu em collapse da página de configurações de grupos, rotas, menu e itens do menu',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
 
-        // grupo inventário
+        // 8 - administrativo (collapse)
         Menu::create([
             'menu_option_id' => '1',
             'color_id'       => '6',
-            'order'          => '8',
-            'name'           => 'Inventário',
-            'icon'           => 'fas fa-dolly-flatbed',
-            'description'    => 'Menu em collapse da página de inventários do condomínio',
+            'order'          => '2',
+            'name'           => 'Administrativo',
+            'icon'           => 'fas fa-folder',
+            'description'    => 'Menu em collapse da página de configurações de departamentos',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);

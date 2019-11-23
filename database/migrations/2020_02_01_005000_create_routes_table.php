@@ -16,11 +16,8 @@ class CreateRoutesTable extends Migration
         Schema::create('routes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('group_id')->unsigned();
-            $table->foreign('group_id')->references('id')->on('groups');
             $table->bigInteger('route_option_id')->unsigned();
-            $table->foreign('route_option_id')->references('id')->on('route_options');
             $table->integer('view')->unsigned()->default(0);
-            $table->foreign('view')->references('id')->on('boolean');
             $table->string('url');
             $table->string('route')->unique();
             $table->string('controller');
@@ -28,6 +25,10 @@ class CreateRoutesTable extends Migration
             $table->datetime('blocked')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('route_option_id')->references('id')->on('route_options');
+            $table->foreign('view')->references('id')->on('boolean');
         });
     }
 

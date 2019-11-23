@@ -67,7 +67,10 @@ class Company extends Model
      */
     static function getCount()
     {
-        return Company::count();
+        return Company::when(Company::id() != '1', function ($query) {
+                $query->where('companies.id', '=', Company::id());
+            })
+            ->count();
     }
 
     /**
@@ -77,17 +80,25 @@ class Company extends Model
      */
     static function getCountEmail()
     {
-        return Company::where('email', '!=', null)->count();
+        return Company::when(Company::id() != '1', function ($query) {
+                $query->where('companies.id', '=', Company::id());
+            })
+            ->where('email', '!=', null)
+            ->count();
     }
 
     /**
-     * Retornar a contagem de todos os dados com contato cadastrado no armazenamento.
+     * Retornar a contagem de todos os dados com telefone cadastrado no armazenamento.
      *
      * @return mixed
      */
     static function getCountContact()
     {
-        return Company::where('contact', '!=', null)->count();
+        return Company::when(Company::id() != '1', function ($query) {
+                $query->where('companies.id', '=', Company::id());
+            })
+            ->where('contact', '!=', null)
+            ->count();
     }
 
     /**
@@ -97,7 +108,12 @@ class Company extends Model
      */
     static function getCountBlocked()
     {
-        return Company::where('blocked', '!=', null)->orWhere('blocked_at', '>=', date('Y-m-d'))->count();
+        return Company::when(Company::id() != '1', function ($query) {
+                $query->where('companies.id', '=', Company::id());
+            })
+            ->where('blocked', '!=', null)
+            ->orWhere('blocked_at', '>=', date('Y-m-d'))
+            ->count();
     }
 
     /**
@@ -148,6 +164,27 @@ class Company extends Model
             ->where('companies.blocked', '=', null)
             ->where('companies.deleted_at', '=', null)
             ->where('company_accesses.user_id', '=', auth()->id())
+            ->pluck('company_id')
+            ->first();
+    }
+
+    /**
+     * Retornar a empresa principal relacionada com o usuário no armazenamento.
+     *
+     * @param $id
+     * @return mixed
+     */
+    static function userCompany($id)
+    {
+        return Company::join('company_accesses', 'company_accesses.company_id', 'companies.id')
+            ->where(function($query) {
+                $query
+                    ->where('companies.blocked_at', '<', date('Y-m-d'))
+                    ->orWhere('companies.blocked_at', '=', null);
+            })
+            ->where('companies.blocked', '=', null)
+            ->where('companies.deleted_at', '=', null)
+            ->where('company_accesses.user_id', '=', $id)
             ->pluck('company_id')
             ->first();
     }

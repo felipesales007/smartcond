@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Permission;
+use App\Models\User\Permission;
 use Illuminate\Database\Seeder;
 
 class PermissionsTableSeeder extends Seeder
@@ -12,8 +12,8 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        // rotas no sistema
-        $routes = 197;
+        // rotas no banco
+        $routes = 98;
 
         /*
          * Permissões de
@@ -26,28 +26,9 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-        }
 
-        /*
-         * Permissões de
-         * Marco Ribeiro
-         */
-        for ($i = 1; $i <= $routes; $i++) {
             Permission::create([
                 'user_id'    => '2',
-                'route_id'   => $i,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-        }
-
-        /*
-         * Permissões de
-         * Sergio Pinto
-         */
-        for ($i = 1; $i <= $routes; $i++) {
-            Permission::create([
-                'user_id'    => '3',
                 'route_id'   => $i,
                 'created_at' => now(),
                 'updated_at' => now()

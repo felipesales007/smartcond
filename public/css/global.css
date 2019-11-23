@@ -7,29 +7,7 @@
 
 /*
 =========================================================
-* tema
-=========================================================
-*/
-
-.fe-linha-theme {
-    border: 2px solid #5e72e4;
-}
-
-.fe-focus-select2 {
-    border-color: #5e72e4;
-}
-
-.fe-bg-theme {
-    background-color: #5e72e4 !important;
-}
-
-.fe-hover-color-theme:hover {
-    color: #5e72e4 !important;
-}
-
-/*
-=========================================================
-* cores
+* colors
 =========================================================
 */
 
@@ -335,12 +313,12 @@
 
 /*
 =========================================================
-* carregando
+* loading
 =========================================================
 */
 
-.fe-loader,
 .fe-bg-loader,
+.fe-loader,
 .fe-loader:before,
 .fe-loader:after {
     position: fixed;
@@ -359,6 +337,8 @@
 .fe-loader:after {
     width: 12px;
     height: 35px;
+    background: #212529;
+    border-radius: 10px;
     -webkit-animation: fe-loader 1.5s ease-in-out infinite;
     animation: fe-loader 1.5s ease-in-out infinite;
 }
@@ -366,8 +346,6 @@
 .fe-loader {
     top: 50%;
     left: 50%;
-    background: #30abe3;
-    border-radius: 10px;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
@@ -376,19 +354,14 @@
 .fe-loader:after {
     display: block;
     content: "";
-    background: #1d4e6c;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
 }
 
 .fe-loader:before {
     right: 20px;
-    border-top-left-radius: 10px;
 }
 
 .fe-loader:after {
     left: 20px;
-    border-top-right-radius: 10px;
 }
 
 @-webkit-keyframes fe-loader {
@@ -427,11 +400,11 @@
 
 /*
 =========================================================
-* geral
+* general
 =========================================================
 */
 
-.fe-mouse-default {
+.fe-mouse {
     cursor: default;
 }
 
@@ -451,20 +424,21 @@
     transform: translateX(-50%);
 }
 
-.fe-hide {
-    display: none;
+.fe-none {
+    display: none !important;
 }
 
 .fe-hidden {
-    visibility: hidden;
+    visibility: hidden !important;
 }
 
-.fe-linha-theme {
+.fe-line-theme {
     position: relative;
+    border: 2px solid;
     z-index: 2;
 }
 
-.fe-transparencia-navbar {
+.fe-navbar-transparent {
     position: absolute;
     width: 100%;
     height: 100px;
@@ -559,8 +533,8 @@
     border-radius: .25rem !important;
 }
 
-.fe-radius-max {
-    border-radius: .800rem !important;
+.fe-radius-card {
+    border-radius: calc(.375rem - 1px) calc(.375rem - 1px) calc(.375rem - 1px) calc(.375rem - 1px) !important;
 }
 
 .fe-table-master tr:hover {
@@ -569,7 +543,7 @@
 
 .fe-table-master td {
     padding-top: 5.5px !important;
-    padding-bottom: 5.5px !important;
+    padding-bottom: 5px !important;
     vertical-align: middle;
 }
 
@@ -614,7 +588,7 @@
     text-shadow: -1px 0 #cdcdcd, 0 1px #cdcdcd, 1px 0 #cdcdcd, 0 -1px #cdcdcd;
 }
 
-.fe-input-icone {
+.fe-input-icon {
     color: #adb5bd;
     cursor: pointer;
     opacity: .9;
@@ -636,14 +610,6 @@
 
 .fe-font-size-11 {
     font-size: 11px;
-}
-
-.fe-hover-color-theme {
-    transition: 0.3s;
-}
-
-.fe-hover-color-theme:hover {
-    transition: 0.3s;
 }
 
 .fe-fs-6 {
@@ -701,9 +667,26 @@
     transform: rotateX(-180deg);
 }
 
+.fe-text-badge-fix {
+    position: relative;
+    top: 2.3px;
+}
+
+.fe-navbar-entity {
+    top: .5rem;
+    margin-left: 1.2rem !important;
+}
+
+.fe-navbar-entity .select2-container .select2-selection--single:focus,
+.fe-navbar-entity .select2-container--default .select2-search--dropdown .select2-search__field:focus,
+.fe-navbar-entity .select2-container--default .select2-selection--multiple:focus,
+.fe-navbar-entity .select2-container--default.select2-container--focus .select2-selection--multiple:focus {
+    border-color: #8898aa;
+}
+
 /*
 =========================================================
-* autenticação
+* authentication
 =========================================================
 */
 
@@ -712,11 +695,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.fe-icone-login-titulo {
-    position: relative;
-    top: 2.5px;
 }
 
 .fe-z-1 {
@@ -745,7 +723,7 @@
     margin-bottom: 8px;
 }
 
-.fe-login-texto-senha {
+.fe-auth-password-text {
     position: absolute;
     font-size: .875rem;
     white-space: nowrap;
@@ -753,30 +731,18 @@
     top: 2px;
 }
 
-.fe-footer-guest {
-    position: fixed;
-    width: 100%;
-    bottom: -40px;
-    overflow: hidden;
-}
-
-.fe-auth-info-corpo-login,
-.fe-auth-info-corpo-register {
+.fe-auth-info-body {
     margin-right: 75px;
 }
 
-.fe-auth-info-corpo-register {
-    top: -33px;
-}
-
-.fe-auth-info-texto {
+.fe-auth-info-text {
     position: absolute;
     width: 100%;
     opacity: .8;
     z-index: 1;
 }
 
-.fe-auth-info-imagem {
+.fe-auth-info-image {
     position: relative;
     width: 100%;
     height: 420px;
@@ -786,26 +752,7 @@
 
 /*
 =========================================================
-* home
-=========================================================
-*/
-
-.fe-calendar-title-fix,
-.fe-informative-title-fix {
-    position: relative;
-}
-
-.fe-calendar-title-fix {
-    top: 4px;
-}
-
-.fe-informative-title-fix {
-    top: 5px;
-}
-
-/*
-=========================================================
-* modal vizualizar
+* modal view
 =========================================================
 */
 
@@ -823,14 +770,7 @@
     left: 72px;
 }
 
-.fe-view-fix-status-square {
-    position: absolute;
-    top: -70px;
-    left: 75px;
-}
-
-.fe-view-fix-status i,
-.fe-view-fix-status-square i {
+.fe-view-fix-status i {
     width: 16px;
     height: 16px;
     border: 4px solid white;
@@ -841,14 +781,12 @@
     margin-left: 5rem;
 }
 
-.fe-view-fix-email,
-.fe-view-fix-department {
+.fe-view-fix-email {
     position: relative;
     top: 0.6rem;
 }
 
-.fe-view-fix-contact,
-.fe-view-fix-category {
+.fe-view-fix-contact {
     position: absolute;
     right: 1rem;
     margin-top: 2.2rem;
@@ -890,7 +828,7 @@
 
 /*
 =========================================================
-* animações do website
+* website animations
 =========================================================
 */
 
@@ -905,25 +843,19 @@
 
 /*
 =========================================================
-* tela desktop
+* desktop screen
 =========================================================
 */
 
 @media (min-width: 767px) {
-    .fe-footer-auth,
-    .fe-footer-auth .copyright {
-        display: none;
-        padding: 0;
-    }
-
-    .fe-auth-corpo-width {
+    .fe-auth-body-width {
         max-width: 475px;
     }
 }
 
 /*
 =========================================================
-* tela mobile
+* mobile screen
 =========================================================
 */
 
@@ -932,20 +864,14 @@
         display: none;
     }
 
-    .fe-login-texto-senha {
+    .fe-auth-password-text {
         top: -45px;
     }
 }
 
 @media (max-width: 767px) {
-    .fe-footer-auth {
-        margin-top: -35px;
-        padding: 0;
-    }
-
-    .fe-footer-guest {
-        visibility: hidden;
-        padding: 0;
+    .fe-button-sm-left {
+        margin-left: -.5rem;
     }
 
     .fe-card-sm-transparent {

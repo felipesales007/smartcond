@@ -1,7 +1,7 @@
 let screenViacepRequired = '';
 
-// limpa valores do formulário de cep
-function limpaFormCepRequired() {
+// clear cep form values
+function cleanViacepRequired() {
     $('.fe-star-house-number' + screenViacepRequired).addClass('fe-hidden');
     $('.fe-star-complement' + screenViacepRequired).addClass('fe-hidden');
 
@@ -42,7 +42,7 @@ function limpaFormCepRequired() {
     }
 }
 
-// validação nos campos ao sair do campo cep
+// field validation when leaving the cep field
 $(document).on('focusout', '#postal-code' + screenViacepRequired, function () {
     $('#postal-code' + screenViacepRequired).valid();
     $('#address' + screenViacepRequired).valid();
@@ -54,129 +54,129 @@ $(document).on('focusout', '#postal-code' + screenViacepRequired, function () {
     $('#country' + screenViacepRequired).valid();
 });
 
-// atualiza os campos com os valores
+// update fields with values
 let cepRequired;
-cepRequired = conteudo => {
-    if (!('erro' in conteudo)) {
+cepRequired = content => {
+    if (!('erro' in content)) {
         $('#postal-code' + screenViacepRequired).valid();
-        $('#address' + screenViacepRequired).val(conteudo.logradouro).valid();
+        $('#address' + screenViacepRequired).val(content.logradouro).valid();
         $('#house-number' + screenViacepRequired).val('').valid();
-        $('#complement' + screenViacepRequired).val(conteudo.complemento).valid();
-        $('#neighborhood' + screenViacepRequired).val(conteudo.bairro).valid();
-        $('#city' + screenViacepRequired).val(conteudo.localidade).valid();
-        returnStateIdRequired(conteudo);
+        $('#complement' + screenViacepRequired).val(content.complemento).valid();
+        $('#neighborhood' + screenViacepRequired).val(content.bairro).valid();
+        $('#city' + screenViacepRequired).val(content.localidade).valid();
+        returnStateIdRequired(content);
         $('#country' + screenViacepRequired).val('Brasil').valid();
 
-        if (conteudo.complemento) {
+        if (content.complemento) {
             $('.fe-star-complement' + screenViacepRequired).removeClass('fe-hidden');
         } else {
             $('.fe-star-complement' + screenViacepRequired).addClass('fe-hidden');
         }
     } else {
-        // cep não encontrado
+        // cep code not found
         swal({
             title: 'CEP não encontrado',
             text: 'Por favor, insira um CEP válido',
             imageUrl: url_public('images/default/postal-code-error.png'),
             buttonsStyling: !1,
-            confirmButtonClass: 'btn btn-dark pr-5 pl-5',
+            confirmButtonClass: 'btn btn-primary pr-5 pl-5',
             confirmButtonText: 'OK'
         });
 
         $('#postal-code' + screenViacepRequired).val('');
-        limpaFormCepRequired();
+        cleanViacepRequired();
     }
 };
 
-// pesquisa o cep inserido
+// search the inserted cep
 function viacepRequired(valor, screen) {
     screenViacepRequired = screen;
 
-    // nova variável 'cep' somente com dígitos
+    // new digit-only cep variable
     let cep = valor.replace(/\D/g, '');
 
-    // verifica se campo cep possui valor informado
+    // check if cep field has entered value
     if (cep !== '') {
-        // expressão regular para validar o cep
-        let validacep = /^[0-9]{8}$/;
+        // regular expression to validate cep code
+        let validate = /^[0-9]{8}$/;
 
-        // valida o formato do cep
-        if (validacep.test(cep)) {
-            // cria um elemento javascript
+        // validates cep format
+        if (validate.test(cep)) {
+            // create a javascript element
             let script = document.createElement('script');
 
-            // sincroniza com o callback
+            // syncs with callback
             script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=cepRequired';
 
-            // insere script no documento e carrega o conteúdo
+            // insert script into document and load content
             document.body.appendChild(script);
         } else {
-            // cep é inválido
-            limpaFormCepRequired();
+            // cep code is invalid
+            cleanViacepRequired();
         }
     } else {
-        // cep sem valor, limpa formulário
-        limpaFormCepRequired();
+        // worthless cep code, clear form
+        cleanViacepRequired();
     }
 }
 
-// retorna o id do estado
-function returnStateIdRequired(conteudo) {
+// return state id
+function returnStateIdRequired(content) {
     let state_id;
 
-    if (conteudo.uf === 'AC') {
+    if (content.uf === 'AC') {
         state_id = '1';
-    } else if (conteudo.uf === 'AL') {
+    } else if (content.uf === 'AL') {
         state_id = '2';
-    } else if (conteudo.uf === 'AP') {
+    } else if (content.uf === 'AP') {
         state_id = '3';
-    } else if (conteudo.uf === 'AM') {
+    } else if (content.uf === 'AM') {
         state_id = '4';
-    } else if (conteudo.uf === 'BA') {
+    } else if (content.uf === 'BA') {
         state_id = '5';
-    } else if (conteudo.uf === 'CE') {
+    } else if (content.uf === 'CE') {
         state_id = '6';
-    } else if (conteudo.uf === 'DF') {
+    } else if (content.uf === 'DF') {
         state_id = '7';
-    } else if (conteudo.uf === 'ES') {
+    } else if (content.uf === 'ES') {
         state_id = '8';
-    } else if (conteudo.uf === 'GO') {
+    } else if (content.uf === 'GO') {
         state_id = '9';
-    } else if (conteudo.uf === 'MA') {
+    } else if (content.uf === 'MA') {
         state_id = '10';
-    } else if (conteudo.uf === 'MT') {
+    } else if (content.uf === 'MT') {
         state_id = '11';
-    } else if (conteudo.uf === 'MS') {
+    } else if (content.uf === 'MS') {
         state_id = '12';
-    } else if (conteudo.uf === 'MG') {
+    } else if (content.uf === 'MG') {
         state_id = '13';
-    } else if (conteudo.uf === 'PA') {
+    } else if (content.uf === 'PA') {
         state_id = '14';
-    } else if (conteudo.uf === 'PB') {
+    } else if (content.uf === 'PB') {
         state_id = '15';
-    } else if (conteudo.uf === 'PR') {
+    } else if (content.uf === 'PR') {
         state_id = '16';
-    } else if (conteudo.uf === 'PE') {
+    } else if (content.uf === 'PE') {
         state_id = '17';
-    } else if (conteudo.uf === 'PI') {
+    } else if (content.uf === 'PI') {
         state_id = '18';
-    } else if (conteudo.uf === 'RJ') {
+    } else if (content.uf === 'RJ') {
         state_id = '19';
-    } else if (conteudo.uf === 'RN') {
+    } else if (content.uf === 'RN') {
         state_id = '20';
-    } else if (conteudo.uf === 'RS') {
+    } else if (content.uf === 'RS') {
         state_id = '21';
-    } else if (conteudo.uf === 'RO') {
+    } else if (content.uf === 'RO') {
         state_id = '22';
-    } else if (conteudo.uf === 'RR') {
+    } else if (content.uf === 'RR') {
         state_id = '23';
-    } else if (conteudo.uf === 'SC') {
+    } else if (content.uf === 'SC') {
         state_id = '24';
-    } else if (conteudo.uf === 'SP') {
+    } else if (content.uf === 'SP') {
         state_id = '25';
-    } else if (conteudo.uf === 'SE') {
+    } else if (content.uf === 'SE') {
         state_id = '26';
-    } else if (conteudo.uf === 'TO') {
+    } else if (content.uf === 'TO') {
         state_id = '27';
     }
 

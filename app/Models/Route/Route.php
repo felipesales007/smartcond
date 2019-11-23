@@ -3,6 +3,7 @@
 namespace App\Models\Route;
 
 use App\Models\Boolean;
+use App\Models\Company\Company;
 use App\Models\Menu\MenuItem;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -66,7 +67,11 @@ class Route extends Model
      */
     static function getCount()
     {
-        return Route::count();
+        if (Company::id() == 1) {
+            return Route::count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -76,7 +81,11 @@ class Route extends Model
      */
     static function getCountGet()
     {
-        return Route::where('route_option_id', '=', '1')->count();
+        if (Company::id() == 1) {
+            return Route::where('route_option_id', '=', '1')->count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -86,7 +95,11 @@ class Route extends Model
      */
     static function getCountPost()
     {
-        return Route::where('route_option_id', '=', '2')->count();
+        if (Company::id() == 1) {
+            return Route::where('route_option_id', '=', '2')->count();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -96,7 +109,11 @@ class Route extends Model
      */
     static function getCountBlocked()
     {
-        return Route::where('blocked', '!=', null)->count();
+        if (Company::id() == 1) {
+            return Route::where('blocked', '!=', null)->count();
+        } else {
+            return 0;
+        }
     }
 
     /**

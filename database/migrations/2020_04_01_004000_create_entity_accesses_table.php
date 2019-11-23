@@ -16,12 +16,13 @@ class CreateEntityAccessesTable extends Migration
         Schema::create('entity_accesses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('entity_id')->unsigned();
-            $table->foreign('entity_id')->references('id')->on('entities');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('preferred')->unsigned()->default(0);
-            $table->foreign('preferred')->references('id')->on('boolean');
             $table->timestamps();
+
+            $table->foreign('entity_id')->references('id')->on('entities');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('preferred')->references('id')->on('boolean');
         });
     }
 

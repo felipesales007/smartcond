@@ -29,23 +29,23 @@ class CheckBlocked
                     ->where('user_id', '=', auth()->id())
                     ->get();
 
-                // se o condomínio deletado
+                // se a entidade deletada
                 if ($access->where('deleted_at', '=', null)->count() == 0) {
                     auth()->logout();
-                    $message = 'O condomínio relacionado com o seu usuário não existe mais no sistema.';
+                    $message = 'A entidade relacionada com o seu usuário não existe mais no sistema.';
 
                     return redirect()->route('login')->with('status', __($message));
                 }
 
-                // se o condomínio bloqueado
+                // se a entidade bloqueada
                 if ($access->where('blocked', '=', null)->count() == 0) {
                     auth()->logout();
-                    $message = 'O condomínio relacionado com o seu usuário está desativado.';
+                    $message = 'A entidade relacionada com o seu usuário está desativada.';
 
                     return redirect()->route('login')->with('status', __($message));
                 }
 
-                // se o condomínio bloqueado por tempo determinado
+                // se a entidade bloqueada por tempo determinado
                 if ($access->where('blocked_at', '=', null)->count() == 0) {
                     $days = array_values($access->where('blocked_at', '!=', null)->toArray());
                     $date = null;
@@ -61,7 +61,7 @@ class CheckBlocked
                     if ($date->toDateString() >= date('Y-m-d')) {
                         $time = now()->diffForHumans($date->addDays(1)->toDateString());
                         auth()->logout();
-                        $message = 'O condomínio relacionado com o seu usuário foi bloqueado.<br>Será desbloqueado depois de ' . FormatHelpers::remove_last_word(' antes', $time) . '.';
+                        $message = 'A entidade relacionada com o seu usuário foi bloqueada.<br>Será desbloqueada depois de ' . FormatHelpers::remove_last_word(' antes', $time) . '.';
 
                         return redirect()->route('login')->with('status', __($message));
                     }

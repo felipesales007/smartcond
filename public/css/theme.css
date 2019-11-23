@@ -386,7 +386,6 @@ a.text-primary:focus {
     background-color: var(--primary);
 }
 
-
 .checklist-item-primary:before {
     background-color: var(--primary);
 }
@@ -405,12 +404,10 @@ a.text-primary:focus {
     background: var(--primary);
 }
 
-
 .navbar-vertical.navbar-expand-sm .lavalamp-object {
     color: #fff;
     background: var(--primary);
 }
-
 
 .navbar-vertical.navbar-expand-md .lavalamp-object {
     color: #fff;
@@ -434,7 +431,6 @@ a.text-primary:focus {
 .nav-link:hover {
     color: var(--primary);
 }
-
 
 .nav-pills .nav-link {
     color: var(--primary);
@@ -602,7 +598,6 @@ table.dataTable tbody > tr.selected {
 .fc-icon:hover {
     color: var(--primary);
 }
-
 
 .noUi-connect {
     background: var(--primary);

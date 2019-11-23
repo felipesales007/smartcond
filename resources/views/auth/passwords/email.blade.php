@@ -4,10 +4,10 @@
 @section('content')
 
     <!-- recuperar senha -->
-    <div class="container mt--5">
+    <div class="container mb-4-5 mt--5">
         <div class="fe-center-auth">
             <div class="row justify-content-center">
-                <div class="col-lg-12 fe-auth-corpo-width fe-z-1">
+                <div class="col-lg-12 fe-auth-body-width fe-z-1">
                     <!-- card -->
                     <div class="card fe-card-sm-transparent bg-secondary border-0 mb-md-5">
                         <div class="card-body pt-5 px-1 px-sm-5 px-lg-5">
@@ -61,7 +61,7 @@
                                 </div>
                                 <!-- botão -->
                                 <div class="text-center mb-4 mt-2">
-                                    <button type="submit" class="btn btn-primary btn-block fe-carregando fe-scroll-top">{{ __('Recuperar') }}</button>
+                                    <button type="submit" class="btn btn-primary btn-block fe-spinner fe-scroll-top">{{ __('Recuperar') }}</button>
                                 </div>
                             </form>
                         </div>
@@ -72,6 +72,6 @@
     </div>
 
     <!-- validate -->
-    @include('auth.includes.validate')
+    @include('auth.validate.email')
 
 @endsection

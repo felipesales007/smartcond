@@ -18,19 +18,5 @@ class CompanyAccessesTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-
-        CompanyAccesses::insert([
-            'company_id' => '1',
-            'user_id'    => '2',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        CompanyAccesses::insert([
-            'company_id' => '1',
-            'user_id'    => '3',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
     }
 }

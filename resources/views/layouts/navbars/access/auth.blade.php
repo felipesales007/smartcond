@@ -2,11 +2,30 @@
 <nav class="navbar fixed-top navbar-expand navbar-dark">
     <div class="container-fluid">
         <!-- nome do website -->
-        <div class="mt-3 ml-md--3 ml-lg--3 ml-xl-5 fe-mouse-default fe-logo-navbar">
+        <div class="mt-3 ml-md--3 ml-lg--3 ml-xl-5 fe-mouse fe-logo-navbar">
             <span class="h2 text-white">
                 <img src="{{ asset('images/default/logos/branco-transparente.png') }}" alt="" class="mt--2 mr-1" width="150px">
             </span>
         </div>
+
+        @if (\App\Models\Entity\Entity::getEntitiesUser()->count() > 1)
+            <!-- entidade -->
+            <div class="col-lg-3 fe-navbar-entity ml-3">
+                <form id="form-edit-entity-profile" role="form" autocomplete="off" novalidate>
+                    @csrf
+                    <div class="input-group-none">
+                        <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a entidade em que deseja operar no sistema') }}">*</span>
+                        {{ Form::select(
+                            "name",
+                            \App\Models\Entity\Entity::getEntitiesOptions(),
+                            \App\Models\Entity\Entity::id(),
+                            ["id" => "entity-id-edit-profile", "name" => "entity_id_edit_profile", "class" => "form-control select-nosearch ignore", "placeholder" => "Selecione"]
+                        )}}
+                    </div>
+                </form>
+            </div>
+        @endif
+
         <!-- botão do menu lateral -->
         <ul class="navbar-nav align-items-center ml-md-auto fe-btn-navbar">
             <li class="nav-item d-xl-none">
@@ -32,7 +51,7 @@
                         </div>
                         <!-- foto -->
                         <span class="avatar avatar-sm rounded-circle">
-                            <img src="{{ auth()->user()['photo'] ? url('storage/images/users/photo/' . auth()->user()['photo']) : url('images/default/default-user.png') }}" alt="">
+                            <img src="{{ auth()->user()->profilePicture() }}" alt="">
                         </span>
                     </div>
                 </a>
@@ -42,32 +61,27 @@
                         <h6 class="text-overflow m-0">{{ __('Menu') }}</h6>
                     </div>
                     <!-- itens -->
+                    <span hidden>{{ $str_limit = 20 }}</span>
                     @foreach (\App\Models\Menu\Menu::getUserMenu() as $menu)
-                        <!-- variáveis -->
-                        <span hidden>
-                            {{ $str_limit = 20 }}
-                            {{ $button = \App\Models\Menu\MenuItem::getMenuId($menu->id)['button'] }}
-                            {{ $route_id = \App\Models\Menu\MenuItem::getMenuId($menu->id)['route_id'] }}
-                            {{ $group_id = \App\Models\Route\Route::getRoute($route_id)['group_id'] }}
-                            {{ $group_blocked = \App\Models\Route\Group::getGroup($group_id)['blocked'] }}
-                            {{ $route_blocked = \App\Models\Route\Route::getRoute($route_id)['blocked'] }}
-                            {{ $menu_item = \App\Models\Menu\MenuItem::getMenuItem($menu->id) }}
-                        </span>
-                        @if ($menu->menu_option_id == 2)
-                            @if ($button == null)
-                                <!-- titulo link -->
-                                <a href="{{ $group_blocked || $route_blocked || $menu['blocked'] || $menu_item['blocked'] ? 'javascript:void(0)' : route(\App\Models\Route\Route::getRoute($route_id)['route']) }}" class="dropdown-item fe-loading {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $menu_item['blocked'] ? 'fe-menu-block' : '' }} {{ Illuminate\Support\Facades\Request::is(\App\Models\Route\Group::getGroup($group_id)['name'] . '/*') ? 'active' : '' }}">
-                                    <i class="{{ \App\Models\Color::getColor($menu->color_id)['color'] }} {{ $menu->icon }}"></i>
-                                    <span class="{{ \App\Models\Color::getColor($menu->color_id)['color'] }}">{{ __(substr_replace($menu->name, (strlen($menu->name) > $str_limit ? '...' : ''), $str_limit)) }}</span>
-                                </a>
-                            @else
-                                <!-- titulo modal -->
-                                <a href="javascript:void(0)" class="dropdown-item {{ $group_blocked ? 'notify-block-group' : '' }} {{ $route_blocked ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $menu_item['blocked'] ? 'fe-menu-block' : '' }} {{ !$group_blocked && !$route_blocked && !$menu['blocked'] && !$menu_item['blocked'] ? $button : '' }}">
-                                    <i class="{{ \App\Models\Color::getColor($menu->color_id)['color'] }} {{ $menu->icon }}"></i>
-                                    <span class="{{ \App\Models\Color::getColor($menu->color_id)['color'] }}">{{ __(substr_replace($menu->name, (strlen($menu->name) > $str_limit ? '...' : ''), $str_limit)) }}</span>
-                                </a>
+                        @foreach (\App\Models\Menu\MenuItem::getUserMenuItems() as $item)
+                            @if ($menu['id'] == $item['menu_id'])
+                                @if ($menu['menu_option_id'] == 2)
+                                    @if ($item['button'] == null)
+                                        <!-- titulo link -->
+                                         <a href="{{ $item['group_blocked'] || $item['route_blocked'] || $menu['blocked'] || $item['blocked'] ? 'javascript:void(0)' : route($item['route']) }}" class="dropdown-item {{ $item['group_blocked'] || $item['route_blocked'] || $menu['blocked'] || $item['blocked'] ? '' : 'fe-loading' }} {{ $item['group_blocked'] ? 'notify-block-group' : '' }} {{ $item['route_blocked'] ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $item['blocked'] ? 'fe-menu-block' : '' }} {{ Illuminate\Support\Facades\Request::is($menu['group'] . '/*') ? 'active' : '' }}">
+                                            <i class="{{ $menu['icon'] }} {{ $menu['color'] }}"></i>
+                                            <span class="{{ $menu['color'] }}">{{ __(substr_replace($menu['name'], (strlen($menu['name']) > $str_limit ? '...' : ''), $str_limit)) }}</span>
+                                        </a>
+                                    @else
+                                        <!-- titulo modal -->
+                                        <a href="javascript:void(0)" class="dropdown-item {{ $item['group_blocked'] ? 'notify-block-group' : '' }} {{ $item['route_blocked'] ? 'notify-block-route' : '' }} {{ $menu['blocked'] || $item['blocked'] ? 'fe-menu-block' : '' }} {{ !$item['group_blocked'] && !$item['route_blocked'] && !$menu['blocked'] && !$item['blocked'] ? $item['button'] : '' }}">
+                                            <i class="{{ $menu['icon'] }} {{ $menu['color'] }}"></i>
+                                            <span class="{{ $menu['color'] }}">{{ __(substr_replace($menu['name'], (strlen($menu['name']) > $str_limit ? '...' : ''), $str_limit)) }}</span>
+                                        </a>
+                                    @endif
+                                @endif
                             @endif
-                        @endif
+                        @endforeach
                     @endforeach
                     <!-- sair -->
                     <div class="dropdown-divider"></div>
@@ -80,3 +94,5 @@
         </ul>
     </div>
 </nav>
+
+@include('layouts.import.ajax')
