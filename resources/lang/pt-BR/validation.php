@@ -562,10 +562,10 @@ return [
 
         'permission_edit_user'                 => 'permissão',
 
-        'entity_id_new_user'                   => 'entidade',
-        'entity_id_new_user[]'                 => 'entidade',
-        'entity_id_edit_user'                  => 'entidade',
-        'entity_id_edit_user[]'                => 'entidade',
+        'entity_id_new_user'                   => 'condomínio',
+        'entity_id_new_user[]'                 => 'condomínio',
+        'entity_id_edit_user'                  => 'condomínio',
+        'entity_id_edit_user[]'                => 'condomínio',
 
         'company_id_new_user'                  => 'empresa',
         'company_id_edit_user'                 => 'empresa',

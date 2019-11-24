@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     // perfil
     Route::group(['prefix' => 'perfil'], function () {
         Route::post('atualizar/{id?}',           ['as' => 'profile.update',                'uses' => 'Profile\ProfileController@update']);
-        Route::post('alterar/entidade/{id?}',    ['as' => 'profile.entity',                'uses' => 'Profile\ProfileController@entity']);
+        Route::post('alterar/condominio/{id?}',    ['as' => 'profile.entity',                'uses' => 'Profile\ProfileController@entity']);
         Route::post('verificar/senha',           ['as' => 'profile.check.password',        'uses' => 'Profile\CheckController@checkPassword']);
         Route::post('verificar/email/diferente', ['as' => 'profile.check.email.different', 'uses' => 'Management\User\CheckController@checkEmailDifferent']);
         Route::post('verificar/cpf/diferente',   ['as' => 'profile.check.cpf.different',   'uses' => 'Management\User\CheckController@checkCpfDifferent']);
@@ -95,8 +95,8 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
         Route::post('verificar/cnpj/diferente',  ['as' => 'company.check.cnpj.different',  'uses' => 'Management\Company\CheckController@checkCnpjDifferent']);
     });
 
-    // entidades
-    Route::group(['prefix' => 'entidades'], function () {
+    // condominios
+    Route::group(['prefix' => 'condominios'], function () {
         Route::get ('data',                      ['as' => 'entity.data',                  'uses' => 'Management\Entity\DashboardController@data']);
         Route::post('atualizar/{id?}',           ['as' => 'entity.update',                'uses' => 'Management\Entity\EntityController@update']);
         Route::post('bloquear/{id?}',            ['as' => 'entity.block',                 'uses' => 'Management\Entity\EntityController@block']);
@@ -252,8 +252,8 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
         Route::post('enviar/email',       ['as' => 'company.send.email',   'uses' => 'Management\Company\CompanyController@sendEmail']); // * btn-modal-send-email-company
     });
 
-    // entidades
-    Route::group(['prefix' => 'entidades'], function () {
+    // condominios
+    Route::group(['prefix' => 'condominios'], function () {
         Route::get ('dashboard',        ['as' => 'entity.dashboard',    'uses' => 'Management\Entity\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'entity.list',         'uses' => 'Management\Entity\EntityController@list']);
         Route::get ('lista/deletadas',  ['as' => 'entity.list.deleted', 'uses' => 'Management\Entity\EntityController@listDeleted']);

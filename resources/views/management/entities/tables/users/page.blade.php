@@ -7,7 +7,7 @@
     @include('layouts.components.company', [
         'logo' => __($entity['logo']),
         'title' => __($entity['name']),
-        'description' => __('Esta é a página de listagem dos usuários.<br> Você pode visualizar e editar os usuários desta entidade conforme desejado.'),
+        'description' => __('Esta é a página de listagem dos usuários.<br> Você pode visualizar e editar os usuários deste condomínio conforme desejado.'),
         'class' => 'col-lg-7'
     ])
 

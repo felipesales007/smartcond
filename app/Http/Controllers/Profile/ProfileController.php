@@ -71,7 +71,7 @@ class ProfileController extends Controller
             ->where('entity_id', '=', $request->entity_edit_profile_id)
             ->first();
 
-        // se houver mudança na entidade principal atualiza a entidade princiapl
+        // se houver mudança no condomínio principal atualiza o condomínio principal
         if ($preferred['preferred'] == 0) {
             $accesses = EntityAccesses::where('user_id', '=', $request->id_edit_profile)
                 ->orderBy('entity_id', 'asc')
@@ -203,7 +203,7 @@ class ProfileController extends Controller
             ->where('entity_id', '=', $request->entity_id_edit_profile)
             ->first();
 
-        // se houver mudança na entidade principal atualiza a entidade princiapl
+        // se houver mudança no condomínio principal atualiza o condomínio principal
         if ($preferred['preferred'] == 0) {
             $accesses = EntityAccesses::where('user_id', '=', auth()->id())
                 ->orderBy('entity_id', 'asc')

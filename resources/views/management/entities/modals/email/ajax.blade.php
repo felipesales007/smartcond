@@ -50,7 +50,7 @@
                         $('#form-send-email-entity').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao enviar o e-mail para a entidade.');
+                        notifyError('Erro ao enviar o e-mail para o condomínio.');
                     }
                 });
             } else {

@@ -4,7 +4,7 @@
         let available = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-new-entity').removeAttr('disabled', 'disabled').html('Criar entidade');
+            $('#btn-new-entity').removeAttr('disabled', 'disabled').html('Criar condomínio');
             $('.fe-remove-preview-4').addClass('fe-hidden');
             $('.fe-img-preview-4').attr('src', '');
             $('#state-id-new-entity').val('').trigger('change');
@@ -47,7 +47,7 @@
                         $('#form-new-entity').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao criar uma nova entidade.');
+                        notifyError('Erro ao criar uma novo condomínio.');
                     }
                 });
             } else {

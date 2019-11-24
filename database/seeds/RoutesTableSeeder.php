@@ -480,7 +480,7 @@ class RoutesTableSeeder extends Seeder
             'updated_at'      => now()
         ]);
 
-        // 39 - entidades
+        // 39 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
@@ -488,12 +488,12 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'dashboard',
             'route'           => 'entity.dashboard',
             'controller'      => 'Management\Entity\DashboardController@dashboard',
-            'description'     => 'Página de dashboard das entidades',
+            'description'     => 'Página de dashboard dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 40 - entidades
+        // 40 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
@@ -501,12 +501,12 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'lista',
             'route'           => 'entity.list',
             'controller'      => 'Management\Entity\EntityController@list',
-            'description'     => 'Página de listagem das entidades',
+            'description'     => 'Página de listagem dos condomínios',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 41 - entidades
+        // 41 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
@@ -514,12 +514,12 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'lista/deletados',
             'route'           => 'entity.list.deleted',
             'controller'      => 'Management\Entity\EntityController@listDeleted',
-            'description'     => 'Página de listagem das entidades deletadas',
+            'description'     => 'Página de listagem dos condomínios deletadas',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 42 - entidades
+        // 42 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
@@ -527,36 +527,36 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'lista/usuarios',
             'route'           => 'entity.list.users',
             'controller'      => 'Management\Entity\EntityController@listUsers',
-            'description'     => 'Página de listagem dos usuários da entidade',
+            'description'     => 'Página de listagem dos usuários do condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 43 - entidades
+        // 43 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
             'url'             => 'visualizar/{id?}',
             'route'           => 'entity.view',
             'controller'      => 'Management\Entity\EntityController@edit',
-            'description'     => 'Modal de visualizar os dados da entidade',
+            'description'     => 'Modal de visualizar os dados do condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 44 - entidades
+        // 44 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '2',
             'url'             => 'nova',
             'route'           => 'entity.store',
             'controller'      => 'Management\Entity\EntityController@store',
-            'description'     => 'Modal de criar nova entidade',
+            'description'     => 'Modal de criar novo condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 45 - entidades
+        // 45 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '2',
@@ -568,62 +568,62 @@ class RoutesTableSeeder extends Seeder
             'updated_at'      => now()
         ]);
 
-        // 46 - entidades
+        // 46 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
             'url'             => 'editar/{id?}',
             'route'           => 'entity.edit',
             'controller'      => 'Management\Entity\EntityController@edit',
-            'description'     => 'Modal de editar os dados da entidade',
+            'description'     => 'Modal de editar os dados do condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 47 - entidades
+        // 47 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
             'url'             => 'banir/{id?}',
             'route'           => 'entity.ban',
             'controller'      => 'Management\Entity\EntityController@edit',
-            'description'     => 'Modal de bloquear e desbloquear a entidade',
+            'description'     => 'Modal de bloquear e desbloquear o condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 48 - entidades
+        // 48 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
             'url'             => 'deletar/{id?}',
             'route'           => 'entity.delete',
             'controller'      => 'Management\Entity\EntityController@edit',
-            'description'     => 'Modal de deletar a entidade',
+            'description'     => 'Modal de deletar o condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 49 - entidades
+        // 49 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '1',
             'url'             => 'recuperar/{id?}',
             'route'           => 'entity.recover',
             'controller'      => 'Management\Entity\EntityController@edit',
-            'description'     => 'Modal de recuperar a entidade',
+            'description'     => 'Modal de recuperar o condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
 
-        // 50 - entidades
+        // 50 - condominios
         Route::create([
             'group_id'        => '6',
             'route_option_id' => '2',
             'url'             => 'enviar/email',
             'route'           => 'entity.send.email',
             'controller'      => 'Management\Entity\EntityController@sendEmail',
-            'description'     => 'Enviar e-mail para a entidade',
+            'description'     => 'Enviar e-mail para o condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);

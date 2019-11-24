@@ -22,7 +22,7 @@
                         <span class="avatar avatar-sm float-left fe-img-send-email mt-2">
                             <img id="logo-new-user-entity" src="" class="fe-img-center" alt="">
                         </span>
-                        <!-- nome da entidade -->
+                        <!-- nome do condomínio -->
                         <div id="text-name-new-user-entity" class="form-control-label text-monospace col-lg-12 pr-4 ml-5 mt--4 mb-3"></div>
                         <!-- nome -->
                         <div class="col-lg-12">
@@ -62,18 +62,18 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- entidade -->
+                        <!-- condomínio -->
                         <div hidden class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="id-entity-new-user-entity">{{ __('ID da entidade') }}</label>
+                                <label class="form-control-label" for="id-entity-new-user-entity">{{ __('ID do condomínio') }}</label>
                                 <div class="input-group input-group-merge validate-id-entity-new-user-entity">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-lighter {{ $errors->has('id_entity_new_user_entity') ? 'is-invalid' : '' }}">
                                             <i class="fas fa-key"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id da entidade') }}">*</span>
-                                    <input readonly type="number" id="id-entity-new-user-entity" name="id_entity_new_user_entity" class="form-control {{ $errors->has('id_entity_new_user_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da entidade') }}" value="{{ old('id_entity_new_user_entity') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_entity_new_user_entity')) autofocus @endif>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id do condomínio') }}">*</span>
+                                    <input readonly type="number" id="id-entity-new-user-entity" name="id_entity_new_user_entity" class="form-control {{ $errors->has('id_entity_new_user_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('ID do condomínio') }}" value="{{ old('id_entity_new_user_entity') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_entity_new_user_entity')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('id_entity_new_user_entity'))

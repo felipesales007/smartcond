@@ -94,7 +94,7 @@ class EntityController extends Controller
                 // coluna nome
                 ->addColumn('name', function ($row) {
                     if (app('router')->has('entity.user.store') && Permission::routePermission('entity.user.store') && !MenuItem::getMenuItemBlocked('entity.user.store')['button'] && MenuItem::getMenuItemDeleted('entity.user.store')['button'] && auth()->user()['admin'] == 1) {
-                        $name = '<span data-id="' . $row->id . '" data-logo="' . $row->logo . '" data-name="' . $row->name . '" class="status fe-pointer btn-modal-new-user-entity" data-toggle="tooltip" data-placement="top" title="clique aqui para criar um novo usuário nesta entidade">' . $row->name . '</span>';
+                        $name = '<span data-id="' . $row->id . '" data-logo="' . $row->logo . '" data-name="' . $row->name . '" class="status fe-pointer btn-modal-new-user-entity" data-toggle="tooltip" data-placement="top" title="clique aqui para criar um novo usuário neste condomínio">' . $row->name . '</span>';
                     } else {
                         $name = $row->name;
                     }
@@ -218,9 +218,9 @@ class EntityController extends Controller
                 $this->notify(new NewEntity($collection));
             }
 
-            $data = NotifyHelpers::success_top_center('fas fa-hotel', 'Entidade criada com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-hotel', 'Condomínio criado com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Entidade criada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio criado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -295,9 +295,9 @@ class EntityController extends Controller
                 }
             }
 
-            $data = NotifyHelpers::success_top_center('fas fa-check', 'Entidade alterada com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-check', 'Condomínio alterado com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Entidade alterada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio alterado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -336,9 +336,9 @@ class EntityController extends Controller
                     $this->notify(new BlockEntity($collection->name, $blocked));
                 }
 
-                $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Entidade bloqueada com sucesso.');
+                $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio bloqueado com sucesso.');
             } catch (Exception $e) {
-                $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Entidade bloqueada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio bloqueado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
             }
         } else {
             if ($request->blocked_at_block_entity) {
@@ -356,9 +356,9 @@ class EntityController extends Controller
                         $this->notify(new BlockEntity($collection->name, $blocked));
                     }
 
-                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Entidade bloqueada até <b>' . $date . '</b>.');
+                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio bloqueado até <b>' . $date . '</b>.');
                 } catch (Exception $e) {
-                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Entidade bloqueada até <b>' . $date . '</b>, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio bloqueado até <b>' . $date . '</b>, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
                 }
             } else {
                 // notificar
@@ -376,9 +376,9 @@ class EntityController extends Controller
                         }
                     }
 
-                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Entidade desbloqueada com sucesso.');
+                    $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Condomínio desbloqueado com sucesso.');
                 } catch (Exception $e) {
-                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Entidade desbloqueada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+                    $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio desbloqueado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
                 }
             }
         }
@@ -411,9 +411,9 @@ class EntityController extends Controller
             // enviar notificação por e-mail
             $this->notify(new DeleteEntity($request->name_delete_entity));
 
-            $data = NotifyHelpers::danger_top_center('fas fa-trash-alt', 'Entidade deletada com sucesso.');
+            $data = NotifyHelpers::danger_top_center('fas fa-trash-alt', 'Condomínio deletado com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Entidade deletada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio deletado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);
@@ -533,9 +533,9 @@ class EntityController extends Controller
             // enviar notificação por email
             $this->notify(new RecoverEntity($collection->name));
 
-            $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Entidade recuperada com sucesso.');
+            $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Condomínio recuperado com sucesso.');
         } catch (Exception $e) {
-            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Entidade recuperada com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
+            $data = NotifyHelpers::info_top_center('fas fa-exclamation-triangle', 'Condomínio recuperado com sucesso, porém o envio de e-mail falhou.<br><br><small><b>erro: </b>' . $e->getMessage() . '</small>');
         }
 
         return response()->json($data);

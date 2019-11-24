@@ -4,7 +4,7 @@
             <!-- título -->
             <div class="modal-header">
                 <h5 id="modal-block-entity-label" class="modal-title text-uppercase text-monospace ml-1">
-                    <b>{{ __('Bloquear entidade') }}</b>
+                    <b>{{ __('Bloquear condomínio') }}</b>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -28,8 +28,8 @@
                                             <i class="fas fa-key"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id da entidade') }}">*</span>
-                                    <input readonly type="number" id="id-block-entity" name="id_block_entity" class="form-control {{ $errors->has('id_block_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da entidade') }}" value="{{ old('id_block_entity') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_block_entity')) autofocus @endif>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id do condomínio') }}">*</span>
+                                    <input readonly type="number" id="id-block-entity" name="id_block_entity" class="form-control {{ $errors->has('id_block_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('ID do condomínio') }}" value="{{ old('id_block_entity') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_block_entity')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('id_block_entity'))
@@ -43,7 +43,7 @@
                                 <label class="form-control-label fe-toggle-title" for="blocked-block-entity">Bloqueado </label>
                                 <div class="input-group input-group-merge fe-toggle-line validate-blocked-block-entity">
                                     <label class="custom-toggle custom-toggle-warning">
-                                        <input type="checkbox" id="blocked-block-entity" name="blocked_block_entity" onchange="changeCheckbox(this, 'entidade')">
+                                        <input type="checkbox" id="blocked-block-entity" name="blocked_block_entity" onchange="changeCheckbox(this, 'condomínio')">
                                         <span class="custom-toggle-slider rounded-circle" data-label-off="Não" data-label-on="Sim"></span>
                                     </label>
                                 </div>
@@ -63,8 +63,8 @@
                                             <i class="fas fa-calendar-alt"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('bloquear entidade até a data') }}">*</span>
-                                    <input type="tel" id="blocked-at-block-entity" name="blocked_at_block_entity" class="form-control datepicker-clean-onwards mask-date {{ $errors->has('blocked_at_block_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Informe a data') }}" value="{{ old('blocked_at_block_entity') }}" minlength="10" maxlength="10" onkeyup="statusCheckbox(this, 'entidade');" onchange="statusCheckbox(this, 'entidade');" @if ($errors->has('blocked_at_block_entity')) autofocus @endif>
+                                    <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('bloquear condomínio até a data') }}">*</span>
+                                    <input type="tel" id="blocked-at-block-entity" name="blocked_at_block_entity" class="form-control datepicker-clean-onwards mask-date {{ $errors->has('blocked_at_block_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Informe a data') }}" value="{{ old('blocked_at_block_entity') }}" minlength="10" maxlength="10" onkeyup="statusCheckbox(this, 'condomínio');" onchange="statusCheckbox(this, 'condomínio');" @if ($errors->has('blocked_at_block_entity')) autofocus @endif>
                                     <!-- limpar datepicker -->
                                     <div class="input-group-append" onclick="clearInputDatepicker(this);">
                                         <span class="input-group-text">
@@ -82,13 +82,13 @@
                     <!-- informações -->
                     <div class="fe-mouse">
                         <div class="mt--1">
-                            <small class="text-light">{{ __('bloqueie a entidade até uma data determinada ou permanentemente') }}</small>
+                            <small class="text-light">{{ __('bloqueie o condomínio até uma data determinada ou permanentemente') }}</small>
                         </div>
                     </div>
                     <!-- botões -->
                     <div class="text-right float-right fe-form-footer">
                         <a href="javascript:void(0)" class="mr-4" data-dismiss="modal">{{ __('Cancelar') }}</a>
-                        <button type="submit" id="btn-block-entity" class="btn btn-outline-warning mr-4">{{ __('Bloquear entidade') }}</button>
+                        <button type="submit" id="btn-block-entity" class="btn btn-outline-warning mr-4">{{ __('Bloquear condomínio') }}</button>
                     </div>
                 </form>
             </div>

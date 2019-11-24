@@ -60,7 +60,7 @@
                     remote:               'O campo e-mail já está sendo utilizado.',
                 },
                 'entity_id_new_user[]': {
-                    required:             'O campo entidade é obrigatório.',
+                    required:             'O campo condomínio é obrigatório.',
                 },
             }
         });

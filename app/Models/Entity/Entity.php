@@ -161,7 +161,7 @@ class Entity extends Model
     }
 
     /**
-     * Retornar a entidade principal relacionada com o usuário no armazenamento.
+     * Retornar o condomínio principal relacionado com o usuário no armazenamento.
      *
      * @return mixed
      */
@@ -182,7 +182,7 @@ class Entity extends Model
     }
 
     /**
-     * Retornar as entidades relacionada com o usuário no armazenamento.
+     * Retornar os condomínios relacionado com o usuário no armazenamento.
      *
      * @return mixed
      */
@@ -201,7 +201,7 @@ class Entity extends Model
     }
 
     /**
-     * Retornar as entidades relacionada com o usuário no armazenamento.
+     * Retornar os condomínios relacionado com o usuário no armazenamento.
      *
      * @param $id
      * @return mixed

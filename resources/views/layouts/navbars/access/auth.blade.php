@@ -9,12 +9,12 @@
         </div>
 
         @if (\App\Models\Entity\Entity::getEntitiesUser()->count() > 1)
-            <!-- entidade -->
+            <!-- condomínio -->
             <div class="col-lg-3 fe-navbar-entity ml-3">
                 <form id="form-edit-entity-profile" role="form" autocomplete="off" novalidate>
                     @csrf
                     <div class="input-group-none">
-                        <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a entidade em que deseja operar no sistema') }}">*</span>
+                        <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio em que deseja operar no sistema') }}">*</span>
                         {{ Form::select(
                             "name",
                             \App\Models\Entity\Entity::getEntitiesOptions(),

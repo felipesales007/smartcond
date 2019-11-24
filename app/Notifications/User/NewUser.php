@@ -50,7 +50,7 @@ class NewUser extends Notification
 
         $mailMessage->subject('Notificação de definição de senha');
         $mailMessage->greeting('Olá ' . FormatHelpers::first_word($this->name) . ',');
-        $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma criação de usuário com o seu e-mail no sistema ' . config('app.name') . ' vinculado na entidade ' . $this->entity . ', para estarmos concluindo o cadastro por favor, clique no botão abaixo e confirme o seu endereço de e-mail e defina uma senha para acesso ao sistema.');
+        $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma criação de usuário com o seu e-mail no sistema ' . config('app.name') . ' vinculado no condomínio ' . $this->entity . ', para estarmos concluindo o cadastro por favor, clique no botão abaixo e confirme o seu endereço de e-mail e defina uma senha para acesso ao sistema.');
         $mailMessage->action('Concluir cadastro', route('password.reset', $this->token));
         $mailMessage->line('<span class="notice">Se você desconhece está solicitação de criação de usuário, nenhuma outra ação será necessária.</span>');
 

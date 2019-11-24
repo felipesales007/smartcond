@@ -59,9 +59,9 @@ class GroupsTableSeeder extends Seeder
 
         // 6 - gerenciamento
         Group::create([
-            'name'          => 'entidades',
+            'name'          => 'condominios',
             'user_level_id' => '2',
-            'description'   => 'Grupo das configurações das entidades',
+            'description'   => 'Grupo das configurações dos condomínios',
             'created_at'    => now(),
             'updated_at'    => now()
         ]);

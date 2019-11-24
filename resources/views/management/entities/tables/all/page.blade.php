@@ -41,7 +41,7 @@
                             <!-- título -->
                             <div class="col-8">
                                 <h3 class="text-uppercase text-monospace mb--1">
-                                    <b>{{ __('Lista de entidades') }}</b>
+                                    <b>{{ __('Lista de condomínios') }}</b>
                                 </h3>
                             </div>
                             <!-- botões -->

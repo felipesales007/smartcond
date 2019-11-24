@@ -43,9 +43,9 @@ class NewEntity extends Notification
     {
         $mailMessage = new MailMessage();
 
-        $mailMessage->subject('Notificação de criação de entidade');
+        $mailMessage->subject('Notificação de criação de condomínio');
         $mailMessage->greeting('Olá,');
-        $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma criação de entidade no sistema ' . config('app.name') . ', e o seu endereço de e-mail foi definido como contato da entidade criada, segue abaixo os dados da entidade:');
+        $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma criação de condomínio no sistema ' . config('app.name') . ', e o seu endereço de e-mail foi definido como contato do condomínio criado, segue abaixo os dados do condomínio:');
 
         if ($this->collection->cnpj) {
             $mailMessage->line('<b>CNPJ: </b>' . $this->collection->cnpj);
@@ -104,7 +104,7 @@ class NewEntity extends Notification
         }
 
         $mailMessage->action('Acessar sistema', route('login'));
-        $mailMessage->line('<span class="notice">Se você desconhece está solicitação de criação de entidade vinculada ao seu endereço de e-mail, procure o administrador do sistema.</span>');
+        $mailMessage->line('<span class="notice">Se você desconhece está solicitação de criação de condomínio vinculado ao seu endereço de e-mail, procure o administrador do sistema.</span>');
 
         return $mailMessage;
     }

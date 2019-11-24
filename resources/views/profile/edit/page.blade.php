@@ -43,30 +43,30 @@
                                 <!-- variáveis -->
                                 <span hidden>
                                     @if (isset($entities[0]) && $company)
-                                        {{ $view   = 'visualizar empresa e entidade' }}
-                                        {{ $hidden = 'ocultar empresa e entidade' }}
+                                        {{ $view   = 'visualizar empresa e condomínio' }}
+                                        {{ $hidden = 'ocultar empresa e condomínio' }}
                                     @elseif (!isset($entities[0]) && $company)
                                         {{ $view   = 'visualizar empresa' }}
                                         {{ $hidden = 'ocultar empresa' }}
                                     @else
-                                        {{ $view   = 'visualizar entidade' }}
-                                        {{ $hidden = 'ocultar entidade' }}
+                                        {{ $view   = 'visualizar condomínio' }}
+                                        {{ $hidden = 'ocultar condomínio' }}
                                     @endif
                                 </span>
-                                <!-- empresa ou entidade -->
+                                <!-- empresa ou condomínio -->
                                 <a href="javascript:void(0)" id="event-edit-profile-company" class="h5 badge badge-primary mb-4 pl-3 fe-event-arrow" data-toggle="collapse" data-target="#collapse-edit-profile-company" aria-expanded="false" aria-controls="collapse-edit-profile-company" onclick="eventExpanded(this, '{{ $hidden }}', '{{ $view }}');">
                                     @if (isset($entities[0]) && $company)
-                                        {{ __('visualizar empresa e entidade') }}
+                                        {{ __('visualizar empresa e condomínio') }}
                                     @elseif (!isset($entities[0]) && $company)
                                         {{ __('visualizar empresa') }}
                                     @else
-                                        {{ __('visualizar entidade') }}
+                                        {{ __('visualizar condomínio') }}
                                     @endif
                                 </a>
-                                <!-- itens da entidade -->
+                                <!-- itens do condomínio -->
                                 <div class="accordion">
                                     <div id="collapse-edit-profile-company" class="collapse" aria-labelledby="heading-edit-profile-company" data-parent="#event-edit-profile-company">
-                                        <!-- accordion para visualização da entidade -->
+                                        <!-- accordion para visualização do condomínio -->
                                         <div id="accordion-edit-profile-company" class="accordion mb-3">
                                             <div class="scroll-user-view-company">
                                                 <a href="javascript:void(0)" class="list-group-item list-group-item-action fe-mouse" @if (!$company) hidden @endif>

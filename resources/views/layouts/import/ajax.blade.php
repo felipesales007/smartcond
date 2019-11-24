@@ -1,11 +1,11 @@
 <script>
     $(function () {
-        // validação da seleção da entidade no navbar
+        // validação da seleção do condomínio no navbar
         $('#form-edit-entity-profile').validate({
             ignore: '.ignore',
         });
 
-        // editando a entidade do usuário logado
+        // editando o condomínio do usuário logado
         $('#entity-id-edit-profile').on('select2:select', function () {
             scrollTop();
             loader(1);
@@ -19,7 +19,7 @@
                 },
                 error: function () {
                     loader(0);
-                    notifyError('Erro ao mudar de entidade.');
+                    notifyError('Erro ao mudar de condomínio.');
                 }
             });
         });

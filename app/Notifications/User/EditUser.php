@@ -359,9 +359,9 @@ class EditUser extends Notification
             $mailMessage->line('<span class="text-warning"><b>Descrição: </b>' . $this->original['description'] . '</span> <span class="badge badge-pill badge-warning">removido</span>');
         }
 
-        // entidade
+        // condomínio
         if ($this->entity) {
-            $mailMessage->line('<b>Acesso a entidade: </b>' . $this->entity);
+            $mailMessage->line('<b>Acesso ao condomínio: </b>' . $this->entity);
         }
 
         if (isset($this->collection->getChanges()['password']) && $this->token) {

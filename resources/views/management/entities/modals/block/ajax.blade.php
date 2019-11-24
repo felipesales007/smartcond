@@ -4,7 +4,7 @@
         let available = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-block-entity').removeAttr('disabled', 'disabled').html('Bloquear entidade');
+            $('#btn-block-entity').removeAttr('disabled', 'disabled').html('Bloquear condomínio');
             $('#form-block-entity').trigger('reset');
         };
 
@@ -28,7 +28,7 @@
                     // input
                     $('#blocked-at-block-entity').datepicker('setDate', timestamp_to_date_br(data.blocked_at));
                     if (data.blocked_at >= moment().format('YYYY-MM-DD')) {
-                        $('#blocked-at-block-entity-text').html('Entidade <b class="text-warning">' + data.name + '</b> bloqueado até ' + timestamp_to_date_br(data.blocked_at));
+                        $('#blocked-at-block-entity-text').html('Condomínio <b class="text-warning">' + data.name + '</b> bloqueado até ' + timestamp_to_date_br(data.blocked_at));
                     } else {
                         $('#blocked-at-block-entity-text').html('Bloquear <b class="text-warning">' + data.name + '</b> até uma data determinada');
                     }
@@ -65,7 +65,7 @@
                         $('#form-block-entity').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao bloquear a entidade.');
+                        notifyError('Erro ao bloquear o condomínio.');
                     }
                 });
             } else {

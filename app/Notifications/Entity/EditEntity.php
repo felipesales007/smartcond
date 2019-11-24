@@ -47,15 +47,15 @@ class EditEntity extends Notification
     {
         $mailMessage = new MailMessage();
 
-        $mailMessage->subject('Notificação de alteração de entidade');
+        $mailMessage->subject('Notificação de alteração de condomínio');
         $mailMessage->greeting('Olá,');
 
         if (!$this->original['email'] && $this->collection->email || $this->original['email'] == $this->collection->email) {
-            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados da entidade no qual seu endereço de e-mail está relacionado no sistema ' . config('app.name') . ', e o seu endereço de e-mail está definido como contato da entidade, segue abaixo os dados alterados da entidade:');
+            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados do condomínio no qual seu endereço de e-mail está relacionado no sistema ' . config('app.name') . ', e o seu endereço de e-mail está definido como contato do condomínio, segue abaixo os dados alterados do condomínio:');
         } elseif ($this->original['email'] && !$this->collection->email) {
-            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados da entidade no qual seu endereço de e-mail estava relacionado no sistema ' . config('app.name') . ', e o seu endereço de e-mail foi <span class="text-warning">removido</span> como contato da entidade, segue abaixo os dados alterados da entidade:');
+            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados do condomínio no qual seu endereço de e-mail estava relacionado no sistema ' . config('app.name') . ', e o seu endereço de e-mail foi <span class="text-warning">removido</span> como contato do condomínio, segue abaixo os dados alterados do condomínio:');
         } elseif ($this->original['email'] != $this->collection->email) {
-            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados da entidade, no qual houve uma alteração de e-mail de <span class="text-warning">' . $this->original['email'] . '</span> para <span class="text-success">' . $this->collection->email . '</span> no sistema ' . config('app.name') . ', e o endereço de e-mail ' . $this->collection->email . ' foi definido como contato da entidade, segue abaixo os dados alterados da entidade:');
+            $mailMessage->line('Você está recebendo este e-mail porque foi realizado uma alteração dos dados do condomínio, no qual houve uma alteração de e-mail de <span class="text-warning">' . $this->original['email'] . '</span> para <span class="text-success">' . $this->collection->email . '</span> no sistema ' . config('app.name') . ', e o endereço de e-mail ' . $this->collection->email . ' foi definido como contato do condomínio, segue abaixo os dados alterados do condomínio:');
         }
 
         // cnpj
@@ -254,7 +254,7 @@ class EditEntity extends Notification
         }
 
         $mailMessage->action('Acessar sistema', route('login'));
-        $mailMessage->line('<span class="notice">Se você desconhece está solicitação de alteração de entidade vinculada ao seu endereço de e-mail, procure o administrador do sistema.</span>');
+        $mailMessage->line('<span class="notice">Se você desconhece está solicitação de alteração de condomínio vinculado ao seu endereço de e-mail, procure o administrador do sistema.</span>');
 
         return $mailMessage;
     }

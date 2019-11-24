@@ -486,9 +486,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '39',
             'order'       => '0',
-            'name'        => 'Dashboard de entidades',
+            'name'        => 'Dashboard de condomínios',
             'hidden'      => '1',
-            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de entidades',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de condomínios',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -498,9 +498,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '40',
             'order'       => '2',
-            'name'        => 'Entidades',
+            'name'        => 'Condomínios',
             'main'        => '1',
-            'description' => 'Item do menu collapse de acesso a página de listagem de entidades',
+            'description' => 'Item do menu collapse de acesso a página de listagem de condomínios',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -510,9 +510,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '41',
             'order'       => '0',
-            'name'        => 'Lista de entidades deletadas',
+            'name'        => 'Lista de condomínios deletados',
             'hidden'      => '1',
-            'description' => 'Item do menu collapse oculto de acesso a página de listagem de entidades deletadas',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de condomínios deletados',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -524,7 +524,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Lista de usuários',
             'hidden'      => '1',
-            'description' => 'Item do modal de visualização de entidade oculto de acesso a página de listagem de usuários da entidade',
+            'description' => 'Item do modal de visualização de condomínio oculto de acesso a página de listagem de usuários do condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -534,9 +534,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '43',
             'order'       => '0',
-            'name'        => 'Visualizar entidade',
+            'name'        => 'Visualizar condomínio',
             'button'      => 'btn-modal-view-entity',
-            'description' => 'Item do menu da listagem de entidades de acesso ao modal de visualização de entidade',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de visualização de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -546,9 +546,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '44',
             'order'       => '0',
-            'name'        => 'Nova entidade',
+            'name'        => 'Novo condomínio',
             'button'      => 'btn-modal-new-entity',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de entidade',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -560,7 +560,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo usuário',
             'button'      => 'btn-modal-new-user-entity',
-            'description' => 'Item do menu da listagem de entidades de acesso ao modal de criação de usuário',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de criação de usuário',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -570,9 +570,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '46',
             'order'       => '0',
-            'name'        => 'Editar entidade',
+            'name'        => 'Editar condomínio',
             'button'      => 'btn-modal-edit-entity',
-            'description' => 'Item do menu da listagem de entidades de acesso ao modal de edição de entidade',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de edição de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -582,9 +582,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '47',
             'order'       => '0',
-            'name'        => 'Bloquear entidade',
+            'name'        => 'Bloquear condomínio',
             'button'      => 'btn-modal-block-entity',
-            'description' => 'Item do menu da listagem de entidades de acesso ao modal de bloqueio de entidade',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de bloqueio de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -594,9 +594,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '48',
             'order'       => '0',
-            'name'        => 'Deletar entidade',
+            'name'        => 'Deletar condomínio',
             'button'      => 'btn-modal-delete-entity',
-            'description' => 'Item do menu da listagem de entidades de acesso ao modal de exclusão de entidade',
+            'description' => 'Item do menu da listagem de condomínios de acesso ao modal de exclusão de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -606,9 +606,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '49',
             'order'       => '0',
-            'name'        => 'Recuperar entidade',
+            'name'        => 'Recuperar condomínio',
             'button'      => 'btn-modal-recover-entity',
-            'description' => 'Item do menu da listagem de entidades deletadas de acesso ao modal de recuperação de entidade',
+            'description' => 'Item do menu da listagem de condomínios deletados de acesso ao modal de recuperação de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -618,9 +618,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '6',
             'route_id'    => '50',
             'order'       => '0',
-            'name'        => 'Enviar e-mail para a entidade',
+            'name'        => 'Enviar e-mail para o condomínio',
             'button'      => 'btn-modal-send-email-entity',
-            'description' => 'Item do menu da listagem da entidade de acesso ao botão de envio de e-mail para a entidade',
+            'description' => 'Item do menu da listagem do condomínio de acesso ao botão de envio de e-mail para o condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

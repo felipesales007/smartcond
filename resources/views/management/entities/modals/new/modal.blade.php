@@ -4,7 +4,7 @@
             <!-- título -->
             <div class="modal-header">
                 <h5 id="modal-new-entity-label" class="modal-title text-uppercase text-monospace ml-1">
-                    <b>{{ __('Nova entidade') }}</b>
+                    <b>{{ __('Novo condomínio') }}</b>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -61,7 +61,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="name-new-entity" name="name_new_entity" class="form-control {{ $errors->has('name_new_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome fantasia da entidade') }}" value="{{ old('name_new_entity') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-new-entity');" @if ($errors->has('name_new_entity')) autofocus @endif>
+                                    <input type="text" id="name-new-entity" name="name_new_entity" class="form-control {{ $errors->has('name_new_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome fantasia do condomínio') }}" value="{{ old('name_new_entity') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-new-entity');" @if ($errors->has('name_new_entity')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_new_entity'))
@@ -80,7 +80,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="corporate-name-new-entity" name="corporate_name_new_entity" class="form-control {{ $errors->has('corporate_name_new_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Razão social da entidade') }}" value="{{ old('corporate_name_new_entity') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('corporate-name-new-entity');" @if ($errors->has('corporate_name_new_entity')) autofocus @endif>
+                                    <input type="text" id="corporate-name-new-entity" name="corporate_name_new_entity" class="form-control {{ $errors->has('corporate_name_new_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Razão social do condomínio') }}" value="{{ old('corporate_name_new_entity') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('corporate-name-new-entity');" @if ($errors->has('corporate_name_new_entity')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('corporate_name_new_entity'))
@@ -99,7 +99,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('cnpj válido de 14 dígitos') }}">*</span>
-                                    <input type="tel" id="cnpj-new-entity" name="cnpj_new_entity" class="form-control mask-cnpj {{ $errors->has('cnpj_new_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('CNPJ da entidade') }}" value="{{ old('cnpj_new_entity') }}" minlength="18" maxlength="18" required @if ($errors->has('cnpj_new_entity')) autofocus @endif>
+                                    <input type="tel" id="cnpj-new-entity" name="cnpj_new_entity" class="form-control mask-cnpj {{ $errors->has('cnpj_new_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('CNPJ do condomínio') }}" value="{{ old('cnpj_new_entity') }}" minlength="18" maxlength="18" required @if ($errors->has('cnpj_new_entity')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('cnpj_new_entity'))
@@ -310,13 +310,13 @@
                         </div>
                         <br>
                         <div class="mt--1">
-                            <small class="text-light">{{ __('ao adicionar um endereço de e-mail na entidade o e-mail informado irá receber uma notificação de e-mail com os dados da entidade criada') }}</small>
+                            <small class="text-light">{{ __('ao adicionar um endereço de e-mail no condomínio o e-mail informado irá receber uma notificação de e-mail com os dados do condomínio criado') }}</small>
                         </div>
                     </div>
                     <!-- botões -->
                     <div class="text-right float-right fe-form-footer">
                         <a href="javascript:void(0)" class="mr-4" data-dismiss="modal">{{ __('Cancelar') }}</a>
-                        <button type="submit" id="btn-new-entity" class="btn btn-outline-success mr-4">{{ __('Criar entidade') }}</button>
+                        <button type="submit" id="btn-new-entity" class="btn btn-outline-success mr-4">{{ __('Criar condomínio') }}</button>
                     </div>
                 </form>
             </div>

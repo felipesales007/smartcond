@@ -4,7 +4,7 @@
         let available = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-delete-entity').removeAttr('disabled', 'disabled').html('Excluir entidade');
+            $('#btn-delete-entity').removeAttr('disabled', 'disabled').html('Excluir condomínio');
             $('#form-delete-entity').trigger('reset');
         };
 
@@ -54,7 +54,7 @@
                         $('#form-delete-entity').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao deletar a entidade.');
+                        notifyError('Erro ao deletar o condomínio.');
                     }
                 });
             } else {

@@ -234,7 +234,7 @@
                     remote:               'O campo e-mail já está sendo utilizado.',
                 },
                 'entity_id_edit_user[]': {
-                    required:             'O campo entidade é obrigatório.',
+                    required:             'O campo condomínio é obrigatório.',
                 },
                 password_edit_user: {
                     minlength:            'O campo senha deve ter pelo menos {0} caracteres.',

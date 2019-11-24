@@ -4,7 +4,7 @@
         let available = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-edit-entity').removeAttr('disabled', 'disabled').html('Editar entidade');
+            $('#btn-edit-entity').removeAttr('disabled', 'disabled').html('Editar condomínio');
             $('#state-id-edit-entity').val('').trigger('change');
             $('#form-edit-entity').trigger('reset');
         };
@@ -80,7 +80,7 @@
                         $('#form-edit-entity').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao editar a entidade.');
+                        notifyError('Erro ao editar o condomínio.');
                     }
                 });
             } else {

@@ -41,9 +41,9 @@ class RecoverEntity extends Notification
     {
         $mailMessage = new MailMessage();
 
-        $mailMessage->subject('Notificação de recuperação de entidade');
+        $mailMessage->subject('Notificação de recuperação de condomínio');
         $mailMessage->greeting('Olá,');
-        $mailMessage->line('Você está recebendo este e-mail porque foi realizado a <span class="text-success">recuperação da entidade <b>' . $this->name . '</b></span> no sistema ' . config('app.name'));
+        $mailMessage->line('Você está recebendo este e-mail porque foi realizado a <span class="text-success">recuperação do condomínio <b>' . $this->name . '</b></span> no sistema ' . config('app.name'));
         $mailMessage->action('Acessar sistema', route('login'));
         $mailMessage->line('<span class="notice">Se você desconhece está ação, procure o administrador do sistema.</span>');
 

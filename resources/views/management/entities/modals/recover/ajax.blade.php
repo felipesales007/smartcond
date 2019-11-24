@@ -4,7 +4,7 @@
         let available = function () {
             removeValidate();
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
-            $('#btn-recover-entity').removeAttr('disabled', 'disabled').html('Recuperar entidade');
+            $('#btn-recover-entity').removeAttr('disabled', 'disabled').html('Recuperar condomínio');
             $('#form-recover-entity').trigger('reset');
         };
 
@@ -54,7 +54,7 @@
                         $('#form-recover-entity').valid();
                         loader(0);
                         serverValidate(data);
-                        notifyError('Erro ao recuperar a entidade.');
+                        notifyError('Erro ao recuperar o condomínio.');
                     }
                 });
             } else {

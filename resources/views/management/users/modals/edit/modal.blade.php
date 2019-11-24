@@ -75,12 +75,12 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- entidade -->
+                        <!-- condomínio -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="entity-id-edit-user">{{ __('Entidade') }}</label>
+                                <label class="form-control-label" for="entity-id-edit-user">{{ __('Condomínio') }}</label>
                                 <div class="input-group-none validate-entity-id-edit-user">
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a entidade') }}">*</span>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
                                     {{ Form::select(
                                         "name",
                                         \App\Models\Entity\Entity::getEntitiesOptions(),

@@ -84,7 +84,7 @@
                                 <tr>
                                     <th class="text-center"><i class="ni ni-image"></i></th>
                                     <th data-base="name">{{ __('Nome') }}</th>
-                                    <th data-base="entity_name">{{ __('Entidade') }}</th>
+                                    <th data-base="entity_name">{{ __('Condomínio') }}</th>
                                     <th data-base="email">{{ __('E-mail') }}</th>
                                     <th data-base="last_login_at">{{ __('Último login') }}</th>
                                     <th class="text-center"><i class="fas fa-cog"></i></th>

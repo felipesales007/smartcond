@@ -4,7 +4,7 @@
             <!-- título -->
             <div class="modal-header">
                 <h5 id="modal-delete-entity-label" class="modal-title text-uppercase text-monospace ml-1">
-                    <b>{{ __('Excluir entidade') }}</b>
+                    <b>{{ __('Excluir condomínio') }}</b>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -28,8 +28,8 @@
                                             <i class="fas fa-key"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id da entidade') }}">*</span>
-                                    <input readonly type="number" id="id-delete-entity" name="id_delete_entity" class="form-control {{ $errors->has('id_delete_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da entidade') }}" value="{{ old('id_delete_entity') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_delete_entity')) autofocus @endif>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id do condomínio') }}">*</span>
+                                    <input readonly type="number" id="id-delete-entity" name="id_delete_entity" class="form-control {{ $errors->has('id_delete_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('ID do condomínio') }}" value="{{ old('id_delete_entity') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_delete_entity')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('id_delete_entity'))
@@ -47,8 +47,8 @@
                                             <i class="fas fa-hotel"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome da entidade') }}">*</span>
-                                    <input readonly type="text" id="name-delete-entity" name="name_delete_entity" class="form-control {{ $errors->has('name_delete_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da entidade') }}" value="{{ old('name_delete_entity') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-delete-entity');" @if ($errors->has('name_delete_entity')) autofocus @endif>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome do condomínio') }}">*</span>
+                                    <input readonly type="text" id="name-delete-entity" name="name_delete_entity" class="form-control {{ $errors->has('name_delete_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome do condomínio') }}" value="{{ old('name_delete_entity') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-delete-entity');" @if ($errors->has('name_delete_entity')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_delete_entity'))
@@ -66,7 +66,7 @@
                                             <i class="fas fa-hotel"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome da entidade que está em vermelho e confirme, clicando em excluir entidade') }}">*</span>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome do condomínio que está em vermelho e confirme, clicando em excluir condomínio') }}">*</span>
                                     <input type="text" id="name-confirmation-delete-entity" name="name_confirmation_delete_entity" class="form-control fe-block-paste {{ $errors->has('name_confirmation_delete_entity') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome para exclusão') }}" value="{{ old('name_confirmation_delete_entity') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-confirmation-delete-entity');" ondrop="return false;" @if ($errors->has('name_confirmation_delete_entity')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
@@ -84,13 +84,13 @@
                         </div>
                         <br>
                         <div class="mt--1">
-                            <small class="text-light">{{ __('pense bem antes de excluir, entidades excluídas não são recuperadas') }}</small>
+                            <small class="text-light">{{ __('pense bem antes de excluir, condomínios excluídos não são recuperados') }}</small>
                         </div>
                     </div>
                     <!-- botões -->
                     <div class="text-right float-right fe-form-footer">
                         <a href="javascript:void(0)" class="mr-4" data-dismiss="modal">{{ __('Cancelar') }}</a>
-                        <button type="submit" id="btn-delete-entity" class="btn btn-outline-danger mr-4">{{ __('Excluir entidade') }}</button>
+                        <button type="submit" id="btn-delete-entity" class="btn btn-outline-danger mr-4">{{ __('Excluir condomínio') }}</button>
                     </div>
                 </form>
             </div>

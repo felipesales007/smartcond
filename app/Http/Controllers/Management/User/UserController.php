@@ -93,7 +93,7 @@ class UserController extends Controller
                 ->addColumn('name', function ($row) {
                     return $row->name;
                 })
-                // coluna entidade
+                // coluna condomínio
                 ->addColumn('entity_name', function ($row) {
                     return $row->entity_name;
                 })
@@ -233,14 +233,14 @@ class UserController extends Controller
 
         $array = $request->all();
 
-        // verifica se há o array de entidade
+        // verifica se há o array de condomínio
         if (!in_array('entity_id_new_user', $array)) {
             $array = Arr::add($array, 'entity_id_new_user', []);
         }
 
         $array = Arr::sortRecursive($array['entity_id_new_user']);
 
-        // adicona a entidade relacionada com o usuário
+        // adicona o condomínio relacionado com o usuário
         for ($i = 0; $i < count($array); $i++) {
             EntityAccesses::create([
                 'entity_id' => $array[$i],
@@ -327,7 +327,7 @@ class UserController extends Controller
             return response()->json($data);
         }
 
-        // atualização de acesso a entidade
+        // atualização de acesso ao condomínio
         $array = array_map('intval', $request->all()['entity_id_edit_user']);
         $array = Arr::sortRecursive($array);
 
@@ -337,7 +337,7 @@ class UserController extends Controller
             ->pluck('entity_id')
             ->toArray();
 
-        // se houver alteração no acesso de entidade
+        // se houver alteração no acesso de condomínio
         if ($array != $accesses) {
             // remove as permissões antigas
             EntityAccesses::where('user_id', $request->id_edit_user)
@@ -647,7 +647,7 @@ class UserController extends Controller
                 ->addColumn('name', function ($row) {
                     return $row->name;
                 })
-                // coluna entidade
+                // coluna condomínio
                 ->addColumn('entity_name', function ($row) {
                     return $row->entity_name;
                 })

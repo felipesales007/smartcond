@@ -80,7 +80,7 @@ class MenuTableSeeder extends Seeder
             'order'          => '3',
             'name'           => 'Gerenciamento',
             'icon'           => 'fas fa-user-cog',
-            'description'    => 'Menu em collapse da página de configurações de administradores, usuários, empresas e entidades',
+            'description'    => 'Menu em collapse da página de configurações de administradores, usuários, empresas e condomínios',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);

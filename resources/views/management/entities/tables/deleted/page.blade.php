@@ -39,7 +39,7 @@
                             <!-- título -->
                             <div class="col-8">
                                 <h3 class="text-uppercase text-monospace mb--1">
-                                    <b>{{ __('Lista de entidades deletadas') }}</b>
+                                    <b>{{ __('Lista de condomínios deletados') }}</b>
                                 </h3>
                             </div>
                             <!-- botões -->
@@ -72,7 +72,7 @@
                                     'item'   => '41',
                                     'color'  => 'success',
                                     'size'   => 'sm',
-                                    'title'  => 'Lista de entidades',
+                                    'title'  => 'Lista de condomínios',
                                     'icon'   => 'fas fa-list-ul'
                                 ])@endcomponent
                             </div>

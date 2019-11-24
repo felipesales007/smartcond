@@ -56,13 +56,13 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- entidade -->
+                        <!-- condomínio -->
                         @if (auth()->user()['admin'] == 1 || count(\App\Models\Entity\Entity::getEntitiesUser()) > 1)
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="entity-id-new-user">{{ __('Entidade') }}</label>
+                                    <label class="form-control-label" for="entity-id-new-user">{{ __('Condomínio') }}</label>
                                     <div class="input-group-none validate-entity-id-new-user">
-                                        <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a entidade') }}">*</span>
+                                        <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
                                         {{ Form::select(
                                             "name",
                                             \App\Models\Entity\Entity::getEntitiesOptions(),
@@ -79,9 +79,9 @@
                         @else
                             <div hidden class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="entity-id-new-user">{{ __('Entidade') }}</label>
+                                    <label class="form-control-label" for="entity-id-new-user">{{ __('Condomínio') }}</label>
                                     <div class="input-group-none validate-entity-id-new-user">
-                                        <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a entidade') }}">*</span>
+                                        <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o condomínio') }}">*</span>
                                         {{ Form::select(
                                             "name",
                                             \App\Models\Entity\Entity::getEntitiesOptions(),
