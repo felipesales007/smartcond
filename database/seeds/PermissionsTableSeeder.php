@@ -15,10 +15,6 @@ class PermissionsTableSeeder extends Seeder
         // rotas no banco
         $routes = 98;
 
-        /*
-         * Permissões de
-         * Felipe Sales dos Santos
-         */
         for ($i = 1; $i <= $routes; $i++) {
             Permission::create([
                 'user_id'    => '1',
@@ -29,6 +25,20 @@ class PermissionsTableSeeder extends Seeder
 
             Permission::create([
                 'user_id'    => '2',
+                'route_id'   => $i,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+
+            Permission::create([
+                'user_id'    => '3',
+                'route_id'   => $i,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+
+            Permission::create([
+                'user_id'    => '4',
                 'route_id'   => $i,
                 'created_at' => now(),
                 'updated_at' => now()

@@ -13,14 +13,14 @@ class EntitiesTableSeeder extends Seeder
     public function run()
     {
         Entity::insert([
-            'name'           => 'Empresa de Teste',
-            'corporate_name' => 'Empresa para Teste e Desenvolvimento',
+            'name'           => 'Condomínio Varandas do Vale',
+            'corporate_name' => 'Condomínio Residencal Varandas do Vale',
             'cnpj'           => '11.228.078/0001-84',
             'email'          => 'teste@hotmail.com',
             'contact'        => '(71) 99999-9999',
-            'postal_code'    => '40020-010',
-            'address'        => 'Praça Thomé de Souza',
-            'neighborhood'   => 'Centro',
+            'postal_code'    => '41218-168',
+            'address'        => 'Rua Varandas da Serra',
+            'neighborhood'   => 'Novo Horizonte',
             'city'           => 'Salvador',
             'state_id'       => '5',
             'country'        => 'Brasil',

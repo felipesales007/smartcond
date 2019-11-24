@@ -14,7 +14,7 @@ class EntityAccessesTableSeeder extends Seeder
     {
         EntityAccesses::insert([
             'entity_id'  => '1',
-            'user_id'    => '2',
+            'user_id'    => '4',
             'preferred'  => '1',
             'created_at' => now(),
             'updated_at' => now()

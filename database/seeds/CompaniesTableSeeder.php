@@ -14,7 +14,7 @@ class CompaniesTableSeeder extends Seeder
     {
         Company::insert([
             'name'           => 'Grupo Smartcond',
-            'corporate_name' => 'Grupo Smartcond Sistemas',
+            'corporate_name' => 'Grupo Smartcond de Desenvolvimento Ltda',
             'cnpj'           => '43.208.147/0001-84',
             'email'          => 'felipesales007@hotmail.com',
             'contact'        => '(71) 3333-3333',
