@@ -79,6 +79,7 @@
       <w>apagando</w>
       <w>apagar</w>
       <w>aparados</w>
+      <w>aparentes</w>
       <w>apenas</w>
       <w>aplicado</w>
       <w>aplicam</w>
@@ -87,6 +88,7 @@
       <w>aplicação</w>
       <w>aplicações</w>
       <w>apoiadas</w>
+      <w>apresenta</w>
       <w>aprimorada</w>
       <w>aprovada</w>
       <w>aproveite</w>
@@ -145,6 +147,7 @@
       <w>auxilia</w>
       <w>auxiliar</w>
       <w>avançado</w>
+      <w>avaria</w>
       <w>avenida</w>
       <w>axios</w>
       <w>azulado</w>
@@ -164,6 +167,7 @@
       <w>beyondcode</w>
       <w>biblioteca</w>
       <w>bibliotecas</w>
+      <w>bivolt</w>
       <w>bloco</w>
       <w>bloquea</w>
       <w>bloqueada</w>
@@ -218,6 +222,8 @@
       <w>carregando</w>
       <w>carregar</w>
       <w>caso</w>
+      <w>categoria</w>
+      <w>categorias</w>
       <w>ceará</w>
       <w>celular</w>
       <w>centro</w>
@@ -237,6 +243,7 @@
       <w>clicando</w>
       <w>clicar</w>
       <w>cnpj</w>
+      <w>codepen</w>
       <w>codificadas</w>
       <w>codigo</w>
       <w>coisa</w>
@@ -267,6 +274,8 @@
       <w>componentes</w>
       <w>comportam</w>
       <w>comportamento</w>
+      <w>compra</w>
+      <w>comprado</w>
       <w>computador</w>
       <w>comum</w>
       <w>comunicar</w>
@@ -275,6 +284,7 @@
       <w>concluindo</w>
       <w>concluir</w>
       <w>condição</w>
+      <w>condominio</w>
       <w>condominios</w>
       <w>condomínio</w>
       <w>condomínios</w>
@@ -298,6 +308,8 @@
       <w>conforme</w>
       <w>conhecimento</w>
       <w>conheça</w>
+      <w>connectdevelop</w>
+      <w>conservação</w>
       <w>considerado</w>
       <w>construir</w>
       <w>construtor</w>
@@ -608,6 +620,7 @@
       <w>expressiva</w>
       <w>expressão</w>
       <w>expõe</w>
+      <w>fabricante</w>
       <w>facilita</w>
       <w>facilitado</w>
       <w>facilmente</w>
@@ -686,6 +699,7 @@
       <w>frase</w>
       <w>frente</w>
       <w>fullcalendar</w>
+      <w>funciona</w>
       <w>funcionalidade</w>
       <w>funcionamento</w>
       <w>funcionará</w>
@@ -791,6 +805,10 @@
       <w>interagir</w>
       <w>introduzindo</w>
       <w>intval</w>
+      <w>inventario</w>
+      <w>inventarios</w>
+      <w>inventário</w>
+      <w>inventários</w>
       <w>inválida</w>
       <w>inválidas</w>
       <w>inválido</w>
@@ -877,6 +895,7 @@
       <w>maravilhosos</w>
       <w>marca</w>
       <w>marcados</w>
+      <w>marcas</w>
       <w>março</w>
       <w>masculino</w>
       <w>massa</w>
@@ -1043,6 +1062,7 @@
       <w>partida</w>
       <w>partir</w>
       <w>pará</w>
+      <w>patrimônio</w>
       <w>país</w>
       <w>pedido</w>
       <w>pedidos</w>
@@ -1169,6 +1189,7 @@
       <w>quantos</w>
       <w>quarta</w>
       <w>quebra</w>
+      <w>quebrado</w>
       <w>quem</w>
       <w>quer</w>
       <w>quiser</w>
@@ -1179,6 +1200,7 @@
       <w>razão</w>
       <w>razões</w>
       <w>rdecode</w>
+      <w>reais</w>
       <w>realizada</w>
       <w>realizadas</w>
       <w>realizado</w>
@@ -1275,6 +1297,7 @@
       <w>rondônia</w>
       <w>roraima</w>
       <w>roxo</w>
+      <w>ruim</w>
       <w>rápido</w>
       <w>sabedoria</w>
       <w>sair</w>
@@ -1373,6 +1396,7 @@
       <w>swal</w>
       <w>sweetalert</w>
       <w>sábado</w>
+      <w>série</w>
       <w>tabelas</w>
       <w>tada</w>
       <w>tagsinput</w>
@@ -1433,6 +1457,7 @@
       <w>três</w>
       <w>tschan</w>
       <w>técnico</w>
+      <w>técnicos</w>
       <w>típico</w>
       <w>título</w>
       <w>ultima</w>
@@ -1474,6 +1499,8 @@
       <w>variáveis</w>
       <w>variável</w>
       <w>varrer</w>
+      <w>velho</w>
+      <w>vencimento</w>
       <w>vendored</w>
       <w>venho</w>
       <w>verdadeira</w>
@@ -1504,6 +1531,7 @@
       <w>vitalícia</w>
       <w>vizualizar</w>
       <w>você</w>
+      <w>voltagem</w>
       <w>voltar</w>
       <w>volte</w>
       <w>vontade</w>

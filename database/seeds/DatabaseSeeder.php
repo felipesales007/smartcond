@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ColorsTableSeeder::class,
             StatesTableSeeder::class,
             GendersTableSeeder::class,
+            VoltagesTableSeeder::class,
             UserLevelsTableSeeder::class,
             GroupsTableSeeder::class,
             MenuOptionsTableSeeder::class,
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
             EntitiesTableSeeder::class,
             EntityAccessesTableSeeder::class,
             PermissionsTableSeeder::class,
+            InventoryStatesTableSeeder::class,
             AuthPicturesTableSeeder::class,
             SupportOptionsTableSeeder::class
         ]);
