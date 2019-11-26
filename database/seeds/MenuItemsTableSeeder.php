@@ -1320,5 +1320,101 @@ class MenuItemsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        // 110 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '108',
+            'order'       => '0',
+            'name'        => 'Dashboard de inventário',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 111 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '109',
+            'order'       => '2',
+            'name'        => 'Inventário',
+            'main'        => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de itens do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 112 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '110',
+            'order'       => '0',
+            'name'        => 'Lista de itens do inventário deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de itens do inventário deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 113 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '111',
+            'order'       => '0',
+            'name'        => 'Visualizar item do inventário',
+            'button'      => 'btn-modal-view-inventory',
+            'description' => 'Item do menu da listagem de itens do inventário de acesso ao modal de visualização de item do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 114 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '112',
+            'order'       => '0',
+            'name'        => 'Novo item do inventário',
+            'button'      => 'btn-modal-new-inventory',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de item do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 115 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '113',
+            'order'       => '0',
+            'name'        => 'Editar item do inventário',
+            'button'      => 'btn-modal-edit-inventory',
+            'description' => 'Item do menu da listagem de itens do inventário de acesso ao modal de edição de item do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 116 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '114',
+            'order'       => '0',
+            'name'        => 'Deletar item do inventário',
+            'button'      => 'btn-modal-delete-inventory',
+            'description' => 'Item do menu da listagem de itens do inventário de acesso ao modal de exclusão de item do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 117 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '115',
+            'order'       => '0',
+            'name'        => 'Recuperar item do inventário',
+            'button'      => 'btn-modal-recover-inventory',
+            'description' => 'Item do menu da listagem de itens do inventário deletados de acesso ao modal de recuperação de item do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }

@@ -1332,5 +1332,104 @@ class RoutesTableSeeder extends Seeder
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
+
+        // 108 - administrativo
+        Route::create([
+            'group_id'        => '14',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'inventory.dashboard',
+            'controller'      => 'Administrative\Inventory\Inventory\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 109 - administrativo
+        Route::create([
+            'group_id'        => '14',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'inventory.list',
+            'controller'      => 'Administrative\Inventory\Inventory\InventoryController@list',
+            'description'     => 'Página de listagem dos itens do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 110 - administrativo
+        Route::create([
+            'group_id'        => '14',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletadas',
+            'route'           => 'inventory.list.deleted',
+            'controller'      => 'Administrative\Inventory\Inventory\InventoryController@listDeleted',
+            'description'     => 'Página de listagem dos itens do inventário deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 111 - administrativo
+        Route::create([
+            'group_id'        => '14',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'inventory.view',
+            'controller'      => 'Administrative\Inventory\Inventory\InventoryController@edit',
+            'description'     => 'Modal de visualizar os dados do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 112 - administrativo
+        Route::create([
+            'group_id'        => '14',
+            'route_option_id' => '2',
+            'url'             => 'nova',
+            'route'           => 'inventory.store',
+            'controller'      => 'Administrative\Inventory\Inventory\InventoryController@store',
+            'description'     => 'Modal de criar novo item do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 113 - administrativo
+        Route::create([
+            'group_id'        => '14',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'inventory.edit',
+            'controller'      => 'Administrative\Inventory\Inventory\InventoryController@edit',
+            'description'     => 'Modal de editar os dados do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 114 - administrativo
+        Route::create([
+            'group_id'        => '14',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'inventory.delete',
+            'controller'      => 'Administrative\Inventory\Inventory\InventoryController@edit',
+            'description'     => 'Modal de deletar a categoria do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 115 - administrativo
+        Route::create([
+            'group_id'        => '14',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'inventory.recover',
+            'controller'      => 'Administrative\Inventory\Inventory\InventoryController@edit',
+            'description'     => 'Modal de recuperar a categoria do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
     }
 }
