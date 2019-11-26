@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Inventory;
+namespace App\Http\Controllers\Administrative\Inventory\Inventory;
 
 use App\Helpers\FileHelpers;
 use App\Helpers\FormatHelpers;
@@ -12,7 +12,7 @@ use App\Http\Requests\Inventory\Inventory\RecoverInventoryRequest;
 use App\Models\Entity\Entity;
 use App\Models\Inventory\Inventory;
 use App\Models\Menu\MenuItem;
-use App\Models\Permission;
+use App\Models\User\Permission;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -87,8 +87,8 @@ class InventoryController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // visualizar
-                    if (app('router')->has('inventory.view') && MenuItem::getMenuItemDeleted('inventory.view')['list']) {
-                        if (Permission::buttonPermission('btn-modal-view-inventory') && !MenuItem::getMenuItemBlocked('inventory.view')['list']) {
+                    if (app('router')->has('inventory.view') && MenuItem::getMenuItemDeleted('inventory.view')['button']) {
+                        if (Permission::routePermission('inventory.view') && !MenuItem::getMenuItemBlocked('inventory.view')['button']) {
                             $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-inventory" title="Visualizar"><i class="far fa-eye"></i></a>';
                         } else {
                             $btn = '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-primary opacity-2 disabled"><i class="far fa-eye" title="Visualizar"></i></a>';
@@ -98,8 +98,8 @@ class InventoryController extends Controller
                     }
 
                     // editar
-                    if (app('router')->has('inventory.edit') && MenuItem::getMenuItemDeleted('inventory.edit')['list']) {
-                        if (Permission::buttonPermission('btn-modal-edit-inventory') && !MenuItem::getMenuItemBlocked('inventory.edit')['list']) {
+                    if (app('router')->has('inventory.edit') && MenuItem::getMenuItemDeleted('inventory.edit')['button']) {
+                        if (Permission::routePermission('inventory.edit') && !MenuItem::getMenuItemBlocked('inventory.edit')['button']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-inventory" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
@@ -107,8 +107,8 @@ class InventoryController extends Controller
                     }
 
                     // excluir
-                    if (app('router')->has('inventory.delete') && MenuItem::getMenuItemDeleted('inventory.delete')['list']) {
-                        if (Permission::buttonPermission('btn-modal-delete-inventory') && !MenuItem::getMenuItemBlocked('inventory.delete')['list']) {
+                    if (app('router')->has('inventory.delete') && MenuItem::getMenuItemDeleted('inventory.delete')['button']) {
+                        if (Permission::routePermission('inventory.delete') && !MenuItem::getMenuItemBlocked('inventory.delete')['button']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-danger btn-modal-delete-inventory" title="Excluir"><i class="far fa-trash-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-danger opacity-2 disabled" title="Excluir"><i class="far fa-trash-alt"></i></a>';
@@ -121,7 +121,7 @@ class InventoryController extends Controller
                 ->toJson();
         }
 
-        return view('inventories.inventories.list');
+        return view('administrative.inventories.inventories.tables.all.page');
     }
 
     /**
@@ -308,8 +308,8 @@ class InventoryController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // visualizar
-                    if (app('router')->has('inventory.view') && MenuItem::getMenuItemDeleted('inventory.view')['list']) {
-                        if (Permission::buttonPermission('btn-modal-view-inventory') && !MenuItem::getMenuItemBlocked('inventory.view')['list']) {
+                    if (app('router')->has('inventory.view') && MenuItem::getMenuItemDeleted('inventory.view')['button']) {
+                        if (Permission::routePermission('inventory.view') && !MenuItem::getMenuItemBlocked('inventory.view')['button']) {
                             $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-inventory" title="Visualizar"><i class="far fa-eye"></i></a>';
                         } else {
                             $btn = '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-primary opacity-2 disabled" title="Visualizar"><i class="far fa-eye"></i></a>';
@@ -319,8 +319,8 @@ class InventoryController extends Controller
                     }
 
                     // recuperar
-                    if (app('router')->has('inventory.recover') && MenuItem::getMenuItemDeleted('inventory.recover')['list']) {
-                        if (Permission::buttonPermission('btn-modal-recover-inventory') && !MenuItem::getMenuItemBlocked('inventory.recover')['list']) {
+                    if (app('router')->has('inventory.recover') && MenuItem::getMenuItemDeleted('inventory.recover')['button']) {
+                        if (Permission::routePermission('inventory.recover') && !MenuItem::getMenuItemBlocked('inventory.recover')['button']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-recover-inventory" title="Recuperar"><i class="fas fa-recycle"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Recuperar"><i class="fas fa-recycle"></i></a>';
@@ -333,7 +333,7 @@ class InventoryController extends Controller
                 ->toJson();
         }
 
-        return view('inventories.inventories.list-deleted');
+        return view('administrative.inventories.inventories.tables.deleted.page');
     }
 
     /**

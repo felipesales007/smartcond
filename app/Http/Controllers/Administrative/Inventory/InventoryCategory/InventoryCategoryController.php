@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Inventory;
+namespace App\Http\Controllers\Administrative\Inventory\InventoryCategory;
 
 use App\Helpers\NotifyHelpers;
 use App\Http\Requests\Inventory\InventoryCategory\BlockInventoryCategoryRequest;
@@ -11,7 +11,7 @@ use App\Http\Requests\Inventory\InventoryCategory\RecoverInventoryCategoryReques
 use App\Models\Entity\Entity;
 use App\Models\Inventory\InventoryCategory;
 use App\Models\Menu\MenuItem;
-use App\Models\Permission;
+use App\Models\User\Permission;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -54,8 +54,8 @@ class InventoryCategoryController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // visualizar
-                    if (app('router')->has('inventory.category.view') && MenuItem::getMenuItemDeleted('inventory.category.view')['list']) {
-                        if (Permission::buttonPermission('btn-modal-view-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.view')['list']) {
+                    if (app('router')->has('inventory.category.view') && MenuItem::getMenuItemDeleted('inventory.category.view')['button']) {
+                        if (Permission::routePermission('inventory.category.view') && !MenuItem::getMenuItemBlocked('inventory.category.view')['button']) {
                             $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-inventory-category" title="Visualizar"><i class="far fa-eye"></i></a>';
                         } else {
                             $btn = '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-primary opacity-2 disabled"><i class="far fa-eye" title="Visualizar"></i></a>';
@@ -65,8 +65,8 @@ class InventoryCategoryController extends Controller
                     }
 
                     // editar
-                    if (app('router')->has('inventory.category.edit') && MenuItem::getMenuItemDeleted('inventory.category.edit')['list']) {
-                        if (Permission::buttonPermission('btn-modal-edit-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.edit')['list']) {
+                    if (app('router')->has('inventory.category.edit') && MenuItem::getMenuItemDeleted('inventory.category.edit')['button']) {
+                        if (Permission::routePermission('inventory.category.edit') && !MenuItem::getMenuItemBlocked('inventory.category.edit')['button']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-inventory-category" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
@@ -74,8 +74,8 @@ class InventoryCategoryController extends Controller
                     }
 
                     // bloquear
-                    if (app('router')->has('inventory.category.ban') && MenuItem::getMenuItemDeleted('inventory.category.ban')['list']) {
-                        if (Permission::buttonPermission('btn-modal-block-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.ban')['list']) {
+                    if (app('router')->has('inventory.category.ban') && MenuItem::getMenuItemDeleted('inventory.category.ban')['button']) {
+                        if (Permission::routePermission('inventory.category.ban') && !MenuItem::getMenuItemBlocked('inventory.category.ban')['button']) {
                             if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-inventory-category" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             } else {
@@ -91,8 +91,8 @@ class InventoryCategoryController extends Controller
                     }
 
                     // excluir
-                    if (app('router')->has('inventory.category.delete') && MenuItem::getMenuItemDeleted('inventory.category.delete')['list']) {
-                        if (Permission::buttonPermission('btn-modal-delete-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.delete')['list']) {
+                    if (app('router')->has('inventory.category.delete') && MenuItem::getMenuItemDeleted('inventory.category.delete')['button']) {
+                        if (Permission::routePermission('inventory.category.delete') && !MenuItem::getMenuItemBlocked('inventory.category.delete')['button']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-danger btn-modal-delete-inventory-category" title="Excluir"><i class="far fa-trash-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-danger opacity-2 disabled" title="Excluir"><i class="far fa-trash-alt"></i></a>';
@@ -105,7 +105,7 @@ class InventoryCategoryController extends Controller
                 ->toJson();
         }
 
-        return view('inventories.inventory-categories.list');
+        return view('administrative.inventories.inventory-categories.tables.all.page');
     }
 
     /**
@@ -245,8 +245,8 @@ class InventoryCategoryController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // visualizar
-                    if (app('router')->has('inventory.category.view') && MenuItem::getMenuItemDeleted('inventory.category.view')['list']) {
-                        if (Permission::buttonPermission('btn-modal-view-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.view')['list']) {
+                    if (app('router')->has('inventory.category.view') && MenuItem::getMenuItemDeleted('inventory.category.view')['button']) {
+                        if (Permission::routePermission('inventory.category.view') && !MenuItem::getMenuItemBlocked('inventory.category.view')['button']) {
                             $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-primary btn-modal-view-inventory-category" title="Visualizar"><i class="far fa-eye"></i></a>';
                         } else {
                             $btn = '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-primary opacity-2 disabled" title="Visualizar"><i class="far fa-eye"></i></a>';
@@ -256,8 +256,8 @@ class InventoryCategoryController extends Controller
                     }
 
                     // recuperar
-                    if (app('router')->has('inventory.category.recover') && MenuItem::getMenuItemDeleted('inventory.category.recover')['list']) {
-                        if (Permission::buttonPermission('btn-modal-recover-inventory-category') && !MenuItem::getMenuItemBlocked('inventory.category.recover')['list']) {
+                    if (app('router')->has('inventory.category.recover') && MenuItem::getMenuItemDeleted('inventory.category.recover')['button']) {
+                        if (Permission::routePermission('inventory.category.recover') && !MenuItem::getMenuItemBlocked('inventory.category.recover')['button']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-recover-inventory-category" title="Recuperar"><i class="fas fa-recycle"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Recuperar"><i class="fas fa-recycle"></i></a>';
@@ -270,7 +270,7 @@ class InventoryCategoryController extends Controller
                 ->toJson();
         }
 
-        return view('inventories.inventory-categories.list-deleted');
+        return view('administrative.inventories.inventory-categories.tables.deleted.page');
     }
 
     /**

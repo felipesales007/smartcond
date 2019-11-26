@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Inventory\InventoryCategory;
 
+use App\Models\Entity\Entity;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -26,7 +27,7 @@ class EditInventoryCategoryRequest extends FormRequest
     {
         return [
             'id_edit_inventory_category'          => ['required', 'max:20', 'alpha_num'],
-            'name_edit_inventory_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', Rule::unique('inventory_categories', 'name')->ignore($this->id_edit_inventory_category)],
+            'name_edit_inventory_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', Rule::unique('inventory_categories', 'name')->where('entity_id', Entity::id())->ignore($this->id_edit_inventory_category)],
             'description_edit_inventory_category' => ['nullable', 'min:10', 'max:1500'],
         ];
     }

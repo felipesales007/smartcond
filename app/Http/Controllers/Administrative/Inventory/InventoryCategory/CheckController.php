@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Inventory;
+namespace App\Http\Controllers\Administrative\Inventory\InventoryCategory;
 
+use App\Models\Entity\Entity;
 use App\Models\Inventory\InventoryCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,10 @@ class CheckController extends Controller
      */
     public function checkName(Request $request)
     {
-        $collection = InventoryCategory::withTrashed()->where('name', '=', $request->name)->value('name');
+        $collection = InventoryCategory::withTrashed()
+            ->where('entity_id', '=', Entity::id())
+            ->where('name', '=', $request->name)
+            ->value('name');
 
         if (!$collection) {
             return json_encode(true);
@@ -33,8 +37,15 @@ class CheckController extends Controller
      */
     public function checkNameDifferent(Request $request)
     {
-        $myCollection     = InventoryCategory::withTrashed()->where('id', '=', $request->id)->value('name');
-        $verifyCollection = InventoryCategory::withTrashed()->where('name', '=', $request->name)->value('name');
+        $myCollection = InventoryCategory::withTrashed()
+            ->where('entity_id', '=', Entity::id())
+            ->where('id', '=', $request->id)
+            ->value('name');
+
+        $verifyCollection = InventoryCategory::withTrashed()
+            ->where('entity_id', '=', Entity::id())
+            ->where('name', '=', $request->name)
+            ->value('name');
 
         if (!$verifyCollection || $verifyCollection == $myCollection) {
             return json_encode(true);

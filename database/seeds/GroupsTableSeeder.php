@@ -119,5 +119,23 @@ class GroupsTableSeeder extends Seeder
             'created_at'    => now(),
             'updated_at'    => now()
         ]);
+
+        // 13 - administrativo
+        Group::create([
+            'name'          => 'inventario/categorias',
+            'user_level_id' => '3',
+            'description'   => 'Grupo das configurações das categorias do inventário',
+            'created_at'    => now(),
+            'updated_at'    => now()
+        ]);
+
+        // 14 - administrativo
+        Group::create([
+            'name'          => 'inventario',
+            'user_level_id' => '3',
+            'description'   => 'Grupo das configurações dos inventário',
+            'created_at'    => now(),
+            'updated_at'    => now()
+        ]);
     }
 }

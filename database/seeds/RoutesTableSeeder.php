@@ -1145,7 +1145,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'lista/deletados',
             'route'           => 'department.list.deleted',
             'controller'      => 'Administrative\Department\DepartmentController@listDeleted',
-            'description'     => 'Página de listagem dos departamentos deletadas',
+            'description'     => 'Página de listagem dos departamentos deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1218,6 +1218,117 @@ class RoutesTableSeeder extends Seeder
             'route'           => 'department.recover',
             'controller'      => 'Administrative\Department\DepartmentController@edit',
             'description'     => 'Modal de recuperar o departamento',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 99 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'inventory.category.dashboard',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\DashboardController@dashboard',
+            'description'     => 'Página de dashboard das categorias do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 100 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'inventory.category.list',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@list',
+            'description'     => 'Página de listagem das categorias do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 101 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletadas',
+            'route'           => 'inventory.category.list.deleted',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@listDeleted',
+            'description'     => 'Página de listagem das categorias do inventário deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 102 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'inventory.category.view',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@edit',
+            'description'     => 'Modal de visualizar os dados da categoria do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 103 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '2',
+            'url'             => 'nova',
+            'route'           => 'inventory.category.store',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@store',
+            'description'     => 'Modal de criar nova categoria do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 104 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'inventory.category.edit',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@edit',
+            'description'     => 'Modal de editar os dados da categoria do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 105 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '1',
+            'url'             => 'banir/{id?}',
+            'route'           => 'inventory.category.ban',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@edit',
+            'description'     => 'Modal de bloquear e desbloquear a categoria do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 106 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'inventory.category.delete',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@edit',
+            'description'     => 'Modal de deletar a categoria do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 107 - administrativo
+        Route::create([
+            'group_id'        => '13',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'inventory.category.recover',
+            'controller'      => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@edit',
+            'description'     => 'Modal de recuperar a categoria do inventário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);

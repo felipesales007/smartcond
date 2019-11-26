@@ -1212,5 +1212,113 @@ class MenuItemsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        // 101 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '99',
+            'order'       => '0',
+            'name'        => 'Dashboard de categorias do inventário',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de categorias do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 102 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '100',
+            'order'       => '0',
+            'name'        => 'Categorias do inventário',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de categorias do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 103 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '101',
+            'order'       => '0',
+            'name'        => 'Lista de categorias do inventário deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de categorias do inventário deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 104 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '102',
+            'order'       => '0',
+            'name'        => 'Visualizar categoria do inventário',
+            'button'      => 'btn-modal-view-inventory-category',
+            'description' => 'Item do menu da listagem de categorias do inventário de acesso ao modal de visualização de categoria do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 105 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '103',
+            'order'       => '0',
+            'name'        => 'Nova categoria do inventário',
+            'button'      => 'btn-modal-new-inventory-category',
+            'description' => 'Item do menu collapse de acesso ao modal de criação de categoria do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 106 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '104',
+            'order'       => '0',
+            'name'        => 'Editar categoria do inventário',
+            'button'      => 'btn-modal-edit-inventory-category',
+            'description' => 'Item do menu da listagem de categorias do inventário de acesso ao modal de edição de categoria do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 107 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '105',
+            'order'       => '0',
+            'name'        => 'Bloquear categoria do inventário',
+            'button'      => 'btn-modal-block-inventory-category',
+            'description' => 'Item do menu da listagem de categorias do inventário de acesso ao modal de bloqueio do categoria do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 108 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '106',
+            'order'       => '0',
+            'name'        => 'Deletar categoria do inventário',
+            'button'      => 'btn-modal-delete-inventory-category',
+            'description' => 'Item do menu da listagem de categorias do inventário de acesso ao modal de exclusão de categoria do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 109 - Administrativo
+        MenuItem::create([
+            'menu_id'     => '8',
+            'route_id'    => '107',
+            'order'       => '0',
+            'name'        => 'Recuperar categoria do inventário',
+            'button'      => 'btn-modal-recover-inventory-category',
+            'description' => 'Item do menu da listagem de categorias do inventário deletados de acesso ao modal de recuperação de categoria do inventário',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }

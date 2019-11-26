@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Inventory;
+namespace App\Http\Controllers\Administrative\Inventory\Inventory;
 
 use App\Http\Controllers\Controller;
 use App\Models\Entity\Entity;
 use App\Models\Inventory\Inventory;
-use App\Models\Inventory\InventoryCategory;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 
@@ -18,7 +17,7 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('inventories.dashboard');
+        return view('administrative.inventories.inventories.dashboard.page');
     }
 
     /**
@@ -39,10 +38,8 @@ class DashboardController extends Controller
     public function getCounts()
     {
         $cards = [
-            'getCountInventories'                => Inventory::where('entity_id', '=', Entity::id())->count(),
-            'getCountDeletedInventories'         => Inventory::where('entity_id', '=', Entity::id())->where('deleted_at', '!=', null)->count(),
-            'getCountInventoryCategories'        => InventoryCategory::where('entity_id', '=', Entity::id())->count(),
-            'getCountBlockedInventoryCategories' => InventoryCategory::where('entity_id', '=', Entity::id())->where('blocked', '!=', null)->count(),
+            'getCount'        => Inventory::where('entity_id', '=', Entity::id())->count(),
+            'getCountDeleted' => Inventory::where('entity_id', '=', Entity::id())->where('deleted_at', '!=', null)->count(),
         ];
 
         return $cards;

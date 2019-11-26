@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Inventory\InventoryCategory;
 
+use App\Models\Entity\Entity;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class NewInventoryCategoryRequest extends FormRequest
 {
@@ -24,7 +26,7 @@ class NewInventoryCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_new_inventory_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', 'unique:inventory_categories,name'],
+            'name_new_inventory_category'        => ['required', 'min:3', 'max:191', 'alpha_digit', Rule::unique('inventory_categories', 'name')->where('entity_id', Entity::id())],
             'description_new_inventory_category' => ['nullable', 'min:10', 'max:1500'],
         ];
     }
