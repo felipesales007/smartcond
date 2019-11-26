@@ -4,7 +4,7 @@
         let table = '#datatable-inventory-categories';
 
         // tabela
-        let datatable  = $(table).DataTable({
+        let datatable = $(table).DataTable({
             language:    datatables_pt_br,
             dom:         datatables_edited_button,
             buttons: [
