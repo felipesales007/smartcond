@@ -1,5 +1,5 @@
-@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '93'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(93)['name'])
+@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '102'])
+@section('title', \App\Models\Menu\MenuItem::getMenuItem(102)['name'])
 
 @section('content')
 
@@ -15,10 +15,10 @@
                 'text'   => 'Dashboard',
                 'button' => '',
                 'router' => 'inventory.category.dashboard',
-                'group'  => '12',
-                'route'  => '90',
+                'group'  => '13',
+                'route'  => '99',
                 'menu'   => '8',
-                'item'   => '92',
+                'item'   => '101',
                 'color'  => 'info',
                 'size'   => 'sm',
                 'title'  => '',
@@ -47,29 +47,29 @@
                             <!-- botões -->
                             <div class="col-4 text-right">
                                 <!-- adicionar -->
-                            @component('layouts.components.button', [
-                                'text'   => 'Adicionar',
-                                'button' => 'btn-modal-new-inventory-category',
-                                'router' => 'inventory.category.store',
-                                'group'  => '12',
-                                'route'  => '94',
-                                'menu'   => '8',
-                                'item'   => '96',
-                                'color'  => 'primary',
-                                'size'   => 'sm',
-                                'title'  => '',
-                                'icon'   => 'fas fa-plus'
-                            ])@endcomponent
+                                @component('layouts.components.button', [
+                                    'text'   => 'Adicionar',
+                                    'button' => 'btn-modal-new-inventory-category',
+                                    'router' => 'inventory.category.store',
+                                    'group'  => '13',
+                                    'route'  => '103',
+                                    'menu'   => '8',
+                                    'item'   => '105',
+                                    'color'  => 'primary',
+                                    'size'   => 'sm',
+                                    'title'  => '',
+                                    'icon'   => 'fas fa-plus'
+                                ])@endcomponent
 
-                            <!-- lista de deletados -->
+                                <!-- lista de deletados -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
                                     'button' => '',
                                     'router' => 'inventory.category.list.deleted',
-                                    'group'  => '12',
-                                    'route'  => '92',
+                                    'group'  => '13',
+                                    'route'  => '101',
                                     'menu'   => '8',
-                                    'item'   => '94',
+                                    'item'   => '103',
                                     'color'  => 'danger',
                                     'size'   => 'sm',
                                     'title'  => 'Lista de deletados',
