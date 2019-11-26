@@ -95,7 +95,7 @@
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione a categoria') }}">*</span>
                                     {{ Form::select(
                                         "name",
-                                        \App\Models\Inventory\InventoryCategory::getInventoyCategoriesOptions(),
+                                        \App\Models\Inventory\InventoryCategory::getInventoryCategoriesOptions(),
                                         old("inventory_category_id_edit_inventory"),
                                         ["id" => "inventory-category-id-edit-inventory", "name" => "inventory_category_id_edit_inventory", "class" => "form-control", "placeholder" => "Selecione", "required"]
                                     )}}
@@ -114,7 +114,7 @@
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o estado do item') }}">*</span>
                                     {{ Form::select(
                                         "name",
-                                        \App\Models\Inventory\InventoryState::getInventoyStatesOptions(),
+                                        \App\Models\Inventory\InventoryState::getInventoryStatesOptions(),
                                         old("inventory_state_id_edit_inventory"),
                                         ["id" => "inventory-state-id-edit-inventory", "name" => "inventory_state_id_edit_inventory", "class" => "form-control select-nosearch", "required"]
                                     )}}

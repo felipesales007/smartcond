@@ -27,7 +27,7 @@ class InventoryState extends Model
      *
      * @return array
      */
-    static function getInventoyStates()
+    static function getInventoryStates()
     {
         return InventoryState::get();
     }
@@ -38,7 +38,7 @@ class InventoryState extends Model
      * @param $id
      * @return InventoryState
      */
-    static function getInventoyState($id)
+    static function getInventoryState($id)
     {
         return InventoryState::find($id);
     }
@@ -48,7 +48,7 @@ class InventoryState extends Model
      *
      * @return array
      */
-    static function getInventoyStatesOptions()
+    static function getInventoryStatesOptions()
     {
         $options = InventoryState::get();
         $array   = [];

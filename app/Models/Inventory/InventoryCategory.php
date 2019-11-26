@@ -41,7 +41,7 @@ class InventoryCategory extends Model
      *
      * @return array
      */
-    static function getInventoyCategories()
+    static function getInventoryCategories()
     {
         return InventoryCategory::get();
     }
@@ -52,7 +52,7 @@ class InventoryCategory extends Model
      * @param $id
      * @return InventoryCategory
      */
-    static function getInventoyCategory($id)
+    static function getInventoryCategory($id)
     {
         return InventoryCategory::find($id);
     }
@@ -82,7 +82,7 @@ class InventoryCategory extends Model
      *
      * @return array
      */
-    static function getInventoyCategoriesOptions()
+    static function getInventoryCategoriesOptions()
     {
         $options = InventoryCategory::where('entity_id', '=', Entity::id())->where('blocked', '=', null)->get();
         $array   = [];
