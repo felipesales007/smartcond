@@ -29,7 +29,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="name-new-inventory-category" name="name_new_inventory_category" class="form-control {{ $errors->has('name_new_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da categoria') }}" value="{{ old('name_new_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-new-inventory-category');" @if ($errors->has('name_new_inventory_category')) autofocus @endif>
+                                    <input type="text" id="name-new-inventory-category" name="name_new_inventory_category" class="form-control {{ $errors->has('name_new_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da categoria') }}" value="{{ old('name_new_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-new-inventory-category');" @if ($errors->has('name_new_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_new_inventory_category'))
@@ -43,7 +43,7 @@
                                 <label class="form-control-label" for="description-new-inventory-category">{{ __('Descrição') }}</label>
                                 <div class="input-group-none validate-description-new-inventory-category">
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('descrição da categoria com no mínimo 10 caracteres') }}">*</span>
-                                    <textarea id="description-new-inventory-category" name="description_new_inventory_category" rows="3" resize="none" class="form-control {{ $errors->has('description_new_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Descrição') }}" minlength="10" maxlength="1500" onkeyup="primeiraLetraMaiuscula(this);" @if ($errors->has('description_new_inventory_category')) autofocus @endif>{{ old('description_new_inventory_category') }}</textarea>
+                                    <textarea id="description-new-inventory-category" name="description_new_inventory_category" rows="3" resize="none" class="form-control {{ $errors->has('description_new_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Descrição') }}" minlength="10" maxlength="1500" onkeyup="firstLetterUppercase(this);" @if ($errors->has('description_new_inventory_category')) autofocus @endif>{{ old('description_new_inventory_category') }}</textarea>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('description_new_inventory_category'))

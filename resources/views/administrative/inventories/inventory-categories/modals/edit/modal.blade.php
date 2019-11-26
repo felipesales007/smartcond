@@ -29,7 +29,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id da categoria') }}">*</span>
-                                    <input readonly type="number" id="id-edit-inventory-category" name="id_edit_inventory_category" class="form-control {{ $errors->has('id_edit_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da categoria') }}" value="{{ old('id_edit_inventory_category') }}" maxlength="20" required onkeypress="return soNumeros(event);" @if ($errors->has('id_edit_inventory_category')) autofocus @endif>
+                                    <input readonly type="number" id="id-edit-inventory-category" name="id_edit_inventory_category" class="form-control {{ $errors->has('id_edit_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da categoria') }}" value="{{ old('id_edit_inventory_category') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_edit_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('id_edit_inventory_category'))
@@ -48,7 +48,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="name-edit-inventory-category" name="name_edit_inventory_category" class="form-control {{ $errors->has('name_edit_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da categoria') }}" value="{{ old('name_edit_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-edit-inventory-category');" @if ($errors->has('name_edit_inventory_category')) autofocus @endif>
+                                    <input type="text" id="name-edit-inventory-category" name="name_edit_inventory_category" class="form-control {{ $errors->has('name_edit_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da categoria') }}" value="{{ old('name_edit_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-edit-inventory-category');" @if ($errors->has('name_edit_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_edit_inventory_category'))
@@ -62,7 +62,7 @@
                                 <label class="form-control-label" for="description-edit-inventory-category">{{ __('Descrição') }}</label>
                                 <div class="input-group-none validate-description-edit-inventory-category">
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('descrição da categoria com no mínimo 10 caracteres') }}">*</span>
-                                    <textarea id="description-edit-inventory-category" name="description_edit_inventory_category" rows="3" resize="none" class="form-control {{ $errors->has('description_edit_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Descrição') }}" minlength="10" maxlength="1500" onkeyup="primeiraLetraMaiuscula(this);" @if ($errors->has('description_edit_inventory_category')) autofocus @endif>{{ old('description_edit_inventory_category') }}</textarea>
+                                    <textarea id="description-edit-inventory-category" name="description_edit_inventory_category" rows="3" resize="none" class="form-control {{ $errors->has('description_edit_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Descrição') }}" minlength="10" maxlength="1500" onkeyup="firstLetterUppercase(this);" @if ($errors->has('description_edit_inventory_category')) autofocus @endif>{{ old('description_edit_inventory_category') }}</textarea>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('description_edit_inventory_category'))

@@ -29,7 +29,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id da categoria') }}">*</span>
-                                    <input readonly type="number" id="id-delete-inventory-category" name="id_delete_inventory_category" class="form-control {{ $errors->has('id_delete_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da categoria') }}" value="{{ old('id_delete_inventory_category') }}" maxlength="20" required onkeypress="return soNumeros(event);" @if ($errors->has('id_delete_inventory_category')) autofocus @endif>
+                                    <input readonly type="number" id="id-delete-inventory-category" name="id_delete_inventory_category" class="form-control {{ $errors->has('id_delete_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da categoria') }}" value="{{ old('id_delete_inventory_category') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_delete_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('id_delete_inventory_category'))
@@ -48,7 +48,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome da categoria') }}">*</span>
-                                    <input readonly type="text" id="name-delete-inventory-category" name="name_delete_inventory_category" class="form-control {{ $errors->has('name_delete_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da categoria') }}" value="{{ old('name_delete_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-delete-inventory-category');" @if ($errors->has('name_delete_inventory_category')) autofocus @endif>
+                                    <input readonly type="text" id="name-delete-inventory-category" name="name_delete_inventory_category" class="form-control {{ $errors->has('name_delete_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da categoria') }}" value="{{ old('name_delete_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-delete-inventory-category');" @if ($errors->has('name_delete_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_delete_inventory_category'))
@@ -67,7 +67,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome da categoria que está em vermelho e confirme, clicando em excluir categoria') }}">*</span>
-                                    <input type="text" id="name-confirmation-delete-inventory-category" name="name_confirmation_delete_inventory_category" class="form-control fe-block-paste {{ $errors->has('name_confirmation_delete_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome para exclusão') }}" value="{{ old('name_confirmation_delete_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-confirmation-delete-inventory-category');" ondrop="return false;" @if ($errors->has('name_confirmation_delete_inventory_category')) autofocus @endif>
+                                    <input type="text" id="name-confirmation-delete-inventory-category" name="name_confirmation_delete_inventory_category" class="form-control fe-block-paste {{ $errors->has('name_confirmation_delete_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome para exclusão') }}" value="{{ old('name_confirmation_delete_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-confirmation-delete-inventory-category');" ondrop="return false;" @if ($errors->has('name_confirmation_delete_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_confirmation_delete_inventory_category'))

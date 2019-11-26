@@ -117,7 +117,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('nº do patrimônio do item do inventário') }}">*</span>
-                                    <input type="number" id="patrimonial-number-new-inventory" name="patrimonial_number_new_inventory" class="form-control {{ $errors->has('patrimonial_number_new_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('nº do patrimônio') }}" value="{{ old('patrimonial_number_new_inventory') }}" maxlength="191" onkeypress="return soNumeros(event);" @if ($errors->has('patrimonial_number_new_inventory')) autofocus @endif>
+                                    <input type="number" id="patrimonial-number-new-inventory" name="patrimonial_number_new_inventory" class="form-control {{ $errors->has('patrimonial_number_new_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('nº do patrimônio') }}" value="{{ old('patrimonial_number_new_inventory') }}" maxlength="191" onkeypress="return onlyNumbers(event);" @if ($errors->has('patrimonial_number_new_inventory')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('patrimonial_number_new_inventory'))
@@ -136,7 +136,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="name-new-inventory" name="name_new_inventory" class="form-control {{ $errors->has('name_new_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome do item') }}" value="{{ old('name_new_inventory') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-new-inventory');" @if ($errors->has('name_new_inventory')) autofocus @endif>
+                                    <input type="text" id="name-new-inventory" name="name_new_inventory" class="form-control {{ $errors->has('name_new_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome do item') }}" value="{{ old('name_new_inventory') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-new-inventory');" @if ($errors->has('name_new_inventory')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_new_inventory'))
@@ -155,7 +155,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('Marca do item informado pelo fabricante') }}">*</span>
-                                    <input type="text" id="brand-new-inventory" name="brand_new_inventory" class="form-control {{ $errors->has('brand_new_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Marca') }}" value="{{ old('brand_new_inventory') }}" minlength="3" maxlength="191" onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('brand-new-inventory');" @if ($errors->has('brand_new_inventory')) autofocus @endif>
+                                    <input type="text" id="brand-new-inventory" name="brand_new_inventory" class="form-control {{ $errors->has('brand_new_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Marca') }}" value="{{ old('brand_new_inventory') }}" minlength="3" maxlength="191" onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('brand-new-inventory');" @if ($errors->has('brand_new_inventory')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('brand_new_inventory'))
@@ -305,7 +305,7 @@
                                 <label class="form-control-label" for="description-new-inventory">{{ __('Descrição') }}</label>
                                 <div class="input-group-none validate-description-new-inventory">
                                     <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('descrição do item do inventário com no mínimo 10 caracteres') }}">*</span>
-                                    <textarea id="description-new-inventory" name="description_new_inventory" rows="3" resize="none" class="form-control {{ $errors->has('description_new_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Descrição') }}" minlength="10" maxlength="1500" onkeyup="primeiraLetraMaiuscula(this);" @if ($errors->has('description_new_inventory')) autofocus @endif>{{ old('description_new_inventory') }}</textarea>
+                                    <textarea id="description-new-inventory" name="description_new_inventory" rows="3" resize="none" class="form-control {{ $errors->has('description_new_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Descrição') }}" minlength="10" maxlength="1500" onkeyup="firstLetterUppercase(this);" @if ($errors->has('description_new_inventory')) autofocus @endif>{{ old('description_new_inventory') }}</textarea>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('description_new_inventory'))

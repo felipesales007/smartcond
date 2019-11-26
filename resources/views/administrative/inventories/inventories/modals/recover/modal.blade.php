@@ -29,7 +29,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id do item do inventário') }}">*</span>
-                                    <input readonly type="number" id="id-recover-inventory" name="id_recover_inventory" class="form-control {{ $errors->has('id_recover_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('ID do item do inventário') }}" value="{{ old('id_recover_inventory') }}" maxlength="20" required onkeypress="return soNumeros(event);" @if ($errors->has('id_recover_inventory')) autofocus @endif>
+                                    <input readonly type="number" id="id-recover-inventory" name="id_recover_inventory" class="form-control {{ $errors->has('id_recover_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('ID do item do inventário') }}" value="{{ old('id_recover_inventory') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_recover_inventory')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('id_recover_inventory'))
@@ -48,7 +48,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome do item do inventário') }}">*</span>
-                                    <input readonly type="text" id="name-recover-inventory" name="name_recover_inventory" class="form-control {{ $errors->has('name_recover_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome do item do inventário') }}" value="{{ old('name_recover_inventory') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-recover-inventory');" @if ($errors->has('name_recover_inventory')) autofocus @endif>
+                                    <input readonly type="text" id="name-recover-inventory" name="name_recover_inventory" class="form-control {{ $errors->has('name_recover_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome do item do inventário') }}" value="{{ old('name_recover_inventory') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-recover-inventory');" @if ($errors->has('name_recover_inventory')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_recover_inventory'))
@@ -67,7 +67,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome do item do inventário que está em verde e confirme, clicando em recuperar item do inventário') }}">*</span>
-                                    <input type="text" id="name-confirmation-recover-inventory" name="name_confirmation_recover_inventory" class="form-control fe-block-paste {{ $errors->has('name_confirmation_recover_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome para recuperação') }}" value="{{ old('name_confirmation_recover_inventory') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-confirmation-recover-inventory');" ondrop="return false;" @if ($errors->has('name_confirmation_recover_inventory')) autofocus @endif>
+                                    <input type="text" id="name-confirmation-recover-inventory" name="name_confirmation_recover_inventory" class="form-control fe-block-paste {{ $errors->has('name_confirmation_recover_inventory') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome para recuperação') }}" value="{{ old('name_confirmation_recover_inventory') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-confirmation-recover-inventory');" ondrop="return false;" @if ($errors->has('name_confirmation_recover_inventory')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_confirmation_recover_inventory'))

@@ -29,7 +29,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id da categoria') }}">*</span>
-                                    <input readonly type="number" id="id-block-inventory-category" name="id_block_inventory_category" class="form-control {{ $errors->has('id_block_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da categoria') }}" value="{{ old('id_block_inventory_category') }}" maxlength="20" required onkeypress="return soNumeros(event);" @if ($errors->has('id_block_inventory_category')) autofocus @endif>
+                                    <input readonly type="number" id="id-block-inventory-category" name="id_block_inventory_category" class="form-control {{ $errors->has('id_block_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da categoria') }}" value="{{ old('id_block_inventory_category') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_block_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('id_block_inventory_category'))

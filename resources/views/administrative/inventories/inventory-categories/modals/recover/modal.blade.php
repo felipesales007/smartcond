@@ -29,7 +29,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('id da categoria') }}">*</span>
-                                    <input readonly type="number" id="id-recover-inventory-category" name="id_recover_inventory_category" class="form-control {{ $errors->has('id_recover_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da categoria') }}" value="{{ old('id_recover_inventory_category') }}" maxlength="20" required onkeypress="return soNumeros(event);" @if ($errors->has('id_recover_inventory_category')) autofocus @endif>
+                                    <input readonly type="number" id="id-recover-inventory-category" name="id_recover_inventory_category" class="form-control {{ $errors->has('id_recover_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('ID da categoria') }}" value="{{ old('id_recover_inventory_category') }}" maxlength="20" required onkeypress="return onlyNumbers(event);" @if ($errors->has('id_recover_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('id_recover_inventory_category'))
@@ -48,7 +48,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome da categoria') }}">*</span>
-                                    <input readonly type="text" id="name-recover-inventory-category" name="name_recover_inventory_category" class="form-control {{ $errors->has('name_recover_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da categoria') }}" value="{{ old('name_recover_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-recover-inventory-category');" @if ($errors->has('name_recover_inventory_category')) autofocus @endif>
+                                    <input readonly type="text" id="name-recover-inventory-category" name="name_recover_inventory_category" class="form-control {{ $errors->has('name_recover_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da categoria') }}" value="{{ old('name_recover_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-recover-inventory-category');" @if ($errors->has('name_recover_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_recover_inventory_category'))
@@ -67,7 +67,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome da categoria que está em verde e confirme, clicando em recuperar categoria') }}">*</span>
-                                    <input type="text" id="name-confirmation-recover-inventory-category" name="name_confirmation_recover_inventory_category" class="form-control fe-block-paste {{ $errors->has('name_confirmation_recover_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome para recuperação') }}" value="{{ old('name_confirmation_recover_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return soLetrasCaracteres(event);" onkeyup="letraMaiuscula('name-confirmation-recover-inventory-category');" ondrop="return false;" @if ($errors->has('name_confirmation_recover_inventory_category')) autofocus @endif>
+                                    <input type="text" id="name-confirmation-recover-inventory-category" name="name_confirmation_recover_inventory_category" class="form-control fe-block-paste {{ $errors->has('name_confirmation_recover_inventory_category') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome para recuperação') }}" value="{{ old('name_confirmation_recover_inventory_category') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-confirmation-recover-inventory-category');" ondrop="return false;" @if ($errors->has('name_confirmation_recover_inventory_category')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_confirmation_recover_inventory_category'))
