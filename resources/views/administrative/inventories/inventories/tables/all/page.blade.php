@@ -39,13 +39,13 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <!-- título -->
-                            <div class="col-8">
+                            <div class="col-7">
                                 <h3 class="text-uppercase text-monospace mb--1">
                                     <b>{{ __('Lista de itens do inventário') }}</b>
                                 </h3>
                             </div>
                             <!-- botões -->
-                            <div class="col-4 text-right">
+                            <div class="col-5 text-right">
                                 <!-- adicionar -->
                                 @component('layouts.components.button', [
                                     'text'   => 'Adicionar',
@@ -59,6 +59,21 @@
                                     'size'   => 'sm',
                                     'title'  => '',
                                     'icon'   => 'fas fa-plus'
+                                ])@endcomponent
+
+                                <!-- categorias -->
+                                @component('layouts.components.button', [
+                                    'text'   => 'Categorias',
+                                    'button' => '',
+                                    'router' => 'inventory.category.list',
+                                    'group'  => '13',
+                                    'route'  => '100',
+                                    'menu'   => '8',
+                                    'item'   => '102',
+                                    'color'  => 'default',
+                                    'size'   => 'sm',
+                                    'title'  => '',
+                                    'icon'   => 'fas fa-boxes'
                                 ])@endcomponent
 
                                 <!-- lista de deletados -->

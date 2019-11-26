@@ -61,6 +61,21 @@
                                     'icon'   => 'fas fa-plus'
                                 ])@endcomponent
 
+                                <!-- inventário -->
+                                @component('layouts.components.button', [
+                                    'text'   => 'Inventário',
+                                    'button' => '',
+                                    'router' => 'inventory.list',
+                                    'group'  => '14',
+                                    'route'  => '109',
+                                    'menu'   => '8',
+                                    'item'   => '111',
+                                    'color'  => 'default',
+                                    'size'   => 'sm',
+                                    'title'  => 'Lista de itens do inventário',
+                                    'icon'   => 'fas fa-dolly-flatbed'
+                                ])@endcomponent
+
                                 <!-- lista de deletados -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
