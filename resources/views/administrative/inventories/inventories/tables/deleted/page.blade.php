@@ -1,12 +1,12 @@
-@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '94'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(94)['name'])
+@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '112'])
+@section('title', \App\Models\Menu\MenuItem::getMenuItem(112)['name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
         @slot('title'){{ 8 }}@endslot
-        <li class="breadcrumb-item"><a href="{{ app('router')->has('inventory.list') ? route('inventory.list') : url('/') }}">{{ \App\Models\Menu\MenuItem::getMenuItem(93)['name'] }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ app('router')->has('inventory.list') ? route('inventory.list') : url('/') }}">{{ \App\Models\Menu\MenuItem::getMenuItem(111)['name'] }}</a></li>
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
 
         @slot('link')
@@ -15,10 +15,10 @@
                 'text'   => 'Dashboard',
                 'button' => '',
                 'router' => 'inventory.dashboard',
-                'group'  => '12',
-                'route'  => '90',
+                'group'  => '14',
+                'route'  => '108',
                 'menu'   => '8',
-                'item'   => '92',
+                'item'   => '110',
                 'color'  => 'info',
                 'size'   => 'sm',
                 'title'  => '',
@@ -49,10 +49,10 @@
                                     'text'   => 'Adicionar',
                                     'button' => 'btn-modal-new-inventory',
                                     'router' => 'inventory.store',
-                                    'group'  => '12',
-                                    'route'  => '94',
+                                    'group'  => '14',
+                                    'route'  => '112',
                                     'menu'   => '8',
-                                    'item'   => '96',
+                                    'item'   => '114',
                                     'color'  => 'primary',
                                     'size'   => 'sm',
                                     'title'  => '',
@@ -64,10 +64,10 @@
                                     'text'   => '',
                                     'button' => '',
                                     'router' => 'inventory.list',
-                                    'group'  => '12',
-                                    'route'  => '91',
+                                    'group'  => '14',
+                                    'route'  => '109',
                                     'menu'   => '8',
-                                    'item'   => '93',
+                                    'item'   => '111',
                                     'color'  => 'success',
                                     'size'   => 'sm',
                                     'title'  => 'Lista de itens do inventário',
@@ -78,7 +78,7 @@
                     </div>
                     <!-- corpo -->
                     <div class="table-responsive mb-2">
-                        <table id="datatable-inventory-deleted" class="table table-flush">
+                        <table id="datatable-inventories-deleted" class="table table-flush">
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>

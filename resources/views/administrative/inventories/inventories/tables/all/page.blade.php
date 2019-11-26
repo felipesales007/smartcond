@@ -1,5 +1,5 @@
-@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '93'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(93)['name'])
+@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '111'])
+@section('title', \App\Models\Menu\MenuItem::getMenuItem(111)['name'])
 
 @section('content')
 
@@ -15,10 +15,10 @@
                 'text'   => 'Dashboard',
                 'button' => '',
                 'router' => 'inventory.dashboard',
-                'group'  => '12',
-                'route'  => '90',
+                'group'  => '14',
+                'route'  => '108',
                 'menu'   => '8',
-                'item'   => '92',
+                'item'   => '110',
                 'color'  => 'info',
                 'size'   => 'sm',
                 'title'  => '',
@@ -51,10 +51,10 @@
                                     'text'   => 'Adicionar',
                                     'button' => 'btn-modal-new-inventory',
                                     'router' => 'inventory.store',
-                                    'group'  => '12',
-                                    'route'  => '94',
+                                    'group'  => '14',
+                                    'route'  => '112',
                                     'menu'   => '8',
-                                    'item'   => '96',
+                                    'item'   => '114',
                                     'color'  => 'primary',
                                     'size'   => 'sm',
                                     'title'  => '',
@@ -66,10 +66,10 @@
                                     'text'   => '',
                                     'button' => '',
                                     'router' => 'inventory.list.deleted',
-                                    'group'  => '12',
-                                    'route'  => '92',
+                                    'group'  => '14',
+                                    'route'  => '110',
                                     'menu'   => '8',
-                                    'item'   => '94',
+                                    'item'   => '112',
                                     'color'  => 'danger',
                                     'size'   => 'sm',
                                     'title'  => 'Lista de deletados',
