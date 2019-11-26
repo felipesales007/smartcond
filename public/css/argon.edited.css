@@ -487,10 +487,6 @@ input:-webkit-autofill {
     font-size: .875rem;
 }
 
-.badge {
-    opacity: .8;
-}
-
 @media (min-width: 767px) {
     .alert-dismissible .close {
         top: 50% !important;

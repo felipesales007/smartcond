@@ -25,13 +25,13 @@
                             <div id="name-view-inventory" class="font-weight-bold fe-view-fix-name"></div>
                         </div>
                         <!-- departamento e categoria -->
-                        <div class="mt-1">
+                        <div class="mb--3">
                             <!-- departamento -->
                             <small id="department-view-inventory" class="float-right fe-view-fix-department"></small>
+                            <br>
                             <!-- categoria -->
                             <small id="category-view-inventory" class="float-right fe-view-fix-category"></small>
                         </div>
-                        <br>
                         <div class="small">
                             <!-- patrimônio -->
                             <i id="icon-patrimonial-number-view-inventory" class="fas fa-barcode mt-3 mr-1 fe-hidden"></i>
