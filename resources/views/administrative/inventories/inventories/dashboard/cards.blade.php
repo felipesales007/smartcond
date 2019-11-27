@@ -44,7 +44,7 @@
                             <!-- icone -->
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-gradient-danger text-white rounded-circle shadow">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="far fa-trash-alt"></i>
                                 </div>
                             </div>
                         </div>
