@@ -36,7 +36,9 @@ class InventoryCategoryController extends Controller
 
         $collection = InventoryCategory::query()
             ->where('entity_id', '=', Entity::id())
-            ->where('name', 'like', '%' . $search . '%')
+            ->where(function ($query) use ($search) {
+                $query->orWhere('name', 'like', '%' . $search . '%');
+            })
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -225,8 +227,7 @@ class InventoryCategoryController extends Controller
             ->onlyTrashed()
             ->where('entity_id', '=', Entity::id())
             ->where(function ($query) use ($search) {
-                $query
-                    ->orWhere('name', 'like', '%' . $search . '%');
+                $query->orWhere('name', 'like', '%' . $search . '%');
             })
             ->orderBy($order[0], $order[1]);
 
