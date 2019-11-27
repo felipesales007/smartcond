@@ -19,7 +19,7 @@
                             <i data-toggle="tooltip" data-placement="right"></i>
                         </span>
                         <!-- logo -->
-                        <div id="logo-view-company" class="fe-img-center avatar-xl fe-avatar-border rounded-circle mt--5-9"></div>
+                        <div id="logo-view-company" class="fe-img-center avatar-xl fe-avatar-border fe-radius mt--5-9"></div>
                         <!-- nome -->
                         <div id="name-view-company" class="font-weight-bold fe-view-fix-name"></div>
                         <!-- e-mail -->
