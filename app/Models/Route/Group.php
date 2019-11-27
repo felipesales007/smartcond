@@ -3,7 +3,7 @@
 namespace App\Models\Route;
 
 use App\Models\Company\Company;
-use App\Models\User\UserLevels;
+use App\Models\User\UserLevel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -110,6 +110,6 @@ class Group extends Model
      */
     public function getUserLevel()
     {
-        return $this->belongsTo(UserLevels::class, 'user_level_id');
+        return $this->belongsTo(UserLevel::class, 'user_level_id');
     }
 }

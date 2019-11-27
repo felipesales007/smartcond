@@ -45,7 +45,7 @@
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o nível de usuário mínimo para o acesso a esse grupo') }}">*</span>
                                     {{ Form::select(
                                         "name",
-                                        \App\Models\User\UserLevels::getUserLevelsOptions(),
+                                        \App\Models\User\UserLevel::getUserLevelsOptions(),
                                         3,
                                         ["id" => "user-level-id-new-group", "name" => "user_level_id_new_group", "class" => "form-control select-nosearch", "placeholder" => "Selecione"]
                                     )}}

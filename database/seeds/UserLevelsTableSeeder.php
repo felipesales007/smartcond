@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User\UserLevels;
+use App\Models\User\UserLevel;
 use Illuminate\Database\Seeder;
 
 class UserLevelsTableSeeder extends Seeder
@@ -12,19 +12,19 @@ class UserLevelsTableSeeder extends Seeder
      */
     public function run()
     {
-        UserLevels::insert([
+        UserLevel::insert([
             'name'       => 'Master',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        UserLevels::insert([
+        UserLevel::insert([
             'name'       => 'Administrador',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        UserLevels::insert([
+        UserLevel::insert([
             'name'       => 'Usuário',
             'created_at' => now(),
             'updated_at' => now()

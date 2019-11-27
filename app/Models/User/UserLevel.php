@@ -4,7 +4,7 @@ namespace App\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserLevels extends Model
+class UserLevel extends Model
 {
     /**
      * A tabela associada ao modelo.
@@ -29,7 +29,7 @@ class UserLevels extends Model
      */
     static function getUserLevels()
     {
-        return UserLevels::get();
+        return UserLevel::get();
     }
 
     /**
@@ -40,7 +40,7 @@ class UserLevels extends Model
      */
     static function getUserLevel($id)
     {
-        return UserLevels::find($id);
+        return UserLevel::find($id);
     }
 
     /**
@@ -50,7 +50,7 @@ class UserLevels extends Model
      */
     static function getUserLevelsOptions()
     {
-        $options = UserLevels::get();
+        $options = UserLevel::get();
         $array   = [];
 
         foreach ($options as $option) {
