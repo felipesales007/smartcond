@@ -76,13 +76,13 @@ class InventoryCategoryController extends Controller
                     // bloquear
                     if (app('router')->has('inventory.category.ban') && MenuItem::getMenuItemDeleted('inventory.category.ban')['button']) {
                         if (Permission::routePermission('inventory.category.ban') && !MenuItem::getMenuItemBlocked('inventory.category.ban')['button']) {
-                            if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
+                            if ($row->blocked) {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-inventory-category" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-warning btn-modal-block-inventory-category" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             }
                         } else {
-                            if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
+                            if ($row->blocked) {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-warning opacity-2 disabled" title="Bloquear"><i class="fas fa-ban"></i></a>';
