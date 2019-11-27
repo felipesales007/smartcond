@@ -7,7 +7,7 @@ use App\Helpers\NotifyHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Management\Permission\EditPermissionRequest;
 use App\Models\Company\Company;
-use App\Models\Company\CompanyAccesses;
+use App\Models\Company\CompanyAccess;
 use App\Models\Entity\Entity;
 use App\Models\Entity\EntityAccess;
 use App\Models\Menu\MenuItem;
@@ -82,7 +82,7 @@ class PermissionController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // editar
-                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && EntityAccess::getEntityAccessUser($row->id)['entity_id'] || $row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                    if ($row->id != auth()->id() && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && EntityAccess::getEntityAccessUser($row->id)['entity_id'] || $row->id != auth()->id() && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                         if (app('router')->has('permission.user.edit') && MenuItem::getMenuItemDeleted('permission.user.edit')['button']) {
                             if (Permission::routePermission('permission.user.edit') && !MenuItem::getMenuItemBlocked('permission.user.edit')['button']) {
                                 $btn = '<a href="' . route('permission.user.edit', ['id' => $row->id]) . '" class="btn btn-sm btn-icon btn-outline-success"><i class="fas fa-lock-open mr-2"></i>liberar acesso</a>';
@@ -163,7 +163,7 @@ class PermissionController extends Controller
                 // coluna ações
                 ->addColumn('action', function ($row) {
                     // editar
-                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && EntityAccess::getEntityAccessUser($row->id)['entity_id'] || $row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                    if ($row->id != auth()->id() && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && EntityAccess::getEntityAccessUser($row->id)['entity_id'] || $row->id != auth()->id() && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                         if (app('router')->has('permission.user.edit') && MenuItem::getMenuItemDeleted('permission.user.edit')['button']) {
                             if (Permission::routePermission('permission.user.edit') && !MenuItem::getMenuItemBlocked('permission.user.edit')['button']) {
                                 $btn = '<a href="' . route('permission.user.edit', ['id' => $row->id]) . '" class="btn btn-sm btn-icon btn-outline-success"><i class="fas fa-lock-open mr-2"></i>editar acesso</a>';
@@ -197,7 +197,7 @@ class PermissionController extends Controller
         $user = User::where('users.id', '=', $id->get('id'))->first();
 
         // impede a alteração de usuários pré-definidos
-        if ($user->id == auth()->id() || CompanyAccesses::getCompanyAccessUser($user->id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && !EntityAccess::getEntityAccessUser($user->id)['entity_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+        if ($user->id == auth()->id() || CompanyAccess::getCompanyAccessUser($user->id)['company_id'] != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && !EntityAccess::getEntityAccessUser($user->id)['entity_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para editar as permissões desse usuário.');
             return back()->with('notify', json_encode($data));
@@ -251,7 +251,7 @@ class PermissionController extends Controller
         $id = $request->id_edit_user_permission;
 
         // impede a alteração de usuários pré-definidos
-        if ($id == auth()->id() || CompanyAccesses::getCompanyAccessUser($id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && !EntityAccess::getEntityAccessUser($id)['entity_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+        if ($id == auth()->id() || CompanyAccess::getCompanyAccessUser($id)['company_id'] != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && !EntityAccess::getEntityAccessUser($id)['entity_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para alterar as permissões desse usuário.');
             return back()->with('notify', json_encode($data));

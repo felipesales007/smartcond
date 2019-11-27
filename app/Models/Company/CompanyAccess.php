@@ -7,7 +7,7 @@ use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class CompanyAccesses extends Model
+class CompanyAccess extends Model
 {
     /**
      * A tabela associada ao modelo.
@@ -22,7 +22,7 @@ class CompanyAccesses extends Model
      * @var array
      */
     protected $fillable = [
-        'company_id', 'user_id', 'preferred'
+        'company_id', 'user_id'
     ];
 
     /**
@@ -32,18 +32,18 @@ class CompanyAccesses extends Model
      */
     static function getCompanyAccesses()
     {
-        return CompanyAccesses::get();
+        return CompanyAccess::get();
     }
 
     /**
      * Retornar o dado especificado no armazenamento.
      *
      * @param $id
-     * @return CompanyAccesses
+     * @return CompanyAccess
      */
     static function getCompanyAccess($id)
     {
-        return CompanyAccesses::find($id);
+        return CompanyAccess::find($id);
     }
 
     /**
@@ -67,23 +67,13 @@ class CompanyAccesses extends Model
     }
 
     /**
-     * Atributo de referência do join.
-     *
-     * @return BelongsTo
-     */
-    public function getPreferred()
-    {
-        return $this->belongsTo(Boolean::class, 'preferred');
-    }
-
-    /**
      * Retornar o dado especificado no armazenamento.
      *
      * @param $id
-     * @return CompanyAccesses
+     * @return CompanyAccess
      */
     static function getCompanyAccessUser($id)
     {
-        return CompanyAccesses::where('user_id', '=', $id)->first();
+        return CompanyAccess::where('user_id', '=', $id)->first();
     }
 }

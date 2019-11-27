@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\EditProfileRequest;
 use App\Http\Requests\Profile\PasswordResetRequest;
 use App\Http\Requests\Profile\SendSupportRequest;
-use App\Models\Company\CompanyAccesses;
+use App\Models\Company\CompanyAccess;
 use App\Models\Entity\EntityAccess;
 use App\Models\User\User;
 use App\Notifications\Auth\VerifyEmail;
@@ -48,7 +48,7 @@ class ProfileController extends Controller
             ->where('user_id', '=', auth()->id())
             ->get();
 
-        $company = CompanyAccesses::select('company_accesses.company_id as id',
+        $company = CompanyAccess::select('company_accesses.company_id as id',
             'companies.name as company', 'companies.logo as logo', 'companies.cnpj as cnpj')
             ->join('companies', 'companies.id', '=', 'company_accesses.company_id')
             ->where('user_id', '=', auth()->id())

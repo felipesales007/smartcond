@@ -13,7 +13,7 @@ use App\Http\Requests\Management\Company\NewCompanyRequest;
 use App\Http\Requests\Management\Company\RecoverCompanyRequest;
 use App\Http\Requests\Management\Company\SendEmailCompanyRequest;
 use App\Models\Company\Company;
-use App\Models\Company\CompanyAccesses;
+use App\Models\Company\CompanyAccess;
 use App\Models\Menu\MenuItem;
 use App\Models\User\Permission;
 use App\Models\User\User;
@@ -126,7 +126,7 @@ class CompanyController extends Controller
 
                     // editar
                     if (app('router')->has('company.edit') && MenuItem::getMenuItemDeleted('company.edit')['button']) {
-                        if (Permission::routePermission('company.edit') && !MenuItem::getMenuItemBlocked('company.edit')['button'] && $row->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('company.edit') && !MenuItem::getMenuItemBlocked('company.edit')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                        if (Permission::routePermission('company.edit') && !MenuItem::getMenuItemBlocked('company.edit')['button'] && $row->id == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('company.edit') && !MenuItem::getMenuItemBlocked('company.edit')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-company" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-pencil-alt"></i></a>';
@@ -135,7 +135,7 @@ class CompanyController extends Controller
 
                     // bloquear
                     if (app('router')->has('company.ban') && MenuItem::getMenuItemDeleted('company.ban')['button']) {
-                        if (Permission::routePermission('company.ban') && !MenuItem::getMenuItemBlocked('company.ban')['button'] && $row->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('company.ban') && !MenuItem::getMenuItemBlocked('company.ban')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+                        if (Permission::routePermission('company.ban') && !MenuItem::getMenuItemBlocked('company.ban')['button'] && $row->id == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('company.ban') && !MenuItem::getMenuItemBlocked('company.ban')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id']) {
                             if ($row->blocked || $row->blocked_at >= now()->toDateString()) {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-warning btn-modal-block-company" title="Desbloquear"><i class="fas fa-ban"></i></a>';
                             } else {
@@ -152,7 +152,7 @@ class CompanyController extends Controller
 
                     // excluir
                     if (app('router')->has('company.delete') && MenuItem::getMenuItemDeleted('company.delete')['button']) {
-                        if (Permission::routePermission('company.delete') && !MenuItem::getMenuItemBlocked('company.delete')['button'] && $row->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('company.delete') && !MenuItem::getMenuItemBlocked('company.delete')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+                        if (Permission::routePermission('company.delete') && !MenuItem::getMenuItemBlocked('company.delete')['button'] && $row->id == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('company.delete') && !MenuItem::getMenuItemBlocked('company.delete')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-danger btn-modal-delete-company" title="Excluir"><i class="far fa-trash-alt"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-danger opacity-2 disabled" title="Excluir"><i class="far fa-trash-alt"></i></a>';
@@ -242,7 +242,7 @@ class CompanyController extends Controller
         $original   = $collection->getOriginal();
 
         // impede a alteração de empresa diferente
-        if ($collection->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+        if ($collection->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para alterar essa empresa.');
             return response()->json($data);
@@ -313,7 +313,7 @@ class CompanyController extends Controller
         $original   = $collection->getOriginal();
 
         // impede o bloqueio de empresa diferente
-        if ($collection->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+        if ($collection->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id']) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para bloquear essa empresa.');
             return response()->json($data);
@@ -396,7 +396,7 @@ class CompanyController extends Controller
         $this->email = $collection->getOriginal()['email'];
 
         // impede a exclusão de empresa diferente
-        if ($collection->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+        if ($collection->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id']) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para excluir essa empresa.');
             return response()->json($data);
@@ -489,7 +489,7 @@ class CompanyController extends Controller
 
                     // recuperar
                     if (app('router')->has('company.recover') && MenuItem::getMenuItemDeleted('company.recover')['button']) {
-                        if (Permission::routePermission('company.recover') && !MenuItem::getMenuItemBlocked('company.recover')['button'] && $row->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('company.recover') && !MenuItem::getMenuItemBlocked('company.recover')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+                        if (Permission::routePermission('company.recover') && !MenuItem::getMenuItemBlocked('company.recover')['button'] && $row->id == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('company.recover') && !MenuItem::getMenuItemBlocked('company.recover')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1 && $row->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id']) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-recover-company" title="Recuperar"><i class="fas fa-recycle"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Recuperar"><i class="fas fa-recycle"></i></a>';
@@ -517,7 +517,7 @@ class CompanyController extends Controller
         $this->email = $collection->email;
 
         // impede a recuperação de empresa diferente
-        if ($collection->id != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id']) {
+        if ($collection->id != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1 || $collection->id == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id']) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para restaurar essa empresa.');
             return response()->json($data);
@@ -583,7 +583,7 @@ class CompanyController extends Controller
             'route_id' => '1'
         ]);
 
-        $accesses = CompanyAccesses::create([
+        $accesses = CompanyAccess::create([
             'company_id' => $request->id_company_new_admin_company,
             'user_id'    => $collection->id
         ]);
@@ -664,14 +664,14 @@ class CompanyController extends Controller
                 // coluna e-mail
                 ->addColumn('email', function ($row) {
                     if ($row->email_verified_at) {
-                        if (app('router')->has('admin.send.email') && Permission::routePermission('admin.send.email') && !MenuItem::getMenuItemBlocked('admin.send.email')['button'] && MenuItem::getMenuItemDeleted('admin.send.email')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != auth()->id()) {
+                        if (app('router')->has('admin.send.email') && Permission::routePermission('admin.send.email') && !MenuItem::getMenuItemBlocked('admin.send.email')['button'] && MenuItem::getMenuItemDeleted('admin.send.email')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && $row->id != auth()->id()) {
                             $email = '<span class="badge badge-dot mr-4"><i class="bg-success" data-toggle="tooltip" data-placement="top" title="e-mail confirmado"></i><span data-photo="' . $row->photo . '" data-name="' . $row->name . '" data-email="' . $row->email . '" class="status fe-pointer btn-modal-send-email-admin" data-toggle="tooltip" data-placement="top" title="clique aqui para enviar um e-mail para ' . FormatHelpers::two_word($row->name) . '">' . $row->email . '</span></span>';
                         } else {
                             $email = '<span class="badge badge-dot mr-4"><i class="bg-success" data-toggle="tooltip" data-placement="top" title="e-mail confirmado"></i><span class="status">' . $row->email . '</span></span>';
                         }
                     } else {
                         if (app('router')->has('admin.resend.email') && Permission::routePermission('admin.resend.email') && MenuItem::getMenuItemDeleted('admin.resend.email')['button']) {
-                            if (!MenuItem::getMenuItemBlocked('admin.resend.email')['button'] && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || !MenuItem::getMenuItemBlocked('admin.resend.email')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                            if (!MenuItem::getMenuItemBlocked('admin.resend.email')['button'] && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || !MenuItem::getMenuItemBlocked('admin.resend.email')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                                 $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><form class="form-resend-email-admin d-inline" role="form" autocomplete="off" novalidate><input hidden readonly type="number" name="id_resend_email_admin" value="' . $row->id . '" maxlength="191" required><button class="btn btn-info btn-xs btn-resend-email-admin rounded-circle mt--1"><i class="fas fa-sync-alt" data-toggle="tooltip" data-placement="top" title="reenviar e-mail de confirmação para o administrador"></i></button></form>';
                             } else {
                                 $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><button class="btn btn-info btn-xs rounded-circle mt-0 opacity-2 disabled"><i class="fas fa-sync-alt"></i></button>';
@@ -707,7 +707,7 @@ class CompanyController extends Controller
                     // editar
                     if ($row->id != auth()->id()) {
                         if (app('router')->has('admin.edit') && MenuItem::getMenuItemDeleted('admin.edit')['button']) {
-                            if (Permission::routePermission('admin.edit') && !MenuItem::getMenuItemBlocked('admin.edit')['button'] && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('admin.edit') && !MenuItem::getMenuItemBlocked('admin.edit')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                            if (Permission::routePermission('admin.edit') && !MenuItem::getMenuItemBlocked('admin.edit')['button'] && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('admin.edit') && !MenuItem::getMenuItemBlocked('admin.edit')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-admin" title="Editar"><i class="fas fa-user-edit"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-user-edit"></i></a>';
@@ -724,7 +724,7 @@ class CompanyController extends Controller
                     }
 
                     // bloquear e excluir
-                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                    if ($row->id != auth()->id() && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                         // bloquear
                         if (app('router')->has('admin.ban') && MenuItem::getMenuItemDeleted('admin.ban')['button']) {
                             if (Permission::routePermission('admin.ban') && !MenuItem::getMenuItemBlocked('admin.ban')['button']) {

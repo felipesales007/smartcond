@@ -3,7 +3,7 @@
 namespace App\Http\Middleware\Checks;
 
 use App\Helpers\FormatHelpers;
-use App\Models\Company\CompanyAccesses;
+use App\Models\Company\CompanyAccess;
 use App\Models\Entity\EntityAccess;
 use Carbon\Carbon;
 use Closure;
@@ -86,7 +86,7 @@ class CheckBlocked
                     }
                 }
             } else {
-                $access = CompanyAccesses::select('companies.blocked as blocked',
+                $access = CompanyAccess::select('companies.blocked as blocked',
                     'companies.blocked_at as blocked_at', 'companies.deleted_at as deleted_at')
                     ->join('companies', 'companies.id', '=', 'company_accesses.company_id')
                     ->where('user_id', '=', auth()->id())

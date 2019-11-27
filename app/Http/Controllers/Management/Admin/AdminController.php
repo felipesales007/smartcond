@@ -14,7 +14,7 @@ use App\Http\Requests\Management\Admin\RecoverAdminRequest;
 use App\Http\Requests\Management\Admin\ResendEmailAdminRequest;
 use App\Http\Requests\Management\Admin\SendEmailAdminRequest;
 use App\Models\Company\Company;
-use App\Models\Company\CompanyAccesses;
+use App\Models\Company\CompanyAccess;
 use App\Models\Menu\MenuItem;
 use App\Models\User\Permission;
 use App\Models\User\User;
@@ -106,7 +106,7 @@ class AdminController extends Controller
                         }
                     } else {
                         if (app('router')->has('admin.resend.email') && Permission::routePermission('admin.send.email') && MenuItem::getMenuItemDeleted('admin.resend.email')['button']) {
-                            if (!MenuItem::getMenuItemBlocked('admin.resend.email')['button'] && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || !MenuItem::getMenuItemBlocked('admin.resend.email')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                            if (!MenuItem::getMenuItemBlocked('admin.resend.email')['button'] && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || !MenuItem::getMenuItemBlocked('admin.resend.email')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                                 $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><form class="form-resend-email-admin d-inline" role="form" autocomplete="off" novalidate><input hidden readonly type="number" name="id_resend_email_admin" value="' . $row->id . '" maxlength="191" required><button class="btn btn-info btn-xs btn-resend-email-admin rounded-circle mt--1"><i class="fas fa-sync-alt" data-toggle="tooltip" data-placement="top" title="reenviar e-mail de confirmação para o administrador"></i></button></form>';
                             } else {
                                 $email = '<span class="badge badge-dot mr-4"><i class="bg-warning" data-toggle="tooltip" data-placement="top" title="confirmação de e-mail pendente"></i><span class="status">' . $row->email . '</span></span><button class="btn btn-info btn-xs rounded-circle mt-0 opacity-2 disabled"><i class="fas fa-sync-alt"></i></button>';
@@ -142,7 +142,7 @@ class AdminController extends Controller
                     // editar
                     if ($row->id != auth()->id()) {
                         if (app('router')->has('admin.edit') && MenuItem::getMenuItemDeleted('admin.edit')['button']) {
-                            if (Permission::routePermission('admin.edit') && !MenuItem::getMenuItemBlocked('admin.edit')['button'] && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('admin.edit') && !MenuItem::getMenuItemBlocked('admin.edit')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                            if (Permission::routePermission('admin.edit') && !MenuItem::getMenuItemBlocked('admin.edit')['button'] && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('admin.edit') && !MenuItem::getMenuItemBlocked('admin.edit')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                                 $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-edit-admin" title="Editar"><i class="fas fa-user-edit"></i></a>';
                             } else {
                                 $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Editar"><i class="fas fa-user-edit"></i></a>';
@@ -159,7 +159,7 @@ class AdminController extends Controller
                     }
 
                     // bloquear e excluir
-                    if ($row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                    if ($row->id != auth()->id() && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || $row->id != auth()->id() && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                         // bloquear
                         if (app('router')->has('admin.ban') && MenuItem::getMenuItemDeleted('admin.ban')['button']) {
                             if (Permission::routePermission('admin.ban') && !MenuItem::getMenuItemBlocked('admin.ban')['button']) {
@@ -219,7 +219,7 @@ class AdminController extends Controller
     public function store(NewAdminRequest $request)
     {
         // impede a alteração de administradores de empresas diferente
-        if (auth()->user()['admin'] == 0 || $request->company_id_new_admin != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] > 1) {
+        if (auth()->user()['admin'] == 0 || $request->company_id_new_admin != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] > 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para criar este administrador.');
             return response()->json($data);
@@ -238,7 +238,7 @@ class AdminController extends Controller
             'route_id' => '1'
         ]);
 
-        $accesses = CompanyAccesses::create([
+        $accesses = CompanyAccess::create([
             'company_id' => $request->company_id_new_admin,
             'user_id'    => $collection->id
         ]);
@@ -274,11 +274,11 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $select = CompanyAccesses::where('user_id', '=', $id)
+        $select = CompanyAccess::where('user_id', '=', $id)
             ->pluck('company_id')
             ->first();
 
-        $array = CompanyAccesses::select('company_accesses.company_id as id',
+        $array = CompanyAccess::select('company_accesses.company_id as id',
             'companies.name as company', 'companies.logo as logo', 'companies.cnpj as cnpj')
             ->join('companies', 'companies.id', '=', 'company_accesses.company_id')
             ->where('user_id', '=', $id)
@@ -311,14 +311,14 @@ class AdminController extends Controller
         $original   = $collection->getOriginal();
 
         // impede a alteração de administradores de empresas diferente
-        if (auth()->user()['admin'] == 0 || $collection->id == auth()->id() || CompanyAccesses::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+        if (auth()->user()['admin'] == 0 || $collection->id == auth()->id() || CompanyAccess::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para alterar esse administrador.');
             return response()->json($data);
         }
 
         // se houver mudança atualizar a empresa
-        $accesses = CompanyAccesses::where('user_id', '=', $collection->id)->first();
+        $accesses = CompanyAccess::where('user_id', '=', $collection->id)->first();
         $originalCompany = $accesses->getOriginal();
 
         $accesses->fill([
@@ -469,7 +469,7 @@ class AdminController extends Controller
         $original   = $collection->getOriginal();
 
         // impede a alteração de administradores de empresas diferente
-        if (auth()->user()['admin'] == 0 || $collection->id == auth()->id() || CompanyAccesses::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+        if (auth()->user()['admin'] == 0 || $collection->id == auth()->id() || CompanyAccess::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para bloquear esse administrador.');
             return response()->json($data);
@@ -552,7 +552,7 @@ class AdminController extends Controller
         $this->email = $collection->getOriginal()['email'];
 
         // impede a alteração de administradores de empresas diferente
-        if (auth()->user()['admin'] == 0 || $collection->id == auth()->id() || CompanyAccesses::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+        if (auth()->user()['admin'] == 0 || $collection->id == auth()->id() || CompanyAccess::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para deletar esse administrador.');
             return response()->json($data);
@@ -657,7 +657,7 @@ class AdminController extends Controller
 
                     // recuperar
                     if (app('router')->has('admin.recover') && MenuItem::getMenuItemDeleted('admin.recover')['button']) {
-                        if (Permission::routePermission('admin.recover') && !MenuItem::getMenuItemBlocked('admin.recover')['button'] && CompanyAccesses::getCompanyAccessUser($row->id)['company_id'] == CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('admin.recover') && !MenuItem::getMenuItemBlocked('admin.recover')['button'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
+                        if (Permission::routePermission('admin.recover') && !MenuItem::getMenuItemBlocked('admin.recover')['button'] && CompanyAccess::getCompanyAccessUser($row->id)['company_id'] == CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] || Permission::routePermission('admin.recover') && !MenuItem::getMenuItemBlocked('admin.recover')['button'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] == 1) {
                             $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-sm btn-icon btn-outline-success btn-modal-recover-admin" title="Recuperar"><i class="fas fa-recycle"></i></a>';
                         } else {
                             $btn = $btn . '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-outline-success opacity-2 disabled" title="Recuperar"><i class="fas fa-recycle"></i></a>';
@@ -685,7 +685,7 @@ class AdminController extends Controller
         $this->email = $collection->email;
 
         // impede a alteração de administradores de empresas diferente
-        if (auth()->user()['admin'] == 0 || CompanyAccesses::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+        if (auth()->user()['admin'] == 0 || CompanyAccess::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para recuperar esse administrador.');
             return response()->json($data);
@@ -741,7 +741,7 @@ class AdminController extends Controller
         $collection  = User::withTrashed()->find($id->id_resend_email_admin);
 
         // impede a alteração de administradores de empresas diferente
-        if (auth()->user()['admin'] == 0 || CompanyAccesses::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccesses::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
+        if (auth()->user()['admin'] == 0 || CompanyAccess::getCompanyAccessUser($collection->id)['company_id'] != CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] && CompanyAccess::getCompanyAccessUser(auth()->id())['company_id'] != 1) {
             // notificar
             $data = NotifyHelpers::warning_top_center('fas fa-ban', 'Você não tem permissão para realizar o reenvio de e-mail de confirmação para esse administrador.');
             return response()->json($data);

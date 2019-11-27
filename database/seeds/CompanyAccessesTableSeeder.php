@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Company\CompanyAccesses;
+use App\Models\Company\CompanyAccess;
 use Illuminate\Database\Seeder;
 
 class CompanyAccessesTableSeeder extends Seeder
@@ -12,21 +12,21 @@ class CompanyAccessesTableSeeder extends Seeder
      */
     public function run()
     {
-        CompanyAccesses::insert([
+        CompanyAccess::insert([
             'company_id' => '1',
             'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        CompanyAccesses::insert([
+        CompanyAccess::insert([
             'company_id' => '1',
             'user_id'    => '2',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        CompanyAccesses::insert([
+        CompanyAccess::insert([
             'company_id' => '1',
             'user_id'    => '3',
             'created_at' => now(),
