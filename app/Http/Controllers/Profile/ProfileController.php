@@ -10,7 +10,7 @@ use App\Http\Requests\Profile\EditProfileRequest;
 use App\Http\Requests\Profile\PasswordResetRequest;
 use App\Http\Requests\Profile\SendSupportRequest;
 use App\Models\Company\CompanyAccesses;
-use App\Models\Entity\EntityAccesses;
+use App\Models\Entity\EntityAccess;
 use App\Models\User\User;
 use App\Notifications\Auth\VerifyEmail;
 use App\Notifications\Profile\SendSupport;
@@ -42,7 +42,7 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        $entities = EntityAccesses::select('entity_accesses.entity_id as id','entity_accesses.preferred as preferred',
+        $entities = EntityAccess::select('entity_accesses.entity_id as id','entity_accesses.preferred as preferred',
             'entities.name as entity', 'entities.logo as logo', 'entities.cnpj as cnpj')
             ->join('entities', 'entities.id', '=', 'entity_accesses.entity_id')
             ->where('user_id', '=', auth()->id())
@@ -67,19 +67,19 @@ class ProfileController extends Controller
     {
         $collection = User::find($request->id_edit_profile);
         $original   = $collection->getOriginal();
-        $preferred  = EntityAccesses::where('user_id', '=', $request->id_edit_profile)
+        $preferred  = EntityAccess::where('user_id', '=', $request->id_edit_profile)
             ->where('entity_id', '=', $request->entity_edit_profile_id)
             ->first();
 
         // se houver mudança no condomínio principal atualiza o condomínio principal
         if ($preferred['preferred'] == 0) {
-            $accesses = EntityAccesses::where('user_id', '=', $request->id_edit_profile)
+            $accesses = EntityAccess::where('user_id', '=', $request->id_edit_profile)
                 ->orderBy('entity_id', 'asc')
                 ->get()
                 ->toArray();
 
             for ($i = 0; $i < count($accesses); $i++) {
-                EntityAccesses::find($accesses[$i]['id'])->update([
+                EntityAccess::find($accesses[$i]['id'])->update([
                     'preferred' => $accesses[$i]['entity_id'] == $preferred['entity_id'] ? 1 : 0
                 ]);
             }
@@ -199,19 +199,19 @@ class ProfileController extends Controller
      */
     public function entity(Request $request)
     {
-        $preferred = EntityAccesses::where('user_id', '=', auth()->id())
+        $preferred = EntityAccess::where('user_id', '=', auth()->id())
             ->where('entity_id', '=', $request->entity_id_edit_profile)
             ->first();
 
         // se houver mudança no condomínio principal atualiza o condomínio principal
         if ($preferred['preferred'] == 0) {
-            $accesses = EntityAccesses::where('user_id', '=', auth()->id())
+            $accesses = EntityAccess::where('user_id', '=', auth()->id())
                 ->orderBy('entity_id', 'asc')
                 ->get()
                 ->toArray();
 
             for ($i = 0; $i < count($accesses); $i++) {
-                EntityAccesses::find($accesses[$i]['id'])->update([
+                EntityAccess::find($accesses[$i]['id'])->update([
                     'preferred' => $accesses[$i]['entity_id'] == $preferred['entity_id'] ? 1 : 0
                 ]);
             }

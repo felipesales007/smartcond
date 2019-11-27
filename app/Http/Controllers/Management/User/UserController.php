@@ -14,7 +14,7 @@ use App\Http\Requests\Management\User\RecoverUserRequest;
 use App\Http\Requests\Management\User\ResendEmailUserRequest;
 use App\Http\Requests\Management\User\SendEmailUserRequest;
 use App\Models\Entity\Entity;
-use App\Models\Entity\EntityAccesses;
+use App\Models\Entity\EntityAccess;
 use App\Models\Menu\MenuItem;
 use App\Models\User\Permission;
 use App\Models\User\User;
@@ -242,7 +242,7 @@ class UserController extends Controller
 
         // adicona o condomínio relacionado com o usuário
         for ($i = 0; $i < count($array); $i++) {
-            EntityAccesses::create([
+            EntityAccess::create([
                 'entity_id' => $array[$i],
                 'user_id'   => $collection->id,
                 'preferred' => $i == 0 ? 1 : 0,
@@ -282,12 +282,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $select = EntityAccesses::where('user_id', '=', $id)
+        $select = EntityAccess::where('user_id', '=', $id)
             ->get()
             ->pluck('entity_id')
             ->toArray();
 
-        $array = EntityAccesses::select('entity_accesses.entity_id as id','entity_accesses.preferred as preferred',
+        $array = EntityAccess::select('entity_accesses.entity_id as id','entity_accesses.preferred as preferred',
             'entities.name as entity', 'entities.logo as logo', 'entities.cnpj as cnpj')
             ->join('entities', 'entities.id', '=', 'entity_accesses.entity_id')
             ->where('user_id', '=', $id)
@@ -331,7 +331,7 @@ class UserController extends Controller
         $array = array_map('intval', $request->all()['entity_id_edit_user']);
         $array = Arr::sortRecursive($array);
 
-        $accesses = EntityAccesses::where('user_id', '=', $request->id_edit_user)
+        $accesses = EntityAccess::where('user_id', '=', $request->id_edit_user)
             ->orderBy('entity_id', 'asc')
             ->get()
             ->pluck('entity_id')
@@ -340,13 +340,13 @@ class UserController extends Controller
         // se houver alteração no acesso de condomínio
         if ($array != $accesses) {
             // remove as permissões antigas
-            EntityAccesses::where('user_id', $request->id_edit_user)
+            EntityAccess::where('user_id', $request->id_edit_user)
                 ->whereIn('entity_id', $accesses)
                 ->delete();
 
             // adicona as novas permissões
             for ($i = 0; $i < count($array); $i++) {
-                EntityAccesses::create([
+                EntityAccess::create([
                     'entity_id' => $array[$i],
                     'user_id'   => $request->id_edit_user,
                     'preferred' => $i == 0 ? 1 : 0,

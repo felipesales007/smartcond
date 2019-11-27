@@ -7,7 +7,7 @@ use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class EntityAccesses extends Model
+class EntityAccess extends Model
 {
     /**
      * A tabela associada ao modelo.
@@ -32,18 +32,18 @@ class EntityAccesses extends Model
      */
     static function getEntityAccesses()
     {
-        return EntityAccesses::get();
+        return EntityAccess::get();
     }
 
     /**
      * Retornar o dado especificado no armazenamento.
      *
      * @param $id
-     * @return EntityAccesses
+     * @return EntityAccess
      */
     static function getEntityAccess($id)
     {
-        return EntityAccesses::find($id);
+        return EntityAccess::find($id);
     }
 
     /**
@@ -80,10 +80,10 @@ class EntityAccesses extends Model
      * Retornar o dado especificado no armazenamento.
      *
      * @param $id
-     * @return EntityAccesses
+     * @return EntityAccess
      */
-    static function getEntityAccessesUser($id)
+    static function getEntityAccessUser($id)
     {
-        return EntityAccesses::where('user_id', '=', $id)->first();
+        return EntityAccess::where('user_id', '=', $id)->first();
     }
 }

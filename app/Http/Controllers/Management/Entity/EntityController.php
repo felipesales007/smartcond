@@ -14,7 +14,7 @@ use App\Http\Requests\Management\Entity\RecoverEntityRequest;
 use App\Http\Requests\Management\Entity\SendEmailEntityRequest;
 use App\Models\Company\Company;
 use App\Models\Entity\Entity;
-use App\Models\Entity\EntityAccesses;
+use App\Models\Entity\EntityAccess;
 use App\Models\Menu\MenuItem;
 use App\Models\User\Permission;
 use App\Models\User\User;
@@ -585,7 +585,7 @@ class EntityController extends Controller
             'route_id' => '1'
         ]);
 
-        $accesses = EntityAccesses::create([
+        $accesses = EntityAccess::create([
             'entity_id' => $request->id_entity_new_user_entity,
             'user_id'   => $collection->id,
             'preferred' => '1'

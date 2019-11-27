@@ -4,7 +4,7 @@ namespace App\Http\Middleware\Checks;
 
 use App\Helpers\FormatHelpers;
 use App\Models\Company\CompanyAccesses;
-use App\Models\Entity\EntityAccesses;
+use App\Models\Entity\EntityAccess;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\RedirectResponse;
@@ -23,7 +23,7 @@ class CheckBlocked
         // se logado verifica
         if (auth()->check()) {
             if (auth()->user()['admin'] == 0) {
-                $access = EntityAccesses::select('entities.blocked as blocked',
+                $access = EntityAccess::select('entities.blocked as blocked',
                     'entities.blocked_at as blocked_at', 'entities.deleted_at as deleted_at')
                     ->join('entities', 'entities.id', '=', 'entity_accesses.entity_id')
                     ->where('user_id', '=', auth()->id())

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Entity\EntityAccesses;
+use App\Models\Entity\EntityAccess;
 use Illuminate\Database\Seeder;
 
 class EntityAccessesTableSeeder extends Seeder
@@ -12,7 +12,7 @@ class EntityAccessesTableSeeder extends Seeder
      */
     public function run()
     {
-        EntityAccesses::insert([
+        EntityAccess::insert([
             'entity_id'  => '1',
             'user_id'    => '4',
             'preferred'  => '1',
