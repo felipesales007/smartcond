@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // administrador
-    Route::group(['prefix' => 'administradores'], function () {
+    Route::group(['prefix' => 'gerenciamento/administradores'], function () {
         Route::get ('data',                      ['as' => 'admin.data',                  'uses' => 'Management\Admin\DashboardController@data']);
         Route::post('atualizar/{id?}',           ['as' => 'admin.update',                'uses' => 'Management\Admin\AdminController@update']);
         Route::post('bloquear/{id?}',            ['as' => 'admin.block',                 'uses' => 'Management\Admin\AdminController@block']);
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // usuários
-    Route::group(['prefix' => 'usuarios'], function () {
+    Route::group(['prefix' => 'gerenciamento/usuarios'], function () {
         Route::get ('data',                      ['as' => 'user.data',                  'uses' => 'Management\User\DashboardController@data']);
         Route::post('atualizar/{id?}',           ['as' => 'user.update',                'uses' => 'Management\User\UserController@update']);
         Route::post('bloquear/{id?}',            ['as' => 'user.block',                 'uses' => 'Management\User\UserController@block']);
@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // empresas
-    Route::group(['prefix' => 'empresas'], function () {
+    Route::group(['prefix' => 'gerenciamento/empresas'], function () {
         Route::get ('data',                      ['as' => 'company.data',                  'uses' => 'Management\Company\DashboardController@data']);
         Route::post('atualizar/{id?}',           ['as' => 'company.update',                'uses' => 'Management\Company\CompanyController@update']);
         Route::post('bloquear/{id?}',            ['as' => 'company.block',                 'uses' => 'Management\Company\CompanyController@block']);
@@ -96,7 +96,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // condominios
-    Route::group(['prefix' => 'condominios'], function () {
+    Route::group(['prefix' => 'gerenciamento/condominios'], function () {
         Route::get ('data',                      ['as' => 'entity.data',                  'uses' => 'Management\Entity\DashboardController@data']);
         Route::post('atualizar/{id?}',           ['as' => 'entity.update',                'uses' => 'Management\Entity\EntityController@update']);
         Route::post('bloquear/{id?}',            ['as' => 'entity.block',                 'uses' => 'Management\Entity\EntityController@block']);
@@ -109,12 +109,12 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // permissões
-    Route::group(['prefix' => 'permissoes'], function () {
+    Route::group(['prefix' => 'gerenciamento/permissoes'], function () {
         Route::post('usuario/atualizar/{id?}', ['as' => 'permission.user.update', 'uses' => 'Management\PermissionController@update']);
     });
 
     // grupos
-    Route::group(['prefix' => 'grupos'], function () {
+    Route::group(['prefix' => 'layout/grupos'], function () {
         Route::get ('data',                     ['as' => 'group.data',                 'uses' => 'Layout\Group\DashboardController@data']);
         Route::post('atualizar/{id?}',          ['as' => 'group.update',               'uses' => 'Layout\Group\GroupController@update']);
         Route::post('bloquear/{id?}',           ['as' => 'group.block',                'uses' => 'Layout\Group\GroupController@block']);
@@ -125,7 +125,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // rotas
-    Route::group(['prefix' => 'rotas'], function () {
+    Route::group(['prefix' => 'layout/rotas'], function () {
         Route::get ('data',                     ['as' => 'route.data',                  'uses' => 'Layout\Route\DashboardController@data']);
         Route::post('atualizar/{id?}',          ['as' => 'route.update',                'uses' => 'Layout\Route\RouteController@update']);
         Route::post('bloquear/{id?}',           ['as' => 'route.block',                 'uses' => 'Layout\Route\RouteController@block']);
@@ -136,7 +136,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // menu
-    Route::group(['prefix' => 'menu'], function () {
+    Route::group(['prefix' => 'layout/menu'], function () {
         Route::get ('data',            ['as' => 'menu.data',    'uses' => 'Layout\Menu\DashboardController@data']);
         Route::post('atualizar/{id?}', ['as' => 'menu.update',  'uses' => 'Layout\Menu\MenuController@update']);
         Route::post('bloquear/{id?}',  ['as' => 'menu.block',   'uses' => 'Layout\Menu\MenuController@block']);
@@ -145,7 +145,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // menu itens
-    Route::group(['prefix' => 'menu-itens'], function () {
+    Route::group(['prefix' => 'layout/menu-itens'], function () {
         Route::get ('data',            ['as' => 'menu.item.data',    'uses' => 'Layout\MenuItem\DashboardController@data']);
         Route::post('atualizar/{id?}', ['as' => 'menu.item.update',  'uses' => 'Layout\MenuItem\MenuItemController@update']);
         Route::post('bloquear/{id?}',  ['as' => 'menu.item.block',   'uses' => 'Layout\MenuItem\MenuItemController@block']);
@@ -154,7 +154,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // departamentos
-    Route::group(['prefix' => 'departamentos'], function () {
+    Route::group(['prefix' => 'administrativo/departamentos'], function () {
         Route::get ('data',                     ['as' => 'department.data',                 'uses' => 'Administrative\Department\DashboardController@data']);
         Route::post('atualizar/{id?}',          ['as' => 'department.update',               'uses' => 'Administrative\Department\DepartmentController@update']);
         Route::post('bloquear/{id?}',           ['as' => 'department.block',                'uses' => 'Administrative\Department\DepartmentController@block']);
@@ -165,7 +165,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // inventário categorias
-    Route::group(['prefix' => 'inventario/categorias'], function () {
+    Route::group(['prefix' => 'administrativo/inventario/categorias'], function () {
         Route::get ('data',                     ['as' => 'inventory.category.data',                 'uses' => 'Administrative\Inventory\InventoryCategory\DashboardController@data']);
         Route::post('atualizar/{id?}',          ['as' => 'inventory.category.update',               'uses' => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@update']);
         Route::post('bloquear/{id?}',           ['as' => 'inventory.category.block',                'uses' => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@block']);
@@ -176,7 +176,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // inventário
-    Route::group(['prefix' => 'inventario'], function () {
+    Route::group(['prefix' => 'administrativo/inventario'], function () {
         Route::get ('data',             ['as' => 'inventory.data',         'uses' => 'Administrative\Inventory\Inventory\DashboardController@data']);
         Route::post('atualizar/{id?}',  ['as' => 'inventory.update',       'uses' => 'Administrative\Inventory\Inventory\InventoryController@update']);
         Route::post('remover/{id?}',    ['as' => 'inventory.destroy',      'uses' => 'Administrative\Inventory\Inventory\InventoryController@destroy']);
@@ -226,7 +226,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // administrador
-    Route::group(['prefix' => 'administradores'], function () {
+    Route::group(['prefix' => 'gerenciamento/administradores'], function () {
         Route::get ('dashboard',             ['as' => 'admin.dashboard',     'uses' => 'Management\Admin\DashboardController@dashboard']);
         Route::get ('lista',                 ['as' => 'admin.list',          'uses' => 'Management\Admin\AdminController@list']);
         Route::get ('lista/deletados',       ['as' => 'admin.list.deleted',  'uses' => 'Management\Admin\AdminController@listDeleted']);
@@ -242,7 +242,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // usuários
-    Route::group(['prefix' => 'usuarios'], function () {
+    Route::group(['prefix' => 'gerenciamento/usuarios'], function () {
         Route::get ('dashboard',        ['as' => 'user.dashboard',    'uses' => 'Management\User\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'user.list',         'uses' => 'Management\User\UserController@list']);
         Route::get ('lista/deletados',  ['as' => 'user.list.deleted', 'uses' => 'Management\User\UserController@listDeleted']);
@@ -257,7 +257,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // empresas
-    Route::group(['prefix' => 'empresas'], function () {
+    Route::group(['prefix' => 'gerenciamento/empresas'], function () {
         Route::get ('dashboard',          ['as' => 'company.dashboard',    'uses' => 'Management\Company\DashboardController@dashboard']);
         Route::get ('lista',              ['as' => 'company.list',         'uses' => 'Management\Company\CompanyController@list']);
         Route::get ('lista/deletados',    ['as' => 'company.list.deleted', 'uses' => 'Management\Company\CompanyController@listDeleted']);
@@ -272,7 +272,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // condominios
-    Route::group(['prefix' => 'condominios'], function () {
+    Route::group(['prefix' => 'gerenciamento/condominios'], function () {
         Route::get ('dashboard',        ['as' => 'entity.dashboard',    'uses' => 'Management\Entity\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'entity.list',         'uses' => 'Management\Entity\EntityController@list']);
         Route::get ('lista/deletadas',  ['as' => 'entity.list.deleted', 'uses' => 'Management\Entity\EntityController@listDeleted']);
@@ -288,14 +288,14 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // permissões
-    Route::group(['prefix' => 'permissoes'], function () {
+    Route::group(['prefix' => 'gerenciamento/permissoes'], function () {
         Route::get ('lista/sem-permissoes', ['as' => 'permission.user.list.without', 'uses' => 'Management\PermissionController@listWithout']);
         Route::get ('lista/com-permissoes', ['as' => 'permission.user.list.with',    'uses' => 'Management\PermissionController@listWith']);
         Route::get ('usuario/editar',       ['as' => 'permission.user.edit',         'uses' => 'Management\PermissionController@edit']); // * btn-edit-permission-user
     });
 
     // grupos
-    Route::group(['prefix' => 'grupos'], function () {
+    Route::group(['prefix' => 'layout/grupos'], function () {
         Route::get ('dashboard',        ['as' => 'group.dashboard',    'uses' => 'Layout\Group\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'group.list',         'uses' => 'Layout\Group\GroupController@list']);
         Route::get ('lista/deletados',  ['as' => 'group.list.deleted', 'uses' => 'Layout\Group\GroupController@listDeleted']);
@@ -308,7 +308,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // rotas
-    Route::group(['prefix' => 'rotas'], function () {
+    Route::group(['prefix' => 'layout/rotas'], function () {
         Route::get ('dashboard',        ['as' => 'route.dashboard',    'uses' => 'Layout\Route\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'route.list',         'uses' => 'Layout\Route\RouteController@list']);
         Route::get ('lista/deletadas',  ['as' => 'route.list.deleted', 'uses' => 'Layout\Route\RouteController@listDeleted']);
@@ -321,7 +321,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // menu
-    Route::group(['prefix' => 'menu'], function () {
+    Route::group(['prefix' => 'layout/menu'], function () {
         Route::get ('dashboard',        ['as' => 'menu.dashboard',    'uses' => 'Layout\Menu\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'menu.list',         'uses' => 'Layout\Menu\MenuController@list']);
         Route::get ('lista/deletados',  ['as' => 'menu.list.deleted', 'uses' => 'Layout\Menu\MenuController@listDeleted']);
@@ -334,7 +334,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // menu itens
-    Route::group(['prefix' => 'menu-itens'], function () {
+    Route::group(['prefix' => 'layout/menu-itens'], function () {
         Route::get ('dashboard',        ['as' => 'menu.item.dashboard',    'uses' => 'Layout\MenuItem\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'menu.item.list',         'uses' => 'Layout\MenuItem\MenuItemController@list']);
         Route::get ('lista/deletados',  ['as' => 'menu.item.list.deleted', 'uses' => 'Layout\MenuItem\MenuItemController@listDeleted']);
@@ -347,7 +347,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // departamentos
-    Route::group(['prefix' => 'departamentos'], function () {
+    Route::group(['prefix' => 'administrativo/departamentos'], function () {
         Route::get ('dashboard',        ['as' => 'department.dashboard',    'uses' => 'Administrative\Department\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'department.list',         'uses' => 'Administrative\Department\DepartmentController@list']);
         Route::get ('lista/deletadas',  ['as' => 'department.list.deleted', 'uses' => 'Administrative\Department\DepartmentController@listDeleted']);
@@ -360,7 +360,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // inventário categorias
-    Route::group(['prefix' => 'inventario/categorias'], function () {
+    Route::group(['prefix' => 'administrativo/inventario/categorias'], function () {
         Route::get ('dashboard',        ['as' => 'inventory.category.dashboard',    'uses' => 'Administrative\Inventory\InventoryCategory\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'inventory.category.list',         'uses' => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@list']);
         Route::get ('lista/deletadas',  ['as' => 'inventory.category.list.deleted', 'uses' => 'Administrative\Inventory\InventoryCategory\InventoryCategoryController@listDeleted']);
@@ -373,7 +373,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // inventário
-    Route::group(['prefix' => 'inventario'], function () {
+    Route::group(['prefix' => 'administrativo/inventario'], function () {
         Route::get ('dashboard',        ['as' => 'inventory.dashboard',    'uses' => 'Administrative\Inventory\Inventory\DashboardController@dashboard']);
         Route::get ('lista',            ['as' => 'inventory.list',         'uses' => 'Administrative\Inventory\Inventory\InventoryController@list']);
         Route::get ('lista/deletados',  ['as' => 'inventory.list.deleted', 'uses' => 'Administrative\Inventory\Inventory\InventoryController@listDeleted']);

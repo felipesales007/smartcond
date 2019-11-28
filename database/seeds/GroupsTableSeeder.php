@@ -32,7 +32,7 @@ class GroupsTableSeeder extends Seeder
 
         // 3 - gerenciamento
         Group::create([
-            'name'          => 'administradores',
+            'name'          => 'gerenciamento/administradores',
             'user_level_id' => '2',
             'description'   => 'Grupo das configurações dos administradores',
             'created_at'    => now(),
@@ -41,7 +41,7 @@ class GroupsTableSeeder extends Seeder
 
         // 4 - gerenciamento
         Group::create([
-            'name'          => 'usuarios',
+            'name'          => 'gerenciamento/usuarios',
             'user_level_id' => '3',
             'description'   => 'Grupo das configurações dos usuários',
             'created_at'    => now(),
@@ -50,7 +50,7 @@ class GroupsTableSeeder extends Seeder
 
         // 5 - gerenciamento
         Group::create([
-            'name'          => 'empresas',
+            'name'          => 'gerenciamento/empresas',
             'user_level_id' => '1',
             'description'   => 'Grupo das configurações das empresas',
             'created_at'    => now(),
@@ -59,7 +59,7 @@ class GroupsTableSeeder extends Seeder
 
         // 6 - gerenciamento
         Group::create([
-            'name'          => 'condominios',
+            'name'          => 'gerenciamento/condominios',
             'user_level_id' => '2',
             'description'   => 'Grupo das configurações dos condomínios',
             'created_at'    => now(),
@@ -68,7 +68,7 @@ class GroupsTableSeeder extends Seeder
 
         // 7 - gerenciamento
         Group::create([
-            'name'          => 'permissoes',
+            'name'          => 'gerenciamento/permissoes',
             'user_level_id' => '3',
             'description'   => 'Grupo das configurações das permissões do usuário',
             'created_at'    => now(),
@@ -77,7 +77,7 @@ class GroupsTableSeeder extends Seeder
 
         // 8 - layout
         Group::create([
-            'name'          => 'grupos',
+            'name'          => 'layout/grupos',
             'user_level_id' => '1',
             'description'   => 'Grupo das configurações dos grupos',
             'created_at'    => now(),
@@ -86,7 +86,7 @@ class GroupsTableSeeder extends Seeder
 
         // 9 - layout
         Group::create([
-            'name'          => 'rotas',
+            'name'          => 'layout/rotas',
             'user_level_id' => '1',
             'description'   => 'Grupo das configurações das rotas',
             'created_at'    => now(),
@@ -95,7 +95,7 @@ class GroupsTableSeeder extends Seeder
 
         // 10 - layout
         Group::create([
-            'name'          => 'menu',
+            'name'          => 'layout/menu',
             'user_level_id' => '1',
             'description'   => 'Grupo das configurações dos menu',
             'created_at'    => now(),
@@ -104,7 +104,7 @@ class GroupsTableSeeder extends Seeder
 
         // 11 - layout
         Group::create([
-            'name'          => 'menu-itens',
+            'name'          => 'layout/menu-itens',
             'user_level_id' => '1',
             'description'   => 'Grupo das configurações dos itens do menu',
             'created_at'    => now(),
@@ -113,7 +113,7 @@ class GroupsTableSeeder extends Seeder
 
         // 12 - administrativo
         Group::create([
-            'name'          => 'departamentos',
+            'name'          => 'administrativo/departamentos',
             'user_level_id' => '3',
             'description'   => 'Grupo das configurações das departamentos',
             'created_at'    => now(),
@@ -122,7 +122,7 @@ class GroupsTableSeeder extends Seeder
 
         // 13 - administrativo
         Group::create([
-            'name'          => 'inventario/categorias',
+            'name'          => 'administrativo/inventario/categorias',
             'user_level_id' => '3',
             'description'   => 'Grupo das configurações das categorias do inventário',
             'created_at'    => now(),
@@ -131,7 +131,7 @@ class GroupsTableSeeder extends Seeder
 
         // 14 - administrativo
         Group::create([
-            'name'          => 'inventario',
+            'name'          => 'administrativo/inventario',
             'user_level_id' => '3',
             'description'   => 'Grupo das configurações dos inventário',
             'created_at'    => now(),

@@ -30,12 +30,12 @@
                             <!-- grupo em collapse -->
                             <li class="nav-item">
                                 <!-- collapse titulo -->
-                                <a class="nav-link {{ $menu['id'] == $sidebarMenu ? 'active text-primary' : '' }} {{ $menu['blocked'] ? 'fe-menu-block' : '' }}" href="#navbar-{{ $menu['blocked'] ? '' : $menu['group'] }}" data-toggle="collapse" role="button" aria-expanded="{{ $menu['id'] == $sidebarMenu ? 'true' : 'false' }}" aria-controls="navbar-{{ $menu['id'] }}">
+                                <a class="nav-link {{ $menu['id'] == $sidebarMenu ? 'active text-primary' : '' }} {{ $menu['blocked'] ? 'fe-menu-block' : '' }}" href="#{{ $menu['blocked'] ? '' : explode('/', $menu['group'])[0] }}" data-toggle="collapse" role="button" aria-expanded="{{ $menu['id'] == $sidebarMenu ? 'true' : 'false' }}" aria-controls="navbar-{{ $menu['id'] }}">
                                     <i class="{{ $menu['icon'] }} {{ $menu['color'] }}"></i>
                                     <span class="nav-link-text">{{ __(substr_replace($menu['name'], (strlen($menu['name']) > $str_limit ? '...' : ''), $str_limit)) }}</span>
                                 </a>
                                 <!-- collapse itens -->
-                                <div id="navbar-{{ $menu['group'] }}" class="collapse {{ $menu['id'] == $sidebarMenu ? 'show' : '' }}">
+                                <div id="{{ explode('/', $menu['group'])[0] }}" class="collapse {{ $menu['id'] == $sidebarMenu ? 'show' : '' }}">
                                     <ul class="nav nav-sm flex-column">
                                         @foreach (\App\Models\Menu\MenuItem::getUserMenuItems() as $item)
                                             @if ($menu['id'] == $item['menu_id'])
