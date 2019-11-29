@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Management\Entity;
 
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Models\Entity\Entity;
 use Illuminate\View\Factory;
@@ -16,7 +17,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('management.entities.dashboard.page');
+        $page = PageHelpers::page('entity.dashboard');
+        $list = PageHelpers::page('entity.list');
+
+        return view('management.entities.dashboard.page', compact('page', 'list'));
     }
 
     /**

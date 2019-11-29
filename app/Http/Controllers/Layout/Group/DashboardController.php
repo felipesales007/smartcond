@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Layout\Group;
 
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Models\Company\Company;
 use App\Models\Route\Group;
@@ -17,7 +18,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('layout.groups.dashboard.page');
+        $page = PageHelpers::page('group.dashboard');
+        $list = PageHelpers::page('group.list');
+
+        return view('layout.groups.dashboard.page', compact('page', 'list'));
     }
 
     /**

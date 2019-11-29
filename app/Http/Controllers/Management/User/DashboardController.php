@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Management\User;
 
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Models\Entity\Entity;
 use App\Models\User\User;
@@ -19,7 +20,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('management.users.dashboard.page');
+        $page = PageHelpers::page('user.dashboard');
+        $list = PageHelpers::page('user.list');
+
+        return view('management.users.dashboard.page', compact('page', 'list'));
     }
 
     /**

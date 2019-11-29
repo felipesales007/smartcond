@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Layout\Group;
 
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Requests\Layout\Group\BlockGroupRequest;
 use App\Http\Requests\Layout\Group\DeleteGroupRequest;
 use App\Http\Requests\Layout\Group\EditGroupRequest;
@@ -121,7 +122,12 @@ class GroupController extends Controller
                 ->toJson();
         }
 
-        return view('layout.groups.tables.all.page');
+        $page = PageHelpers::page('group.list');
+        $list = PageHelpers::page('group.list.deleted');
+        $dash = PageHelpers::page('group.dashboard');
+        $add  = PageHelpers::page('group.store');
+
+        return view('layout.groups.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -318,7 +324,12 @@ class GroupController extends Controller
                 ->toJson();
         }
 
-        return view('layout.groups.tables.deleted.page');
+        $page = PageHelpers::page('group.list.deleted');
+        $list = PageHelpers::page('group.list');
+        $dash = PageHelpers::page('group.dashboard');
+        $add  = PageHelpers::page('group.store');
+
+        return view('layout.groups.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**

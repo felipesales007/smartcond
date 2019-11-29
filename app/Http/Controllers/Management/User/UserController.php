@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management\User;
 use App\Helpers\FileHelpers;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Management\User\BlockUserRequest;
 use App\Http\Requests\Management\User\DeleteUserRequest;
@@ -208,7 +209,12 @@ class UserController extends Controller
                 ->toJson();
         }
 
-        return view('management.users.tables.all.page');
+        $page = PageHelpers::page('user.list');
+        $list = PageHelpers::page('user.list.deleted');
+        $dash = PageHelpers::page('user.dashboard');
+        $add  = PageHelpers::page('user.store');
+
+        return view('management.users.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -697,7 +703,12 @@ class UserController extends Controller
                 ->toJson();
         }
 
-        return view('management.users.tables.deleted.page');
+        $page = PageHelpers::page('user.list.deleted');
+        $list = PageHelpers::page('user.list');
+        $dash = PageHelpers::page('user.dashboard');
+        $add  = PageHelpers::page('user.store');
+
+        return view('management.users.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**

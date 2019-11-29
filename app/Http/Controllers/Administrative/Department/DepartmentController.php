@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrative\Department;
 
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Requests\Administrative\Department\BlockDepartmentRequest;
 use App\Http\Requests\Administrative\Department\DeleteDepartmentRequest;
 use App\Http\Requests\Administrative\Department\EditDepartmentRequest;
@@ -47,11 +48,11 @@ class DepartmentController extends Controller
             return datatables($collection)
                 // coluna nome
                 ->addColumn('name', function ($row) {
-                    return $row->name;
+                    return substr_replace($row->name, (strlen($row->name) > 50 ? '...' : ''), 50);
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return $row->description;
+                    return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
@@ -107,7 +108,12 @@ class DepartmentController extends Controller
                 ->toJson();
         }
 
-        return view('administrative.departments.tables.all.page');
+        $page = PageHelpers::page('department.list');
+        $list = PageHelpers::page('department.list.deleted');
+        $dash = PageHelpers::page('department.dashboard');
+        $add  = PageHelpers::page('department.store');
+
+        return view('administrative.departments.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -237,11 +243,11 @@ class DepartmentController extends Controller
             return datatables($collection)
                 // coluna nome
                 ->addColumn('name', function ($row) {
-                    return $row->name;
+                    return substr_replace($row->name, (strlen($row->name) > 50 ? '...' : ''), 50);
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return $row->description;
+                    return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
@@ -271,7 +277,12 @@ class DepartmentController extends Controller
                 ->toJson();
         }
 
-        return view('administrative.departments.tables.deleted.page');
+        $page = PageHelpers::page('department.list.deleted');
+        $list = PageHelpers::page('department.list');
+        $dash = PageHelpers::page('department.dashboard');
+        $add  = PageHelpers::page('department.store');
+
+        return view('administrative.departments.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**

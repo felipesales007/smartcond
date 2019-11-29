@@ -227,18 +227,17 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
 
     // administrador
     Route::group(['prefix' => 'gerenciamento/administradores'], function () {
-        Route::get ('dashboard',             ['as' => 'admin.dashboard',     'uses' => 'Management\Admin\DashboardController@dashboard']);
-        Route::get ('lista',                 ['as' => 'admin.list',          'uses' => 'Management\Admin\AdminController@list']);
-        Route::get ('lista/deletados',       ['as' => 'admin.list.deleted',  'uses' => 'Management\Admin\AdminController@listDeleted']);
-        Route::get ('lista/administradores', ['as' => 'company.list.admins', 'uses' => 'Management\Company\CompanyController@listAdmins']);
-        Route::get ('visualizar/{id?}',      ['as' => 'admin.view',          'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-view-admin
-        Route::post('novo',                  ['as' => 'admin.store',         'uses' => 'Management\Admin\AdminController@store']); // btn-modal-new-admin
-        Route::get ('editar/{id?}',          ['as' => 'admin.edit',          'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-edit-admin
-        Route::get ('banir/{id?}',           ['as' => 'admin.ban',           'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-block-admin
-        Route::get ('deletar/{id?}',         ['as' => 'admin.delete',        'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-delete-admin
-        Route::get ('recuperar/{id?}',       ['as' => 'admin.recover',       'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-recover-admin
-        Route::post('enviar/email',          ['as' => 'admin.send.email',    'uses' => 'Management\Admin\AdminController@sendEmail']); // * btn-modal-send-email-admin
-        Route::post('reenviar/email',        ['as' => 'admin.resend.email',  'uses' => 'Management\Admin\AdminController@resendEmail']); // btn-resend-email-admin
+        Route::get ('dashboard',        ['as' => 'admin.dashboard',     'uses' => 'Management\Admin\DashboardController@dashboard']);
+        Route::get ('lista',            ['as' => 'admin.list',          'uses' => 'Management\Admin\AdminController@list']);
+        Route::get ('lista/deletados',  ['as' => 'admin.list.deleted',  'uses' => 'Management\Admin\AdminController@listDeleted']);
+        Route::get ('visualizar/{id?}', ['as' => 'admin.view',          'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-view-admin
+        Route::post('novo',             ['as' => 'admin.store',         'uses' => 'Management\Admin\AdminController@store']); // btn-modal-new-admin
+        Route::get ('editar/{id?}',     ['as' => 'admin.edit',          'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-edit-admin
+        Route::get ('banir/{id?}',      ['as' => 'admin.ban',           'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-block-admin
+        Route::get ('deletar/{id?}',    ['as' => 'admin.delete',        'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-delete-admin
+        Route::get ('recuperar/{id?}',  ['as' => 'admin.recover',       'uses' => 'Management\Admin\AdminController@edit']); // * btn-modal-recover-admin
+        Route::post('enviar/email',     ['as' => 'admin.send.email',    'uses' => 'Management\Admin\AdminController@sendEmail']); // * btn-modal-send-email-admin
+        Route::post('reenviar/email',   ['as' => 'admin.resend.email',  'uses' => 'Management\Admin\AdminController@resendEmail']); // btn-resend-email-admin
     });
 
     // usuários
@@ -258,17 +257,18 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
 
     // empresas
     Route::group(['prefix' => 'gerenciamento/empresas'], function () {
-        Route::get ('dashboard',          ['as' => 'company.dashboard',    'uses' => 'Management\Company\DashboardController@dashboard']);
-        Route::get ('lista',              ['as' => 'company.list',         'uses' => 'Management\Company\CompanyController@list']);
-        Route::get ('lista/deletados',    ['as' => 'company.list.deleted', 'uses' => 'Management\Company\CompanyController@listDeleted']);
-        Route::get ('visualizar/{id?}',   ['as' => 'company.view',         'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-view-company
-        Route::post('novo',               ['as' => 'company.store',        'uses' => 'Management\Company\CompanyController@store']); // btn-modal-new-company
-        Route::post('novo/administrador', ['as' => 'company.admin.store',  'uses' => 'Management\Company\CompanyController@storeAdmin']); // * btn-modal-new-admin-company
-        Route::get ('editar/{id?}',       ['as' => 'company.edit',         'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-edit-company
-        Route::get ('banir/{id?}',        ['as' => 'company.ban',          'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-block-company
-        Route::get ('deletar/{id?}',      ['as' => 'company.delete',       'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-delete-company
-        Route::get ('recuperar/{id?}',    ['as' => 'company.recover',      'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-recover-company
-        Route::post('enviar/email',       ['as' => 'company.send.email',   'uses' => 'Management\Company\CompanyController@sendEmail']); // * btn-modal-send-email-company
+        Route::get ('dashboard',             ['as' => 'company.dashboard',    'uses' => 'Management\Company\DashboardController@dashboard']);
+        Route::get ('lista',                 ['as' => 'company.list',         'uses' => 'Management\Company\CompanyController@list']);
+        Route::get ('lista/deletados',       ['as' => 'company.list.deleted', 'uses' => 'Management\Company\CompanyController@listDeleted']);
+        Route::get ('lista/administradores', ['as' => 'company.list.admins', 'uses' => 'Management\Company\CompanyController@listAdmins']);
+        Route::get ('visualizar/{id?}',      ['as' => 'company.view',         'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-view-company
+        Route::post('novo',                  ['as' => 'company.store',        'uses' => 'Management\Company\CompanyController@store']); // btn-modal-new-company
+        Route::post('novo/administrador',    ['as' => 'company.admin.store',  'uses' => 'Management\Company\CompanyController@storeAdmin']); // * btn-modal-new-admin-company
+        Route::get ('editar/{id?}',          ['as' => 'company.edit',         'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-edit-company
+        Route::get ('banir/{id?}',           ['as' => 'company.ban',          'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-block-company
+        Route::get ('deletar/{id?}',         ['as' => 'company.delete',       'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-delete-company
+        Route::get ('recuperar/{id?}',       ['as' => 'company.recover',      'uses' => 'Management\Company\CompanyController@edit']); // * btn-modal-recover-company
+        Route::post('enviar/email',          ['as' => 'company.send.email',   'uses' => 'Management\Company\CompanyController@sendEmail']); // * btn-modal-send-email-company
     });
 
     // condominios

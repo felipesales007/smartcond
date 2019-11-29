@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Layout\MenuItem;
 
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Models\Company\Company;
 use App\Models\Menu\MenuItem;
@@ -17,7 +18,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('layout.menu-items.dashboard.page');
+        $page = PageHelpers::page('menu.item.dashboard');
+        $list = PageHelpers::page('menu.item.list');
+
+        return view('layout.menu-items.dashboard.page', compact('page', 'list'));
     }
 
     /**

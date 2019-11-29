@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrative\Inventory\Inventory;
 use App\Helpers\FileHelpers;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Requests\Inventory\Inventory\DeleteInventoryRequest;
 use App\Http\Requests\Inventory\Inventory\EditInventoryRequest;
 use App\Http\Requests\Inventory\Inventory\NewInventoryRequest;
@@ -121,7 +122,12 @@ class InventoryController extends Controller
                 ->toJson();
         }
 
-        return view('administrative.inventories.inventories.tables.all.page');
+        $page = PageHelpers::page('inventory.list');
+        $list = PageHelpers::page('inventory.list.deleted');
+        $dash = PageHelpers::page('inventory.dashboard');
+        $add  = PageHelpers::page('inventory.store');
+
+        return view('administrative.inventories.inventories.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -333,7 +339,12 @@ class InventoryController extends Controller
                 ->toJson();
         }
 
-        return view('administrative.inventories.inventories.tables.deleted.page');
+        $page = PageHelpers::page('inventory.list.deleted');
+        $list = PageHelpers::page('inventory.list');
+        $dash = PageHelpers::page('inventory.dashboard');
+        $add  = PageHelpers::page('inventory.store');
+
+        return view('administrative.inventories.inventories.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Administrative\Inventory\Inventory;
 
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Models\Entity\Entity;
 use App\Models\Inventory\Inventory;
@@ -17,7 +18,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('administrative.inventories.inventories.dashboard.page');
+        $page = PageHelpers::page('inventory.dashboard');
+        $list = PageHelpers::page('inventory.list');
+
+        return view('administrative.inventories.inventories.dashboard.page', compact('page', 'list'));
     }
 
     /**

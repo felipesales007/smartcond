@@ -27,7 +27,7 @@
         @endslot
     @endcomponent
 
-        @include('management.users.dashboard.cards')
+    @include('management.users.dashboard.cards')
 
     <!-- tabela ajax -->
     <div class="container-fluid">

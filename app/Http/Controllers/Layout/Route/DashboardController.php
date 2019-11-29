@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Layout\Route;
 
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Models\Company\Company;
 use App\Models\Route\Route;
@@ -17,7 +18,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('layout.routes.dashboard.page');
+        $page = PageHelpers::page('route.dashboard');
+        $list = PageHelpers::page('route.list');
+
+        return view('layout.routes.dashboard.page', compact('page', 'list'));
     }
 
     /**

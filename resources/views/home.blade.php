@@ -2,6 +2,7 @@
 @section('title', \App\Models\Menu\MenuItem::getMenuItem(1)['name'])
 
 @section('content')
+
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
         @slot('title'){{ 1 }}@endslot
@@ -15,4 +16,5 @@
             </div>
         </div>
     </div>
+
 @endsection

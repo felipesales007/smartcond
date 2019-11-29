@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrative\Inventory\InventoryCategory;
 
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Requests\Inventory\InventoryCategory\BlockInventoryCategoryRequest;
 use App\Http\Requests\Inventory\InventoryCategory\DeleteInventoryCategoryRequest;
 use App\Http\Requests\Inventory\InventoryCategory\EditInventoryCategoryRequest;
@@ -107,7 +108,12 @@ class InventoryCategoryController extends Controller
                 ->toJson();
         }
 
-        return view('administrative.inventories.inventory-categories.tables.all.page');
+        $page = PageHelpers::page('inventory.category.list');
+        $list = PageHelpers::page('inventory.category.list.deleted');
+        $dash = PageHelpers::page('inventory.category.dashboard');
+        $add  = PageHelpers::page('inventory.category.store');
+
+        return view('administrative.inventories.inventory-categories.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -271,7 +277,12 @@ class InventoryCategoryController extends Controller
                 ->toJson();
         }
 
-        return view('administrative.inventories.inventory-categories.tables.deleted.page');
+        $page = PageHelpers::page('inventory.category.list.deleted');
+        $list = PageHelpers::page('inventory.category.list');
+        $dash = PageHelpers::page('inventory.category.dashboard');
+        $add  = PageHelpers::page('inventory.category.store');
+
+        return view('administrative.inventories.inventory-categories.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**

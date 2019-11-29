@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Management\Company;
 
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Models\Company\Company;
 use Illuminate\View\Factory;
@@ -16,7 +17,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('management.companies.dashboard.page');
+        $page = PageHelpers::page('company.dashboard');
+        $list = PageHelpers::page('company.list');
+
+        return view('management.companies.dashboard.page', compact('page', 'list'));
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management\Entity;
 use App\Helpers\FileHelpers;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Requests\Management\Entity\BlockEntityRequest;
 use App\Http\Requests\Management\Entity\DeleteEntityRequest;
 use App\Http\Requests\Management\Entity\EditEntityRequest;
@@ -167,7 +168,12 @@ class EntityController extends Controller
                 ->toJson();
         }
 
-        return view('management.entities.tables.all.page');
+        $page = PageHelpers::page('entity.list');
+        $list = PageHelpers::page('entity.list.deleted');
+        $dash = PageHelpers::page('entity.dashboard');
+        $add  = PageHelpers::page('entity.store');
+
+        return view('management.entities.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -505,7 +511,12 @@ class EntityController extends Controller
                 ->toJson();
         }
 
-        return view('management.entities.tables.deleted.page');
+        $page = PageHelpers::page('entity.list.deleted');
+        $list = PageHelpers::page('entity.list');
+        $dash = PageHelpers::page('entity.dashboard');
+        $add  = PageHelpers::page('entity.store');
+
+        return view('management.entities.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -781,6 +792,9 @@ class EntityController extends Controller
             return back()->with('notify', json_encode($data));
         }
 
-        return view('management.entities.tables.users.page', compact('entity'));
+        $page = PageHelpers::page('entity.list.users');
+        $add  = PageHelpers::page('entity.user.store');
+
+        return view('management.entities.tables.users.page', compact('page', 'add', 'entity'));
     }
 }

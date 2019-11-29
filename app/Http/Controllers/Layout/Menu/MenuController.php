@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Layout\Menu;
 
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Layout\Menu\BlockMenuRequest;
 use App\Http\Requests\Layout\Menu\DeleteMenuRequest;
@@ -131,7 +132,12 @@ class MenuController extends Controller
                 ->toJson();
         }
 
-        return view('layout.menu.tables.all.page');
+        $page = PageHelpers::page('menu.list');
+        $list = PageHelpers::page('menu.list.deleted');
+        $dash = PageHelpers::page('menu.dashboard');
+        $add  = PageHelpers::page('menu.store');
+
+        return view('layout.menu.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -354,7 +360,12 @@ class MenuController extends Controller
                 ->toJson();
         }
 
-        return view('layout.menu.tables.deleted.page');
+        $page = PageHelpers::page('menu.list.deleted');
+        $list = PageHelpers::page('menu.list');
+        $dash = PageHelpers::page('menu.dashboard');
+        $add  = PageHelpers::page('menu.store');
+
+        return view('layout.menu.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**

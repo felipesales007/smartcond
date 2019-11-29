@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management\Admin;
 use App\Helpers\FileHelpers;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Management\Admin\BlockAdminRequest;
 use App\Http\Requests\Management\Admin\DeleteAdminRequest;
@@ -207,7 +208,12 @@ class AdminController extends Controller
                 ->toJson();
         }
 
-        return view('management.admins.tables.all.page');
+        $page = PageHelpers::page('admin.list');
+        $list = PageHelpers::page('admin.list.deleted');
+        $dash = PageHelpers::page('admin.dashboard');
+        $add  = PageHelpers::page('admin.store');
+
+        return view('management.admins.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -670,7 +676,12 @@ class AdminController extends Controller
                 ->toJson();
         }
 
-        return view('management.admins.tables.deleted.page');
+        $page = PageHelpers::page('admin.list.deleted');
+        $list = PageHelpers::page('admin.list');
+        $dash = PageHelpers::page('admin.dashboard');
+        $add  = PageHelpers::page('admin.store');
+
+        return view('management.admins.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**

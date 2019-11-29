@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management\Company;
 use App\Helpers\FileHelpers;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Requests\Management\Company\BlockCompanyRequest;
 use App\Http\Requests\Management\Company\DeleteCompanyRequest;
 use App\Http\Requests\Management\Company\EditCompanyRequest;
@@ -165,7 +166,12 @@ class CompanyController extends Controller
                 ->toJson();
         }
 
-        return view('management.companies.tables.all.page');
+        $page = PageHelpers::page('company.list');
+        $list = PageHelpers::page('company.list.deleted');
+        $dash = PageHelpers::page('company.dashboard');
+        $add  = PageHelpers::page('company.store');
+
+        return view('management.companies.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -502,7 +508,12 @@ class CompanyController extends Controller
                 ->toJson();
         }
 
-        return view('management.companies.tables.deleted.page');
+        $page = PageHelpers::page('company.list.deleted');
+        $list = PageHelpers::page('company.list');
+        $dash = PageHelpers::page('company.dashboard');
+        $add  = PageHelpers::page('company.store');
+
+        return view('management.companies.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -779,6 +790,9 @@ class CompanyController extends Controller
             return back()->with('notify', json_encode($data));
         }
 
-        return view('management.companies.tables.admins.page', compact('company'));
+        $page = PageHelpers::page('company.list.admins');
+        $add  = PageHelpers::page('company.admin.store');
+
+        return view('management.companies.tables.admins.page', compact('page', 'add', 'company'));
     }
 }

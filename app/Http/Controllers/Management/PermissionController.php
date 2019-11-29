@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Management;
 
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Management\Permission\EditPermissionRequest;
 use App\Models\Company\Company;
@@ -102,7 +103,10 @@ class PermissionController extends Controller
                 ->toJson();
         }
 
-        return view('management.permissions.tables.without-permissions.page');
+        $page = PageHelpers::page('permission.user.list.without');
+        $list = PageHelpers::page('permission.user.list.with');
+
+        return view('management.permissions.tables.without-permissions.page', compact('page', 'list'));
     }
 
     /**
@@ -183,7 +187,10 @@ class PermissionController extends Controller
                 ->toJson();
         }
 
-        return view('management.permissions.tables.with-permissions.page');
+        $page = PageHelpers::page('permission.user.list.with');
+        $list = PageHelpers::page('permission.user.list.without');
+
+        return view('management.permissions.tables.with-permissions.page', compact('page', 'list'));
     }
 
     /**
@@ -236,7 +243,9 @@ class PermissionController extends Controller
             ->pluck('routes.id')
             ->all();
 
-        return view('management.permissions.edit.page', compact('user', 'groups', 'permissions', 'accesses'));
+        $page = PageHelpers::page('permission.user.edit');
+
+        return view('management.permissions.edit.page', compact('page', 'user', 'groups', 'permissions', 'accesses'));
     }
 
     /**

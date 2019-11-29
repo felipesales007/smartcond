@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Profile;
 use App\Helpers\FileHelpers;
 use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\EditProfileRequest;
 use App\Http\Requests\Profile\PasswordResetRequest;
@@ -54,7 +55,9 @@ class ProfileController extends Controller
             ->where('user_id', '=', auth()->id())
             ->first();
 
-        return view('profile.edit.page', compact('entities', 'company'));
+        $page = PageHelpers::page('profile.edit');
+
+        return view('profile.edit.page', compact('page', 'entities', 'company'));
     }
 
     /**

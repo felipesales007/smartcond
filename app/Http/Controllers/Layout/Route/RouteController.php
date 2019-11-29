@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Layout\Route;
 
 use App\Helpers\NotifyHelpers;
+use App\Helpers\PageHelpers;
 use App\Http\Requests\Layout\Route\BlockRouteRequest;
 use App\Http\Requests\Layout\Route\DeleteRouteRequest;
 use App\Http\Requests\Layout\Route\EditRouteRequest;
@@ -143,7 +144,12 @@ class RouteController extends Controller
                 ->toJson();
         }
 
-        return view('layout.routes.tables.all.page');
+        $page = PageHelpers::page('route.list');
+        $list = PageHelpers::page('route.list.deleted');
+        $dash = PageHelpers::page('route.dashboard');
+        $add  = PageHelpers::page('route.store');
+
+        return view('layout.routes.tables.all.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**
@@ -377,7 +383,12 @@ class RouteController extends Controller
                 ->toJson();
         }
 
-        return view('layout.routes.tables.deleted.page');
+        $page = PageHelpers::page('route.list.deleted');
+        $list = PageHelpers::page('route.list');
+        $dash = PageHelpers::page('route.dashboard');
+        $add  = PageHelpers::page('route.store');
+
+        return view('layout.routes.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
     }
 
     /**

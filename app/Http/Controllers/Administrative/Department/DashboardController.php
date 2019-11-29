@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Administrative\Department;
 
+use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\Entity\Entity;
@@ -17,7 +18,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('administrative.departments.dashboard.page');
+        $page = PageHelpers::page('department.dashboard');
+        $list = PageHelpers::page('department.list');
+
+        return view('administrative.departments.dashboard.page', compact('page', 'list'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\PageHelpers;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 
@@ -14,6 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $page = PageHelpers::page('home.index');
+
+        return view('home', compact('page'));
     }
 }
