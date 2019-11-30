@@ -1,27 +1,27 @@
-@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '112'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(112)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 8 }}@endslot
-        <li class="breadcrumb-item"><a href="{{ app('router')->has('inventory.list') ? route('inventory.list') : url('/') }}">{{ \App\Models\Menu\MenuItem::getMenuItem(111)['name'] }}</a></li>
+        @slot('title'){{ $page['menu_name'] }}@endslot
+        <li class="breadcrumb-item"><a href="{{ app('router')->has($list['router']) ? route($list['router']) : url('/') }}">{{ $list['item_name'] }}</a></li>
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
 
         @slot('link')
             <!-- visualizar dashboard -->
             @component('layouts.components.button', [
                 'text'   => 'Dashboard',
-                'button' => '',
-                'router' => 'inventory.dashboard',
-                'group'  => '14',
-                'route'  => '108',
-                'menu'   => '8',
-                'item'   => '110',
+                'title'  => '',
+                'button' => $dash['button'],
+                'router' => $dash['router'],
+                'group'  => $dash['group'],
+                'route'  => $dash['route'],
+                'menu'   => $dash['menu'],
+                'item'   => $dash['item'],
                 'color'  => 'info',
                 'size'   => 'sm',
-                'title'  => '',
                 'icon'   => 'fas fa-chart-line'
             ])@endcomponent
         @endslot
@@ -47,30 +47,30 @@
                                 <!-- adicionar -->
                                 @component('layouts.components.button', [
                                     'text'   => 'Adicionar',
-                                    'button' => 'btn-modal-new-inventory',
-                                    'router' => 'inventory.store',
-                                    'group'  => '14',
-                                    'route'  => '112',
-                                    'menu'   => '8',
-                                    'item'   => '114',
+                                    'title'  => '',
+                                    'button' => $add['button'],
+                                    'router' => $add['router'],
+                                    'group'  => $add['group'],
+                                    'route'  => $add['route'],
+                                    'menu'   => $add['menu'],
+                                    'item'   => $add['item'],
                                     'color'  => 'primary',
                                     'size'   => 'sm',
-                                    'title'  => '',
                                     'icon'   => 'fas fa-plus'
                                 ])@endcomponent
 
                                 <!-- lista -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
-                                    'button' => '',
-                                    'router' => 'inventory.list',
-                                    'group'  => '14',
-                                    'route'  => '109',
-                                    'menu'   => '8',
-                                    'item'   => '111',
+                                    'title'  => 'Lista de itens do inventário',
+                                    'button' => $list['button'],
+                                    'router' => $list['router'],
+                                    'group'  => $list['group'],
+                                    'route'  => $list['route'],
+                                    'menu'   => $list['menu'],
+                                    'item'   => $list['item'],
                                     'color'  => 'success',
                                     'size'   => 'sm',
-                                    'title'  => 'Lista de itens do inventário',
                                     'icon'   => 'fas fa-list-ul'
                                 ])@endcomponent
                             </div>

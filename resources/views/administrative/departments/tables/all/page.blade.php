@@ -1,11 +1,11 @@
-@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '93'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(93)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 8 }}@endslot
+        @slot('title'){{ $page['menu_name'] }}@endslot
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
         @slot('xl')@endslot
 
@@ -13,15 +13,15 @@
             <!-- visualizar dashboard -->
             @component('layouts.components.button', [
                 'text'   => 'Dashboard',
-                'button' => '',
-                'router' => 'department.dashboard',
-                'group'  => '12',
-                'route'  => '90',
-                'menu'   => '8',
-                'item'   => '92',
+                'title'  => '',
+                'button' => $dash['button'],
+                'router' => $dash['router'],
+                'group'  => $dash['group'],
+                'route'  => $dash['route'],
+                'menu'   => $dash['menu'],
+                'item'   => $dash['item'],
                 'color'  => 'info',
                 'size'   => 'sm',
-                'title'  => '',
                 'icon'   => 'fas fa-chart-line'
             ])@endcomponent
         @endslot
@@ -49,30 +49,30 @@
                                 <!-- adicionar -->
                                 @component('layouts.components.button', [
                                     'text'   => 'Adicionar',
-                                    'button' => 'btn-modal-new-department',
-                                    'router' => 'department.store',
-                                    'group'  => '12',
-                                    'route'  => '94',
-                                    'menu'   => '8',
-                                    'item'   => '96',
+                                    'title'  => '',
+                                    'button' => $add['button'],
+                                    'router' => $add['router'],
+                                    'group'  => $add['group'],
+                                    'route'  => $add['route'],
+                                    'menu'   => $add['menu'],
+                                    'item'   => $add['item'],
                                     'color'  => 'primary',
                                     'size'   => 'sm',
-                                    'title'  => '',
                                     'icon'   => 'fas fa-plus'
                                 ])@endcomponent
 
                                 <!-- lista de deletados -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
-                                    'button' => '',
-                                    'router' => 'department.list.deleted',
-                                    'group'  => '12',
-                                    'route'  => '92',
-                                    'menu'   => '8',
-                                    'item'   => '94',
+                                    'title'  => 'Lista de deletados',
+                                    'button' => $list['button'],
+                                    'router' => $list['router'],
+                                    'group'  => $list['group'],
+                                    'route'  => $list['route'],
+                                    'menu'   => $list['menu'],
+                                    'item'   => $list['item'],
                                     'color'  => 'danger',
                                     'size'   => 'sm',
-                                    'title'  => 'Lista de deletados',
                                     'icon'   => 'far fa-trash-alt'
                                 ])@endcomponent
                             </div>
@@ -83,11 +83,11 @@
                         <table id="datatable-departments" class="table table-flush">
                             <!-- título da tabela -->
                             <thead class="thead-light">
-                            <tr>
-                                <th data-base="name">{{ __('Nome') }}</th>
-                                <th>{{ __('Descrição') }}</th>
-                                <th class="text-center"><i class="fas fa-cog"></i></th>
-                            </tr>
+                                <tr>
+                                    <th data-base="name">{{ __('Nome') }}</th>
+                                    <th>{{ __('Descrição') }}</th>
+                                    <th class="text-center"><i class="fas fa-cog"></i></th>
+                                </tr>
                             </thead>
                             <!-- listagem da tabela via ajax -->
                             <tbody class="fe-table-master"></tbody>

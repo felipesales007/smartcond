@@ -112,8 +112,9 @@ class InventoryCategoryController extends Controller
         $list = PageHelpers::page('inventory.category.list.deleted');
         $dash = PageHelpers::page('inventory.category.dashboard');
         $add  = PageHelpers::page('inventory.category.store');
+        $sub  = PageHelpers::page('inventory.list');
 
-        return view('administrative.inventories.inventory-categories.tables.all.page', compact('page', 'list', 'dash', 'add'));
+        return view('administrative.inventories.inventory-categories.tables.all.page', compact('page', 'list', 'dash', 'add', 'sub'));
     }
 
     /**

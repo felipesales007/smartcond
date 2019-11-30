@@ -1,11 +1,11 @@
-@extends('layouts.app', ['sidebarMenu' => '6', 'sidebarItem' => '18'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(18)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 6 }}@endslot
+        @slot('title'){{ $page['menu_name'] }}@endslot
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
         @slot('xl')@endslot
 
@@ -13,15 +13,15 @@
             <!-- visualizar dashboard -->
             @component('layouts.components.button', [
                 'text'   => 'Dashboard',
-                'button' => '',
-                'router' => 'user.dashboard',
-                'group'  => '4',
-                'route'  => '16',
-                'menu'   => '6',
-                'item'   => '17',
+                'title'  => '',
+                'button' => $dash['button'],
+                'router' => $dash['router'],
+                'group'  => $dash['group'],
+                'route'  => $dash['route'],
+                'menu'   => $dash['menu'],
+                'item'   => $dash['item'],
                 'color'  => 'info',
                 'size'   => 'sm',
-                'title'  => '',
                 'icon'   => 'fas fa-chart-line'
             ])@endcomponent
         @endslot
@@ -49,30 +49,30 @@
                                 <!-- adicionar -->
                                 @component('layouts.components.button', [
                                     'text'   => 'Adicionar',
-                                    'button' => 'btn-modal-new-user',
-                                    'router' => 'user.store',
-                                    'group'  => '4',
-                                    'route'  => '20',
-                                    'menu'   => '6',
-                                    'item'   => '21',
+                                    'title'  => '',
+                                    'button' => $add['button'],
+                                    'router' => $add['router'],
+                                    'group'  => $add['group'],
+                                    'route'  => $add['route'],
+                                    'menu'   => $add['menu'],
+                                    'item'   => $add['item'],
                                     'color'  => 'primary',
                                     'size'   => 'sm',
-                                    'title'  => '',
                                     'icon'   => 'fas fa-plus'
                                 ])@endcomponent
 
                                 <!-- lista de deletados -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
-                                    'button' => '',
-                                    'router' => 'user.list.deleted',
-                                    'group'  => '4',
-                                    'route'  => '18',
-                                    'menu'   => '6',
-                                    'item'   => '19',
+                                    'title'  => 'Lista de deletados',
+                                    'button' => $list['button'],
+                                    'router' => $list['router'],
+                                    'group'  => $list['group'],
+                                    'route'  => $list['route'],
+                                    'menu'   => $list['menu'],
+                                    'item'   => $list['item'],
                                     'color'  => 'danger',
                                     'size'   => 'sm',
-                                    'title'  => 'Lista de deletados',
                                     'icon'   => 'far fa-trash-alt'
                                 ])@endcomponent
                             </div>

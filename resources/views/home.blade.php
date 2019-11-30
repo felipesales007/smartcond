@@ -1,11 +1,11 @@
-@extends('layouts.app', ['sidebarMenu' => '1', 'sidebarItem' => '1'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(1)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 1 }}@endslot
+        @slot('title'){{ $page['menu_name'] }}@endslot
     @endcomponent
 
     <!-- corpo -->

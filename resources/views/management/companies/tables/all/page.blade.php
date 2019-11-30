@@ -1,11 +1,11 @@
-@extends('layouts.app', ['sidebarMenu' => '6','sidebarItem' => '29'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(29)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 6 }}@endslot
+        @slot('title'){{ $page['menu_name'] }}@endslot
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
         @slot('xl')@endslot
 
@@ -13,15 +13,15 @@
             <!-- visualizar dashboard -->
             @component('layouts.components.button', [
                 'text'   => 'Dashboard',
-                'button' => '',
-                'router' => 'company.dashboard',
-                'group'  => '5',
-                'route'  => '27',
-                'menu'   => '6',
-                'item'   => '28',
+                'title'  => '',
+                'button' => $dash['button'],
+                'router' => $dash['router'],
+                'group'  => $dash['group'],
+                'route'  => $dash['route'],
+                'menu'   => $dash['menu'],
+                'item'   => $dash['item'],
                 'color'  => 'info',
                 'size'   => 'sm',
-                'title'  => '',
                 'icon'   => 'fas fa-chart-line'
             ])@endcomponent
         @endslot
@@ -50,15 +50,15 @@
                                 @if (\App\Models\Company\Company::id() == 1)
                                     @component('layouts.components.button', [
                                         'text'   => 'Adicionar',
-                                        'button' => 'btn-modal-new-company',
-                                        'router' => 'company.store',
-                                        'group'  => '5',
-                                        'route'  => '32',
-                                        'menu'   => '6',
-                                        'item'   => '33',
+                                        'title'  => '',
+                                        'button' => $add['button'],
+                                        'router' => $add['router'],
+                                        'group'  => $add['group'],
+                                        'route'  => $add['route'],
+                                        'menu'   => $add['menu'],
+                                        'item'   => $add['item'],
                                         'color'  => 'primary',
                                         'size'   => 'sm',
-                                        'title'  => '',
                                         'icon'   => 'fas fa-plus'
                                     ])@endcomponent
                                 @endif
@@ -66,15 +66,15 @@
                                 <!-- lista de deletados -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
-                                    'button' => '',
-                                    'router' => 'company.list.deleted',
-                                    'group'  => '5',
-                                    'route'  => '29',
-                                    'menu'   => '6',
-                                    'item'   => '30',
+                                    'title'  => 'Lista de deletados',
+                                    'button' => $list['button'],
+                                    'router' => $list['router'],
+                                    'group'  => $list['group'],
+                                    'route'  => $list['route'],
+                                    'menu'   => $list['menu'],
+                                    'item'   => $list['item'],
                                     'color'  => 'danger',
                                     'size'   => 'sm',
-                                    'title'  => 'Lista de deletados',
                                     'icon'   => 'far fa-trash-alt'
                                 ])@endcomponent
                             </div>

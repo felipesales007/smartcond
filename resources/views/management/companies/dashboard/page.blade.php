@@ -1,12 +1,12 @@
-@extends('layouts.app', ['sidebarMenu' => '6', 'sidebarItem' => '28'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(28)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 6 }}@endslot
-        <li class="breadcrumb-item"><a href="{{ app('router')->has('company.list') ? route('company.list') : url('/') }}">{{ \App\Models\Menu\MenuItem::getMenuItem(29)['name'] }}</a></li>
+        @slot('title'){{ $page['menu_name'] }}@endslot
+        <li class="breadcrumb-item"><a href="{{ app('router')->has($list['router']) ? route($list['router']) : url('/') }}">{{ $list['item_name'] }}</a></li>
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
         @slot('xl')@endslot
 
@@ -14,15 +14,15 @@
             <!-- lista -->
             @component('layouts.components.button', [
                 'text'   => 'Empresas',
-                'button' => '',
-                'router' => 'company.list',
-                'group'  => '5',
-                'route'  => '28',
-                'menu'   => '6',
-                'item'   => '29',
+                'title'  => '',
+                'button' => $list['button'],
+                'router' => $list['router'],
+                'group'  => $list['group'],
+                'route'  => $list['route'],
+                'menu'   => $list['menu'],
+                'item'   => $list['item'],
                 'color'  => 'success',
                 'size'   => 'sm',
-                'title'  => '',
                 'icon'   => 'fas fa-list-ul'
             ])@endcomponent
         @endslot

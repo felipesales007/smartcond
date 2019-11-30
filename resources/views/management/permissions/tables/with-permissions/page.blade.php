@@ -1,12 +1,12 @@
-@extends('layouts.app', ['sidebarMenu' => '6', 'sidebarItem' => '53'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(53)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 6 }}@endslot
-        <li class="breadcrumb-item"><a href="{{ app('router')->has('permission.user.list.without') ? route('permission.user.list.without') : url('/') }}">{{ \App\Models\Menu\MenuItem::getMenuItem(52)['name'] }}</a></li>
+        @slot('title'){{ $page['menu_name'] }}@endslot
+        <li class="breadcrumb-item"><a href="{{ app('router')->has($list['router']) ? route($list['router']) : url('/') }}">{{ $list['item_name'] }}</a></li>
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
     @endcomponent
 

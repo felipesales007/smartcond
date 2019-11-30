@@ -1,5 +1,5 @@
-@extends('layouts.app', ['sidebarMenu' => '6', 'sidebarItem' => '31'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(31)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
@@ -29,8 +29,8 @@
                             <!-- botões -->
                             <div class="col-4 text-right">
                                 <!-- adicionar -->
-                                @if (app('router')->has('company.admin.store') && \App\Models\User\Permission::routePermission('company.admin.store') && \App\Models\Menu\MenuItem::getMenuItemDeleted('company.admin.store') && auth()->user()['admin'] == 1)
-                                    <a href="javascript:void(0)" data-id="{{ $company['id'] }}" data-logo="{{ $company['logo'] }}" data-name="{{ $company['name'] }}" class="btn btn-icon btn-sm btn-primary {{ \App\Models\Route\Group::getGroup(5)['blocked'] || \App\Models\Route\Route::getRoute(33)['blocked'] || \App\Models\Menu\Menu::getMenu(6)['blocked'] || \App\Models\Menu\MenuItem::getMenuItem(34)['blocked'] ? '' : 'btn-modal-new-admin-company' }} {{ \App\Models\Route\Group::getGroup(5)['blocked'] ? 'notify-block-group' : '' }} {{ \App\Models\Route\Route::getRoute(33)['blocked'] ? 'notify-block-route' : '' }} {{ \App\Models\Menu\Menu::getMenu(6)['blocked'] || \App\Models\Menu\MenuItem::getMenuItem(34)['blocked'] ? 'opacity-2 disabled' : '' }}">
+                                @if (app('router')->has($add['router']) && \App\Models\User\Permission::routePermission($add['router']) && \App\Models\Menu\MenuItem::getMenuItemDeleted($add['router']) && auth()->user()['admin'] == 1)
+                                    <a href="javascript:void(0)" data-id="{{ $company['id'] }}" data-logo="{{ $company['logo'] }}" data-name="{{ $company['name'] }}" class="btn btn-icon btn-sm btn-primary {{ \App\Models\Route\Group::getGroup($add['group'])['blocked'] || \App\Models\Route\Route::getRoute($add['route'])['blocked'] || \App\Models\Menu\Menu::getMenu($add['menu'])['blocked'] || \App\Models\Menu\MenuItem::getMenuItem($add['item'])['blocked'] ? '' : 'btn-modal-new-admin-company' }} {{ \App\Models\Route\Group::getGroup($add['group'])['blocked'] ? 'notify-block-group' : '' }} {{ \App\Models\Route\Route::getRoute($add['route'])['blocked'] ? 'notify-block-route' : '' }} {{ \App\Models\Menu\Menu::getMenu($add['menu'])['blocked'] || \App\Models\Menu\MenuItem::getMenuItem($add['item'])['blocked'] ? 'opacity-2 disabled' : '' }}">
                                         <i class="fas fa-plus"></i>
                                         <span class="fe-button-sm-left">
                                             <span class="nav-link-inner--text d-none d-md-inline ml--1">{{ __('Adicionar') }}</span>

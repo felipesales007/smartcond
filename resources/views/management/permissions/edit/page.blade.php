@@ -1,5 +1,5 @@
-@extends('layouts.app', ['sidebarMenu' => '6', 'sidebarItem' => '55'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(55)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 

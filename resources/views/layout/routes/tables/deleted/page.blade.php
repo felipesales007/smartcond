@@ -1,27 +1,27 @@
-@extends('layouts.app', ['sidebarMenu' => '7', 'sidebarItem' => '67'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(67)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 7 }}@endslot
-        <li class="breadcrumb-item"><a href="{{ app('router')->has('route.list') ? route('route.list') : url('/') }}">{{ \App\Models\Menu\MenuItem::getMenuItem(66)['name'] }}</a></li>
+        @slot('title'){{ $page['menu_name'] }}@endslot
+        <li class="breadcrumb-item"><a href="{{ app('router')->has($list['router']) ? route($list['router']) : url('/') }}">{{ $list['item_name'] }}</a></li>
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
 
         @slot('link')
             <!-- visualizar dashboard -->
             @component('layouts.components.button', [
                 'text'   => 'Dashboard',
-                'button' => '',
-                'router' => 'route.dashboard',
-                'group'  => '9',
-                'route'  => '63',
-                'menu'   => '7',
-                'item'   => '65',
+                'title'  => '',
+                'button' => $dash['button'],
+                'router' => $dash['router'],
+                'group'  => $dash['group'],
+                'route'  => $dash['route'],
+                'menu'   => $dash['menu'],
+                'item'   => $dash['item'],
                 'color'  => 'info',
                 'size'   => 'sm',
-                'title'  => '',
                 'icon'   => 'fas fa-chart-line'
             ])@endcomponent
         @endslot
@@ -48,31 +48,31 @@
                                 @if (\App\Models\Company\Company::id() == 1)
                                     @component('layouts.components.button', [
                                         'text'   => 'Adicionar',
-                                        'button' => 'btn-modal-new-route',
-                                        'router' => 'route.store',
-                                        'group'  => '9',
-                                        'route'  => '67',
-                                        'menu'   => '7',
-                                        'item'   => '69',
+                                        'title'  => '',
+                                        'button' => $add['button'],
+                                        'router' => $add['router'],
+                                        'group'  => $add['group'],
+                                        'route'  => $add['route'],
+                                        'menu'   => $add['menu'],
+                                        'item'   => $add['item'],
                                         'color'  => 'primary',
                                         'size'   => 'sm',
-                                        'title'  => '',
                                         'icon'   => 'fas fa-plus'
                                     ])@endcomponent
                                 @endif
 
-                                <!-- lista de deletados -->
+                                <!-- lista -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
-                                    'button' => '',
-                                    'router' => 'route.list',
-                                    'group'  => '9',
-                                    'route'  => '64',
-                                    'menu'   => '7',
-                                    'item'   => '66',
+                                    'title'  => 'Lista de rotas',
+                                    'button' => $list['button'],
+                                    'router' => $list['router'],
+                                    'group'  => $list['group'],
+                                    'route'  => $list['route'],
+                                    'menu'   => $list['menu'],
+                                    'item'   => $list['item'],
                                     'color'  => 'success',
                                     'size'   => 'sm',
-                                    'title'  => 'Lista de rotas',
                                     'icon'   => 'fas fa-list-ul'
                                 ])@endcomponent
                             </div>

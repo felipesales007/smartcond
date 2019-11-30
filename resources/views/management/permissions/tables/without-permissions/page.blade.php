@@ -1,11 +1,11 @@
-@extends('layouts.app', ['sidebarMenu' => '6', 'sidebarItem' => '52'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(52)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 6 }}@endslot
+        @slot('title'){{ $page['menu_name'] }}@endslot
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
     @endcomponent
 
@@ -29,15 +29,15 @@
                                 <!-- buscar -->
                                 @component('layouts.components.button', [
                                     'text'   => 'buscar',
-                                    'button' => '',
-                                    'router' => 'permission.user.list.with',
-                                    'group'  => '6',
-                                    'route'  => '52',
-                                    'menu'   => '6',
-                                    'item'   => '53',
+                                    'title'  => '',
+                                    'button' => $list['button'],
+                                    'router' => $list['router'],
+                                    'group'  => $list['group'],
+                                    'route'  => $list['route'],
+                                    'menu'   => $list['menu'],
+                                    'item'   => $list['item'],
                                     'color'  => 'primary',
                                     'size'   => 'sm',
-                                    'title'  => '',
                                     'icon'   => 'fas fa-search'
                                 ])@endcomponent
                             </div>

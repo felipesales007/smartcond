@@ -1,11 +1,11 @@
-@extends('layouts.app', ['sidebarMenu' => '8', 'sidebarItem' => '111'])
-@section('title', \App\Models\Menu\MenuItem::getMenuItem(111)['name'])
+@extends('layouts.app', ['sidebarMenu' => $page['menu'], 'sidebarItem' => $page['item']])
+@section('title', $page['item_name'])
 
 @section('content')
 
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
-        @slot('title'){{ 8 }}@endslot
+        @slot('title'){{ $page['menu_name'] }}@endslot
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
         @slot('xl')@endslot
 
@@ -13,15 +13,15 @@
             <!-- visualizar dashboard -->
             @component('layouts.components.button', [
                 'text'   => 'Dashboard',
-                'button' => '',
-                'router' => 'inventory.dashboard',
-                'group'  => '14',
-                'route'  => '108',
-                'menu'   => '8',
-                'item'   => '110',
+                'title'  => '',
+                'button' => $dash['button'],
+                'router' => $dash['router'],
+                'group'  => $dash['group'],
+                'route'  => $dash['route'],
+                'menu'   => $dash['menu'],
+                'item'   => $dash['item'],
                 'color'  => 'info',
                 'size'   => 'sm',
-                'title'  => '',
                 'icon'   => 'fas fa-chart-line'
             ])@endcomponent
         @endslot
@@ -49,45 +49,45 @@
                                 <!-- adicionar -->
                                 @component('layouts.components.button', [
                                     'text'   => 'Adicionar',
-                                    'button' => 'btn-modal-new-inventory',
-                                    'router' => 'inventory.store',
-                                    'group'  => '14',
-                                    'route'  => '112',
-                                    'menu'   => '8',
-                                    'item'   => '114',
+                                    'title'  => '',
+                                    'button' => $add['button'],
+                                    'router' => $add['router'],
+                                    'group'  => $add['group'],
+                                    'route'  => $add['route'],
+                                    'menu'   => $add['menu'],
+                                    'item'   => $add['item'],
                                     'color'  => 'primary',
                                     'size'   => 'sm',
-                                    'title'  => '',
                                     'icon'   => 'fas fa-plus'
                                 ])@endcomponent
 
                                 <!-- categorias -->
                                 @component('layouts.components.button', [
                                     'text'   => 'Categorias',
-                                    'button' => '',
-                                    'router' => 'inventory.category.list',
-                                    'group'  => '13',
-                                    'route'  => '100',
-                                    'menu'   => '8',
-                                    'item'   => '102',
+                                    'title'  => '',
+                                    'button' => $sub['button'],
+                                    'router' => $sub['router'],
+                                    'group'  => $sub['group'],
+                                    'route'  => $sub['route'],
+                                    'menu'   => $sub['menu'],
+                                    'item'   => $sub['item'],
                                     'color'  => 'default',
                                     'size'   => 'sm',
-                                    'title'  => '',
                                     'icon'   => 'fas fa-boxes'
                                 ])@endcomponent
 
                                 <!-- lista de deletados -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
-                                    'button' => '',
-                                    'router' => 'inventory.list.deleted',
-                                    'group'  => '14',
-                                    'route'  => '110',
-                                    'menu'   => '8',
-                                    'item'   => '112',
+                                    'title'  => 'Lista de deletados',
+                                    'button' => $list['button'],
+                                    'router' => $list['router'],
+                                    'group'  => $list['group'],
+                                    'route'  => $list['route'],
+                                    'menu'   => $list['menu'],
+                                    'item'   => $list['item'],
                                     'color'  => 'danger',
                                     'size'   => 'sm',
-                                    'title'  => 'Lista de deletados',
                                     'icon'   => 'far fa-trash-alt'
                                 ])@endcomponent
                             </div>

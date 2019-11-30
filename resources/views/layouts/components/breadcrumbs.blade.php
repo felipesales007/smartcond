@@ -1,7 +1,7 @@
 <div class="header bg-gradient-primary pb-7 pb-xl-8 pt-6 pt-md-7 pt-xl-8 mb--7 mb-xl--8">
     <div class="align-items-center mb-4 mt-md--3 mt-xl--5 ml-md-3 ml-sm-0">
         <div class="col-lg-10 col-sm-8 col-6">
-            <h6 class="h2 text-white d-inline-block fe-mouse mb-0">{{ \App\Models\Menu\Menu::getMenu($title)['name'] }}</h6>
+            <h6 class="h2 text-white d-inline-block fe-mouse mb-0">{{ $title }}</h6>
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-3">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item">
