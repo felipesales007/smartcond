@@ -197,7 +197,7 @@ class PermissionController extends Controller
      * Mostrar o formulário para editar o recurso especificado.
      *
      * @param Request $id
-     * @return Factory|View
+     * @return Factory|RedirectResponse|View
      */
     public function edit(Request $id)
     {

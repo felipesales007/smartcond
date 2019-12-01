@@ -656,7 +656,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Alterar permissões',
             'button'      => 'btn-edit-permission-user',
-            'description' => 'Item do menu da listagem de usuários sem permissões de acesso a página de permissões do usuário',
+            'description' => 'Item do menu da listagem de usuários sem ou com permissões de acesso a página de permissões do usuário',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
