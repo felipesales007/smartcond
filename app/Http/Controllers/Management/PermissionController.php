@@ -217,6 +217,7 @@ class PermissionController extends Controller
             ->join('menu_items', 'menu_items.route_id', '=', 'routes.id')
             ->join('menu', 'menu.id', '=', 'menu_items.menu_id')
             ->groupBy('groups.name')
+            ->orderBy('menu.order', 'asc')
             ->orderBy('level_id', 'desc')
             ->orderBy('groups.name', 'asc')
             ->where('permissions.user_id', '=', auth()->id())
