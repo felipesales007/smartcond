@@ -18,8 +18,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $page = PageHelpers::page('inventory.dashboard');
-        $list = PageHelpers::page('inventory.list');
+        $page = PageHelpers::page('110');
+        $list = PageHelpers::page('111');
 
         return view('administrative.inventories.inventories.dashboard.page', compact('page', 'list'));
     }
@@ -29,11 +29,9 @@ class DashboardController extends Controller
      */
     public function data()
     {
-        $data = [
+        return [
             'counts' => $this->getCounts()
         ];
-
-        return $data;
     }
 
     /**
@@ -41,11 +39,9 @@ class DashboardController extends Controller
      */
     public function getCounts()
     {
-        $cards = [
+        return [
             'getCount'        => Inventory::where('entity_id', '=', Entity::id())->count(),
             'getCountDeleted' => Inventory::where('entity_id', '=', Entity::id())->where('deleted_at', '!=', null)->count(),
         ];
-
-        return $cards;
     }
 }

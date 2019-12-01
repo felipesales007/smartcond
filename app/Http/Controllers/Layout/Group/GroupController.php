@@ -122,12 +122,12 @@ class GroupController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('group.list');
-        $list = PageHelpers::page('group.list.deleted');
-        $dash = PageHelpers::page('group.dashboard');
-        $add  = PageHelpers::page('group.store');
+        $dash = PageHelpers::page('56');
+        $page = PageHelpers::page('57');
+        $list = PageHelpers::page('58');
+        $add  = PageHelpers::page('60');
 
-        return view('layout.groups.tables.all.page', compact('page', 'list', 'dash', 'add'));
+        return view('layout.groups.tables.all.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**
@@ -324,12 +324,12 @@ class GroupController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('group.list.deleted');
-        $list = PageHelpers::page('group.list');
-        $dash = PageHelpers::page('group.dashboard');
-        $add  = PageHelpers::page('group.store');
+        $dash = PageHelpers::page('56');
+        $page = PageHelpers::page('58');
+        $list = PageHelpers::page('57');
+        $add  = PageHelpers::page('60');
 
-        return view('layout.groups.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
+        return view('layout.groups.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**

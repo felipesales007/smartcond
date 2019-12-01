@@ -6,6 +6,7 @@
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
         @slot('title'){{ $page['menu_name'] }}@endslot
+        <li class="breadcrumb-item"><a href="{{ app('router')->has($sub['router']) ? route($sub['router']) : url('/') }}">{{ $sub['item_name'] }}</a></li>
         <li class="breadcrumb-item"><a href="{{ app('router')->has($list['router']) ? route($list['router']) : url('/') }}">{{ $list['item_name'] }}</a></li>
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
 

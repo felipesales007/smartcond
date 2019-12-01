@@ -168,12 +168,12 @@ class EntityController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('entity.list');
-        $list = PageHelpers::page('entity.list.deleted');
-        $dash = PageHelpers::page('entity.dashboard');
-        $add  = PageHelpers::page('entity.store');
+        $dash = PageHelpers::page('40');
+        $page = PageHelpers::page('41');
+        $list = PageHelpers::page('42');
+        $add  = PageHelpers::page('45');
 
-        return view('management.entities.tables.all.page', compact('page', 'list', 'dash', 'add'));
+        return view('management.entities.tables.all.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**
@@ -511,12 +511,12 @@ class EntityController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('entity.list.deleted');
-        $list = PageHelpers::page('entity.list');
-        $dash = PageHelpers::page('entity.dashboard');
-        $add  = PageHelpers::page('entity.store');
+        $dash = PageHelpers::page('40');
+        $page = PageHelpers::page('42');
+        $list = PageHelpers::page('41');
+        $add  = PageHelpers::page('45');
 
-        return view('management.entities.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
+        return view('management.entities.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**
@@ -792,8 +792,8 @@ class EntityController extends Controller
             return back()->with('notify', json_encode($data));
         }
 
-        $page = PageHelpers::page('entity.list.users');
-        $add  = PageHelpers::page('entity.user.store');
+        $page = PageHelpers::page('43');
+        $add  = PageHelpers::page('46');
 
         return view('management.entities.tables.users.page', compact('page', 'add', 'entity'));
     }

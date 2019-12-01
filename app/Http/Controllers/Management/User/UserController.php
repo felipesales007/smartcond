@@ -209,12 +209,12 @@ class UserController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('user.list');
-        $list = PageHelpers::page('user.list.deleted');
-        $dash = PageHelpers::page('user.dashboard');
-        $add  = PageHelpers::page('user.store');
+        $dash = PageHelpers::page('17');
+        $page = PageHelpers::page('18');
+        $list = PageHelpers::page('19');
+        $add  = PageHelpers::page('21');
 
-        return view('management.users.tables.all.page', compact('page', 'list', 'dash', 'add'));
+        return view('management.users.tables.all.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**
@@ -609,7 +609,7 @@ class UserController extends Controller
      * Exibir uma listagem do recurso.
      *
      * @param Request $request
-     * @return Factory|View
+     * @return Factory|JsonResponse|View
      * @throws Exception
      */
     public function listDeleted(Request $request)
@@ -703,12 +703,12 @@ class UserController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('user.list.deleted');
-        $list = PageHelpers::page('user.list');
-        $dash = PageHelpers::page('user.dashboard');
-        $add  = PageHelpers::page('user.store');
+        $dash = PageHelpers::page('17');
+        $page = PageHelpers::page('19');
+        $list = PageHelpers::page('18');
+        $add  = PageHelpers::page('21');
 
-        return view('management.users.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
+        return view('management.users.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**

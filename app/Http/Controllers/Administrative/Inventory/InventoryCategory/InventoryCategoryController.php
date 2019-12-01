@@ -108,13 +108,13 @@ class InventoryCategoryController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('inventory.category.list');
-        $list = PageHelpers::page('inventory.category.list.deleted');
-        $dash = PageHelpers::page('inventory.category.dashboard');
-        $add  = PageHelpers::page('inventory.category.store');
-        $sub  = PageHelpers::page('inventory.list');
+        $dash = PageHelpers::page('101');
+        $page = PageHelpers::page('102');
+        $list = PageHelpers::page('103');
+        $add  = PageHelpers::page('105');
+        $sub  = PageHelpers::page('111');
 
-        return view('administrative.inventories.inventory-categories.tables.all.page', compact('page', 'list', 'dash', 'add', 'sub'));
+        return view('administrative.inventories.inventory-categories.tables.all.page', compact('dash', 'page', 'list', 'add', 'sub'));
     }
 
     /**
@@ -278,12 +278,13 @@ class InventoryCategoryController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('inventory.category.list.deleted');
-        $list = PageHelpers::page('inventory.category.list');
-        $dash = PageHelpers::page('inventory.category.dashboard');
-        $add  = PageHelpers::page('inventory.category.store');
+        $dash = PageHelpers::page('101');
+        $page = PageHelpers::page('103');
+        $list = PageHelpers::page('102');
+        $add  = PageHelpers::page('105');
+        $sub  = PageHelpers::page('111');
 
-        return view('administrative.inventories.inventory-categories.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
+        return view('administrative.inventories.inventory-categories.tables.deleted.page', compact('dash', 'page', 'list', 'add', 'sub'));
     }
 
     /**

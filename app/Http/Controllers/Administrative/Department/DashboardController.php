@@ -18,8 +18,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $page = PageHelpers::page('department.dashboard');
-        $list = PageHelpers::page('department.list');
+        $page = PageHelpers::page('92');
+        $list = PageHelpers::page('93');
 
         return view('administrative.departments.dashboard.page', compact('page', 'list'));
     }
@@ -29,11 +29,9 @@ class DashboardController extends Controller
      */
     public function data()
     {
-        $data = [
+        return [
             'counts' => $this->getCounts()
         ];
-
-        return $data;
     }
 
     /**
@@ -41,11 +39,9 @@ class DashboardController extends Controller
      */
     public function getCounts()
     {
-        $cards = [
+        return [
             'getCount'        => Department::where('entity_id', '=', Entity::id())->count(),
             'getCountBlocked' => Department::where('entity_id', '=', Entity::id())->where('blocked', '!=', null)->count()
         ];
-
-        return $cards;
     }
 }

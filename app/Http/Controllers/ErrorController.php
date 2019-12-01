@@ -21,7 +21,7 @@ class ErrorController extends Controller
     /**
      * Retorna para página 404.
      *
-     * @return Factory|View
+     * @return Factory|View|void
      */
     public function error404()
     {

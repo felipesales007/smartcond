@@ -156,12 +156,12 @@ class MenuItemController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('menu.item.list');
-        $list = PageHelpers::page('menu.item.list.deleted');
-        $dash = PageHelpers::page('menu.item.dashboard');
-        $add  = PageHelpers::page('menu.item.store');
+        $dash = PageHelpers::page('83');
+        $page = PageHelpers::page('84');
+        $list = PageHelpers::page('85');
+        $add  = PageHelpers::page('87');
 
-        return view('layout.menu-items.tables.all.page', compact('page', 'list', 'dash', 'add'));
+        return view('layout.menu-items.tables.all.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**
@@ -406,12 +406,12 @@ class MenuItemController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('menu.item.list.deleted');
-        $list = PageHelpers::page('menu.item.list');
-        $dash = PageHelpers::page('menu.item.dashboard');
-        $add  = PageHelpers::page('menu.item.store');
+        $dash = PageHelpers::page('83');
+        $page = PageHelpers::page('85');
+        $list = PageHelpers::page('84');
+        $add  = PageHelpers::page('87');
 
-        return view('layout.menu-items.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
+        return view('layout.menu-items.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**

@@ -17,8 +17,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $page = PageHelpers::page('company.dashboard');
-        $list = PageHelpers::page('company.list');
+        $page = PageHelpers::page('28');
+        $list = PageHelpers::page('29');
 
         return view('management.companies.dashboard.page', compact('page', 'list'));
     }
@@ -28,11 +28,9 @@ class DashboardController extends Controller
      */
     public function data()
     {
-        $data = [
+        return [
             'counts' => $this->getCounts()
         ];
-
-        return $data;
     }
 
     /**
@@ -40,7 +38,7 @@ class DashboardController extends Controller
      */
     public function getCounts()
     {
-        $cards = [
+        return [
             'getCount' => Company::when(Company::id() != '1', function ($query) {
                     $query->where('companies.id', '=', Company::id());
                 })
@@ -65,7 +63,5 @@ class DashboardController extends Controller
                 ->orWhere('blocked_at', '>=', date('Y-m-d'))
                 ->count()
         ];
-
-        return $cards;
     }
 }

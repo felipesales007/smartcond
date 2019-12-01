@@ -20,8 +20,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $page = PageHelpers::page('user.dashboard');
-        $list = PageHelpers::page('user.list');
+        $page = PageHelpers::page('17');
+        $list = PageHelpers::page('18');
 
         return view('management.users.dashboard.page', compact('page', 'list'));
     }
@@ -31,13 +31,11 @@ class DashboardController extends Controller
      */
     public function data()
     {
-        $data = [
+        return [
             'counts'  => $this->getCounts(),
             'added'   => $this->getMonthstData(),
             'genders' => $this->getGendersCount()
         ];
-
-        return $data;
     }
 
     /**
@@ -45,7 +43,7 @@ class DashboardController extends Controller
      */
     public function getCounts()
     {
-        $cards = [
+        return [
             'getCount' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '0')
                 ->when(auth()->user()['admin'] == '0', function ($query) {
@@ -88,8 +86,6 @@ class DashboardController extends Controller
                 ->get()
                 ->count(),
         ];
-
-        return $cards;
     }
 
     /**
@@ -119,12 +115,10 @@ class DashboardController extends Controller
                 return $users->count();
             });
 
-        $genders = [
+        return [
             'names' => $names,
             'count' => $count
         ];
-
-        return $genders;
     }
 
     /**
@@ -159,9 +153,7 @@ class DashboardController extends Controller
      */
     public function getMonthsCount($month)
     {
-        $months_count = User::where('admin', '=', '0')->whereMonth('created_at', $month)->get()->count();
-
-        return $months_count;
+        return User::where('admin', '=', '0')->whereMonth('created_at', $month)->get()->count();
     }
 
     /**
@@ -182,11 +174,9 @@ class DashboardController extends Controller
             }
         }
 
-        $months_data_array = [
+        return [
             'months'       => $month_name_array,
             'count_months' => $months_count_array
         ];
-
-        return $months_data_array;
     }
 }

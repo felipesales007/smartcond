@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $page = PageHelpers::page('home.index');
+        $page = PageHelpers::page('1');
 
         return view('home', compact('page'));
     }

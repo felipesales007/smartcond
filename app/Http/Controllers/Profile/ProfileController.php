@@ -55,7 +55,7 @@ class ProfileController extends Controller
             ->where('user_id', '=', auth()->id())
             ->first();
 
-        $page = PageHelpers::page('profile.edit');
+        $page = PageHelpers::page('2');
 
         return view('profile.edit.page', compact('page', 'entities', 'company'));
     }
@@ -198,7 +198,7 @@ class ProfileController extends Controller
      * Atualizar dados especificado no armazenamento.
      *
      * @param Request $request
-     * @return RedirectResponse
+     * @return JsonResponse|RedirectResponse
      */
     public function entity(Request $request)
     {

@@ -103,8 +103,8 @@ class PermissionController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('permission.user.list.without');
-        $list = PageHelpers::page('permission.user.list.with');
+        $page = PageHelpers::page('52');
+        $list = PageHelpers::page('53');
 
         return view('management.permissions.tables.without-permissions.page', compact('page', 'list'));
     }
@@ -187,8 +187,8 @@ class PermissionController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('permission.user.list.with');
-        $list = PageHelpers::page('permission.user.list.without');
+        $page = PageHelpers::page('53');
+        $list = PageHelpers::page('52');
 
         return view('management.permissions.tables.with-permissions.page', compact('page', 'list'));
     }
@@ -243,7 +243,7 @@ class PermissionController extends Controller
             ->pluck('routes.id')
             ->all();
 
-        $page = PageHelpers::page('permission.user.edit');
+        $page = PageHelpers::page('55');
 
         return view('management.permissions.edit.page', compact('page', 'user', 'groups', 'permissions', 'accesses'));
     }

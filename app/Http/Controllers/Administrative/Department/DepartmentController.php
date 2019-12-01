@@ -108,12 +108,12 @@ class DepartmentController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('department.list');
-        $list = PageHelpers::page('department.list.deleted');
-        $dash = PageHelpers::page('department.dashboard');
-        $add  = PageHelpers::page('department.store');
+        $dash = PageHelpers::page('92');
+        $page = PageHelpers::page('93');
+        $list = PageHelpers::page('94');
+        $add  = PageHelpers::page('96');
 
-        return view('administrative.departments.tables.all.page', compact('page', 'list', 'dash', 'add'));
+        return view('administrative.departments.tables.all.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**
@@ -277,12 +277,12 @@ class DepartmentController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('department.list.deleted');
-        $list = PageHelpers::page('department.list');
-        $dash = PageHelpers::page('department.dashboard');
-        $add  = PageHelpers::page('department.store');
+        $dash = PageHelpers::page('92');
+        $page = PageHelpers::page('94');
+        $list = PageHelpers::page('93');
+        $add  = PageHelpers::page('96');
 
-        return view('administrative.departments.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
+        return view('administrative.departments.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**

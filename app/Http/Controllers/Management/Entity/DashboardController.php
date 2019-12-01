@@ -17,8 +17,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $page = PageHelpers::page('entity.dashboard');
-        $list = PageHelpers::page('entity.list');
+        $page = PageHelpers::page('40');
+        $list = PageHelpers::page('41');
 
         return view('management.entities.dashboard.page', compact('page', 'list'));
     }
@@ -28,11 +28,9 @@ class DashboardController extends Controller
      */
     public function data()
     {
-        $data = [
+        return [
             'counts' => $this->getCounts()
         ];
-
-        return $data;
     }
 
     /**
@@ -40,7 +38,7 @@ class DashboardController extends Controller
      */
     public function getCounts()
     {
-        $cards = [
+        return [
             'getCount' => Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
                 ->when(auth()->user()['admin'] == '0', function ($query) {
                     $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
@@ -69,7 +67,5 @@ class DashboardController extends Controller
                 ->orWhere('blocked_at', '>=', date('Y-m-d'))
                 ->count()
         ];
-
-        return $cards;
     }
 }

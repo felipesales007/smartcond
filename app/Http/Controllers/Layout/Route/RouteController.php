@@ -144,12 +144,12 @@ class RouteController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('route.list');
-        $list = PageHelpers::page('route.list.deleted');
-        $dash = PageHelpers::page('route.dashboard');
-        $add  = PageHelpers::page('route.store');
+        $dash = PageHelpers::page('65');
+        $page = PageHelpers::page('66');
+        $list = PageHelpers::page('67');
+        $add  = PageHelpers::page('69');
 
-        return view('layout.routes.tables.all.page', compact('page', 'list', 'dash', 'add'));
+        return view('layout.routes.tables.all.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**
@@ -383,12 +383,12 @@ class RouteController extends Controller
                 ->toJson();
         }
 
-        $page = PageHelpers::page('route.list.deleted');
-        $list = PageHelpers::page('route.list');
-        $dash = PageHelpers::page('route.dashboard');
-        $add  = PageHelpers::page('route.store');
+        $dash = PageHelpers::page('65');
+        $page = PageHelpers::page('67');
+        $list = PageHelpers::page('66');
+        $add  = PageHelpers::page('69');
 
-        return view('layout.routes.tables.deleted.page', compact('page', 'list', 'dash', 'add'));
+        return view('layout.routes.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
     }
 
     /**

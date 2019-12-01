@@ -18,8 +18,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $page = PageHelpers::page('group.dashboard');
-        $list = PageHelpers::page('group.list');
+        $page = PageHelpers::page('56');
+        $list = PageHelpers::page('57');
 
         return view('layout.groups.dashboard.page', compact('page', 'list'));
     }
@@ -29,11 +29,9 @@ class DashboardController extends Controller
      */
     public function data()
     {
-        $data = [
+        return [
             'counts' => $this->getCounts()
         ];
-
-        return $data;
     }
 
     /**

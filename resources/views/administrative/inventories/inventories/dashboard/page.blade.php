@@ -13,7 +13,7 @@
         @slot('link')
             <!-- lista -->
             @component('layouts.components.button', [
-                'text'   => 'Departamentos',
+                'text'   => 'Inventário',
                 'title'  => '',
                 'button' => $list['button'],
                 'router' => $list['router'],
