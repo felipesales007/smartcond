@@ -12,9 +12,9 @@
             <div class="ml-auto mt-1">
                 <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
                     <div class="sidenav-toggler-inner">
-                        <i class="sidenav-toggler-line"></i>
-                        <i class="sidenav-toggler-line"></i>
-                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line bg-primary"></i>
+                        <i class="sidenav-toggler-line bg-primary"></i>
+                        <i class="sidenav-toggler-line bg-primary"></i>
                     </div>
                 </div>
             </div>
