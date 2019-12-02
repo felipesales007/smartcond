@@ -80,7 +80,7 @@
                                                                 <label class="custom-control-label" for="checkbox-all-{{ $index }}">
                                                                     <span class="mt-0">
                                                                         <i class="{{ $group['icon'] }} mr-2"></i>
-                                                                        <span class="h6 text-muted position-absolute mt--3">{{ explode('/', $group['name'])[0] }}</span>
+                                                                        <span class="h6 text-muted text-truncate position-absolute mt--3">{{ explode('/', $group['name'])[0] }}</span>
                                                                         {{ isset(explode('/', $group['name'])[2]) ? explode('/', $group['name'])[1] . '/' . explode('/', $group['name'])[2] : explode('/', $group['name'])[1] ?? explode('/', $group['name'])[0] }}
                                                                     </span>
                                                                 </label>
@@ -150,7 +150,7 @@
                                                             <label class="custom-control-label" for="checkbox-all-{{ $index }}">
                                                                 <span class="mt-0">
                                                                     <i class="{{ $group['icon'] }} mr-2"></i>
-                                                                    <span class="h6 text-muted position-absolute mt--3">{{ explode('/', $group['name'])[0] }}</span>
+                                                                    <span class="h6 text-muted text-truncate position-absolute mt--3">{{ explode('/', $group['name'])[0] }}</span>
                                                                     {{ isset(explode('/', $group['name'])[2]) ? explode('/', $group['name'])[1] . '/' . explode('/', $group['name'])[2] : explode('/', $group['name'])[1] ?? explode('/', $group['name'])[0] }}
                                                                 </span>
                                                             </label>
@@ -219,7 +219,7 @@
                                                         <label class="custom-control-label" for="checkbox-all-{{ $index }}">
                                                             <span class="mt-0">
                                                                 <i class="{{ $group['icon'] }} mr-2"></i>
-                                                                <span class="h6 text-muted position-absolute mt--3">{{ explode('/', $group['name'])[0] }}</span>
+                                                                <span class="h6 text-muted text-truncate position-absolute mt--3">{{ explode('/', $group['name'])[0] }}</span>
                                                                 {{ isset(explode('/', $group['name'])[2]) ? explode('/', $group['name'])[1] . '/' . explode('/', $group['name'])[2] : explode('/', $group['name'])[1] ?? explode('/', $group['name'])[0] }}
                                                             </span>
                                                         </label>
