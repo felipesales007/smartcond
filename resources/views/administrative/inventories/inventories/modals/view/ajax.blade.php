@@ -110,8 +110,8 @@
 
                     // data da garantia
                     if (data.warranty_date) {
-                        let days = moment(date_to_date_br(data.warranty_date), 'DD/MM/YYYY').diff(moment(), 'days');
-                        days = moment(days).add(1, 'days').format('d');
+                        let days = moment(date_to_date_br(data.warranty_date), 'DD/MM/YYYY');
+                        days = moment(days).add(2, 'days').diff(moment(), 'days');
 
                         if (days > 0) {
                             if (days === '1') {
