@@ -463,7 +463,7 @@ $(function () {
 // manual validations
 $('form').submit(function () {
     if ($(this).html().indexOf('form-control') > 0 || $(this).html().indexOf('custom-control-input') > 0) {
-        $('input').valid();
+        $(this).valid();
     }
 
     if ($(this).html().indexOf('select') > 0) {
