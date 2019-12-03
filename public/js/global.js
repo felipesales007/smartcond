@@ -1195,6 +1195,22 @@ $('button[type="submit"]').on('click', function () {
     }
 });
 
+// event for animation when form is invalid
+$('.fe-animation-invalid').on('click', function () {
+    let form = $(this).parent().parent().parent().parent();
+
+    form.find(':input').filter('[required]:visible').each(function (index, e) {
+        if (e.value === null || e.value === '') {
+            formInvalidAnimate(form);
+        }
+    });
+
+    if (form.find('.invalid-feedback').length > 0) {
+        formInvalidAnimate(form);
+        form.find('.invalid-feedback').addClass('valid-feedback').removeClass('invalid-feedback');
+    }
+});
+
 // event for animation when form is invalid via post
 $(window).on('load', function () {
     let form = $('button[type="submit"]').parent().parent().parent().parent();

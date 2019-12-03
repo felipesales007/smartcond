@@ -323,7 +323,7 @@
                     </div>
                     <!-- botões -->
                     <div class="text-right float-right fe-form-footer">
-                        <button type="submit" id="btn-new-other-inventory" class="btn btn-icon-only btn-outline-success rounded-circle position-relative float-left ml-4" title="Clique para criar outro item igual">
+                        <button id="btn-new-other-inventory" class="btn btn-icon-only btn-outline-success rounded-circle position-relative float-left ml-4 fe-animation-invalid" title="Clique para criar outro item igual">
                             <i class="far fa-copy"></i>
                         </button>
                         <a href="javascript:void(0)" class="mr-4" data-dismiss="modal">{{ __('Cancelar') }}</a>
