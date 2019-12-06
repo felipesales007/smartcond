@@ -1224,3 +1224,16 @@ $(window).on('load', function () {
 $('body').tooltip({
     selector: '[data-toggle="tooltip"]'
 });
+
+// zero left
+function zero_left(value, quantity) {
+    if (quantity) {
+        if (value) {
+            return value.toString().padStart(quantity, '0');
+        }
+
+        return null;
+    } else {
+        return value;
+    }
+}

@@ -37,7 +37,12 @@ class RouteController extends Controller
                 return datatables([])->toJson();
             }
 
-            return view('layout.routes.tables.all.page');
+            $dash = PageHelpers::page('65');
+            $page = PageHelpers::page('66');
+            $list = PageHelpers::page('67');
+            $add  = PageHelpers::page('69');
+
+            return view('layout.routes.tables.all.page', compact('dash', 'page', 'list', 'add'));
         }
 
         // filtragem do datatable
@@ -301,7 +306,12 @@ class RouteController extends Controller
                 return datatables([])->toJson();
             }
 
-            return view('layout.routes.tables.deleted.page');
+            $dash = PageHelpers::page('65');
+            $page = PageHelpers::page('67');
+            $list = PageHelpers::page('66');
+            $add  = PageHelpers::page('69');
+
+            return view('layout.routes.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
         }
 
         // filtragem do datatable

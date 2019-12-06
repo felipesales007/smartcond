@@ -37,7 +37,12 @@ class MenuItemController extends Controller
                 return datatables([])->toJson();
             }
 
-            return view('layout.menu-items.tables.all.page');
+            $dash = PageHelpers::page('83');
+            $page = PageHelpers::page('84');
+            $list = PageHelpers::page('85');
+            $add  = PageHelpers::page('87');
+
+            return view('layout.menu-items.tables.all.page', compact('dash', 'page', 'list', 'add'));
         }
 
         // filtragem do datatable
@@ -312,7 +317,12 @@ class MenuItemController extends Controller
                 return datatables([])->toJson();
             }
 
-            return view('layout.menu-items.tables.deleted.page');
+            $dash = PageHelpers::page('83');
+            $page = PageHelpers::page('85');
+            $list = PageHelpers::page('84');
+            $add  = PageHelpers::page('87');
+
+            return view('layout.menu-items.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
         }
 
         // filtragem do datatable

@@ -190,4 +190,38 @@ class FormatHelpers
             return null;
         }
     }
+
+    /**
+     * @param $value
+     * @param $quantity
+     * @return string|null
+     */
+    static function zero_left($value, $quantity = '2')
+    {
+        return $value ? str_pad($value, $quantity, '0', STR_PAD_LEFT) : null;
+    }
+
+    /**
+     * @param $value
+     * @return array|string|null
+     */
+    static function remove_zero_left($value)
+    {
+        if ($value) {
+            if (strpos($value, '.')) {
+                $value = explode('.', $value);
+                if (count($value) == 2) {
+                    $value = ltrim($value[0], '0') . '.' . ltrim($value[1], '0');
+                } else if(count($value) == 3) {
+                    $value = ltrim($value[0], '0') . '.' . ltrim($value[1], '0') . '.' . ltrim($value[2], '0');
+                }
+            } else {
+                $value = ltrim($value, '0');
+            }
+
+            return $value;
+        } else {
+            return null;
+        }
+    }
 }

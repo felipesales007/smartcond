@@ -37,7 +37,12 @@ class GroupController extends Controller
                 return datatables([])->toJson();
             }
 
-            return view('layout.groups.tables.all.page');
+            $dash = PageHelpers::page('56');
+            $page = PageHelpers::page('57');
+            $list = PageHelpers::page('58');
+            $add  = PageHelpers::page('60');
+
+            return view('layout.groups.tables.all.page', compact('dash', 'page', 'list', 'add'));
         }
 
         // filtragem do datatable
@@ -264,7 +269,12 @@ class GroupController extends Controller
                 return datatables([])->toJson();
             }
 
-            return view('layout.groups.tables.deleted.page');
+            $dash = PageHelpers::page('56');
+            $page = PageHelpers::page('58');
+            $list = PageHelpers::page('57');
+            $add  = PageHelpers::page('60');
+
+            return view('layout.groups.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
         }
 
         // filtragem do datatable
