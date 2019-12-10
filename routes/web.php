@@ -183,6 +183,16 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
         Route::post('restaurar/{id?}',  ['as' => 'inventory.restore',      'uses' => 'Administrative\Inventory\Inventory\InventoryController@restore']);
     });
 
+    // condominio bloco
+    Route::group(['prefix' => 'condominio/bloco'], function () {
+        Route::get ('data',                     ['as' => 'condominium.block.data',                 'uses' => 'Condominium\Block\DashboardController@data']);
+        Route::post('atualizar/{id?}',          ['as' => 'condominium.block.update',               'uses' => 'Condominium\Block\BlockController@update']);
+        Route::post('remover/{id?}',            ['as' => 'condominium.block.destroy',              'uses' => 'Condominium\Block\BlockController@destroy']);
+        Route::post('restaurar/{id?}',          ['as' => 'condominium.block.restore',              'uses' => 'Condominium\Block\BlockController@restore']);
+        Route::post('verificar/nome',           ['as' => 'condominium.block.check.name',           'uses' => 'Condominium\Block\CheckController@checkBlockName']);
+        Route::post('verificar/nome/diferente', ['as' => 'condominium.block.check.name.different', 'uses' => 'Condominium\Block\CheckController@checkBlockNameDifferent']);
+    });
+
     // restrições de permissões
     Route::group(['middleware' => ['permission']], function () {
         // grupos do banco
@@ -382,6 +392,18 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
         Route::get ('editar/{id?}',     ['as' => 'inventory.edit',         'uses' => 'Administrative\Inventory\Inventory\InventoryController@edit']); // * btn-modal-edit-inventory
         Route::get ('deletar/{id?}',    ['as' => 'inventory.delete',       'uses' => 'Administrative\Inventory\Inventory\InventoryController@edit']); // * btn-modal-delete-inventory
         Route::get ('recuperar/{id?}',  ['as' => 'inventory.recover',      'uses' => 'Administrative\Inventory\Inventory\InventoryController@edit']); // * btn-modal-recover-inventory
+    });
+
+    // condominio bloco
+    Route::group(['prefix' => 'condominio/bloco'], function () {
+        Route::get ('dashboard',        ['as' => 'condominium.block.dashboard',    'uses' => 'Condominium\Block\DashboardController@dashboard']);
+        Route::get ('lista',            ['as' => 'condominium.block.list',         'uses' => 'Condominium\Block\BlockController@list']);
+        Route::get ('lista/deletados',  ['as' => 'condominium.block.list.deleted', 'uses' => 'Condominium\Block\BlockController@listDeleted']);
+        Route::get ('visualizar/{id?}', ['as' => 'condominium.block.view',         'uses' => 'Condominium\Block\BlockController@edit']); // * btn-modal-view-condominium-block
+        Route::post('novo',             ['as' => 'condominium.block.store',        'uses' => 'Condominium\Block\BlockController@store']); // btn-modal-new-condominium-block
+        Route::get ('editar/{id?}',     ['as' => 'condominium.block.edit',         'uses' => 'Condominium\Block\BlockController@edit']); // * btn-modal-edit-condominium-block
+        Route::get ('deletar/{id?}',    ['as' => 'condominium.block.delete',       'uses' => 'Condominium\Block\BlockController@edit']); // * btn-modal-delete-condominium-block
+        Route::get ('recuperar/{id?}',  ['as' => 'condominium.block.recover',      'uses' => 'Condominium\Block\BlockController@edit']); // * btn-modal-recover-condominium-block
     });
 
     */
