@@ -128,7 +128,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo administrador',
             'button'      => 'btn-modal-new-admin',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de administrador',
+            'description' => 'Item do menu de acesso ao modal de criação de administrador',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -260,7 +260,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo usuário',
             'button'      => 'btn-modal-new-user',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de usuário',
+            'description' => 'Item do menu de acesso ao modal de criação de usuário',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -404,7 +404,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Nova empresa',
             'button'      => 'btn-modal-new-company',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de empresa',
+            'description' => 'Item do menu de acesso ao modal de criação de empresa',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -548,7 +548,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo condomínio',
             'button'      => 'btn-modal-new-entity',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de condomínio',
+            'description' => 'Item do menu de acesso ao modal de criação de condomínio',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -728,7 +728,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo grupo',
             'button'      => 'btn-modal-new-group',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de grupo',
+            'description' => 'Item do menu de acesso ao modal de criação de grupo',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -836,7 +836,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Nova rota',
             'button'      => 'btn-modal-new-route',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de rota',
+            'description' => 'Item do menu de acesso ao modal de criação de rota',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -944,7 +944,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo menu',
             'button'      => 'btn-modal-new-menu',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de menu',
+            'description' => 'Item do menu de acesso ao modal de criação de menu',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1052,7 +1052,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo item do menu',
             'button'      => 'btn-modal-new-menu-item',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de item do menu',
+            'description' => 'Item do menu de acesso ao modal de criação de item do menu',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1160,7 +1160,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo departamento',
             'button'      => 'btn-modal-new-department',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de departamento',
+            'description' => 'Item do menu de acesso ao modal de criação de departamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1268,7 +1268,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Nova categoria do inventário',
             'button'      => 'btn-modal-new-inventory-category',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de categoria do inventário',
+            'description' => 'Item do menu de acesso ao modal de criação de categoria do inventário',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1376,7 +1376,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Novo item do inventário',
             'button'      => 'btn-modal-new-inventory',
-            'description' => 'Item do menu collapse de acesso ao modal de criação de item do inventário',
+            'description' => 'Item do menu de acesso ao modal de criação de item do inventário',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

@@ -693,6 +693,21 @@
     border-color: #8898aa;
 }
 
+.fe-text-transform-none {
+    text-transform: none !important;
+}
+
+.fe-view-user-popover {
+    position: absolute;
+    top: 66px;
+    margin-left: 50px;
+    font-size: 12px;
+}
+
+.fe-modal-footer-icon {
+    margin-top: .7rem;
+}
+
 /*
 =========================================================
 * authentication
