@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <!-- informação -->
-                    <div class="fe-mouse-off">
+                    <div class="fe-mouse">
                         <div class="mt--1">
                             <small class="text-light">{{ __('bloqueie a categoria para ele ficar impossibilitado de ações') }}</small>
                         </div>

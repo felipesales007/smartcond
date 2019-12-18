@@ -315,7 +315,7 @@
                         </div>
                     </div>
                     <!-- informação -->
-                    <div class="fe-mouse-off">
+                    <div class="fe-mouse">
                         <div class="text-right">
                             <small class="fe-text-star">{{ __('*') }}</small>
                             <small class="text-light">{{ __('campos obrigatórios') }}</small>
