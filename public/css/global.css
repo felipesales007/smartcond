@@ -840,7 +840,7 @@
     right: 0;
 }
 
-.scroll-user-view-entity {
+.scroll-view {
     max-height: 406px;
     overflow-y: auto;
 }
