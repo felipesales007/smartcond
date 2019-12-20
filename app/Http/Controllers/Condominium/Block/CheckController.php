@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Administrative\Department;
+namespace App\Http\Controllers\Condominium\Block;
 
-use App\Models\Department;
+use App\Models\Condominium\CondominiumBlock;
 use App\Models\Entity\Entity;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,7 +17,7 @@ class CheckController extends Controller
      */
     public function checkName(Request $request)
     {
-        $collection = Department::withTrashed()
+        $collection = CondominiumBlock::withTrashed()
             ->where('entity_id', '=', Entity::id())
             ->where('name', '=', $request->name)
             ->value('name');
@@ -37,12 +37,12 @@ class CheckController extends Controller
      */
     public function checkNameDifferent(Request $request)
     {
-        $myCollection = Department::withTrashed()
+        $myCollection = CondominiumBlock::withTrashed()
             ->where('entity_id', '=', Entity::id())
             ->where('id', '=', $request->id)
             ->value('name');
 
-        $verifyCollection = Department::withTrashed()
+        $verifyCollection = CondominiumBlock::withTrashed()
             ->where('entity_id', '=', Entity::id())
             ->where('name', '=', $request->name)
             ->value('name');

@@ -24,9 +24,9 @@ class DeleteBlockRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_delete_department'                => ['required', 'max:20', 'alpha_num'],
-            'name_delete_department'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
-            'name_confirmation_delete_department' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_delete_department'],
+            'id_delete_block'                => ['required', 'max:20', 'alpha_num'],
+            'name_delete_block'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
+            'name_confirmation_delete_block' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_delete_block'],
         ];
     }
 }

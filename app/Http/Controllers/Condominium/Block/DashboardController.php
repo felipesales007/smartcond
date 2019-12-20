@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Administrative\Department;
+namespace App\Http\Controllers\Condominium\Block;
 
 use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
+use App\Models\Condominium\CondominiumBlock;
 use App\Models\Department;
 use App\Models\Entity\Entity;
 use Illuminate\View\Factory;
@@ -21,7 +22,7 @@ class DashboardController extends Controller
         $page = PageHelpers::page('92');
         $list = PageHelpers::page('93');
 
-        return view('administrative.departments.dashboard.page', compact('page', 'list'));
+        return view('condominium.blocks.dashboard.page', compact('page', 'list'));
     }
 
     /**
@@ -40,8 +41,8 @@ class DashboardController extends Controller
     public function getCounts()
     {
         return [
-            'getCount'        => Department::where('entity_id', '=', Entity::id())->count(),
-            'getCountBlocked' => Department::where('entity_id', '=', Entity::id())->where('blocked', '!=', null)->count()
+            'getCount'        => CondominiumBlock::where('entity_id', '=', Entity::id())->count(),
+            'getCountBlocked' => CondominiumBlock::where('entity_id', '=', Entity::id())->where('blocked', '!=', null)->count()
         ];
     }
 }
