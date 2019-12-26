@@ -24,11 +24,11 @@ class MenuTableSeeder extends Seeder
             'updated_at'     => now()
         ]);
 
-        // 2 - perfil (link)
+        // 2 - perfil (link oculto)
         Menu::create([
             'menu_option_id' => '3',
             'color_id'       => '6',
-            'order'          => '1',
+            'order'          => '0',
             'hidden'         => '1',
             'name'           => 'Meu perfil',
             'icon'           => 'fas fa-star',
