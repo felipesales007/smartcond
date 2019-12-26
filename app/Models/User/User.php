@@ -191,6 +191,27 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Retornar todas as opções dos dados do armazenamento.
+     *
+     * @return array
+     */
+    static function getUsersEntityOptions()
+    {
+        $options = User::select('users.*')
+            ->leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            ->where('admin', '=', '0')
+            ->where('entity_id', '=', Entity::id())
+            ->get();
+        $array = [];
+
+        foreach ($options as $option) {
+            $array[$option->id] = $option->name;
+        }
+
+        return $array;
+    }
+
+    /**
      * Atributo de referência do join.
      *
      * @return BelongsTo
@@ -239,6 +260,36 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         if (auth()->user()['background']) {
             return url('storage/images/users/background/' . auth()->user()['background']);
+        }
+
+        return url('images/default/default-background.png');
+    }
+
+    /**
+     * @param $id
+     * @return UrlGenerator|string
+     */
+    public function userPicture($id)
+    {
+        $photo = User::find($id)['photo'];
+
+        if ($photo) {
+            return url('storage/images/users/photo/' . $photo);
+        }
+
+        return url('images/default/default-user.png');
+    }
+
+    /**
+     * @param $id
+     * @return UrlGenerator|string
+     */
+    public function userBackground($id)
+    {
+        $background = User::find($id)['background'];
+
+        if ($background) {
+            return url('storage/images/users/background/' . $background);
         }
 
         return url('images/default/default-background.png');

@@ -21,7 +21,7 @@ class Validator
      */
     public function alphaDigit($attribute, $value)
     {
-        return preg_match('/^[A-zÀ-ú\-. ]+$/i', $value);
+        return preg_match('/^[A-zÀ-ú\-., ]+$/i', $value);
     }
 
     /**

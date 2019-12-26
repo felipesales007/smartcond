@@ -899,7 +899,7 @@ $.validator.addMethod( "lettersaccentedspace", function( value, element ) {
 }, "O campo deve ter somente letras e espaços." );
 
 $.validator.addMethod( "lettersdigit", function( value, element ) {
-	return this.optional( element ) || /^[A-zÀ-ú\-. ]+$/i.test( value );
+	return this.optional( element ) || /^[A-zÀ-ú\-., ]+$/i.test( value );
 }, "O campo deve ter somente letras, espaços e caracteres permitidos." );
 
 $.validator.addMethod( "lettersonly", function( value, element ) {
