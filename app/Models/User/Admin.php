@@ -94,7 +94,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
      */
     static function getCount()
     {
-        return User::join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+        return User::leftJoin('company_accesses', 'company_accesses.user_id', '=', 'users.id')
             ->where('admin', '=', '1')
             ->when(Company::id() != '1', function ($query) {
                 $query->where('company_accesses.company_id', Company::id());
@@ -109,7 +109,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
      */
     static function getCountConfirmation()
     {
-        return User::join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+        return User::leftJoin('company_accesses', 'company_accesses.user_id', '=', 'users.id')
             ->where('admin', '=', '1')
             ->when(Company::id() != '1', function ($query) {
                 $query->where('company_accesses.company_id', Company::id());
@@ -125,7 +125,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
      */
     static function getCountNotConfirmation()
     {
-        return User::join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+        return User::leftJoin('company_accesses', 'company_accesses.user_id', '=', 'users.id')
             ->where('admin', '=', '1')
             ->when(Company::id() != '1', function ($query) {
                 $query->where('company_accesses.company_id', Company::id());
@@ -141,7 +141,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
      */
     static function getCountBlocked()
     {
-        return User::join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+        return User::leftJoin('company_accesses', 'company_accesses.user_id', '=', 'users.id')
             ->where('admin', '=', '1')
             ->when(Company::id() != '1', function ($query) {
                 $query->where('company_accesses.company_id', Company::id());
@@ -180,7 +180,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
         $array   = [];
 
         foreach ($options as $option) {
-            $array[$option->name] = $option->name;
+            $array[$option->id] = $option->name;
         }
 
         return $array;

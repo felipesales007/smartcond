@@ -840,8 +840,18 @@
     right: 0;
 }
 
-.scroll-user-view-entity {
-    max-height: 406px;
+.fe-scroll-view-200 {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.fe-scroll-view-300 {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.fe-scroll-view-400 {
+    max-height: 400px;
     overflow-y: auto;
 }
 

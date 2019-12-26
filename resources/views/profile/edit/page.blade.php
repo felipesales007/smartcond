@@ -68,45 +68,43 @@
                                     <div id="collapse-edit-profile-company" class="collapse" aria-labelledby="heading-edit-profile-company" data-parent="#event-edit-profile-company">
                                         <!-- accordion para visualização do condomínio -->
                                         <div id="accordion-edit-profile-company" class="accordion mb-3">
-                                            <div class="scroll-user-view-company">
-                                                <a href="javascript:void(0)" class="list-group-item list-group-item-action fe-mouse" @if (!$company) hidden @endif>
+                                            <a href="javascript:void(0)" class="list-group-item list-group-item-action fe-mouse" @if (!$company) hidden @endif>
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="avatar avatar-sm">
+                                                            <img src="{{ $company['logo'] ? url('storage/images/companies/logo/' . $company['logo']) : url('images/default/default-logo.png') }}" class="fe-img-list-view" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col ml--2">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h4 class="mb-0 text-sm">{{ $company['company'] }}</h4>
+                                                        </div>
+                                                        <p class="text-sm mb-0">{{ $company['cnpj'] }}</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            @foreach($entities as $entity)
+                                                <a href="javascript:void(0)" class="list-group-item list-group-item-action fe-mouse">
                                                     <div class="row align-items-center">
                                                         <div class="col-auto">
                                                             <div class="avatar avatar-sm">
-                                                                <img src="{{ $company['logo'] ? url('storage/images/companies/logo/' . $company['logo']) : url('images/default/default-logo.png') }}" class="fe-img-list-view" alt="">
+                                                                <img src="{{ $entity['logo'] ? url('storage/images/companies/logo/' . $entity['logo']) : url('images/default/default-logo.png') }}" class="fe-img-list-view" alt="">
                                                             </div>
                                                         </div>
                                                         <div class="col ml--2">
                                                             <div class="d-flex justify-content-between align-items-center">
-                                                                <h4 class="mb-0 text-sm">{{ $company['company'] }}</h4>
+                                                                <h4 class="mb-0 text-sm">{{ $entity['entity'] }}</h4>
+                                                                <div class="custom-control custom-radio custom-checkbox-primary" @if (count($entities) == 1) hidden @endif>
+                                                                    <small class="mr-5">{{ $entity['preferred'] == 1 ? 'principal' : 'definir como principal' }}</small>
+                                                                    <input type="radio" id="entity-edit-profile-id-{{ $entity['id'] }}" name="entity_edit_profile_id" class="custom-control-input ignore" value="{{ $entity['id'] }}" @if ($entity['preferred'] == 1) checked @endif>
+                                                                    <label class="custom-control-label" for="entity-edit-profile-id-{{ $entity['id'] }}"></label>
+                                                                </div>
                                                             </div>
-                                                            <p class="text-sm mb-0">{{ $company['cnpj'] }}</p>
+                                                            <p class="text-sm mb-0">{{ $entity['cnpj'] }}</p>
                                                         </div>
                                                     </div>
                                                 </a>
-                                                @foreach($entities as $entity)
-                                                    <a href="javascript:void(0)" class="list-group-item list-group-item-action fe-mouse">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-auto">
-                                                                <div class="avatar avatar-sm">
-                                                                    <img src="{{ $entity['logo'] ? url('storage/images/companies/logo/' . $entity['logo']) : url('images/default/default-logo.png') }}" class="fe-img-list-view" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col ml--2">
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <h4 class="mb-0 text-sm">{{ $entity['entity'] }}</h4>
-                                                                    <div class="custom-control custom-radio custom-checkbox-primary" @if (count($entities) == 1) hidden @endif>
-                                                                        <small class="mr-5">{{ $entity['preferred'] == 1 ? 'principal' : 'definir como principal' }}</small>
-                                                                        <input type="radio" id="entity-edit-profile-id-{{ $entity['id'] }}" name="entity_edit_profile_id" class="custom-control-input ignore" value="{{ $entity['id'] }}" @if ($entity['preferred'] == 1) checked @endif>
-                                                                        <label class="custom-control-label" for="entity-edit-profile-id-{{ $entity['id'] }}"></label>
-                                                                    </div>
-                                                                </div>
-                                                                <p class="text-sm mb-0">{{ $entity['cnpj'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                @endforeach
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

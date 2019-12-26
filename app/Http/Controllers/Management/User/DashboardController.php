@@ -44,7 +44,7 @@ class DashboardController extends Controller
     public function getCounts()
     {
         return [
-            'getCount' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            'getCount' => User::leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '0')
                 ->when(auth()->user()['admin'] == '0', function ($query) {
                     $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
@@ -53,7 +53,7 @@ class DashboardController extends Controller
                 ->get()
                 ->count(),
 
-            'getCountConfirmation' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            'getCountConfirmation' => User::leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '0')
                 ->where('email_verified_at', '!=', null)
                 ->when(auth()->user()['admin'] == '0', function ($query) {
@@ -63,7 +63,7 @@ class DashboardController extends Controller
                 ->get()
                 ->count(),
 
-            'getCountNotConfirmation' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            'getCountNotConfirmation' => User::leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '0')
                 ->where('email_verified_at', '=', null)
                 ->when(auth()->user()['admin'] == '0', function ($query) {
@@ -73,7 +73,7 @@ class DashboardController extends Controller
                 ->get()
                 ->count(),
 
-            'getCountBlocked' => User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+            'getCountBlocked' => User::leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '0')
                 ->where('blocked', '!=', null)
                 ->where(function ($query) {

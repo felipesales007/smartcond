@@ -44,7 +44,7 @@
                                 <!-- accordion para edições especiais -->
                                 <div id="accordion-view-user-entity" class="accordion mt-3">
                                     <!-- condomínio do usuário via ajax -->
-                                    <div id="scroll-user-view-entity" class="scroll-user-view-entity"></div>
+                                    <div id="scroll-user-view-entity" class="fe-scroll-view-400"></div>
                                 </div>
                             </div>
                         </div>

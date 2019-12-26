@@ -88,7 +88,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getCount()
     {
-        return User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+        return User::leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
             ->where('admin', '=', '0')
             ->when(auth()->user()['admin'] == '0', function ($query) {
                 $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
@@ -105,7 +105,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getCountConfirmation()
     {
-        return User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+        return User::leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
             ->where('admin', '=', '0')
             ->where('email_verified_at', '!=', null)
             ->when(auth()->user()['admin'] == '0', function ($query) {
@@ -123,7 +123,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getCountNotConfirmation()
     {
-        return User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+        return User::leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
             ->where('admin', '=', '0')
             ->where('email_verified_at', '=', null)
             ->when(auth()->user()['admin'] == '0', function ($query) {
@@ -141,7 +141,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     static function getCountBlocked()
     {
-        return User::join('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
+        return User::leftJoin('entity_accesses', 'entity_accesses.user_id', '=', 'users.id')
             ->where('admin', '=', '0')
             ->where('blocked', '!=', null)
             ->where(function ($query) {
@@ -184,7 +184,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $array   = [];
 
         foreach ($options as $option) {
-            $array[$option->name] = $option->name;
+            $array[$option->id] = $option->name;
         }
 
         return $array;

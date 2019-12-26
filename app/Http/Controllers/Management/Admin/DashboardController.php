@@ -44,14 +44,14 @@ class DashboardController extends Controller
     public function getCounts()
     {
         return [
-            'getCount' => User::join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+            'getCount' => User::leftJoin('company_accesses', 'company_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '1')
                 ->when(Company::id() != '1', function ($query) {
                     $query->where('company_accesses.company_id', '=', Company::id());
                 })
                 ->count(),
 
-            'getCountConfirmation' => User::join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+            'getCountConfirmation' => User::leftJoin('company_accesses', 'company_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '1')
                 ->when(Company::id() != '1', function ($query) {
                     $query->where('company_accesses.company_id', '=', Company::id());
@@ -59,7 +59,7 @@ class DashboardController extends Controller
                 ->where('email_verified_at', '!=', null)
                 ->count(),
 
-            'getCountNotConfirmation' => User::join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+            'getCountNotConfirmation' => User::leftJoin('company_accesses', 'company_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '1')
                 ->when(Company::id() != '1', function ($query) {
                     $query->where('company_accesses.company_id', '=', Company::id());
@@ -67,7 +67,7 @@ class DashboardController extends Controller
                 ->where('email_verified_at', '=', null)
                 ->count(),
 
-            'getCountBlocked' => User::join('company_accesses', 'company_accesses.user_id', '=', 'users.id')
+            'getCountBlocked' => User::leftJoin('company_accesses', 'company_accesses.user_id', '=', 'users.id')
                 ->where('admin', '=', '1')
                 ->when(Company::id() != '1', function ($query) {
                     $query->where('company_accesses.company_id', '=', Company::id());

@@ -67,7 +67,7 @@ class Entity extends Model
      */
     static function getCount()
     {
-        return Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+        return Entity::leftJoin('entity_accesses', 'entity_accesses.id', 'entities.id')
             ->when(auth()->user()['admin'] == '0', function ($query) {
                 $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
             })
@@ -81,7 +81,7 @@ class Entity extends Model
      */
     static function getCountEmail()
     {
-        return Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+        return Entity::leftJoin('entity_accesses', 'entity_accesses.id', 'entities.id')
             ->when(auth()->user()['admin'] == '0', function ($query) {
                 $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
             })
@@ -96,7 +96,7 @@ class Entity extends Model
      */
     static function getCountContact()
     {
-        return Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+        return Entity::leftJoin('entity_accesses', 'entity_accesses.id', 'entities.id')
             ->when(auth()->user()['admin'] == '0', function ($query) {
                 $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
             })
@@ -111,7 +111,7 @@ class Entity extends Model
      */
     static function getCountBlocked()
     {
-        return Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+        return Entity::leftJoin('entity_accesses', 'entity_accesses.id', 'entities.id')
             ->when(auth()->user()['admin'] == '0', function ($query) {
                 $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
             })

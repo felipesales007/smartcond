@@ -451,7 +451,7 @@
                                         <div class="card">
                                             <div id="heading-edit-admin-special-session-4" class="card-header" data-toggle="collapse" data-target="#collapse-edit-admin-special-session-4" aria-expanded="false" aria-controls="collapse-edit-admin-special-session-4">
                                                 <h5 class="small text-muted mb-0">
-                                                    <i class="fas fa-admin-tie mr-2"></i>
+                                                    <i class="fas fa-user-tie mr-2"></i>
                                                     {{ __('Informações profissionais') }}
                                                 </h5>
                                             </div>

@@ -39,27 +39,27 @@ class DashboardController extends Controller
     public function getCounts()
     {
         return [
-            'getCount' => Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+            'getCount' => Entity::leftJoin('entity_accesses', 'entity_accesses.id', 'entities.id')
                 ->when(auth()->user()['admin'] == '0', function ($query) {
                     $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
                 })
                 ->count(),
 
-            'getCountEmail' => Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+            'getCountEmail' => Entity::leftJoin('entity_accesses', 'entity_accesses.id', 'entities.id')
                 ->when(auth()->user()['admin'] == '0', function ($query) {
                     $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
                 })
                 ->where('email', '!=', null)
                 ->count(),
 
-            'getCountContact' => Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+            'getCountContact' => Entity::leftJoin('entity_accesses', 'entity_accesses.id', 'entities.id')
                 ->when(auth()->user()['admin'] == '0', function ($query) {
                     $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
                 })
                 ->where('contact', '!=', null)
                 ->count(),
 
-            'getCountBlocked' => Entity::join('entity_accesses', 'entity_accesses.id', 'entities.id')
+            'getCountBlocked' => Entity::leftJoin('entity_accesses', 'entity_accesses.id', 'entities.id')
                 ->when(auth()->user()['admin'] == '0', function ($query) {
                     $query->whereIn('entity_accesses.entity_id', Entity::getEntitiesUser());
                 })

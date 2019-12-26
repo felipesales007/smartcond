@@ -24,9 +24,9 @@ class NewUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_new_user'                     => ['required', 'min:3', 'max:191', 'alpha_space'],
-            'email_new_user'                    => ['required', 'max:191', 'email', 'unique:users,email'],
-            'entity_id_new_user'                => ['required'],
+            'name_new_user'      => ['required', 'min:3', 'max:191', 'alpha_space'],
+            'email_new_user'     => ['required', 'max:191', 'email', 'unique:users,email'],
+            'entity_id_new_user' => ['required'],
         ];
     }
 }
