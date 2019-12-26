@@ -500,6 +500,14 @@ input:-webkit-autofill {
     z-index: 1072 !important;
 }
 
+.select2-container .select2-selection--single .select2-selection__rendered
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+    overflow: hidden;
+    padding-right: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 @media (min-width: 767px) {
     .alert-dismissible .close {
         top: 50% !important;
