@@ -500,14 +500,10 @@ $('select').select2({
     placeholder: 'Selecione',
     language: 'pt-BR',
     sorter: data => data.sort((a, b) => a.text.localeCompare(b.text)),
-}).on('select2:open', function () {
+}).on('select2:open', function (e) {
     $('.modal').removeAttr('tabindex');
 
-    $('.select2-selection--single').one('click', function () {
-        $(this).addClass('select2-selection--single-up');
-    });
-
-    $('.select2-selection--multiple').addClass('select2-selection--multiple-up');
+    $('.validate-' + e.currentTarget.id + ' .select2-selection').addClass('select2-selection-up');
 
     if (!$('.select2-selection--single').hasClass('is-invalid') && !$('.select2-selection--single').hasClass('is-valid')) {
         $('.select2-selection--single').on(function () {
@@ -522,30 +518,18 @@ $('select').select2({
             $('#' + this.id).valid();
         });
     }
-}).on('select2:close', function () {
+}).on('select2:close', function (e) {
     $('.modal').attr('tabindex', '-1');
 
-    $('.select2-selection--single').removeClass('select2-selection--single-up');
-    $('.select2-selection--single').removeClass('border-primary');
-
-    $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
-    $('.select2-selection--multiple').removeClass('border-primary');
+    $('.validate-' + e.currentTarget.id + ' .select2-selection').removeClass('select2-selection-up').removeClass('border-primary');
 
     $('#' + this.id).valid();
-}).on('select2:select', function () {
-    $('.select2-selection--single').removeClass('select2-selection--single-up');
-    $('.select2-selection--single').removeClass('border-primary');
-
-    $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
-    $('.select2-selection--multiple').removeClass('border-primary');
+}).on('select2:select', function (e) {
+    $('.validate-' + e.currentTarget.id + ' .select2-selection').removeClass('select2-selection-up').removeClass('border-primary');
 
     $('#' + this.id).valid();
 }).on('select2:unselect', function (e) {
-    $('.select2-selection--single').removeClass('select2-selection--single-up');
-    $('.select2-selection--single').removeClass('border-primary');
-
-    $('.select2-selection--multiple').removeClass('select2-selection--multiple-up');
-    $('.select2-selection--multiple').removeClass('border-primary');
+    $('.validate-' + e.currentTarget.id + ' .select2-selection').removeClass('select2-selection-up').removeClass('border-primary');
 
     let id = '#' + $('#' + e.currentTarget.id).next().prevObject[0].form.id;
 

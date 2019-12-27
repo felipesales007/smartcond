@@ -291,13 +291,11 @@ input[type=number] {
     color: #adb5bd !important;
 }
 
-.select2-selection--single,
-.select2-selection--multiple {
+.select2-selection {
     background: url("../images/default/arrow-down.png") no-repeat right;
 }
 
-.select2-selection--single-up,
-.select2-selection--multiple-up {
+.select2-selection-up {
     background: url("../images/default/arrow-up.png") no-repeat right;
 }
 
