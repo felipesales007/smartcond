@@ -899,8 +899,12 @@ $.validator.addMethod( "lettersaccentedspace", function( value, element ) {
 }, "O campo deve ter somente letras e espaços." );
 
 $.validator.addMethod( "lettersdigit", function( value, element ) {
-	return this.optional( element ) || /^[A-zÀ-ú\-., ]+$/i.test( value );
+	return this.optional( element ) || /^[A-zÀ-ú\-.,\/ ]+$/i.test( value );
 }, "O campo deve ter somente letras, espaços e caracteres permitidos." );
+
+$.validator.addMethod( "lettersdigitnumber", function( value, element ) {
+    return this.optional( element ) || /^[A-zÀ-ú0-9\-.,\/ ]+$/i.test( value );
+}, "O campo deve ter somente letras, números, espaços e caracteres permitidos." );
 
 $.validator.addMethod( "lettersonly", function( value, element ) {
 	return this.optional( element ) || /^[a-z]+$/i.test( value );

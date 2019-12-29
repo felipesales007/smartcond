@@ -191,7 +191,7 @@ function onlyLettersCharacters(event) {
         code = event.charCode;
     }
 
-    let validate  = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ-. ';
+    let validate  = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ-./ ';
     let character = String.fromCharCode(code);
 
     if (validate.indexOf(character) > -1) {
@@ -362,7 +362,7 @@ function onlyLettersNumbers(event) {
         code = event.charCode;
     }
 
-    let validate  = '0123456789abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ ';
+    let validate  = '0123456789abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ-.,/ ';
     let character = String.fromCharCode(code);
 
     if (validate.indexOf(character) > -1) {

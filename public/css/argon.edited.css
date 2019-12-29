@@ -308,6 +308,36 @@ input[type=number] {
 .select2-selection--multiple .select2-selection__placeholder {
     position: relative;
     top: -4px;
+    padding-left: 4px;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #eeeeee;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #f6f9fc;
+    color: white;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #e4e4e4;
+}
+
+.select2-container--disabled .select2-selection--single,
+.select2-container--disabled .select2-selection--multiple,
+.select2-container--disabled .select2-selection--single .select2-selection__placeholder,
+.select2-container--disabled .select2-selection--multiple .select2-selection__placeholder {
+    background-color: #eee !important;
+    cursor: default !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered,
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+    overflow: hidden;
+    padding-right: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .table-responsive {
@@ -386,27 +416,6 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .sidenav-toggler-inner {
     margin-top: 3px;
-}
-
-.select2-container--default .select2-results__option[aria-selected=true] {
-    background-color: #eeeeee;
-}
-
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #f6f9fc;
-    color: white;
-}
-
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: #e4e4e4;
-}
-
-.select2-container--disabled .select2-selection--single,
-.select2-container--disabled .select2-selection--multiple,
-.select2-container--disabled .select2-selection--single .select2-selection__placeholder,
-.select2-container--disabled .select2-selection--multiple .select2-selection__placeholder {
-    background-color: #eee !important;
-    cursor: default !important;
 }
 
 input:-webkit-autofill {
@@ -496,14 +505,6 @@ input:-webkit-autofill {
 .popover {
     width: 100% !important;
     z-index: 1072 !important;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered,
-.select2-container .select2-selection--multiple .select2-selection__rendered {
-    overflow: hidden;
-    padding-right: 22px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 @media (min-width: 767px) {

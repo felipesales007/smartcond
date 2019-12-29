@@ -120,6 +120,8 @@ return [
     */
 
     'alpha_space'         => 'O campo :attribute deve ter somente letras e espaços.',
+    'alpha_digit'         => 'O campo :attribute deve ter somente letras, espaços e caracteres permitidos.',
+    'alpha_digit_number'  => 'O campo :attribute deve ter somente letras, números, espaços e caracteres permitidos.',
     'alpha_group'         => 'O campo :attribute deve ter somente letras minúsculas e caracteres permitidos.',
     'alpha_url'           => 'O campo :attribute deve ter somente letras minúsculas e caracteres permitidos.',
     'alpha_route'         => 'O campo :attribute deve ter somente letras minúsculas e caracteres permitidos.',

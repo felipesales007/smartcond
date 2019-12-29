@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         // validações
         Validator::extend('alpha_space', '\App\Utils\Validator@alphaSpace');
         Validator::extend('alpha_digit', '\App\Utils\Validator@alphaDigit');
+        Validator::extend('alpha_digit_number', '\App\Utils\Validator@alphaDigitNumber');
         Validator::extend('alpha_group', '\App\Utils\Validator@alphaGroup');
         Validator::extend('alpha_url', '\App\Utils\Validator@alphaUrl');
         Validator::extend('alpha_route', '\App\Utils\Validator@alphaRoute');
