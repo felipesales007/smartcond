@@ -1,29 +1,25 @@
-@push('js')
-    <!-- argon core -->
-    <script src="{{ asset('argon/vendor/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/js-cookie/js.cookie.js') }}"></script>
+<!-- argon core -->
+<script src="{{ asset('argon/vendor/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/js-cookie/js.cookie.js') }}"></script>
 
-    <!-- argon plugins -->
-    <script src="{{ asset('argon/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/select2/dist/js/i18n/pt-BR.js') }}"></script>
-    <script src="{{ asset('argon/vendor/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
-@endpush
-
-@stack('js')
+<!-- argon plugins -->
+<script src="{{ asset('argon/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/select2/dist/js/select2.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/select2/dist/js/i18n/pt-BR.js') }}"></script>
+<script src="{{ asset('argon/vendor/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
 
 <!-- argon js -->
 <script src="{{ asset('argon/js/argon.min.js') }}"></script>
