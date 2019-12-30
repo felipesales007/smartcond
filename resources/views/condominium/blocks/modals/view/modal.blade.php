@@ -18,12 +18,8 @@
                     <div class="col-lg-12">
                         <!-- status -->
                         <small id="status-view-condominium-block" class="float-right mt--4 d-none"></small>
-                        <div class="mt--3">
-                            <!-- código -->
-                            <span id="code-view-condominium-block" class="badge badge-info"></span>
-                            <!-- nome -->
-                            <span id="name-view-condominium-block" class="fe-text-badge-fix ml-1"></span>
-                        </div>
+                        <!-- nome -->
+                        <div id="name-view-condominium-block" class="fe-text-badge-fix ml-1 mt--3"></div>
                         <!-- descrição -->
                         <span id="description-view-condominium-block"></span>
                     </div>

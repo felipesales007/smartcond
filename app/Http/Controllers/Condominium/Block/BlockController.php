@@ -90,10 +90,10 @@ class BlockController extends Controller
                 ->toJson();
         }
 
-        $dash = PageHelpers::page('92');
-        $page = PageHelpers::page('93');
-        $list = PageHelpers::page('94');
-        $add  = PageHelpers::page('96');
+        $dash = PageHelpers::page('118');
+        $page = PageHelpers::page('119');
+        $list = PageHelpers::page('120');
+        $add  = PageHelpers::page('122');
 
         return view('condominium.blocks.tables.all.page', compact('dash', 'page', 'list', 'add'));
     }
@@ -230,10 +230,10 @@ class BlockController extends Controller
                 ->toJson();
         }
 
-        $dash = PageHelpers::page('92');
-        $page = PageHelpers::page('94');
-        $list = PageHelpers::page('93');
-        $add  = PageHelpers::page('96');
+        $dash = PageHelpers::page('118');
+        $page = PageHelpers::page('120');
+        $list = PageHelpers::page('119');
+        $add  = PageHelpers::page('122');
 
         return view('condominium.blocks.tables.deleted.page', compact('dash', 'page', 'list', 'add'));
     }

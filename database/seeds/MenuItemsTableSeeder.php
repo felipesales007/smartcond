@@ -1416,5 +1416,101 @@ class MenuItemsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        // 118 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '116',
+            'order'       => '0',
+            'name'        => 'Dashboard de blocos',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de blocos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 119 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '117',
+            'order'       => '2',
+            'name'        => 'Blocos',
+            'main'        => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de blocos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 120 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '118',
+            'order'       => '0',
+            'name'        => 'Lista de blocos deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de blocos deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 121 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '119',
+            'order'       => '0',
+            'name'        => 'Visualizar blocos',
+            'button'      => 'btn-modal-view-condominium-block',
+            'description' => 'Item do menu da listagem de blocos de acesso ao modal de visualização de blocos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 122 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '120',
+            'order'       => '0',
+            'name'        => 'Novo item do blocos',
+            'button'      => 'btn-modal-new-condominium-block',
+            'description' => 'Item do menu de acesso ao modal de criação de blocos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 123 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '121',
+            'order'       => '0',
+            'name'        => 'Editar item do blocos',
+            'button'      => 'btn-modal-edit-condominium-block',
+            'description' => 'Item do menu da listagem de blocos de acesso ao modal de edição de blocos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 124 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '122',
+            'order'       => '0',
+            'name'        => 'Deletar item do blocos',
+            'button'      => 'btn-modal-delete-condominium-block',
+            'description' => 'Item do menu da listagem de blocos de acesso ao modal de exclusão de blocos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 125 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '123',
+            'order'       => '0',
+            'name'        => 'Recuperar item do blocos',
+            'button'      => 'btn-modal-recover-condominium-block',
+            'description' => 'Item do menu da listagem de blocos deletados de acesso ao modal de recuperação de blocos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }

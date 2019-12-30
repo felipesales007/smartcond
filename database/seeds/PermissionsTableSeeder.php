@@ -13,7 +13,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         // rotas no banco
-        $routes = 115;
+        $routes = 123;
 
         for ($i = 1; $i <= $routes; $i++) {
             Permission::create([

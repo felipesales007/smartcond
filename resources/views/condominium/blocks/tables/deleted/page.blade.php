@@ -45,21 +45,19 @@
                             <!-- botões -->
                             <div class="col-4 text-right">
                                 <!-- adicionar -->
-                                @if (auth()->user()['admin'] == 1)
-                                    @component('layouts.components.button', [
-                                        'text'   => 'Adicionar',
-                                        'title'  => '',
-                                        'button' => $add['button'],
-                                        'router' => $add['router'],
-                                        'group'  => $add['group'],
-                                        'route'  => $add['route'],
-                                        'menu'   => $add['menu'],
-                                        'item'   => $add['item'],
-                                        'color'  => 'dark',
-                                        'size'   => 'sm',
-                                        'icon'   => 'fas fa-plus'
-                                    ])@endcomponent
-                                @endif
+                                @component('layouts.components.button', [
+                                    'text'   => 'Adicionar',
+                                    'title'  => '',
+                                    'button' => $add['button'],
+                                    'router' => $add['router'],
+                                    'group'  => $add['group'],
+                                    'route'  => $add['route'],
+                                    'menu'   => $add['menu'],
+                                    'item'   => $add['item'],
+                                    'color'  => 'dark',
+                                    'size'   => 'sm',
+                                    'icon'   => 'fas fa-plus'
+                                ])@endcomponent
 
                                 <!-- lista -->
                                 @component('layouts.components.button', [

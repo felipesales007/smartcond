@@ -10,21 +10,12 @@
                     notify(data);
                 } else {
                     // status
-                    if (data.blocked || data.deleted_at) {
+                    if (data.deleted_at) {
                         $('#status-view-condominium-block').removeClass('d-none');
-                        $('#name-view-condominium-block').removeClass('mt--3').addClass('mt-3');
-
-                        if (data.blocked) {
-                            $('#status-view-condominium-block').addClass('text-warning').html('<i class="fas fa-ban"></i> bloqueado');
-                        } else {
-                            $('#status-view-condominium-block').addClass('text-danger').html('<i class="fas fa-ban"></i> deletado');
-                        }
+                        $('#status-view-condominium-block').addClass('text-danger').html('<i class="fas fa-ban"></i> deletado');
                     } else {
                         $('#status-view-condominium-block').addClass('d-none').html('');
-                        $('#name-view-condominium-block').addClass('mt--3').removeClass('mt-3');
                     }
-                    // código
-                    $('#code-view-condominium-block').html('<i class="fas fa-tag mr-2"></i>' + zero_left(data.id, 2));
                     // nome
                     $('#name-view-condominium-block').html(data.name);
                     // descrição

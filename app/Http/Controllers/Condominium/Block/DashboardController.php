@@ -19,8 +19,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $page = PageHelpers::page('92');
-        $list = PageHelpers::page('93');
+        $page = PageHelpers::page('118');
+        $list = PageHelpers::page('119');
 
         return view('condominium.blocks.dashboard.page', compact('page', 'list'));
     }
@@ -42,7 +42,7 @@ class DashboardController extends Controller
     {
         return [
             'getCount'        => CondominiumBlock::where('entity_id', '=', Entity::id())->count(),
-            'getCountBlocked' => CondominiumBlock::where('entity_id', '=', Entity::id())->where('blocked', '!=', null)->count()
+            'getCountDeleted' => CondominiumBlock::onlyTrashed()->where('entity_id', '=', Entity::id())->count()
         ];
     }
 }

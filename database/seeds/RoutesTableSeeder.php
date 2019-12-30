@@ -1379,7 +1379,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'visualizar/{id?}',
             'route'           => 'inventory.view',
             'controller'      => 'Administrative\Inventory\Inventory\InventoryController@edit',
-            'description'     => 'Modal de visualizar os dados do inventário',
+            'description'     => 'Modal de visualizar os dados do item do inventário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1403,7 +1403,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'editar/{id?}',
             'route'           => 'inventory.edit',
             'controller'      => 'Administrative\Inventory\Inventory\InventoryController@edit',
-            'description'     => 'Modal de editar os dados do inventário',
+            'description'     => 'Modal de editar os dados do item do inventário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1415,7 +1415,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'deletar/{id?}',
             'route'           => 'inventory.delete',
             'controller'      => 'Administrative\Inventory\Inventory\InventoryController@edit',
-            'description'     => 'Modal de deletar a categoria do inventário',
+            'description'     => 'Modal de deletar o item do inventário',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1427,7 +1427,106 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'recuperar/{id?}',
             'route'           => 'inventory.recover',
             'controller'      => 'Administrative\Inventory\Inventory\InventoryController@edit',
-            'description'     => 'Modal de recuperar a categoria do inventário',
+            'description'     => 'Modal de recuperar o item do inventário',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 116 - condominio
+        Route::create([
+            'group_id'        => '15',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'condominium.block.dashboard',
+            'controller'      => 'Condominium\Block\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos blocos do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 117 - condominio
+        Route::create([
+            'group_id'        => '15',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'condominium.block.list',
+            'controller'      => 'Condominium\Block\BlockController@list',
+            'description'     => 'Página de listagem dos blocos do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 118 - condominio
+        Route::create([
+            'group_id'        => '15',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletadas',
+            'route'           => 'condominium.block.list.deleted',
+            'controller'      => 'Condominium\Block\BlockController@listDeleted',
+            'description'     => 'Página de listagem dos blocos do condomínio deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 119 - condominio
+        Route::create([
+            'group_id'        => '15',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'condominium.block.view',
+            'controller'      => 'Condominium\Block\BlockController@edit',
+            'description'     => 'Modal de visualizar os dados do bloco do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 120 - condominio
+        Route::create([
+            'group_id'        => '15',
+            'route_option_id' => '2',
+            'url'             => 'nova',
+            'route'           => 'condominium.block.store',
+            'controller'      => 'Condominium\Block\BlockController@store',
+            'description'     => 'Modal de criar novo bloco do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 121 - condominio
+        Route::create([
+            'group_id'        => '15',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'condominium.block.edit',
+            'controller'      => 'Condominium\Block\BlockController@edit',
+            'description'     => 'Modal de editar os dados do bloco do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 122 - condominio
+        Route::create([
+            'group_id'        => '15',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'condominium.block.delete',
+            'controller'      => 'Condominium\Block\BlockController@edit',
+            'description'     => 'Modal de deletar o bloco do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 123 - condominio
+        Route::create([
+            'group_id'        => '15',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'condominium.block.recover',
+            'controller'      => 'Condominium\Block\BlockController@edit',
+            'description'     => 'Modal de recuperar o bloco do condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);

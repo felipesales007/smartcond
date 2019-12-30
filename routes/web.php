@@ -184,13 +184,13 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     });
 
     // condominio bloco
-    Route::group(['prefix' => 'condominio/bloco'], function () {
+    Route::group(['prefix' => 'condominio/blocos'], function () {
         Route::get ('data',                     ['as' => 'condominium.block.data',                 'uses' => 'Condominium\Block\DashboardController@data']);
         Route::post('atualizar/{id?}',          ['as' => 'condominium.block.update',               'uses' => 'Condominium\Block\BlockController@update']);
         Route::post('remover/{id?}',            ['as' => 'condominium.block.destroy',              'uses' => 'Condominium\Block\BlockController@destroy']);
         Route::post('restaurar/{id?}',          ['as' => 'condominium.block.restore',              'uses' => 'Condominium\Block\BlockController@restore']);
-        Route::post('verificar/nome',           ['as' => 'condominium.block.check.name',           'uses' => 'Condominium\Block\CheckController@checkBlockName']);
-        Route::post('verificar/nome/diferente', ['as' => 'condominium.block.check.name.different', 'uses' => 'Condominium\Block\CheckController@checkBlockNameDifferent']);
+        Route::post('verificar/nome',           ['as' => 'condominium.block.check.name',           'uses' => 'Condominium\Block\CheckController@checkName']);
+        Route::post('verificar/nome/diferente', ['as' => 'condominium.block.check.name.different', 'uses' => 'Condominium\Block\CheckController@checkNameDifferent']);
     });
 
     // restrições de permissões

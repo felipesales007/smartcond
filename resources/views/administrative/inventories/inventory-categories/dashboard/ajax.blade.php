@@ -32,7 +32,7 @@
                                 verify = response;
 
                                 // cards
-                                $('#getCountInventoryCategories').html(data.counts.getCounts);
+                                $('#getCountInventoryCategories').html(data.counts.getCount);
                                 $('#getCountBlockedInventoryCategories').html(data.counts.getCountBlocked);
                             }
 

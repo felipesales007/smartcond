@@ -32,7 +32,7 @@
                                 verify = response;
 
                                 // cards
-                                $('#getCountCondominiumsBlocks').html(data.counts.getCounts);
+                                $('#getCountCondominiumsBlocks').html(data.counts.getCount);
                                 $('#getCountDeletedCondominiumsBlocks').html(data.counts.getCountDeleted);
                             }
 

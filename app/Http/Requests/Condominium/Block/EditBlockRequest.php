@@ -24,9 +24,9 @@ class EditBlockRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_edit_block'          => ['required', 'max:20', 'alpha_num'],
-            'name_edit_block'        => ['required', 'min:3', 'max:191', 'alpha_digit'],
-            'description_edit_block' => ['nullable', 'min:10', 'max:1500'],
+            'id_edit_condominium_block'          => ['required', 'max:20', 'alpha_num'],
+            'name_edit_condominium_block'        => ['required', 'min:3', 'max:191', 'alpha_digit'],
+            'description_edit_condominium_block' => ['nullable', 'min:10', 'max:1500'],
         ];
     }
 }

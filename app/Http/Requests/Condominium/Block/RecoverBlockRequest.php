@@ -24,9 +24,9 @@ class RecoverBlockRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_recover_block'                => ['required', 'max:20', 'alpha_num'],
-            'name_recover_block'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
-            'name_confirmation_recover_block' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_recover_block'],
+            'id_recover_condominium_block'                => ['required', 'max:20', 'alpha_num'],
+            'name_recover_condominium_block'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
+            'name_confirmation_recover_condominium_block' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_recover_condominium_block'],
         ];
     }
 }

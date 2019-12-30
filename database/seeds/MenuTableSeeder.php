@@ -104,7 +104,19 @@ class MenuTableSeeder extends Seeder
             'order'          => '2',
             'name'           => 'Administrativo',
             'icon'           => 'fas fa-folder',
-            'description'    => 'Menu em collapse da página de configurações de departamentos',
+            'description'    => 'Menu em collapse da página de configurações de departamentos e inventário',
+            'created_at'     => now(),
+            'updated_at'     => now()
+        ]);
+
+        // 9 - condominio (collapse)
+        Menu::create([
+            'menu_option_id' => '1',
+            'color_id'       => '6',
+            'order'          => '2',
+            'name'           => 'Condomínio',
+            'icon'           => 'fas fa-building',
+            'description'    => 'Menu em collapse da página de configurações de blocos, apartamentos, vagas e serviços',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);
