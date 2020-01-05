@@ -135,6 +135,8 @@ $(function () {
         immediateUpdates: true,
         enableOnReadonly: false,
         endDate: '0d'
+    }).on('hide', function () {
+        $('#' + this.id).valid();
     });
 });
 
@@ -146,6 +148,8 @@ $(function () {
         immediateUpdates: true,
         enableOnReadonly: false,
         startDate: '0d'
+    }).on('hide', function () {
+        $('#' + this.id).valid();
     });
 });
 
@@ -158,6 +162,8 @@ $(function () {
         enableOnReadonly: false,
         startDate: '0d',
         clearBtn: true
+    }).on('hide', function () {
+        $('#' + this.id).valid();
     });
 });
 
