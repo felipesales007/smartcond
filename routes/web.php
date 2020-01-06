@@ -203,6 +203,16 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
         Route::post('verificar/nome/diferente', ['as' => 'condominium.parking.check.name.different', 'uses' => 'Condominium\Parking\CheckController@checkNameDifferent']);
     });
 
+    // condominio apartamentos
+    Route::group(['prefix' => 'condominio/apartamentos'], function () {
+        Route::get ('data',                     ['as' => 'condominium.apartment.data',                 'uses' => 'Condominium\Apartment\DashboardController@data']);
+        Route::post('atualizar/{id?}',          ['as' => 'condominium.apartment.update',               'uses' => 'Condominium\Apartment\ApartmentController@update']);
+        Route::post('remover/{id?}',            ['as' => 'condominium.apartment.destroy',              'uses' => 'Condominium\Apartment\ApartmentController@destroy']);
+        Route::post('restaurar/{id?}',          ['as' => 'condominium.apartment.restore',              'uses' => 'Condominium\Apartment\ApartmentController@restore']);
+        Route::post('verificar/nome',           ['as' => 'condominium.apartment.check.name',           'uses' => 'Condominium\Apartment\CheckController@checkName']);
+        Route::post('verificar/nome/diferente', ['as' => 'condominium.apartment.check.name.different', 'uses' => 'Condominium\Apartment\CheckController@checkNameDifferent']);
+    });
+
     // restrições de permissões
     Route::group(['middleware' => ['permission']], function () {
         // grupos do banco
@@ -426,6 +436,18 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
         Route::get ('editar/{id?}',     ['as' => 'condominium.parking.edit',         'uses' => 'Condominium\Parking\ParkingController@edit']); // * btn-modal-edit-condominium-parking
         Route::get ('deletar/{id?}',    ['as' => 'condominium.parking.delete',       'uses' => 'Condominium\Parking\ParkingController@edit']); // * btn-modal-delete-condominium-parking
         Route::get ('recuperar/{id?}',  ['as' => 'condominium.parking.recover',      'uses' => 'Condominium\Parking\ParkingController@edit']); // * btn-modal-recover-condominium-parking
+    });
+
+    // condominio apartamentos
+    Route::group(['prefix' => 'condominio/apartamentos'], function () {
+        Route::get ('dashboard',        ['as' => 'condominium.apartment.dashboard',    'uses' => 'Condominium\Apartment\DashboardController@dashboard']);
+        Route::get ('lista',            ['as' => 'condominium.apartment.list',         'uses' => 'Condominium\Apartment\ApartmentController@list']);
+        Route::get ('lista/deletados',  ['as' => 'condominium.apartment.list.deleted', 'uses' => 'Condominium\Apartment\ApartmentController@listDeleted']);
+        Route::get ('visualizar/{id?}', ['as' => 'condominium.apartment.view',         'uses' => 'Condominium\Apartment\ApartmentController@edit']); // * btn-modal-view-condominium-apartment
+        Route::post('novo',             ['as' => 'condominium.apartment.store',        'uses' => 'Condominium\Apartment\ApartmentController@store']); // btn-modal-new-condominium-apartment
+        Route::get ('editar/{id?}',     ['as' => 'condominium.apartment.edit',         'uses' => 'Condominium\Apartment\ApartmentController@edit']); // * btn-modal-edit-condominium-apartment
+        Route::get ('deletar/{id?}',    ['as' => 'condominium.apartment.delete',       'uses' => 'Condominium\Apartment\ApartmentController@edit']); // * btn-modal-delete-condominium-apartment
+        Route::get ('recuperar/{id?}',  ['as' => 'condominium.apartment.recover',      'uses' => 'Condominium\Apartment\ApartmentController@edit']); // * btn-modal-recover-condominium-apartment
     });
 
     */

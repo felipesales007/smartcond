@@ -32,8 +32,8 @@
                                 verify = response;
 
                                 // cards
-                                $('#getCountCondominiumsBlocks').html(data.counts.getCount);
-                                $('#getCountDeletedCondominiumsBlocks').html(data.counts.getCountDeleted);
+                                $('#getCountCondominiumBlocks').html(data.counts.getCount);
+                                $('#getCountDeletedCondominiumBlocks').html(data.counts.getCountDeleted);
                             }
 
                             return true;

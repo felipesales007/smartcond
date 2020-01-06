@@ -1539,7 +1539,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'dashboard',
             'route'           => 'condominium.parking.dashboard',
             'controller'      => 'Condominium\Parking\DashboardController@dashboard',
-            'description'     => 'Página de dashboard dos estacionamentos do condomínio',
+            'description'     => 'Página de dashboard dos apartamentos do condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1552,7 +1552,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'lista',
             'route'           => 'condominium.parking.list',
             'controller'      => 'Condominium\Parking\ParkingController@list',
-            'description'     => 'Página de listagem dos estacionamentos do condomínio',
+            'description'     => 'Página de listagem dos apartamentos do condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1565,7 +1565,7 @@ class RoutesTableSeeder extends Seeder
             'url'             => 'lista/deletadas',
             'route'           => 'condominium.parking.list.deleted',
             'controller'      => 'Condominium\Parking\ParkingController@listDeleted',
-            'description'     => 'Página de listagem dos estacionamentos do condomínio deletados',
+            'description'     => 'Página de listagem dos apartamentos do condomínio deletados',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
@@ -1626,6 +1626,105 @@ class RoutesTableSeeder extends Seeder
             'route'           => 'condominium.parking.recover',
             'controller'      => 'Condominium\Parking\ParkingController@edit',
             'description'     => 'Modal de recuperar o estacionamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 132 - condominio
+        Route::create([
+            'group_id'        => '17',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'condominium.apartment.dashboard',
+            'controller'      => 'Condominium\Apartment\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos apartamentos do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 133 - condominio
+        Route::create([
+            'group_id'        => '17',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'condominium.apartment.list',
+            'controller'      => 'Condominium\Apartment\ApartmentController@list',
+            'description'     => 'Página de listagem dos apartamentos do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 134 - condominio
+        Route::create([
+            'group_id'        => '17',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletadas',
+            'route'           => 'condominium.apartment.list.deleted',
+            'controller'      => 'Condominium\Apartment\ApartmentController@listDeleted',
+            'description'     => 'Página de listagem dos apartamentos do condomínio deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 135 - condominio
+        Route::create([
+            'group_id'        => '17',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'condominium.apartment.view',
+            'controller'      => 'Condominium\Apartment\ApartmentController@edit',
+            'description'     => 'Modal de visualizar os dados do apartamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 136 - condominio
+        Route::create([
+            'group_id'        => '17',
+            'route_option_id' => '2',
+            'url'             => 'nova',
+            'route'           => 'condominium.apartment.store',
+            'controller'      => 'Condominium\Apartment\ApartmentController@store',
+            'description'     => 'Modal de criar novo apartamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 137 - condominio
+        Route::create([
+            'group_id'        => '17',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'condominium.apartment.edit',
+            'controller'      => 'Condominium\Apartment\ApartmentController@edit',
+            'description'     => 'Modal de editar os dados do apartamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 138 - condominio
+        Route::create([
+            'group_id'        => '17',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'condominium.apartment.delete',
+            'controller'      => 'Condominium\Apartment\ApartmentController@edit',
+            'description'     => 'Modal de deletar o apartamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 139 - condominio
+        Route::create([
+            'group_id'        => '17',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'condominium.apartment.recover',
+            'controller'      => 'Condominium\Apartment\ApartmentController@edit',
+            'description'     => 'Modal de recuperar o apartamento do condomínio',
             'created_at'      => now(),
             'updated_at'      => now()
         ]);

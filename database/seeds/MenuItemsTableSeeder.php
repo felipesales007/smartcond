@@ -1433,7 +1433,7 @@ class MenuItemsTableSeeder extends Seeder
         MenuItem::create([
             'menu_id'     => '9',
             'route_id'    => '117',
-            'order'       => '2',
+            'order'       => '1',
             'name'        => 'Blocos',
             'main'        => '1',
             'description' => 'Item do menu collapse oculto de acesso a página de listagem de blocos',
@@ -1529,7 +1529,7 @@ class MenuItemsTableSeeder extends Seeder
         MenuItem::create([
             'menu_id'     => '9',
             'route_id'    => '125',
-            'order'       => '2',
+            'order'       => '3',
             'name'        => 'Estacionamentos',
             'main'        => '1',
             'description' => 'Item do menu collapse oculto de acesso a página de listagem de estacionamentos',
@@ -1605,6 +1605,102 @@ class MenuItemsTableSeeder extends Seeder
             'name'        => 'Recuperar item do estacionamentos',
             'button'      => 'btn-modal-recover-condominium-parking',
             'description' => 'Item do menu da listagem de estacionamentos deletados de acesso ao modal de recuperação de estacionamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 134 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '132',
+            'order'       => '0',
+            'name'        => 'Dashboard de apartamentos',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de apartamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 135 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '133',
+            'order'       => '2',
+            'name'        => 'Apartamentos',
+            'main'        => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de apartamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 136 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '134',
+            'order'       => '0',
+            'name'        => 'Lista de apartamentos deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de apartamentos deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 137 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '135',
+            'order'       => '0',
+            'name'        => 'Visualizar apartamentos',
+            'button'      => 'btn-modal-view-condominium-apartment',
+            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de visualização de apartamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 138 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '136',
+            'order'       => '0',
+            'name'        => 'Novo item do apartamentos',
+            'button'      => 'btn-modal-new-condominium-apartment',
+            'description' => 'Item do menu de acesso ao modal de criação de apartamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 139 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '137',
+            'order'       => '0',
+            'name'        => 'Editar item do apartamentos',
+            'button'      => 'btn-modal-edit-condominium-apartment',
+            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de edição de apartamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 140 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '138',
+            'order'       => '0',
+            'name'        => 'Deletar item do apartamentos',
+            'button'      => 'btn-modal-delete-condominium-apartment',
+            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de exclusão de apartamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 141 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '139',
+            'order'       => '0',
+            'name'        => 'Recuperar item do apartamentos',
+            'button'      => 'btn-modal-recover-condominium-apartment',
+            'description' => 'Item do menu da listagem de apartamentos deletados de acesso ao modal de recuperação de apartamentos',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

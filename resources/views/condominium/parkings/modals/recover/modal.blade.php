@@ -1,5 +1,5 @@
 <div id="modal-recover-condominium-parking" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-recover-condominium-parking-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
             <!-- título -->
             <div class="modal-header">

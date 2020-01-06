@@ -45,19 +45,21 @@
                             <!-- botões -->
                             <div class="col-4 text-right">
                                 <!-- adicionar -->
-                                @component('layouts.components.button', [
-                                    'text'   => 'Adicionar',
-                                    'title'  => '',
-                                    'button' => $add['button'],
-                                    'router' => $add['router'],
-                                    'group'  => $add['group'],
-                                    'route'  => $add['route'],
-                                    'menu'   => $add['menu'],
-                                    'item'   => $add['item'],
-                                    'color'  => 'primary',
-                                    'size'   => 'sm',
-                                    'icon'   => 'fas fa-plus'
-                                ])@endcomponent
+                                @if (auth()->user()['admin'] == 0)
+                                    @component('layouts.components.button', [
+                                        'text'   => 'Adicionar',
+                                        'title'  => '',
+                                        'button' => $add['button'],
+                                        'router' => $add['router'],
+                                        'group'  => $add['group'],
+                                        'route'  => $add['route'],
+                                        'menu'   => $add['menu'],
+                                        'item'   => $add['item'],
+                                        'color'  => 'primary',
+                                        'size'   => 'sm',
+                                        'icon'   => 'fas fa-plus'
+                                    ])@endcomponent
+                                @endif
 
                                 <!-- lista -->
                                 @component('layouts.components.button', [

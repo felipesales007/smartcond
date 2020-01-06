@@ -84,7 +84,7 @@ class CondominiumBlock extends Model
      */
     static function getCondominiumBlocksOptions()
     {
-        $options = CondominiumBlock::where('entity_id', '=', Entity::id())->get();
+        $options = CondominiumBlock::where('entity_id', '=', Entity::id())->orderByRaw('length(name)')->orderBy('name')->get();
         $array   = [];
 
         foreach ($options as $option) {

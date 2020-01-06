@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Condominium\Parking;
 
+use App\Models\Entity\Entity;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class EditParkingRequest extends FormRequest
 {
@@ -25,7 +27,7 @@ class EditParkingRequest extends FormRequest
     {
         return [
             'id_edit_condominium_parking'          => ['required', 'max:20', 'alpha_num'],
-            'name_edit_condominium_parking'        => ['required', 'max:191', 'alpha_digit_number'],
+            'name_edit_condominium_parking'        => ['required', 'max:191', 'alpha_digit_number', Rule::unique('condominium_parkings', 'name')->where('entity_id', Entity::id())->ignore($this->id_edit_condominium_parking)],
             'description_edit_condominium_parking' => ['nullable', 'min:10', 'max:1500'],
         ];
     }

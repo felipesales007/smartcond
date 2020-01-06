@@ -32,8 +32,8 @@
                                 verify = response;
 
                                 // cards
-                                $('#getCountCondominiumsParkings').html(data.counts.getCount);
-                                $('#getCountDeletedCondominiumsParkings').html(data.counts.getCountDeleted);
+                                $('#getCountCondominiumParkings').html(data.counts.getCount);
+                                $('#getCountDeletedCondominiumParkings').html(data.counts.getCountDeleted);
                             }
 
                             return true;

@@ -39,6 +39,7 @@ class BlockController extends Controller
             ->where(function ($query) use ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%');
             })
+            ->orderByRaw('length(' . $order[0] . ')' . $order[1])
             ->orderBy($order[0], $order[1]);
 
         // listagem
@@ -188,6 +189,7 @@ class BlockController extends Controller
             ->where(function ($query) use ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%');
             })
+            ->orderByRaw('length(' . $order[0] . ')' . $order[1])
             ->orderBy($order[0], $order[1]);
 
         // listagem de deletados

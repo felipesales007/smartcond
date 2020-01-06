@@ -16,7 +16,7 @@ class CreateCondominiumParkingsTable extends Migration
         Schema::create('condominium_parkings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('entity_id')->unsigned();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->longText('description')->nullable();
             $table->softDeletes();
             $table->timestamps();

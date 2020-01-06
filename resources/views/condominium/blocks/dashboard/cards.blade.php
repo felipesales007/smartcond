@@ -12,7 +12,7 @@
                             <!-- título -->
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">Total</h5>
-                                <span id="getCountCondominiumsBlocks" class="h2 font-weight-bold mb-0">{{ \App\Models\Condominium\CondominiumBlock::getCount() }}</span>
+                                <span id="getCountCondominiumBlocks" class="h2 font-weight-bold mb-0">{{ \App\Models\Condominium\CondominiumBlock::getCount() }}</span>
                             </div>
                             <!-- icone -->
                             <div class="col-auto">
@@ -39,7 +39,7 @@
                             <!-- título -->
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">Deletados</h5>
-                                <span id="getCountDeletedCondominiumsBlocks" class="h2 font-weight-bold mb-0">{{ \App\Models\Condominium\CondominiumBlock::getCountDeleted() }}</span>
+                                <span id="getCountDeletedCondominiumBlocks" class="h2 font-weight-bold mb-0">{{ \App\Models\Condominium\CondominiumBlock::getCountDeleted() }}</span>
                             </div>
                             <!-- icone -->
                             <div class="col-auto">

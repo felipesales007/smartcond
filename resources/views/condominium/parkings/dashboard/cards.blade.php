@@ -12,7 +12,7 @@
                             <!-- título -->
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">Total</h5>
-                                <span id="getCountCondominiumsParkings" class="h2 font-weight-bold mb-0">{{ \App\Models\Condominium\CondominiumParking::getCount() }}</span>
+                                <span id="getCountCondominiumParkings" class="h2 font-weight-bold mb-0">{{ \App\Models\Condominium\CondominiumParking::getCount() }}</span>
                             </div>
                             <!-- icone -->
                             <div class="col-auto">
@@ -39,7 +39,7 @@
                             <!-- título -->
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">Deletados</h5>
-                                <span id="getCountDeletedCondominiumsParkings" class="h2 font-weight-bold mb-0">{{ \App\Models\Condominium\CondominiumParking::getCountDeleted() }}</span>
+                                <span id="getCountDeletedCondominiumParkings" class="h2 font-weight-bold mb-0">{{ \App\Models\Condominium\CondominiumParking::getCountDeleted() }}</span>
                             </div>
                             <!-- icone -->
                             <div class="col-auto">

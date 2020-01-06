@@ -1,5 +1,5 @@
 <div id="modal-view-condominium-block" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-view-condominium-block-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
             <!-- título e capa -->
             <div class="modal-header">
