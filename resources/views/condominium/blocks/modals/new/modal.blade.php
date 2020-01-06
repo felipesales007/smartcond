@@ -28,8 +28,8 @@
                                             <i class="fas fa-boxes"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('no mínimo 3 caracteres') }}">*</span>
-                                    <input type="text" id="name-new-condominium-block" name="name_new_condominium_block" class="form-control {{ $errors->has('name_new_condominium_block') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome do bloco') }}" value="{{ old('name_new_condominium_block') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-new-condominium-block');" @if ($errors->has('name_new_condominium_block')) autofocus @endif>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome ou número') }}">*</span>
+                                    <input type="text" id="name-new-condominium-block" name="name_new_condominium_block" class="form-control {{ $errors->has('name_new_condominium_block') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número do bloco') }}" value="{{ old('name_new_condominium_block') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-new-condominium-block');" @if ($errors->has('name_new_condominium_block')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_new_condominium_block'))

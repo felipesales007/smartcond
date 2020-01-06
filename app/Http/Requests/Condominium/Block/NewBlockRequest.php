@@ -24,7 +24,7 @@ class NewBlockRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_new_condominium_block'        => ['required', 'min:3', 'max:191', 'alpha_digit'],
+            'name_new_condominium_block'        => ['required', 'max:191', 'alpha_digit_number'],
             'description_new_condominium_block' => ['nullable', 'min:10', 'max:1500'],
         ];
     }

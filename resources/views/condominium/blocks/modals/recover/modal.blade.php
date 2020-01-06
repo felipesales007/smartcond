@@ -47,8 +47,8 @@
                                             <i class="fas fa-boxes"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome do bloco') }}">*</span>
-                                    <input readonly type="text" id="name-recover-condominium-block" name="name_recover_condominium_block" class="form-control {{ $errors->has('name_recover_condominium_block') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome do bloco') }}" value="{{ old('name_recover_condominium_block') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-recover-condominium-block');" @if ($errors->has('name_recover_condominium_block')) autofocus @endif>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome ou número do bloco') }}">*</span>
+                                    <input readonly type="text" id="name-recover-condominium-block" name="name_recover_condominium_block" class="form-control {{ $errors->has('name_recover_condominium_block') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número do bloco') }}" value="{{ old('name_recover_condominium_block') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-recover-condominium-block');" @if ($errors->has('name_recover_condominium_block')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_recover_condominium_block'))
@@ -66,8 +66,8 @@
                                             <i class="fas fa-boxes"></i>
                                         </span>
                                     </div>
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome do bloco que está em verde e confirme, clicando em recuperar bloco') }}">*</span>
-                                    <input type="text" id="name-confirmation-recover-condominium-block" name="name_confirmation_recover_condominium_block" class="form-control fe-block-paste {{ $errors->has('name_confirmation_recover_condominium_block') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome para recuperação') }}" value="{{ old('name_confirmation_recover_condominium_block') }}" minlength="3" maxlength="191" required onkeypress="return onlyLettersCharacters(event);" onkeyup="letterUppercase('name-confirmation-recover-condominium-block');" ondrop="return false;" @if ($errors->has('name_confirmation_recover_condominium_block')) autofocus @endif>
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome ou número do bloco que está em verde e confirme, clicando em recuperar bloco') }}">*</span>
+                                    <input type="text" id="name-confirmation-recover-condominium-block" name="name_confirmation_recover_condominium_block" class="form-control fe-block-paste {{ $errors->has('name_confirmation_recover_condominium_block') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número para recuperação') }}" value="{{ old('name_confirmation_recover_condominium_block') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-confirmation-recover-condominium-block');" ondrop="return false;" @if ($errors->has('name_confirmation_recover_condominium_block')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_confirmation_recover_condominium_block'))

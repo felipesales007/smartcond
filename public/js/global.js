@@ -197,7 +197,7 @@ function onlyLettersCharacters(event) {
         code = event.charCode;
     }
 
-    let validate  = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ-./ ';
+    let validate  = 'abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYKÁÉÍÓÚáéíóúÂÊÔâêôÀàÇçÃÕãõ-.,/ ';
     let character = String.fromCharCode(code);
 
     if (validate.indexOf(character) > -1) {

@@ -25,8 +25,8 @@ class RecoverBlockRequest extends FormRequest
     {
         return [
             'id_recover_condominium_block'                => ['required', 'max:20', 'alpha_num'],
-            'name_recover_condominium_block'              => ['required', 'min:3', 'max:191', 'alpha_digit'],
-            'name_confirmation_recover_condominium_block' => ['required', 'min:3', 'max:191', 'alpha_digit', 'same:name_recover_condominium_block'],
+            'name_recover_condominium_block'              => ['required', 'max:191', 'alpha_digit_number'],
+            'name_confirmation_recover_condominium_block' => ['required', 'max:191', 'alpha_digit_number', 'same:name_recover_condominium_block'],
         ];
     }
 }
