@@ -146,5 +146,14 @@ class GroupsTableSeeder extends Seeder
             'created_at'    => now(),
             'updated_at'    => now()
         ]);
+
+        // 16 - condominio
+        Group::create([
+            'name'          => 'condominio/estacionamentos',
+            'user_level_id' => '3',
+            'description'   => 'Grupo das configurações dos estacionamentos do condomínio',
+            'created_at'    => now(),
+            'updated_at'    => now()
+        ]);
     }
 }

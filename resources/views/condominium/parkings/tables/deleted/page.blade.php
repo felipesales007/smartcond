@@ -39,7 +39,7 @@
                             <!-- título -->
                             <div class="col-8">
                                 <h3 class="text-uppercase text-monospace mb--1">
-                                    <b>{{ __('Lista de blocos deletados') }}</b>
+                                    <b>{{ __('Lista de estacionamentos deletados') }}</b>
                                 </h3>
                             </div>
                             <!-- botões -->
@@ -62,7 +62,7 @@
                                 <!-- lista -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
-                                    'title'  => 'Lista de blocos',
+                                    'title'  => 'Lista de estacionamentos',
                                     'button' => $list['button'],
                                     'router' => $list['router'],
                                     'group'  => $list['group'],
@@ -78,11 +78,11 @@
                     </div>
                     <!-- corpo -->
                     <div class="table-responsive mb-2">
-                        <table id="datatable-condominium-blocks-deleted" class="table table-flush">
+                        <table id="datatable-condominium-parkings-deleted" class="table table-flush">
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>
-                                    <th data-base="name">{{ __('Bloco') }}</th>
+                                    <th data-base="name">{{ __('Vaga') }}</th>
                                     <th>{{ __('Descrição') }}</th>
                                     <th class="text-center"><i class="fas fa-cog"></i></th>
                                 </tr>
@@ -96,7 +96,7 @@
         </div>
     </div>
 
-    @include('condominium.blocks.tables.deleted.ajax')
-    @include('condominium.blocks.tables.deleted.modal')
+    @include('condominium.parkings.tables.deleted.ajax')
+    @include('condominium.parkings.tables.deleted.modal')
 
 @endsection

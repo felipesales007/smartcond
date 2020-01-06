@@ -1512,5 +1512,101 @@ class MenuItemsTableSeeder extends Seeder
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
+
+        // 126 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '124',
+            'order'       => '0',
+            'name'        => 'Dashboard de estacionamentos',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de estacionamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 127 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '125',
+            'order'       => '2',
+            'name'        => 'Estacionamentos',
+            'main'        => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de estacionamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 128 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '126',
+            'order'       => '0',
+            'name'        => 'Lista de estacionamentos deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de estacionamentos deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 129 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '127',
+            'order'       => '0',
+            'name'        => 'Visualizar estacionamentos',
+            'button'      => 'btn-modal-view-condominium-parking',
+            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de visualização de estacionamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 130 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '128',
+            'order'       => '0',
+            'name'        => 'Novo item do estacionamentos',
+            'button'      => 'btn-modal-new-condominium-parking',
+            'description' => 'Item do menu de acesso ao modal de criação de estacionamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 131 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '129',
+            'order'       => '0',
+            'name'        => 'Editar item do estacionamentos',
+            'button'      => 'btn-modal-edit-condominium-parking',
+            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de edição de estacionamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 132 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '130',
+            'order'       => '0',
+            'name'        => 'Deletar item do estacionamentos',
+            'button'      => 'btn-modal-delete-condominium-parking',
+            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de exclusão de estacionamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 133 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '131',
+            'order'       => '0',
+            'name'        => 'Recuperar item do estacionamentos',
+            'button'      => 'btn-modal-recover-condominium-parking',
+            'description' => 'Item do menu da listagem de estacionamentos deletados de acesso ao modal de recuperação de estacionamentos',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }

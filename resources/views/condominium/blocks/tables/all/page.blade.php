@@ -56,7 +56,7 @@
                                     'route'  => $add['route'],
                                     'menu'   => $add['menu'],
                                     'item'   => $add['item'],
-                                    'color'  => 'dark',
+                                    'color'  => 'primary',
                                     'size'   => 'sm',
                                     'icon'   => 'fas fa-plus'
                                 ])@endcomponent
@@ -84,7 +84,7 @@
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>
-                                    <th data-base="name">{{ __('Nome') }}</th>
+                                    <th data-base="name">{{ __('Bloco') }}</th>
                                     <th>{{ __('Descrição') }}</th>
                                     <th class="text-center"><i class="fas fa-cog"></i></th>
                                 </tr>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCondominiumBlockTable extends Migration
+class CreateCondominiumParkingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCondominiumBlockTable extends Migration
      */
     public function up()
     {
-        Schema::create('condominium_block', function (Blueprint $table) {
+        Schema::create('condominium_parkings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('entity_id')->unsigned();
             $table->string('name')->unique();
@@ -32,6 +32,6 @@ class CreateCondominiumBlockTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('condominium_block');
+        Schema::dropIfExists('condominium_parkings');
     }
 }

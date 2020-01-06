@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CondominiumBlock extends Model
+class CondominiumParking extends Model
 {
     use SoftDeletes;
 
@@ -16,7 +16,7 @@ class CondominiumBlock extends Model
      *
      * @var string
      */
-    protected $table = 'condominium_blocks';
+    protected $table = 'condominium_parkings';
 
     /**
      * Os atributos que são atribuíveis em massa.
@@ -41,20 +41,20 @@ class CondominiumBlock extends Model
      *
      * @return array
      */
-    static function getCondominiumBlocks()
+    static function getCondominiumParkings()
     {
-        return CondominiumBlock::where('entity_id', '=', Entity::id())->get();
+        return CondominiumParking::where('entity_id', '=', Entity::id())->get();
     }
 
     /**
      * Retornar o dado especificado no armazenamento.
      *
      * @param $id
-     * @return CondominiumBlock
+     * @return CondominiumParking
      */
-    static function getCondominiumBlock($id)
+    static function getCondominiumParking($id)
     {
-        return CondominiumBlock::where('entity_id', '=', Entity::id())->find($id);
+        return CondominiumParking::where('entity_id', '=', Entity::id())->find($id);
     }
 
     /**
@@ -64,7 +64,7 @@ class CondominiumBlock extends Model
      */
     static function getCount()
     {
-        return CondominiumBlock::where('entity_id', '=', Entity::id())->count();
+        return CondominiumParking::where('entity_id', '=', Entity::id())->count();
     }
 
     /**
@@ -74,7 +74,7 @@ class CondominiumBlock extends Model
      */
     static function getCountDeleted()
     {
-        return CondominiumBlock::onlyTrashed()->where('entity_id', '=', Entity::id())->count();
+        return CondominiumParking::onlyTrashed()->where('entity_id', '=', Entity::id())->count();
     }
 
     /**
@@ -82,9 +82,9 @@ class CondominiumBlock extends Model
      *
      * @return array
      */
-    static function getCondominiumBlocksOptions()
+    static function getCondominiumParkingsOptions()
     {
-        $options = CondominiumBlock::where('entity_id', '=', Entity::id())->get();
+        $options = CondominiumParking::where('entity_id', '=', Entity::id())->get();
         $array   = [];
 
         foreach ($options as $option) {

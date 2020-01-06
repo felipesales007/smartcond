@@ -116,7 +116,7 @@ class MenuTableSeeder extends Seeder
             'order'          => '2',
             'name'           => 'Condomínio',
             'icon'           => 'fas fa-building',
-            'description'    => 'Menu em collapse da página de configurações de blocos, apartamentos, vagas e serviços',
+            'description'    => 'Menu em collapse da página de configurações de blocos, apartamentos, estacionamentos e serviços',
             'created_at'     => now(),
             'updated_at'     => now()
         ]);

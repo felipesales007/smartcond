@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Condominium\Block;
+namespace App\Http\Controllers\Condominium\Parking;
 
 use App\Helpers\PageHelpers;
 use App\Http\Controllers\Controller;
-use App\Models\Condominium\CondominiumBlock;
+use App\Models\Condominium\CondominiumParking;
 use App\Models\Entity\Entity;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
@@ -18,10 +18,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $page = PageHelpers::page('118');
-        $list = PageHelpers::page('119');
+        $page = PageHelpers::page('126');
+        $list = PageHelpers::page('127');
 
-        return view('condominium.blocks.dashboard.page', compact('page', 'list'));
+        return view('condominium.parkings.dashboard.page', compact('page', 'list'));
     }
 
     /**
@@ -40,8 +40,8 @@ class DashboardController extends Controller
     public function getCounts()
     {
         return [
-            'getCount'        => CondominiumBlock::where('entity_id', '=', Entity::id())->count(),
-            'getCountDeleted' => CondominiumBlock::onlyTrashed()->where('entity_id', '=', Entity::id())->count()
+            'getCount'        => CondominiumParking::where('entity_id', '=', Entity::id())->count(),
+            'getCountDeleted' => CondominiumParking::onlyTrashed()->where('entity_id', '=', Entity::id())->count()
         ];
     }
 }

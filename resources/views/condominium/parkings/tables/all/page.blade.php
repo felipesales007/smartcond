@@ -6,8 +6,8 @@
     <!-- breadcrumbs -->
     @component('layouts.components.breadcrumbs')
         @slot('title'){{ $page['menu_name'] }}@endslot
-        <li class="breadcrumb-item"><a href="{{ app('router')->has($list['router']) ? route($list['router']) : url('/') }}">{{ $list['item_name'] }}</a></li>
         <li class="breadcrumb-item fe-mouse active" aria-current="page">@yield('title')</li>
+        @slot('xl')@endslot
 
         @slot('link')
             <!-- visualizar dashboard -->
@@ -27,6 +27,8 @@
         @endslot
     @endcomponent
 
+    @include('condominium.parkings.dashboard.cards')
+
     <!-- tabela ajax -->
     <div class="container-fluid">
         <div class="row">
@@ -39,7 +41,7 @@
                             <!-- título -->
                             <div class="col-8">
                                 <h3 class="text-uppercase text-monospace mb--1">
-                                    <b>{{ __('Lista de blocos deletados') }}</b>
+                                    <b>{{ __('Lista de estacionamentos') }}</b>
                                 </h3>
                             </div>
                             <!-- botões -->
@@ -59,30 +61,30 @@
                                     'icon'   => 'fas fa-plus'
                                 ])@endcomponent
 
-                                <!-- lista -->
+                                <!-- lista de deletados -->
                                 @component('layouts.components.button', [
                                     'text'   => '',
-                                    'title'  => 'Lista de blocos',
+                                    'title'  => 'Lista de deletados',
                                     'button' => $list['button'],
                                     'router' => $list['router'],
                                     'group'  => $list['group'],
                                     'route'  => $list['route'],
                                     'menu'   => $list['menu'],
                                     'item'   => $list['item'],
-                                    'color'  => 'success',
+                                    'color'  => 'danger',
                                     'size'   => 'sm',
-                                    'icon'   => 'fas fa-list-ul'
+                                    'icon'   => 'far fa-trash-alt'
                                 ])@endcomponent
                             </div>
                         </div>
                     </div>
                     <!-- corpo -->
                     <div class="table-responsive mb-2">
-                        <table id="datatable-condominium-blocks-deleted" class="table table-flush">
+                        <table id="datatable-condominium-parkings" class="table table-flush">
                             <!-- título da tabela -->
                             <thead class="thead-light">
                                 <tr>
-                                    <th data-base="name">{{ __('Bloco') }}</th>
+                                    <th data-base="name">{{ __('Vaga') }}</th>
                                     <th>{{ __('Descrição') }}</th>
                                     <th class="text-center"><i class="fas fa-cog"></i></th>
                                 </tr>
@@ -96,7 +98,7 @@
         </div>
     </div>
 
-    @include('condominium.blocks.tables.deleted.ajax')
-    @include('condominium.blocks.tables.deleted.modal')
+    @include('condominium.parkings.tables.all.ajax')
+    @include('condominium.parkings.tables.all.modal')
 
 @endsection

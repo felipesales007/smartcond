@@ -1530,5 +1530,104 @@ class RoutesTableSeeder extends Seeder
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
+
+        // 124 - condominio
+        Route::create([
+            'group_id'        => '16',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'condominium.parking.dashboard',
+            'controller'      => 'Condominium\Parking\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos estacionamentos do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 125 - condominio
+        Route::create([
+            'group_id'        => '16',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'condominium.parking.list',
+            'controller'      => 'Condominium\Parking\ParkingController@list',
+            'description'     => 'Página de listagem dos estacionamentos do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 126 - condominio
+        Route::create([
+            'group_id'        => '16',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletadas',
+            'route'           => 'condominium.parking.list.deleted',
+            'controller'      => 'Condominium\Parking\ParkingController@listDeleted',
+            'description'     => 'Página de listagem dos estacionamentos do condomínio deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 127 - condominio
+        Route::create([
+            'group_id'        => '16',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'condominium.parking.view',
+            'controller'      => 'Condominium\Parking\ParkingController@edit',
+            'description'     => 'Modal de visualizar os dados do estacionamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 128 - condominio
+        Route::create([
+            'group_id'        => '16',
+            'route_option_id' => '2',
+            'url'             => 'nova',
+            'route'           => 'condominium.parking.store',
+            'controller'      => 'Condominium\Parking\ParkingController@store',
+            'description'     => 'Modal de criar novo estacionamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 129 - condominio
+        Route::create([
+            'group_id'        => '16',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'condominium.parking.edit',
+            'controller'      => 'Condominium\Parking\ParkingController@edit',
+            'description'     => 'Modal de editar os dados do estacionamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 130 - condominio
+        Route::create([
+            'group_id'        => '16',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'condominium.parking.delete',
+            'controller'      => 'Condominium\Parking\ParkingController@edit',
+            'description'     => 'Modal de deletar o estacionamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 131 - condominio
+        Route::create([
+            'group_id'        => '16',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'condominium.parking.recover',
+            'controller'      => 'Condominium\Parking\ParkingController@edit',
+            'description'     => 'Modal de recuperar o estacionamento do condomínio',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
     }
 }
