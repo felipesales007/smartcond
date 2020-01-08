@@ -6,6 +6,7 @@
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
             $('#btn-edit-condominium-apartment').removeAttr('disabled', 'disabled').html('Editar apartamento');
             $('#block-id-edit-condominium-apartment').val('').trigger('change');
+            $('#parking-id-edit-condominium-apartment').val('').trigger('change');
             $('#form-edit-condominium-apartment').trigger('reset');
         };
 
@@ -22,6 +23,7 @@
                     // dados
                     $('#id-edit-condominium-apartment').val(data.id);
                     $('#block-id-edit-condominium-apartment').val(data.block_id).trigger('change');
+                    $('#parking-id-edit-condominium-apartment').val(data.parking_id).trigger('change');
                     $('#name-edit-condominium-apartment').val(data.name);
                     $('#description-edit-condominium-apartment').val(data.description);
                 }

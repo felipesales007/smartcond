@@ -95,6 +95,28 @@ class CondominiumParking extends Model
     }
 
     /**
+     * Retornar todas as opções dos dados do armazenamento.
+     *
+     * @return array
+     */
+    static function getCondominiumParkingsFreeOptions()
+    {
+        $options = CondominiumParking::select('condominium_parkings.id', 'condominium_parkings.name')
+            ->leftJoin('condominium_apartment_parkings', 'condominium_apartment_parkings.parking_id', '=', 'condominium_parkings.id')
+            ->where('entity_id', '=', Entity::id())
+            ->where('apartment_id', '=', null)
+            ->get();
+
+        $array = [];
+
+        foreach ($options as $option) {
+            $array[$option->id] = $option->name;
+        }
+
+        return $array;
+    }
+
+    /**
      * Atributo de referência do join.
      *
      * @return BelongsTo

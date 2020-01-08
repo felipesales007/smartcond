@@ -50,6 +50,9 @@
                         },
                     },
                 },
+                'parking_id_edit_condominium_apartment[]': {
+                    required: true,
+                },
                 description_edit_condominium_apartment: {
                     minlength: 10,
                     maxlength: 1500,
@@ -69,6 +72,9 @@
                     maxlength:          'O campo nome do apartamento não pode ser superior a {0} caracteres.',
                     lettersdigitnumber: 'O campo nome do apartamento deve ter somente letras, números, espaços e caracteres permitidos.',
                     remote:             'O campo nome do apartamento já está sendo utilizado.',
+                },
+                'parking_id_edit_condominium_apartment[]': {
+                    required:  'O campo estacionamento é obrigatório.',
                 },
                 description_edit_condominium_apartment: {
                     minlength:          'O campo descrição deve ter pelo menos {0} caracteres.',

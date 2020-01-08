@@ -40,6 +40,7 @@
             columns: [
                 { data: 'block',       name: 'block' },
                 { data: 'name',        name: 'name' },
+                { data: 'parking',     name: 'parking', orderable: false, searchable: false },
                 { data: 'description', name: 'description', orderable: false, searchable: false },
                 { data: 'action',      name: 'action', className: 'text-center fe-td-action d-print-none', orderable: false, searchable: false },
             ]

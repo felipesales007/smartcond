@@ -17,7 +17,7 @@
                         $('#status-view-condominium-parking').addClass('d-none').html('');
                     }
                     // nome
-                    $('#name-view-condominium-parking').html(data.name);
+                    $('#name-view-condominium-parking').html('<i class="fas fa-car mr-2"></i>' + data.name);
                     // descrição
                     if (data.description) {
                         $('#description-view-condominium-parking').html('<div class="small mt-4">' + data.description + '</div>');

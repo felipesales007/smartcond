@@ -48,11 +48,30 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome ou número') }}">*</span>
-                                    <input type="text" id="name-new-condominium-apartment" name="name_new_condominium_apartment" class="form-control {{ $errors->has('name_new_condominium_apartment') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número do apartamento') }}" value="{{ old('name_new_condominium_apartment') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-new-condominium-apartment');" @if ($errors->has('name_new_condominium_apartment')) autofocus @endif>
+                                    <input type="text" id="name-new-condominium-apartment" name="name_new_condominium_apartment" class="form-control {{ $errors->has('name_new_condominium_apartment') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número') }}" value="{{ old('name_new_condominium_apartment') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-new-condominium-apartment');" @if ($errors->has('name_new_condominium_apartment')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_new_condominium_apartment'))
                                     <div class="invalid-feedback" role="alert">{{ $errors->first('name_new_condominium_apartment') }}</div>
+                                @endif
+                            </div>
+                        </div>
+                        <!-- estacionamento -->
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-control-label" for="parking-id-new-condominium-apartment">{{ __('Estacionamento') }}</label>
+                                <div class="input-group-none validate-parking-id-new-condominium-apartment">
+                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o estacionamento') }}">*</span>
+                                    {{ Form::select(
+                                        "name",
+                                        \App\Models\Condominium\CondominiumParking::getCondominiumParkingsFreeOptions(),
+                                        old("parking_id_new_condominium_apartment"),
+                                        ["id" => "parking-id-new-condominium-apartment", "name" => "parking_id_new_condominium_apartment[]", "class" => "form-control", "required", "multiple"]
+                                    )}}
+                                </div>
+                                <!-- alerta de erro -->
+                                @if ($errors->has('parking_id_new_condominium_apartment'))
+                                    <div class="invalid-feedback" role="alert">{{ $errors->first('parking_id_new_condominium_apartment') }}</div>
                                 @endif
                             </div>
                         </div>

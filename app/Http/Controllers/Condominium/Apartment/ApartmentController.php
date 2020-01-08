@@ -9,6 +9,7 @@ use App\Http\Requests\Condominium\Apartment\EditApartmentRequest;
 use App\Http\Requests\Condominium\Apartment\NewApartmentRequest;
 use App\Http\Requests\Condominium\Apartment\RecoverApartmentRequest;
 use App\Models\Condominium\CondominiumApartment;
+use App\Models\Condominium\CondominiumApartmentParking;
 use App\Models\Entity\Entity;
 use App\Models\Menu\MenuItem;
 use App\Models\User\Permission;
@@ -17,6 +18,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\View\View;
 
 class ApartmentController extends Controller
@@ -58,6 +60,21 @@ class ApartmentController extends Controller
                 ->addColumn('name', function ($row) {
                     return $row->name;
                 })
+                // coluna estacionamento
+                ->addColumn('parking', function ($row) {
+                    $parking = CondominiumApartmentParking::join('condominium_parkings', 'condominium_parkings.id', '=', 'condominium_apartment_parkings.parking_id')
+                        ->where('apartment_id', '=', $row->id)
+                        ->get()
+                        ->pluck('name')
+                        ->toArray();
+
+                    $array = null;
+                    for ($i = 0; $i < count($parking); $i++) {
+                        $array[] = '<span class="badge badge-info"><i class="fas fa-car mr-1"></i>' . $parking[$i] . '</span>';
+                    }
+
+                    return implode(' ', $array);
+                })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
                     return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
@@ -95,7 +112,7 @@ class ApartmentController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['block', 'name', 'description', 'action'])
+                ->rawColumns(['block', 'name', 'parking', 'description', 'action'])
                 ->toJson();
         }
 
@@ -116,12 +133,19 @@ class ApartmentController extends Controller
     public function store(NewApartmentRequest $request)
     {
         // dados
-        CondominiumApartment::create([
+        $collection = CondominiumApartment::create([
             'entity_id'   => Entity::id(),
             'block_id'    => $request->block_id_new_condominium_apartment,
             'name'        => $request->name_new_condominium_apartment,
             'description' => $request->description_new_condominium_apartment,
         ]);
+
+        for ($i = 0; $i < count($request->parking_id_new_condominium_apartment); $i++) {
+            CondominiumApartmentParking::create([
+                'apartment_id' => $collection->id,
+                'parking_id'   => $request->parking_id_new_condominium_apartment[$i]
+            ]);
+        }
 
         $data = NotifyHelpers::success_top_center('fas fa-building', 'Apartamento criado com sucesso.');
 
@@ -136,11 +160,27 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
+        $select_parking = CondominiumApartmentParking::join('condominium_parkings', 'condominium_parkings.id', 'condominium_apartment_parkings.parking_id')
+        ->where('apartment_id', '=', $id)
+        ->get()
+        ->pluck('parking_id')
+        ->toArray();
+
+        $array_parking = CondominiumApartmentParking::select('name')
+            ->join('condominium_parkings', 'condominium_parkings.id', 'condominium_apartment_parkings.parking_id')
+            ->where('apartment_id', '=', $id)
+            ->orderBy('condominium_parkings.id')
+            ->get()
+            ->toArray();
+
         $collection = CondominiumApartment::withTrashed()
             ->select('condominium_apartments.*', 'condominium_blocks.name as block')
             ->leftJoin('condominium_blocks', 'condominium_blocks.id', '=', 'condominium_apartments.block_id')
             ->where('condominium_apartments.entity_id', '=', Entity::id())
             ->find($id);
+
+        $collection = Arr::add($collection, 'parking', $array_parking);
+        $collection = Arr::add($collection, 'parking_id', $select_parking);
 
         return response()->json($collection);
     }
@@ -154,6 +194,29 @@ class ApartmentController extends Controller
     public function update(EditApartmentRequest $request)
     {
         $collection = CondominiumApartment::where('entity_id', '=', Entity::id())->find($request->id_edit_condominium_apartment);
+
+        $parking = CondominiumApartmentParking::where('apartment_id', '=', $request->id_edit_condominium_apartment)
+            ->orderByRaw('length(parking_id) asc')
+            ->orderBy('parking_id', 'asc')
+            ->get()
+            ->pluck('parking_id')
+            ->toArray();
+
+        // se houver alteração
+        if ($request->parking_id_edit_condominium_apartment != $parking) {
+            // remove as relações antigas
+            CondominiumApartmentParking::where('apartment_id', $request->id_edit_condominium_apartment)
+                ->whereIn('parking_id', $parking)
+                ->delete();
+
+            // adicona as novas relações
+            for ($i = 0; $i < count($request->parking_id_edit_condominium_apartment); $i++) {
+                CondominiumApartmentParking::create([
+                    'apartment_id' => $request->id_edit_condominium_apartment,
+                    'parking_id'   => $request->parking_id_edit_condominium_apartment[$i]
+                ]);
+            }
+        }
 
         // dados
         $collection->fill([
@@ -222,6 +285,21 @@ class ApartmentController extends Controller
                 ->addColumn('name', function ($row) {
                     return $row->name;
                 })
+                // coluna estacionamento
+                ->addColumn('parking', function ($row) {
+                    $parking = CondominiumApartmentParking::join('condominium_parkings', 'condominium_parkings.id', '=', 'condominium_apartment_parkings.parking_id')
+                        ->where('apartment_id', '=', $row->id)
+                        ->get()
+                        ->pluck('name')
+                        ->toArray();
+
+                    $array = null;
+                    for ($i = 0; $i < count($parking); $i++) {
+                        $array[] = '<span class="badge badge-info"><i class="fas fa-car mr-1"></i>' . $parking[$i] . '</span>';
+                    }
+
+                    return implode(' ', $array);
+                })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
                     return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
@@ -250,7 +328,7 @@ class ApartmentController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['block', 'name', 'description', 'action'])
+                ->rawColumns(['block', 'name', 'parking', 'description', 'action'])
                 ->toJson();
         }
 

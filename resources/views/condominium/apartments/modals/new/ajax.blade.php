@@ -6,6 +6,7 @@
             $('a[data-dismiss="modal"]').removeClass('fe-hidden');
             $('#btn-new-condominium-apartment').removeAttr('disabled', 'disabled').html('Criar apartamento');
             $('#block-id-new-condominium-apartment').val('').trigger('change');
+            $('#parking-id-new-condominium-apartment').val('').trigger('change');
             $('#form-new-condominium-apartment').trigger('reset');
         };
 

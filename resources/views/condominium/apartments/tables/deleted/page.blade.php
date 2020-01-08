@@ -86,6 +86,7 @@
                                 <tr>
                                     <th data-base="condominium_blocks.name">{{ __('Bloco') }}</th>
                                     <th data-base="condominium_apartments.name">{{ __('Apartamento') }}</th>
+                                    <th>{{ __('Estacionamento') }}</th>
                                     <th>{{ __('Descrição') }}</th>
                                     <th class="text-center"><i class="fas fa-cog"></i></th>
                                 </tr>

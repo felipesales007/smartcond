@@ -669,6 +669,9 @@ return [
 
         'block_id_new_condominium_apartment'              => 'bloco do apartamento',
         'block_id_edit_condominium_apartment'             => 'bloco do apartamento',
+
+        'parking_id_new_condominium_apartment'            => 'estacionamento',
+        'parking_id_edit_condominium_apartment'           => 'estacionamento',
     ],
 
 ];

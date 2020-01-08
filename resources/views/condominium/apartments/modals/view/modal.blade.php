@@ -20,6 +20,12 @@
                         <small id="status-view-condominium-apartment" class="float-right mt--4 d-none"></small>
                         <!-- nome -->
                         <div id="name-view-condominium-apartment" class="fe-text-badge-fix mt--3"></div>
+                        <!-- estacionamento -->
+                        <div class="small mb--2 mt-4">
+                            <i class="fas fa-car mr-2"></i>
+                            <span id="parking-text-view-condominium-apartment">estacionamento</span>
+                        </div>
+                        <div id="scroll-parking-view-condominium-apartment" class="fe-scroll-view-200 mt-3"></div>
                         <!-- descrição -->
                         <span id="description-view-condominium-apartment"></span>
                     </div>
