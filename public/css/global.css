@@ -860,6 +860,10 @@
     position: relative;
 }
 
+.fe-hover-bg:hover {
+    background-color: #dddddd;
+}
+
 /*
 =========================================================
 * website animations

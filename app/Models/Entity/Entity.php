@@ -3,6 +3,7 @@
 namespace App\Models\Entity;
 
 use App\Models\State;
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -218,5 +219,20 @@ class Entity extends Model
             ->where('entities.deleted_at', '=', null)
             ->where('entity_accesses.user_id', '=', $id)
             ->pluck('entity_id');
+    }
+
+    /**
+     * @param $id
+     * @return UrlGenerator|string
+     */
+    static function getEntityLogo($id)
+    {
+        $logo = Entity::find($id)['logo'];
+
+        if ($logo) {
+            return url('storage/images/companies/logo/' . $logo);
+        }
+
+        return url('images/default/default-logo.png');
     }
 }
