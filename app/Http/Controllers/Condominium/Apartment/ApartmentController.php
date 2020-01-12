@@ -382,6 +382,9 @@ class ApartmentController extends Controller
                     ->where('condominium_apartments.id', '=', $id)
                     ->orWhere('apartment_id', '=', null);
             })
+            ->when(!$id, function ($query) use ($id) {
+                $query->where('apartment_id', '=', null);
+            })
             ->get();
 
         return json_encode($collection);

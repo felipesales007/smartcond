@@ -64,5 +64,26 @@
                 $('#name-new-condominium-apartment').valid();
             }
         });
+
+        // estacionamento
+        $('#parking-id-new-condominium-apartment').trigger('change').select2({
+            placeholder: 'Selecione',
+            language: 'pt-BR',
+            minimumResultsForSearch: -1,
+            ajax: {
+                url: '{{ app('router')->has('condominium.apartment.select') ? route('condominium.apartment.select') : url('') }}',
+                dataType: 'json',
+                processResults: function (data) {
+                    return {
+                        results: data.map(function(item) {
+                            return {
+                                id: item.id,
+                                text: item.name
+                            };
+                        }),
+                    };
+                },
+            },
+        });
     });
 </script>
