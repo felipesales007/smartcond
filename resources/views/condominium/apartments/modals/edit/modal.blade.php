@@ -80,12 +80,12 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="parking-id-edit-condominium-apartment">{{ __('Estacionamento') }}</label>
                                 <div class="input-group-none validate-parking-id-edit-condominium-apartment">
-                                    <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o estacionamento') }}">*</span>
+                                    <span class="fe-star fe-star-default" data-toggle="tooltip" data-placement="top" title="{{ __('selecione o estacionamento') }}">*</span>
                                     {{ Form::select(
                                         "name",
                                         \App\Models\Condominium\CondominiumParking::getCondominiumParkingsOptions(),
                                         old("parking_id_edit_condominium_apartment"),
-                                        ["id" => "parking-id-edit-condominium-apartment", "name" => "parking_id_edit_condominium_apartment[]", "class" => "form-control", "required", "multiple"]
+                                        ["id" => "parking-id-edit-condominium-apartment", "name" => "parking_id_edit_condominium_apartment[]", "class" => "form-control", "multiple"]
                                     )}}
                                 </div>
                                 <!-- alerta de erro -->

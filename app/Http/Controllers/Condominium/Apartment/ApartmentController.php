@@ -10,6 +10,7 @@ use App\Http\Requests\Condominium\Apartment\NewApartmentRequest;
 use App\Http\Requests\Condominium\Apartment\RecoverApartmentRequest;
 use App\Models\Condominium\CondominiumApartment;
 use App\Models\Condominium\CondominiumApartmentParking;
+use App\Models\Condominium\CondominiumParking;
 use App\Models\Entity\Entity;
 use App\Models\Menu\MenuItem;
 use App\Models\User\Permission;
@@ -67,6 +68,10 @@ class ApartmentController extends Controller
                         ->get()
                         ->pluck('name')
                         ->toArray();
+
+                    if (!$parking) {
+                        return null;
+                    }
 
                     $array = null;
                     for ($i = 0; $i < count($parking); $i++) {
@@ -293,6 +298,10 @@ class ApartmentController extends Controller
                         ->pluck('name')
                         ->toArray();
 
+                    if (!$parking) {
+                        return null;
+                    }
+
                     $array = null;
                     for ($i = 0; $i < count($parking); $i++) {
                         $array[] = '<span class="badge badge-info"><i class="fas fa-car mr-1"></i>' . $parking[$i] . '</span>';
@@ -354,5 +363,27 @@ class ApartmentController extends Controller
         $data = NotifyHelpers::success_top_center('fas fa-recycle', 'Apartamento recuperado com sucesso.');
 
         return response()->json($data);
+    }
+
+    /**
+    * Exibir uma listagem do recurso.
+    *
+    * @param null $id
+    * @return false|string
+    */
+    public function select($id = null)
+    {
+        $collection = CondominiumParking::select('condominium_parkings.id', 'condominium_parkings.name')
+            ->leftJoin('condominium_apartment_parkings', 'condominium_apartment_parkings.parking_id', '=', 'condominium_parkings.id')
+            ->leftJoin('condominium_apartments', 'condominium_apartments.id', '=', 'condominium_apartment_parkings.apartment_id')
+            ->where('condominium_parkings.entity_id', '=', Entity::id())
+            ->when($id, function ($query) use ($id) {
+                $query
+                    ->where('condominium_apartments.id', '=', $id)
+                    ->orWhere('apartment_id', '=', null);
+            })
+            ->get();
+
+        return json_encode($collection);
     }
 }

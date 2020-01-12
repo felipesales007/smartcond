@@ -206,6 +206,7 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
     // condominio apartamentos
     Route::group(['prefix' => 'condominio/apartamentos'], function () {
         Route::get ('data',                     ['as' => 'condominium.apartment.data',                 'uses' => 'Condominium\Apartment\DashboardController@data']);
+        Route::get ('selecao/{id?}',            ['as' => 'condominium.apartment.select',               'uses' => 'Condominium\Apartment\ApartmentController@select']);
         Route::post('atualizar/{id?}',          ['as' => 'condominium.apartment.update',               'uses' => 'Condominium\Apartment\ApartmentController@update']);
         Route::post('remover/{id?}',            ['as' => 'condominium.apartment.destroy',              'uses' => 'Condominium\Apartment\ApartmentController@destroy']);
         Route::post('restaurar/{id?}',          ['as' => 'condominium.apartment.restore',              'uses' => 'Condominium\Apartment\ApartmentController@restore']);
