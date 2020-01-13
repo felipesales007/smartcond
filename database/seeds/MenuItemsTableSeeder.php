@@ -1460,7 +1460,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Visualizar blocos',
             'button'      => 'btn-modal-view-condominium-block',
-            'description' => 'Item do menu da listagem de blocos de acesso ao modal de visualização de blocos',
+            'description' => 'Item do menu da listagem de blocos de acesso ao modal de visualização de bloco',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1470,9 +1470,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '120',
             'order'       => '0',
-            'name'        => 'Novo item do blocos',
+            'name'        => 'Novo blocos',
             'button'      => 'btn-modal-new-condominium-block',
-            'description' => 'Item do menu de acesso ao modal de criação de blocos',
+            'description' => 'Item do menu de acesso ao modal de criação de bloco',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1482,9 +1482,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '121',
             'order'       => '0',
-            'name'        => 'Editar item do blocos',
+            'name'        => 'Editar blocos',
             'button'      => 'btn-modal-edit-condominium-block',
-            'description' => 'Item do menu da listagem de blocos de acesso ao modal de edição de blocos',
+            'description' => 'Item do menu da listagem de blocos de acesso ao modal de edição de bloco',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1494,9 +1494,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '122',
             'order'       => '0',
-            'name'        => 'Deletar item do blocos',
+            'name'        => 'Deletar blocos',
             'button'      => 'btn-modal-delete-condominium-block',
-            'description' => 'Item do menu da listagem de blocos de acesso ao modal de exclusão de blocos',
+            'description' => 'Item do menu da listagem de blocos de acesso ao modal de exclusão de bloco',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1506,9 +1506,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '123',
             'order'       => '0',
-            'name'        => 'Recuperar item do blocos',
+            'name'        => 'Recuperar blocos',
             'button'      => 'btn-modal-recover-condominium-block',
-            'description' => 'Item do menu da listagem de blocos deletados de acesso ao modal de recuperação de blocos',
+            'description' => 'Item do menu da listagem de blocos deletados de acesso ao modal de recuperação de bloco',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1556,7 +1556,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Visualizar estacionamentos',
             'button'      => 'btn-modal-view-condominium-parking',
-            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de visualização de estacionamentos',
+            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de visualização de estacionamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1566,9 +1566,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '128',
             'order'       => '0',
-            'name'        => 'Novo item do estacionamentos',
+            'name'        => 'Novo estacionamentos',
             'button'      => 'btn-modal-new-condominium-parking',
-            'description' => 'Item do menu de acesso ao modal de criação de estacionamentos',
+            'description' => 'Item do menu de acesso ao modal de criação de estacionamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1578,9 +1578,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '129',
             'order'       => '0',
-            'name'        => 'Editar item do estacionamentos',
+            'name'        => 'Editar estacionamentos',
             'button'      => 'btn-modal-edit-condominium-parking',
-            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de edição de estacionamentos',
+            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de edição de estacionamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1590,9 +1590,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '130',
             'order'       => '0',
-            'name'        => 'Deletar item do estacionamentos',
+            'name'        => 'Deletar estacionamentos',
             'button'      => 'btn-modal-delete-condominium-parking',
-            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de exclusão de estacionamentos',
+            'description' => 'Item do menu da listagem de estacionamentos de acesso ao modal de exclusão de estacionamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1602,9 +1602,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '131',
             'order'       => '0',
-            'name'        => 'Recuperar item do estacionamentos',
+            'name'        => 'Recuperar estacionamentos',
             'button'      => 'btn-modal-recover-condominium-parking',
-            'description' => 'Item do menu da listagem de estacionamentos deletados de acesso ao modal de recuperação de estacionamentos',
+            'description' => 'Item do menu da listagem de estacionamentos deletados de acesso ao modal de recuperação de estacionamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1652,7 +1652,7 @@ class MenuItemsTableSeeder extends Seeder
             'order'       => '0',
             'name'        => 'Visualizar apartamentos',
             'button'      => 'btn-modal-view-condominium-apartment',
-            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de visualização de apartamentos',
+            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de visualização de apartamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1662,9 +1662,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '136',
             'order'       => '0',
-            'name'        => 'Novo item do apartamentos',
+            'name'        => 'Novo apartamentos',
             'button'      => 'btn-modal-new-condominium-apartment',
-            'description' => 'Item do menu de acesso ao modal de criação de apartamentos',
+            'description' => 'Item do menu de acesso ao modal de criação de apartamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1674,9 +1674,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '137',
             'order'       => '0',
-            'name'        => 'Editar item do apartamentos',
+            'name'        => 'Editar apartamentos',
             'button'      => 'btn-modal-edit-condominium-apartment',
-            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de edição de apartamentos',
+            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de edição de apartamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1686,9 +1686,9 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '138',
             'order'       => '0',
-            'name'        => 'Deletar item do apartamentos',
+            'name'        => 'Deletar apartamentos',
             'button'      => 'btn-modal-delete-condominium-apartment',
-            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de exclusão de apartamentos',
+            'description' => 'Item do menu da listagem de apartamentos de acesso ao modal de exclusão de apartamento',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -1698,9 +1698,105 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id'     => '9',
             'route_id'    => '139',
             'order'       => '0',
-            'name'        => 'Recuperar item do apartamentos',
+            'name'        => 'Recuperar apartamentos',
             'button'      => 'btn-modal-recover-condominium-apartment',
-            'description' => 'Item do menu da listagem de apartamentos deletados de acesso ao modal de recuperação de apartamentos',
+            'description' => 'Item do menu da listagem de apartamentos deletados de acesso ao modal de recuperação de apartamento',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 142 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '140',
+            'order'       => '0',
+            'name'        => 'Dashboard de serviços',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de dashboard de prestadores de serviços',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 143 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '141',
+            'order'       => '2',
+            'name'        => 'Serviços',
+            'main'        => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de prestadores de serviços',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 144 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '142',
+            'order'       => '0',
+            'name'        => 'Lista de serviços deletados',
+            'hidden'      => '1',
+            'description' => 'Item do menu collapse oculto de acesso a página de listagem de prestadores de serviços deletados',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 145 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '143',
+            'order'       => '0',
+            'name'        => 'Visualizar serviço',
+            'button'      => 'btn-modal-view-condominium-service',
+            'description' => 'Item do menu da listagem de prestadores de serviços de acesso ao modal de visualização de prestador de serviços',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 146 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '144',
+            'order'       => '0',
+            'name'        => 'Novo serviço',
+            'button'      => 'btn-modal-new-condominium-service',
+            'description' => 'Item do menu de acesso ao modal de criação de prestador de serviços',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 147 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '145',
+            'order'       => '0',
+            'name'        => 'Editar serviço',
+            'button'      => 'btn-modal-edit-condominium-service',
+            'description' => 'Item do menu da listagem de prestadores de serviços de acesso ao modal de edição de prestador de serviços',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 148 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '146',
+            'order'       => '0',
+            'name'        => 'Deletar serviço',
+            'button'      => 'btn-modal-delete-condominium-service',
+            'description' => 'Item do menu da listagem de prestadores de serviços de acesso ao modal de exclusão de prestador de serviços',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        // 149 - Condomínio
+        MenuItem::create([
+            'menu_id'     => '9',
+            'route_id'    => '147',
+            'order'       => '0',
+            'name'        => 'Recuperar serviço',
+            'button'      => 'btn-modal-recover-condominium-service',
+            'description' => 'Item do menu da listagem de prestadores de serviços deletados de acesso ao modal de recuperação de prestador de serviços',
             'created_at'  => now(),
             'updated_at'  => now()
         ]);

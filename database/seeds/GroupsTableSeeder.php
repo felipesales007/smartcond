@@ -164,5 +164,14 @@ class GroupsTableSeeder extends Seeder
             'created_at'    => now(),
             'updated_at'    => now()
         ]);
+
+        // 18 - condominio
+        Group::create([
+            'name'          => 'condominio/servicos',
+            'user_level_id' => '3',
+            'description'   => 'Grupo das configurações dos prestadores de serviços dos apartamentos',
+            'created_at'    => now(),
+            'updated_at'    => now()
+        ]);
     }
 }

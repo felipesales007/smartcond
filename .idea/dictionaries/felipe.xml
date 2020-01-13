@@ -841,6 +841,7 @@
       <w>lettersdigitnumber</w>
       <w>lettersgroup</w>
       <w>lettersicon</w>
+      <w>lettersonly</w>
       <w>lettersroute</w>
       <w>lettersurl</w>
       <w>leva</w>
@@ -1024,6 +1025,7 @@
       <w>obrigatórias</w>
       <w>obrigatório</w>
       <w>obrigatórios</w>
+      <w>observação</w>
       <w>obtenha</w>
       <w>obter</w>
       <w>ocioso</w>
@@ -1151,6 +1153,9 @@
       <w>preocupar</w>
       <w>presente</w>
       <w>presentes</w>
+      <w>presta</w>
+      <w>prestador</w>
+      <w>prestadores</w>
       <w>pretendido</w>
       <w>preto</w>
       <w>primeira</w>
@@ -1348,6 +1353,7 @@
       <w>seremos</w>
       <w>sergipe</w>
       <w>servem</w>
+      <w>servicos</w>
       <w>servidor</w>
       <w>servidores</w>
       <w>serviço</w>

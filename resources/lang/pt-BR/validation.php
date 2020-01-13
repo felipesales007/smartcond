@@ -192,6 +192,7 @@ return [
         'id_edit_condominium_block'                       => 'id',
         'id_edit_condominium_parking'                     => 'id',
         'id_edit_condominium_apartment'                   => 'id',
+        'id_edit_condominium_service'                     => 'id',
         'id_block_user'                                   => 'id',
         'id_block_entity'                                 => 'id',
         'id_block_group'                                  => 'id',
@@ -216,6 +217,7 @@ return [
         'id_delete_condominium_block'                     => 'id',
         'id_delete_condominium_parking'                   => 'id',
         'id_delete_condominium_apartment'                 => 'id',
+        'id_delete_condominium_service'                   => 'id',
         'id_recover_user'                                 => 'id',
         'id_recover_entity'                               => 'id',
         'id_recover_group'                                => 'id',
@@ -230,6 +232,7 @@ return [
         'id_recover_condominium_block'                    => 'id',
         'id_recover_condominium_parking'                  => 'id',
         'id_recover_condominium_apartment'                => 'id',
+        'id_recover_condominium_service'                  => 'id',
         'id_resend_email_user'                            => 'id',
 
         'name'                                            => 'nome',
@@ -248,6 +251,7 @@ return [
         'name_new_condominium_block'                      => 'nome do bloco',
         'name_new_condominium_parking'                    => 'nome do estacionamento',
         'name_new_condominium_apartment'                  => 'nome do apartamento',
+        'name_new_condominium_service'                    => 'nome',
         'name_edit_profile'                               => 'nome',
         'name_edit_user'                                  => 'nome',
         'name_edit_entity'                                => 'nome fantasia',
@@ -262,6 +266,7 @@ return [
         'name_edit_condominium_block'                     => 'nome do bloco',
         'name_edit_condominium_parking'                   => 'nome do estacionamento',
         'name_edit_condominium_apartment'                 => 'nome do apartamento',
+        'name_edit_condominium_service'                   => 'nome',
         'name_delete_user'                                => 'nome',
         'name_delete_entity'                              => 'nome',
         'name_delete_group'                               => 'nome',
@@ -275,6 +280,7 @@ return [
         'name_delete_condominium_block'                   => 'nome do bloco',
         'name_delete_condominium_parking'                 => 'nome do estacionamento',
         'name_delete_condominium_apartment'               => 'nome do apartamento',
+        'name_delete_condominium_service'                 => 'nome',
         'name_recover_user'                               => 'nome',
         'name_recover_entity'                             => 'nome',
         'name_recover_group'                              => 'nome',
@@ -288,6 +294,7 @@ return [
         'name_recover_condominium_block'                  => 'nome do bloco',
         'name_recover_condominium_parking'                => 'nome do estacionamento',
         'name_recover_condominium_apartment'              => 'nome do apartamento',
+        'name_recover_condominium_service'                => 'nome',
         'name_send_email_user'                            => 'nome',
         'name_send_email_entity'                          => 'nome fantasia',
         'name_send_email_company'                         => 'nome fantasia',
@@ -307,6 +314,7 @@ return [
         'name_confirmation_delete_condominium_block'      => 'nome do bloco para exclusão',
         'name_confirmation_delete_condominium_parking'    => 'nome do estacionamento para exclusão',
         'name_confirmation_delete_condominium_apartment'  => 'nome do apartamento para exclusão',
+        'name_confirmation_delete_condominium_service'    => 'nome para recuperação',
         'name_confirmation_recover_user'                  => 'nome para recuperação',
         'name_confirmation_recover_entity'                => 'nome para recuperação',
         'name_confirmation_recover_group'                 => 'nome para recuperação',
@@ -320,6 +328,7 @@ return [
         'name_confirmation_recover_condominium_block'     => 'nome do bloco para recuperação',
         'name_confirmation_recover_condominium_parking'   => 'nome do estacionamento para recuperação',
         'name_confirmation_recover_condominium_apartment' => 'nome do apartamento para recuperação',
+        'name_confirmation_recover_condominium_service'   => 'nome para recuperação',
 
         'corporate_name'                                  => 'razão social',
         'corporate_name_new_entity'                       => 'razão social',
@@ -333,9 +342,11 @@ return [
         'cpf_edit_admin'                                  => 'cpf',
 
         'rg'                                              => 'rg',
+        'rg_new_condominium_service'                      => 'rg',
         'rg_edit_profile'                                 => 'rg',
         'rg_edit_user'                                    => 'rg',
         'rg_edit_admin'                                   => 'rg',
+        'rg_edit_condominium_service'                     => 'rg',
 
         'cnpj'                                            => 'cnpj',
         'cnpj_new_entity'                                 => 'cnpj',
@@ -512,9 +523,11 @@ return [
         'company_id_edit_admin'                           => 'empresa',
 
         'profession'                                      => 'profissão',
+        'profession_new_condominium_service'              => 'profissão',
         'profession_edit_profile'                         => 'profissão',
         'profession_edit_user'                            => 'profissão',
         'profession_edit_admin'                           => 'profissão',
+        'profession_edit_condominium_service'             => 'profissão',
 
         'gender_id'                                       => 'sexo',
         'gender_id_edit_profile'                          => 'sexo',
@@ -524,11 +537,13 @@ return [
         'contact'                                         => 'telefone',
         'contact_new_entity'                              => 'telefone',
         'contact_new_company'                             => 'telefone',
+        'contact_new_condominium_service'                 => 'telefone',
         'contact_edit_profile'                            => 'telefone',
         'contact_edit_user'                               => 'telefone',
         'contact_edit_entity'                             => 'telefone',
         'contact_edit_company'                            => 'telefone',
         'contact_edit_admin'                              => 'telefone',
+        'contact_edit_condominium_service'                => 'telefone',
 
         'image'                                           => 'imagem',
         'image_photo_edit_profile'                        => 'foto',
@@ -672,6 +687,9 @@ return [
 
         'parking_id_new_condominium_apartment'            => 'estacionamento',
         'parking_id_edit_condominium_apartment'           => 'estacionamento',
+
+        'note_new_condominium_service'                    => 'observação',
+        'note_edit_condominium_service'                   => 'observação',
     ],
 
 ];

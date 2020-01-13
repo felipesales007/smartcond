@@ -1728,5 +1728,104 @@ class RoutesTableSeeder extends Seeder
             'created_at'      => now(),
             'updated_at'      => now()
         ]);
+
+        // 140 - condominio
+        Route::create([
+            'group_id'        => '18',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'dashboard',
+            'route'           => 'condominium.service.dashboard',
+            'controller'      => 'Condominium\Service\DashboardController@dashboard',
+            'description'     => 'Página de dashboard dos prestadores de serviços dos apartamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 141 - condominio
+        Route::create([
+            'group_id'        => '18',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista',
+            'route'           => 'condominium.service.list',
+            'controller'      => 'Condominium\Service\ServiceController@list',
+            'description'     => 'Página de listagem dos dos prestadores de serviços dos apartamentos',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 142 - condominio
+        Route::create([
+            'group_id'        => '18',
+            'route_option_id' => '1',
+            'view'            => '1',
+            'url'             => 'lista/deletadas',
+            'route'           => 'condominium.service.list.deleted',
+            'controller'      => 'Condominium\Service\ServiceController@listDeleted',
+            'description'     => 'Página de listagem dos prestadores de serviços dos apartamentos deletados',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 143 - condominio
+        Route::create([
+            'group_id'        => '18',
+            'route_option_id' => '1',
+            'url'             => 'visualizar/{id?}',
+            'route'           => 'condominium.service.view',
+            'controller'      => 'Condominium\Service\ServiceController@edit',
+            'description'     => 'Modal de visualizar os dados do prestador de serviços do apartamento',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 144 - condominio
+        Route::create([
+            'group_id'        => '18',
+            'route_option_id' => '2',
+            'url'             => 'nova',
+            'route'           => 'condominium.service.store',
+            'controller'      => 'Condominium\Service\ServiceController@store',
+            'description'     => 'Modal de criar novo do prestador de serviços do apartamento',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 145 - condominio
+        Route::create([
+            'group_id'        => '18',
+            'route_option_id' => '1',
+            'url'             => 'editar/{id?}',
+            'route'           => 'condominium.service.edit',
+            'controller'      => 'Condominium\Service\ServiceController@edit',
+            'description'     => 'Modal de editar os dados do prestador de serviços do apartamento',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 146 - condominio
+        Route::create([
+            'group_id'        => '18',
+            'route_option_id' => '1',
+            'url'             => 'deletar/{id?}',
+            'route'           => 'condominium.service.delete',
+            'controller'      => 'Condominium\Service\ServiceController@edit',
+            'description'     => 'Modal de deletar o prestador de serviços do apartamento',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
+
+        // 147 - condominio
+        Route::create([
+            'group_id'        => '18',
+            'route_option_id' => '1',
+            'url'             => 'recuperar/{id?}',
+            'route'           => 'condominium.service.recover',
+            'controller'      => 'Condominium\Service\ServiceController@edit',
+            'description'     => 'Modal de recuperar o prestador de serviços do apartamento',
+            'created_at'      => now(),
+            'updated_at'      => now()
+        ]);
     }
 }

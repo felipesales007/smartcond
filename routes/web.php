@@ -214,6 +214,18 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
         Route::post('verificar/nome/diferente', ['as' => 'condominium.apartment.check.name.different', 'uses' => 'Condominium\Apartment\CheckController@checkNameDifferent']);
     });
 
+    // condominio serviços
+    Route::group(['prefix' => 'condominio/servicos'], function () {
+        Route::get ('data',                     ['as' => 'condominium.service.data',                 'uses' => 'Condominium\Service\DashboardController@data']);
+        Route::post('atualizar/{id?}',          ['as' => 'condominium.service.update',               'uses' => 'Condominium\Service\ServiceController@update']);
+        Route::post('remover/{id?}',            ['as' => 'condominium.service.destroy',              'uses' => 'Condominium\Service\ServiceController@destroy']);
+        Route::post('restaurar/{id?}',          ['as' => 'condominium.service.restore',              'uses' => 'Condominium\Service\ServiceController@restore']);
+        Route::post('verificar/nome',           ['as' => 'condominium.service.check.name',           'uses' => 'Condominium\Service\CheckController@checkName']);
+        Route::post('verificar/nome/diferente', ['as' => 'condominium.service.check.name.different', 'uses' => 'Condominium\Service\CheckController@checkNameDifferent']);
+        Route::post('verificar/rg',             ['as' => 'condominium.service.check.rg',             'uses' => 'Condominium\Service\CheckController@checkRg']);
+        Route::post('verificar/rg/diferente',   ['as' => 'condominium.service.check.rg.different',   'uses' => 'Condominium\Service\CheckController@checkRgDifferent']);
+    });
+
     // restrições de permissões
     Route::group(['middleware' => ['permission']], function () {
         // grupos do banco
@@ -449,6 +461,18 @@ Route::group(['middleware' => ['auth', 'verified', 'unique']], function () {
         Route::get ('editar/{id?}',     ['as' => 'condominium.apartment.edit',         'uses' => 'Condominium\Apartment\ApartmentController@edit']); // * btn-modal-edit-condominium-apartment
         Route::get ('deletar/{id?}',    ['as' => 'condominium.apartment.delete',       'uses' => 'Condominium\Apartment\ApartmentController@edit']); // * btn-modal-delete-condominium-apartment
         Route::get ('recuperar/{id?}',  ['as' => 'condominium.apartment.recover',      'uses' => 'Condominium\Apartment\ApartmentController@edit']); // * btn-modal-recover-condominium-apartment
+    });
+
+    // condominio serviços
+    Route::group(['prefix' => 'condominio/servicos'], function () {
+        Route::get ('dashboard',        ['as' => 'condominium.service.dashboard',    'uses' => 'Condominium\Service\DashboardController@dashboard']);
+        Route::get ('lista',            ['as' => 'condominium.service.list',         'uses' => 'Condominium\Service\ServiceController@list']);
+        Route::get ('lista/deletados',  ['as' => 'condominium.service.list.deleted', 'uses' => 'Condominium\Service\ServiceController@listDeleted']);
+        Route::get ('visualizar/{id?}', ['as' => 'condominium.service.view',         'uses' => 'Condominium\Service\ServiceController@edit']); // * btn-modal-view-condominium-service
+        Route::post('novo',             ['as' => 'condominium.service.store',        'uses' => 'Condominium\Service\ServiceController@store']); // btn-modal-new-condominium-service
+        Route::get ('editar/{id?}',     ['as' => 'condominium.service.edit',         'uses' => 'Condominium\Service\ServiceController@edit']); // * btn-modal-edit-condominium-service
+        Route::get ('deletar/{id?}',    ['as' => 'condominium.service.delete',       'uses' => 'Condominium\Service\ServiceController@edit']); // * btn-modal-delete-condominium-service
+        Route::get ('recuperar/{id?}',  ['as' => 'condominium.service.recover',      'uses' => 'Condominium\Service\ServiceController@edit']); // * btn-modal-recover-condominium-service
     });
 
     */
