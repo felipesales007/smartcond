@@ -1721,7 +1721,7 @@ class MenuItemsTableSeeder extends Seeder
         MenuItem::create([
             'menu_id'     => '9',
             'route_id'    => '141',
-            'order'       => '2',
+            'order'       => '4',
             'name'        => 'Serviços',
             'main'        => '1',
             'description' => 'Item do menu collapse oculto de acesso a página de listagem de prestadores de serviços',
