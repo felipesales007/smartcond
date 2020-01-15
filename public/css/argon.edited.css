@@ -193,6 +193,17 @@ input[type=number] {
     transition: none;
 }
 
+.form-control,
+.form-control:focus,
+.form-control:active,
+.select2-container--default,
+.select2-selection--single,
+.select2-selection--multiple,
+.select2-results__option,
+.select2-selection__choice {
+    color: #525f7f !important;
+}
+
 .input-group-none {
     position: relative;
 }

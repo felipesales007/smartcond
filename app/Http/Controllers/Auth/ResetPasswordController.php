@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
 {
@@ -28,6 +31,24 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = '/home/index';
+
+    /**
+     * Display the password reset view for the given token.
+     *
+     * If no token is present, display the link request form.
+     *
+     * @param Request $request
+     * @param  string|null  $token
+     * @return Factory|View
+     */
+    public function showResetForm(Request $request, $token = null)
+    {
+        auth()->logout();
+
+        return view('auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
 
     /**
      * @param $user

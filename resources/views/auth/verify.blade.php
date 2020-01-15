@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['sidebarMenu' => null, 'sidebarItem' => null])
 @section('title', __('Verificação de e-mail'))
 
 @section('content')
