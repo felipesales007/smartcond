@@ -708,6 +708,10 @@
     margin-top: .7rem;
 }
 
+.fe-hover-bg:hover {
+    background-color: #dddddd;
+}
+
 /*
 =========================================================
 * authentication
@@ -840,6 +844,18 @@
     right: 0;
 }
 
+.fe-view-200 {
+    min-height: 200px;
+}
+
+.fe-view-300 {
+    min-height: 300px;
+}
+
+.fe-view-400 {
+    min-height: 400px;
+}
+
 .fe-scroll-view-200 {
     max-height: 200px;
     overflow-y: auto;
@@ -858,10 +874,6 @@
 .fe-img-list-view {
     top: 3px;
     position: relative;
-}
-
-.fe-hover-bg:hover {
-    background-color: #dddddd;
 }
 
 /*
