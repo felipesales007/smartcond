@@ -439,11 +439,11 @@ input:-webkit-autofill {
 }
 
 input:-webkit-autofill {
-    -webkit-text-fill-color: #8898aa !important;
-    -moz-text-fill-color: #8898aa !important;
-    -ms-text-fill-color: #8898aa !important;
-    -o-text-fill-color: #8898aa !important;
-    -khtml-text-fill-color: #8898aa !important;
+    -webkit-text-fill-color: #525f7f !important;
+    -moz-text-fill-color: #525f7f !important;
+    -ms-text-fill-color: #525f7f !important;
+    -o-text-fill-color: #525f7f !important;
+    -khtml-text-fill-color: #525f7f !important;
 }
 
 .dropdown-menu .dropdown-item {
