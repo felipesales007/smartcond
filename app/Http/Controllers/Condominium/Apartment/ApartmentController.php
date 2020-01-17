@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Condominium\Apartment;
 
+use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
 use App\Helpers\PageHelpers;
 use App\Http\Requests\Condominium\Apartment\DeleteApartmentRequest;
@@ -82,7 +83,7 @@ class ApartmentController extends Controller
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
+                    return FormatHelpers::limiter($row->description);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
@@ -311,7 +312,7 @@ class ApartmentController extends Controller
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
+                    return FormatHelpers::limiter($row->description);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {

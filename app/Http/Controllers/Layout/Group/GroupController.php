@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Layout\Group;
 
+use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
 use App\Helpers\PageHelpers;
 use App\Http\Requests\Layout\Group\BlockGroupRequest;
@@ -71,7 +72,7 @@ class GroupController extends Controller
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return $row->description;
+                    return FormatHelpers::limiter($row->description, 90);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
@@ -304,7 +305,7 @@ class GroupController extends Controller
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return $row->description;
+                    return FormatHelpers::limiter($row->description, 90);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {

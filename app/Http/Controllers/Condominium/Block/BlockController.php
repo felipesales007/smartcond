@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Condominium\Block;
 
+use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
 use App\Helpers\PageHelpers;
 use App\Http\Requests\Condominium\Block\DeleteBlockRequest;
@@ -52,7 +53,7 @@ class BlockController extends Controller
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
+                    return FormatHelpers::limiter($row->description);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
@@ -202,7 +203,7 @@ class BlockController extends Controller
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
+                    return FormatHelpers::limiter($row->description);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {

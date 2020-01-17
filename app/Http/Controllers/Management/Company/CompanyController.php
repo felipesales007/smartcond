@@ -231,7 +231,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $collection = Company::withTrashed()->find($id);;
+        $collection = Company::withTrashed()->find($id);
 
         return response()->json($collection);
     }

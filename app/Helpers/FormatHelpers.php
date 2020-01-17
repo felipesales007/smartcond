@@ -224,4 +224,14 @@ class FormatHelpers
             return null;
         }
     }
+
+    /**
+     * @param $string
+     * @param int $quantity
+     * @return bool|false|string|string[]|null
+     */
+    static function limiter($string, $quantity = 50)
+    {
+        return $string ? mb_convert_encoding(substr_replace($string, (strlen($string) > $quantity ? '...' : ''), $quantity), 'utf-8') : null;
+    }
 }

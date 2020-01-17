@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Administrative\Department;
 
+use App\Helpers\FormatHelpers;
 use App\Helpers\NotifyHelpers;
 use App\Helpers\PageHelpers;
 use App\Http\Requests\Administrative\Department\BlockDepartmentRequest;
@@ -48,11 +49,11 @@ class DepartmentController extends Controller
             return datatables($collection)
                 // coluna nome
                 ->addColumn('name', function ($row) {
-                    return substr_replace($row->name, (strlen($row->name) > 50 ? '...' : ''), 50);
+                    return FormatHelpers::limiter($row->name);
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
+                    return FormatHelpers::limiter($row->description);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
@@ -243,11 +244,11 @@ class DepartmentController extends Controller
             return datatables($collection)
                 // coluna nome
                 ->addColumn('name', function ($row) {
-                    return substr_replace($row->name, (strlen($row->name) > 50 ? '...' : ''), 50);
+                    return FormatHelpers::limiter($row->name);
                 })
                 // coluna descrição
                 ->addColumn('description', function ($row) {
-                    return substr_replace($row->description, (strlen($row->description) > 50 ? '...' : ''), 50);
+                    return FormatHelpers::limiter($row->description);
                 })
                 // coluna ações
                 ->addColumn('action', function ($row) {
