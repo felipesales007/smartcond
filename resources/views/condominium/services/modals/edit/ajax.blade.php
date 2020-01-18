@@ -23,7 +23,7 @@
                     $('#name-edit-condominium-service').val(data.name);
                     $('#rg-edit-condominium-service').val(data.rg);
                     $('#contact-edit-condominium-service').val(data.contact);
-                    $('#profession-edit-user').val(data.profession);
+                    $('#profession-edit-condominium-service').val(data.profession);
                     $('#note-edit-condominium-service').val(data.note);
                 }
 

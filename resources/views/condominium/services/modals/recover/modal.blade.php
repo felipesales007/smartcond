@@ -1,5 +1,5 @@
 <div id="modal-recover-condominium-service" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-recover-condominium-service-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <!-- título -->
             <div class="modal-header">
@@ -48,7 +48,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome da pessoa que presta o serviço') }}">*</span>
-                                    <input readonly type="text" id="name-recover-condominium-service" name="name_recover_condominium_service" class="form-control {{ $errors->has('name_recover_condominium_service') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da pessoa') }}" value="{{ old('name_recover_condominium_service') }}" minlength="3" maxlength="191" required onkeypress="return onlyLetters(event);" onkeyup="letterUppercase('name-recover-condominium-service');" @if ($errors->has('name_recover_condominium_service')) autofocus @endif>
+                                    <input readonly type="text" id="name-recover-condominium-service" name="name_recover_condominium_service" class="form-control {{ $errors->has('name_recover_condominium_service') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da pessoa') }}" value="{{ old('name_recover_condominium_service') }}" minlength="3" maxlength="191" required onkeypress="return onlyLetters(event);" onkeyup="letterUppercase('name-recover-condominium-service'); this.value = noSpace(this.value);" @if ($errors->has('name_recover_condominium_service')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_recover_condominium_service'))
@@ -59,7 +59,7 @@
                         <!-- confirmação do nome -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="name-confirmation-recover-condominium-service">{{ __('Digite ') }}<b id="name-confirmation-recover-condominium-service-text" class="text-success fe-service-copy" onmousedown="return false;"></b>{{ __(' para confirmar a recuperação') }}</label>
+                                <label class="form-control-label" for="name-confirmation-recover-condominium-service">{{ __('Digite ') }}<b id="name-confirmation-recover-condominium-service-text" class="text-success fe-block-copy" onmousedown="return false;"></b>{{ __(' para confirmar a recuperação') }}</label>
                                 <div class="input-group input-group-merge validate-name-confirmation-recover-condominium-service">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text {{ $errors->has('name_confirmation_recover_condominium_service') ? 'is-invalid' : '' }}">
@@ -67,7 +67,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome da pessoa que está em verde e confirme, clicando em recuperar prestador de serviços') }}">*</span>
-                                    <input type="text" id="name-confirmation-recover-condominium-service" name="name_confirmation_recover_condominium_service" class="form-control fe-service-paste {{ $errors->has('name_confirmation_recover_condominium_service') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da pessoa para recuperação') }}" value="{{ old('name_confirmation_recover_condominium_service') }}" minlength="3" maxlength="191" required onkeypress="return onlyLetters(event);" onkeyup="letterUppercase('name-confirmation-recover-condominium-service');" ondrop="return false;" @if ($errors->has('name_confirmation_recover_condominium_service')) autofocus @endif>
+                                    <input type="text" id="name-confirmation-recover-condominium-service" name="name_confirmation_recover_condominium_service" class="form-control fe-block-paste {{ $errors->has('name_confirmation_recover_condominium_service') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da pessoa para recuperação') }}" value="{{ old('name_confirmation_recover_condominium_service') }}" minlength="3" maxlength="191" required onkeypress="return onlyLetters(event);" onkeyup="letterUppercase('name-confirmation-recover-condominium-service'); this.value = noSpace(this.value);" ondrop="return false;" @if ($errors->has('name_confirmation_recover_condominium_service')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_confirmation_recover_condominium_service'))

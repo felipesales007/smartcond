@@ -59,7 +59,7 @@
                         <!-- confirmação do nome -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="name-confirmation-delete-condominium-parking">{{ __('Digite ') }}<b id="name-confirmation-delete-condominium-parking-text" class="text-danger fe-parking-copy" onmousedown="return false;"></b>{{ __(' para confirmar a exclusão') }}</label>
+                                <label class="form-control-label" for="name-confirmation-delete-condominium-parking">{{ __('Digite ') }}<b id="name-confirmation-delete-condominium-parking-text" class="text-danger fe-block-copy" onmousedown="return false;"></b>{{ __(' para confirmar a exclusão') }}</label>
                                 <div class="input-group input-group-merge validate-name-confirmation-delete-condominium-parking">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text {{ $errors->has('name_confirmation_delete_condominium_parking') ? 'is-invalid' : '' }}">
@@ -67,7 +67,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome ou número do estacionamento que está em vermelho e confirme, clicando em excluir estacionamento') }}">*</span>
-                                    <input type="text" id="name-confirmation-delete-condominium-parking" name="name_confirmation_delete_condominium_parking" class="form-control fe-parking-paste {{ $errors->has('name_confirmation_delete_condominium_parking') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número para exclusão') }}" value="{{ old('name_confirmation_delete_condominium_parking') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-confirmation-delete-condominium-parking');" ondrop="return false;" @if ($errors->has('name_confirmation_delete_condominium_parking')) autofocus @endif>
+                                    <input type="text" id="name-confirmation-delete-condominium-parking" name="name_confirmation_delete_condominium_parking" class="form-control fe-block-paste {{ $errors->has('name_confirmation_delete_condominium_parking') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número para exclusão') }}" value="{{ old('name_confirmation_delete_condominium_parking') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-confirmation-delete-condominium-parking');" ondrop="return false;" @if ($errors->has('name_confirmation_delete_condominium_parking')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_confirmation_delete_condominium_parking'))

@@ -16,8 +16,31 @@
                     } else {
                         $('#status-view-condominium-service').addClass('d-none').html('');
                     }
+
                     // nome
-                    $('#name-view-condominium-service').html('<i class="fas fa-wrench mr-2"></i>' + data.name);
+                    $('#name-view-condominium-service').html('<i class="fas fa-user mr-2"></i>' + data.name);
+
+                    // rg
+                    if (data.rg) {
+                        $('#rg-view-condominium-service').html('<i class="fas fa-id-card mr-2"></i>' + data.rg);
+                    } else {
+                        $('#rg-view-condominium-service').html('');
+                    }
+
+                    // profissão
+                    if (data.profession) {
+                        $('#profession-view-condominium-service').html('<i class="fas fa-briefcase mr-2"></i>' + data.profession);
+                    } else {
+                        $('#profession-view-condominium-service').html('');
+                    }
+
+                    // contato
+                    if (data.contact) {
+                        $('#contact-view-condominium-service').html('<i class="fas fa-phone mr-2"></i>' + data.contact);
+                    } else {
+                        $('#contact-view-condominium-service').html('');
+                    }
+
                     // observação
                     if (data.note) {
                         $('#note-view-condominium-service').html('<div class="small mt-4">' + data.note + '</div>');

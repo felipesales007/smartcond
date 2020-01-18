@@ -1,5 +1,5 @@
 <div id="modal-view-condominium-service" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-view-condominium-service-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <!-- título e capa -->
             <div class="modal-header">
@@ -19,7 +19,13 @@
                         <!-- status -->
                         <small id="status-view-condominium-service" class="float-right mt--4 d-none"></small>
                         <!-- nome -->
-                        <div id="name-view-condominium-service" class="fe-text-badge-fix mt--3"></div>
+                        <div id="name-view-condominium-service"></div>
+                        <!-- rg -->
+                        <div id="rg-view-condominium-service" class="small"></div>
+                        <!-- profissão -->
+                        <div id="profession-view-condominium-service" class="small"></div>
+                        <!-- contato -->
+                        <div id="contact-view-condominium-service" class="small"></div>
                         <!-- observação -->
                         <span id="note-view-condominium-service"></span>
                     </div>

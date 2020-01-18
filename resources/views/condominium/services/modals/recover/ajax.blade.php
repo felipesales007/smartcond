@@ -19,8 +19,9 @@
                 } else {
                     available();
                     $('#id-recover-condominium-service').val(data.id);
-                    $('#name-confirmation-recover-condominium-service-text').html(data.name);
-                    $('#name-recover-condominium-service').val(data.name);
+                    let name = first_word(data.name);
+                    $('#name-confirmation-recover-condominium-service-text').html(name);
+                    $('#name-recover-condominium-service').val(name);
 
                     $('#modal-recover-condominium-service').modal('show');
                 }

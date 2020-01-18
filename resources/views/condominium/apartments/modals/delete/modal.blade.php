@@ -59,7 +59,7 @@
                         <!-- confirmação do nome -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="name-confirmation-delete-condominium-apartment">{{ __('Digite ') }}<b id="name-confirmation-delete-condominium-apartment-text" class="text-danger fe-apartment-copy" onmousedown="return false;"></b>{{ __(' para confirmar a exclusão') }}</label>
+                                <label class="form-control-label" for="name-confirmation-delete-condominium-apartment">{{ __('Digite ') }}<b id="name-confirmation-delete-condominium-apartment-text" class="text-danger fe-block-copy" onmousedown="return false;"></b>{{ __(' para confirmar a exclusão') }}</label>
                                 <div class="input-group input-group-merge validate-name-confirmation-delete-condominium-apartment">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text {{ $errors->has('name_confirmation_delete_condominium_apartment') ? 'is-invalid' : '' }}">
@@ -67,7 +67,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome ou número do apartamento que está em vermelho e confirme, clicando em excluir apartamento') }}">*</span>
-                                    <input type="text" id="name-confirmation-delete-condominium-apartment" name="name_confirmation_delete_condominium_apartment" class="form-control fe-apartment-paste {{ $errors->has('name_confirmation_delete_condominium_apartment') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número para exclusão') }}" value="{{ old('name_confirmation_delete_condominium_apartment') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-confirmation-delete-condominium-apartment');" ondrop="return false;" @if ($errors->has('name_confirmation_delete_condominium_apartment')) autofocus @endif>
+                                    <input type="text" id="name-confirmation-delete-condominium-apartment" name="name_confirmation_delete_condominium_apartment" class="form-control fe-block-paste {{ $errors->has('name_confirmation_delete_condominium_apartment') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome ou número para exclusão') }}" value="{{ old('name_confirmation_delete_condominium_apartment') }}" maxlength="191" required onkeypress="return onlyLettersNumbers(event);" onkeyup="letterUppercase('name-confirmation-delete-condominium-apartment');" ondrop="return false;" @if ($errors->has('name_confirmation_delete_condominium_apartment')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_confirmation_delete_condominium_apartment'))

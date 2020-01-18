@@ -1,5 +1,5 @@
 <div id="modal-delete-condominium-service" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-delete-condominium-service-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <!-- título -->
             <div class="modal-header">
@@ -48,7 +48,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('nome da pessoa que presta o serviço') }}">*</span>
-                                    <input readonly type="text" id="name-delete-condominium-service" name="name_delete_condominium_service" class="form-control {{ $errors->has('name_delete_condominium_service') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da pessoa') }}" value="{{ old('name_delete_condominium_service') }}" minlength="3" maxlength="191" required onkeypress="return onlyLetters(event);" onkeyup="letterUppercase('name-delete-condominium-service');" @if ($errors->has('name_delete_condominium_service')) autofocus @endif>
+                                    <input readonly type="text" id="name-delete-condominium-service" name="name_delete_condominium_service" class="form-control {{ $errors->has('name_delete_condominium_service') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da pessoa') }}" value="{{ old('name_delete_condominium_service') }}" minlength="3" maxlength="191" required onkeypress="return onlyLetters(event);" onkeyup="letterUppercase('name-delete-condominium-service'); this.value = noSpace(this.value);" @if ($errors->has('name_delete_condominium_service')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_delete_condominium_service'))
@@ -59,7 +59,7 @@
                         <!-- confirmação do nome -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="name-confirmation-delete-condominium-service">{{ __('Digite ') }}<b id="name-confirmation-delete-condominium-service-text" class="text-danger fe-service-copy" onmousedown="return false;"></b>{{ __(' para confirmar a exclusão') }}</label>
+                                <label class="form-control-label" for="name-confirmation-delete-condominium-service">{{ __('Digite ') }}<b id="name-confirmation-delete-condominium-service-text" class="text-danger fe-block-copy" onmousedown="return false;"></b>{{ __(' para confirmar a exclusão') }}</label>
                                 <div class="input-group input-group-merge validate-name-confirmation-delete-condominium-service">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text {{ $errors->has('name_confirmation_delete_condominium_service') ? 'is-invalid' : '' }}">
@@ -67,7 +67,7 @@
                                         </span>
                                     </div>
                                     <span class="fe-star" data-toggle="tooltip" data-placement="top" title="{{ __('digite o nome da pessoa que está em vermelho e confirme, clicando em excluir prestador de serviços') }}">*</span>
-                                    <input type="text" id="name-confirmation-delete-condominium-service" name="name_confirmation_delete_condominium_service" class="form-control fe-service-paste {{ $errors->has('name_confirmation_delete_condominium_service') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da pessoa para exclusão') }}" value="{{ old('name_confirmation_delete_condominium_service') }}" minlength="3" maxlength="191" required onkeypress="return onlyLetters(event);" onkeyup="letterUppercase('name-confirmation-delete-condominium-service');" ondrop="return false;" @if ($errors->has('name_confirmation_delete_condominium_service')) autofocus @endif>
+                                    <input type="text" id="name-confirmation-delete-condominium-service" name="name_confirmation_delete_condominium_service" class="form-control fe-block-paste {{ $errors->has('name_confirmation_delete_condominium_service') ? 'is-invalid' : '' }}" placeholder="{{ __('Nome da pessoa para exclusão') }}" value="{{ old('name_confirmation_delete_condominium_service') }}" minlength="3" maxlength="191" required onkeypress="return onlyLetters(event);" onkeyup="letterUppercase('name-confirmation-delete-condominium-service'); this.value = noSpace(this.value);" ondrop="return false;" @if ($errors->has('name_confirmation_delete_condominium_service')) autofocus @endif>
                                 </div>
                                 <!-- alerta de erro -->
                                 @if ($errors->has('name_confirmation_delete_condominium_service'))

@@ -19,8 +19,9 @@
                 } else {
                     available();
                     $('#id-delete-condominium-service').val(data.id);
-                    $('#name-confirmation-delete-condominium-service-text').html(data.name);
-                    $('#name-delete-condominium-service').val(data.name);
+                    let name = first_word(data.name);
+                    $('#name-confirmation-delete-condominium-service-text').html(name);
+                    $('#name-delete-condominium-service').val(name);
 
                     $('#modal-delete-condominium-service').modal('show');
                 }
