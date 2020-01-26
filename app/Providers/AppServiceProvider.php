@@ -37,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('alpha_route', '\App\Utils\Validator@alphaRoute');
         Validator::extend('alpha_controller', '\App\Utils\Validator@alphaController');
         Validator::extend('alpha_icon', '\App\Utils\Validator@alphaIcon');
+        Validator::extend('number_comma', '\App\Utils\Validator@NumberComma');
         Validator::extend('format_cpf', '\App\Utils\Validator@formatCpf');
         Validator::extend('format_cnpj', '\App\Utils\Validator@formatCnpj');
         Validator::extend('format_cpf_cnpj', '\App\Utils\Validator@formatCpfCnpj');

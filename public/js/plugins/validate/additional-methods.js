@@ -938,6 +938,10 @@ $.validator.addMethod( "letterswithbasicpunc", function( value, element ) {
 	return this.optional( element ) || /^[a-z\-.,()'"\s]+$/i.test( value );
 }, "O campo deve ter letras ou pontuação apenas." );
 
+$.validator.addMethod( "numbercomma", function( value, element ) {
+    return this.optional( element ) || /^[0-9,]+$/i.test( value );
+}, "O campo deve ter somente números e vírgula." );
+
 $.validator.addMethod( "decimal", function( value, element ) {
     return this.optional( element ) || /^((?:\d\.\d{3}\.|\d{1,3}\.)?\d{1,3},\d{2,2})$/.test( value );
 }, "O campo deve ter um número decimal." );

@@ -193,6 +193,23 @@ class FormatHelpers
 
     /**
      * @param $value
+     * @return string
+     */
+    static function to_real($value)
+    {
+        if ($value) {
+            $format = $value;
+            $format = str_replace(',', '', $format);
+            $format = str_replace('.', ',', $format);
+
+            return $format;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param $value
      * @param $quantity
      * @return string|null
      */

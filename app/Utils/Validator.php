@@ -87,6 +87,16 @@ class Validator
     /**
      * @param $attribute
      * @param $value
+     * @return false|int
+     */
+    public function NumberComma($attribute, $value)
+    {
+        return preg_match('/^[0-9,]+$/i', $value);
+    }
+
+    /**
+     * @param $attribute
+     * @param $value
      * @return bool
      */
     public function formatCpf($attribute, $value)

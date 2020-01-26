@@ -358,6 +358,17 @@ function onlyNumbers(number) {
     }
 }
 
+// only allow numbers - onkeypress="return onlyNumbersComma(event);"
+function onlyNumbersComma(number) {
+    let charCode = number.charCode ? number.charCode : number.keyCode;
+
+    if (charCode !== 8 && charCode !== 9 && charCode !== 44) {
+        if (charCode < 48 || charCode > 57) {
+            return false;
+        }
+    }
+}
+
 // only allow from A to Z with accents and numbers + space - onkeypress="return onlyLettersNumbers(event);"
 function onlyLettersNumbers(event) {
     let code;
@@ -915,6 +926,15 @@ function to_real(value) {
         }
     } else {
         return null;
+    }
+}
+
+// returns comma
+function to_comma(value) {
+    if (Number(value) === value && value % 1 !== 0) {
+        return parseFloat(value).toLocaleString('pt-br', { minimumFractionDigits: 1 });
+    } else {
+        return value;
     }
 }
 

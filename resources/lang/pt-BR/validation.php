@@ -127,6 +127,7 @@ return [
     'alpha_route'         => 'O campo :attribute deve ter somente letras minúsculas e caracteres permitidos.',
     'alpha_controller'    => 'O campo :attribute deve ter somente letras e caracteres permitidos.',
     'alpha_icon'          => 'O campo :attribute deve ter somente letras, espaços e caracteres permitidos.',
+    'number_comma'        => 'O campo :attribute deve ter somente números e vírgula.',
     'format_cpf'          => 'O campo :attribute está em um formato incorreto.',
     'format_cnpj'         => 'O campo :attribute está em um formato incorreto.',
     'format_cpf_cnpj'     => 'O campo :attribute está em um formato incorreto.',
