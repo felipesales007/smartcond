@@ -47,10 +47,5 @@ class UsersTableSeeder extends Seeder
             'email' => 'sergiopinto.adm@gmail.com',
             'admin' => '1'
         ]);
-
-        factory(User::class)->create([
-            'name'  => 'Teste',
-            'email' => 'teste@hotmail.com'
-        ]);
     }
 }

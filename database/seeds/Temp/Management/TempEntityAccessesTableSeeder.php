@@ -3,7 +3,7 @@
 use App\Models\Entity\EntityAccess;
 use Illuminate\Database\Seeder;
 
-class EntityAccessesTableSeeder extends Seeder
+class TempEntityAccessesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

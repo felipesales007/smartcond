@@ -36,13 +36,6 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-
-            Permission::create([
-                'user_id'    => '4',
-                'route_id'   => $i,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
         }
     }
 }
