@@ -27,6 +27,8 @@ let datatables_pt_br = {
     }
 };
 
+let datatables_edited_without = '<>';
+
 let datatables_edited =
     '<"row"<"col-md-6" <"float-left ml-3 mr--4" f>><"text-right col-md-6" l>>' +
     '<"row"<"col-md-12" tr>>' +

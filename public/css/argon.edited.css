@@ -393,6 +393,10 @@ div.dataTables_length {
     margin-right: 4px;
 }
 
+table.dataTable {
+    margin-top: 0 !important;
+}
+
 table.dataTable thead .sorting:before,
 table.dataTable thead .sorting_asc:before,
 table.dataTable thead .sorting_desc:before,
