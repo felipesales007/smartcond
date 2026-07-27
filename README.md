@@ -2,9 +2,9 @@
 
 ![version](https://img.shields.io/badge/version-5.0.0-blue.svg)
 
-Sistema de gerenciamento de condomínio web desenvolvido no **framework Laravel** por Felipe Sales.
+Sistema de gerenciamento de condomínio web desenvolvido no **framework Laravel** por Felipe Santos.
 
-Conheça o framework [Laravel](https://laravel.com) e o desenvolvedor [Felipe Sales](https://www.felipesales.com.br).
+Conheça o framework [Laravel](https://laravel.com) e o desenvolvedor [Felipe Santos](https://www.felipess.com).
 
 ## Versão disponível
 
